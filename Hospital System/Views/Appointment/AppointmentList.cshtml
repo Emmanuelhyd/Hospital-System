@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Hospital_System.Models.MAppointment>
+@{
+    ViewBag.Title = "AppointmentList";
+}
+
+
+
+@*<script>
+    function Book() {
+
+        window.location.href = 'BookAppointment';
+    }
+
+</script>*@
+
+@using (Html.BeginForm())
+{
+    <div style="width: 74%; height: 600px; background-color: #e0f7fa; padding: 20px; position: absolute; margin-top: -10px; margin-left: 276px; ">
+        <div><h2>Available Doctors and their Specialities</h2>
+            <div>
+            <input type="text" id="searchvalue"  name="searchvalue" >
+                <input type="submit" value="Search" >
+            </div>
+
+            <table style="width:100%; border-collapse:collapse; margin-top:20px;" border="1">
+                <thead>
+                    <tr style="background-color:#00796b;color:white;">
+                        <th style="padding:10px;text-align:left;">
+                            @Html.DisplayNameFor(model => model.DoctorName)
+                        </th>
+                        <th style="padding:10px;text-align:left;">
+                            @Html.DisplayNameFor(model => model.Speciality)
+                        </th>
+                        <th style="padding:10px;text-align:left;">
+                            @Html.DisplayNameFor(model => model.Education)
+                        </th>
+                        <th style="padding:10px;text-align:left;">
+                            @Html.DisplayNameFor(model => model.Timings)
+                        </th>
+                        <th style="padding:10px;text-align:left;">
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th style="padding:10px;text-align:left;">
+                            @Html.DisplayNameFor(model => model.Action)
+                        </th>
+                        <th style="padding:10px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr style="background-color:#ffffff;">
+                            <td style="padding:10px;">
+                                @Html.DisplayFor(modelItem => item.DoctorName)
+                            </td>
+                            <td style="padding:10px;">
+                                @Html.DisplayFor(modelItem => item.Speciality)
+                            </td>
+                            <td style="padding:10px;">
+                                @Html.DisplayFor(modelItem => item.Education)
+                            </td>
+                            <td style="padding:10px;">
+                                @Html.DisplayFor(modelItem => item.Timings)
+                            </td>
+                            <td style="padding:10px;">
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td style="padding:10px;">
+                                <input type="button" value="Book" onclick="window.location.href='@Url.Action("BookAppointment", "Appointment")'">
+                            </td>
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+

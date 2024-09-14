@@ -1,0 +1,279 @@
+﻿@*@model IEnumerable<AddAppointment.Models.Doctors>
+@{
+    ViewBag.Title = "DoctorList";
+}
+
+<h2>DoctorList</h2>
+
+<script>
+    function CreateNew() {
+
+        window.location.href = 'NewDoctor';
+    }
+
+</script>
+
+@using (Html.BeginForm("DoctorList", "Doctor"))
+{
+    <div style="width:100%;height:100vh;background-color:aqua;">
+        <div>
+            <div><input type="button" value="CreateNew " onclick="CreateNew()"></div>
+            <div>
+                <table border="1">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Department)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Designation)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Education)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PhoneNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Gender)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Department)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Designation)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Education)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Gender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "DEdit", new { Id = item.Id }) |
+
+                                @Html.ActionLink("Delete", "DDelete", new { Id = item.Id })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+}-->*@
+@*<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>*@
+
+@*<script>
+    $(document).ready(function() {
+        $('#myModal').on('show.bs.modal', function (e) {
+            var url = '@Url.Action("CreateNew", "Doctor")'; // URL to fetch content for the modal
+            $(this).find('.modal-body').load(url);
+        });
+    });
+    </script>*@
+
+<!--<script>
+$(document).ready(function() {
+    $("#dialog").dialog({
+        autoOpen: false,
+        width: 600,
+        modal: true,
+        buttons: {
+            "Close": function() {
+                $(this).dialog("close");
+            }
+        }
+    });
+
+    $("#openDialog").click(function() {
+        $("#dialog").dialog("open");
+        $("#dialog").load('@Url.Action("NewDoctor", "Doctor")'); // Load content via AJAX
+    });
+});
+</script>-->
+
+
+
+@model IEnumerable<Hospital_System.Models.Doctors>
+@{
+    ViewBag.Title = "Doctor List";
+}
+
+
+
+<script>
+    function createNew() {
+        window.location.href = '@Url.Action("NewDoctor", "Doctor")'; // Ensure this matches your route
+    }
+</script>
+
+@using (Html.BeginForm())
+{
+    <div class="container" style="position: absolute; margin-top: -10px; margin-left: 277px; width: 857px; height: 600px; ">
+        <div class="header">
+            <input type="search" id="Sagar" name="Sagar">
+            <input type="submit" value="Search">
+            <input type="button" value="CreateNew" onclick="createNew()" class="btn btn-primary" />
+        </div>
+
+        <table class="doctor-table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.First().Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Department)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Designation)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Education)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().PhoneNumber)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Gender)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Status)</th>
+                    @*<th>Actions</th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Department)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Designation)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Education)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        @*<td class="action-links">
+                            @Html.ActionLink("Edit", "DEdit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "DDelete", new { id = item.Id })
+                        </td>*@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+<style>
+    /* General Container */
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Heading */
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Header Button */
+    .header {
+        margin-bottom: 20px;
+        text-align: right;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .btn-primary {
+        background-color: #007BFF;
+    }
+
+    /* Table Styles */
+    .doctor-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        font-family: Arial, sans-serif;
+    }
+
+        .doctor-table th, .doctor-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .doctor-table th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .doctor-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .doctor-table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+    /* Action Links */
+    .action-links a {
+        color: #007BFF;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .action-links a:hover {
+            text-decoration: underline;
+        }
+
+    .link-edit {
+        color: #007BFF;
+    }
+
+    .link-delete {
+        color: #dc3545;
+    }
+
+        .link-delete:hover {
+            text-decoration: underline;
+        }
+</style>
+
