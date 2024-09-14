@@ -34,10 +34,10 @@ namespace Hospital_System.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login( Custom custom)
+        public ActionResult Login( Patients patients)
 
         {
-            string res = patientBAL.Login(custom);
+            string res = patientBAL.Login(patients);
 
           if(res== "success")
             {
@@ -45,6 +45,7 @@ namespace Hospital_System.Controllers
             }
             else
             {
+                ViewBag.message = "Invalid UserName or Password";
                 return View();
             }
            
@@ -59,7 +60,7 @@ namespace Hospital_System.Controllers
         }
 
         [HttpGet]
-        public ActionResult Updateprofile(Patients patients)
+        public ActionResult Updateprofile()
         {
             var model = new Patients
             {
@@ -74,11 +75,11 @@ namespace Hospital_System.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Updateprofilee(Patients patients)
+        public ActionResult Updateprofile(Patients patients)
         {
             if (ModelState.IsValid)
             {
-                string res = patientBAL.Updateprofilee(patients);
+                string res = patientBAL.Updateprofile(patients);
 
                 ViewBag.Message = res;
                 return View(patients);
@@ -123,15 +124,6 @@ namespace Hospital_System.Controllers
 
         
 
-       
-       
-
-
-
-
-       
-       
-
         public ActionResult Index()
         {
             var model = new Allview
@@ -150,11 +142,7 @@ namespace Hospital_System.Controllers
         }
 
 
-       
-
-
-
-
+   
        
         public ActionResult Ambulanceses()
         {
@@ -163,12 +151,7 @@ namespace Hospital_System.Controllers
         }
 
        
-        public ActionResult Depart()
-        {
-            var department=patientBAL.GetDepartments();
-            return View(department);
-        }
-
+       
         public ActionResult drive()
         {
             var drive = patientBAL.GetAmbulanceDrivers();
@@ -213,18 +196,27 @@ namespace Hospital_System.Controllers
             return View();
         }
         [HttpPost]
-            public ActionResult Changepassword(Custom custom)
+            public ActionResult Changepassword(Patients patients)
         {
-            string res = patientBAL.Changepassword(custom);
-            if (res != "updated")
+
+           
+            
+            string res = patientBAL.Changepassword(patients);
+
+            if (res=="updated")
             {
+                Session["validate"] = "Updated";
                 return RedirectToAction("Login");
-
+                
             }
-
-
-            ViewBag.message = "Password does not match";
+            else
+            {
+                Session["validate"] = "";
+                ViewBag.message = "Invalid UserName";
+            }
+          
             return View();
+        
         }
 
         public ActionResult EditComplains(Complain complain)
@@ -243,7 +235,7 @@ namespace Hospital_System.Controllers
             }
             else
             {
-                return RedirectToAction("AddComplains", "Doctor");
+                return RedirectToAction("AddComplains", "Patient");
             }
         }
 

@@ -1,37 +1,4 @@
-﻿@*@model IEnumerable<Hospital_System.Models.Doctor>
-    @{
-        ViewBag.Title = "doc";
-    }
-
-    <h2>List of Doctors</h2>
-
-    <table >
-        <thead>
-            <tr>
-                <th>@Html.DisplayNameFor(model => model.FullName)</th>
-                <th>@Html.DisplayNameFor(model => model.Email)</th>
-                <th>@Html.DisplayNameFor(model => model.Department)</th>
-                <th>@Html.DisplayNameFor(model => model.Specialization)</th>
-                <th>@Html.DisplayNameFor(model => model.Designation)</th>
-                <th>@Html.DisplayNameFor(model => model.Status)</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.FullName)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Department)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Specialization)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Designation)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Status) </td>
-
-                </tr>
-            }
-        </tbody>
-    </table>*@
+﻿  
 
 @model IEnumerable<Hospital_System.Models.Doctor>
 
@@ -112,7 +79,7 @@
                         <th>@Html.DisplayNameFor(model => model.First().FullName)</th>
                         <th>@Html.DisplayNameFor(model => model.First().Email)</th>
                         <th>@Html.DisplayNameFor(model => model.First().Department)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().Specialization)</th>
+                        
                         <th>@Html.DisplayNameFor(model => model.First().Designation)</th>
                         <th>@Html.DisplayNameFor(model => model.First().Status)</th>
                     </tr>
@@ -124,7 +91,7 @@
                             <td>@Html.DisplayFor(modelItem => item.FullName)</td>
                             <td>@Html.DisplayFor(modelItem => item.Email)</td>
                             <td>@Html.DisplayFor(modelItem => item.Department)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Specialization)</td>
+                           
                             <td>@Html.DisplayFor(modelItem => item.Designation)</td>
                             <td>@Html.DisplayFor(modelItem => item.Status)</td>
                         </tr>

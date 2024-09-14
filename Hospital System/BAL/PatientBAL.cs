@@ -20,25 +20,18 @@ namespace Hospital_System.BAL
         Patient1 patient = new Patient1();
 
 
-        //public string Loginn(Patients patients)
-        //{
+       
 
-
-        //    string res = patient.Loginn(patients);
-
-        //    return res;
-        //}
-
-        public string Login(Custom custom)
+        public string Login(Patients patients)
         {
 
-            return patient.Login(custom);
+            return patient.Login(patients);
 
         }
 
-        public string Updateprofilee(Patients patients)
+        public string Updateprofile(Patients patients)
         {
-            string res = patient.Updateprofilee(patients);
+            string res = patient.Updateprofile(patients);
             return res;
         }
 
@@ -60,10 +53,7 @@ namespace Hospital_System.BAL
         {
             return patient.GetAmbulances();
         }
-        public List<Department> GetDepartments()
-        {
-            return patient.GetDepartments();
-        }
+       
         public List<AmbulanceDriver> GetAmbulanceDrivers()
         {
             return patient.GetAmbulanceDrivers();
@@ -93,9 +83,9 @@ namespace Hospital_System.BAL
             return patient.GetComplains(searchvalue);
         }
 
-        public string Changepassword(Custom custom)
+        public string Changepassword(Patients patients)
         {
-            string res = patient.Changepassword(custom);
+            string res = patient.Changepassword(patients);
             return res;
         }
         public string EditComplain(Complain complain)

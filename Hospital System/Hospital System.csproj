@@ -105,7 +105,6 @@
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\Complain.cs" />
-    <Compile Include="Models\Custom.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\Medicine.cs" />
@@ -123,7 +122,6 @@
     <Content Include="Views\Patient\Changepassword.cshtml" />
     <Content Include="Views\Patient\Updateprofile.cshtml" />
     <Content Include="Views\Patient\Index.cshtml" />
-    <Content Include="Views\Patient\Updateprofilee.cshtml" />
     <Content Include="Views\Patient\Ambulanceses.cshtml" />
     <Content Include="Views\Patient\Depart.cshtml" />
     <Content Include="Views\Patient\drive.cshtml" />

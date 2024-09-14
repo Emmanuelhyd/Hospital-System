@@ -32,40 +32,21 @@ namespace Hospital_System.DAL
 
 
 
-            _connectionString = ConfigurationManager.ConnectionStrings["abc"].ConnectionString;
+            _connectionString = ConfigurationManager.ConnectionStrings["Hospital"].ConnectionString;
             con = new SqlConnection(_connectionString);
         }
 
 
-        //public string Loginn(Patients patients)
-        //{
-        //    con.Open();
-
-        //    cmd = new SqlCommand("insert into patients values('" + patients.UserName + "','" + patients.Password + "')", con);
-        //    cmd.ExecuteNonQuery();
-        //    con.Close();
-
-
-        //    return "Added Successfully";
-        //}
-
-
-        // }
-
-
-        public string Login(Custom custom)
+        public string Login(Patients patients)
         {
-
-
-
-            string res = "Invalid UserId or Pass";
+            string res = " ";
             con.Open();
-            cmd = new SqlCommand("select *from manage where UserName='"+custom.UserName+"' and Password='"+custom.Password+"' ", con);
+            cmd = new SqlCommand("select *from profile where UserName='"+ patients.UserName+"' and Password='"+ patients.Password+"' ", con);
             reader = cmd.ExecuteReader();
 
             if (reader.Read())
             {
-                if(custom.UserName==reader.GetString(0) && custom.Password==reader.GetString(1))
+                if(patients.UserName==reader.GetString(0) && patients.Password==reader.GetString(4))
                 {
                    res="success";
                 }
@@ -78,7 +59,7 @@ namespace Hospital_System.DAL
         }
 
 
-        public string Updateprofilee(Patients patients)
+        public string Updateprofile(Patients patients)
         {
             string res = "";
 
@@ -87,7 +68,7 @@ namespace Hospital_System.DAL
             cmd.ExecuteNonQuery();
             con.Close();
 
-            return res;
+            return "Updated";
 
 
         }
@@ -187,44 +168,9 @@ namespace Hospital_System.DAL
         }
 
 
-        public List<Department> GetDepartments()
-        {
-           
-                List<Department> department1 = new List<Department>();
-                {
-                    
-                    con.Open();
-                    cmd = new SqlCommand("select*from department", con);
-                    reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        Department departments = new Department();
-
-                        departments.Id = reader.GetString(reader.GetOrdinal("id")); ;
-                        departments.Name = reader.GetString(reader.GetOrdinal("Name"));
-                        departments.Description = reader.GetString(reader.GetOrdinal("description"));
-                        departments.Status = reader.GetString(reader.GetOrdinal("Status"));
-
-                    department1.Add(departments);
-                }
-
-                    
-                    
-                }
-
-                   reader.Close();
-                   con.Close();
-                   return department1;
-
-
-
-        }
-
-
         public List<AmbulanceDriver> GetAmbulanceDrivers()
 
         {
-
             List<AmbulanceDriver>drivers= new List<AmbulanceDriver>();
             con.Open();
             cmd = new SqlCommand("select*from driver", con);
@@ -233,11 +179,11 @@ namespace Hospital_System.DAL
             {
                 AmbulanceDriver driver = new AmbulanceDriver();
 
-                driver.Id = reader.GetString(reader.GetOrdinal("id"));
+                driver.Id = Convert.ToInt32(reader["Id"]);
                 driver.Name=reader.GetString(reader.GetOrdinal("Name"));
-                driver.Contact = reader.GetString(reader.GetOrdinal("Contact"));
+                driver.Contact = Convert.ToInt32(reader["Contact"]);
                 driver.Address=reader.GetString(reader.GetOrdinal("address"));
-                driver.Cnic = reader.GetString(reader.GetOrdinal("cnic"));
+                driver.Cnic = Convert.ToInt32(reader["Cnic"]); ;
 
                 drivers.Add(driver);
             }
@@ -260,7 +206,7 @@ namespace Hospital_System.DAL
                 doctor.FullName = reader.GetString(reader.GetOrdinal("FullName"));
                 doctor.Email = reader.GetString(reader.GetOrdinal("Email"));
                 doctor.Department = reader.GetString(reader.GetOrdinal("department"));
-                doctor.Specialization = reader.GetString(reader.GetOrdinal("specialization"));
+              
                 doctor.Designation = reader.GetString(reader.GetOrdinal("designation"));
                 doctor.Status = reader.GetString(reader.GetOrdinal("status"));
                 doctors.Add(doctor);
@@ -274,25 +220,7 @@ namespace Hospital_System.DAL
             return doctors;
         }
 
-        //public List<Patients>GetPatients()
-        //{
-        //    List<Patients> patients = new List<Patients>();
-        //    con.Open();
-        //    cmd = new SqlCommand("select *from patients", con);
-        //    reader = cmd.ExecuteReader();
-        //    while(reader.Read())
-        //    {
-        //        Patients patients2 = new Patients();
-
-        //        patients2.FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
-
-
-
-
-        //    }
-        //    con.Close();
-
-        //}
+       
             public List<Medicine> GetMedicines()
         {
 
@@ -358,16 +286,22 @@ namespace Hospital_System.DAL
         }
 
 
-        public string Changepassword(Custom custom )
+        public string Changepassword(Patients patients )
 
-        {
+        { 
+            string res = "";
             con.Open();
-            cmd = new SqlCommand("update passwords set Newpassword='" + custom.NewPassword + "', ConfirmPassword='" + custom.NewPassword + "'where Oldpassword='" + custom.Password + "'", con);
-           
+            cmd = new SqlCommand("update profile set Password='" + patients.Password + "' where UserName='" + patients.UserName + "'", con);
+
+           if( patients.UserName.Length ==0 )
+            {
+                res = "Invalid  UserName";
+            }
+          
 
             cmd.ExecuteNonQuery();
             con.Close();
-            return "Updated";
+            return "res";
         }
 
         public string EditComplain(Complain complain)
