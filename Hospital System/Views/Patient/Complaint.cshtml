@@ -1,0 +1,91 @@
+﻿@model Hospital_System.Models.Complain
+@{
+    ViewBag.Title = "Complaint";
+    //Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+@ViewBag.message;
+
+@using (Html.BeginForm())
+{
+    <div>
+
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Complaint, new { @class = "form-label" })
+            @Html.TextAreaFor(model => model.Complaint, new { @class = "form-control", rows = 4, placeholder = "Write your complaint here..." })
+            @Html.ValidationMessageFor(model => model.Complaint, "", new { @class = "validation-message" })
+        </div>
+
+        <button type="submit" class="btn btn-submit">Submit</button>
+    </div>
+}
+
+<style>
+    /* General form styling */
+    .complaint-form {
+        max-width: 600px; /* Form width */
+        margin: 50px auto; /* Center form horizontally with vertical margin */
+        padding: 30px; /* Padding inside the form */
+        background-color: #ffffff; /* White background for form */
+        border-radius: 10px; /* Rounded corners */
+        border: 1px solid #e0e0e0; /* Light gray border */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Deep shadow for a floating effect */
+        font-family: Arial, sans-serif; /* Font for better readability */
+    }
+
+    /* Form labels */
+    .form-label {
+        display: block;
+        font-size: 1rem; /* Standard font size */
+        color: #444; /* Darker text color */
+        margin-bottom: 10px; /* Space between label and input */
+    }
+
+    /* Text area */
+    .form-control {
+        width: 100%;
+        padding: 15px;
+        font-size: 1rem; /* Standard font size */
+        border: 1px solid #c4c4c4; /* Light border */
+        border-radius: 8px; /* Rounded corners */
+        background-color: #fafafa; /* Slightly off-white background */
+        transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    }
+
+        .form-control:focus {
+            border-color: #007bff; /* Blue border on focus */
+            background-color: #ffffff; /* White background on focus */
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.25); /* Blue shadow on focus */
+            outline: none; /* Remove default outline */
+        }
+
+    /* Validation messages */
+    .validation-message {
+        color: #dc3545; /* Red color for error messages */
+        font-size: 0.875rem; /* Slightly smaller font size */
+        margin-top: 5px; /* Space between input and validation message */
+    }
+
+    /* Submit button */
+    .btn-submit {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        color: #ffffff; /* White text color */
+        background-color: #28a745; /* Green background color */
+        border: none; /* Remove border */
+        border-radius: 8px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor */
+        transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+        text-align: center; /* Center text */
+        margin-top: 20px; /* Space above button */
+    }
+
+        .btn-submit:hover {
+            background-color: #218838; /* Darker green on hover */
+            transform: scale(1.05); /* Slight scale effect on hover */
+        }
+</style>

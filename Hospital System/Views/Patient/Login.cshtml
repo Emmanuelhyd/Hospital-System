@@ -1,0 +1,128 @@
+﻿@model Hospital_System.Models.Custom
+@{
+    ViewBag.Title = "Login";
+}
+
+<style>
+    /* General body styling */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Container for the form */
+    .login-container {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    /* Form styling */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    /* Label styling */
+    .form-label {
+        display: block;
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+
+    /* Input fields styling */
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+            outline: none;
+        }
+
+    /* Validation messages styling */
+    .text-danger {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 5px;
+    }
+
+    /* Button styling */
+    .btn-submit {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.3s;
+        width: 100%;
+        margin-top: 20px;
+        text-decoration: none;
+    }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+    /* Links styling */
+    .form-link {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        .form-link:hover {
+            text-decoration: underline;
+        }
+</style>
+
+@using (Html.BeginForm())
+{
+   <div>
+       @Html.AntiForgeryToken()
+
+       <div class="login-container">
+           <h2>@ViewBag.Title</h2>
+
+           <div class="form-group">
+               <label for="UserName" style="color:blue">UserName<span style="color: red; font-weight: bold">*</span></label>
+               <br />
+               @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "UserName" })
+               @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+           </div>
+
+           <div class="form-group">
+               <label for="Password" style="color:blue">Password<span style="color: red; font-weight: bold">*</span></label>  <br />
+               @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+               @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+           </div>
+
+           <input type="submit" value="Login" class="btn-submit" />
+
+           <a href="@Url.Action("Forgotpassword", "Patient")" class="form-link">Forgot Password?</a>
+           <a href="@Url.Action("Register", "Patient")" class="form-link">Sign Up</a>
+       </div>
+
+       @ViewBag.message
+   </div>
+}
