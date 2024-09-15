@@ -1,13 +1,13 @@
-﻿@*@model IEnumerable<AddAppointment.Models.MPrescription>
-@{
-    ViewBag.Title = "PrecList";
-}
+﻿@*@model IEnumerable<Hospital_System.Models.MPrescription>
+    @{
+        ViewBag.Title = "PrecList";
+    }
 
-<h2>PrecList</h2>
+    <h2>PrecList</h2>
 
-{
-    <div style="width:100%;height:100vh;background-color:aqua;">
-        <div>-->*@
+    {
+        <div style="width:100%;height:100vh;background-color:aqua;">
+            <div>-->*@
 @*<div><input type="button" value="CreateNew " onclick="CreateNew()"></div>*@
 <!--<div>
                 <table border="1">
@@ -73,13 +73,14 @@
 @model IEnumerable<Hospital_System.Models.MPrescription>
 @{
     ViewBag.Title = "PrecList";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
 }
 
 
 
 @using (Html.BeginForm("PrecList", "Prescription"))
 {
-    <div style="width:100%;height:100vh;background-color:#e0f7fa;padding:20px;">
+    <div style="position: absolute; margin-left: 200px; width: 81%; height: 100vh; background-color: #e0f7fa; padding: 20px;">
         <div>
             <h2>Your Prescription</h2>
             <table style="width:100%; border-collapse:collapse; margin-top:20px;" border="1">

@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<Hospital_System.Models.MAppointment>
 @{
     ViewBag.Title = "AppointmentList";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+
 }
 
 
@@ -15,7 +17,7 @@
 
 @using (Html.BeginForm())
 {
-    <div style="width: 74%; height: 600px; background-color: #e0f7fa; padding: 20px; position: absolute; margin-top: -10px; margin-left: 276px; ">
+    <div style="width: 80%; height: 600px; background-color: #e0f7fa; padding: 20px; position: absolute; margin-left: 204px; margin-top: 0px; margin-left: 276px; ">
         <div><h2>Available Doctors and their Specialities</h2>
             <div>
             <input type="text" id="searchvalue"  name="searchvalue" >

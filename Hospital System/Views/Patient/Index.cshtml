@@ -5,7 +5,11 @@
     Layout = "~/Views/Shared/_PatientLayout.cshtml";
 }
             
-
+<script>
+    function back() {
+        window.location.href = '@Url.Action("DoctorList", "Doctor")';
+    }
+</script>
 
 <!DOCTYPE html>
 <html>
@@ -162,88 +166,90 @@
         }
     </style>
 </head>
-<div>
-    <body>
-        <h1>Dashboard</h1>
-        <div id="tab1" class="link-container">
-            <a href="#" class="link">
-                <div class="icon">
-                    <i class="fa fa-building"></i>
-                </div>
-                <p class="count">@Model.DepartmentCount</p>
-                <span class="tag">Departments</span>
-            </a>
-        </div>
+<div style=" position: absolute; width: 800px; height: 100vh; margin-left: 201px;">
+    <div style="margin-left:-195px;width:750px;position:absolute;">
+        <body>
+            <h1>Dashboard</h1>
+            <div id="tab1" class="link-container">
+                <a href="#" class="link">
+                    <div class="icon">
+                        <i class="fa fa-building"></i>
+                    </div>
+                    <p class="count">@Model.DepartmentCount</p>
+                    <span class="tag">Departments</span>
+                </a>
+            </div>
 
-        <div id="tab2" class="link-container">
-            <a href="Doc" class="link">
-                <div class="icon">
-                    <i class="fa fa-user-md"></i>
-                </div>
-                <p class="count">@Model.DoctorCount</p>
-                <span class="tag">Doctors</span>
-            </a>
-        </div>
+            <div id="tab2" class="link-container">
+                <a href="Doc" class="link">
+                    <div class="icon">
+                        <i class="fa fa-user-md"></i>
+                    </div>
+                    <p class="count">@Model.DoctorCount</p>
+                    <span class="tag">Doctors</span>
+                </a>
+            </div>
 
-        <div id="tab3" class="link-container">
-            <a href="#" class="link">
-                <div class="icon">
-                    <i class="fa fa-user"></i>
-                </div>
-                <p class="count">@Model.PatientCount</p>
-                <span class="tag">Patients</span>
-            </a>
-        </div>
+            <div id="tab3" class="link-container">
+                <a href="#" class="link">
+                    <div class="icon">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <p class="count">@Model.PatientCount</p>
+                    <span class="tag">Patients</span>
+                </a>
+            </div>
 
-        <div id="tab4" class="link-container">
-            <a href="Ambulanceses" class="link">
-                <div class="icon">
-                    <i class="fa fa-ambulance"></i>
-                </div>
-                <p class="count">@Model.AmbulanceCount</p>
-                <span class="tag">Ambulances</span>
-            </a>
-        </div>
+            <div id="tab4" class="link-container">
+                <a href="Ambulanceses" class="link">
+                    <div class="icon">
+                        <i class="fa fa-ambulance"></i>
+                    </div>
+                    <p class="count">@Model.AmbulanceCount</p>
+                    <span class="tag">Ambulances</span>
+                </a>
+            </div>
 
-        <div id="tab5" class="link-container">
-            <a href="#" class="link">
-                <div class="icon">
-                    <i class="fa fa-calendar-check"></i>
-                </div>
-                <p class="count">@Model.ActiveAppointmentsCount</p>
-                <span class="tag">Active Appointments</span>
-            </a>
-        </div>
+            <div id="tab5" class="link-container">
+                <a href="#" class="link">
+                    <div class="icon">
+                        <i class="fa fa-calendar-check"></i>
+                    </div>
+                    <p class="count">@Model.ActiveAppointmentsCount</p>
+                    <span class="tag">Active Appointments</span>
+                </a>
+            </div>
 
-        <div id="tab6" class="link-container">
-            <a href="#" class="link">
-                <div class="icon">
-                    <i class="fa fa-calendar-times"></i>
-                </div>
-                <p class="count">@Model.PendingAppointmentsCount</p>
-                <span class="tag">Pending Appointments</span>
-            </a>
-        </div>
+            <div id="tab6" class="link-container">
+                <a href="#" class="link">
+                    <div class="icon">
+                        <i class="fa fa-calendar-times"></i>
+                    </div>
+                    <p class="count">@Model.PendingAppointmentsCount</p>
+                    <span class="tag">Pending Appointments</span>
+                </a>
+            </div>
 
-        <div id="tab7" class="link-container">
-            <a href="medicals" class="link">
-                <div class="icon">
-                    <i class="fa fa-capsules"></i>
-                </div>
-                <p class="count">@Model.MedicineCount</p>
-                <span class="tag">Medicines</span>
-            </a>
-        </div>
+            <div id="tab7" class="link-container">
+                <a href="medicals" class="link">
+                    <div class="icon">
+                        <i class="fa fa-capsules"></i>
+                    </div>
+                    <p class="count">@Model.MedicineCount</p>
+                    <span class="tag">Medicines</span>
+                </a>
+            </div>
 
-        <div id="tab8" class="link-container">
-            <a href="Drive" class="link">
-                <div class="icon">
-                    <i class="fa fa-car"></i>
-                </div>
-                <p class="count">@Model.DriverCount</p>
-                <span class="tag">Drivers</span>
-            </a>
-        </div>
-    </body>
+            <div id="tab8" class="link-container">
+                <a href="Drive" class="link">
+                    <div class="icon">
+                        <i class="fa fa-car"></i>
+                    </div>
+                    <p class="count">@Model.DriverCount</p>
+                    <span class="tag">Drivers</span>
+                </a>
+            </div>
+        </body>
+    </div>
 </div>
 </html>

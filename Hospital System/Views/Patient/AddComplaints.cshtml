@@ -1,68 +1,67 @@
 ﻿@model IEnumerable<Hospital_System.Models.Complain>
 @{
     ViewBag.Title = "AddComplaints";
-    //Layout = "~/Views/Shared/_PatientLayout.cshtml";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+  
+}
 }
 
 @using (Html.BeginForm())
 {
-    <div>
-        <h3> List Of Complaints</h3>
-        <a href="Complaint"> Createnew </a>
-        <div class=" container">
-            <div class="row" style="margin-top: 45px; margin-left: 50px;">
-                <label>
-                    Show
-                    <select id="dropdownlist" style="width: 95px; height: 35px; ">
-                        <option value=""></option>
-                        <option value="10"> 10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="100"> 100</option>
-                    </select>
-                    Entries
-                </label>
+    <div style="position: absolute; margin-left: 200px; width: 984px; margin-top: -140px;height:100vh;">
+        <div>
+            <h3> List Of Complaints</h3>
+            <a href="Complaint"> Createnew </a>
+            <div class=" container">
+                <div class="row" style="margin-top: 45px; margin-left: 50px;">
+                    <label>
+                        Show
+                        <select id="dropdownlist" style="width: 95px; height: 35px; ">
+                            <option value=""></option>
+                            <option value="10"> 10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100"> 100</option>
+                        </select>
+                        Entries
+                    </label>
 
-                <input type="submit" value="search">
+                    <input type="submit" value="search">
 
-                <input type="search" id="searchvalue" name="searchvalue" style="width: 140px; height: 40px;" />
+                    <input type="search" id="searchvalue" name="searchvalue" style="width: 140px; height: 40px;" />
+
+
+                </div>
+                <table class="complaints-table">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Complaint)</th>
+                            <th>@Html.DisplayNameFor(model => model.Reply)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var c in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => c.Complaint)</td>
+                                <td>@Html.DisplayFor(modelItem => c.Reply)</td>
+                                <td>
+
+                                    @Html.ActionLink("Edit", "EditComplains", new { id = c.Complaint }) | |  <a href="DeleteComplains"> Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
 
 
             </div>
-            <table class="complaints-table">
-                <thead>
-                    <tr>
-                        <th>@Html.DisplayNameFor(model => model.Complaint)</th>
-                        <th>@Html.DisplayNameFor(model => model.Reply)</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var c in Model)
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => c.Complaint)</td>
-                            <td>@Html.DisplayFor(modelItem => c.Reply)</td>
-                            <td>
-
-                                @Html.ActionLink("Edit", "EditComplains", new { id = c.Complaint }) | |  <a href="DeleteComplains"> Delete</a>
-                            </td>
-
-
-
-
-
-                        </tr>
-                    }
-                </tbody>
-            </table>
-
-
         </div>
     </div>
 }
 <style>
-   
+
     .complaints-table {
         width: 100%;
         border-collapse: collapse; /* Remove space between borders */

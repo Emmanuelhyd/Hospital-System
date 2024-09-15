@@ -10,7 +10,7 @@ using Hospital_System.DAL;
 using System.Reflection;
 
 
-namespace Hospital_System.Controllers
+namespace Hospital_System4r.Controllers
 {
     public class DoctorController : Controller
     {

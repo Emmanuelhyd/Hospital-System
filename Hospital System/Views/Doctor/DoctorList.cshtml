@@ -1,95 +1,95 @@
-﻿@*@model IEnumerable<AddAppointment.Models.Doctors>
-@{
-    ViewBag.Title = "DoctorList";
-}
-
-<h2>DoctorList</h2>
-
-<script>
-    function CreateNew() {
-
-        window.location.href = 'NewDoctor';
+﻿@*@model IEnumerable<Hospital_System.Models.Doctors>
+    @{
+        ViewBag.Title = "DoctorList";
     }
 
-</script>
+    <h2>DoctorList</h2>
 
-@using (Html.BeginForm("DoctorList", "Doctor"))
-{
-    <div style="width:100%;height:100vh;background-color:aqua;">
-        <div>
-            <div><input type="button" value="CreateNew " onclick="CreateNew()"></div>
+    <script>
+        function CreateNew() {
+
+            window.location.href = 'NewDoctor';
+        }
+
+    </script>
+
+    @using (Html.BeginForm("DoctorList", "Doctor"))
+    {
+        <div style="width:100%;height:100vh;background-color:aqua;">
             <div>
-                <table border="1">
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Id)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Name)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Department)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Designation)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Education)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.PhoneNumber)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Gender)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Status)
-                        </th>
-                        <th></th>
-                    </tr>
-
-                    @foreach (var item in Model)
-                    {
+                <div><input type="button" value="CreateNew " onclick="CreateNew()"></div>
+                <div>
+                    <table border="1">
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Id)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Department)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Designation)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Education)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PhoneNumber)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Gender)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Status)
-                            </td>
-
-                            <td>
-                                @Html.ActionLink("Edit", "DEdit", new { Id = item.Id }) |
-
-                                @Html.ActionLink("Delete", "DDelete", new { Id = item.Id })
-                            </td>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Department)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Designation)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Education)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PhoneNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Gender)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Status)
+                            </th>
+                            <th></th>
                         </tr>
-                    }
 
-                </table>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Department)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Designation)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Education)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Gender)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
 
+                                <td>
+                                    @Html.ActionLink("Edit", "DEdit", new { Id = item.Id }) |
+
+                                    @Html.ActionLink("Delete", "DDelete", new { Id = item.Id })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                </div>
             </div>
         </div>
-    </div>
-}-->*@
+    }-->*@
 @*<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>*@
@@ -128,6 +128,8 @@ $(document).ready(function() {
 @model IEnumerable<Hospital_System.Models.Doctors>
 @{
     ViewBag.Title = "Doctor List";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
 }
 
 
@@ -140,7 +142,7 @@ $(document).ready(function() {
 
 @using (Html.BeginForm())
 {
-    <div class="container" style="position: absolute; margin-top: -10px; margin-left: 277px; width: 857px; height: 600px; ">
+    <div class="container" style="position: absolute; margin-top: 0px; margin-left: 204px; width: 941px; height: 537px; ">
         <div class="header">
             <input type="search" id="Sagar" name="Sagar">
             <input type="submit" value="Search">
@@ -174,9 +176,9 @@ $(document).ready(function() {
                         <td>@Html.DisplayFor(modelItem => item.Gender)</td>
                         <td>@Html.DisplayFor(modelItem => item.Status)</td>
                         @*<td class="action-links">
-                            @Html.ActionLink("Edit", "DEdit", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "DDelete", new { id = item.Id })
-                        </td>*@
+                                @Html.ActionLink("Edit", "DEdit", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "DDelete", new { id = item.Id })
+                            </td>*@
                     </tr>
                 }
             </tbody>

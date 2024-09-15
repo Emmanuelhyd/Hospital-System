@@ -1,4 +1,4 @@
-﻿@*@model AddAppointment.Models.MRegistration
+﻿@*@model Hospital_System.Models.MRegistration
     @{
         ViewBag.Title = "RegistrationPage";
     }
@@ -119,12 +119,13 @@
 @model Hospital_System.Models.MRegistration
 @{
     ViewBag.Title = "RegistrationPage";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
 }
 
 @using (Html.BeginForm())
 {
-    <div style="width:100%;height:100%;background-color:#f4f4f4;margin:0;padding:0;">
-        <div class="form-container" style="width:250px;height:auto;background-color:#ffffff;margin:0 auto;padding:20px;border-radius:8px;box-shadow:0 0 10px rgba(0, 0, 0, 0.1);">
+    <div style="width:100%;height:100%;background-color:#f4f4f4;margin-left:200px;position  :absolute;margin-top:250px; ">
+        <div class="form-container" style="width:250px;height:550px;;background-color:#ffffff;margin:-200px auto;padding:20px;border-radius:8px;box-shadow:0 0 10px rgba(0, 0, 0, 0.1);">
             <div style="font-size:20px;font-weight:bold;margin-bottom:15px;">Register with Your Details</div>
 
             <div style="margin-top:10px;">

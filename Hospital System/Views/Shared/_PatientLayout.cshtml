@@ -7,139 +7,315 @@
 </head>
 <body>
 
-   
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Patient Dashboard</title>
 
-  
-       
-        <style>
-            /* General Styles */
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f4f4f4;
-            }
-
-            .container1 {
-                width: 80%;
-                margin: 0 auto;
-            }
-
-            a {
-                text-decoration: none;
-                color: #007bff;
-            }
-
-                a:hover {
-                    color: #0056b3;
-                    text-decoration: underline;
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Patient Dashboard</title>
+            <style>
+                /* Basic reset for margins and paddings */
+                body, ul, li {
+                    margin: 0;
+                    padding: 0;
                 }
 
-            /* Button Styles */
-            .btn {
-                width: 150px;
-                height: 35px;
-                border-radius: 5px;
-                border: none;
-                background-color: #007bff;
-                color: white;
-                font-size: 16px;
-                cursor: pointer;
-                text-align: center;
-                line-height: 35px; /* Vertically center text */
-                transition: background-color 0.3s ease;
-            }
-
-                .btn:hover {
-                    background-color: #0056b3;
+                /* Container for sidebar */
+                #tab1 {
+                    background-color: #f4f4f4; /* Light grey background */
+                    border: 1px solid #ddd; /* Light border for separation */
+                    border-radius: 8px; /* Rounded corners */
+                    overflow: hidden; /* To ensure content doesn't spill out */
+                    width: 300px;
+                    height: 90vh;
+                    margin-left: 10px;
+                    position: absolute;
                 }
 
-            /* List Styles */
-            ul {
-                list-style-type: none;
-                padding: 0;
-            }
+                /* Container styling for header link */
+                .container1 {
+                    padding: 10px;
+                    background-color: #007bff; /* Primary color for the header */
+                    color: white;
+                    text-align: center;
+                }
 
-            li {
-                margin-bottom: 20px;
-            }
+                /* Header link styling */
+                .header-link {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
 
-            .btn-container {
-                margin-top: 10px;
-            }
+                /* Unordered list styling */
+                ul {
+                    list-style-type: none; /* Remove bullet points */
+                    padding: 0;
+                }
 
-                .btn-container a {
-                    display: block;
+                /* List items styling */
+                li {
+                    position: relative;
                     margin: 5px 0;
-                    color: #007bff;
                 }
 
-                    .btn-container a:hover {
-                        color: #0056b3;
+                /* Button styling */
+                .btn {
+                    background-color: #007bff; /* Button background color */
+                    color: white;
+                    border: none;
+                    padding: 10px;
+                    border-radius: 4px; /* Rounded corners */
+                    cursor: pointer;
+                    width: 100%;
+                    text-align: left;
+                    font-size: 16px;
+                    transition: background-color 0.3s; /* Smooth background color change */
+                }
+
+                    /* Hover effect for buttons */
+                    .btn:hover {
+                        background-color: #0056b3; /* Darker shade on hover */
                     }
 
-            .header-link {
-                font-size: 18px;
-                color: #333;
-                display: block;
-                margin-bottom: 10px;
-            }
-
-                .header-link:hover {
-                    color: #007bff;
-                    text-decoration: underline;
+                /* Container for button dropdown content */
+                .btn-container {
+                    display: none;
+                    background-color: #ffffff; /* Light background for dropdown */
+                    border: 1px solid #ddd; /* Border around dropdown */
+                    border-radius: 4px; /* Rounded corners */
+                    position: absolute;
+                    top: 100%; /* Position below the button */
+                    left: 0;
+                    width: 100%;
+                    max-height: 0; /* Start with height of 0 for sliding effect */
+                    overflow: hidden; /* Hide content that overflows */
+                    transition: max-height 0.5s ease-in-out; /* Smooth sliding effect */
+                    z-index: 1;
                 }
-        </style>
-        <div id="tab1" style=" width: 300px; height: 90vh; margin-left: 10px; position: absolute; }">
-            <div class="container1">
-                <a href="#" class="header-link"><span>Dashboard</span> Patient</a>
+
+                /* Show dropdown when button is hovered */
+                li:hover .btn-container {
+                    display: block;
+                    max-height: 300px; /* Adjust based on content height */
+                }
+
+                /* Dropdown links styling */
+                .btn-container a {
+                    display: block;
+                    padding: 10px;
+                    color: #007bff;
+                    text-decoration: none;
+                    font-size: 16px;
+                }
+
+                    /* Hover effect for dropdown links */
+                    .btn-container a:hover {
+                        background-color: #ddd; /* Light grey background on hover */
+                    }
+            </style>
+        </head>
+
+        <script>
+    function back() {
+        window.location.href = '@Url.Action("DoctorList", "Doctor")';
+    }
+        </script>
+        <body>
+            <div id="tab1" style="position:absolute; margin-left: 1px; width: 200px; height: 600px; ">
+                <div class="container1">
+                    <a href="#" class="header-link"><span>Dashboard</span> Patient</a>
+                </div>
 
                 <ul>
                     <li>
-                        @Html.ActionLink("Dashboard", "Index", "Patient")
+                        <button class="btn" style="margin-top:80px">Dashboard</button>
+                        <div class="btn-container">
+                            @Html.ActionLink("Dashboard", "Index", "Patient")
+                        </div>
+                        @*@Html.ActionLink("Dashboard", "Index", "Patient")*@
                     </li>
                     <li>
-                        <button class="btn">Profile</button>
+                        <button class="btn" style="margin-top:20px">Profile</button>
                         <div class="btn-container">
                             @Html.ActionLink("Update Profile", "Updateprofile", "Patient")
                         </div>
                     </li>
                     <li>
-                        <button class="btn">Doctors</button>
+                        <button class="btn" style="margin-top:20px">Doctors</button>
                         <div class="btn-container">
-                            @Html.ActionLink("Available Doctors", "AvailableDoctors", "Patient")
+                            @Html.ActionLink("Available Doctors", "DoctorList", "Doctor")
                         </div>
                     </li>
                     <li>
-                        <button class="btn">Appointment</button>
+                        <button class="btn" style="margin-top:20px">Appointment</button>
                         <div class="btn-container">
-                            @Html.ActionLink("Request Appointments", "AddAppointments", "Patient")
-                            @Html.ActionLink("Your Appointments", "List of Appointments", "Patient")
+                            @Html.ActionLink("Request Appointments", "BookAppointment", "Appointment")
+                            @Html.ActionLink("Appointment List", "AppointmentList", "Appointment")
                         </div>
                     </li>
                     <li>
-                        <button class="btn">Prescription</button>
+                        <button class="btn" style="margin-top:20px">Prescription</button>
                         <div class="btn-container">
-                            @Html.ActionLink("Your Prescription", "List of Prescriptions", "Patient")
+                            @Html.ActionLink("Your Prescription", "PrecList", "Prescription")
                         </div>
                     </li>
                     <li>
-                        <button class="btn">Complaint</button>
+                        <button class="btn" style="margin-top:20px">Complaint</button>
                         <div class="btn-container">
                             @Html.ActionLink("Add Complaint", "Complaint", "Patient")
                             @Html.ActionLink("List of Complaints", "AddComplaints", "Patient")
                         </div>
                     </li>
                     <li>
-                        <button class="btn">Manage</button>
+                        <button class="btn" style="margin-top:20px">Manage</button>
                         <div class="btn-container">
                             @Html.ActionLink("Change Password", "Changepassword", "Patient")
                         </div>
                     </li>
                 </ul>
             </div>
+        </body>
+    </html>
+
+
+
+    @*<style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container1 {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+            a:hover {
+                color: #0056b3;
+                text-decoration: underline;
+            }
+
+        /* Button Styles */
+        .btn {
+            width: 150px;
+            height: 35px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 35px; /* Vertically center text */
+            transition: background-color 0.3s ease;
+        }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+
+        /* List Styles */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+        }
+
+        .btn-container {
+            margin-top: 10px;
+        }
+
+            .btn-container a {
+                display: block;
+                margin: 5px 0;
+                color: #007bff;
+            }
+
+                .btn-container a:hover {
+                    color: #0056b3;
+                }
+
+        .header-link {
+            font-size: 18px;
+            color: #333;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+            .header-link:hover {
+                color: #007bff;
+                text-decoration: underline;
+            }
+    </style>*@
+    @*<div id="tab1" style=" width: 300px; height: 90vh; margin-left: 10px; position: absolute; }">
+        <div class="container1">
+            <a href="#" class="header-link"><span>Dashboard</span> Patient</a>
+
+            <ul>
+                <li>
+                    @Html.ActionLink("Dashboard", "Index", "Patient")
+                </li>
+                <li>
+                    <button class="btn">Profile</button>
+                    <div class="btn-container">
+                        @Html.ActionLink("Update Profile", "Updateprofile", "Patient")
+                    </div>
+                </li>
+                <li>
+                    <button class="btn">Doctors</button>
+                    <div class="btn-container">
+                        @Html.ActionLink("Available Doctors", "AvailableDoctors", "Patient")
+                    </div>
+                </li>
+                <li>
+                    <button class="btn">Appointment</button>
+                    <div class="btn-container">
+                        @Html.ActionLink("Request Appointments", "AddAppointments", "Patient")
+                        @Html.ActionLink("Your Appointments", "List of Appointments", "Patient")
+                    </div>
+                </li>
+                <li>
+                    <button class="btn">Prescription</button>
+                    <div class="btn-container">
+                        @Html.ActionLink("Your Prescription", "List of Prescriptions", "Patient")
+                    </div>
+                </li>
+                <li>
+                    <button class="btn">Complaint</button>
+                    <div class="btn-container">
+                        @Html.ActionLink("Add Complaint", "Complaint", "Patient")
+                        @Html.ActionLink("List of Complaints", "AddComplaints", "Patient")
+                    </div>
+                </li>
+                <li>
+                    <button class="btn">Manage</button>
+                    <div class="btn-container">
+                        @Html.ActionLink("Change Password", "Changepassword", "Patient")
+                    </div>
+                </li>
+            </ul>
         </div>
-    </body>
+    </div>*@
+</body>
 </html>
 
 <div>

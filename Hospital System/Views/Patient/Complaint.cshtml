@@ -1,24 +1,27 @@
 ﻿@model Hospital_System.Models.Complain
 @{
     ViewBag.Title = "Complaint";
-    //Layout = "~/Views/Shared/_PatientLayout.cshtml";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
 }
 
 @ViewBag.message;
 
 @using (Html.BeginForm())
 {
-    <div>
+    <div id="tabcomplaint" style="position: absolute; margin-left: 200px;">
 
-        @Html.AntiForgeryToken()
+        <div style="margin-left:100px;">
+            @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Complaint, new { @class = "form-label" })
-            @Html.TextAreaFor(model => model.Complaint, new { @class = "form-control", rows = 4, placeholder = "Write your complaint here..." })
-            @Html.ValidationMessageFor(model => model.Complaint, "", new { @class = "validation-message" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Complaint, new { @class = "form-label" })
+                @Html.TextAreaFor(model => model.Complaint, new { @class = "form-control", rows = 4, placeholder = "Write your complaint here..." })
+                @Html.ValidationMessageFor(model => model.Complaint, "", new { @class = "validation-message" })
+            </div>
+            <button type="submit" class="btn btn-submit">Submit</button>
         </div>
 
-        <button type="submit" class="btn btn-submit">Submit</button>
+        
     </div>
 }
 

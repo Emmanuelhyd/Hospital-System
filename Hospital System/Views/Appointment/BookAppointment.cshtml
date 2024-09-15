@@ -1,4 +1,4 @@
-﻿@*@model AddAppointment.Models.MAppointment
+﻿@*@model Hospital_System.Models.MAppointment
     @{
         ViewBag.Title = "BookAppointment";
     }
@@ -207,7 +207,6 @@
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 4px;
-        
     }
 
     .form-buttons {
@@ -239,6 +238,8 @@
 @model Hospital_System.Models.MAppointment
 @{
     ViewBag.Title = "BookAppointment";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+
 }
 
 <head>
@@ -249,7 +250,7 @@
 
 @using (Html.BeginForm("BookAppointment", "Appointment"))
 {
-    <div class="form-container" style="position: absolute; margin-top: -10px; margin-left: 277px; ">
+    <div class="form-container" style="position: absolute; margin-top: -10px; margin-left: 205px; width: 939px; ">
         <h3>Book Your Appointment here</h3>
 
         <div>
@@ -294,5 +295,5 @@
                 <input type="button" value="Back" onclick="window.location.href='@Url.Action("AppointmentList", "Appointment")'">
             </div>
         </div>
-</div>
+    </div>
 }
