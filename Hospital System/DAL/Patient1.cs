@@ -247,43 +247,95 @@ namespace Hospital_System.DAL
         }
 
 
-        public string Complaint(Complain complain)
+        public string Complaint(Complain comp)
 
         {
+            var ids = 0;
             con.Open();
-            cmd = new SqlCommand("insert into complaintt values('"+complain.Id+"','" + complain.Complaint + "','"+complain.Reply+"','"+complain.ComplainDate+"')", con);
-            cmd.ExecuteNonQuery();
-            con.Close();
-
-            return "Added Complain";
-        }
-
-        public List<Complain> GetComplains( string searchvalue)
-        {
-
-            List<Complain> complains = new List<Complain>();
-            con.Open();
-            cmd = new SqlCommand("select*from complaintt where complaint like '%" +searchvalue+"%'", con);
+            cmd = new SqlCommand("select * from Complaintt where Id='" + comp.Id + "'", con);
             reader = cmd.ExecuteReader();
-            while (reader.Read())
+            if (reader.Read())
             {
-                Complain complain = new Complain();
-
-                complain.Complaint = reader.GetString(reader.GetOrdinal("Complaint"));
-               
-
-
-
-                complains.Add(complain);
-
-
-
+                ids = Convert.ToInt32(reader["Id"]);
             }
-
             reader.Close();
             con.Close();
-            return complains;
+
+            con.Open();
+            if (ids == 0)
+            { 
+            cmd=new SqlCommand("insert into complaintt values(" + comp.Id + ",'" + comp.Complaint + "','" + comp.Reply + "','" + comp.ComplainDate + "')", con);
+            }
+            else
+            {
+                cmd = new SqlCommand("update complaintt set Complaint='" + comp.Complaint + "',replay='" + comp.Reply + "',ComplainDate='" + comp.ComplainDate + "'where Id='" + comp.Id + "'", con);
+            }
+            cmd.ExecuteNonQuery();
+            con.Close();
+            return "Complaint";
+
+            //con.Open();
+            //cmd = new SqlCommand("insert into complaintt values('"+complain.Id+"','" + complain.Complaint + "','"+complain.Reply+"','"+complain.ComplainDate+"')", con);
+            //cmd.ExecuteNonQuery();
+            //con.Close();
+
+            //return "Added Complain";
         }
+
+        public List<Complain> GetComplains()
+        {
+
+            List<Complain> comp = new List<Complain>();
+            
+            {
+                con.Open();
+                cmd = new SqlCommand("select*from complaintt ", con);
+                SqlDataReader sdr;
+                sdr = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(sdr);
+                foreach (DataRow row in dt.Rows)
+                comp.Add(
+                    new Complain
+
+                    {
+
+
+                        Id = Convert.ToInt32(row["ID"]),
+                        Complaint = row["Complaint"].ToString(),
+
+                        //complains.Add(complain);
+
+                    });
+
+                reader.Close();
+                con.Close();
+                return comp;
+            }
+
+        }
+        public Complain EEdit(int Id)
+        {
+            Complain comp = new Complain();
+
+            SqlCommand cmd = new SqlCommand("Select * from complaintt where Id='" + Id + "'", con);
+            {
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+
+                if (reader.Read())
+                {
+                    comp.Id = Convert.ToInt32(reader["Id"]);
+                }
+                reader.Close();
+                con.Close();
+
+            }
+            return comp;
+        }
+
 
 
         public string Changepassword(Patients patients )
@@ -304,30 +356,30 @@ namespace Hospital_System.DAL
             return "res";
         }
 
-        public string EditComplain(Complain complain)
-        {
+        //public string EditComplain(Complain complain)
+        //{
            
-            List<Complain> complains = new List<Complain>();
-            con.Open();
-            cmd = new SqlCommand("select * from complaintt where complaint  = '"+ complain.Complaint  + "'", con);
-            reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-                Complain complain1 = new Complain();
+        //    List<Complain> complains = new List<Complain>();
+        //    con.Open();
+        //    cmd = new SqlCommand("select * from complaintt where complaint  = '"+ complain.Complaint  + "'", con);
+        //    reader = cmd.ExecuteReader();
+        //    if (reader.Read())
+        //    {
+        //        Complain complain1 = new Complain();
 
-                complain1.Complaint = reader.GetString(reader.GetOrdinal("Complaint"));
-                return "success";
+        //        complain1.Complaint = reader.GetString(reader.GetOrdinal("Complaint"));
+        //        return "success";
 
-            }
+        //    }
 
            
-                else
-                {
-                    return "No record found";
-                }
+        //        else
+        //        {
+        //            return "No record found";
+        //        }
             
             
-        }
+        //}
 
 
     }

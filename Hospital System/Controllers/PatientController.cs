@@ -190,6 +190,35 @@ namespace Hospital_System.Controllers
             var complain = patientBAL.GetComplains(searchvalue);
             return View(complain);
         }
+
+
+
+        [HttpPost]
+        public ActionResult EEdit(int Id)
+        {
+            if (Id <= 0)
+                return HttpNotFound();
+
+
+            Complain comp = new Complain();
+            comp = patientBAL.EEdit(Id);
+            if (comp.Id != 0)
+            {
+
+                return View("Complaint", comp);
+            }
+            else
+            {
+                return RedirectToAction("AddComplaint", "Patient");
+            }
+        }
+
+
+
+
+
+
+
         [HttpGet]
         public ActionResult Changepassword()
         {
@@ -219,25 +248,25 @@ namespace Hospital_System.Controllers
         
         }
 
-        public ActionResult EditComplains(Complain complain)
-        {
-            if (complain == null)
-            {
-                return HttpNotFound(); 
-            }
+        //public ActionResult EditComplains(Complain complain)
+        //{
+        //    if (complain == null)
+        //    {
+        //        return HttpNotFound(); 
+        //    }
 
          
-            string res = patientBAL.EditComplain(complain);
+        //    string res = patientBAL.EditComplain(complain);
 
-            if (res == "success")
-            {
-                return View("EditComplains", complain); 
-            }
-            else
-            {
-                return RedirectToAction("AddComplains", "Patient");
-            }
-        }
+        //    if (res == "success")
+        //    {
+        //        return View("EditComplains", complain); 
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("AddComplains", "Patient");
+        //    }
+        //}
 
 
     }
