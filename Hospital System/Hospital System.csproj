@@ -148,6 +148,7 @@
     <Content Include="Views\Doctor\NewDoctor.cshtml" />
     <Content Include="Views\Prescription\PrecList.cshtml" />
     <Content Include="Views\Registration\RegistrationPage.cshtml" />
+    <Content Include="Views\Patient\Forgotpassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

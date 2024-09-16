@@ -22,13 +22,17 @@
         }
 
         .container {
-            width: 90%;
+            width: 75%;
             max-width: 1200px;
             margin: 30px auto;
             padding: 20px;
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-left: 242px;
+            position: absolute;
+            margin-top: 71px;
+        
         }
 
         h2 {
@@ -79,7 +83,7 @@
                         <th>@Html.DisplayNameFor(model => model.First().FullName)</th>
                         <th>@Html.DisplayNameFor(model => model.First().Email)</th>
                         <th>@Html.DisplayNameFor(model => model.First().Department)</th>
-                        
+
                         <th>@Html.DisplayNameFor(model => model.First().Designation)</th>
                         <th>@Html.DisplayNameFor(model => model.First().Status)</th>
                     </tr>
@@ -91,13 +95,14 @@
                             <td>@Html.DisplayFor(modelItem => item.FullName)</td>
                             <td>@Html.DisplayFor(modelItem => item.Email)</td>
                             <td>@Html.DisplayFor(modelItem => item.Department)</td>
-                           
+
                             <td>@Html.DisplayFor(modelItem => item.Designation)</td>
                             <td>@Html.DisplayFor(modelItem => item.Status)</td>
                         </tr>
                     }
                 </tbody>
             </table>
+            @Html.ActionLink("Back", "Index", "Patient")
         </div>
     </div>
 </body>

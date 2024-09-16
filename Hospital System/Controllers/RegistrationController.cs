@@ -24,7 +24,7 @@ namespace Hospital_System.Controllers
             string res = doctorBAL.RegistrationPage(mRegistration);
             if (res.Contains("1"))
             {
-                return Redirect("Registrationpage");
+                return Redirect("RegistrationPage");
             }
             else
             {

@@ -12,11 +12,11 @@ namespace Hospital_System.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        public int Contact { get; set; }
+        public long Contact { get; set; }
         [Required]
         public string Address { get; set; }
         [Required]
         [Display(Name = "CNIC")]
-        public int Cnic { get; set; }
+        public long Cnic { get; set; }
     }
 }

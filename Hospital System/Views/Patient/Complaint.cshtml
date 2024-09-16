@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/_PatientLayout.cshtml";
 }
 
-@ViewBag.message;
 
 @using (Html.BeginForm())
 {
@@ -14,14 +13,18 @@
             @Html.AntiForgeryToken()
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Complaint, new { @class = "form-label" })
+                <div style="margin-top:50px;">
+                    @Html.LabelFor(model => model.Complaint, new { @class = "form-label" })
+                </div>
+               
                 @Html.TextAreaFor(model => model.Complaint, new { @class = "form-control", rows = 4, placeholder = "Write your complaint here..." })
                 @Html.ValidationMessageFor(model => model.Complaint, "", new { @class = "validation-message" })
             </div>
             <button type="submit" class="btn btn-submit">Submit</button>
         </div>
 
-        
+        @ViewBag.message
+
     </div>
 }
 
@@ -38,12 +41,13 @@
         font-family: Arial, sans-serif; /* Font for better readability */
     }
 
-    /* Form labels */
+    
     .form-label {
         display: block;
         font-size: 1rem; /* Standard font size */
         color: #444; /* Darker text color */
-        margin-bottom: 10px; /* Space between label and input */
+        margin-bottom: 50px;
+       margin-left:130PX;
     }
 
     /* Text area */

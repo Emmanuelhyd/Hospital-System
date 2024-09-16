@@ -180,7 +180,7 @@ namespace Hospital_System.Controllers
         {
             string res = patientBAL.Complaint(complain);
             ViewBag.message = "Added";
-            return View(complain);
+            return View();
             
         }
 
@@ -190,35 +190,6 @@ namespace Hospital_System.Controllers
             var complain = patientBAL.GetComplains(searchvalue);
             return View(complain);
         }
-
-
-
-        [HttpPost]
-        public ActionResult EEdit(int Id)
-        {
-            if (Id <= 0)
-                return HttpNotFound();
-
-
-            Complain comp = new Complain();
-            comp = patientBAL.EEdit(Id);
-            if (comp.Id != 0)
-            {
-
-                return View("Complaint", comp);
-            }
-            else
-            {
-                return RedirectToAction("AddComplaint", "Patient");
-            }
-        }
-
-
-
-
-
-
-
         [HttpGet]
         public ActionResult Changepassword()
         {
@@ -227,47 +198,64 @@ namespace Hospital_System.Controllers
         [HttpPost]
             public ActionResult Changepassword(Patients patients)
         {
-
-           
-            
+          
             string res = patientBAL.Changepassword(patients);
 
-            if (res=="updated")
+
+            if (res == "1")
             {
-                Session["validate"] = "Updated";
-                return RedirectToAction("Login");
-                
+                Session["valid"] = "Updated";
+                return RedirectToAction("Login", "Patient");
+            }
+
+            else
+            {
+                Session["valid"] = "Invalid UserName";
+                ViewBag.Message = "Invalid UserName";
+                return View(patients);
+            }
+
+        }
+
+        public ActionResult EditComplains(Complain complain)
+        {
+            if (complain == null)
+            {
+                return HttpNotFound(); 
+            }
+
+         
+            string res = patientBAL.EditComplain(complain);
+
+            if (res == "success")
+            {
+                return View("EditComplains", complain); 
             }
             else
             {
-                Session["validate"] = "";
-                ViewBag.message = "Invalid UserName";
+                return RedirectToAction("AddComplains", "Patient");
             }
-          
-            return View();
-        
         }
 
-        //public ActionResult EditComplains(Complain complain)
-        //{
-        //    if (complain == null)
-        //    {
-        //        return HttpNotFound(); 
-        //    }
+        public ActionResult Forgotpassword(Patients patients)
+        {
+            string res = patientBAL.Changepassword(patients);
 
-         
-        //    string res = patientBAL.EditComplain(complain);
 
-        //    if (res == "success")
-        //    {
-        //        return View("EditComplains", complain); 
-        //    }
-        //    else
-        //    {
-        //        return RedirectToAction("AddComplains", "Patient");
-        //    }
-        //}
+            if (res == "1")
+            {
+                Session["valid"] = "Updated";
+                return RedirectToAction("Login", "Patient");
+            }
 
+            else
+            {
+                Session["valid"] = "Invalid UserName";
+                ViewBag.Message = "Invalid UserName";
+                return View(patients);
+            }
+
+        }
 
     }
 

@@ -181,9 +181,9 @@ namespace Hospital_System.DAL
 
                 driver.Id = Convert.ToInt32(reader["Id"]);
                 driver.Name=reader.GetString(reader.GetOrdinal("Name"));
-                driver.Contact = Convert.ToInt32(reader["Contact"]);
+                driver.Contact = Convert.ToInt64(reader["Contact"]);
                 driver.Address=reader.GetString(reader.GetOrdinal("address"));
-                driver.Cnic = Convert.ToInt32(reader["Cnic"]); ;
+                driver.Cnic = Convert.ToInt64(reader["Cnic"]); ;
 
                 drivers.Add(driver);
             }
@@ -247,139 +247,97 @@ namespace Hospital_System.DAL
         }
 
 
-        public string Complaint(Complain comp)
+        public string Complaint(Complain complain)
 
         {
-            var ids = 0;
             con.Open();
-            cmd = new SqlCommand("select * from Complaintt where Id='" + comp.Id + "'", con);
-            reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-                ids = Convert.ToInt32(reader["Id"]);
-            }
-            reader.Close();
-            con.Close();
-
-            con.Open();
-            if (ids == 0)
-            { 
-            cmd=new SqlCommand("insert into complaintt values(" + comp.Id + ",'" + comp.Complaint + "','" + comp.Reply + "','" + comp.ComplainDate + "')", con);
-            }
-            else
-            {
-                cmd = new SqlCommand("update complaintt set Complaint='" + comp.Complaint + "',replay='" + comp.Reply + "',ComplainDate='" + comp.ComplainDate + "'where Id='" + comp.Id + "'", con);
-            }
+            cmd = new SqlCommand("insert into complaintt values('"+complain.Id+"','" + complain.Complaint + "','"+complain.Reply+"','"+complain.ComplainDate+"')", con);
             cmd.ExecuteNonQuery();
             con.Close();
-            return "Complaint";
 
-            //con.Open();
-            //cmd = new SqlCommand("insert into complaintt values('"+complain.Id+"','" + complain.Complaint + "','"+complain.Reply+"','"+complain.ComplainDate+"')", con);
-            //cmd.ExecuteNonQuery();
-            //con.Close();
-
-            //return "Added Complain";
+            return "Added Complain";
         }
 
-        public List<Complain> GetComplains()
+        public List<Complain> GetComplains( string searchvalue)
         {
 
-            List<Complain> comp = new List<Complain>();
-            
+            List<Complain> complains = new List<Complain>();
+            con.Open();
+            cmd = new SqlCommand("select*from complaintt where complaint like '%" +searchvalue+"%'", con);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
             {
-                con.Open();
-                cmd = new SqlCommand("select*from complaintt ", con);
-                SqlDataReader sdr;
-                sdr = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(sdr);
-                foreach (DataRow row in dt.Rows)
-                comp.Add(
-                    new Complain
+                Complain complain = new Complain();
 
-                    {
+                complain.Complaint = reader.GetString(reader.GetOrdinal("Complaint"));
+               
 
 
-                        Id = Convert.ToInt32(row["ID"]),
-                        Complaint = row["Complaint"].ToString(),
 
-                        //complains.Add(complain);
+                complains.Add(complain);
 
-                    });
-
-                reader.Close();
-                con.Close();
-                return comp;
             }
 
+            reader.Close();
+            con.Close();
+            return complains;
         }
-        public Complain EEdit(int Id)
-        {
-            Complain comp = new Complain();
-
-            SqlCommand cmd = new SqlCommand("Select * from complaintt where Id='" + Id + "'", con);
-            {
-
-                con.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-
-                if (reader.Read())
-                {
-                    comp.Id = Convert.ToInt32(reader["Id"]);
-                }
-                reader.Close();
-                con.Close();
-
-            }
-            return comp;
-        }
-
 
 
         public string Changepassword(Patients patients )
 
-        { 
+        {
             string res = "";
             con.Open();
-            cmd = new SqlCommand("update profile set Password='" + patients.Password + "' where UserName='" + patients.UserName + "'", con);
+            cmd = new SqlCommand("Update profile set Password='" + patients.Password + "' where UserName='" + patients.UserName + "'", con);
 
-           if( patients.UserName.Length ==0 )
-            {
-                res = "Invalid  UserName";
-            }
-          
 
-            cmd.ExecuteNonQuery();
+            res = cmd.ExecuteNonQuery().ToString();
             con.Close();
-            return "res";
+            return res;
+              
+
+           
         }
 
-        //public string EditComplain(Complain complain)
-        //{
+        public string EditComplain(Complain complain)
+        {
            
-        //    List<Complain> complains = new List<Complain>();
-        //    con.Open();
-        //    cmd = new SqlCommand("select * from complaintt where complaint  = '"+ complain.Complaint  + "'", con);
-        //    reader = cmd.ExecuteReader();
-        //    if (reader.Read())
-        //    {
-        //        Complain complain1 = new Complain();
+            List<Complain> complains = new List<Complain>();
+            con.Open();
+            cmd = new SqlCommand("select * from complaintt where complaint  = '"+ complain.Complaint  + "'", con);
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                Complain complain1 = new Complain();
 
-        //        complain1.Complaint = reader.GetString(reader.GetOrdinal("Complaint"));
-        //        return "success";
+                complain1.Complaint = reader.GetString(reader.GetOrdinal("Complaint"));
+                return "success";
 
-        //    }
+            }
 
            
-        //        else
-        //        {
-        //            return "No record found";
-        //        }
-            
-            
-        //}
+                else
+                {
+                    return "No record found";
+                }
+          
+        }
+
+        public string Forgotpassword(Patients patients)
+
+        {
+            string res = "";
+            con.Open();
+            cmd = new SqlCommand("Update profile set Password='" + patients.Password + "' where UserName='" + patients.UserName + "'", con);
+
+
+            res = cmd.ExecuteNonQuery().ToString();
+            con.Close();
+            return res;
+
+        }
+
 
 
     }

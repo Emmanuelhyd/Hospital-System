@@ -88,16 +88,16 @@ namespace Hospital_System.BAL
             string res = patient.Changepassword(patients);
             return res;
         }
-
-        public Complain EEdit(int Id)
+        public string EditComplain(Complain complain)
         {
-            //Complain comp = new Complain();
-            Complain comp = patient.EEdit(Id);
-            return comp;
+            string res = patient.EditComplain(complain);
+            return res;
         }
-
-
-        
+        public string Forgotpassword(Patients patients)
+        {
+            string res = patient.Forgotpassword(patients);
+            return res;
+        }
     }
 }
 
