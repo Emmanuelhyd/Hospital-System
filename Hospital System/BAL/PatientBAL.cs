@@ -93,6 +93,11 @@ namespace Hospital_System.BAL
             string res = patient.EditComplain(complain);
             return res;
         }
+        public string Forgotpassword(Patients patients)
+        {
+            string res = patient.Forgotpassword(patients);
+            return res;
+        }
     }
 }
 

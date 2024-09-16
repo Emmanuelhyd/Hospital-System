@@ -181,9 +181,9 @@ namespace Hospital_System.DAL
 
                 driver.Id = Convert.ToInt32(reader["Id"]);
                 driver.Name=reader.GetString(reader.GetOrdinal("Name"));
-                driver.Contact = Convert.ToInt32(reader["Contact"]);
+                driver.Contact = Convert.ToInt64(reader["Contact"]);
                 driver.Address=reader.GetString(reader.GetOrdinal("address"));
-                driver.Cnic = Convert.ToInt32(reader["Cnic"]); ;
+                driver.Cnic = Convert.ToInt64(reader["Cnic"]); ;
 
                 drivers.Add(driver);
             }
@@ -276,8 +276,6 @@ namespace Hospital_System.DAL
 
                 complains.Add(complain);
 
-
-
             }
 
             reader.Close();
@@ -288,20 +286,18 @@ namespace Hospital_System.DAL
 
         public string Changepassword(Patients patients )
 
-        { 
+        {
             string res = "";
             con.Open();
-            cmd = new SqlCommand("update profile set Password='" + patients.Password + "' where UserName='" + patients.UserName + "'", con);
+            cmd = new SqlCommand("Update profile set Password='" + patients.Password + "' where UserName='" + patients.UserName + "'", con);
 
-           if( patients.UserName.Length ==0 )
-            {
-                res = "Invalid  UserName";
-            }
-          
 
-            cmd.ExecuteNonQuery();
+            res = cmd.ExecuteNonQuery().ToString();
             con.Close();
-            return "res";
+            return res;
+              
+
+           
         }
 
         public string EditComplain(Complain complain)
@@ -325,9 +321,23 @@ namespace Hospital_System.DAL
                 {
                     return "No record found";
                 }
-            
-            
+          
         }
+
+        public string Forgotpassword(Patients patients)
+
+        {
+            string res = "";
+            con.Open();
+            cmd = new SqlCommand("Update profile set Password='" + patients.Password + "' where UserName='" + patients.UserName + "'", con);
+
+
+            res = cmd.ExecuteNonQuery().ToString();
+            con.Close();
+            return res;
+
+        }
+
 
 
     }

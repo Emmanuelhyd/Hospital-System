@@ -14,187 +14,166 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4; 
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
         }
 
-        .container {
+        .form-container {
             max-width: 800px;
             margin: 30px auto;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.1);
-            border-radius: 8px; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        h1 {
-            text-align: center;
-            color: #333; 
+            .form-container h1 {
+                text-align: center;
+                margin-bottom: 20px;
+                color: #333;
+            }
 
         .form-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px; 
-            margin-bottom: 20px; 
+            margin-bottom: 15px;
         }
 
         .form-group {
             flex: 1;
-            min-width: 0;
-            margin-bottom: 15px; 
+            margin-right: 10px;
+            margin-bottom: 10px;
         }
+
+            .form-group:last-child {
+                margin-right: 0;
+            }
 
             .form-group label {
                 display: block;
-                margin-bottom: 8px;
-                font-weight: 600;
-                color: #555; 
+                font-weight: bold;
+                margin-bottom: 5px;
+                color: #333;
             }
 
-        .form-control {
-            width: 75%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            background-color: #fafafa;
-            transition: border-color 0.3s, box-shadow 0.3s; 
-        }
-
-        .form-control1 {
-            width: 81%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            background-color: #fafafa; /* Light background for form fields */
-            transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for focus effect */
-        }
-
-            .form-control:focus {
-                border-color: #0056b3;
-                box-shadow: 0 0 8px rgba(0, 86, 179, 0.3);
-                outline: none;
+            .form-group input,
+            .form-group select {
+                width: 75%;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
             }
 
-        .form-group .text-danger {
-            color: #e74c3c; /* Red color for validation messages */
-            font-size: 14px;
-            margin-top: 5px; /* Space between field and validation message */
+            .form-group .text-danger {
+                color: #dc3545;
+                font-size: 0.875rem;
+            }
+
+        .form-row:nth-child(even) {
+            margin-top: 10px;
         }
 
-        .form-group input[type="submit"] {
-            background-color: #0056b3; /* Dark blue background for the button */
-            border: none;
-            color: white;
-            padding: 12px 24px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        .form-container .btn-submit {
             display: block;
             width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-            .form-group input[type="submit"]:hover {
-                background-color: #004494; /* Darker blue on hover */
+            .form-container .btn-submit:hover {
+                background-color: #0056b3;
             }
-
-        .form-group select {
-            /* Ensures dropdowns match textboxes */
-            height: 45px; /* Ensures dropdown matches the height of text boxes */
-            background-color: #fafafa; /* Same background as text boxes */
-        }
     </style>
 </head>
-@ViewBag.Message
 <body>
-    @using (Html.BeginForm())
-    {
-       <div>
-           @Html.AntiForgeryToken()
+    <div class="form-container">
+        <h1>@ViewBag.Title</h1>
 
-           @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-           <div class="container" style="position: absolute; margin-left: 500px;">
-               <h1>@ViewBag.Title</h1>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-               <div class="form-row">
-                   <div class="form-group">
-                       @Html.LabelFor(m => m.FirstName)
-                       @Html.TextBoxFor(m => m.FirstName, new { @placeholder = "First Name", @class = "form-control" })
-                       @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
-                   </div>
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FirstName)
+                    @Html.TextBoxFor(m => m.FirstName, new { @placeholder = "First Name", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LastName)
+                    @Html.TextBoxFor(m => m.LastName, new { @placeholder = "Last Name", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-                   <div class="form-group">
-                       @Html.LabelFor(m => m.LastName)
-                       @Html.TextBoxFor(m => m.LastName, new { @placeholder = "Last Name", @class = "form-control" })
-                       @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
-                   </div>
-               </div>
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-               <div class="form-row">
-                   <div class="form-group">
-                       @Html.LabelFor(m => m.Email)
-                       @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email", @class = "form-control" })
-                       @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                   </div>
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.BloodGroup)
+                    @Html.DropDownListFor(m => m.BloodGroup, Model.BloodGroups, "Select Blood Group", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.BloodGroup, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Gender)
+                    @Html.DropDownListFor(m => m.Gender, Model.GetGenders, "Select Gender", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-                   <div class="form-group">
-                       @Html.LabelFor(m => m.Password)
-                       @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "form-control" })
-                       @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                   </div>
-               </div>
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Age)
+                    @Html.TextBoxFor(m => m.Age, new { @placeholder = "Age", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Age, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PhoneNo)
+                    @Html.TextBoxFor(m => m.PhoneNo, new { @placeholder = "Phone Number", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PhoneNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-               <div class="form-row">
-                   <div class="form-group">
-                       @Html.LabelFor(m => m.BloodGroup)
-                       @Html.DropDownListFor(m => m.BloodGroup, Model.BloodGroups, "Select Blood Group", new { @class = "form-control1" })
-                       @Html.ValidationMessageFor(m => m.BloodGroup, "", new { @class = "text-danger" })
-                   </div>
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EmergencyContact)
+                    @Html.TextBoxFor(m => m.EmergencyContact, new { @placeholder = "Emergency Contact", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmergencyContact, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Address)
+                    @Html.TextBoxFor(m => m.Address, new { @placeholder = "Address", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-                   <div class="form-group">
-                       @Html.LabelFor(m => m.Gender)
-                       @Html.DropDownListFor(m => m.Gender, Model.GetGenders, "Select Gender", new { @class = "form-control1" })
-                       @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
-                   </div>
-               </div>
+            <div class="form-row">
+                <input type="submit" value="Update Profile" class="btn-submit" />
+            </div>
+        }
 
-               <div class="form-row">
-                   <div class="form-group">
-                       @Html.LabelFor(m => m.Age)
-                       @Html.TextBoxFor(m => m.Age, new { @placeholder = "Age", @class = "form-control" })
-                       @Html.ValidationMessageFor(m => m.Age, "", new { @class = "text-danger" })
-                   </div>
-
-                   <div class="form-group">
-                       @Html.LabelFor(m => m.PhoneNo)
-                       @Html.TextBoxFor(m => m.PhoneNo, new { @placeholder = "Phone Number", @class = "form-control" })
-                       @Html.ValidationMessageFor(m => m.PhoneNo, "", new { @class = "text-danger" })
-                   </div>
-               </div>
-
-               <div class="form-row">
-                   <div class="form-group">
-                       @Html.LabelFor(m => m.EmergencyContact)
-                       @Html.TextBoxFor(m => m.EmergencyContact, new { @placeholder = "Emergency Contact", @class = "form-control" })
-                       @Html.ValidationMessageFor(m => m.EmergencyContact, "", new { @class = "text-danger" })
-                   </div>
-
-                   <div class="form-group">
-                       @Html.LabelFor(m => m.Address)
-                       @Html.TextBoxFor(m => m.Address, new { @placeholder = "Address", @class = "form-control" })
-                       @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
-                   </div>
-               </div>
-
-               <div class="form-group">
-                   <input type="submit" value="Update Profile" class="btn btn-submit" />
-               </div>
-           </div>
-       </div>
-    }
+        @ViewBag.message
+    </div>
 </body>
 </html>

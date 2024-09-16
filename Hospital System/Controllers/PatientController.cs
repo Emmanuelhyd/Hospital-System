@@ -180,7 +180,7 @@ namespace Hospital_System.Controllers
         {
             string res = patientBAL.Complaint(complain);
             ViewBag.message = "Added";
-            return View(complain);
+            return View();
             
         }
 
@@ -198,25 +198,23 @@ namespace Hospital_System.Controllers
         [HttpPost]
             public ActionResult Changepassword(Patients patients)
         {
-
-           
-            
+          
             string res = patientBAL.Changepassword(patients);
 
-            if (res=="updated")
+
+            if (res == "1")
             {
-                Session["validate"] = "Updated";
-                return RedirectToAction("Login");
-                
+                Session["valid"] = "Updated";
+                return RedirectToAction("Login", "Patient");
             }
+
             else
             {
-                Session["validate"] = "";
-                ViewBag.message = "Invalid UserName";
+                Session["valid"] = "Invalid UserName";
+                ViewBag.Message = "Invalid UserName";
+                return View(patients);
             }
-          
-            return View();
-        
+
         }
 
         public ActionResult EditComplains(Complain complain)
@@ -239,6 +237,25 @@ namespace Hospital_System.Controllers
             }
         }
 
+        public ActionResult Forgotpassword(Patients patients)
+        {
+            string res = patientBAL.Changepassword(patients);
+
+
+            if (res == "1")
+            {
+                Session["valid"] = "Updated";
+                return RedirectToAction("Login", "Patient");
+            }
+
+            else
+            {
+                Session["valid"] = "Invalid UserName";
+                ViewBag.Message = "Invalid UserName";
+                return View(patients);
+            }
+
+        }
 
     }
 
