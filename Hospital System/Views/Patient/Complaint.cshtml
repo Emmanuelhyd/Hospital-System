@@ -4,27 +4,21 @@
     Layout = "~/Views/Shared/_PatientLayout.cshtml";
 }
 
-@*@ViewBag.message;*@
+@ViewBag.message;
 
 @using (Html.BeginForm())
 {
     <div id="tabcomplaint" style="position: absolute; margin-left: 200px;">
 
         <div style="margin-left:100px;">
-            @*@Html.AntiForgeryToken()*@
+            @Html.AntiForgeryToken()
 
-            <div>
-                @Html.LabelFor(m=>m.Id)
-                @Html.TextBoxFor(m=>m.Id)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Complaint, new { @class = "form-label" })
+                @Html.TextAreaFor(model => model.Complaint, new { @class = "form-control", rows = 4, placeholder = "Write your complaint here..." })
+                @Html.ValidationMessageFor(model => model.Complaint, "", new { @class = "validation-message" })
             </div>
-
-            <div>
-                @Html.LabelFor(m => m.Complaint)
-                @Html.TextBoxFor(m => m.Complaint)
-            </div>
-            <input type="submit" value="Submit">
-    
-    @*<button type="submit" class="btn btn-submit">Submit</button>*@
+            <button type="submit" class="btn btn-submit">Submit</button>
         </div>
 
         

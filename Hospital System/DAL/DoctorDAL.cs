@@ -259,7 +259,7 @@ namespace Hospital_System.DAL
             cmd = new SqlCommand("insert into Registration values('" + mRegistration.UserName + "','" + mRegistration.FirstName + "','" + mRegistration.LastName + "','" + mRegistration.Password + "','" + mRegistration.Email + "','" + mRegistration.PhoneNumber + "','" + mRegistration.Gender + "')", con);
             cmd.ExecuteNonQuery();
             con.Close();
-            return "Login";
+            return "RegistrationPage";
         }
 
     }

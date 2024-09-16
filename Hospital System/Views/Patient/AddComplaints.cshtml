@@ -35,7 +35,6 @@
                 <table class="complaints-table">
                     <thead>
                         <tr>
-                            <th>@Html.DisplayNameFor(model => model.Id)</th>
                             <th>@Html.DisplayNameFor(model => model.Complaint)</th>
                             <th>@Html.DisplayNameFor(model => model.Reply)</th>
                             <th>Actions</th>
@@ -45,14 +44,11 @@
                         @foreach (var c in Model)
                         {
                             <tr>
-                                <td>@Html.DisplayFor(modelItem => c.Id)</td>
                                 <td>@Html.DisplayFor(modelItem => c.Complaint)</td>
                                 <td>@Html.DisplayFor(modelItem => c.Reply)</td>
                                 <td>
 
-                                    @Html.ActionLink("Edit", "CEdit", new { Id = c.Id }) | |  @*<a href="DeleteComplains"> Delete</a>*@
-                                    @Html.ActionLink("Delete", "CDelete", new { Complaint = c.Complaint }) |
-
+                                    @Html.ActionLink("Edit", "EditComplains", new { id = c.Complaint }) | |  <a href="DeleteComplains"> Delete</a>
                                 </td>
                             </tr>
                         }
