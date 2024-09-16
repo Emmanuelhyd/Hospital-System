@@ -331,7 +331,6 @@ namespace Hospital_System.DAL
             con.Open();
             cmd = new SqlCommand("Update profile set Password='" + patients.Password + "' where UserName='" + patients.UserName + "'", con);
 
-
             res = cmd.ExecuteNonQuery().ToString();
             con.Close();
             return res;
