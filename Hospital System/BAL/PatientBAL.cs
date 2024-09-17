@@ -72,32 +72,14 @@ namespace Hospital_System.BAL
 
 
 
-        public string Complaint(Complain complain)
-        {
-            string res = patient.Complaint(complain);
-            return res;
-        }
-
-        public List<Complain> GetComplains(string searchvalue)
-        {
-            return patient.GetComplains(searchvalue);
-        }
-
+      
         public string Changepassword(Patients patients)
         {
             string res = patient.Changepassword(patients);
             return res;
         }
-        public string EditComplain(Complain complain)
-        {
-            string res = patient.EditComplain(complain);
-            return res;
-        }
-        public string Forgotpassword(Patients patients)
-        {
-            string res = patient.Forgotpassword(patients);
-            return res;
-        }
+
+        
     }
 }
 

@@ -247,42 +247,8 @@ namespace Hospital_System.DAL
         }
 
 
-        public string Complaint(Complain complain)
-
-        {
-            con.Open();
-            cmd = new SqlCommand("insert into complaintt values('"+complain.Id+"','" + complain.Complaint + "','"+complain.Reply+"','"+complain.ComplainDate+"')", con);
-            cmd.ExecuteNonQuery();
-            con.Close();
-
-            return "Added Complain";
-        }
-
-        public List<Complain> GetComplains( string searchvalue)
-        {
-
-            List<Complain> complains = new List<Complain>();
-            con.Open();
-            cmd = new SqlCommand("select*from complaintt where complaint like '%" +searchvalue+"%'", con);
-            reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                Complain complain = new Complain();
-
-                complain.Complaint = reader.GetString(reader.GetOrdinal("Complaint"));
-               
-
-
-
-                complains.Add(complain);
-
-            }
-
-            reader.Close();
-            con.Close();
-            return complains;
-        }
-
+       
+       
 
         public string Changepassword(Patients patients )
 
@@ -300,48 +266,19 @@ namespace Hospital_System.DAL
            
         }
 
-        public string EditComplain(Complain complain)
-        {
-           
-            List<Complain> complains = new List<Complain>();
-            con.Open();
-            cmd = new SqlCommand("select * from complaintt where complaint  = '"+ complain.Complaint  + "'", con);
-            reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-                Complain complain1 = new Complain();
-
-                complain1.Complaint = reader.GetString(reader.GetOrdinal("Complaint"));
-                return "success";
-
-            }
+        
 
            
-                else
-                {
-                    return "No record found";
-                }
-          
-        }
-
-        public string Forgotpassword(Patients patients)
-
-        {
-            string res = "";
-            con.Open();
-            cmd = new SqlCommand("Update profile set Password='" + patients.Password + "' where UserName='" + patients.UserName + "'", con);
-
-
-            res = cmd.ExecuteNonQuery().ToString();
-            con.Close();
-            return res;
-
+              
+            
+            
         }
 
 
 
     }
-}
+
+
 
 
 

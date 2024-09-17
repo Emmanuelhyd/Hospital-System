@@ -80,12 +80,12 @@
 
 @using (Html.BeginForm("PrecList", "Prescription"))
 {
-    <div style="position: absolute; margin-left: 200px; width: 81%; height: 100vh; background-color: #e0f7fa; padding: 20px;">
+    <div style="position: absolute; margin-left: 200px; width: 81%; height: 100vh; background-color: white; padding: 20px;">
         <div>
             <h2>Your Prescription</h2>
             <table style="width:100%; border-collapse:collapse; margin-top:20px;" border="1">
                 <thead>
-                    <tr style="background-color:#00796b;color:white;">
+                    <tr style="background-color: #007bff; color: white;">
                         <th style="padding:10px;text-align:left;">
                             @Html.DisplayNameFor(model => model.PatientName)
                         </th>

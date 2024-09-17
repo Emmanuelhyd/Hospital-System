@@ -17,7 +17,7 @@
 
 @using (Html.BeginForm())
 {
-    <div style="width: 80%; height: 600px; background-color: #e0f7fa; padding: 20px; position: absolute; margin-left: 204px; margin-top: 0px; margin-left: 276px; ">
+    <div style="width: 80%; height: 600px; background-color: white; padding: 20px; position: absolute; margin-left: 204px; margin-top: 0px; margin-left: 276px; ">
         <div><h2>Available Doctors and their Specialities</h2>
             <div>
             <input type="text" id="searchvalue"  name="searchvalue" >
@@ -26,7 +26,7 @@
 
             <table style="width:100%; border-collapse:collapse; margin-top:20px;" border="1">
                 <thead>
-                    <tr style="background-color:#00796b;color:white;">
+                    <tr style="background-color: #007bff; color: white;">
                         <th style="padding:10px;text-align:left;">
                             @Html.DisplayNameFor(model => model.DoctorName)
                         </th>
