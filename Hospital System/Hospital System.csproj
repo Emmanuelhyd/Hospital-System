@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Hospital_System</RootNamespace>
     <AssemblyName>Hospital System</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44313</IISExpressSSLPort>
@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,22 +45,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -88,6 +88,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Layout\resources\css\img\banner.jpg" />
+    <Content Include="Content\Layout\resources\css\img\hospital-174924_1280.jpg" />
+    <Content Include="Content\Layout\resources\css\queries.css" />
+    <Content Include="Content\Layout\resources\css\style.css" />
+    <Content Include="Content\Layout\resources\img\app-iPhone.png" />
+    <Content Include="Content\Layout\resources\img\customer-1.jpg" />
+    <Content Include="Content\Layout\resources\img\customer-2.jpg" />
+    <Content Include="Content\Layout\resources\img\customer-3.jpg" />
+    <Content Include="Content\Layout\resources\img\Faislabad.jpg" />
+    <Content Include="Content\Layout\resources\img\Gujranwala.jpg" />
+    <Content Include="Content\Layout\resources\img\Lahore.jpg" />
+    <Content Include="Content\Layout\resources\img\logo-white.jpg" />
+    <Content Include="Content\Layout\resources\img\logo.jpg" />
+    <Content Include="Content\Layout\resources\img\Multan.png" />
+    <Content Include="Content\Layout\resources\img\yoga.jpg" />
+    <Content Include="Content\Layout\resources\js\script.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -98,6 +114,7 @@
     <Compile Include="BAL\PatientBAL.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\PrescriptionController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
@@ -124,6 +141,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <Content Include="Content\Layout\resources\img\Thumbs.db" />
+    <Content Include="Content\Layout\resources\css\img\Thumbs.db" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -148,6 +167,7 @@
     <Content Include="Views\Doctor\NewDoctor.cshtml" />
     <Content Include="Views\Prescription\PrecList.cshtml" />
     <Content Include="Views\Registration\RegistrationPage.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

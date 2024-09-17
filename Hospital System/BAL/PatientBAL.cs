@@ -78,10 +78,10 @@ namespace Hospital_System.BAL
             return res;
         }
 
-        public List<Complain> GetComplains(string searchvalue)
-        {
-            return patient.GetComplains(searchvalue);
-        }
+        //public List<Complain> GetComplains(string searchvalue)
+        //{
+        //    return patient.GetComplains(searchvalue);
+        //}
 
         public string Changepassword(Patients patients)
         {

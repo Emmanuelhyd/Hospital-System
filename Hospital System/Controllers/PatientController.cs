@@ -184,12 +184,12 @@ namespace Hospital_System.Controllers
             
         }
 
-        public ActionResult AddComplaints(string searchvalue)
+        //public ActionResult AddComplaints(string searchvalue)
 
-        {  
-            var complain = patientBAL.GetComplains(searchvalue);
-            return View(complain);
-        }
+        //{  
+        //    var complain = patientBAL.GetComplains(searchvalue);
+        //    return View(complain);
+        //}
 
 
 
