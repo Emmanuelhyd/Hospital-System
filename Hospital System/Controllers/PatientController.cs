@@ -122,8 +122,6 @@ namespace Hospital_System.Controllers
                  };
             }
 
-        
-
         public ActionResult Index()
         {
             var model = new Allview
@@ -142,8 +140,10 @@ namespace Hospital_System.Controllers
         }
 
 
-   
-       
+
+
+
+
         public ActionResult Ambulanceses()
         {
             var ambulance = patientBAL.GetAmbulances();
@@ -170,27 +170,8 @@ namespace Hospital_System.Controllers
             var medical = patientBAL.GetMedicines();
             return View(medical);
         }
-        [HttpGet]
-        public ActionResult Complaint()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Complaint(Complain complain)
-        {
-            string res = patientBAL.Complaint(complain);
-            ViewBag.message = "Added";
-            return View();
-            
-        }
-
-        public ActionResult AddComplaints(string searchvalue)
-
-        {  
-            var complain = patientBAL.GetComplains(searchvalue);
-            return View(complain);
-        }
-        [HttpGet]
+        
+        
         public ActionResult Changepassword()
         {
             return View();
@@ -217,25 +198,7 @@ namespace Hospital_System.Controllers
 
         }
 
-        public ActionResult EditComplains(Complain complain)
-        {
-            if (complain == null)
-            {
-                return HttpNotFound(); 
-            }
-
-         
-            string res = patientBAL.EditComplain(complain);
-
-            if (res == "success")
-            {
-                return View("EditComplains", complain); 
-            }
-            else
-            {
-                return RedirectToAction("AddComplains", "Patient");
-            }
-        }
+        
 
         public ActionResult Forgotpassword(Patients patients)
         {

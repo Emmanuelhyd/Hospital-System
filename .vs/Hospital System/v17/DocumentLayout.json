@@ -3,72 +3,72 @@
   "WorkspaceRootPath": "D:\\Git File\\Hospital-System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\views\\patient\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\views\\prescription\\preclist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\prescription\\preclist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\views\\appointment\\appointmentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\appointment\\appointmentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\ambulances.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\ambulances.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\updateprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\updateprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\views\\patient\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\drive.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\drive.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\doc.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\doc.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\medicals.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\medicals.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\shared\\_patientlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\shared\\_patientlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\views\\patient\\ambulanceses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\ambulanceses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\bal\\patientbal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\bal\\patientbal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\depart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\depart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\patientpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\patientpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\shared\\_patientlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\shared\\_patientlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\doc.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\doc.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\editcomplains.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\editcomplains.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\medicals.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\medicals.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\depart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\depart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\patientpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\patientpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\updateprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\updateprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\prescription\\preclist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\prescription\\preclist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\appointment\\appointmentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\appointment\\appointmentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\drive.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\drive.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\bal\\patientbal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\bal\\patientbal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\models\\medicine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -158,43 +158,80 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PrecList.cshtml",
-              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Prescription\\PrecList.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Prescription\\PrecList.cshtml",
-              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Prescription\\PrecList.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Prescription\\PrecList.cshtml",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAAAFoAAAAdAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Index.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Index.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Index.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Patient\\Index.cshtml",
+              "ViewState": "AgIAAL0AAAAAAAAAAAAAANgAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-17T09:27:44.613Z",
+              "WhenOpened": "2024-09-17T10:37:17.516Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "doc.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\doc.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\doc.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\doc.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Patient\\doc.cshtml",
+              "ViewState": "AgIAAFkAAAAAAAAAAAD4v2gAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-11T13:28:38.394Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AppointmentList.cshtml",
-              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Appointment\\AppointmentList.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Appointment\\AppointmentList.cshtml",
-              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Appointment\\AppointmentList.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Appointment\\AppointmentList.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABwAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-17T09:26:04.891Z",
+              "Title": "PatientController.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\PatientController.cs",
+              "RelativeDocumentMoniker": "Hospital System\\Controllers\\PatientController.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\PatientController.cs",
+              "RelativeToolTip": "Hospital System\\Controllers\\PatientController.cs",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAYwJIAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T13:36:40.128Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Patientpage.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Patientpage.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Patientpage.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Patientpage.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Patient\\Patientpage.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-05T10:12:35.476Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Ambulances.cshtml",
-              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Ambulances.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Ambulances.cshtml",
-              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Ambulances.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Patient\\Ambulances.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABMAAAAAAAAAA==",
+              "Title": "Depart.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Depart.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Depart.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Depart.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Patient\\Depart.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAQAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-11T11:21:56.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Ambulanceses.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Ambulanceses.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Ambulanceses.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Ambulanceses.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Patient\\Ambulanceses.cshtml",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAgwBkAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-09-17T08:38:36.244Z",
               "EditorCaption": ""
@@ -202,14 +239,52 @@
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "drive.cshtml",
-              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\drive.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\drive.cshtml",
-              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\drive.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Patient\\drive.cshtml",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAAAGgAAAAHAAAAAAAAAA==",
+              "Title": "Forgotpassword.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Forgotpassword.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Forgotpassword.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Forgotpassword.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Patient\\Forgotpassword.cshtml",
+              "ViewState": "AgIAAHcAAAAAAAAAAAD4v4oAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-11T12:53:22.389Z"
+              "WhenOpened": "2024-09-16T07:59:50.412Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RouteConfig.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\App_Start\\RouteConfig.cs",
+              "RelativeDocumentMoniker": "Hospital System\\App_Start\\RouteConfig.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\App_Start\\RouteConfig.cs",
+              "RelativeToolTip": "Hospital System\\App_Start\\RouteConfig.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAiwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T10:42:00.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_PatientLayout.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Shared\\_PatientLayout.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Shared\\_PatientLayout.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Shared\\_PatientLayout.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Shared\\_PatientLayout.cshtml",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAAAK8AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-13T12:21:09.407Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Login.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Login.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Login.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Patient\\Login.cshtml",
+              "ViewState": "AgIAAHQAAAAAAAAAAAD4v38AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-05T06:12:32.445Z"
             },
             {
               "$type": "Document",
@@ -225,46 +300,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Changepassword.cshtml",
-              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Changepassword.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Changepassword.cshtml",
-              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Changepassword.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Patient\\Changepassword.cshtml",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAAGsAAABvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-05T10:58:00.788Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Dashboard.cshtml",
-              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Dashboard.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Dashboard.cshtml",
-              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Dashboard.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Patient\\Dashboard.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAANcAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-17T08:37:08.687Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Forgotpassword.cshtml",
-              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Forgotpassword.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Forgotpassword.cshtml",
-              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Forgotpassword.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Patient\\Forgotpassword.cshtml",
-              "ViewState": "AgIAAHcAAAAAAAAAAAD4v4oAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-16T07:59:50.412Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "Updateprofile.cshtml",
               "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Updateprofile.cshtml",
               "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Updateprofile.cshtml",
@@ -272,48 +308,59 @@
               "RelativeToolTip": "Hospital System\\Views\\Patient\\Updateprofile.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-06T12:43:53.084Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "doc.cshtml",
-              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\doc.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\doc.cshtml",
-              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\doc.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Patient\\doc.cshtml",
-              "ViewState": "AgIAAFkAAAAAAAAAAAD4v2gAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-11T13:28:38.394Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "_PatientLayout.cshtml",
-              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Shared\\_PatientLayout.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Shared\\_PatientLayout.cshtml",
-              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Shared\\_PatientLayout.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Shared\\_PatientLayout.cshtml",
-              "ViewState": "AgIAAIQAAAAAAAAAAAAAAI8AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-13T12:21:09.407Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "PatientController.cs",
-              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\PatientController.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Controllers\\PatientController.cs",
-              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\PatientController.cs",
-              "RelativeToolTip": "Hospital System\\Controllers\\PatientController.cs",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAcwMgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-13T13:36:40.128Z"
+              "WhenOpened": "2024-09-06T12:43:53.084Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
+              "Title": "Changepassword.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Changepassword.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Changepassword.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Changepassword.cshtml*",
+              "RelativeToolTip": "Hospital System\\Views\\Patient\\Changepassword.cshtml*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-05T10:58:00.788Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "drive.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\drive.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\drive.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\drive.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Patient\\drive.cshtml",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAGgAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-11T12:53:22.389Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AppointmentList.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Appointment\\AppointmentList.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Appointment\\AppointmentList.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Appointment\\AppointmentList.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Appointment\\AppointmentList.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABwAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-17T09:26:04.891Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PrecList.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Prescription\\PrecList.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Prescription\\PrecList.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Prescription\\PrecList.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Prescription\\PrecList.cshtml",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAAAFoAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-17T09:27:44.613Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "PatientBAL.cs",
               "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\BAL\\PatientBAL.cs",
               "RelativeDocumentMoniker": "Hospital System\\BAL\\PatientBAL.cs",
@@ -322,54 +369,6 @@
               "ViewState": "AgIAADkAAAAAAAAAAAAswEoAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-05T07:11:01.551Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Patientpage.cshtml",
-              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Patientpage.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Patientpage.cshtml",
-              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Patientpage.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Patient\\Patientpage.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-05T10:12:35.476Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Login.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Login.cshtml",
-              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Login.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Patient\\Login.cshtml",
-              "ViewState": "AgIAAHQAAAAAAAAAAAD4v38AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-05T06:12:32.445Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "EditComplains.cshtml",
-              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\EditComplains.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\EditComplains.cshtml",
-              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\EditComplains.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Patient\\EditComplains.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACEAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-13T09:57:11.259Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Depart.cshtml",
-              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Depart.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Depart.cshtml",
-              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Depart.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Patient\\Depart.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-11T11:21:56.989Z"
             },
             {
               "$type": "Document",
@@ -487,7 +486,7 @@
               "RelativeDocumentMoniker": "Hospital System\\Web.config",
               "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Web.config",
               "RelativeToolTip": "Hospital System\\Web.config",
-              "ViewState": "AgIAACgAAAAAAAAAAIBZwAoAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAMBdwAoAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2024-09-17T07:40:07.926Z",
               "EditorCaption": ""

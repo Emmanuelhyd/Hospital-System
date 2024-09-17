@@ -79,8 +79,15 @@ namespace Hospital_System.BAL
             return res;
         }
 
-        
-    }
+        public string Forgotpassword(Patients patients)
+
+        {
+            string res=patient.Forgotpassword(patients);
+            return res;
+        }
+
+
+        }
 }
 
 

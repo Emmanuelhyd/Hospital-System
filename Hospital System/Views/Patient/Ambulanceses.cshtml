@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewBag.Title</title>
+    <title></title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -77,12 +77,12 @@
             <table>
                 <thead>
                     <tr>
-                        <th>@Html.DisplayNameFor(model => model.First().Id)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().Name)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().AmbulanceId)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().AmbulanceStatus)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().AmbulanceDriver)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().AmbulanceDriverId)</th>
+                        <th>@Html.DisplayNameFor(model => model.Id)</th>
+                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                        <th>@Html.DisplayNameFor(model => model.AmbulanceId)</th>
+                        <th>@Html.DisplayNameFor(model => model.AmbulanceStatus)</th>
+                        <th>@Html.DisplayNameFor(model => model.AmbulanceDriver)</th>
+                        <th>@Html.DisplayNameFor(model => model.AmbulanceDriverId)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -99,9 +99,12 @@
                     }
                 </tbody>
             </table>
-            @Html.ActionLink("Back","Index","Patient")
+            @Html.ActionLink("Back", "Index", "Patient")
         </div>
+
     </div>
 </body>
 </html>
+
+
 
