@@ -1,0 +1,269 @@
+﻿@model Hospital_System.Viewmodel.Allview
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<script>
+    function back() {
+        window.location.href = '@Url.Action("DoctorList", "Doctor")';
+    }
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #343a40;
+        }
+
+        /* General container styling for each item */
+        .link-container {
+            position: absolute;
+            background-color: #ffffff; /* White background for the container */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Slightly stronger shadow */
+            text-align: center;
+            padding: 20px;
+            text-decoration: none;
+            color: inherit; /* Inherit color from parent */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 220px; /* Ensure all boxes are the same width */
+            height: 170px; /* Ensure all boxes are the same height */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .link-container:hover {
+                background-color: #f8f9fa; /* Light grey on hover */
+                box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Stronger shadow on hover */
+            }
+
+        /* Adjustments for icons and text alignment */
+        .icon {
+            font-size: 36px; /* Larger icon size */
+            margin-bottom: 15px; /* Space between icon and count */
+        }
+
+        /* Different colors for each icon */
+        #tab1 .icon {
+            color: #007bff;
+        }
+        /* Blue */
+        #tab2 .icon {
+            color: #28a745;
+        }
+        /* Green */
+        #tab3 .icon {
+            color: #dc3545;
+        }
+        /* Red */
+        #tab4 .icon {
+            color: #ffc107;
+        }
+        /* Yellow */
+        #tab5 .icon {
+            color: #17a2b8;
+        }
+        /* Teal */
+        #tab6 .icon {
+            color: #6c757d;
+        }
+        /* Gray */
+        #tab7 .icon {
+            color: #e83e8c;
+        }
+        /* Pink */
+        #tab8 .icon {
+            color: #fd7e14;
+        }
+        /* Orange */
+
+        .count {
+            font-size: 28px; /* Larger count text size */
+            color: #343a40; /* Darker text color for count */
+            margin: 10px 0; /* Adjust margin */
+        }
+
+        /* Style adjustments for the tags */
+        .tag {
+            font-weight: 900;
+            color: blue;
+        }
+
+            .tag:hover {
+                background-color: #0056b3; /* Darker background color on hover */
+            }
+
+        /* Define size and positioning for each div */
+        #tab1 {
+            margin-left: 255px;
+            position: absolute;
+            margin-top: 20px;
+        }
+
+        #tab2 {
+            margin-left: 535px;
+            margin-top: 20px;
+        }
+
+        #tab3 {
+            margin-left: 808px;
+            margin-top: 20px;
+        }
+
+        #tab4 {
+            margin-left: 1080px;
+            margin-top: 20px;
+        }
+
+        #tab5 {
+            margin-left: 260px;
+            margin-top: 240px;
+        }
+
+        #tab6 {
+            margin-left: 535px;
+            margin-top: 240px;
+        }
+
+        #tab7 {
+            margin-left: 808px;
+            margin-top: 240px;
+        }
+
+        #tab8 {
+            margin-left: 1080px;
+            margin-top: 240px;
+        }
+
+        /* Ensure the link fills the entire div */
+        .link-container a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 226px;
+            height: 48vh;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /*
+        tab1 {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 225px;
+            width: 225px;
+            width: 225px;
+            width: 225px;
+            height: 48vh;
+        }*/
+    </style>
+</head>
+<div style=" position: absolute; width: 800px; height: 100vh; margin-left: 201px;">
+    <div style="margin-left:-195px;width:750px;position:absolute;">
+        <body>
+            <h1>Dashboard</h1>
+            <div id="tab1" class="link-container">
+                <a href="#" class="link">
+                    <div class="icon">
+                        <i class="fa fa-building"></i>
+                    </div>
+                    <p class="count">@Model.DepartmentCount</p>
+                    <span class="tag">Departments</span>
+                </a>
+            </div>
+
+            <div id="tab2" class="link-container">
+                <a href="Doc" class="link">
+                    <div class="icon">
+                        <i class="fa fa-user-md"></i>
+                    </div>
+                    <p class="count">@Model.DoctorCount</p>
+                    <span class="tag">Doctors</span>
+                </a>
+            </div>
+
+            <div id="tab3" class="link-container">
+                <a href="#" class="link">
+                    <div class="icon">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <p class="count">@Model.PatientCount</p>
+                    <span class="tag">Patients</span>
+                </a>
+            </div>
+
+            <div id="tab4" class="link-container">
+                <a href="Ambulances" class="link">
+                    <div class="icon">
+                        <i class="fa fa-ambulance"></i>
+                    </div>
+                    <p class="count">@Model.AmbulanceCount</p>
+                    <span class="tag">Ambulances</span>
+                </a>
+            </div>
+
+            <div id="tab5" class="link-container">
+                <a href="#" class="link">
+                    <div class="icon">
+                        <i class="fa fa-calendar-check"></i>
+                    </div>
+                    <p class="count">@Model.ActiveAppointmentsCount</p>
+                    <span class="tag">Active Appointments</span>
+                </a>
+            </div>
+
+            <div id="tab6" class="link-container">
+                <a href="#" class="link">
+                    <div class="icon">
+                        <i class="fa fa-calendar-times"></i>
+                    </div>
+                    <p class="count">@Model.PendingAppointmentsCount</p>
+                    <span class="tag">Pending Appointments</span>
+                </a>
+            </div>
+
+            <div id="tab7" class="link-container">
+                <a href="medicals" class="link">
+                    <div class="icon">
+                        <i class="fa fa-capsules"></i>
+                    </div>
+                    <p class="count">@Model.MedicineCount</p>
+                    <span class="tag">Medicines</span>
+                </a>
+            </div>
+
+            <div id="tab8" class="link-container">
+                <a href="Drive" class="link">
+                    <div class="icon">
+                        <i class="fa fa-car"></i>
+                    </div>
+                    <p class="count">@Model.DriverCount</p>
+                    <span class="tag">Drivers</span>
+                </a>
+            </div>
+        </body>
+    </div>
+</div>
+</html>
+
