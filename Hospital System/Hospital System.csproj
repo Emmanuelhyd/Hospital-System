@@ -110,6 +110,7 @@
     <Compile Include="Models\AmbulanceDriver.cs" />
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\Complain.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\Doctors.cs" />
@@ -130,10 +131,14 @@
     <Content Include="Views\Patient\Patientpage.cshtml" />
     <Content Include="Views\Patient\Changepassword.cshtml" />
     <Content Include="Views\Patient\Updateprofile.cshtml" />
+    <Content Include="Views\Patient\Index.cshtml" />
+    <Content Include="Views\Patient\Ambulanceses.cshtml" />
     <Content Include="Views\Patient\Depart.cshtml" />
     <Content Include="Views\Patient\drive.cshtml" />
     <Content Include="Views\Patient\doc.cshtml" />
     <Content Include="Views\Patient\medicals.cshtml" />
+    <Content Include="Views\Patient\Complaint.cshtml" />
+    <Content Include="Views\Patient\AddComplaints.cshtml" />
     <Content Include="Views\Patient\EditComplains.cshtml" />
     <Content Include="Views\Shared\_PatientLayout.cshtml" />
     <Content Include="Views\Appointment\AppointmentList.cshtml" />
@@ -144,8 +149,6 @@
     <Content Include="Views\Prescription\PrecList.cshtml" />
     <Content Include="Views\Registration\RegistrationPage.cshtml" />
     <Content Include="Views\Patient\Forgotpassword.cshtml" />
-    <Content Include="Views\Patient\Dashboard.cshtml" />
-    <Content Include="Views\Patient\Ambulances.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
