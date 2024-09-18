@@ -60,5 +60,25 @@ namespace Hospital_System.BAL
             string res = doctorDAL.RegistrationPage(mRegistration);
             return res;
         }
+
+
+        public List<MComplaint> RegisterComplaint(MComplaint mComplaint)
+        {
+            List<MComplaint> mComplaints = new List<MComplaint>();
+            mComplaints = doctorDAL.RegisterComplaint(mComplaint);
+            return mComplaints;
+        }
+
+        public List<MComplaint> ComplaintList()
+        {
+            return doctorDAL.ComplaintList();
+        }
+
+        public MComplaint EEdit(int Id)
+        {
+            MComplaint mComplaints = doctorDAL.EEdit(Id);
+
+            return mComplaints;
+        }
     }
 }

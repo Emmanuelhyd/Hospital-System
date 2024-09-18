@@ -59,16 +59,26 @@ namespace Hospital_System.DAL
         }
 
 
+        public string Insertprofile(Patients patients)
+        {
+            string res= " ";
+            con.Open();
+            cmd = new SqlCommand("insert into profile values ('" + patients.UserName + "','" + patients.FirstName + "','" + patients.LastName + "','" + patients.Email + "','" + patients.Password + "','" + patients.BloodGroup + "','" + patients.Gender + "','" + patients.Age + "'," + patients.PhoneNo + ",'" + patients.Address + "',"+ patients.EmergencyContact +")", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            return "added";
+        }
+
         public string Updateprofile(Patients patients)
         {
             string res = "";
 
             con.Open();
             cmd = new SqlCommand("update profile set FirstName='" + patients.FirstName + "',LastName='" + patients.LastName + "',Password='" + patients.Password + "',BloodGroup='" + patients.BloodGroup + "',Gender='" + patients.Gender + "',Age='" + patients.Age + "',PhoneNo='" + patients.PhoneNo + "',Address='" + patients.Address + "', EmergencyContact='" + patients.EmergencyContact + "' where Email='" + patients.Email + "'", con);
-            cmd.ExecuteNonQuery();
+            res = cmd.ExecuteNonQuery().ToString();
             con.Close();
 
-            return "Updated";
+            return res;
 
 
         }
@@ -118,6 +128,7 @@ namespace Hospital_System.DAL
         }
 
         public int GetDepartmentCount()
+        
         {
             string query = "SELECT COUNT(*) FROM Department";
             return ExecuteCountQuery(query);
@@ -211,8 +222,6 @@ namespace Hospital_System.DAL
                 doctor.Status = reader.GetString(reader.GetOrdinal("status"));
                 doctors.Add(doctor);
 
-
-
             }
 
             reader.Close();
@@ -255,29 +264,24 @@ namespace Hospital_System.DAL
             string res = "";
             con.Open();
             cmd = new SqlCommand("Update profile set Password='" + patients.Password + "' where UserName='" + patients.UserName + "'", con);
-
-
             res = cmd.ExecuteNonQuery().ToString();
             con.Close();
             return res;
-              
-
            
         }
-
-        
         public string Forgotpassword(Patients patients)
 
         {
             string res = "";
             con.Open();
             cmd = new SqlCommand("Update profile set Password='" + patients.Password + "' where UserName='" + patients.UserName + "'", con);
-
             res = cmd.ExecuteNonQuery().ToString();
             con.Close();
             return res;
 
         }
+
+        
 
 
 

@@ -35,11 +35,13 @@ namespace Hospital_System.BAL
             return res;
         }
 
+        public string Insertprofile(Patients patients)
+        {
+            string res=patient.Insertprofile(patients);
+            return res;
+        }
 
-
-
-
-        public int GetDepartmentCount() => patient.GetDepartmentCount();
+            public int GetDepartmentCount() => patient.GetDepartmentCount();
         public int GetDoctorCount() => patient.GetDoctorCount();
         public int GetPatientCount() => patient.GetPatientCount();
         public int GetAmbulanceCount() => patient.GetAmbulanceCount();

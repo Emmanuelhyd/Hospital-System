@@ -9,44 +9,44 @@ namespace Hospital_System.Models
 {
     public class Patients
     {
-        [Required(ErrorMessage = "User Name is required")]
-        [StringLength(50, ErrorMessage = "User Name cannot be longer than 50 characters")]
+        //[Required(ErrorMessage = "User Name is required")]
+        //[StringLength(50, ErrorMessage = "User Name cannot be longer than 50 characters")]
         public string UserName { get; set; }
 
 
        
-        [Required(ErrorMessage = "FirstName is required")]
+        //[Required(ErrorMessage = "FirstName is required")]
         public string FirstName { get; set; }
-        [Required(ErrorMessage = "LastName is required")]
+        //[Required(ErrorMessage = "LastName is required")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Email is required")]
+        //[Required(ErrorMessage = "Email is required")]
 
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Password is required")]
-        [DataType (DataType.Password)]
+        //[Required(ErrorMessage = "Password is required")]
+        //[DataType (DataType.Password)]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Blood Group is required")]
+        //[Required(ErrorMessage = "Blood Group is required")]
         public string BloodGroup { get; set; }
 
-        [Required(ErrorMessage = "Gender is required")]
+        //[Required(ErrorMessage = "Gender is required")]
         public string Gender { get; set; }
 
-        [Required(ErrorMessage = "Phone Number is required")]
+        //[Required(ErrorMessage = "Phone Number is required")]
         public string Age { get; set; }
-        public string PhoneNo { get; set; }
+        public long PhoneNo { get; set; }
 
-        [Required(ErrorMessage = "Emergency Contact is required")]
+        //[Required(ErrorMessage = "Emergency Contact is required")]
 
-        public string EmergencyContact { get; set; }
+        public long EmergencyContact { get; set; }
 
-        [Required(ErrorMessage = "Address is required")]
+        //[Required(ErrorMessage = "Address is required")]
         public string Address { get; set; }
 
-        [Required(ErrorMessage = "NewPassword is required")]
-        [DataType(DataType.Password)]
+        //[Required(ErrorMessage = "NewPassword is required")]
+        //[DataType(DataType.Password)]
         
         public string NewPassword { get; set; }
 

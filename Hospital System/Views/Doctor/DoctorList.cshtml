@@ -144,8 +144,8 @@ $(document).ready(function() {
 {
     <div class="container" style="position: absolute; margin-top: 0px; margin-left: 204px; width: 941px; height: 537px; ">
         <div class="header">
-            <input type="search" id="Sagar" name="Sagar">
-            <input type="submit" value="Search">
+            <input type="search" id="Sagar" name="Sagar" style="width: 281px; height: 32px;">
+            <input type="submit" value="Search" style="color: white; background-color: #007BFF; border-color: #007bff; width: 100px; height: 33px; ">
             <input type="button" value="CreateNew" onclick="createNew()" class="btn btn-primary" />
         </div>
 
@@ -209,7 +209,9 @@ $(document).ready(function() {
     /* Header Button */
     .header {
         margin-bottom: 20px;
-        text-align: right;
+        text-align: center;
+       
+       
     }
 
     .btn {
@@ -225,6 +227,7 @@ $(document).ready(function() {
 
     .btn-primary {
         background-color: #007BFF;
+        margin-top: 95px;
     }
 
     /* Table Styles */
@@ -233,6 +236,7 @@ $(document).ready(function() {
         border-collapse: collapse;
         margin-bottom: 20px;
         font-family: Arial, sans-serif;
+        margin-top: 55px;
     }
 
         .doctor-table th, .doctor-table td {
@@ -242,9 +246,9 @@ $(document).ready(function() {
         }
 
         .doctor-table th {
-            background-color: #f4f4f4;
+            background-color: #007BFF;
             font-weight: bold;
-            color: #333;
+            color: white;
         }
 
         .doctor-table tbody tr:nth-child(even) {

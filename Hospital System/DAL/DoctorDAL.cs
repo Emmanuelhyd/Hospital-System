@@ -261,6 +261,99 @@ namespace Hospital_System.DAL
             con.Close();
             return "RegistrationPage";
         }
+        public List<MComplaint> RegisterComplaint(MComplaint mComplaint)
+        {
+            //con.Open();
+            //cmd = new SqlCommand("insert into Complaints values('" + mComplaint.Id + "','" + mComplaint.Name + "','" + mComplaint.Complaint + "','" + mComplaint.PhoneNumber + "')", con);
+            //cmd.ExecuteNonQuery();
+            //con.Close();
+
+            var ids = 0;
+            con.Open();
+            cmd = new SqlCommand("select * from Complaints where Id='" + mComplaint.Id + "'", con);
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                ids = Convert.ToInt32(reader["Id"]);
+            }
+
+            reader.Close();
+            con.Close();
+
+
+
+            con.Open();
+            if (ids == 0)
+            {
+                cmd = new SqlCommand("insert into Complaints(Id,Name,Complaint,PhoneNumber) values(" + mComplaint.Id + ",'" + mComplaint.Name + "','" + mComplaint.Complaint + "','" + mComplaint.PhoneNumber + "')", con);
+
+            }
+            else
+            {
+                cmd = new SqlCommand("update Complaints set Name='" + mComplaint.Name + "',Complaint='" + mComplaint.Complaint + "',PhoneNumber='" + mComplaint.PhoneNumber + "' where Id='" + mComplaint.Id + "'", con);
+            }
+            cmd.ExecuteNonQuery();
+            con.Close();
+            List<MComplaint> mComplaints = new List<MComplaint>();
+            mComplaints = ComplaintList();
+            return mComplaints;
+        }
+
+        public List<MComplaint> ComplaintList()
+        {
+            List<MComplaint> mComplaints = new List<MComplaint>();
+
+            {
+
+                con.Open();
+                cmd = new SqlCommand("select * from complaints ", con);
+                SqlDataReader sdr;
+                sdr = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(sdr);
+                foreach (DataRow row in dt.Rows)
+                    mComplaints.Add(
+                        new MComplaint
+                        {
+                            Id = Convert.ToInt32(row["Id"]),
+                            Name = row["Name"].ToString(),
+                            Complaint = row["Complaint"].ToString(),
+                            PhoneNumber = Convert.ToInt64(row["PhoneNumber"]),
+                            Reply = row["reply"].ToString()
+
+
+                        });
+
+                return mComplaints;
+            }
+        }
+
+        public MComplaint EEdit(int Id)
+        {
+            MComplaint mComplaint = new MComplaint();
+
+            SqlCommand cmd = new SqlCommand("Select * from Complaints where Id='" + Id + "'", con);
+            {
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+
+                if (reader.Read())
+                {
+                    mComplaint.Id = Convert.ToInt32(reader["Id"]);
+                    mComplaint.Name = reader["Name"].ToString();
+                    mComplaint.Complaint = reader["Complaint"].ToString();
+                    mComplaint.PhoneNumber = Convert.ToInt64(reader["PhoneNumber"]);
+
+                }
+                reader.Close();
+                con.Close();
+
+            }
+            return mComplaint;
+        }
+
 
     }
 }

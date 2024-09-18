@@ -14,68 +14,116 @@
     }
 
 </script>*@
-
 @using (Html.BeginForm())
 {
-    <div style="width: 80%; height: 600px; background-color: white; padding: 20px; position: absolute; margin-left: 204px; margin-top: 0px; margin-left: 276px; ">
-        <div><h2>Available Doctors and their Specialities</h2>
-            <div>
-            <input type="text" id="searchvalue"  name="searchvalue" >
-                <input type="submit" value="Search" >
-            </div>
-
-            <table style="width:100%; border-collapse:collapse; margin-top:20px;" border="1">
-                <thead>
-                    <tr style="background-color: #007bff; color: white;">
-                        <th style="padding:10px;text-align:left;">
-                            @Html.DisplayNameFor(model => model.DoctorName)
-                        </th>
-                        <th style="padding:10px;text-align:left;">
-                            @Html.DisplayNameFor(model => model.Speciality)
-                        </th>
-                        <th style="padding:10px;text-align:left;">
-                            @Html.DisplayNameFor(model => model.Education)
-                        </th>
-                        <th style="padding:10px;text-align:left;">
-                            @Html.DisplayNameFor(model => model.Timings)
-                        </th>
-                        <th style="padding:10px;text-align:left;">
-                            @Html.DisplayNameFor(model => model.Status)
-                        </th>
-                        <th style="padding:10px;text-align:left;">
-                            @Html.DisplayNameFor(model => model.Action)
-                        </th>
-                        <th style="padding:10px;"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr style="background-color:#ffffff;">
-                            <td style="padding:10px;">
-                                @Html.DisplayFor(modelItem => item.DoctorName)
-                            </td>
-                            <td style="padding:10px;">
-                                @Html.DisplayFor(modelItem => item.Speciality)
-                            </td>
-                            <td style="padding:10px;">
-                                @Html.DisplayFor(modelItem => item.Education)
-                            </td>
-                            <td style="padding:10px;">
-                                @Html.DisplayFor(modelItem => item.Timings)
-                            </td>
-                            <td style="padding:10px;">
-                                @Html.DisplayFor(modelItem => item.Status)
-                            </td>
-                            <td style="padding:10px;">
-                                <input type="button" value="Book" onclick="window.location.href='@Url.Action("BookAppointment", "Appointment")'">
-                            </td>
-                            
-                        </tr>
-                    }
-                </tbody>
-            </table>
+    <div class="form-container">
+        <h2>Available Doctors and Their Specialities</h2>
+        
+        <div class="search-container">
+            <input type="text" id="searchvalue" name="searchvalue" placeholder="Search for a doctor..." class="search-input">
+            <input type="submit" value="Search" class="search-button">
         </div>
+
+        <table>
+            <thead>
+                <tr class="table-header">
+                    <th>@Html.DisplayNameFor(model => model.DoctorName)</th>
+                    <th>@Html.DisplayNameFor(model => model.Speciality)</th>
+                    <th>@Html.DisplayNameFor(model => model.Education)</th>
+                    <th>@Html.DisplayNameFor(model => model.Timings)</th>
+                    <th>@Html.DisplayNameFor(model => model.Status)</th>
+                    <th>@Html.DisplayNameFor(model => model.Action)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="table-row">
+                        <td>@Html.DisplayFor(modelItem => item.DoctorName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Speciality)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Education)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Timings)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td>
+                            <input type="button" value="Book" class="book-button" onclick="window.location.href='@Url.Action("BookAppointment", "Appointment")'">
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 }
+
+<style>
+    .form-container {
+        width: 65%;
+        height: 600px;
+        background-color: white;
+        padding: 20px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .search-container {
+        margin-bottom: 20px;
+    }
+
+    .search-input {
+        padding: 10px;
+        width: calc(100% - 467px);
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 10px;
+        margin-left: 160px;
+    }
+
+    .search-button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .search-button:hover {
+        background-color: #0056b3;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    .table-header {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .table-header th {
+        padding: 10px;
+        text-align: left;
+    }
+
+    .table-row td {
+        padding: 10px;
+        background-color: #ffffff;
+    }
+
+    .book-button {
+        padding: 5px 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .book-button:hover {
+        background-color: #218838;
+    }
+</style>
 

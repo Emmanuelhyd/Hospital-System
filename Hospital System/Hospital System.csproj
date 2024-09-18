@@ -96,7 +96,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BAL\DoctorBAL.cs" />
     <Compile Include="BAL\PatientBAL.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
+    <Compile Include="Controllers\ComplaintController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\PrescriptionController.cs" />
@@ -110,11 +112,11 @@
     <Compile Include="Models\AmbulanceDriver.cs" />
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Appointment.cs" />
-    <Compile Include="Models\Complain.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\Doctors.cs" />
     <Compile Include="Models\MAppointment.cs" />
+    <Compile Include="Models\MComplaint.cs" />
     <Compile Include="Models\Medicine.cs" />
     <Compile Include="Models\MPrescription.cs" />
     <Compile Include="Models\MRegistration.cs" />
@@ -128,7 +130,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Patient\Login.cshtml" />
-    <Content Include="Views\Patient\Patientpage.cshtml" />
     <Content Include="Views\Patient\Changepassword.cshtml" />
     <Content Include="Views\Patient\Updateprofile.cshtml" />
     <Content Include="Views\Patient\Depart.cshtml" />
@@ -138,7 +139,6 @@
     <Content Include="Views\Shared\_PatientLayout.cshtml" />
     <Content Include="Views\Appointment\AppointmentList.cshtml" />
     <Content Include="Views\Appointment\BookAppointment.cshtml" />
-    <Content Include="Views\Appointment\Dash.cshtml" />
     <Content Include="Views\Doctor\DoctorList.cshtml" />
     <Content Include="Views\Doctor\NewDoctor.cshtml" />
     <Content Include="Views\Prescription\PrecList.cshtml" />
@@ -146,6 +146,12 @@
     <Content Include="Views\Patient\Forgotpassword.cshtml" />
     <Content Include="Views\Patient\Ambulanceses.cshtml" />
     <Content Include="Views\Patient\Index.cshtml" />
+    <Content Include="Views\Patient\Dashboard.cshtml" />
+    <Content Include="Views\Complaint\ComplaintList.cshtml" />
+    <Content Include="Views\Complaint\RegisterComplaint.cshtml" />
+    <Content Include="Views\Admin\Dash.cshtml" />
+    <Content Include="Views\Admin\Department.cshtml" />
+    <Content Include="Views\Patient\Insertprofile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

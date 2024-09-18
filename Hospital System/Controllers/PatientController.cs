@@ -41,7 +41,7 @@ namespace Hospital_System.Controllers
 
           if(res== "success")
             {
-                return RedirectToAction("Patientpage");
+                return RedirectToAction("Dashboard");
             }
             else
             {
@@ -51,78 +51,153 @@ namespace Hospital_System.Controllers
            
            
         }
-
-           
-
-        public ActionResult Patientpage()
-        {
-            return View();
-        }
-
         [HttpGet]
-        public ActionResult Updateprofile()
+        public ActionResult Insertprofile()
         {
             var model = new Patients
             {
-                
+
                 BloodGroups = new SelectList(GetBloodGroups(), "Value", "Text"),
                 GetGenders = new SelectList(GetGenders(), "Value", "Text")
             };
 
             return View(model);
+            
+        }
+        [HttpPost]
+        public ActionResult Insertprofile(Patients patients)
+        {
+            string res = patientBAL.Insertprofile(patients);
+            return RedirectToAction("Login");
+            
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
 
-        public ActionResult Updateprofile(Patients patients)
+
+        //[HttpGet]
+        //public ActionResult Updateprofile( string Email)
+        //{
+        //    var model = new Patients
+        //    {
+
+        //        BloodGroups = new SelectList(GetBloodGroups(), "Value", "Text"),
+        //        GetGenders = new SelectList(GetGenders(), "Value", "Text")
+        //    };
+
+        //    return View(model);
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+
+        //public ActionResult UpdateProfile(Patients patients)
+        //{
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        string res = patientBAL.Updateprofile(patients);
+        //        if (res == "1")
+        //        {
+
+        //            ViewBag.Message = res;
+        //            return View(patients);
+        //        }
+        //        else
+        //        {
+        //            ViewBag.Message = "Invalid Email";
+        //        }
+
+        //    }
+        //    patients.BloodGroups = GetBloodGroups();
+        //    patients.GetGenders = GetGenders();
+        //    return View(patients);
+
+
+
+
+        //}
+        //    private IEnumerable<SelectListItem> GetBloodGroups()
+        //    {
+        //        return new List<SelectListItem>
+        //        {
+
+        //            new SelectListItem { Value = "A+", Text = "A+" },
+        //            new SelectListItem { Value = "B+", Text = "B+" },
+        //            new SelectListItem { Value = "AB+", Text = "AB+" },
+        //            new SelectListItem { Value = "O+", Text = "O+" },
+        //            new SelectListItem { Value = "A-", Text = "A-" },
+        //            new SelectListItem { Value = "B-", Text = "B-" },
+        //            new SelectListItem { Value = "AB-", Text = "AB-" },
+        //            new SelectListItem { Value = "O-", Text = "O-" }
+
+        //        };
+
+        //    }
+
+
+        //    private IEnumerable<SelectListItem> GetGenders()
+        //    {
+        //        return new List<SelectListItem>
+        //        {
+        //             new SelectListItem { Value = "Male", Text = "Male" },
+        //             new SelectListItem { Value = "Female", Text = "Female" },
+        //             new SelectListItem { Value = "Other", Text = "Other" }
+        //         };
+        //    }
+
+
+
+        public ActionResult UpdateProfile(Patients patients)
         {
+
             if (ModelState.IsValid)
             {
                 string res = patientBAL.Updateprofile(patients);
+                if (res == "1")
+                {
+                    ViewBag.Message = "Profile updated successfully!";
 
-                ViewBag.Message = res;
-                return View(patients);
-            }
-            else
-            {
-                ViewBag.Message = "Invalid Email";
+                    return RedirectToAction("Login");
+                }
+                else
+                {
+                    ViewBag.Message = "Invalid Email";
+                }
             }
 
+
+            patients.BloodGroups = GetBloodGroups();
+            patients.GetGenders = GetGenders();
             return View(patients);
-
         }
-            private IEnumerable<SelectListItem> GetBloodGroups()
-            {
-                return new List<SelectListItem>
-                {
 
-                    new SelectListItem { Value = "A+", Text = "A+" },
-                    new SelectListItem { Value = "B+", Text = "B+" },
-                    new SelectListItem { Value = "AB+", Text = "AB+" },
-                    new SelectListItem { Value = "O+", Text = "O+" },
-                    new SelectListItem { Value = "A-", Text = "A-" },
-                    new SelectListItem { Value = "B-", Text = "B-" },
-                    new SelectListItem { Value = "AB-", Text = "AB-" },
-                    new SelectListItem { Value = "O-", Text = "O-" }
+        private IEnumerable<SelectListItem> GetBloodGroups()
+        {
+            return new List<SelectListItem>
+    {
+        new SelectListItem { Value = "A+", Text = "A+" },
+        new SelectListItem { Value = "B+", Text = "B+" },
+        new SelectListItem { Value = "AB+", Text = "AB+" },
+        new SelectListItem { Value = "O+", Text = "O+" },
+        new SelectListItem { Value = "A-", Text = "A-" },
+        new SelectListItem { Value = "B-", Text = "B-" },
+        new SelectListItem { Value = "AB-", Text = "AB-" },
+        new SelectListItem { Value = "O-", Text = "O-" }
+    };
+        }
 
-                };
+        private IEnumerable<SelectListItem> GetGenders()
+        {
+            return new List<SelectListItem>
+    {
+        new SelectListItem { Value = "Male", Text = "Male" },
+        new SelectListItem { Value = "Female", Text = "Female" },
+        new SelectListItem { Value = "Other", Text = "Other" }
+    };
+        }
 
-            }
 
-
-
-            private IEnumerable<SelectListItem> GetGenders()
-            {
-                return new List<SelectListItem>
-                {
-                     new SelectListItem { Value = "Male", Text = "Male" },
-                     new SelectListItem { Value = "Female", Text = "Female" },
-                     new SelectListItem { Value = "Other", Text = "Other" }
-                 };
-            }
-
-        public ActionResult Index()
+        public ActionResult Dashboard()
         {
             var model = new Allview
             {
@@ -138,11 +213,7 @@ namespace Hospital_System.Controllers
 
             return View(model);
         }
-
-
-
-
-
+      
 
         public ActionResult Ambulanceses()
         {
@@ -152,20 +223,20 @@ namespace Hospital_System.Controllers
 
        
        
-        public ActionResult drive()
+        public ActionResult Drive()
         {
             var drive = patientBAL.GetAmbulanceDrivers();
             
             return View(drive);
         }
 
-        public ActionResult doc()
+        public ActionResult Doc()
         {
             var patient = patientBAL.GetDoctors();
             return View(patient);
         }
 
-        public ActionResult medicals()
+        public ActionResult Medicals()
         {
             var medical = patientBAL.GetMedicines();
             return View(medical);
