@@ -114,46 +114,68 @@
 
                 <ul>
                     <li>
-                        <button class="btn" style="margin-top:80px">Dashboard</button>
+                       
+                        <button class="btn" style="margin-top:80px">
+                            <i class="fas fa-tachometer-alt"></i>
+                             Dashboard
+                        </button>
                         <div class="btn-container">
                             @Html.ActionLink("Dashboard", "Dashboard", "Patient")
                         </div>
-                        
+
                     </li>
                     <li>
-                        <button class="btn" style="margin-top:20px">Profile</button>
+                        <button class="btn" style="margin-top:20px">
+                            <i class="fas fa-user-circle"></i> 
+                            Profile
+                        </button>
                         <div class="btn-container">
                             @Html.ActionLink("Update Profile", "Updateprofile", "Patient")
                         </div>
                     </li>
                     <li>
-                        <button class="btn" style="margin-top:20px">Doctors</button>
+                        <button class="btn" style="margin-top:20px">
+                            <i class="fas fa-user-md"></i> 
+                            Doctors
+                        </button>
                         <div class="btn-container">
                             @Html.ActionLink("Available Doctors", "DoctorList", "Doctor")
                         </div>
                     </li>
                     <li>
-                        <button class="btn" style="margin-top:20px">Appointment</button>
+                        <button class="btn" style="margin-top:20px">
+                            <i class="fas fa-calendar-check"></i>
+                            Appointment
+                        </button>
                         <div class="btn-container">
                             @Html.ActionLink("Request Appointments", "BookAppointment", "Appointment")
                             @Html.ActionLink("Appointment List", "AppointmentList", "Appointment")
                         </div>
                     </li>
                     <li>
-                        <button class="btn" style="margin-top:20px">Prescription</button>
+                        <button class="btn" style="margin-top:20px">
+                            <i class="fas fa-file-prescription"></i>
+                            Prescription
+                        </button>
                         <div class="btn-container">
                             @Html.ActionLink("Your Prescription", "PrecList", "Prescription")
                         </div>
                     </li>
                     <li>
-                        <button class="btn" style="margin-top:20px">Complaint</button>
+                        <button class="btn" style="margin-top:20px">
+                            <i class="fas fa-comments"></i> 
+                            Complaint
+                        </button>
                         <div class="btn-container">
                             @Html.ActionLink("Add Complaint", "RegisterComplaint", "Complaint")
                             @Html.ActionLink("List of Complaints", "ComplaintList", "Complaint")
                         </div>
                     </li>
                     <li>
-                        <button class="btn" style="margin-top:20px">Manage</button>
+                        <button class="btn" style="margin-top:20px">
+                            <i class="fas fa-key"></i>
+                            Manage
+                        </button>
                         <div class="btn-container">
                             @Html.ActionLink("Change Password", "Changepassword", "Patient")
                         </div>

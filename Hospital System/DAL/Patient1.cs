@@ -61,12 +61,23 @@ namespace Hospital_System.DAL
 
         public string Insertprofile(Patients patients)
         {
-            string res= " ";
+            string res = " ";
+            if (string.IsNullOrWhiteSpace(patients.UserName) ||
+                string.IsNullOrWhiteSpace(patients.FirstName) ||
+                string.IsNullOrWhiteSpace(patients.LastName) ||
+                string.IsNullOrWhiteSpace(patients.Email) ||
+                string.IsNullOrWhiteSpace(patients.Password) ||
+                string.IsNullOrWhiteSpace(patients.PhoneNo.ToString()) )
+            
+            {
+                return "Enter All the details";
+            }
             con.Open();
-            cmd = new SqlCommand("insert into profile values ('" + patients.UserName + "','" + patients.FirstName + "','" + patients.LastName + "','" + patients.Email + "','" + patients.Password + "','" + patients.BloodGroup + "','" + patients.Gender + "','" + patients.Age + "'," + patients.PhoneNo + ",'" + patients.Address + "',"+ patients.EmergencyContact +")", con);
-            cmd.ExecuteNonQuery();
+            var sqlq = "insert into profile values('" + patients.UserName + "','" + patients.FirstName + "','" + patients.LastName + "','" + patients.Email + "','" + patients.Password + "','" + patients.BloodGroup + "','" + patients.Gender + "','" + patients.Age + "'," + patients.PhoneNo + ",'" + patients.Address + "'," + patients.EmergencyContact + ")";
+            cmd = new SqlCommand(sqlq, con);
+            res = cmd.ExecuteNonQuery().ToString();
             con.Close();
-            return "added";
+            return res;
         }
 
         public string Updateprofile(Patients patients)
@@ -74,7 +85,7 @@ namespace Hospital_System.DAL
             string res = "";
 
             con.Open();
-            cmd = new SqlCommand("update profile set FirstName='" + patients.FirstName + "',LastName='" + patients.LastName + "',Password='" + patients.Password + "',BloodGroup='" + patients.BloodGroup + "',Gender='" + patients.Gender + "',Age='" + patients.Age + "',PhoneNo='" + patients.PhoneNo + "',Address='" + patients.Address + "', EmergencyContact='" + patients.EmergencyContact + "' where Email='" + patients.Email + "'", con);
+            cmd = new SqlCommand("update profile set FirstName='" + patients.FirstName + "',LastName='" + patients.LastName + "',Email='" + patients.Email + "',BloodGroup='" + patients.BloodGroup + "',Gender='" + patients.Gender + "',Age='" + patients.Age + "',PhoneNo='" + patients.PhoneNo + "',Address='" + patients.Address + "', EmergencyContact='" + patients.EmergencyContact + "' where UserName='" + patients.UserName + "'", con);
             res = cmd.ExecuteNonQuery().ToString();
             con.Close();
 

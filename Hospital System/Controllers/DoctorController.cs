@@ -17,25 +17,27 @@ namespace Hospital_System4r.Controllers
         
         DoctorBAL doctorBAL = new DoctorBAL();
         // GET: Doctor
-        public ActionResult NewDoctor()
-        {
-            return PartialView("NewDoctor");
-        }
-        [HttpPost]
-        public ActionResult NewDoctor(Doctors doctors)
-        {
-            string res = doctorBAL.NewDoctor(doctors);
-            if (res.Contains("1"))
-            {
-                return Redirect("DoctorList");
-            }
-            else
-            {
 
-                return View();
 
-            }
-        }
+        //public ActionResult NewDoctor()
+        //{
+        //    return PartialView("NewDoctor");
+        //}
+        //[HttpPost]
+        //public ActionResult NewDoctor(Doctors doctors)
+        //{
+        //    string res = doctorBAL.NewDoctor(doctors);
+        //    if (res.Contains("1"))
+        //    {
+        //        return Redirect("DoctorList");
+        //    }
+        //    else
+        //    {
+
+        //        return View();
+
+        //    }
+        //}
 
         public ActionResult DoctorList(string Sagar)
         {
@@ -46,11 +48,11 @@ namespace Hospital_System4r.Controllers
             return View(doctors);
         }
 
-        //public ActionResult DEdit()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
+        public ActionResult DEdit()
+        {
+            return View();
+        }
+        [HttpPost]
         public ActionResult DEdit(int Id)
         {
             if (Id <= 0)
@@ -58,8 +60,8 @@ namespace Hospital_System4r.Controllers
 
 
             Doctors doctors = new Doctors();
-            doctors= doctorBAL.DEdit(Id);
-            if (doctors.Id!=0)
+            doctors = doctorBAL.DEdit(Id);
+            if (doctors.Id != 0)
             {
 
                 return View("NewDoctor", doctors);
@@ -67,16 +69,16 @@ namespace Hospital_System4r.Controllers
             else
             {
                 return RedirectToAction("DoctorList", "Doctor");
-               
+
 
             }
         }
 
-        //public ActionResult DDelete()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
+        public ActionResult DDelete()
+        {
+            return View();
+        }
+        [HttpPost]
         public ActionResult DDelete(int Id)
         {
             List<Doctors> doctors = new List<Doctors>();

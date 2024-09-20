@@ -23,24 +23,58 @@ namespace Hospital_System.Controllers
             return View(mAppointment);
 
         }
-
+        [HttpGet]
         public ActionResult BookAppointment()
         {
-            return View();
+            var model = new MAppointment
+            {
+               
+                PatientTypes = new SelectList(GetPatientTypes(), "Value", "Text")
+            };
+
+            return View(model);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult BookAppointment(MAppointment mAppointment)
+
         {
+            
+          if (!ModelState.IsValid)
+          {
+             mAppointment.PatientTypes = GetPatientTypes(); 
+            
+          }
+
+           
+            
             string res = doctorBAL.BookAppointment(mAppointment);
-            if (res.Contains("1"))
+
+
+            if (res == "1")
             {
-                return Redirect("BookAppointment");
+                TempData["Message"] = "Booked Successfully";
+                return RedirectToAction("BookAppointment");
             }
-            else
-            {
-                return View();
-            }
+            
+                TempData["message"] = "An error occurred. Please try again.";
+           
+
+            mAppointment.PatientTypes = GetPatientTypes();
+            return View(mAppointment);
         }
+
+
+        private IEnumerable<SelectListItem> GetPatientTypes()
+        {
+            return new List<SelectListItem>
+    {
+        new SelectListItem { Value = "New", Text = "New Patient" },
+        new SelectListItem { Value = "Returning", Text = "Returning Patient" },
+        new SelectListItem { Value = "Emergency", Text = "Emergency Patient" }
+    };
+        }
+
 
         public ActionResult Dash()
         {

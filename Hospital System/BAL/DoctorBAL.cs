@@ -12,11 +12,11 @@ namespace Hospital_System.BAL
     {
         DoctorDAL doctorDAL = new DoctorDAL();
 
-        public string NewDoctor(Doctors doctors)
-        {
-            string res = doctorDAL.NewDoctor(doctors);
-            return res;
-        }
+        //public string NewDoctor(Doctors doctors)
+        //{
+        //    string res = doctorDAL.NewDoctor(doctors);
+        //    return res;
+        //}
 
         public List<Doctors> DoctorList(string Sagar)
         {
@@ -55,11 +55,7 @@ namespace Hospital_System.BAL
             return res;
         }
 
-        public string RegistrationPage(MRegistration mRegistration)
-        {
-            string res = doctorDAL.RegistrationPage(mRegistration);
-            return res;
-        }
+      
 
 
         public List<MComplaint> RegisterComplaint(MComplaint mComplaint)
@@ -74,9 +70,9 @@ namespace Hospital_System.BAL
             return doctorDAL.ComplaintList();
         }
 
-        public MComplaint EEdit(int Id)
+        public MComplaint CEdit(int Id)
         {
-            MComplaint mComplaints = doctorDAL.EEdit(Id);
+            MComplaint mComplaints = doctorDAL.CEdit(Id);
 
             return mComplaints;
         }

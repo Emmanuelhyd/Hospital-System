@@ -146,7 +146,7 @@ $(document).ready(function() {
         <div class="header">
             <input type="search" id="Sagar" name="Sagar" style="width: 281px; height: 32px;">
             <input type="submit" value="Search" style="color: white; background-color: #007BFF; border-color: #007bff; width: 100px; height: 33px; ">
-            <input type="button" value="CreateNew" onclick="createNew()" class="btn btn-primary" />
+            @*<input type="button" value="CreateNew" onclick="createNew()" class="btn btn-primary" />*@
         </div>
 
         <table class="doctor-table">
@@ -183,6 +183,7 @@ $(document).ready(function() {
                 }
             </tbody>
         </table>
+        @Html.ActionLink("Back","Dashboard","Patient")
     </div>
 }
 

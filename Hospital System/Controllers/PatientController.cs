@@ -30,13 +30,12 @@ namespace Hospital_System.Controllers
             return View();
         }
 
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login( Patients patients)
 
         {
+           
             string res = patientBAL.Login(patients);
 
           if(res== "success")
@@ -54,116 +53,61 @@ namespace Hospital_System.Controllers
         [HttpGet]
         public ActionResult Insertprofile()
         {
+            return View(new Patients());
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Insertprofile(Patients patients)
+        {
+            if (!ModelState.IsValid)
+            {
+                string res = patientBAL.Insertprofile(patients);
+                if (res == "1")
+                {
+                    TempData["result"] = "Registered";
+                    return RedirectToAction("Login");
+                }
+            }
+            
+                TempData["result"] = "Enter All the details";
+            
+
+            return View(patients);
+        }
+
+        [HttpGet]
+        public ActionResult Updateprofile()
+        {
             var model = new Patients
             {
-
+                
                 BloodGroups = new SelectList(GetBloodGroups(), "Value", "Text"),
                 GetGenders = new SelectList(GetGenders(), "Value", "Text")
             };
 
             return View(model);
-            
         }
+
         [HttpPost]
-        public ActionResult Insertprofile(Patients patients)
-        {
-            string res = patientBAL.Insertprofile(patients);
-            return RedirectToAction("Login");
-            
-        }
-
-
-
-        //[HttpGet]
-        //public ActionResult Updateprofile( string Email)
-        //{
-        //    var model = new Patients
-        //    {
-
-        //        BloodGroups = new SelectList(GetBloodGroups(), "Value", "Text"),
-        //        GetGenders = new SelectList(GetGenders(), "Value", "Text")
-        //    };
-
-        //    return View(model);
-        //}
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-
-        //public ActionResult UpdateProfile(Patients patients)
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        string res = patientBAL.Updateprofile(patients);
-        //        if (res == "1")
-        //        {
-
-        //            ViewBag.Message = res;
-        //            return View(patients);
-        //        }
-        //        else
-        //        {
-        //            ViewBag.Message = "Invalid Email";
-        //        }
-
-        //    }
-        //    patients.BloodGroups = GetBloodGroups();
-        //    patients.GetGenders = GetGenders();
-        //    return View(patients);
-
-
-
-
-        //}
-        //    private IEnumerable<SelectListItem> GetBloodGroups()
-        //    {
-        //        return new List<SelectListItem>
-        //        {
-
-        //            new SelectListItem { Value = "A+", Text = "A+" },
-        //            new SelectListItem { Value = "B+", Text = "B+" },
-        //            new SelectListItem { Value = "AB+", Text = "AB+" },
-        //            new SelectListItem { Value = "O+", Text = "O+" },
-        //            new SelectListItem { Value = "A-", Text = "A-" },
-        //            new SelectListItem { Value = "B-", Text = "B-" },
-        //            new SelectListItem { Value = "AB-", Text = "AB-" },
-        //            new SelectListItem { Value = "O-", Text = "O-" }
-
-        //        };
-
-        //    }
-
-
-        //    private IEnumerable<SelectListItem> GetGenders()
-        //    {
-        //        return new List<SelectListItem>
-        //        {
-        //             new SelectListItem { Value = "Male", Text = "Male" },
-        //             new SelectListItem { Value = "Female", Text = "Female" },
-        //             new SelectListItem { Value = "Other", Text = "Other" }
-        //         };
-        //    }
-
-
-
+        [ValidateAntiForgeryToken]
         public ActionResult UpdateProfile(Patients patients)
         {
 
-            if (ModelState.IsValid)
-            {
+            
+            
                 string res = patientBAL.Updateprofile(patients);
                 if (res == "1")
                 {
-                    ViewBag.Message = "Profile updated successfully!";
+                    TempData["Message"]= "Profile updated successfully!";
 
-                    return RedirectToAction("Login");
+                    return RedirectToAction("Dashboard");
                 }
                 else
                 {
-                    ViewBag.Message = "Invalid Email";
+                    TempData["Message"]= "Invalid UserName";
                 }
-            }
+           
 
 
             patients.BloodGroups = GetBloodGroups();
@@ -256,21 +200,28 @@ namespace Hospital_System.Controllers
 
             if (res == "1")
             {
-                Session["valid"] = "Updated";
+                TempData["valid"] = "Updated";
                 return RedirectToAction("Login", "Patient");
             }
 
             else
             {
-                Session["valid"] = "Invalid UserName";
-                ViewBag.Message = "Invalid UserName";
+                
+                TempData["valid"] = "Invalid UserName";
                 return View(patients);
             }
 
         }
+        [HttpGet]
+        public ActionResult Forgotpassword()
+        {
 
-        
+            return View();
+        }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Forgotpassword(Patients patients)
         {
             string res = patientBAL.Changepassword(patients);

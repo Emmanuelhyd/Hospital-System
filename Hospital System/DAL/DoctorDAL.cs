@@ -32,36 +32,36 @@ namespace Hospital_System.DAL
         }
 
 
-        public string NewDoctor(Doctors doctors)
-        {
+        //public string NewDoctor(Doctors doctors)
+        //{
 
-            var ids = 0;
-            con.Open();
-            cmd = new SqlCommand("select * from Ward where Id='" + doctors.Id + "'", con);
-            reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-                    ids = Convert.ToInt32(reader["Id"]);
-            }
+        //    var ids = 0;
+        //    con.Open();
+        //    cmd = new SqlCommand("select * from Ward where Id='" + doctors.Id + "'", con);
+        //    reader = cmd.ExecuteReader();
+        //    if (reader.Read())
+        //    {
+        //            ids = Convert.ToInt32(reader["Id"]);
+        //    }
             
-            reader.Close();
-            con.Close();
+        //    reader.Close();
+        //    con.Close();
             
 
 
-            con.Open();
-            if (ids == 0)
-            {
-                cmd = new SqlCommand("insert into Ward(Id,Name,Department,Designation,Education,PhoneNumber,Gender,Status) values(" + doctors.Id + ",'" + doctors.Name + "','" + doctors.Department + "','" + doctors.Designation + "','" + doctors.Education + "','" + doctors.PhoneNumber + "','" + doctors.Gender + "','" + doctors.Status + "')", con);
+        //    con.Open();
+        //    if (ids == 0)
+        //    {
+        //        cmd = new SqlCommand("insert into Ward(Id,Name,Department,Designation,Education,PhoneNumber,Gender,Status) values(" + doctors.Id + ",'" + doctors.Name + "','" + doctors.Department + "','" + doctors.Designation + "','" + doctors.Education + "','" + doctors.PhoneNumber + "','" + doctors.Gender + "','" + doctors.Status + "')", con);
 
-            }
-            else
-            {
-                cmd = new SqlCommand("update Ward set Name='" + doctors.Name + "',Department='" + doctors.Department + "',Designation='" + doctors.Designation + "',Education='" + doctors.Education + "',PhoneNumber='" + doctors.PhoneNumber + "',Gender='" + doctors.Gender + "',Status='" + doctors.Status + "' where Id='" + doctors.Id + "'", con);
-            }
-            cmd.ExecuteNonQuery();
-            con.Close();
-            return "NewDoctor";
+        //    }
+        //    else
+        //    {
+        //        cmd = new SqlCommand("update Ward set Name='" + doctors.Name + "',Department='" + doctors.Department + "',Designation='" + doctors.Designation + "',Education='" + doctors.Education + "',PhoneNumber='" + doctors.PhoneNumber + "',Gender='" + doctors.Gender + "',Status='" + doctors.Status + "' where Id='" + doctors.Id + "'", con);
+        //    }
+        //    cmd.ExecuteNonQuery();
+        //    con.Close();
+        //    return "NewDoctor";
 
 
 
@@ -70,7 +70,7 @@ namespace Hospital_System.DAL
             //cmd.ExecuteNonQuery();
             //con.Close();
 
-        }
+        //}
 
        
 
@@ -245,22 +245,27 @@ namespace Hospital_System.DAL
 
         public string BookAppointment(MAppointment mAppointment)
         {
+            string res = "";
+            if (string.IsNullOrWhiteSpace(mAppointment.PatientName) ||
+                string.IsNullOrWhiteSpace(mAppointment.PatientType) ||
+                string.IsNullOrWhiteSpace(mAppointment.Problem) ||
+                string.IsNullOrWhiteSpace(mAppointment.PhoneNumber.ToString()) || 
+                string.IsNullOrWhiteSpace(mAppointment.Address) ||
+                mAppointment.Date == default(DateTime) ||
+                mAppointment.Time == default(TimeSpan)) 
+            {
+                return "Enter All the details"; 
+            }
+
             con.Open();
-            cmd = new SqlCommand("insert into BookApp values('" + mAppointment.PatientName + "','" + mAppointment.PatientType + "','" + mAppointment.Problem + "','" + mAppointment.PhoneNumber + "','" + mAppointment.Address + "','" + mAppointment.Date + "','"+mAppointment.Time+"')", con);
-            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("insert into BookApp values('" + mAppointment.PatientName + "','" + mAppointment.PatientType + "','" + mAppointment.Problem + "'," + mAppointment.PhoneNumber + ",'" + mAppointment.Address + "','" + mAppointment.Date + "','"+mAppointment.Time+"')", con);
+            res = cmd.ExecuteNonQuery().ToString();
             con.Close();
-            return "BookAppointment";
+            return res;
         }
 
 
-        public string RegistrationPage(MRegistration mRegistration)
-        {
-            con.Open();
-            cmd = new SqlCommand("insert into Registration values('" + mRegistration.UserName + "','" + mRegistration.FirstName + "','" + mRegistration.LastName + "','" + mRegistration.Password + "','" + mRegistration.Email + "','" + mRegistration.PhoneNumber + "','" + mRegistration.Gender + "')", con);
-            cmd.ExecuteNonQuery();
-            con.Close();
-            return "RegistrationPage";
-        }
+        
         public List<MComplaint> RegisterComplaint(MComplaint mComplaint)
         {
             //con.Open();
@@ -328,7 +333,7 @@ namespace Hospital_System.DAL
             }
         }
 
-        public MComplaint EEdit(int Id)
+        public MComplaint CEdit(int Id)
         {
             MComplaint mComplaint = new MComplaint();
 

@@ -1,28 +1,70 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Hospital_System.Models
 {
     public class MAppointment
     {
-        public string DoctorName {  get; set; }
-        public string Speciality { get; set; }
-        public string Education { get; set; }
-        public string Timings { get; set; }
-        public string Status { get; set; }
-        public string Action { get; set; }
+       
+       
+            [Required(ErrorMessage = "Doctor Name is required.")]
+            [StringLength(100, ErrorMessage = "Doctor Name cannot be longer than 100 characters.")]
+            public string DoctorName { get; set; }
 
-        public string PatientName {  get; set; }
-        public string PatientType { get; set; }
-        public string Problem { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Address { get; set; }
-        public string Date { get; set; }
-        public string Time { get; set; }
+            [Required(ErrorMessage = "Speciality is required.")]
+            [StringLength(50, ErrorMessage = "Speciality cannot be longer than 50 characters.")]
+            public string Speciality { get; set; }
+
+            [Required(ErrorMessage = "Education is required.")]
+            [StringLength(150, ErrorMessage = "Education cannot be longer than 150 characters.")]
+            public string Education { get; set; }
+
+            [Required(ErrorMessage = "Timings are required.")]
+            public string Timings { get; set; }
+
+            [Required(ErrorMessage = "Status is required.")]
+            public string Status { get; set; }
+
+            public string Action { get; set; }
+
+            [Required(ErrorMessage = "Patient Name is required.")]
+            [StringLength(100, ErrorMessage = "Patient Name cannot be longer than 100 characters.")]
+            public string PatientName { get; set; }
+
+            [Required(ErrorMessage = "Patient Type is required.")]
+            [StringLength(50, ErrorMessage = "Patient Type cannot be longer than 50 characters.")]
+            public string PatientType { get; set; }
+
+            [Required(ErrorMessage = "Problem description is required.")]
+            [StringLength(250, ErrorMessage = "Problem description cannot be longer than 250 characters.")]
+            public string Problem { get; set; }
+
+            [Required(ErrorMessage = "Phone Number is required")]
+            [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone Number must be 10 digits.")]
+            public long? PhoneNumber { get; set; }
+
+            [Required(ErrorMessage = "Address is required.")]
+            [StringLength(250, ErrorMessage = "Address cannot be longer than 250 characters.")]
+            public string Address { get; set; }
+
+            [Required(ErrorMessage = "Date is required.")]
+            [DataType(DataType.Date)]
+            public DateTime Date { get; set; }
+
+            [Required(ErrorMessage = "Time is required.")]
+            [DataType(DataType.Time)]
+           public TimeSpan Time { get; set; } 
+
+            public IEnumerable<SelectListItem> PatientTypes { get; set; }
 
 
 
+        }
     }
-}
+
+
+
