@@ -18,26 +18,13 @@ namespace Hospital_System.BAL
         //    return res;
         //}
 
-        public List<Doctors> DoctorList(string Sagar)
-        {
-            List<Doctors> doctors = new List<Doctors>();
-            doctors= doctorDAL.DoctorList(Sagar);
-            return doctors;
-        }
-
-        public Doctors DEdit(int Id)
-        {
-           Doctors doctors= doctorDAL.DEdit(Id);
-            return doctors;
-        }
-
-        public List<Doctors> DDelete(int Id)
+        public List<Doctor> GetDoctors(string searchvalue)
         {
            
-
-            List<Doctors> res = doctorDAL.DDelete(Id);
-            return res;
+           return doctorDAL.GetDoctors(searchvalue);
         }
+
+      
 
         public List<MPrescription> GetPrecList()
         {
@@ -76,5 +63,9 @@ namespace Hospital_System.BAL
 
             return mComplaints;
         }
+
+
+
+
     }
 }

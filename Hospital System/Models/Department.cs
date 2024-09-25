@@ -9,7 +9,7 @@ namespace Hospital_System.Models
     public class Department
     {
 
-        public string Id { get; set; }
+        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

@@ -4,11 +4,13 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hospital_System.Models
 {
     public class Patients
     {
+        public int PatientId { get; set; }
 
         [Required(ErrorMessage = "User Name is required")]
         [StringLength(50, ErrorMessage = "User Name cannot be longer than 50 characters")]
@@ -39,16 +41,22 @@ namespace Hospital_System.Models
         [Range(1, 120, ErrorMessage = "Age must be between 1 and 120.")]
         public string Age { get; set; }
 
-        //[Required(ErrorMessage = "Phone Number is required")]
+        [Required(ErrorMessage = "Phone Number is required")]
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone Number must be 10 digits.")]
-        public long PhoneNo { get; set; }
+        public string PhoneNo { get; set; }
 
         //[Required(ErrorMessage = "Emergency Contact is required")]
-        [RegularExpression(@"^\d{10}$", ErrorMessage = "Emergency Contact must be 10 digits.")]
-        public long EmergencyContact { get; set; }
+        //[RegularExpression(@"^\d{10}$", ErrorMessage = "Emergency Contact must be 10 digits.")]
+        public string EmergencyContact { get; set; }
 
         [Required(ErrorMessage = "Address is required")]
         public string Address { get; set; }
+
+        [NotMapped] // Ensure this property is not mapped to the database
+        [Required(ErrorMessage = "Confirm Password is required.")]
+        [DataType(DataType.Password)]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
 
         public IEnumerable<SelectListItem> BloodGroups { get; set; }
         public IEnumerable<SelectListItem> GetGenders { get; set; }

@@ -10,6 +10,8 @@ namespace Hospital_System.Models
 {
     public class Medicine
     {
+        public int PatientId { get; set; }
+        public string PatientName { get; set; }
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }

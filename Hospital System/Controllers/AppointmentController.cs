@@ -28,7 +28,7 @@ namespace Hospital_System.Controllers
         {
             var model = new MAppointment
             {
-               
+                Getproblems=new SelectList(Getproblems(),"value","Text"),
                 PatientTypes = new SelectList(GetPatientTypes(), "Value", "Text")
             };
 
@@ -45,9 +45,6 @@ namespace Hospital_System.Controllers
              mAppointment.PatientTypes = GetPatientTypes(); 
             
           }
-
-           
-            
             string res = doctorBAL.BookAppointment(mAppointment);
 
 
@@ -74,6 +71,22 @@ namespace Hospital_System.Controllers
         new SelectListItem { Value = "Emergency", Text = "Emergency Patient" }
     };
         }
+
+
+        private IEnumerable<SelectListItem> Getproblems()
+        {
+            return new List<SelectListItem>
+            {
+                new SelectListItem{Value="Fever",Text="Viral Fever"},
+                new SelectListItem { Value = "Cold", Text = "Cold" },
+                new SelectListItem { Value = "Fever", Text = "Fever" },
+                new SelectListItem { Value = "Headache", Text = "Headache" },
+                new SelectListItem { Value = "Other", Text = "Other" }
+            };
+        }
+
+
+
 
 
         public ActionResult Dash()

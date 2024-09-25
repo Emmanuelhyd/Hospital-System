@@ -7,13 +7,14 @@ namespace Hospital_System.Models
 {
     public class MPrescription
     {
+        public int Id { get; set; }
         public string PatientName {  get; set; }
         public string DoctorName { get; set; }
         public string Problem { get; set; }
         public string Medicine { get; set; }
         public string Morning { get; set; }
         public string Afternoon { get; set; }
-        public string Night { get; set; }
+        public string Evening  { get; set; }
 
     }
 }

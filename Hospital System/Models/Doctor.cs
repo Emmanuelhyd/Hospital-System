@@ -11,10 +11,7 @@ namespace Hospital_System.Models
     public class Doctor
     {
 
-        public int Id { get; set; }
-
-
-
+        public int DoctorId { get; set; }
 
         public string FullName { get; set; }
 
@@ -39,11 +36,11 @@ namespace Hospital_System.Models
 
         public string Address { get; set; }
         [Display(Name = "Phone No")]
-        public string PhoneNo { get; set; }
+        public string  PhoneNo { get; set; }
 
         [Required]
         [Display(Name = "Mobile No")]
-        public string ContactNo { get; set; }
+        public string  ContactNo { get; set; }
 
         [Required]
         public string Specialization { get; set; }
@@ -65,5 +62,6 @@ namespace Hospital_System.Models
 
         [Required]
         public string Status { get; set; }
+        public string PhotoUrl { get; set; } 
     }
 }

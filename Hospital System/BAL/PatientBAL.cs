@@ -20,7 +20,7 @@ namespace Hospital_System.BAL
         Patient1 patient = new Patient1();
 
 
-       
+
 
         public string Login(Patients patients)
         {
@@ -29,24 +29,32 @@ namespace Hospital_System.BAL
 
         }
 
+
+
         public string Updateprofile(Patients patients)
         {
-            string res = patient.Updateprofile(patients);
-            return res;
+            string loggedInUsername = HttpContext.Current.Session["Username"] as string; // Retrieve username from session
+
+            if (!string.Equals(patients.UserName, loggedInUsername, StringComparison.OrdinalIgnoreCase))
+            {
+                return "Unauthorized: You can only update your own profile.";
+            }
+
+            return patient.Updateprofile(patients);
         }
 
         public string Insertprofile(Patients patients)
         {
-            string res=patient.Insertprofile(patients);
+            string res = patient.Insertprofile(patients);
             return res;
         }
 
-            public int GetDepartmentCount() => patient.GetDepartmentCount();
+        public int GetDepartmentCount() => patient.GetDepartmentCount();
         public int GetDoctorCount() => patient.GetDoctorCount();
         public int GetPatientCount() => patient.GetPatientCount();
         public int GetAmbulanceCount() => patient.GetAmbulanceCount();
         public int GetDriverCount() => patient.GetDriverCount();
-        public int GetMedicineCount() => patient.GetMedicineCount();
+        public int GetMedicineCount(decimal patientId) => patient.GetMedicineCount(patientId);
         public int GetActiveAppointmentsCount() => patient.GetActiveAppointmentsCount();
         public int GetPendingAppointmentsCount() => patient.GetPendingAppointmentsCount();
 
@@ -55,7 +63,7 @@ namespace Hospital_System.BAL
         {
             return patient.GetAmbulances();
         }
-       
+
         public List<AmbulanceDriver> GetAmbulanceDrivers()
         {
             return patient.GetAmbulanceDrivers();
@@ -66,15 +74,17 @@ namespace Hospital_System.BAL
             return patient.GetDoctors();
         }
 
-        public List<Medicine> GetMedicines()
+        public Doctor GetDoctorsId(int DoctorId)
         {
-            return patient.GetMedicines();
+            return patient.GetDoctorsId(DoctorId);
         }
 
 
+        public List<Medicine> GetMedicines(decimal patientId)
+        {
+            return patient.GetMedicines(patientId);
+        }
 
-
-      
         public string Changepassword(Patients patients)
         {
             string res = patient.Changepassword(patients);
@@ -84,12 +94,12 @@ namespace Hospital_System.BAL
         public string Forgotpassword(Patients patients)
 
         {
-            string res=patient.Forgotpassword(patients);
+            string res = patient.Forgotpassword(patients);
             return res;
         }
 
 
-        }
+
+    }
+
 }
-
-

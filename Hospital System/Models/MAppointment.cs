@@ -57,13 +57,18 @@ namespace Hospital_System.Models
 
             [Required(ErrorMessage = "Time is required.")]
             [DataType(DataType.Time)]
-           public TimeSpan Time { get; set; } 
+            public TimeSpan Time { get; set; } 
+
+
+            public string Description { get; set; }
 
             public IEnumerable<SelectListItem> PatientTypes { get; set; }
 
+            public IEnumerable<SelectListItem> Getproblems { get; set; }
 
 
-        }
+
+    }
     }
 
 

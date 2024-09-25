@@ -1,5 +1,5 @@
-﻿  
-
+﻿
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @model IEnumerable<Hospital_System.Models.Doctor>
 
 @{
@@ -12,6 +12,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
     <title>@ViewBag.Title</title>
     <style>
         body {
@@ -29,10 +31,8 @@
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-left: 242px;
-            position: absolute;
-            margin-top: 71px;
-        
+            margin-left: 259px;
+            margin-top: 3px;
         }
 
         h2 {
@@ -71,21 +71,47 @@
         .table-container {
             overflow-x: auto;
         }
+
+        #doctorPopup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none; /* Hidden by default */
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none; /* Hidden by default */
+            z-index: 999;
+        }
     </style>
+
 </head>
 <body>
     <div class="container">
         <h2>@ViewBag.Title</h2>
         <div class="table-container">
+
             <table>
                 <thead>
                     <tr>
                         <th>@Html.DisplayNameFor(model => model.First().FullName)</th>
                         <th>@Html.DisplayNameFor(model => model.First().Email)</th>
                         <th>@Html.DisplayNameFor(model => model.First().Department)</th>
-
                         <th>@Html.DisplayNameFor(model => model.First().Designation)</th>
                         <th>@Html.DisplayNameFor(model => model.First().Status)</th>
+                        <th>Profile</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -95,9 +121,11 @@
                             <td>@Html.DisplayFor(modelItem => item.FullName)</td>
                             <td>@Html.DisplayFor(modelItem => item.Email)</td>
                             <td>@Html.DisplayFor(modelItem => item.Department)</td>
-
                             <td>@Html.DisplayFor(modelItem => item.Designation)</td>
                             <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                            <td>
+                                <a href="javascript:void(0);" onclick="showDoctorDetails(@item.DoctorId)">View</a>
+                            </td>
                         </tr>
                     }
                 </tbody>
@@ -105,5 +133,39 @@
             @Html.ActionLink("Back", "Dashboard", "Patient")
         </div>
     </div>
+
+    <div id="doctorPopup" style="display:none;">
+        <!-- Placeholder for the doctor details partial view -->
+    </div>
+
+    <div id="overlay" style="display:none;"></div>
+
+    <script>
+    function showDoctorDetails(doctorId) {
+        $.ajax({
+            url: '@Url.Action("Doctordetails", "Patient")',
+            type: 'GET',
+            data: { DoctorId: doctorId },
+            success: function (data) {
+                $('#doctorPopup').html(data);
+                $('#doctorPopup').show();
+                $('#overlay').show();
+            },
+            error: function () {
+                alert("Error loading doctor details.");
+            }
+        });
+    }
+
+    function closePopup() {
+        $('#doctorPopup').hide();
+        $('#overlay').hide();
+    }
+    </script>
 </body>
 </html>
+
+
+
+
+

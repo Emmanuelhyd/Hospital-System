@@ -18,10 +18,12 @@ namespace Hospital_System.Controllers
         // GET: Prescription
         public ActionResult PrecList()
         {
+           
+           
+                var mPrescription = doctorBAL.GetPrecList();
+                return View(mPrescription);
+           
             
-            var mPrescription = doctorBAL.GetPrecList();
-            return View(mPrescription);
-
         }
     }
 }
