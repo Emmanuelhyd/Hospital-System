@@ -69,6 +69,12 @@ namespace Hospital_System.BAL
             return patient.GetAmbulanceDrivers();
         }
 
+        public AmbulanceDriver GetdriverId (int DriverId)
+        {
+
+            return patient.GetdriverId(DriverId);
+        }
+
         public List<Doctor> GetDoctors()
         {
             return patient.GetDoctors();
@@ -97,6 +103,33 @@ namespace Hospital_System.BAL
             string res = patient.Forgotpassword(patients);
             return res;
         }
+
+
+        //public List<Medicine> GetPrecList(int patientId)
+        //{
+        //    return patient.GetPrecList(patientId);
+        //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

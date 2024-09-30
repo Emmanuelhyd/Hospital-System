@@ -7,7 +7,7 @@ namespace Hospital_System.Models
 {
     public class MPrescription
     {
-        public int Id { get; set; }
+        public int PatientId { get; set; }
         public string PatientName {  get; set; }
         public string DoctorName { get; set; }
         public string Problem { get; set; }

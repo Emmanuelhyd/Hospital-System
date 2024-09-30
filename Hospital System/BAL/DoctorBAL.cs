@@ -11,6 +11,7 @@ namespace Hospital_System.BAL
     public class DoctorBAL
     {
         DoctorDAL doctorDAL = new DoctorDAL();
+        Patient1 patient1 = new Patient1();
 
         //public string NewDoctor(Doctors doctors)
         //{
@@ -20,16 +21,12 @@ namespace Hospital_System.BAL
 
         public List<Doctor> GetDoctors(string searchvalue)
         {
-           
-           return doctorDAL.GetDoctors(searchvalue);
+
+            return doctorDAL.GetDoctors(searchvalue);
         }
 
-      
 
-        public List<MPrescription> GetPrecList()
-        {
-            return doctorDAL.GetPrecList();
-        }
+
 
         public List<MAppointment> GetAppointmentList(string searchvalue)
         {
@@ -42,7 +39,7 @@ namespace Hospital_System.BAL
             return res;
         }
 
-      
+
 
 
         public List<MComplaint> RegisterComplaint(MComplaint mComplaint)
@@ -65,7 +62,10 @@ namespace Hospital_System.BAL
         }
 
 
+        public List<Medicine> GetMedicines(decimal patientId)
+        {
+            return patient1.GetMedicines(patientId);
 
-
+        }
     }
 }

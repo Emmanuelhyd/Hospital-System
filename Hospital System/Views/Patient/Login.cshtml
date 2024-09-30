@@ -1,42 +1,50 @@
 ﻿@model Hospital_System.Models.Patients
+
 @{
     ViewBag.Title = "Login";
 }
-<img src="~/Images/log.jpg" style=" width: 1331px; height: 586px;" />
-<style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMU01kpu1nY20dV62M4a9f1gAwl0Q8e61Kqgl" crossorigin="anonymous" />
 
+
+<style>
     body {
         font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
+        /*   background-color: #f4f4f4;*/
         margin: 0;
         padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
     }
-
 
     .login-container {
-        max-width: 500px;
-        margin: 50px auto;
-        padding: 20px;
-        /*background-color: #fff;*/
+        max-width: 400px;
+        width: 100%;
+        padding: 136px;
+       /* background-color: #fff;
         border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        position: relative;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);*/
+        margin-left: -131px;
+        height: 280px;
     }
 
+    h2 {
+        text-align: center;
+        color: #007bff;
+    }
 
     .form-group {
         margin-bottom: 20px;
     }
 
-
     .form-label {
         display: block;
-        font-size: 1.1rem;
+        font-size: 1rem;
         color: #333;
         margin-bottom: 8px;
         font-weight: 500;
     }
-
 
     .form-control {
         width: 100%;
@@ -54,7 +62,6 @@
             outline: none;
         }
 
-
     .text-danger {
         color: #dc3545;
         font-size: 0.875rem;
@@ -62,11 +69,10 @@
         font-weight: 600;
     }
 
-
     .btn-submit {
         display: inline-block;
-        padding: 10px 20px;
-        font-size: 1.1rem;
+        padding: 12px 20px;
+        font-size: 1rem;
         color: #fff;
         background-color: #007bff;
         border: none;
@@ -83,53 +89,96 @@
             background-color: #0056b3;
         }
 
-
     .form-link {
         display: block;
         text-align: center;
         margin-top: 10px;
         color: #007bff;
         text-decoration: none;
-        margin-left: -358px;
     }
 
         .form-link:hover {
             text-decoration: underline;
         }
+
+
+    media (max-width: 500px) {
+        .login-container
+
+    {
+        padding: 15px;
+        margin: 0 10px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+    .input-icon {
+        position: relative;
+    }
+
+        .input-icon i {
+            position: absolute;
+            left: 10px; /* Adjust for lock icon */
+            top: 50%;
+            transform: translateY(-50%);
+            color: #007bff; /* Color for lock icon */
+            pointer-events: none; /* Prevent clicks on the lock icon */
+        }
+
+        .input-icon #togglePassword {
+            left: auto;
+            right: 10px; /* Position eye icon on the right */
+            color: #007bff; /* Color for eye icon */
+            cursor: pointer;
+        }
+
+
+
 </style>
 
 @using (Html.BeginForm())
 {
+    <div class="login-container">
+        <h2>@ViewBag.Title</h2>
 
-    <div style="margin-top: -500px;">
         @Html.AntiForgeryToken()
 
-        <div class="login-container">
-            <h2>@ViewBag.Title</h2>
 
-            @TempData["Invalid"]
+        @TempData["Invalid"]
+        @TempData["Message"]
 
-            <div class="form-group">
-                <label for="UserName" style="color:blue">UserName<span style="color: red; font-weight: bold">*</span></label>
-                <br />
-                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "UserName" })<br />
-                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-            </div>
+        <div class="form-group">
+            <label for="UserName" class="form-label">UserName<span style="color: red; font-weight: bold">*</span></label>
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "UserName" })
+            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+        </div>
 
-            <div class="form-group">
-                <label for="Password" style="color:blue">Password<span style="color: red; font-weight: bold">*</span></label>  <br />
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })<br />
+        <div class="form-group">
+            <label for="Password" class="form-label">Password<span style="color: red; font-weight: bold">*</span></label>
+            <div class="input-icon">
+                <i class="fas fa-lock"></i>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                <i class="fas fa-eye" id="togglePassword"></i>
                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+            </div>
             </div>
 
             <input type="submit" value="Login" class="btn-submit" />
 
             <a href="@Url.Action("Forgotpassword", "Patient")" class="form-link">Forgot Password?</a>
-            <div style=" margin-left: -75px;">
-            <a href="@Url.Action("Insertprofile", "Patient")" class="form-link">Sign Up</a>
-          </div>
-        </div>
 
-        
-    </div>
+            <a href="@Url.Action("Insertprofile", "Patient")" style="margin-left: 115px; margin-top: 16px; text-decoration: none; color: dodgerblue;">Sign Up</a>
+        </div>
 }
+
+
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function () {
+        const passwordInput = document.getElementById('PasswordInput');
+        const passwordType = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', passwordType);
+        this.classList.toggle('fa-eye-slash'); // Toggle icon
+    });
+</script>

@@ -1,4 +1,60 @@
-﻿@model IEnumerable<Hospital_System.Models.Ambulance>
+﻿@*@model IEnumerable<Hospital_System.Models.Ambulance>
+
+    @{
+        ViewBag.Title = "Ambulances";
+        //Layout = "~/Views/Shared/_PatientLayout.cshtml";
+    }
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
+
+
+
+
+    </head>
+    <body>
+        <div class="container mt-5">
+            <h2>List of Ambulances</h2>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Id)</th>
+                            <th>@Html.DisplayNameFor(model => model.Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.AmbulanceId)</th>
+                            <th>@Html.DisplayNameFor(model => model.AmbulanceStatus)</th>
+                            <th>@Html.DisplayNameFor(model => model.AmbulanceDriver)</th>
+                            <th>@Html.DisplayNameFor(model => model.AmbulanceDriverId)</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var ambulance in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => ambulance.Id)</td>
+                                <td>@Html.DisplayFor(modelItem => ambulance.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceId)</td>
+                                <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceStatus)</td>
+                                <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceDriver)</td>
+                                <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceDriverId)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @Html.ActionLink("Back", "Dashboard", "Patient")
+            </div>
+
+        </div>
+    </body>
+    </html>*@
+
+
+@model IEnumerable<Hospital_System.Models.Ambulance>
 
 @{
     ViewBag.Title = "Ambulances";
@@ -10,79 +66,87 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title>@ViewBag.Title</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            background-color: #f8f9fa; /* Light background for contrast */
             margin: 0;
             padding: 0;
         }
 
         .container {
-            width: 75%;
-            max-width: 1200px;
-            margin: 30px auto;
+            max-width: 1200px; /* Set a max width for the container */
+            margin: 20px auto;
             padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-left: 258px;
+       /*     background-color: white;  White background for content 
+            border-radius: 8px;  Rounded corners 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);  Subtle shadow */
             position: absolute;
-            margin-top: 71px;
+            margin-left: 329px;
         }
 
         h2 {
+            text-align: center;
             margin-bottom: 20px;
             color: #333;
-            font-size: 2rem;
-            text-align: center;
         }
 
-        table {
+        .table {
             width: 100%;
-            border-collapse: collapse;
-            margin: 0;
+            border-collapse: collapse; /* Remove gaps between table cells */
         }
 
         th, td {
             padding: 12px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border: 1px solid #dee2e6; /* Light grey border */
         }
 
         th {
-            background-color: #007bff;
-            color: #ffffff;
-            font-weight: bold;
+            background-color: #007bff; /* Blue background for the header */
+            color: white; /* White text for the header */
+            font-weight: bold; /* Bold text for header */
         }
 
-        tbody tr:nth-child(odd) {
-            background-color: #f9f9f9;
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Light grey for even rows */
         }
 
-        tbody tr:hover {
-            background-color: #e2e2e2;
+        tr:hover {
+            background-color: #e9ecef; /* Light highlight on hover */
         }
 
-        .table-container {
-            overflow-x: auto;
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #007bff; /* Blue background for button */
+            color: white; /* White text for button */
+            text-decoration: none; /* Remove underline */
+            border-radius: 4px; /* Rounded corners */
+            transition: background-color 0.3s; /* Smooth transition */
         }
+
+            a:hover {
+                background-color: #0056b3; /* Darker blue on hover */
+            }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container mt-5">
         <h2>List of Ambulances</h2>
-        <div class="table-container">
+        <div class="table">
             <table>
                 <thead>
                     <tr>
-                        <th>@Html.DisplayNameFor(model => model.Id)</th>
-                        <th>@Html.DisplayNameFor(model => model.Name)</th>
-                        <th>@Html.DisplayNameFor(model => model.AmbulanceId)</th>
-                        <th>@Html.DisplayNameFor(model => model.AmbulanceStatus)</th>
-                        <th>@Html.DisplayNameFor(model => model.AmbulanceDriver)</th>
-                        <th>@Html.DisplayNameFor(model => model.AmbulanceDriverId)</th>
+                        <th>@Html.DisplayNameFor(model => model.First().Id)</th>
+                        <th>@Html.DisplayNameFor(model => model.First().Name)</th>
+                        <th>@Html.DisplayNameFor(model => model.First().AmbulanceId)</th>
+                        <th>@Html.DisplayNameFor(model => model.First().AmbulanceStatus)</th>
+                        <th>@Html.DisplayNameFor(model => model.First().AmbulanceDriver)</th>
+                        <th>@Html.DisplayNameFor(model => model.First().AmbulanceDriverId)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -101,10 +165,7 @@
             </table>
             @Html.ActionLink("Back", "Dashboard", "Patient")
         </div>
-
     </div>
 </body>
 </html>
-
-
 

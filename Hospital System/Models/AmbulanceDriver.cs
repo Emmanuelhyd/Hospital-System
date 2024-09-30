@@ -10,15 +10,15 @@ namespace Hospital_System.Models
 {
     public class AmbulanceDriver
     {
-        public int Id { get; set; }
+        public int DriverId { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
-        public long Contact { get; set; }
+        public string  Contact { get; set; }
         [Required]
         public string Address { get; set; }
         [Required]
         [Display(Name = "CNIC")]
-        public long Cnic { get; set; }
+        public string Cnic { get; set; }
     }
 }

@@ -58,6 +58,7 @@ namespace Hospital_System.Controllers
            
 
             mAppointment.PatientTypes = GetPatientTypes();
+            mAppointment.Getproblems = Getproblems();
             return View(mAppointment);
         }
 
@@ -79,9 +80,9 @@ namespace Hospital_System.Controllers
             {
                 new SelectListItem{Value="Fever",Text="Viral Fever"},
                 new SelectListItem { Value = "Cold", Text = "Cold" },
-                new SelectListItem { Value = "Fever", Text = "Fever" },
-                new SelectListItem { Value = "Headache", Text = "Headache" },
-                new SelectListItem { Value = "Other", Text = "Other" }
+                new SelectListItem { Value = "Typhoid", Text = "Fever" },
+                new SelectListItem { Value = "Malaria", Text = "Headache" },
+                new SelectListItem { Value = "Dengue", Text = "Other" }
             };
         }
 
