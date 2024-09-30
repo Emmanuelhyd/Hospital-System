@@ -1,12 +1,13 @@
 ﻿<!DOCTYPE html>
-<html lang="en" style="background-color: white;">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/Content/Site.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <title>@ViewBag.Title</title>
 
-    <title>Patient Dashboard</title>
+    <!-- Include Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMC1s48C8H4l9eG9yE2R/IJuj7cP9dfz1Zp4jR" crossorigin="anonymous" />
+
     <style>
         /* Basic reset for margins and paddings */
         body, ul, li {
@@ -16,187 +17,191 @@
 
         /* Container for sidebar */
         #tab11 {
-            background-color: white; /* Light grey background */
-            border: 1px solid #ddd; /* Light border for separation */
-            border-radius: 8px; /* Rounded corners */
-            overflow: hidden; /* To ensure content doesn't spill out */
-            width: 300px;
-            height: 90vh;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 250px;
+            height: auto; /* Allow height to adjust based on content */
             margin-left: 10px;
             position: absolute;
         }
 
-        /* Container styling for header link */
+        /* Header styling */
         .container1 {
             padding: 10px;
-           /* background-color: #b51e1e;*/ /* Primary color for the header */
-            color: #c72313;
-            text-align: center;
-        }
-
-        /* Header link styling */
-        .header-link {
+            background-color: #007bff;
             color: white;
-            text-decoration: none;
-            font-weight: bold;
+            text-align: center;
         }
 
         /* Unordered list styling */
         ul {
-            list-style-type: none; /* Remove bullet points */
+            list-style-type: none;
             padding: 0;
         }
 
         /* List items styling */
         li {
             position: relative;
-            margin: 5px 0;
+            margin: 5px 0; /* Adjust gap between buttons */
         }
 
         /* Button styling */
         .btn {
-            background-color:#2a7bd4; /* Button background color */
+            background-color: #007bff;
             color: white;
             border: none;
             padding: 10px;
-            border-radius: 4px; /* Rounded corners */
+            border-radius: 4px;
             cursor: pointer;
             width: 100%;
             text-align: left;
             font-size: 16px;
-            transition: background-color 0.3s; /* Smooth background color change */
-            height: 50px;
+            transition: background-color 0.3s;
+            height: 60px;
         }
 
             /* Hover effect for buttons */
             .btn:hover {
-                background-color: #1c78dc; /* Darker shade on hover */
+                background-color: #0056b3;
             }
 
         /* Container for button dropdown content */
         .btn-container {
             display: none;
-            background-color: #ffffff; /* Light background for dropdown */
-            border: 1px solid #ddd; /* Border around dropdown */
-            border-radius: 4px; /* Rounded corners */
-            position: absolute;
-            top: 100%; /* Position below the button */
-            left: 0;
-            width: 100%;
-            max-height: 0; /* Start with height of 0 for sliding effect */
-            overflow: hidden; /* Hide content that overflows */
-            transition: max-height 0.5s ease-in-out; /* Smooth sliding effect */
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            position: relative; /* Change to relative to allow pushing down */
             z-index: 1;
         }
 
-
-        li:hover .btn-container {
+        /* Show dropdown when active */
+        li.active .btn-container {
             display: block;
-            max-height: 300px;
         }
 
-
+        /* Dropdown links styling */
         .btn-container a {
             display: block;
             padding: 10px;
-            color: #2a7bd4;
+            color: #007bff;
             text-decoration: none;
             font-size: 16px;
         }
 
-
+            /* Hover effect for dropdown links */
             .btn-container a:hover {
                 background-color: #ddd;
             }
+
+        /* Space between icon and text */
+        .btn i {
+            margin-right: 8px;
+        }
     </style>
-</head>
-<body>
-    <div id="tab11" style="position:absolute; margin-left: 1px; width: 250px; height: 630px; ">
-        <div class="container1" >
-            @*<a href="#" class="header-link"><span>Dashboard</span> Patient</a>*@
 
-        </div>
+    <script>
+        // Function to toggle dropdown visibility
+        function toggleDropdown(event) {
+            const listItem = event.currentTarget.parentElement;
+            listItem.classList.toggle('active');
 
-        @if (Session["Username"] != null)
-        {
-            <i class="fas fa-user-circle" style="font-size: 24px; margin-right: 8px; margin-left:20px; "></i>
-            <span style=" font-style:oblique; font-weight:600;"> @Session["Username"]</span>
+            // Close any other open dropdowns
+            const openDropdowns = document.querySelectorAll('li.active');
+            openDropdowns.forEach(item => {
+                if (item !== listItem) {
+                    item.classList.remove('active');
+                }
+            });
         }
 
-        <ul>
-            <li>
+        // Close dropdowns when clicking outside
+        window.onclick = function (event) {
+            if (!event.target.matches('.btn')) {
+                const openDropdowns = document.querySelectorAll('li.active');
+                openDropdowns.forEach(item => item.classList.remove('active'));
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="tab11">
+        <div class="container1">
+            <a href="#" class="header-link"><span>Dashboard</span> Patient</a>
+        </div>
+        <div style="padding: 10px; text-align: center;">
+            @if (Session["Username"] != null)
+            {
+                <strong>Welcome, @Session["Username"]!</strong>
+            }
+            </div>
+            <ul>
+                <li>
+                    <button class="btn" onclick="toggleDropdown(event)" style="margin-top: 5px;">
+                        <!-- Reduced margin -->
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </button>
+                    <div class="btn-container">
+                        @Html.ActionLink("Dashboard", "Dashboard", "Patient")
+                    </div>
+                </li>
+                <li>
+                    <button class="btn" onclick="toggleDropdown(event)" style="margin-top: 5px;">
+                        <i class="fas fa-user"></i> Profile
+                    </button>
+                    <div class="btn-container">
+                        @Html.ActionLink("Update Profile", "Updateprofile", "Patient")
+                    </div>
+                </li>
+                <li>
+                    <button class="btn" onclick="toggleDropdown(event)" style="margin-top: 5px;">
+                        <i class="fas fa-user-md"></i> Doctors
+                    </button>
+                    <div class="btn-container">
+                        @Html.ActionLink("Available Doctors", "DoctorList", "Doctor")
+                    </div>
+                </li>
+                <li>
+                    <button class="btn" onclick="toggleDropdown(event)" style="margin-top: 5px;">
+                        <i class="fas fa-calendar-check"></i> Appointment
+                    </button>
+                    <div class="btn-container">
+                        @Html.ActionLink("Request Appointments", "BookAppointment", "Appointment")
+                        @Html.ActionLink("Appointment List", "AppointmentList", "Appointment")
+                    </div>
+                </li>
+                <li>
+                    <button class="btn" onclick="toggleDropdown(event)" style="margin-top: 5px;">
+                        <i class="fas fa-prescription"></i> Prescription
+                    </button>
+                    <div class="btn-container">
+                        @Html.ActionLink("Your Prescription", "PrecList", "Patient")
+                    </div>
+                </li>
+                <li>
+                    <button class="btn" onclick="toggleDropdown(event)" style="margin-top: 5px;">
+                        <i class="fas fa-exclamation-circle"></i> Complaint
+                    </button>
+                    <div class="btn-container">
+                        @Html.ActionLink("Add Complaint", "RegisterComplaint", "Complaint")
+                        @Html.ActionLink("List of Complaints", "ComplaintList", "Complaint")
+                    </div>
+                </li>
+                <li>
+                    <button class="btn" onclick="toggleDropdown(event)" style="margin-top: 5px;">
+                        <i class="fas fa-cog"></i> Manage
+                    </button>
+                    <div class="btn-container">
+                        @Html.ActionLink("Change Password", "Changepassword", "Patient")
+                    </div>
+                </li>
+            </ul>
+        </div>
 
-                <button class="btn" style="margin-top:20px">
-                    <i class="fas fa-tachometer-alt"></i>
-                    Dashboard
-                </button>
-                <div class="btn-container">
-                    @Html.ActionLink("Dashboard", "Dashboard", "Patient");
-                </div>
-
-            </li>
-            <li>
-                <button class="btn" style="margin-top:20px">
-                    <i class="fas fa-user-circle"></i>
-                    Profile
-                </button>
-                <div class="btn-container">
-                    @Html.ActionLink("Update Profile", "Updateprofile", "Patient")
-                </div>
-            </li>
-            <li>
-                <button class="btn" style="margin-top:20px">
-                    <i class="fas fa-user-md"></i>
-                    Doctors
-                </button>
-                <div class="btn-container">
-                    @Html.ActionLink("Available Doctors", "DoctorList", "Doctor")
-                </div>
-            </li>
-            <li>
-                <button class="btn" style="margin-top:20px">
-                    <i class="fas fa-calendar-check"></i>
-                    Appointment
-                </button>
-                <div class="btn-container">
-                    @Html.ActionLink("Request Appointments", "BookAppointment", "Appointment")
-                    @Html.ActionLink("Appointment List", "AppointmentList", "Appointment")
-                </div>
-            </li>
-            <li>
-                <button class="btn" style="margin-top:20px">
-                    <i class="fas fa-file-prescription"></i>
-                    Prescription
-                </button>
-                <div class="btn-container">
-                    @Html.ActionLink("Your Prescription", "PrecList", "Prescription")
-                </div>
-            </li>
-            <li>
-                <button class="btn" style="margin-top:20px">
-                    <i class="fas fa-comments"></i>
-                    Complaint
-                </button>
-                <div class="btn-container">
-                    @Html.ActionLink("Add Complaint", "RegisterComplaint", "Complaint")
-                    @Html.ActionLink("List of Complaints", "ComplaintList", "Complaint")
-                </div>
-            </li>
-            <li>
-                <button class="btn" style="margin-top:20px">
-                    <i class="fas fa-key"></i>
-                    Manage
-                </button>
-                <div class="btn-container">
-                    @Html.ActionLink("Change Password", "Changepassword", "Patient")
-                </div>
-            </li>
-        </ul>
-    </div>
+        <div>
+            @RenderBody() <!-- Main content will be rendered here -->
+        </div>
 </body>
 </html>
-
-<div>
-    @RenderBody()
-</div>
-@RenderSection("Scripts", required: false)
