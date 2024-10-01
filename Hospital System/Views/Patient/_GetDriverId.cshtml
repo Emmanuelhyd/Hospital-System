@@ -1,0 +1,41 @@
+﻿@model Hospital_System.Models.AmbulanceDriver
+
+<div id="driverdetails" style="padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #fff;">
+    <h3>Driver Details</h3>
+    @*<div>
+            <img src="@Model.PhotoUrl" style="width:200px; height:150px;" />
+        </div>*@
+    <div>
+        <strong>Name:</strong> @Model.Name
+    </div>
+    <div>
+        <strong>Contact:</strong> @Model.Contact
+    </div>
+    <div>
+        <strong>Address:</strong> @Model.Address
+    </div>
+
+    <div>
+        <strong>Cnic:</strong> @Model.Cnic
+    </div>
+    <button onclick="closePopup()" class="back">Back</button>
+</div>
+    
+
+
+<script>
+    function closePopup() {
+        $('#driverpopup').hide();
+        $('#overlay').hide();
+    }
+</script>
+<style>
+    .back {
+        width: 100px;
+        height: 27px;
+        color: white;
+        background-color: dodgerblue;
+        border-radius: 5px;
+        border-color: dodgerblue;
+    }
+</style>
