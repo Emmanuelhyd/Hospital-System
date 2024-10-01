@@ -1,0 +1,114 @@
+﻿@model Hospital_System.Models.MComplaint
+
+@{
+    ViewBag.Title = "Register Complaint";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register Complain</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+           
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 422px;
+            
+            margin-left: 355px;
+            position: absolute;
+            margin-top: 74px;
+        }
+        
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+            margin-left: 100px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-left: 101px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        input[type="submit"] {
+            background-color: #204fd1;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            cursor: pointer;
+
+            width: 62%;
+            transition: background-color 0.3s;
+            margin-top: 32px;
+            margin-left: 150px;
+        }
+
+            input[type="submit"]:hover {
+                background-color: #218838;
+            }
+
+
+         
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        @using (Html.BeginForm("RegisterComplaint","Complaint"))
+
+        {
+           
+            <div style="margin-top: -67px;">
+                <h2 style="text-align: center;"> Register Your Complaints Here !</h2>
+            </div>
+
+            <div>
+                @Html.LabelFor(m => m.Id)
+                @Html.TextBoxFor(m => m.Id, new { @class = "form-control" }) 
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+               
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Complaint)
+                @Html.TextAreaFor(m => m.Complaint, new { @class = "form-control" })
+               
+            </div>
+            <div>
+                @Html.LabelFor(m => m.PhoneNumber)
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+               
+
+            </div>
+            <div>
+                <input type="submit" value="Register Complaint">
+            </div>
+        }
+    </div>
+</body>
+</html>
