@@ -14,12 +14,12 @@
         }
 
         .form-container {
-            background-color: white;
+           /* background-color: white;*/
             padding: 45px;
             margin-top: -48px;
             width: 60%;
             max-width: 900px;
-            margin-left: 270px;
+            margin-left: 262px;
             position: absolute;
         }
 
@@ -51,7 +51,7 @@
 
 
         .form-control1 {
-            width: 75%;
+            width: 63%;
             padding: 10px;
             border: 1px solid #ced4da;
             border-radius: 5px;
@@ -142,7 +142,7 @@
 
     <div class="form-group">
         @Html.LabelFor(m => m.Problem)
-        @Html.DropDownListFor(m => m.Problem, Model.Getproblems, "Select Problem", new { @class = "form-control" })<br />
+        @Html.DropDownListFor(m => m.Problem, Model.Getproblems, "Select Problem", new { @class = "form-control1" })<br />
         @Html.ValidationMessageFor(m => m.Problem, "", new { @class = "text-danger" })
     </div>
 

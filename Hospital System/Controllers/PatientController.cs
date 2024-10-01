@@ -291,22 +291,24 @@ namespace Hospital_System.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Forgotpassword(Patients patients)
         {
+            if (Session["UserName"].ToString() == patients.UserName)
 
-            string res = patientBAL.Changepassword(patients);
-
-
-            if (res == "1")
             {
-                Session["valid"] = "Updated";
-                return RedirectToAction("Login", "Patient");
+                string res = patientBAL.Changepassword(patients);
+
+
+                if (res == "1")
+                {
+                    Session["valid"] = "Updated";
+                    return RedirectToAction("Login", "Patient");
+                }
             }
 
-            else
-            {
-                Session["valid"] = "Invalid UserName";
+          
+               
                 TempData["valid"] = "Invalid UserName";
 
-            }
+            
 
             return View(patients);
         }

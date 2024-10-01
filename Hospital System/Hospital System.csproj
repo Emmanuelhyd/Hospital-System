@@ -90,10 +90,18 @@
   <ItemGroup>
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\0834.jpg_wh860.jpg" />
+    <Content Include="Images\4.png" />
+    <Content Include="Images\doctor_3.png" />
+    <Content Include="Images\doctor_PNG15987.png" />
+    <Content Include="Images\login.jpg" />
+    <Content Include="Images\png.png" />
+    <Content Include="Images\R.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BAL\AdminBAl.cs" />
     <Compile Include="BAL\DoctorBAL.cs" />
     <Compile Include="BAL\PatientBAL.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -101,7 +109,7 @@
     <Compile Include="Controllers\ComplaintController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
-    <Compile Include="Controllers\PrescriptionController.cs" />
+    <Compile Include="DAL\AdminDAl.cs" />
     <Compile Include="DAL\DoctorDAL.cs" />
     <Compile Include="DAL\Patient1.cs" />
     <Compile Include="Global.asax.cs">
@@ -139,7 +147,6 @@
     <Content Include="Views\Appointment\BookAppointment.cshtml" />
     <Content Include="Views\Doctor\DoctorList.cshtml" />
     <Content Include="Views\Doctor\NewDoctor.cshtml" />
-    <Content Include="Views\Prescription\PrecList.cshtml" />
     <Content Include="Views\Patient\Forgotpassword.cshtml" />
     <Content Include="Views\Patient\Ambulanceses.cshtml" />
     <Content Include="Views\Patient\Index.cshtml" />
@@ -149,6 +156,9 @@
     <Content Include="Views\Admin\Dash.cshtml" />
     <Content Include="Views\Admin\Department.cshtml" />
     <Content Include="Views\Patient\Insertprofile.cshtml" />
+    <Content Include="Views\Patient\_DoctorDetails.cshtml" />
+    <Content Include="Views\Patient\_GetDriverId.cshtml" />
+    <Content Include="Views\Patient\PrecList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
