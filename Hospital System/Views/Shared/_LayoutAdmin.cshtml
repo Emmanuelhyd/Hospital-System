@@ -1,0 +1,189 @@
+﻿@RenderBody()
+
+
+
+
+
+
+<style>
+    /* Sidebar Styles */
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        margin: 10px 0;
+    }
+
+    button {
+        background-color: #fff;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+        button:hover {
+            background-color: lightgray;
+            color: #000;
+        }
+
+    /* Submenu Styles */
+    div.sub-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        padding: 0 10px; /* Add padding to sub-menu items */
+    }
+
+        div.sub-menu.open {
+            max-height: 300px; /* Adjust based on your content */
+            padding: 10px 0; /* Add padding when open */
+        }
+
+    a {
+        text-decoration: none;
+        color: #333;
+        display: block; /* Make links block-level */
+        padding: 5px 0;
+    }
+
+        a:hover {
+            color: #007BFF; /* Change color on hover */
+        }
+</style>
+
+
+<script>
+    function CeateNew() {
+
+        window.location.href = 'AddPatientAd';
+    }
+</script>
+
+
+<div style="width: 15%; height: 100vh; background-color:#6fafc1; position: absolute;">
+    <ul>
+        <li>
+            <button>
+                <i class="fas fa-tachometer-alt"></i>
+                Dashboard
+            </button>
+            <div class="sub-menu">
+                @Html.ActionLink("Dashboard", "DashboardView", "Dashboard")
+            </div>
+        </li>
+        <li>
+            <button>
+                <i class="fas fa-building"></i>
+            Department</button>
+            <div class="sub-menu">
+                @Html.ActionLink("Add Department", "AddDepartment", "Department")
+                <br />
+                @Html.ActionLink("Department List", "DepartmentList", "Department")
+            </div>
+        </li>
+        <li>
+            <button>
+                <i class="fas fa-user-md"></i>
+            Doctors</button>
+            <div class="sub-menu">
+                @Html.ActionLink("Add Doctor", "AddDoctorAd", "DoctorAd")
+                <br />
+                @Html.ActionLink("Doctors List", "DoctorListAd", "DoctorAd")
+            </div>
+        </li>
+        <li>
+            <button>
+                <i class="fas fa-user"></i>
+            Patient</button>
+            <div class="sub-menu">
+                @Html.ActionLink("List Of Patients", "PatientList", "PatientAd")
+                <br />
+                @Html.ActionLink("Add Patients", "AddPatientAd", "PatientAd")
+            </div>
+        </li>
+        <li>
+            <button>
+                <i class="fas fa-calendar-alt"></i>
+            Schedule</button>
+            <div class="sub-menu">
+                @Html.ActionLink("Schedule List", "SheduleList", "SheduleAd")
+                <br />
+                @Html.ActionLink("Add Shedule", "AddSheduleAd", "SheduleAd")
+            </div>
+        </li>
+        <li>
+            <button>
+                <i class="fas fa-clipboard-list"></i>
+            Appointments</button>
+            <div class="sub-menu">
+                @Html.ActionLink("List of Appointments", "AppointmentList", "AppointmentAd")
+                <br />
+                @Html.ActionLink("Add Appointment", "AddAppointmentAd", "AppointmentAd")
+            </div>
+        </li>
+        <li>
+            <button>
+                <i class="fas fa-bullhorn"></i>
+            Announcements</button>
+            <div class="sub-menu">
+                @Html.ActionLink("List of Announcements", "AnnouncementList", "AnnouncementAd")
+                <br />
+                @Html.ActionLink("Add Announcements", "AddAnnouncementAd", "AnnouncementAd")
+            </div>
+        </li>
+        <li>
+            <button>
+                <i class="fas fa-exclamation-triangle"></i>
+            Complaints</button>
+            <div class="sub-menu">
+                @Html.ActionLink("List of Complaints", "ComplaintAdList", "ComplaintAd")
+                <br />
+                @Html.ActionLink("Add Complaints", "AddComplaintAd", "ComplaintAd")
+            </div>
+        </li>
+        <li>
+            <button>
+                <i class="fas fa-pills"></i>
+            Medicine</button>
+            <div class="sub-menu">
+                @Html.ActionLink("Add Medicine", "AddMedicineAd", "MedicineAd")
+                <br />
+                @Html.ActionLink("List of Medicine", "MedicineAdList", "MedicineAd")
+            </div>
+        </li>
+        <li>
+            <button>
+                <i class="fas fa-ambulance"></i>
+            Ambulance</button>
+            <div class="sub-menu">
+                @Html.ActionLink("Add Ambulance", "AddAmbulanceAd", "AmbulanceAd")
+                <br />
+                @Html.ActionLink("List of Ambulance", "AmbulanceListAd", "AmbulanceAd")
+                <br />
+                @Html.ActionLink("Add Driver", "AdddriverAd", "AmbulanceAd")
+                <br />
+                @Html.ActionLink("List of Driver", "AmbulanceDriverAd", "AmbulanceAd")
+            </div>
+        </li>
+    </ul>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+
+<script>
+    document.querySelectorAll('button').forEach(button => {
+        button.addEventListener('click', () => {
+            const submenu = button.nextElementSibling;
+            submenu.classList.toggle('open');
+        });
+    });
+</script>

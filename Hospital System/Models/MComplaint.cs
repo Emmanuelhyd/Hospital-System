@@ -23,7 +23,7 @@ namespace Hospital_System.Models
             public string PhoneNumber { get; set; }
 
             [Required(ErrorMessage = "This field is required.")]
-            public string Reply { get; set; }
+            public string Replay { get; set; }
         
 
 

@@ -237,12 +237,12 @@ namespace Hospital_System.Controllers
 
         public ActionResult Medicals()
         {
-            decimal patientId = LoggedInPatientId();
-            if (patientId == 0)
+            decimal Id = LoggedInPatientId();
+            if (Id == 0)
             {
                 return RedirectToAction("Dashboard");
             }
-            var medicines = patientBAL.GetMedicines(patientId);
+            var medicines = patientBAL.GetMedicines(Id);
 
             return View(medicines);
 
@@ -291,10 +291,14 @@ namespace Hospital_System.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Forgotpassword(Patients patients)
         {
-            if (Session["UserName"].ToString() == patients.UserName)
-
+          if(ModelState.IsValid)
             {
-                string res = patientBAL.Changepassword(patients);
+                TempData["Popup"] = "Check the username";
+                return View(patients);
+            }
+           
+
+            string res = patientBAL.Changepassword(patients);
 
 
                 if (res == "1")
@@ -302,10 +306,8 @@ namespace Hospital_System.Controllers
                     Session["valid"] = "Updated";
                     return RedirectToAction("Login", "Patient");
                 }
-            }
+            
 
-          
-               
                 TempData["valid"] = "Invalid UserName";
 
             
@@ -317,13 +319,13 @@ namespace Hospital_System.Controllers
         public ActionResult PrecList()
         {
 
-            if (Session["PatientId"] == null)
+            if (Session["Id"] == null)
             {
                 return RedirectToAction("Dashboard", "Patient");
             }
 
-            int patientId = Convert.ToInt32(Session["PatientId"]);
-            var medicines = patientBAL.GetMedicines(patientId);
+            int Id = Convert.ToInt32(Session["Id"]);
+            var medicines = patientBAL.GetMedicines(Id);
 
 
             if (medicines == null || !medicines.Any())
@@ -337,6 +339,7 @@ namespace Hospital_System.Controllers
 
 
         }
+
     }
 }
        

@@ -10,7 +10,9 @@ namespace Hospital_System.Models
     public class MAppointment
     {
        
-       
+        public int Id { get; set; }
+
+
             [Required(ErrorMessage = "Doctor Name is required.")]
             [StringLength(100, ErrorMessage = "Doctor Name cannot be longer than 100 characters.")]
             public string DoctorName { get; set; }
@@ -26,8 +28,8 @@ namespace Hospital_System.Models
             [Required(ErrorMessage = "Timings are required.")]
             public string Timings { get; set; }
 
-            [Required(ErrorMessage = "Status is required.")]
-            public string Status { get; set; }
+            [Required(ErrorMessage = "Gender is required.")]
+            public string Gender { get; set; }
 
             public string Action { get; set; }
 
@@ -45,7 +47,7 @@ namespace Hospital_System.Models
 
             [Required(ErrorMessage = "Phone Number is required")]
             [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone Number must be 10 digits.")]
-            public long? PhoneNumber { get; set; }
+            public string PhoneNumber { get; set; }
 
             [Required(ErrorMessage = "Address is required.")]
             [StringLength(250, ErrorMessage = "Address cannot be longer than 250 characters.")]
@@ -53,11 +55,11 @@ namespace Hospital_System.Models
 
             [Required(ErrorMessage = "Date is required.")]
             [DataType(DataType.Date)]
-            public DateTime Date { get; set; }
+            public string Date { get; set; }
 
             [Required(ErrorMessage = "Time is required.")]
             [DataType(DataType.Time)]
-            public TimeSpan Time { get; set; } 
+            public string Time { get; set; } 
 
 
             public string Description { get; set; }

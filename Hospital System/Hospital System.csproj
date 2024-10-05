@@ -101,17 +101,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="BAL\AdminBAl.cs" />
+    <Compile Include="BAL\AdminBAL.cs" />
     <Compile Include="BAL\DoctorBAL.cs" />
     <Compile Include="BAL\PatientBAL.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AmbulanceAdController.cs" />
+    <Compile Include="Controllers\AnnouncementAdController.cs" />
+    <Compile Include="Controllers\AppointmentAdController.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
+    <Compile Include="Controllers\ComplaintAdController.cs" />
     <Compile Include="Controllers\ComplaintController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\DoctorAdController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
+    <Compile Include="Controllers\MedicineAdController.cs" />
+    <Compile Include="Controllers\PatientAdController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
-    <Compile Include="DAL\AdminDAl.cs" />
+    <Compile Include="Controllers\SheduleAdController.cs" />
+    <Compile Include="DAL\AdminDAL.cs" />
     <Compile Include="DAL\DoctorDAL.cs" />
     <Compile Include="DAL\Patient1.cs" />
+    <Compile Include="Dash\DashboardDetails.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -119,16 +129,29 @@
     <Compile Include="Models\AmbulanceDriver.cs" />
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\DasboardDetails.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\Doctors.cs" />
+    <Compile Include="Models\MAmbulance.cs" />
+    <Compile Include="Models\MAnnouncement.cs" />
     <Compile Include="Models\MAppointment.cs" />
+    <Compile Include="Models\MAppointmentAd.cs" />
     <Compile Include="Models\MComplaint.cs" />
+    <Compile Include="Models\MComplaintAd.cs" />
+    <Compile Include="Models\MDepartment.cs" />
+    <Compile Include="Models\MDoctor.cs" />
+    <Compile Include="Models\MDoctorAd.cs" />
+    <Compile Include="Models\MDriverAd.cs" />
     <Compile Include="Models\Medicine.cs" />
+    <Compile Include="Models\MMedicineAd.cs" />
+    <Compile Include="Models\MPatient.cs" />
     <Compile Include="Models\MPrescription.cs" />
+    <Compile Include="Models\MShedule.cs" />
     <Compile Include="Models\Patients.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Viewmodel\Allview.cs" />
+    <Compile Include="Views\MDoctorAd.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -159,6 +182,33 @@
     <Content Include="Views\Patient\_DoctorDetails.cshtml" />
     <Content Include="Views\Patient\_GetDriverId.cshtml" />
     <Content Include="Views\Patient\PrecList.cshtml" />
+    <Content Include="Views\AmbulanceAd\AddAmbulanceAd.cshtml" />
+    <Content Include="Views\AmbulanceAd\AddDriverAd.cshtml" />
+    <Content Include="Views\AmbulanceAd\AmbulanceDriverAd.cshtml" />
+    <Content Include="Views\AmbulanceAd\AmbulanceListAd.cshtml" />
+    <Content Include="Views\AmbulanceAd\_Ambulance.cshtml" />
+    <Content Include="Views\AmbulanceAd\_Ambulancedriver.cshtml" />
+    <Content Include="Views\AnnouncementAd\AddAnnouncementAd.cshtml" />
+    <Content Include="Views\AnnouncementAd\AnnouncementList.cshtml" />
+    <Content Include="Views\AppointmentAd\AddAppointmentAd.cshtml" />
+    <Content Include="Views\AppointmentAd\AppointmentList.cshtml" />
+    <Content Include="Views\ComplaintAd\AddComplaintAd.cshtml" />
+    <Content Include="Views\ComplaintAd\ComplaintAdList.cshtml" />
+    <Content Include="Views\Dashboard\DashboardView.cshtml" />
+    <Content Include="Views\Department\AddDepartment.cshtml" />
+    <Content Include="Views\Department\DepartmentList.cshtml" />
+    <Content Include="Views\MedicineAd\AddMedicineAd.cshtml" />
+    <Content Include="Views\MedicineAd\MedicineAdList.cshtml" />
+    <Content Include="Views\PatientAd\AddPatientAd.cshtml" />
+    <Content Include="Views\PatientAd\PatientList.cshtml" />
+    <Content Include="Views\SheduleAd\AddSheduleAd.cshtml" />
+    <Content Include="Views\SheduleAd\SheduleList.cshtml" />
+    <Content Include="Views\Upload\AddImage.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\DoctorAd\AddDoctorAd.cshtml" />
+    <Content Include="Views\DoctorAd\DoctorListAd.cshtml" />
+    <Content Include="Views\Appointment\BookList.cshtml" />
+    <Content Include="Views\Appointment\AddBook.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

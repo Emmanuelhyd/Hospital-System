@@ -29,7 +29,7 @@
         }
 
         .form-group {
-            margin-bottom: 5px;  Space between form groups 
+            margin-bottom: 5px;  Space: between form groups;
         }
 
             .form-group label {
@@ -128,8 +128,15 @@
 
 <div>
     <div class="form-group">
+        @Html.LabelFor(m => m.Id)
+
+        @Html.TextBoxFor(m => m.Id, new { @class = "form-control", placeholder = "Enter Patient Name" })<br />
+        @Html.ValidationMessageFor(m => m.Id, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(m => m.PatientName)
-       
+
         @Html.TextBoxFor(m => m.PatientName, new { @class = "form-control", placeholder = "Enter Patient Name" })<br />
         @Html.ValidationMessageFor(m => m.PatientName, "", new { @class = "text-danger" })
     </div>
@@ -138,6 +145,12 @@
         @Html.LabelFor(m => m.PatientType)
         @Html.DropDownListFor(m => m.PatientType, Model.PatientTypes, "Select Patient Type", new { @class = "form-control1" })<br />
         @Html.ValidationMessageFor(m => m.PatientType, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Gender)
+        @Html.TextBoxFor(m => m.Gender, new { @class = "form-control", placeholder = "Gender" })<br />
+        @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
     </div>
 
     <div class="form-group">
@@ -173,7 +186,7 @@
 
     <div class="form-group">
         @Html.LabelFor(m => m.Description)
-       @Html.TextAreaFor(m=>m.Description,new {@class="form-control",placeholder="Describe"})<br />
+        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", placeholder = "Describe" })<br />
         @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
     </div>
     <div>

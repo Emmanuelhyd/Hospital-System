@@ -1,0 +1,36 @@
+﻿@model Hospital_System.Models.MDriverAd
+
+
+<div >
+    <h2>Driver Details</h2>
+    <p><strong>Name:</strong> @Model.Name</p>
+    <p><strong>Contact:</strong> @Model.Contact</p>
+    <p><strong>Address:</strong> @Model.Address</p>
+    <p><strong>CNIC:</strong> @Model.CNIC</p>
+
+    <button onclick="closePopup()" class="back">Back</button>
+</div>
+
+<script>
+    function closePopup() {
+        $('#DriverPopup').hide();
+        $('#overlay').hide();
+    }
+</script>
+
+<style>
+    /* You can customize styles specific to the popup here */
+    .back {
+        padding: 10px 15px;
+        background-color: #3051bd;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .back:hover {
+            background-color: #2c46a3;
+        }
+</style>

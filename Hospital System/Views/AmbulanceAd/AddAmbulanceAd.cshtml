@@ -1,0 +1,189 @@
+﻿@model Hospital_System.Models.MAmbulance
+@{
+    ViewBag.Title = "AddAmbulanceAd";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    /* Container for the form */
+    form {
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+        position: relative; /* Change to relative for proper absolute positioning */
+    }
+
+    /* Styling for labels */
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    /* Input fields styling */
+    input[type="text"],
+    select {
+        width: 40%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+       
+    }
+    select {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    /* Styling for validation messages */
+    .text-danger {
+        color: red;
+        font-size: 0.9em;
+        margin-top: -10px;
+        margin-bottom: 10px;
+    }
+
+    /* Submit button styling */
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        /* Hover effect for the submit button */
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+</style>
+
+@using (Html.BeginForm("AddAmbulanceAd", "AmbulanceAd"))
+    {
+        <div style="position: absolute; width: 85%; margin-left: 15%; background-color: white; margin-top: 18px;">
+            <div style="margin-left:300px; margin-top:50px;">
+                <div>
+                    <div>@Html.LabelFor(m => m.Id)</div>
+                    <div>
+                        @Html.TextBoxFor(m => m.Id)
+                    </div>
+                </div>
+                <div>
+                    <div>@Html.LabelFor(m => m.Name)</div>
+                    <div>
+                        @Html.TextBoxFor(m => m.Name, new { @required = "required", @placeholder = "Enter your Name" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div>
+                    <div>@Html.LabelFor(m => m.AmbulanceId)</div>
+                    <div>
+                        @Html.TextBoxFor(m => m.AmbulanceId, new { @required = "required", @placeholder = "Enter your AmbulanceId" })
+                        @Html.ValidationMessageFor(m => m.AmbulanceId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div>
+                    <div>@Html.LabelFor(m => m.AmbulanceStatus)</div>
+                    <select id="AmbulanceStatus" name="AmbulanceStatus" required>
+                        <option value="">Select Status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">InActive</option>
+                    </select>
+                </div>
+                <div>
+                    <div>@Html.LabelFor(m => m.AmbulanceDriver)</div>
+                    <div>
+                        @Html.TextBoxFor(m => m.AmbulanceDriver, new { @required = "required", @placeholder = "Enter your AmbulanceDriver" })
+                        @Html.ValidationMessageFor(m => m.AmbulanceDriver, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div>
+                    <div>@Html.LabelFor(m => m.AmbulanceDriverId)</div>
+                    <div>
+                        @Html.TextBoxFor(m => m.AmbulanceDriverId, new { @required = "required", @placeholder = "Enter your AmbulanceDriverId" })
+                        @Html.ValidationMessageFor(m => m.AmbulanceDriverId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" value="Submit">
+                </div>
+            </div>
+        </div>
+    }
+
+
+<script>document.getElementById('Status').addEventListener('change', function() {
+        if (this.value) {
+            console.log('Selected status:', this.value);
+        }
+    });
+    </script>
+
+@*@model AdminPages.Models.MAmbulance
+
+    @{
+        ViewBag.Title = "AddAmbulanceAd";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+
+    @using (Html.BeginForm("AddAmbulanceAd", "AmbulanceAd"))
+    {
+        <div style="position: absolute; width: 85%; margin-left: 15%; background-color: white;">
+            <div>
+                <div>
+                    <div>@Html.LabelFor(m => m.Id)</div>
+                    <div>
+                        @Html.TextBoxFor(m => m.Id)
+                </div>
+            </div>
+            <div>
+                <div>@Html.LabelFor(m => m.Name)</div>
+                <div>
+                    @Html.TextBoxFor(m => m.Name, new { @required = "required", @placeholder = "Enter your Name" })
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div>
+                <div>@Html.LabelFor(m => m.AmbulanceId)</div>
+                <div>
+                    @Html.TextBoxFor(m => m.AmbulanceId, new { @required = "required", @placeholder = "Enter your AmbulanceId" })
+                    @Html.ValidationMessageFor(m => m.AmbulanceId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div>
+                <div>@Html.LabelFor(m => m.AmbulanceStatus)</div>
+                <div>
+                    <select id="Status" name="Status" required>
+                        <option value="">Select Status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">InActive</option>
+                    </select>
+
+                </div>
+            </div>
+            <div>
+                <div>@Html.LabelFor(m => m.AmbulanceDriver)</div>
+                <div>
+                    @Html.TextBoxFor(m => m.AmbulanceDriver, new { @required = "required", @placeholder = "Enter your AmbulanceDriver" })
+                    @Html.ValidationMessageFor(m => m.AmbulanceDriver, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div>
+                <div>@Html.LabelFor(m => m.AmbulanceDriverId)</div>
+                <div>
+                    @Html.TextBoxFor(m => m.AmbulanceDriverId, new { @required = "required", @placeholder = "Enter your AmbulanceDriverId" })
+                    @Html.ValidationMessageFor(m => m.AmbulanceDriverId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div><input type="submit" value="Submit"></div>
+        </div>
+    </div>
+    }*@
+
+

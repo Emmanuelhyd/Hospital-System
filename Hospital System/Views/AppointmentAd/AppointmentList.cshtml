@@ -1,0 +1,135 @@
+﻿@model IEnumerable<Hospital_System.Models.MAppointmentAd>
+
+@{
+    ViewBag.Title = "AppointmentAdList";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script>
+    function CreateNew() {
+
+        window.location.href = 'AddAppointmentAd';
+    }
+</script>
+
+@using (Html.BeginForm())
+{
+    <div style="position: absolute; width: 85%; margin-left: 15%; background-color: white;">
+        <div >
+            <div><input type="button" value="CeateNew" onclick="CreateNew()">
+            
+                <input type="search" id="app" name="app">
+                <input type="submit" value="Search">
+            </div>
+
+            <table>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.PatientName)</th>
+                    <th>@Html.DisplayNameFor(model => model.PatientType)</th>
+                    <th>@Html.DisplayNameFor(model => model.Gender)</th>
+                    <th>@Html.DisplayNameFor(model => model.Problem)</th>
+                    <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+                    <th>@Html.DisplayNameFor(model => model.Address)</th>
+                    <th>@Html.DisplayNameFor(model => model.Date)</th>
+                    <th>@Html.DisplayNameFor(model => model.Time)</th>
+                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                    <th>Action</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PatientType)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Problem)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Time)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                        <td style="display: flex; gap: 10px;">
+
+                            <a href="@Url.Action("AppointmentEdit", new { Id = item.Id })">
+                                <i class="fas fa-edit" style="color:blue;"></i>
+                            </a>
+
+                            <a href="@Url.Action("AppointmentAdDelete", new { Id = item.Id })">
+                                <i class="fas fa-trash-alt" style="color:red;"></i>
+                            </a>
+
+
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f4f4f4;
+    }
+
+    h1 {
+        color: #333;
+        text-align: center;
+    }
+
+    div {
+        margin-bottom: 20px;
+    }
+
+    input[type="button"], input[type="submit"] {
+        padding: 10px 15px;
+        margin-right: 10px;
+        border: none;
+        background-color: #3051bd;
+        color: white;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+        input[type="button"]:hover, input[type="submit"]:hover {
+            background-color: #3051bd;
+        }
+
+    input[type="search"] {
+        padding: 10px;
+        width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: white;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .action-link {
+        margin-right: 10px;
+    }
+</style>

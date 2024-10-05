@@ -12,15 +12,15 @@ namespace Hospital_System.Models
     {
         public int PatientId { get; set; }
         public string PatientName { get; set; }
-        public int MedicineId { get; set; }
+        //public int MedicineId { get; set; }
         
         public string MedicineName { get; set; }
         
         public string Description { get; set; }
         
-        public string Quantity { get; set; }
+        //public string Quantity { get; set; }
        
-        public int Price { get; set; }
+        //public int Price { get; set; }
 
         public string DoctorName { get; set; }
         public string Problem { get; set; }

@@ -28,7 +28,7 @@
                     <th>@Html.DisplayNameFor(model => model.First().Department)</th>
                     <th>@Html.DisplayNameFor(model => model.First().PhoneNo)</th>
                     <th>@Html.DisplayNameFor(model => model.First().Status)</th>
-
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,7 +41,7 @@
                         <td>@Html.DisplayFor(modelItem => item.Department)</td>
                         <td>@Html.DisplayFor(modelItem => item.PhoneNo)</td>
                         <td>@Html.DisplayFor(modelItem => item.Status)</td>
-
+                        <td> <input type="button" value="Book" class="book-button" onclick="window.location.href='@Url.Action("BookAppointment", "Appointment")'"></td>
                     </tr>
                 }
             </tbody>

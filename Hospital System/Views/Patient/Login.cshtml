@@ -22,7 +22,7 @@
         max-width: 400px;
         width: 100%;
         padding: 136px;
-       /* background-color: #fff;
+        /* background-color: #fff;
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);*/
         margin-left: -131px;
@@ -113,6 +113,7 @@
     h2 {
         font-size: 1.5rem;
     }
+
     .input-icon {
         position: relative;
     }
@@ -132,13 +133,11 @@
             color: #007bff; /* Color for eye icon */
             cursor: pointer;
         }
-
-
-
 </style>
 
 @using (Html.BeginForm())
 {
+    <a href="@Url.Action("DashboardView", "Dashboard")" class="form-link">ADMIN</a>
     <div class="login-container">
         <h2>@ViewBag.Title</h2>
 
@@ -163,14 +162,14 @@
                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
 
             </div>
-            </div>
-
-            <input type="submit" value="Login" class="btn-submit" />
-
-            <a href="@Url.Action("Forgotpassword", "Patient")" class="form-link">Forgot Password?</a>
-
-            <a href="@Url.Action("Insertprofile", "Patient")" style="margin-left: 115px; margin-top: 16px; text-decoration: none; color: dodgerblue;">Sign Up</a>
         </div>
+
+        <input type="submit" value="Login" class="btn-submit" />
+
+        <a href="@Url.Action("Forgotpassword", "Patient")" class="form-link">Forgot Password?</a>
+
+        <a href="@Url.Action("Insertprofile", "Patient")" style="margin-left: 115px; margin-top: 16px; text-decoration: none; color: dodgerblue;">Sign Up</a>
+    </div>
 }
 
 

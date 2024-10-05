@@ -62,10 +62,26 @@ namespace Hospital_System.BAL
         }
 
 
-        public List<Medicine> GetMedicines(decimal patientId)
+        public List<Medicine> GetMedicines(int Id)
         {
-            return patient1.GetMedicines(patientId);
+            return patient1.GetMedicines(Id);
 
         }
+
+        //appointmentList
+        public List<MAppointmentAd> BookList()
+        {
+            return doctorDAL.BookList();
+        }
+
+        //Add Appointment
+
+        public List<MAppointmentAd> AddBook(MAppointmentAd mAppointmentAd)
+        {
+            List<MAppointmentAd> mAppointmentAds = new List<MAppointmentAd>();
+            mAppointmentAds = doctorDAL.AddBook(mAppointmentAd);
+            return mAppointmentAds;
+        }
+
     }
 }

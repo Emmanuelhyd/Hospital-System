@@ -13,7 +13,7 @@ namespace Hospital_System.Controllers
 {
     public class AppointmentController : Controller
     {
-
+        DoctorDAL doctorDAL;
         DoctorBAL doctorBAL = new DoctorBAL();
         // GET: Appointment
         public ActionResult AppointmentList(string searchvalue)
@@ -39,27 +39,57 @@ namespace Hospital_System.Controllers
         public ActionResult BookAppointment(MAppointment mAppointment)
 
         {
-            
-          if (!ModelState.IsValid)
-          {
-             mAppointment.PatientTypes = GetPatientTypes(); 
-            
-          }
-            string res = doctorBAL.BookAppointment(mAppointment);
-
-
-            if (res == "1")
+            if (!ModelState.IsValid)
             {
-                TempData["Message"] = "Booked Successfully";
-                return RedirectToAction("BookAppointment");
-            }
-            
-                TempData["message"] = "An error occurred. Please try again.";
-           
+                mAppointment.PatientTypes = GetPatientTypes();
 
+            }
             mAppointment.PatientTypes = GetPatientTypes();
-            mAppointment.Getproblems = Getproblems();
-            return View(mAppointment);
+
+            var ids = 0;
+            List<MAppointment> mAppointments = new List<MAppointment>();
+            if (mAppointment.Id != 0)
+            {
+                string res = doctorBAL.BookAppointment(mAppointment);
+            }
+            if (mAppointments.Count == 0)
+            {
+                doctorDAL = new DoctorDAL();
+                if (mAppointment.Id == 0)
+                {
+                    ids = doctorDAL.AppointmentId();
+                }
+                mAppointment.Id = ids + 1;
+
+                return View(mAppointment);
+            }
+            else
+            {
+                return RedirectToAction("AppointmentList", mAppointments);
+            }
+
+
+            //if (!ModelState.IsValid)
+            //{
+            //    mAppointment.PatientTypes = GetPatientTypes();
+
+            //}
+
+            //string res = doctorBAL.BookAppointment(mAppointment);
+
+
+            //if (res == "Booked successfully")
+            //{
+            //    TempData["Message"] = "Booked Successfully";
+            //    return RedirectToAction("BookAppointment");
+            //}
+
+            //TempData["message"] = "An error occurred. Please try again.";
+
+
+            //mAppointment.PatientTypes = GetPatientTypes();
+            //mAppointment.Getproblems = Getproblems();
+            //return View(mAppointment);
         }
 
 
@@ -86,7 +116,7 @@ namespace Hospital_System.Controllers
             };
         }
 
-
+        
 
 
 
@@ -94,5 +124,40 @@ namespace Hospital_System.Controllers
         {
             return View();
         }
+
+        public ActionResult BookList()
+        {
+            MAppointmentAd mAppointmentAd1 = new MAppointmentAd();
+            List<MAppointmentAd> mAppointmentAd= new List<MAppointmentAd>();
+
+            mAppointmentAd = doctorBAL.BookList();
+            return View(mAppointmentAd);
+        }
+
+        public ActionResult AddBook(MAppointmentAd mAppointmentAd)
+        {
+            var ids = 0;
+            List<MAppointmentAd> mAppointmentAds = new List<MAppointmentAd>();
+            if (mAppointmentAd.Id != 0)
+            {
+                mAppointmentAds = doctorBAL.AddBook(mAppointmentAd);
+            }
+            if (mAppointmentAds.Count == 0)
+            {
+                doctorDAL = new DoctorDAL();
+                if (mAppointmentAd.Id == 0)
+                {
+                    ids = doctorDAL.BookId();
+                }
+                mAppointmentAd.Id = ids + 1;
+
+                return View(mAppointmentAd);
+            }
+            else
+            {
+                return RedirectToAction("BookList", mAppointmentAds);
+            }
+        }
+
     }
 }

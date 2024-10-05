@@ -96,11 +96,11 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.First().DriverId)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Id)</th>
                     <th>@Html.DisplayNameFor(model => model.First().Name)</th>
                     <th>@Html.DisplayNameFor(model => model.First().Contact)</th>
                     <th>@Html.DisplayNameFor(model => model.First().Address)</th>
-                    <th>@Html.DisplayNameFor(model => model.First().Cnic)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().CNIC)</th>
                     <th>Profile</th>
                 </tr>
             </thead>
@@ -108,13 +108,13 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => item.DriverId)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
                         <td>@Html.DisplayFor(modelItem => item.Name)</td>
                         <td>@Html.DisplayFor(modelItem => item.Contact)</td>
                         <td>@Html.DisplayFor(modelItem => item.Address)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Cnic)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CNIC)</td>
                         <td>
-                            <a href="javascript:void(0);" onclick="showGetdriverId(@item.DriverId)">View</a>
+                            <a href="javascript:void(0);" onclick="showGetdriverId(@item.Id)">View</a>
                         </td>
                     </tr>
                 }

@@ -109,6 +109,10 @@ namespace Hospital_System.BAL
         //{
         //    return patient.GetPrecList(patientId);
         //}
+        public bool UsernameExists(string username)
+        {
+            return patient.UsernameExists(username);
+        }
 
 
 
@@ -132,7 +136,6 @@ namespace Hospital_System.BAL
 
 
 
-
-    }
+        }
 
 }

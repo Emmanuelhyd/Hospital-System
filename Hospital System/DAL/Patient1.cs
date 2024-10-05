@@ -1,4 +1,5 @@
-﻿using Hospital_System.Models;
+﻿using AdminPages.Models;
+using Hospital_System.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -233,11 +234,11 @@ namespace Hospital_System.DAL
             {
                 AmbulanceDriver driver = new AmbulanceDriver();
 
-                driver.DriverId = Convert.ToInt32(reader["DriverId"]);
+                driver.Id = Convert.ToInt32(reader["Id"]);
                 driver.Name=reader.GetString(reader.GetOrdinal("Name"));
                 driver.Contact =reader. GetString(reader.GetOrdinal("Name"));
                 driver.Address=reader.GetString(reader.GetOrdinal("address"));
-                driver.Cnic = reader.GetString(reader.GetOrdinal("Cnic"));
+                driver.CNIC = reader.GetString(reader.GetOrdinal("CNIC"));
 
                 drivers.Add(driver);
             }
@@ -248,23 +249,23 @@ namespace Hospital_System.DAL
         }
 
 
-
-        public AmbulanceDriver GetdriverId(int DriverId)
+        
+        public AmbulanceDriver GetdriverId(int Id)
         {
             AmbulanceDriver ambulanceDriver = null;
             string res = "";
             con.Open();
-            cmd = new SqlCommand("select* from driver where DriverId=" + DriverId + "", con);
+            cmd = new SqlCommand("select* from driver where Id=" + Id + "", con);
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
                 ambulanceDriver= new AmbulanceDriver()
                 {
-                    DriverId = (int)reader.GetDecimal(reader.GetOrdinal("DriverId")),
+                    Id = (int)reader.GetDecimal(reader.GetOrdinal("Id")),
                     Name = reader.GetString(reader.GetOrdinal("Name")),
                     Contact = reader.GetString(reader.GetOrdinal("Contact")),
                     Address = reader.GetString(reader.GetOrdinal("Address")),
-                    Cnic = reader.GetString(reader.GetOrdinal("Cnic")),
+                    CNIC = reader.GetString(reader.GetOrdinal("CNIC")),
                    
                 };
             }
@@ -286,14 +287,15 @@ namespace Hospital_System.DAL
             while (reader.Read())
             {
                 Doctor doctor = new Doctor();
-                doctor. DoctorId =(int) reader.GetDecimal(reader.GetOrdinal("DoctorId"));
+                int ordinalDoctorId = reader.GetOrdinal("DoctorId");
+              doctor.DoctorId = reader.IsDBNull(ordinalDoctorId) ? 0 : Convert.ToInt32(reader.GetValue(ordinalDoctorId));
                 doctor.FullName = reader.GetString(reader.GetOrdinal("FullName"));
                 doctor.Email = reader.GetString(reader.GetOrdinal("Email"));
                 doctor.Department = reader.GetString(reader.GetOrdinal("department"));
                 doctor.Education = reader.GetString(reader.GetOrdinal("Education"));
                 doctor.Designation = reader.GetString(reader.GetOrdinal("designation"));
                 doctor.Status = reader.GetString(reader.GetOrdinal("status"));
-                doctor. PhotoUrl = reader.IsDBNull(reader.GetOrdinal("PhotoUrl")) ? null : reader.GetString(reader.GetOrdinal("PhotoUrl"));
+                //doctor. PhotoUrl = reader.IsDBNull(reader.GetOrdinal("PhotoUrl")) ? null : reader.GetString(reader.GetOrdinal("PhotoUrl"));
                 doctors.Add(doctor);
 
             }
@@ -311,20 +313,21 @@ namespace Hospital_System.DAL
             Doctor doctor1 = null;
             string res = "";
             con.Open();
-            cmd = new SqlCommand("select* from doctors where DoctorId="+DoctorId+"", con);
+            cmd = new SqlCommand("select * from doctors where DoctorId="+DoctorId+"", con);
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
                 doctor1 = new Doctor
                 {
-                    DoctorId = (int)reader.GetDecimal(reader.GetOrdinal("DoctorId")),
+
+                    DoctorId = reader.IsDBNull(reader.GetOrdinal("DoctorId")) ? 0 : Convert.ToInt32(reader.GetValue(reader.GetOrdinal("DoctorId"))),
                     FullName = reader.GetString(reader.GetOrdinal("FullName")),
                     Email = reader.GetString(reader.GetOrdinal("Email")),
                     Department = reader.GetString(reader.GetOrdinal("Department")),
                     Education = reader.GetString(reader.GetOrdinal("Education")),
                     Designation = reader.GetString(reader.GetOrdinal("Designation")),
                     Status = reader.GetString(reader.GetOrdinal("Status")),
-                    PhotoUrl = reader.IsDBNull(reader.GetOrdinal("PhotoUrl")) ? null : reader.GetString(reader.GetOrdinal("PhotoUrl")) 
+                    //PhotoUrl = reader.IsDBNull(reader.GetOrdinal("PhotoUrl")) ? null : reader.GetString(reader.GetOrdinal("PhotoUrl")) 
                 };
             }
 
@@ -395,7 +398,7 @@ namespace Hospital_System.DAL
              {
                 return "Enter All the details";
             }
-          con.Open();
+            con.Open();
             cmd = new SqlCommand("Update profiles set Password='" + patients.Password + "' where UserName='" + patients.UserName + "'", con);
             res = cmd.ExecuteNonQuery().ToString();
             con.Close();
@@ -404,10 +407,28 @@ namespace Hospital_System.DAL
         }
 
 
-
-     
+        public bool UsernameExists(string username)
+        {
+             int count = 0;
+             con.Open();
+             cmd = new SqlCommand("select * from profiles where UserName='" + username + "'", con);
+             reader = cmd.ExecuteReader();
+              if(reader.Read())
+             {
+                Patients patients = new Patients();
+                patients.UserName = reader.GetString(reader.GetOrdinal("UserName"));
+             }
+              reader.Close();
+               con.Close(); 
+               return count > 0; 
+                
             
-     }
+        }
+
+
+
+
+    }
 
 
 }

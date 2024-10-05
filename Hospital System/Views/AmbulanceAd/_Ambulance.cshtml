@@ -1,0 +1,39 @@
+﻿@model Hospital_System.Models.MAmbulance
+
+
+
+
+<div style="margin-left:500px;margin-top:200px;position:absolute;background-color:antiquewhite;">
+    <h2>Ambulance Details</h2>
+    <p><strong>Name:</strong> @Model.Name</p>
+    <p><strong>AmbulanceId:</strong> @Model.AmbulanceId</p>
+    <p><strong>AmbulanceStatus:</strong> @Model.AmbulanceStatus</p>
+    <p><strong>AmbulanceDriver:</strong> @Model.AmbulanceDriver</p>
+    <p><strong>AmbulanceDriverId:</strong> @Model.AmbulanceDriverId</p>
+
+    <button onclick="closePopup()" class="back">Back</button>
+</div>
+
+<script>
+    function closePopup() {
+        $('#AmbulancePopup').hide();
+        $('#overlay').hide();
+    }
+</script>
+
+<style>
+    /* You can customize styles specific to the popup here */
+    .back {
+        padding: 10px 15px;
+        background-color: #3051bd;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .back:hover {
+            background-color: #2c46a3;
+        }
+</style>
