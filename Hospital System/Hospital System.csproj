@@ -103,6 +103,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BAL\AdminBAL.cs" />
     <Compile Include="BAL\DoctorBAL.cs" />
+    <Compile Include="BAL\InPatientBAL.cs" />
+    <Compile Include="BAL\OPBAL.cs" />
     <Compile Include="BAL\PatientBAL.cs" />
     <Compile Include="Controllers\AmbulanceAdController.cs" />
     <Compile Include="Controllers\AnnouncementAdController.cs" />
@@ -114,12 +116,16 @@
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DoctorAdController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
+    <Compile Include="Controllers\InpatientController.cs" />
     <Compile Include="Controllers\MedicineAdController.cs" />
+    <Compile Include="Controllers\OutpatientController.cs" />
     <Compile Include="Controllers\PatientAdController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\SheduleAdController.cs" />
     <Compile Include="DAL\AdminDAL.cs" />
     <Compile Include="DAL\DoctorDAL.cs" />
+    <Compile Include="DAL\InpatientsDAL.cs" />
+    <Compile Include="DAL\OPDAL.cs" />
     <Compile Include="DAL\Patient1.cs" />
     <Compile Include="Dash\DashboardDetails.cs" />
     <Compile Include="Global.asax.cs">
@@ -133,6 +139,7 @@
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\Doctors.cs" />
+    <Compile Include="Models\HospPatient.cs" />
     <Compile Include="Models\MAmbulance.cs" />
     <Compile Include="Models\MAnnouncement.cs" />
     <Compile Include="Models\MAppointment.cs" />
@@ -166,8 +173,6 @@
     <Content Include="Views\Patient\doc.cshtml" />
     <Content Include="Views\Patient\medicals.cshtml" />
     <Content Include="Views\Shared\_PatientLayout.cshtml" />
-    <Content Include="Views\Appointment\AppointmentList.cshtml" />
-    <Content Include="Views\Appointment\BookAppointment.cshtml" />
     <Content Include="Views\Doctor\DoctorList.cshtml" />
     <Content Include="Views\Doctor\NewDoctor.cshtml" />
     <Content Include="Views\Patient\Forgotpassword.cshtml" />
@@ -209,6 +214,9 @@
     <Content Include="Views\DoctorAd\DoctorListAd.cshtml" />
     <Content Include="Views\Appointment\BookList.cshtml" />
     <Content Include="Views\Appointment\AddBook.cshtml" />
+    <Content Include="Views\Patient\VerifyOTP.cshtml" />
+    <Content Include="Views\Outpatient\OutP.cshtml" />
+    <Content Include="Views\Inpatient\Inpatient.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

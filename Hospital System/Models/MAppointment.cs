@@ -64,9 +64,7 @@ namespace Hospital_System.Models
 
             public string Description { get; set; }
 
-            public IEnumerable<SelectListItem> PatientTypes { get; set; }
-
-            public IEnumerable<SelectListItem> Getproblems { get; set; }
+           
 
 
 

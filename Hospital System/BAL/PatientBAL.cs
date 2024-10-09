@@ -29,9 +29,12 @@ namespace Hospital_System.BAL
 
         }
 
+        //public void SendOTPtoMail(string Email, string OTP)
+        //{
+        //    patient.SendOTPtoMail(Email, OTP);
+        //}
 
-
-        public string Updateprofile(Patients patients)
+            public string Updateprofile(Patients patients)
         {
             string loggedInUsername = HttpContext.Current.Session["Username"] as string; // Retrieve username from session
 

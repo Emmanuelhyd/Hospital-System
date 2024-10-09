@@ -13,6 +13,10 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Drawing;
+
 
 
 
@@ -42,7 +46,7 @@ namespace Hospital_System.DAL
         {
             string res = " ";
             con.Open();
-            var sqlq = "select  PatientId, UserName, Password from profiles where UserName='"+ patients.UserName+"' and Password='"+ patients.Password+"'";
+            var sqlq = "select  PatientId, UserName, Password,Email from profiles where UserName='"+ patients.UserName+"' and Password='"+ patients.Password+"'";
             cmd = new SqlCommand(sqlq, con);
             reader = cmd.ExecuteReader();
 
@@ -56,24 +60,49 @@ namespace Hospital_System.DAL
                     }
                 string dbUserName = reader.GetString(reader.GetOrdinal("UserName"));
                 string dbPassword = reader.GetString(reader.GetOrdinal("Password")); //
-
+                string Email = reader.GetString(reader.GetOrdinal("Email"));
 
                 if ( patients.UserName ==dbUserName && patients.Password==dbPassword)
                 {
                    
                     res="success";
+                    patients.Email = Email;
                 }
                 else
                 {
                     res = "Invalid UserName or Password";
                 }
-               
-
+              
             }
             reader.Close();
             con.Close();
             return res;
         }
+
+
+
+        //public void SendOTPtoMail(string Email, string OTP)
+        //{
+        //    var subject = $"Your One Time Password";
+        //    var Body = $" Your OTP is :{OTP}. It is valid only for 5 minutes." +
+        //        $"Please do not reply";
+        //    con.Open();
+        //    MailMessage mail = new MailMessage();
+        //    mail.From = new MailAddress("softwares910@gmail.com");
+        //    mail.To.Add(Email);
+        //    mail.Subject = subject;
+        //    mail.Body = Body;
+
+        //    var smtp = new SmtpClient("smtp.gmail.com", 587);
+
+        //    smtp.EnableSsl = true;
+        //    smtp.Credentials = new NetworkCredential("softwares910@gmail.com", "hmnr gpko jlsr advg");
+        //    smtp.Send(mail);
+        //    con.Close();
+
+        //}
+
+
 
 
         public string Insertprofile(Patients patients)
@@ -261,7 +290,7 @@ namespace Hospital_System.DAL
             {
                 ambulanceDriver= new AmbulanceDriver()
                 {
-                    Id = (int)reader.GetDecimal(reader.GetOrdinal("Id")),
+                    Id = Convert.ToInt32(reader.GetOrdinal("Id")),
                     Name = reader.GetString(reader.GetOrdinal("Name")),
                     Contact = reader.GetString(reader.GetOrdinal("Contact")),
                     Address = reader.GetString(reader.GetOrdinal("Address")),

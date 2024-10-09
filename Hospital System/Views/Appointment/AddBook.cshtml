@@ -1,26 +1,184 @@
-﻿@{
+﻿@*@model Hospital_System.Models.MAppointmentAd
+
+    @{
+        ViewBag.Title = "AddBook";
+        Layout = "~/Views/Shared/_PatientLayout.cshtml";
+    }
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .form-container {
+            position: absolute;
+            width: 85%;
+            margin-left: 15%;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-left: 263px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                font-weight: bold;
+                margin-bottom: 5px;
+                display: block;
+            }
+
+        .form-control {
+            width: 40%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+            .form-control:focus {
+                border-color: #66afe9;
+                outline: none;
+                box-shadow: 0 0 5px rgba(102, 175, 233, .6);
+            }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .text-danger {
+            color: #dc3545;
+        }
+
+        .validation-summary {
+            margin-bottom: 15px;
+            color: #dc3545;
+        }
+    </style>
+
+    @using (Html.BeginForm("AddBook", "Appointment"))
+    {
+        <div class="form-container">
+            <div style="margin-left:200px;margin-top:20px;">
+                <div>
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "validation-summary" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Id)
+                        @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Id, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PatientName)
+                        @Html.TextBoxFor(m => m.PatientName, new { @required = "required", @placeholder = "Enter Patient Name", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PatientName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PatientType)
+                        @Html.DropDownListFor(m => m.PatientType, (IEnumerable<SelectListItem>)ViewBag.PatientTypes, "Select Patient Type", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PatientType, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Gender)
+                        @Html.DropDownListFor(m => m.Gender, new SelectList(new List<SelectListItem>
+                        {
+                            new SelectListItem { Value = "male", Text = "Male" },
+                            new SelectListItem { Value = "female", Text = "Female" },
+                            new SelectListItem { Value = "others", Text = "Others" }
+                        }, "Value", "Text"), "Select Gender", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Problem)
+                        @Html.DropDownListFor(m => m.Problem, (IEnumerable<SelectListItem>)ViewBag.Problems, "Select Problem", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Problem, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PhoneNumber)
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @required = "required", @placeholder = "Phone Number", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Address)
+                        @Html.TextBoxFor(m => m.Address, new { @required = "required", @placeholder = "Address", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Date)
+                        @Html.TextBoxFor(m => m.Date, "{0:yyyy-MM-dd}", new { @required = "required", @placeholder = "Appointment Date", @type = "date", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Time)
+                        @Html.TextBoxFor(m => m.Time, new { @required = "required", @placeholder = "Time", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Time, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Description)
+                        @Html.TextBoxFor(m => m.Description, new { @required = "required", @placeholder = "Description", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div>
+                        <input type="submit" value="Submit" class="btn-primary">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }*@
+
+
+
+@model Hospital_System.Models.MAppointmentAd
+
+@{
     ViewBag.Title = "AddBook";
     Layout = "~/Views/Shared/_PatientLayout.cshtml";
 }
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-@model Hospital_System.Models.MAppointmentAd
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <style>
     .form-container {
-        position: absolute;
-        width: 85%;
-        margin-left: 15%;
-        background-color: #f9f9f9;
+        width: 50%;
+        margin: 20px auto; /* Center the form container */
+      /*  background-color: #f9f9f9;*/
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        /*position: absolute;*/
-        margin-left: 263px;
+    }
+
+    .form-row {
+        display: flex; /* Use flexbox for two columns */
+        flex-wrap: wrap; /* Allow wrapping to the next line if needed */
+        gap: 20px; /* Add space between columns */
     }
 
     .form-group {
+        flex: 1; /* Each form group takes equal space */
+        min-width: 250px; /* Minimum width for responsiveness */
         margin-bottom: 20px;
     }
 
@@ -31,7 +189,7 @@
         }
 
     .form-control {
-        width: 40%;
+        width: 100%; /* Full width */
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -51,6 +209,7 @@
         padding: 10px 15px;
         border-radius: 4px;
         cursor: pointer;
+        width: 100%; /* Make the button full width */
     }
 
         .btn-primary:hover {
@@ -70,188 +229,77 @@
 @using (Html.BeginForm("AddBook", "Appointment"))
 {
     <div class="form-container">
-        <div style="margin-left:200px;margin-top:20px;">
-            <div>
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true, "", new { @class = "validation-summary" })
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "validation-summary" })
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Id)
-                    @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Id, "", new { @class = "text-danger" })
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.PatientName)
-                    @Html.TextBoxFor(m => m.PatientName, new { @required = "required", @placeholder = "Enter Patient Name", @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.PatientName, "", new { @class = "text-danger" })
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.PatientType)
-                    @Html.TextBoxFor(m => m.PatientType, new { @required = "required", @placeholder = "Enter Patient Type", @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.PatientType, "", new { @class = "text-danger" })
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Gender)
-                    <select id="Gender" name="Gender" required class="form-control">
-                        <option value="">Select Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="others">Others</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Problem)
-                    @Html.TextBoxFor(m => m.Problem, new { @required = "required", @placeholder = "Problem", @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Problem, "", new { @class = "text-danger" })
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.PhoneNumber)
-                    @Html.TextBoxFor(m => m.PhoneNumber, new { @required = "required", @placeholder = "Phone Number", @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Address)
-                    @Html.TextBoxFor(m => m.Address, new { @required = "required", @placeholder = "Address", @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Date)
-                    @Html.TextBoxFor(m => m.Date, "{0:yyyy-MM-dd}", new { @required = "required", @placeholder = "Appointment Date", @type = "date", @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Time)
-                    @Html.TextBoxFor(m => m.Time, new { @required = "required", @placeholder = "Time", @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Time, "", new { @class = "text-danger" })
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Description)
-                    @Html.TextBoxFor(m => m.Description, new { @required = "required", @placeholder = "Description", @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
-                </div>
-
-                <div>
-                    <input type="submit" value="Submit" class=" btn-primary">
-                </div>
-
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Id)
+                @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Id, "", new { @class = "text-danger" })
             </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.PatientName)
+                @Html.TextBoxFor(m => m.PatientName, new { @required = "required", @placeholder = "Enter Patient Name", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.PatientName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.PatientType)
+                @Html.DropDownListFor(m => m.PatientType, (IEnumerable<SelectListItem>)ViewBag.PatientTypes, "Select Patient Type", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.PatientType, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Gender)
+                @Html.DropDownListFor(m => m.Gender, new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem { Value = "male", Text = "Male" },
+                    new SelectListItem { Value = "female", Text = "Female" },
+                    new SelectListItem { Value = "others", Text = "Others" }
+                }, "Value", "Text"), "Select Gender", new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Problem)
+                @Html.DropDownListFor(m => m.Problem, (IEnumerable<SelectListItem>)ViewBag.Problems, "Select Problem", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Problem, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.PhoneNumber)
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @required = "required", @placeholder = "Phone Number", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Address)
+                @Html.TextBoxFor(m => m.Address, new { @required = "required", @placeholder = "Address", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Date)
+                @Html.TextBoxFor(m => m.Date, "{0:yyyy-MM-dd}", new { @required = "required", @placeholder = "Appointment Date", @type = "date", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Time)
+                @Html.TextBoxFor(m => m.Time, new { @required = "required", @placeholder = "Time", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Time, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Description)
+                @Html.TextBoxFor(m => m.Description, new { @required = "required", @placeholder = "Description", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div>
+            <input type="submit" value="Submit" class="btn-primary">
         </div>
     </div>
 }
-
-
-@*@{
-        ViewBag.Title = "AddBook";
-        Layout = "~/Views/Shared/_PatientLayout.cshtml";
-    }
-
-
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    @model Hospital_System.Models.MAppointmentAd
-
-    @{
-
-        ViewBag.Title = "AddBook";
-        Layout = "~/Views/Shared/_PatientLayout.cshtml";
-    }
-
-    @using (Html.BeginForm("AddBook", "Appointment"))
-    {
-        <div  class="form-container" style="position: absolute; width: 85%; margin-left: 15%; background-color: white;">
-            <div style="margin-left:100px;margin-top:20px;">
-                <div>
-                    @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Id)
-                            @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Id)
-                        </div>
-
-                    <div class="form-group" >
-                        @Html.LabelFor(m => m.PatientName)
-                            @Html.TextBoxFor(m => m.PatientName, new { @required = "required", @placeholder = "Enter DoctorName", @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.PatientName, "", new { @class = "text-danger" })
-                        </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.PatientType)
-
-                            @Html.TextBoxFor(m => m.PatientType, new { @required = "required", @placeholder = "Enter PatientName", @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.PatientType, "", new { @class = "text-danger" })
-
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Gender)
-                        @Html.TextBoxFor(m => m.Gender, new  { @class = "form-control" })
-                    <div>        <select id="Gender" name="Gender" required>
-                                <option value="">Select Gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="others">Others</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                       @Html.LabelFor(m => m.Problem)
-
-                            @Html.TextBoxFor(m => m.Problem, new { @required = "required", @placeholder = "Problem", @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Problem, "", new { @class = "text-danger" })
-                        </div>
-
-                    <div class="form-group">
-                       @Html.LabelFor(m => m.PhoneNumber)
-
-                            @Html.TextBoxFor(m => m.PhoneNumber, new { @required = "required", @placeholder = "PhoneNumber", @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
-                        </div>
-
-                    <div class="form-group">
-                       @Html.LabelFor(m => m.Address)
-
-                            @Html.TextBoxFor(m => m.Address, new { @required = "required", @placeholder = "Address", @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
-
-                    </div>
-                    <div class="form-group">
-                       @Html.LabelFor(m => m.Date)
-                            @Html.TextBoxFor(m => m.Date, "{0:yyyy-MM-dd}", new { @required = "required", @placeholder = "AppointmentDate", @type = "date" , @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
-
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Time)
-                            @Html.TextBoxFor(m => m.Time, new { @required = "required", @placeholder = "Time", @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Time, "", new { @class = "text-danger" })
-
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Description)
-                            @Html.TextBoxFor(m => m.Description, new { @required = "required", @placeholder = "Description" , @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
-                        </div>
-
-                    <div><input type="submit" value="Submit" class="btn btn-primary"></div>
-
-                </div>
-            </div>
-        </div>
-
-
-
-
-    }*@
-
-

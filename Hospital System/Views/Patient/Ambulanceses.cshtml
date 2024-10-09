@@ -1,57 +1,4 @@
-﻿@*@model IEnumerable<Hospital_System.Models.Ambulance>
-
-    @{
-        ViewBag.Title = "Ambulances";
-        //Layout = "~/Views/Shared/_PatientLayout.cshtml";
-    }
-
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title></title>
-
-
-
-
-    </head>
-    <body>
-        <div class="container mt-5">
-            <h2>List of Ambulances</h2>
-            <div class="table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>@Html.DisplayNameFor(model => model.Id)</th>
-                            <th>@Html.DisplayNameFor(model => model.Name)</th>
-                            <th>@Html.DisplayNameFor(model => model.AmbulanceId)</th>
-                            <th>@Html.DisplayNameFor(model => model.AmbulanceStatus)</th>
-                            <th>@Html.DisplayNameFor(model => model.AmbulanceDriver)</th>
-                            <th>@Html.DisplayNameFor(model => model.AmbulanceDriverId)</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var ambulance in Model)
-                        {
-                            <tr>
-                                <td>@Html.DisplayFor(modelItem => ambulance.Id)</td>
-                                <td>@Html.DisplayFor(modelItem => ambulance.Name)</td>
-                                <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceId)</td>
-                                <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceStatus)</td>
-                                <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceDriver)</td>
-                                <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceDriverId)</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-                @Html.ActionLink("Back", "Dashboard", "Patient")
-            </div>
-
-        </div>
-    </body>
-    </html>*@
+﻿                    
 
 
 @model IEnumerable<Hospital_System.Models.Ambulance>
@@ -66,6 +13,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>@ViewBag.Title</title>
 
     <style>
@@ -80,8 +28,8 @@
             max-width: 1200px; /* Set a max width for the container */
             margin: 20px auto;
             padding: 20px;
-       /*     background-color: white;  White background for content 
-            border-radius: 8px;  Rounded corners 
+            /*     background-color: white;  White background for content
+            border-radius: 8px;  Rounded corners
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);  Subtle shadow */
             position: absolute;
             margin-left: 329px;

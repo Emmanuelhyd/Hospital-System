@@ -16,83 +16,9 @@ namespace Hospital_System.Controllers
         DoctorDAL doctorDAL;
         DoctorBAL doctorBAL = new DoctorBAL();
         // GET: Appointment
-        public ActionResult AppointmentList(string searchvalue)
-        {
-            
-            var mAppointment = doctorBAL.GetAppointmentList(searchvalue);
-            return View(mAppointment);
-
-        }
-        [HttpGet]
-        public ActionResult BookAppointment()
-        {
-            var model = new MAppointment
-            {
-                Getproblems=new SelectList(Getproblems(),"value","Text"),
-                PatientTypes = new SelectList(GetPatientTypes(), "Value", "Text")
-            };
-
-            return View(model);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult BookAppointment(MAppointment mAppointment)
-
-        {
-            if (!ModelState.IsValid)
-            {
-                mAppointment.PatientTypes = GetPatientTypes();
-
-            }
-            mAppointment.PatientTypes = GetPatientTypes();
-
-            var ids = 0;
-            List<MAppointment> mAppointments = new List<MAppointment>();
-            if (mAppointment.Id != 0)
-            {
-                string res = doctorBAL.BookAppointment(mAppointment);
-            }
-            if (mAppointments.Count == 0)
-            {
-                doctorDAL = new DoctorDAL();
-                if (mAppointment.Id == 0)
-                {
-                    ids = doctorDAL.AppointmentId();
-                }
-                mAppointment.Id = ids + 1;
-
-                return View(mAppointment);
-            }
-            else
-            {
-                return RedirectToAction("AppointmentList", mAppointments);
-            }
-
-
-            //if (!ModelState.IsValid)
-            //{
-            //    mAppointment.PatientTypes = GetPatientTypes();
-
-            //}
-
-            //string res = doctorBAL.BookAppointment(mAppointment);
-
-
-            //if (res == "Booked successfully")
-            //{
-            //    TempData["Message"] = "Booked Successfully";
-            //    return RedirectToAction("BookAppointment");
-            //}
-
-            //TempData["message"] = "An error occurred. Please try again.";
-
-
-            //mAppointment.PatientTypes = GetPatientTypes();
-            //mAppointment.Getproblems = Getproblems();
-            //return View(mAppointment);
-        }
-
-
+    
+           
+    
         private IEnumerable<SelectListItem> GetPatientTypes()
         {
             return new List<SelectListItem>
@@ -136,6 +62,16 @@ namespace Hospital_System.Controllers
 
         public ActionResult AddBook(MAppointmentAd mAppointmentAd)
         {
+            if (!ModelState.IsValid)
+            {
+               
+                ViewBag.PatientTypes = GetPatientTypes();
+                ViewBag.Problems = Getproblems();
+                return View(mAppointmentAd);
+            }
+
+
+
             var ids = 0;
             List<MAppointmentAd> mAppointmentAds = new List<MAppointmentAd>();
             if (mAppointmentAd.Id != 0)
@@ -151,12 +87,13 @@ namespace Hospital_System.Controllers
                 }
                 mAppointmentAd.Id = ids + 1;
 
+                ViewBag.PatientTypes = GetPatientTypes();
+                ViewBag.Problems = Getproblems();
                 return View(mAppointmentAd);
             }
-            else
-            {
+            
                 return RedirectToAction("BookList", mAppointmentAds);
-            }
+            
         }
 
     }

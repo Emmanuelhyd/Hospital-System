@@ -9,13 +9,13 @@
         window.location.href = '@Url.Action("NewDoctor", "Doctor")'; // Ensure this matches your route
     }
 </script>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 @using (Html.BeginForm())
 {
     <div class="container">
         <div class="header">
             <input type="search" id="searchvalue" name="searchvalue" placeholder="Search doctors..." style="width: 281px; height: 32px;">
-            <input type="submit" value="Search" class="butn"  />
+            <input type="submit" value="Search" class="butn" />
 
         </div>
 
@@ -41,7 +41,7 @@
                         <td>@Html.DisplayFor(modelItem => item.Department)</td>
                         <td>@Html.DisplayFor(modelItem => item.PhoneNo)</td>
                         <td>@Html.DisplayFor(modelItem => item.Status)</td>
-                        <td> <input type="button" value="Book" class="book-button" onclick="window.location.href='@Url.Action("BookAppointment", "Appointment")'"></td>
+                        <td> <input type="button" value="Book" class="book-button" onclick="window.location.href='@Url.Action("AddBook", "Appointment")'"></td>
                     </tr>
                 }
             </tbody>
@@ -57,9 +57,9 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
-     /*   background-color: #ffffff;*/
+        /*   background-color: #ffffff;*/
         border-radius: 8px;
-      /*  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+        /*  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
         margin-left: 262px;
         position: absolute;
         margin-top: 71px;
@@ -70,6 +70,7 @@
         margin-bottom: 20px;
         text-align: center;
     }
+
     .butn {
         width: 91px;
         height: 30px;
@@ -78,12 +79,12 @@
         border-color: dodgerblue;
         border-radius: 5px;
     }
-    
-    
 
-        .btn:hover {
-            background-color: #0056b3; /* Darker shade on hover */
-        }
+
+
+    .btn:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+    }
 
     /* Table Styles */
     .doctor-table {

@@ -27,6 +27,7 @@ namespace Hospital_System.Controllers
 
         PatientBAL patientBAL = new PatientBAL();
         // GET: Patient
+        //Login
         [HttpGet]
         public ActionResult Login()
         {
@@ -46,6 +47,10 @@ namespace Hospital_System.Controllers
                 Session["UserName"] = patients.UserName;
                 Session["PatientId"] = patients.PatientId;
 
+                //string Otp = GenerateOTP();
+                //Session["GenerateOTP"] = Otp;
+                //patientBAL.SendOTPtoMail(patients.Email, Otp); 
+
                 return RedirectToAction("Dashboard");
             }
             else
@@ -56,6 +61,37 @@ namespace Hospital_System.Controllers
 
 
         }
+        //generate OTP
+        // private string GenerateOTP()
+        //{
+        //    Random random = new Random();
+        //    return random.Next(10000, 100000).ToString();
+        //}
+
+        //verifyOTP
+        //[HttpGet]
+        //public ActionResult VerifyOTP()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public ActionResult VerifyOTP(string userEnteredOtp)
+        //{
+        //    string generate = Session["GenerateOTP"].ToString();
+
+        //    if(generate==userEnteredOtp)
+        //    {
+        //        return RedirectToAction("Dashboard", "Patient");
+        //    }
+        //    TempData["Message"] = "OTP is Invalid ";
+
+        //    return View();
+        //}
+
+
+
+
+        //Signup
         [HttpGet]
         public ActionResult Insertprofile()
         {
