@@ -1,32 +1,32 @@
-﻿@model Hospital_System.Models.Doctor
+﻿@model Hospital_System.Viewmodel.Allview
 
 <div id="doctorDetails" style="padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #fff;">
     <h3>Doctor Details</h3>
     <div>
-        <img src="@Model.PhotoUrl" style="width:200px; height:150px;" />
+       
     </div>
     <div>
-        <strong>Name:</strong> @Model.FullName
+        <strong>Name:</strong> @Model.doctors.FullName
     </div>
     <div>
-        <strong>Email:</strong> @Model.Email
+        <strong>Email:</strong> @Model.doctors.Email
     </div>
     <div>
-        <strong>Department:</strong> @Model.Department
-    </div>
-
-    <div>
-        <strong>Education:</strong> @Model.Education
+        <strong>Department:</strong> @Model.doctors.Department
     </div>
 
     <div>
-        <strong>Designation:</strong> @Model.Designation
+        <strong>Education:</strong> @Model.doctors.Education
+    </div>
+
+    <div>
+        <strong>Designation:</strong> @Model.doctors.Designation
     </div>
     <div>
-        <strong>Status:</strong> @Model.Status
+        <strong>Status:</strong> @Model.doctors.Status
     </div>
     <div>
-        <strong>Phone:</strong> @Model.PhoneNo
+        <strong>Phone:</strong> @Model.doctors.PhoneNo
     </div>
 
     <button onclick="closePopup()" class="back">Back</button>

@@ -1,4 +1,4 @@
-﻿@model Hospital_System.Models.MComplaintAd
+﻿@model Hospital_System.Dash.DashboardDetails
 
 @{
     ViewBag.Title = "AddComplaintAd";
@@ -10,29 +10,30 @@
     <div style="position: absolute; width: 85%; margin-left: 15%; background-color: white;margin-top:18px;">
         <div style="margin-left:300px;margin-top:50px">
             <div>
-                <div>@Html.LabelFor(m => m.Id)</div>
-                <div>@Html.TextBoxFor(m => m.Id)</div>
+                <div>Id</div>
+                <div>@Html.TextBoxFor(m => m.mComplaintAd.Id)</div>
             </div>
 
             <div>
-                <div>@Html.LabelFor(m => m.Name)</div>
-                <div>@Html.TextBoxFor(m => m.Name, new { @required = "required", @placeholder = "Name" })</div>
+                <div>Name</div>
+                <div>@Html.TextBoxFor(m => m.mComplaintAd.Name, new { @required = "required", @placeholder = "Name" })</div>
             </div>
             <div>
-                <div>@Html.LabelFor(m => m.Complaint)</div>
-                <div>@Html.TextBoxFor(m => m.Complaint, new { @required = "required", @placeholder = "Complaint" })</div>
+                <div>Complaint</div>
+                <div>@Html.TextBoxFor(m => m.mComplaintAd.Complaint, new { @required = "required", @placeholder = "Complaint" })</div>
             </div>
 
             <div>
-                <div>@Html.LabelFor(m => m.PhoneNumber)</div>
-                <div>@Html.TextBoxFor(m => m.PhoneNumber, new { @required = "required", @placeholder = "PhoneNumber" })</div>
+                <div>PhoneNumber</div>
+                <div>@Html.TextBoxFor(m => m.mComplaintAd.PhoneNumber, new { @required = "required", @placeholder = "PhoneNumber" })</div>
             </div>
             <div>
-                <div>@Html.LabelFor(m => m.Replay)</div>
-                <div>@Html.TextBoxFor(m => m.Replay, new { @required = "required", @placeholder = "Replay" })</div>
+                <div>Replay</div>
+                <div>@Html.TextBoxFor(m => m.mComplaintAd.Replay, new { @required = "required", @placeholder = "Replay" })</div>
             </div>
 
             <div><input type="submit" value="Submit"></div>
+            <div style="margin-left: 108px; margin-top: -44px;"> <button type="button" class="back-button" onclick=" Back()"> Back </button></div>
         </div>
     </div>
 }
@@ -41,14 +42,7 @@
 
 <style>
     /* Container for the form */
-    form {
-        margin: 20px auto;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        background-color: #f9f9f9;
-        position: relative; /* Change to relative for proper absolute positioning */
-    }
+    
 
     /* Styling for labels */
     label {
@@ -91,4 +85,31 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+
+    .back-button {
+        background-color: #007bff; /* Primary color */
+        color: white; /* Text color */
+        border: none; /* No border */
+        border-radius: 5px; /* Rounded corners */
+        padding: 10px 20px; /* Padding for size */
+        font-size: 16px; /* Font size */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    }
+
+        .back-button:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+        }
+
+        .back-button:focus {
+            outline: none; /* Remove outline on focus */
+        }
 </style>
+
+<script>
+
+    function Back() {
+        window.location.href = "/Dashboard/DashboardView";
+    }
+</script>

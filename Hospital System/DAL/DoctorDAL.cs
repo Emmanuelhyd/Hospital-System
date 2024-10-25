@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Web.DynamicData;
 using Hospital_System.BAL;
+using Hospital_System.Viewmodel;
 
 
 
@@ -230,7 +231,7 @@ namespace Hospital_System.DAL
         {
             List<Doctor> doctors = new List<Doctor>();
             con.Open();
-            cmd = new SqlCommand("select* from doctors where Department like '%" + searchvalue + "%'", con);
+            cmd = new SqlCommand("select* from doctors where Department like '%" + searchvalue + "%'  or FullName like '%" +searchvalue+"%' or PhoneNo like'%"+searchvalue+"%'" , con);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -299,6 +300,7 @@ namespace Hospital_System.DAL
                             Date = row["Date"].ToString(),
                             Time = row["Time"].ToString(),
                             Description = row["Description"].ToString(),
+                            Department= row["Department"].ToString()
 
 
                         });
@@ -331,12 +333,23 @@ namespace Hospital_System.DAL
             con.Open();
             if (ids == 0)
             {
-                cmd = new SqlCommand("insert into bookapp(Id,PatientName,PatientType,Gender,Problem,PhoneNumber,Address,Date,Time,Description) values(" + mAppointmentAd.Id + ",'" + mAppointmentAd.PatientName + "','" + mAppointmentAd.PatientType + "','" + mAppointmentAd.Gender + "','" + mAppointmentAd.Problem + "','" + mAppointmentAd.PhoneNumber + "','" + mAppointmentAd.Address + "','" + mAppointmentAd.Date + "','" + mAppointmentAd.Time + "','" + mAppointmentAd.Description + "')", con);
+                cmd = new SqlCommand("INSERT INTO bookapp (Id, PatientName, PatientType, Gender, Problem, PhoneNumber, Address, Date, Time, Description, Department) VALUES (" +
+                             mAppointmentAd.Id + ", '" +
+                             mAppointmentAd.PatientName + "', '" +
+                             mAppointmentAd.PatientType + "', '" +
+                             mAppointmentAd.Gender + "', '" +
+                             mAppointmentAd.Problem + "', '" +
+                             mAppointmentAd.PhoneNumber + "', '" +
+                             mAppointmentAd.Address + "', '" +
+                             mAppointmentAd.Date + "', '" +
+                             mAppointmentAd.Time + "', '" +
+                             mAppointmentAd.Description + "', '" +
+                             mAppointmentAd.Department + "')", con);
 
             }
             else
             {
-                cmd = new SqlCommand("update bookapp set PatientName='" + mAppointmentAd.PatientName + "',PatientType='" + mAppointmentAd.PatientType + "',Gender='" + mAppointmentAd.Gender + "',Problem='" + mAppointmentAd.Problem + "',PhoneNumber='" + mAppointmentAd.PhoneNumber + "',Address='" + mAppointmentAd.Address + "',Date='" + mAppointmentAd.Date + "',Time='" + mAppointmentAd.Time + "',Description='" + mAppointmentAd.Description + "' where Id=" + mAppointmentAd.Id + "", con);
+                cmd = new SqlCommand("update bookapp set PatientName='" + mAppointmentAd.PatientName + "',PatientType='" + mAppointmentAd.PatientType + "',Gender='" + mAppointmentAd.Gender + "',Problem='" + mAppointmentAd.Problem + "',PhoneNumber='" + mAppointmentAd.PhoneNumber + "',Address='" + mAppointmentAd.Address + "',Date='" + mAppointmentAd.Date + "',Time='" + mAppointmentAd.Time + "',Description='" + mAppointmentAd.Description + "',Department= '"+mAppointmentAd.Department+"' where Id=" + mAppointmentAd.Id + "", con);
             }
             cmd.ExecuteNonQuery();
             con.Close();

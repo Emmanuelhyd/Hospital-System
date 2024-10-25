@@ -9,6 +9,7 @@ using Hospital_System.BAL;
 using Hospital_System.DAL;
 using System.Reflection;
 using System.Security.Cryptography;
+using Hospital_System.Dash;
 
 namespace Hospital_System.Controllers
 {
@@ -23,7 +24,15 @@ namespace Hospital_System.Controllers
             List<MDepartment> mDepartment = new List<MDepartment>();
 
             mDepartment = adminBAL.DepartmentList(dep);
-            return View(mDepartment);
+
+            var department = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                mDepartments = mDepartment
+            };
+           
+
+            return View(department);
         }
 
         
@@ -41,7 +50,7 @@ namespace Hospital_System.Controllers
             {
                 mDepartments = adminBAL.AddDepartment(mDepartment);
             }
-            if (mDepartments.Count == 0)
+              else if (mDepartments.Count == 0)
             {
                 adminDAL = new AdminDAL();
                 if (mDepartment.Id == 0)
@@ -50,12 +59,21 @@ namespace Hospital_System.Controllers
                 }
                 mDepartment.Id = ids + 1;
 
-                return View(mDepartment);
+
+                var department = new DashboardDetails
+                {
+                    Adminmenus = adminBAL.GetAdminmenus(),
+                    MDepartment = mDepartment
+                };
+
+
+
+                return View(department);
             }
-            else
-            {
+            
+            
                 return RedirectToAction("DepartmentList", mDepartments);
-            }
+            
 
 
         }
@@ -65,12 +83,20 @@ namespace Hospital_System.Controllers
             if (Id <= 0)
                 return HttpNotFound();
 
-            MDepartment mDepartment = new MDepartment();
-            mDepartment = adminBAL.DLEdit(Id);
-            if (mDepartment.Id != 0)
+            MDepartment mDepartments = new MDepartment();
+            mDepartments = adminBAL.DLEdit(Id);
+
+            var department = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                MDepartment = mDepartments
+            };
+
+
+            if (mDepartments.Id != 0)
             {
 
-                return View("AddDepartment", mDepartment);
+                return View("AddDepartment", department);
             }
             else
             {
@@ -85,6 +111,8 @@ namespace Hospital_System.Controllers
             List<MDepartment> mDepartments = new List<MDepartment>();
 
             mDepartments = adminBAL.DLDelete(Id);
+
+
             return RedirectToAction("DepartmentList", "Department");
         }
     }

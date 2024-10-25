@@ -1,157 +1,108 @@
-﻿
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-@model Hospital_System.Models.MAppointmentAd
+﻿@model Hospital_System.Dash.DashboardDetails
 
 @{
-    ViewBag.Title = "AddAppointmentAd";
+    ViewBag.Title = "Add Appointment";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 @using (Html.BeginForm("AddAppointmentAd", "AppointmentAd"))
 {
-    <div style="position: absolute; width: 85%; margin-left: 15%; background-color: white;">
-       <div style="margin-left:300px;margin-top:20px;">
-           <div>
-               @Html.AntiForgeryToken()
-               @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-               <div>
-                   <div>@Html.LabelFor(m => m.Id)</div>
-                   <div>
-                       @Html.TextBoxFor(m => m.Id)
-                       @Html.ValidationMessageFor(m => m.Id)
-                   </div>
-               </div>
-               <div>
-                   <div>@Html.LabelFor(m => m.PatientName)</div>
-                   <div>
-                       @Html.TextBoxFor(m => m.PatientName, new { @required = "required", @placeholder = "Enter DoctorName" })
-                       @Html.ValidationMessageFor(m => m.PatientName, "", new { @class = "text-danger" })
-                   </div>
-               </div>
-               <div>
-                   <div>@Html.LabelFor(m => m.PatientType)</div>
-                   <div>
-                       @Html.TextBoxFor(m => m.PatientType, new { @required = "required", @placeholder = "Enter PatientName" })
-                       @Html.ValidationMessageFor(m => m.PatientType, "", new { @class = "text-danger" })
-                   </div>
-               </div>
-               <div>
-                   <div>@Html.LabelFor(m => m.Gender)</div>
-                   <div>
-                       <select id="Gender" name="Gender" required>
-                           <option value="">Select Gender</option>
-                           <option value="male">Male</option>
-                           <option value="female">Female</option>
-                           <option value="others">Others</option>
-                       </select>
-                   </div>
-               </div>
-               <div>
-                   <div>@Html.LabelFor(m => m.Problem)</div>
-                   <div>
-                       @Html.TextBoxFor(m => m.Problem, new { @required = "required", @placeholder = "Problem" })
-                       @Html.ValidationMessageFor(m => m.Problem, "", new { @class = "text-danger" })
-                   </div>
-               </div>
-               <div>
-                   <div>@Html.LabelFor(m => m.PhoneNumber)</div>
-                   <div>
-                       @Html.TextBoxFor(m => m.PhoneNumber, new { @required = "required", @placeholder = "PhoneNumber" })
-                       @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
-                   </div>
-               </div>
-               <div>
-                   <div>@Html.LabelFor(m => m.Address)</div>
-                   <div>
-                       @Html.TextBoxFor(m => m.Address, new { @required = "required", @placeholder = "Address" })
-                       @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
-                   </div>
-               </div>
-               <div>
-                   <div>@Html.LabelFor(m => m.Date)</div>
-                   <div>
-                       @Html.TextBoxFor(m => m.Date, "{0:yyyy-MM-dd}", new { @required = "required", @placeholder = "AppointmentDate", @type = "date" })
-                       @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
-                   </div>
-               </div>
-               <div>
-                   <div>@Html.LabelFor(m => m.Time)</div>
-                   <div>
-                       @Html.TextBoxFor(m => m.Time, new { @required = "required", @placeholder = "Time" })
-                       @Html.ValidationMessageFor(m => m.Time, "", new { @class = "text-danger" })
-                   </div>
-               </div>
-               <div>
-                   <div>@Html.LabelFor(m => m.Description)</div>
-                   <div>
-                       @Html.TextBoxFor(m => m.Description, new { @required = "required", @placeholder = "Description" })
-                       @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
-                   </div>
-               </div>
-               <div><input type="submit" value="Submit"></div>
+    <div class="container mt-5">
+        <h2>Add Appointment</h2>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-           </div>
-       </div>
+        <div class="form-group">
+            <label for="Id">Id</label>
+            @Html.TextBoxFor(m => m.MAppointmentAd.Id, new { @class = "form-control", @placeholder = "Enter Id" })
+            @Html.ValidationMessageFor(m => m.MAppointmentAd.Id, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label for="PatientName">Patient Name</label>
+            @Html.TextBoxFor(m => m.MAppointmentAd.PatientName, new { @class = "form-control", @required = "required", @placeholder = "Enter Patient Name" })
+            @Html.ValidationMessageFor(m => m.MAppointmentAd.PatientName, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label for="PatientType">Patient Type</label>
+            @Html.TextBoxFor(m => m.MAppointmentAd.PatientType, new { @class = "form-control", @required = "required", @placeholder = "Enter Patient Type" })
+            @Html.ValidationMessageFor(m => m.MAppointmentAd.PatientType, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label for="Gender">Gender</label>
+            @Html.DropDownListFor(m => m.MAppointmentAd.Gender, new SelectList(new List<SelectListItem>
+            {
+                new SelectListItem { Value = "Male", Text = "Male" },
+                new SelectListItem { Value = "Female", Text = "Female" },
+                new SelectListItem { Value = "Others", Text = "Others" },
+            }, "Value", "Text"), "Select Gender", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label for="Problem">Problem</label>
+            @Html.TextBoxFor(m => m.MAppointmentAd.Problem, new { @class = "form-control", @required = "required", @placeholder = "Enter Problem" })
+            @Html.ValidationMessageFor(m => m.MAppointmentAd.Problem, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label for="PhoneNumber">Phone Number</label>
+            @Html.TextBoxFor(m => m.MAppointmentAd.PhoneNumber, new { @class = "form-control", @required = "required", @placeholder = "Enter Phone Number" })
+            @Html.ValidationMessageFor(m => m.MAppointmentAd.PhoneNumber, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label for="Address">Address</label>
+            @Html.TextBoxFor(m => m.MAppointmentAd.Address, new { @class = "form-control", @required = "required", @placeholder = "Enter Address" })
+            @Html.ValidationMessageFor(m => m.MAppointmentAd.Address, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label for="Date">Date</label>
+            @Html.TextBoxFor(m => m.MAppointmentAd.Date, "{0:yyyy-MM-dd}", new { @class = "form-control", @required = "required", @placeholder = "Appointment Date", @type = "date" })
+            @Html.ValidationMessageFor(m => m.MAppointmentAd.Date, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label for="Time">Time</label>
+            @Html.TextBoxFor(m => m.MAppointmentAd.Time, new { @class = "form-control", @required = "required", @placeholder = "Enter Time" })
+            @Html.ValidationMessageFor(m => m.MAppointmentAd.Time, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label for="Description">Description</label>
+            @Html.TextBoxFor(m => m.MAppointmentAd.Description, new { @class = "form-control", @required = "required", @placeholder = "Enter Description" })
+            @Html.ValidationMessageFor(m => m.MAppointmentAd.Description, "", new { @class = "text-danger" })
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="button" class="btn btn-primary" onclick="Back()">Back</button>
     </div>
-
-   
-
-
 }
 
+<script>
+    function Back() {
+        window.location.href = "/Dashboard/DashboardView";
+    }
+</script>
 
 <style>
-    /* Container for the form */
-    form {
-        margin: 20px auto;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        background-color: #f9f9f9;
-        position: relative; /* Change to relative for proper absolute positioning */
-    }
-
-    /* Styling for labels */
-    label {
-        font-weight: bold;
-        margin-bottom: 5px;
+    .form-control {
         display: block;
+        width: 35%;
+        height: calc(1.5em + .75rem + 2px);
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     }
-
-    /* Input fields styling */
-    input[type="text"],
-    select {
-        width: 40%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-
-    /* Styling for validation messages */
-    .text-danger {
-        color: red;
-        font-size: 0.9em;
-        margin-top: -10px;
-        margin-bottom: 10px;
-    }
-
-    /* Submit button styling */
-    input[type="submit"] {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-        /* Hover effect for the submit button */
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
 </style>

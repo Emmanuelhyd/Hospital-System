@@ -8,11 +8,14 @@ using System.Data.SqlClient;
 using Hospital_System.Models;
 using Hospital_System.DAL;
 using System.Reflection;
+using Hospital_System.Viewmodel;
 
 namespace Hospital_System.Controllers
 {
     public class AppointmentController : Controller
     {
+
+        MenuBAL menuBAL = new MenuBAL();
         DoctorDAL doctorDAL;
         DoctorBAL doctorBAL = new DoctorBAL();
         // GET: Appointment
@@ -57,23 +60,29 @@ namespace Hospital_System.Controllers
             List<MAppointmentAd> mAppointmentAd= new List<MAppointmentAd>();
 
             mAppointmentAd = doctorBAL.BookList();
-            return View(mAppointmentAd);
+
+            var model = new Allview()
+            {
+                Menus = menuBAL.GetMenus(),
+                MAppointmentAds = mAppointmentAd,
+
+            };
+            return View(model);
         }
 
         public ActionResult AddBook(MAppointmentAd mAppointmentAd)
         {
-            if (!ModelState.IsValid)
-            {
-               
-                ViewBag.PatientTypes = GetPatientTypes();
-                ViewBag.Problems = Getproblems();
-                return View(mAppointmentAd);
-            }
-
-
+           
 
             var ids = 0;
             List<MAppointmentAd> mAppointmentAds = new List<MAppointmentAd>();
+
+            if(mAppointmentAd == null)
+            {
+                mAppointmentAd = new MAppointmentAd();
+            }
+
+
             if (mAppointmentAd.Id != 0)
             {
                 mAppointmentAds = doctorBAL.AddBook(mAppointmentAd);
@@ -87,9 +96,17 @@ namespace Hospital_System.Controllers
                 }
                 mAppointmentAd.Id = ids + 1;
 
-                ViewBag.PatientTypes = GetPatientTypes();
-                ViewBag.Problems = Getproblems();
-                return View(mAppointmentAd);
+
+                var model = new Allview
+                {
+                    Menus = menuBAL.GetMenus(),
+                    GetTypes= new SelectList(GetPatientTypes(),"Value","Text"),
+                    Problems = new SelectList(Getproblems(),"Value","Text"),
+                   mAppointmentAd= mAppointmentAd
+                };
+
+               
+                return View(model);
             }
             
                 return RedirectToAction("BookList", mAppointmentAds);

@@ -1,4 +1,4 @@
-﻿@model Hospital_System.Models.AmbulanceDriver
+﻿@model Hospital_System.Viewmodel.Allview
 
 <div id="driverdetails" style="padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #fff;">
     <h3>Driver Details</h3>
@@ -6,17 +6,17 @@
             <img src="@Model.PhotoUrl" style="width:200px; height:150px;" />
         </div>*@
     <div>
-        <strong>Name:</strong> @Model.Name
+        <strong>Name:</strong> @Model.Driver.Name
     </div>
     <div>
-        <strong>Contact:</strong> @Model.Contact
+        <strong>Contact:</strong> @Model.Driver.Contact
     </div>
     <div>
-        <strong>Address:</strong> @Model.Address
+        <strong>Address:</strong> @Model.Driver.Address
     </div>
 
     <div>
-        <strong>Cnic:</strong> @Model.CNIC
+        <strong>Cnic:</strong> @Model.Driver.CNIC
     </div>
     <button onclick="closePopup()" class="back">Back</button>
 </div>

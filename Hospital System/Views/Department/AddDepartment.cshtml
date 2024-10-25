@@ -1,4 +1,4 @@
-﻿@model Hospital_System.Models.MDepartment
+﻿@model Hospital_System.Dash.DashboardDetails
 
 
 @{
@@ -13,45 +13,49 @@
         <div style="margin-left:300px;margin-top:100px;">
 
             <div>
-                <div>@Html.LabelFor(m => m.Id)</div>
-                <div>@Html.TextBoxFor(m => m.Id)</div>
+                <div>Id</div>
+                <div>@Html.TextBoxFor(m =>m.MDepartment.Id)</div>
             </div>
             <div>
-                <div>@Html.LabelFor(m => m.DepartmentName)</div>
-                <div>@Html.TextBoxFor(m => m.DepartmentName, new { @required = "required", @placeholder = "Department Name" })</div>
+                <div>DepartmentName</div>
+                <div>@Html.TextBoxFor(m => m.MDepartment.DepartmentName, new { @required = "required", @placeholder = "Department Name" })</div>
             </div>
             <div>
-                <div>@Html.LabelFor(m => m.Description)</div>
-                <div>@Html.TextBoxFor(m => m.Description, new { @required = "required", @placeholder = "Description" })</div>
+                <div>Description</div>
+                <div>@Html.TextBoxFor(m => m.MDepartment.Description, new { @required = "required", @placeholder = "Description" })</div>
             </div>
             <div>
-                <div>@Html.LabelFor(m => m.Status)</div>
-                <div>
-                    <select id="Status" name="Status" required>
-                        <option value="">Select Status</option>
-                        <option value="active">Active</option>
-                        <option value="inactive">InActive</option>
-                    </select>
+                <div> @Html.LabelFor(m => m.MDepartment.Status, "Status")</div>
+                
+                    @Html.DropDownListFor(m => m.MDepartment.Status, new SelectList(new List<SelectListItem>
+              {
+                    
+                     new SelectListItem { Value = "Active", Text = "Active" },
+                     new SelectListItem { Value = "Inactive", Text = "Inactive" },
+   
+                 }, "Value", "Text"), "Select Status", new { @class = "form-control" })
                 </div>
-            </div>
-            <div><input type="submit" value="Submit"></div>
-        </div>
-    </div>
-}
 
+
+            </div>
+            <div style="margin-left: 350px;"><input type="submit" value="Submit"></div>
+        <div style="margin-left: 501px; margin-top: -40px;"> <button type="button" class="back-button" onclick=" Back()"> Back </button></div>
+        </div>
+   
+}
+<script>
+
+    function Back()
+    {
+        window.location.href = "/Dashboard/DashboardView";
+    }
+</script>
 
 
 
 <style>
     /* Container for the form */
-    form {
-        margin: 20px auto;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        background-color: #f9f9f9;
-        position: relative; /* Change to relative for proper absolute positioning */
-    }
+   
 
     /* Styling for labels */
     label {
@@ -93,5 +97,43 @@
         /* Hover effect for the submit button */
         input[type="submit"]:hover {
             background-color: #45a049;
+        }
+
+
+    .form-control {
+        display: block;
+        width: 40%;
+        height: calc(1.5em + .75rem + 2px);
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+
+    .back-button {
+        background-color: #007bff; /* Primary color */
+        color: white; /* Text color */
+        border: none; /* No border */
+        border-radius: 5px; /* Rounded corners */
+        padding: 10px 20px; /* Padding for size */
+        font-size: 16px; /* Font size */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    }
+
+        .back-button:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+        }
+
+        .back-button:focus {
+            outline: none; /* Remove outline on focus */
         }
 </style>

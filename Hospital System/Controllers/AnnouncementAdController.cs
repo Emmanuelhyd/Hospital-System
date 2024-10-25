@@ -1,5 +1,6 @@
 ﻿using Hospital_System.BAL;
 using Hospital_System.DAL;
+using Hospital_System.Dash;
 using Hospital_System.Models;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,14 @@ namespace Hospital_System.Controllers
             List<MAnnouncement> mAnnouncement = new List<MAnnouncement>();
 
             mAnnouncement = adminBAL.AnnouncementList(announcement);
-            return View(mAnnouncement);
+
+            var Announce = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                mAnnouncements = mAnnouncement
+            };
+            
+            return View(Announce);
         }
 
        
@@ -39,9 +47,16 @@ namespace Hospital_System.Controllers
                 {
                     ids = adminDAL.AnnouncementId();
                 }
-                mAnnouncement.Id = ids + 1;
 
-                return View(mAnnouncement);
+              
+                mAnnouncement.Id = ids + 1;
+                var Announce = new DashboardDetails
+                {
+                    Adminmenus = adminBAL.GetAdminmenus(),
+                    mAnnouncement = mAnnouncement
+                };
+
+                return View(Announce);
             }
             else
             {
@@ -58,10 +73,19 @@ namespace Hospital_System.Controllers
             
             MAnnouncement mAnnouncement = new MAnnouncement();
             mAnnouncement = adminBAL.ALEdit(Id);
+
+            var Announce = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                mAnnouncement = mAnnouncement
+            };
+
+
+
             if (mAnnouncement.Id != 0)
             {
 
-                return View("AddAnnouncementAd", mAnnouncement);
+                return View("AddAnnouncementAd", Announce);
             }
             else
             {

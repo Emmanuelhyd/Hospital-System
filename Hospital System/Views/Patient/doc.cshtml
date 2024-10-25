@@ -1,5 +1,5 @@
-﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-@model IEnumerable<Hospital_System.Models.Doctor>
+﻿
+@model Hospital_System.Viewmodel.Allview
 
 @{
     ViewBag.Title = "Doctors";
@@ -7,7 +7,7 @@
 }
 
 
-   
+
 
 <!DOCTYPE html>
 <html>
@@ -16,6 +16,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>@ViewBag.Title</title>
+    <script>
+
+        function Back() {
+
+            window.location.href = "Dashboard";
+        }
+    </script>
 
     <style>
         #doctorPopup {
@@ -50,37 +57,42 @@
 
         h2 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 58px;
             color: #333;
         }
 
+
         .table {
-            width: 100%;
+            width: 72%;
             margin-bottom: 1rem;
             color: #212529;
             border-collapse: collapse;
-            margin-left: 242px;
-            margin-top: 70px;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border: 1px solid #dee2e6; /* Light grey border */
+            margin-left: 115px;
+            margin-top: -35px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) 
+           
         }
 
         th {
             background-color: #007bff; /* Blue background for the header */
             color: white; /* White text for the header */
             font-weight: bold; /* Bold text for header */
+            text-transform: uppercase; /* Uppercase text */
+            letter-spacing: 1px; /* Space between letters */
+        }
+
+        tbody tr {
+            transition: background-color 0.3s; /* Smooth transition */
         }
 
         tr:nth-child(even) {
-            background-color: #f2f2f2; /* Light grey for even rows */
+            background-color: #f9f9f9; /* Light grey for even rows */
         }
 
         tr:hover {
-            background-color: #e9ecef; /* Light highlight on hover */
+            background-color: #e0e7ff; /* Light blue highlight on hover */
         }
 
         a {
@@ -92,24 +104,33 @@
                 text-decoration: underline; /* Underline on hover */
             }
     </style>
+
 </head>
+
 <body>
+
+
+   
     <div class="container">
         <h2>@ViewBag.Title</h2>
+        <div style=" margin-left: 258px; position:absolute; margin-top:-100px;">
+            <button type="button" onclick="Back()" style="color: white; background-color: dodgerblue; border-radius: 5%; border-color: dodgerblue;"> Back</button>
+        </div>
+
         <div class="table">
             <table>
                 <thead>
                     <tr>
-                        <th>@Html.DisplayNameFor(model => model.First().FullName)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().Email)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().Department)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().Designation)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().Status)</th>
+                        <th>FullName</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Designation</th>
+                        <th>Status</th>
                         <th>Profile</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Doctors)
                     {
                         <tr>
                             <td>@Html.DisplayFor(modelItem => item.FullName)</td>
@@ -124,38 +145,43 @@
                     }
                 </tbody>
             </table>
-            @Html.ActionLink("Back", "Dashboard", "Patient")
+
         </div>
     </div>
 
     <div id="doctorPopup" style="display:none;">
-         Placeholder for the doctor details partial view 
+        Placeholder for the doctor details partial view
     </div>
 
     <div id="overlay" style="display:none;"></div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-    function showDoctorDetails(doctorId) {
-        $.ajax({
-            url: '@Url.Action("Doctordetails", "Patient")',
-            type: 'GET',
-            data: { DoctorId: doctorId },
-            success: function (data) {
-                $('#doctorPopup').html(data);
-                $('#doctorPopup').show();
-                $('#overlay').show();
-            },
-            error: function () {
-                alert("Error loading doctor details.");
+       
+        function showDoctorDetails(doctorId) {
+            
+                $.ajax({
+                    url: '@Url.Action("Doctordetails", "Patient")',
+                    type: 'GET',
+                    data: { DoctorId: doctorId },
+                    success: function (data) {
+                        $('#doctorPopup').html(data);
+                        $('#doctorPopup').show();
+                        $('#overlay').show();
+                    },
+                    error: function () {
+                        alert("Error loading doctor details.");
+                    }
+                });
             }
-        });
-    }
+       
 
     function closePopup() {
         $('#doctorPopup').hide();
         $('#overlay').hide();
     }
     </script>
+
+
 </body>
 </html>
 

@@ -8,6 +8,7 @@ using Hospital_System.Models;
 using Hospital_System.BAL;
 using Hospital_System.DAL;
 using System.Reflection;
+using Hospital_System.Dash;
 
 
 namespace Hospital_System.Controllers
@@ -23,7 +24,15 @@ namespace Hospital_System.Controllers
             List<MMedicineAd> mMedicineAd = new List<MMedicineAd>();
 
             mMedicineAd = adminBAL.MedicineAdList(med);
-            return View(mMedicineAd);
+
+            var medicine = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                MedicineAds = mMedicineAd
+            };
+
+
+            return View(medicine);
         }
 
         //add medicine
@@ -47,7 +56,15 @@ namespace Hospital_System.Controllers
                 }
                 mMedicineAd.PatientId = ids + 1;
 
-                return View(mMedicineAd);
+                var medicine = new DashboardDetails
+                {
+                    Adminmenus = adminBAL.GetAdminmenus(),
+                    MMedicineAd = mMedicineAd
+                };
+
+
+
+                return View(medicine);
             }
             else
             {
@@ -65,10 +82,18 @@ namespace Hospital_System.Controllers
 
             MMedicineAd mMedicineAd = new MMedicineAd();
             mMedicineAd = adminBAL.MedicineEdit(PatientId);
+
+            var medicine = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                MMedicineAd = mMedicineAd
+            };
+
+
             if (mMedicineAd.PatientId != 0)
             {
 
-                return View("AddMedicineAd", mMedicineAd);
+                return View("AddMedicineAd", medicine);
             }
             else
             {

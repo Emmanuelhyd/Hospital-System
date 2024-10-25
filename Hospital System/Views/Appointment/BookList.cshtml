@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Hospital_System.Models.MAppointmentAd>
+﻿@model Hospital_System.Viewmodel.Allview
 
 @{
     ViewBag.Title = "BookList";
@@ -9,6 +9,18 @@
 <script>
     function CreateNew() {
         window.location.href = 'AddAppointmentAd';
+    }
+
+
+
+</script>
+
+
+<script>
+
+    function Back() {
+
+        window.location.href = "/Patient/Dashboard";
     }
 </script>
 
@@ -45,33 +57,41 @@
     }
 
     /* Responsive styling */
-    media (max-width: 768px) {
-        table {
-            font-size: 14px;
-        }
-
-        th, td {
-            padding: 8px;
-        }
+    
+    {
+        font-size: 14px;
     }
+
+    th, td {
+        padding: 8px;
+    }
+    .btn {
+        color: white;
+        background-color: dodgerblue;
+        width: 124%;
+        border-radius: 5px;
+    }
+    
 </style>
 
 @using (Html.BeginForm())
 {
-
-    <div class="table-container" style="margin-left: 270px; position: absolute; margin-top: 56px; width: 75%;">
+    <div style=" position: absolute; margin-top: 17px; margin-left: 29px;">
+        <button type="button"  class =" btn" onclick="Back()"> Back</button>
+    </div>
+    <div class="table-container" style=" position: absolute; margin-top: 56px; width: 75%;">
         <table>
             <tr>
-                <th>@Html.DisplayNameFor(model => model.First().PatientName)</th>
-                <th>@Html.DisplayNameFor(model => model.First().Gender)</th>
-                <th>@Html.DisplayNameFor(model => model.First().Problem)</th>
-                <th>@Html.DisplayNameFor(model => model.First().PhoneNumber)</th>
-                <th>@Html.DisplayNameFor(model => model.First().Address)</th>
-                <th>@Html.DisplayNameFor(model => model.First().Date)</th>
-                <th>@Html.DisplayNameFor(model => model.First().Time)</th>
-                <th>@Html.DisplayNameFor(model => model.First().Description)</th>
+                <th>PatientName</th>
+                <th>Gender</th>
+                <th>Problem</th>
+                <th>PhoneNumber</th>
+                <th>Address</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Description</th>
             </tr>
-            @foreach (var item in Model)
+            @foreach (var item in Model.MAppointmentAds)
             {
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
@@ -85,6 +105,6 @@
                 </tr>
             }
         </table>
-        @Html.ActionLink("Back","Dashboard","Patient")
+
     </div>
 }

@@ -1,105 +1,89 @@
 ﻿@model Hospital_System.Dash.DashboardDetails
 
-
 @{
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-
-
 @using (Html.BeginForm())
 {
-    <div style="width:100%">
-        <div>
-            <div id="tab1" class="link-container">
-                <a href="#" class="link">
-                    <div class="icon">
-                        <i class="fa fa-building"></i>
-                    </div>
-                    <p class="count">
-                        @Model.MDepartmentCount
-                    </p>
-                    <span class="tag">@Html.ActionLink("Department", "DepartmentList", "Department")</span>
-                </a>
-            </div>
-            <div id="tab2" class="link-container">
-                <a href="#" class="link">
-                    <div class="icon">
-                        <i class="fa fa-user-md"></i>
-                    </div>
-                    <p class="count">@Model.MDoctorCount</p>
-                    <span class="tag">@Html.ActionLink("Doctors", "DoctorListAd", "DoctorAd")</span>
-                </a>
-            </div>
-            <div id="tab3" class="link-container">
-                <a href="#" class="link">
-                    <div class="icon">
-                        <i class="fa fa-user"></i>
-                    </div>
-                    <p class="count">@Model.MPatientCount</p>
-                    <span class="tag">@Html.ActionLink("Patients", "PatientList", "PatientAd")</span>
-                </a>
-            </div>
-            <div id="tab4" class="link-container">
-                <a href="Ambulanceses" class="link">
-                    <div class="icon">
-                        <i class="fa fa-calendar-check"></i>
-                    </div>
-                    <p class="count">@Model.MAppointmentCount</p>
-                    <span class="tag">@Html.ActionLink("Appointments", "AppointmentList", "AppointmentAd")</span>
-                </a>
-            </div>
-            <div id="tab5" class="link-container">
-                <a href="#" class="link">
-                    <div class="icon">
-                        <i class="fa fa-capsules"></i>
-
-                    </div>
-                    <p class="count">@Model.MMedicineAdCount</p>
-                    <span class="tag">@Html.ActionLink("Medicine", "MedicineAdList", "MedicineAd")</span>
-                </a>
-            </div>
-            <div id="tab6" class="link-container">
-                <a href="#" class="link">
-                    <div class="icon">
-                        <i class="fa fa-frown"></i>
-                    </div>
-                    <p class="count">@Model.MComplaintAdCount</p>
-                    <span class="tag">@Html.ActionLink("Complaints", "ComplaintAdList", "ComplaintAd")</span>
-                </a>
-            </div>
-            <div id="tab7" class="link-container">
-                <a href="medicals" class="link">
-                    <div class="icon">
-                        <i class="fa fa-bullhorn"></i>
-                    </div>
-                    <p class="count">
-                        @Model.MAnnouncementCount
-                    </p>
-                    <span class="tag">@Html.ActionLink("Announcements", "AnnouncementList", "AnnouncementAd")</span>
-                </a>
-            </div>
-            <div id="tab8" class="link-container">
-                <a href="Drive" class="link">
-                    <div class="icon">
-                        <i class="fas fa-ambulance"></i>
-                    </div>
-                    <p class="count">
-                        @Model.MAmbulanceCount
-                    </p>
-                    <span class="tag">@Html.ActionLink("Ambulance", "AmbulanceListAd", "AmbulanceAd")</span>
-                </a>
-            </div>
-
-
+    <div id="dashboard">
+        <div class="link-container" id="tab1">
+            <a href="/Department/DepartmentList" class="link">
+                <div class="icon">
+                    <i class="fa fa-building"></i>
+                </div>
+                <p class="count">@Model.MDepartmentCount</p>
+                <span class="tag">Department</span>
+            </a>
+        </div>
+        <div class="link-container" id="tab2">
+            <a href="/DoctorAd/DoctorListAd" class="link">
+                <div class="icon">
+                    <i class="fa fa-user-md"></i>
+                </div>
+                <p class="count">@Model.MDoctorCount</p>
+                <span class="tag">Doctors</span>
+            </a>
+        </div>
+        <div class="link-container" id="tab3">
+            <a href="/PatientAd/PatientList" class="link">
+                <div class="icon">
+                    <i class="fa fa-user"></i>
+                </div>
+                <p class="count">@Model.MPatientCount</p>
+                <span class="tag">Patients</span>
+            </a>
+        </div>
+        <div class="link-container" id="tab4">
+            <a href="/AppointmentAd/AppointmentList" class="link">
+                <div class="icon">
+                    <i class="fa fa-calendar-check"></i>
+                </div>
+                <p class="count">@Model.MAppointmentCount</p>
+                <span class="tag">Appointment</span>
+            </a>
+        </div>
+        <div class="link-container" id="tab5">
+            <a href="/MedicineAd/MedicineAdList" class="link">
+                <div class="icon">
+                    <i class="fa fa-capsules"></i>
+                </div>
+                <p class="count">@Model.MMedicineAdCount</p>
+                <span class="tag">Medicine</span>
+            </a>
+        </div>
+        <div class="link-container" id="tab6">
+            <a href="/ComplaintAd/ComplaintAdList" class="link">
+                <div class="icon">
+                    <i class="fa fa-frown"></i>
+                </div>
+                <p class="count">@Model.MComplaintAdCount</p>
+                <span class="tag">Complaint</span>
+            </a>
+        </div>
+        <div class="link-container" id="tab7">
+            <a href="/AnnouncementAd/AnnouncementList" class="link">
+                <div class="icon">
+                    <i class="fa fa-bullhorn"></i>
+                </div>
+                <p class="count">@Model.MAnnouncementCount</p>
+                <span class="tag">Announcement</span>
+            </a>
+        </div>
+        <div class="link-container" id="tab8">
+            <a href="/AmbulanceAd/AmbulanceListAd" class="link">
+                <div class="icon">
+                    <i class="fas fa-ambulance"></i>
+                </div>
+                <p class="count">@Model.MAmbulanceCount</p>
+                <span class="tag">Ambulance</span>
+            </a>
         </div>
     </div>
 }
 
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
 
 <style>
     body {
@@ -109,82 +93,41 @@
         background-color: #f4f4f4;
     }
 
-    h1 {
-        text-align: center;
-        margin-top: 20px;
-        color: #343a40;
+    #dashboard {
+        display: flex;
+        flex-wrap: wrap; /* Wraps items to the next line */
+        justify-content: center; /* Center items horizontally */
+        padding: 20px;
+        gap: 20px; /* Adds space between items */
     }
 
-
     .link-container {
-        position: absolute;
         background-color: #ffffff;
         border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         text-align: center;
         padding: 20px;
-        text-decoration: none;
-        color: inherit;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 150px;
-        height: 150px;
+        width: 200px; /* Set box width */
+        height: 200px; /* Set box height */
         transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        margin-left: 50px;
     }
 
         .link-container:hover {
-            background-color: #f8f9fa;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background-color: #59b4ef;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
-
 
     .icon {
         font-size: 36px;
         margin-bottom: 15px;
-    }
-
-
-    #tab1 .icon {
-        color: #007bff;
-    }
-
-    #tab2 .icon {
-        color: #28a745;
-    }
-
-    #tab3 .icon {
-        color: #dc3545;
-    }
-
-    #tab4 .icon {
-        color: #ffc107;
-    }
-
-    #tab5 .icon {
-        color: #17a2b8;
-    }
-
-    #tab6 .icon {
-        color: #6c757d;
-    }
-
-    #tab7 .icon {
-        color: #e83e8c;
-    }
-
-    #tab8 .icon {
-        color: #fd7e14;
-    }
-
+        color: palevioletred    }
 
     .count {
         font-size: 28px;
         color: #343a40;
         margin: 10px 0;
     }
-
 
     .tag {
         font-weight: 900;
@@ -194,75 +137,4 @@
         .tag:hover {
             background-color: #0056b3;
         }
-
-
-    #tab1 {
-        margin-left: 262px;
-        position: absolute;
-        margin-top: 20px;
-    }
-
-    #tab2 {
-        margin-left: 535px;
-        margin-top: 20px;
-    }
-
-    #tab3 {
-        margin-left: 808px;
-        margin-top: 20px;
-    }
-
-    #tab4 {
-        margin-left: 1080px;
-        margin-top: 20px;
-    }
-
-    #tab5 {
-        margin-left: 262px;
-        margin-top: 240px;
-    }
-
-    #tab6 {
-        margin-left: 535px;
-        margin-top: 240px;
-    }
-
-    #tab7 {
-        margin-left: 808px;
-        margin-top: 240px;
-    }
-
-    #tab8 {
-        margin-left: 1080px;
-        margin-top: 240px;
-    }
-
-
-    .link-container a {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 226px;
-        height: 48vh;
-        text-decoration: none;
-        color: inherit;
-    }
-
-    /*
-        tab1 {
-            background-color: #f4f4f4;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            width: 225px;
-            width: 225px;
-            width: 225px;
-            width: 225px;
-            height: 48vh;
-        }*/
 </style>
-
-
-@*@Model.MDriverAdCount
-    @Model.MSheduleCount*@

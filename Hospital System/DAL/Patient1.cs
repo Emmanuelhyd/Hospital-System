@@ -16,6 +16,7 @@ using System.Xml.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Drawing;
+using Hospital_System.Viewmodel;
 
 
 
@@ -46,7 +47,7 @@ namespace Hospital_System.DAL
         {
             string res = " ";
             con.Open();
-            var sqlq = "select  PatientId, UserName, Password,Email from profiles where UserName='"+ patients.UserName+"' and Password='"+ patients.Password+"'";
+            var sqlq = "select  PatientId, UserName, Password,Email from profiles where UserName='"+ patients.UserNameOrEmail + "' or Email ='"+patients.UserNameOrEmail+"' and Password='"+ patients.Password+"'";
             cmd = new SqlCommand(sqlq, con);
             reader = cmd.ExecuteReader();
 
@@ -62,7 +63,7 @@ namespace Hospital_System.DAL
                 string dbPassword = reader.GetString(reader.GetOrdinal("Password")); //
                 string Email = reader.GetString(reader.GetOrdinal("Email"));
 
-                if ( patients.UserName ==dbUserName && patients.Password==dbPassword)
+                if ( (patients.UserNameOrEmail ==dbUserName|| patients.UserNameOrEmail == Email) && patients.Password==dbPassword)
                 {
                    
                     res="success";
@@ -126,11 +127,8 @@ namespace Hospital_System.DAL
             return res;
         }
 
-        public string Updateprofile(Patients patients )
-        {
-            
-
-                string res = "";
+        public string Updateprofile(Patients patients)
+        {   string res = "";
 
             if (string.IsNullOrWhiteSpace(patients.UserName) ||
                string.IsNullOrWhiteSpace(patients.FirstName) ||
@@ -144,8 +142,18 @@ namespace Hospital_System.DAL
                 return "Enter All the Details ";
             }
 
-                con.Open();
-            cmd = new SqlCommand("update profiles set FirstName='" + patients.FirstName + "',LastName='" + patients.LastName + "',Email='" + patients.Email + "',BloodGroup='" + patients.BloodGroup + "',Gender='" + patients.Gender + "',Age='" + patients.Age + "',PhoneNo='" + patients.PhoneNo + "',Address='" + patients.Address + "', EmergencyContact='" + patients.EmergencyContact + "' where UserName='" + patients.UserName + "'", con);
+            con.Open();
+           
+            cmd = new SqlCommand("update profiles set UserName='"+patients.UserName+"'," +
+                " FirstName='" + patients.FirstName + "'," +
+                "LastName='" + patients.LastName + "'," +
+                "Email='" + patients.Email + "'," +
+                "BloodGroup='" + patients.BloodGroup + "'," +
+                "Gender='" + patients.Gender + "'," +
+                "Age='" + patients.Age + "'," +
+                "PhoneNo='" + patients.PhoneNo + "'," +
+                "Address='" + patients.Address + "'," +
+                " EmergencyContact='" + patients.EmergencyContact + "' where PatientId= "+ patients.PatientId+" ", con);
             res = cmd.ExecuteNonQuery().ToString();
             con.Close();
             return res;
@@ -311,7 +319,7 @@ namespace Hospital_System.DAL
         {
             List<Doctor> doctors= new List<Doctor>();
             con.Open();
-            cmd = new SqlCommand("select* from doctors", con);
+            cmd = new SqlCommand("select * from doctors", con);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -406,12 +414,14 @@ namespace Hospital_System.DAL
 
         
           
-        public string Changepassword(Patients patients )
+        public string Changepassword( Patients patients )
 
         {
             string res = "";
+
+       
             con.Open();
-            cmd = new SqlCommand("Update profiles set Password='" + patients.Password + "' where UserName='" + patients.UserName + "'", con);
+            cmd = new SqlCommand("Update profiles set Password='" + patients.Password + "' where UserName='" + patients.UserNameOrEmail + "'", con);
             res = cmd.ExecuteNonQuery().ToString();
             con.Close();
             return res;
@@ -454,6 +464,8 @@ namespace Hospital_System.DAL
             
         }
 
+        
+      
 
 
 

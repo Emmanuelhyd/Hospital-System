@@ -1,4 +1,4 @@
-﻿@model Hospital_System.Models.MDoctorAd
+﻿@model Hospital_System.Dash.DashboardDetails
 
 @{
     ViewBag.Title = "AddDoctorAd";
@@ -8,14 +8,15 @@
 <style>
     .form-container {
         display: flex;
-        flex-wrap: wrap; /* Allows items to wrap to the next line */
-        gap: 20px; /* Space between form items */
-        margin-bottom: 20px; /* Space below the form */
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 27px;
+        background: linear-gradient(90deg, skyblue, pink);
     }
 
     .form-item {
-        flex: 1 1 200px; /* Flex-grow, flex-shrink, flex-basis */
-        max-width: 300px; /* Max width to prevent overflow */
+        width: 25%;
+        margin-left: 55px;
     }
 
         .form-item label {
@@ -58,70 +59,94 @@
         .btn-submit:hover {
             background-color: #0056b3;
         }
+
+    .back-button {
+        background-color: #007bff; /* Primary color */
+        color: white; /* Text color */
+        border: none; /* No border */
+        border-radius: 5px; /* Rounded corners */
+        padding: 10px 20px; /* Padding for size */
+        font-size: 16px; /* Font size */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    }
+
+        .back-button:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+        }
+
+        .back-button:focus {
+            outline: none; /* Remove outline on focus */
+        }
 </style>
 
 @using (Html.BeginForm("AddDoctorAd", "DoctorAd"))
 {
-    <div style="position:absolute;margin-left:15%; background-color: white; padding: 20px">
-        <div class="form-container" style="margin-left:150px;">
+    <div style=" padding: 20px">
+        <div class="form-container">
 
+            @Html.AntiForgeryToken()
             <div class="form-item">
-                @Html.LabelFor(m => m.DoctorId)
-                @Html.TextBoxFor(m => m.DoctorId, new { @readonly = "readonly" }) <!-- Read-only if auto-generated -->
+                @Html.LabelFor(m => m.MDoctorAd.DoctorId)
+                @Html.TextBoxFor(m => m.MDoctorAd.DoctorId, new { @readonly = "readonly" }) <!-- Read-only if auto-generated -->
             </div>
 
             <div class="form-item">
-                @Html.LabelFor(m => m.FullName)
-                @Html.TextBoxFor(m => m.FullName, new { @required = "required", @placeholder = "Doctor Name" })
+                @Html.LabelFor(m => m.MDoctorAd.FullName, "FullName")
+                @Html.TextBoxFor(m => m.MDoctorAd.FullName, new { @required = "required", @placeholder = "Doctor Name" })
             </div>
 
             <div class="form-item">
-                @Html.LabelFor(m => m.Firstname)
-                @Html.TextBoxFor(m => m.Firstname, new { @required = "required", @placeholder = "First Name" })
+                @Html.LabelFor(m => m.MDoctorAd.Firstname, "Firstname")
+                @Html.TextBoxFor(m => m.MDoctorAd.Firstname, new { @required = "required", @placeholder = "First Name" })
             </div>
 
             <div class="form-item">
-                @Html.LabelFor(m => m.LastName)
-                @Html.TextBoxFor(m => m.LastName, new { @required = "required", @placeholder = "Last Name" })
+                @Html.LabelFor(m => m.MDoctorAd.LastName, "LastName")
+                @Html.TextBoxFor(m => m.MDoctorAd.LastName, new { @required = "required", @placeholder = "Last Name" })
             </div>
 
             <div class="form-item">
-                @Html.LabelFor(m => m.Email)
-                @Html.TextBoxFor(m => m.Email, new { @required = "required", @placeholder = "Email" })
+                @Html.LabelFor(m => m.MDoctorAd.Email, "Email")
+                @Html.TextBoxFor(m => m.MDoctorAd.Email, new { @required = "required", @placeholder = "Email" })
             </div>
 
             <div class="form-item">
-                @Html.LabelFor(m => m.Department)
-                @Html.TextBoxFor(m => m.Department, new { @required = "required", @placeholder = "Department" })
+                @Html.LabelFor(m => m.MDoctorAd.Department, "Department")
+                @Html.TextBoxFor(m => m.MDoctorAd.Department, new { @required = "required", @placeholder = "Department" })
             </div>
 
             <div class="form-item">
-                @Html.LabelFor(m => m.Designation)
-                @Html.TextBoxFor(m => m.Designation, new { @required = "required", @placeholder = "Designation" })
+                @Html.LabelFor(m => m.MDoctorAd.Designation, "Designation")
+                @Html.TextBoxFor(m => m.MDoctorAd.Designation, new { @required = "required", @placeholder = "Designation" })
             </div>
 
             <div class="form-item">
-                @Html.LabelFor(m => m.PhoneNo)
-                @Html.TextBoxFor(m => m.PhoneNo, new { @required = "required", @placeholder = "Mobile Number" })
+                @Html.LabelFor(m => m.MDoctorAd.PhoneNo, "PhoneNo")
+                @Html.TextBoxFor(m => m.MDoctorAd.PhoneNo, new { @required = "required", @placeholder = "Mobile Number" })
             </div>
 
             <div class="form-item">
-                @Html.LabelFor(m => m.ContactNo)
-                @Html.TextBoxFor(m => m.ContactNo, new { @required = "required", @placeholder = "Mobile Number" })
+                @Html.LabelFor(m => m.MDoctorAd.ContactNo, "ContactNo")
+                @Html.TextBoxFor(m => m.MDoctorAd.ContactNo, new { @required = "required", @placeholder = "Mobile Number" })
             </div>
 
             <div class="form-item">
-                @Html.LabelFor(m => m.Education)
-                @Html.TextBoxFor(m => m.Education, new { @required = "required", @placeholder = "Education" })
+                @Html.LabelFor(m => m.MDoctorAd.Education, "Education")
+                @Html.TextBoxFor(m => m.MDoctorAd.Education, new { @required = "required", @placeholder = "Education" })
             </div>
 
             <div class="form-item">
-                <div>@Html.LabelFor(m => m.Status)</div>
-                <select id="Status" name="Status" required>
-                    <option value="">Select Status</option>
-                    <option value="active">Active</option>
-                    <option value="inactive">InActive</option>
-                </select>
+                <div> @Html.LabelFor(m => m.MDoctorAd.Status, "Status")</div>
+                @Html.DropDownListFor(m => m.MDoctorAd.Status, new SelectList(new List<SelectListItem>
+                    {
+                            new SelectListItem{Value="Select Status",Text="Select Status"},
+                            new SelectListItem { Value = "Active", Text = "Active" },
+                            new SelectListItem { Value = "Inactive", Text = "Inactive" },
+
+                    }, "Value", "Text"), "Select Status", new { @class = "form-control" })
+
             </div>
 
         </div>
@@ -129,84 +154,18 @@
         <div class="form-submit">
             <input type="submit" value="Submit" class="btn-submit">
         </div>
+        <div style="margin-left: 108px; margin-top: -44px;"> <button type="button" class="back-button" onclick=" Back()"> Back </button></div>
     </div>
 }
 
+<script>
 
-@*@model Hospital_System.Models.MDoctor
-
-    @{
-        ViewBag.Title = "AddDoctorAd";
-        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    function Back() {
+        window.location.href = "/Dashboard/DashboardView";
     }
-
-    @using (Html.BeginForm("AddDoctorAd", "DoctorAd"))
-    {
-        <div style="position: absolute; width: 79%; margin-left: 15%; background-color: white; margin-top: 18px; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
-
-            <div class="form-container">
-                <div class="form-item">
-                    @Html.LabelFor(m => m.DoctorId)
-                    @Html.TextBoxFor(m => m.DoctorId)
-                </div>
-
-                <div class="form-item">
-                    @Html.LabelFor(m => m.FullName)
-                    @Html.TextBoxFor(m => m.FullName, new { @required = "required", @placeholder = "Doctor Name" })
-                </div>
-
-                <div class="form-item">
-                    @Html.LabelFor(m => m.Firstname)
-                    @Html.TextBoxFor(m => m.Firstname, new { @required = "required", @placeholder = "First Name" })
-                </div>
-
-                <div class="form-item">
-                    @Html.LabelFor(m => m.LastName)
-                    @Html.TextBoxFor(m => m.LastName, new { @required = "required", @placeholder = "Last Name" })
-                </div>
-
-                <div class="form-item">
-                    @Html.LabelFor(m => m.Email)
-                    @Html.TextBoxFor(m => m.Email, new { @required = "required", @placeholder = "Email" })
-                </div>
-
-                <div class="form-item">
-                    @Html.LabelFor(m => m.Department)
-                    @Html.TextBoxFor(m => m.Department, new { @required = "required", @placeholder = "Department" })
-                </div>
-
-                <div class="form-item">
-                    @Html.LabelFor(m => m.Designation)
-                    @Html.TextBoxFor(m => m.Designation, new { @required = "required", @placeholder = "Designation" })
-                </div>
-
-                <div class="form-item">
-                    @Html.LabelFor(m => m.PhoneNo)
-                    @Html.TextBoxFor(m => m.PhoneNo, new { @required = "required", @placeholder = "Mobile Number" })
-                </div>
-
-                <div class="form-item">
-                    @Html.LabelFor(m => m.ContactNo)
-                    @Html.TextBoxFor(m => m.ContactNo, new { @required = "required", @placeholder = "Mobile Number" })
-                </div>
-
-                <div class="form-item">
-                    @Html.LabelFor(m => m.Education)
-                    @Html.TextBoxFor(m => m.Education, new { @required = "required", @placeholder = "Education" })
-                </div>
-
-                <div class="form-item">
-                    @Html.LabelFor(m => m.Status)
-                    <select id="Status" name="Status" required>
-                        <option value="">Select Status</option>
-                        <option value="active">Active</option>
-                        <option value="inactive">InActive</option>
-                    </select>
-                </div>
+</script>
 
 
-                <div><input type="submit" value="Submit"></div>
 
-            </div>
-        </div>
-    }*@
+
+

@@ -8,6 +8,7 @@ using Hospital_System.Models;
 using Hospital_System.BAL;
 using Hospital_System.DAL;
 using System.Reflection;
+using Hospital_System.Dash;
 
 namespace Hospital_System.Controllers
 {
@@ -22,7 +23,15 @@ namespace Hospital_System.Controllers
             List<MComplaintAd> mComplaintAd = new List<MComplaintAd>();
 
             mComplaintAd = adminBAL.ComplaintAdList();
-            return View(mComplaintAd);
+
+            var complain = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                mComplaintAds = mComplaintAd
+
+            };
+
+               return View(complain);
         }
 
         //add Complaint
@@ -44,7 +53,15 @@ namespace Hospital_System.Controllers
                 }
                 mComplaintAd.Id = ids + 1;
 
-                return View(mComplaintAd);
+                var complain = new DashboardDetails
+                {
+                    Adminmenus = adminBAL.GetAdminmenus(),
+                    mComplaintAd = mComplaintAd
+
+                };
+
+
+                return View(complain);
             }
             else
             {
@@ -62,10 +79,21 @@ namespace Hospital_System.Controllers
 
             MComplaintAd mComplaintAd = new MComplaintAd();
             mComplaintAd = adminBAL.ComplaintEdit(Id);
+
+
+            var complain = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                mComplaintAd = mComplaintAd
+
+            };
+
+
+
             if (mComplaintAd.Id != 0)
             {
 
-                return View("AddComplaintAd", mComplaintAd);
+                return View("AddComplaintAd", complain);
             }
             else
             {

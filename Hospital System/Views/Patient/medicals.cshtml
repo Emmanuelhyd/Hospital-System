@@ -1,4 +1,4 @@
-﻿   @model IEnumerable<Hospital_System.Models.Medicine>
+﻿   @model Hospital_System.Viewmodel.Allview
 
     @{
         ViewBag.Title = "Medicines";
@@ -12,6 +12,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <title>@ViewBag.Title</title>
+        <script>
+
+            function Back() {
+
+                window.location.href = "Dashboard";
+            }
+        </script>
+
+
+
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -25,9 +35,9 @@
                 max-width: 1200px;
                 margin: 30px auto;
                 padding: 20px;
-                background-color: #ffffff;
+               /* background-color: #ffffff;*/
                 border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+               /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
                 margin-left: 258px;
                 position: absolute;
                 margin-top: 71px;
@@ -74,16 +84,21 @@
     <body>
         <div class="container">
             <h2>@ViewBag.Title</h2>
+
+            <div style=" margin-left: 258px;">
+                <button type="button" onclick="Back()"> Back</button>
+            </div>
+
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
-                            <th>@Html.DisplayNameFor(model => model.First().MedicineName)</th>
-                            <th>@Html.DisplayNameFor(model => model.First().Description)</th>
+                            <th>MedicineName</th>
+                            <th>Description</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.Medicines)
                         {
                             <tr>
                                 <td>@Html.DisplayFor(modelItem => item.MedicineName)</td>
@@ -93,7 +108,7 @@
                     </tbody>
                 </table>
 
-                @Html.ActionLink("Back", "Dashboard", "Patient")
+
             </div>
         </div>
     </body>

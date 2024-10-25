@@ -8,6 +8,8 @@ using Hospital_System.Models;
 using Hospital_System.BAL;
 using Hospital_System.DAL;
 using System.Reflection;
+using Hospital_System.Dash;
+using AdminPages.Models;
 
 namespace Hospital_System.Controllers
 {
@@ -22,7 +24,16 @@ namespace Hospital_System.Controllers
             List<MDoctorAd> mDoctors = new List<MDoctorAd>();
 
             mDoctors = adminBAL.DoctorListAd(doc);
-            return View(mDoctors);
+
+            var doctor = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                mDoctorAds = mDoctors
+
+            };
+
+
+            return View(doctor);
         }
 
 
@@ -34,7 +45,7 @@ namespace Hospital_System.Controllers
 
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult AddDoctorAd(MDoctorAd mDoctor)
+        public ActionResult AddDoctorAd(MDoctorAd mDoctorAd)
         {
 
             var ids = 0;
@@ -42,25 +53,33 @@ namespace Hospital_System.Controllers
             List<MDoctorAd> mDoctors = new List<MDoctorAd>();
 
 
-            if (mDoctor.DoctorId != 0)
+            if (mDoctorAd.DoctorId != 0)
             {
-                mDoctors = adminBAL.AddDoctorAd(mDoctor);
-            }
-            if (mDoctors.Count == 0)
-            {
-                adminDAL = new AdminDAL();
-                if (mDoctor.DoctorId == 0)
-                {
-                    ids = adminDAL.DoctorId();
-                }
-                mDoctor.DoctorId = ids + 1;
-
-                return View(mDoctor);
+                mDoctors = adminBAL.AddDoctorAd(mDoctorAd);
             }
             else
             {
-                return RedirectToAction("DoctorListAd", mDoctors);
+                adminDAL = new AdminDAL();
+                if (mDoctorAd.DoctorId == 0)
+                {
+                    ids = adminDAL.DoctorId();
+                }
+                mDoctorAd.DoctorId = ids + 1;
+                var doctor = new DashboardDetails
+                {
+                    Adminmenus = adminBAL.GetAdminmenus(),
+                    MDoctorAd = mDoctorAd
+
+                };
+
+
+
+                return View(doctor);
             }
+
+
+            return RedirectToAction("DoctorListAd", mDoctors);
+
         }
 
         public ActionResult DAEdit(int DoctorId)
@@ -70,10 +89,19 @@ namespace Hospital_System.Controllers
 
             MDoctorAd mDoctor = new MDoctorAd();
             mDoctor = adminBAL.DAEdit(DoctorId);
+
+            var doctor = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                MDoctorAd = mDoctor
+
+            };
+
+
             if (mDoctor.DoctorId != 0)
             {
 
-                return View("AddDoctorAd", mDoctor);
+                return View("AddDoctorAd", doctor);
             }
             else
             {
@@ -87,6 +115,8 @@ namespace Hospital_System.Controllers
             List<MDoctorAd> mDoctors = new List<MDoctorAd>();
 
             mDoctors = adminBAL.DADelete(DoctorId);
+
+
             return RedirectToAction("DoctorListAd", "DoctorAd");
         }
 

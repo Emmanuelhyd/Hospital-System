@@ -8,6 +8,7 @@ using Hospital_System.Models;
 using Hospital_System.BAL;
 using Hospital_System.DAL;
 using System.Reflection;
+using Hospital_System.Dash;
 
 namespace Hospital_System.Controllers
 {
@@ -22,7 +23,14 @@ namespace Hospital_System.Controllers
             List<MAppointmentAd> mAppointmentAd = new List<MAppointmentAd>();
 
             mAppointmentAd = adminBAL.AppointmentList(app);
-            return View(mAppointmentAd);
+
+            var appoint = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                mAppointmentAds = mAppointmentAd
+            };
+
+            return View(appoint);
         }
 
         //add Appointment
@@ -43,8 +51,15 @@ namespace Hospital_System.Controllers
                 }
                 mAppointmentAd.Id = ids + 1;
 
-                return View(mAppointmentAd);
+                var appoint = new DashboardDetails
+                {
+                    Adminmenus = adminBAL.GetAdminmenus(),
+                    MAppointmentAd = mAppointmentAd
+                };
+
+                return View(appoint);
             }
+
             else
             {
                 return RedirectToAction("AppointmentList", mAppointmentAds);
@@ -61,10 +76,21 @@ namespace Hospital_System.Controllers
 
             MAppointmentAd mAppointmentAd = new MAppointmentAd();
             mAppointmentAd = adminBAL.AppointmentEdit(Id);
+
+            var appoint = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                MAppointmentAd = mAppointmentAd
+            };
+
+
+
+
+
             if (mAppointmentAd.Id != 0)
             {
                
-                return View("AddAppointmentAd", mAppointmentAd);
+                return View("AddAppointmentAd", appoint);
             }
             else
             {
@@ -79,6 +105,8 @@ namespace Hospital_System.Controllers
             List<MAppointmentAd> mAppointmentAds = new List<MAppointmentAd>();
 
             mAppointmentAds = adminBAL.AppointmentAdDelete(Id);
+
+         
             return RedirectToAction("AppointmentList", "AppointmentAd");
         }
     }

@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Hospital_System.Models.MMedicineAd>
+﻿
+
+@model Hospital_System.Dash.DashboardDetails
 
 @{
     ViewBag.Title = "MedicineListAd";
@@ -14,7 +16,7 @@
 
 @using (Html.BeginForm())
 {
-    <div style="position: absolute; width: 85%; margin-left: 15%; background-color: white;" class="container">
+    <div style="position: absolute; width: 85%; @*margin-left: 15%;*@ background-color: white;" class="container">
         <div>
             <div><input type="button" value="CeateNew" onclick="CreateNew()">            
                 <input type="search" id="med" name="med">
@@ -23,18 +25,18 @@
 
             <table>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.PatientId)</th>
-                    <th>@Html.DisplayNameFor(model => model.PatientName)</th>
-                    <th>@Html.DisplayNameFor(model => model.DoctorName)</th>
-                    <th>@Html.DisplayNameFor(model => model.Problem)</th>
-                    <th>@Html.DisplayNameFor(model => model.MedicineName)</th>
-                    <th>@Html.DisplayNameFor(model => model.Description)</th>
-                    <th>@Html.DisplayNameFor(model => model.Morning)</th>
-                    <th>@Html.DisplayNameFor(model => model.Afternoon)</th>
-                    <th>@Html.DisplayNameFor(model => model.Night)</th>
+                    <th>PatientId</th>
+                    <th>PatientName</th>
+                    <th>DoctorName</th>
+                    <th>Problem</th>
+                    <th>MedicineName</th>
+                    <th>Description</th>
+                    <th>Morning</th>
+                    <th>Afternoon</th>
+                    <th>Night</th>
                     <th>Action</th>
                 </tr>
-                @foreach (var item in Model)
+                @foreach (var item in Model.MedicineAds)
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.PatientId)</td>

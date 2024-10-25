@@ -11,6 +11,7 @@ using System.Data;
 using System.Web.DynamicData;
 using Hospital_System.BAL;
 using AdminPages.Models;
+using System.Collections;
 
 namespace Hospital_System.DAL
 {
@@ -297,13 +298,13 @@ namespace Hospital_System.DAL
 
         //Add doctor
        
-        public List<MDoctorAd> AddDoctorAd(MDoctorAd mDoctor)
+        public List<MDoctorAd> AddDoctorAd(MDoctorAd mDoctorAd)
         {
 
 
             var ids = 0;
             con.Open();
-            cmd = new SqlCommand("select * from doctors where DoctorId='" + mDoctor.DoctorId + "'", con);
+            cmd = new SqlCommand("select * from doctors where DoctorId='" + mDoctorAd.DoctorId + "'", con);
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
@@ -316,20 +317,22 @@ namespace Hospital_System.DAL
             con.Open();
             if (ids == 0)
             {
-                cmd = new SqlCommand("insert into doctors(DoctorId,FullName,FirstName,LastName,Email,Department,Designation,PhoneNo,ContactNo,Education,Status) values(" + mDoctor.DoctorId + ",'" + mDoctor.FullName + "','" + mDoctor.Firstname + "','" + mDoctor.LastName+ "','" + mDoctor.Email + "','" + mDoctor.Department + "','" + mDoctor.Designation + "','" + mDoctor.PhoneNo + "','" + mDoctor.ContactNo +"','" + mDoctor.Education + "','" + mDoctor.Status + "')", con);
+                cmd = new SqlCommand("insert into doctors(DoctorId,FullName,FirstName,LastName,Email,Department,Designation,PhoneNo,ContactNo,Education,Status) values(" + mDoctorAd.DoctorId + ",'" + mDoctorAd.FullName + "','" + mDoctorAd.Firstname + "','" + mDoctorAd.LastName+ "','" + mDoctorAd.Email + "','" + mDoctorAd.Department + "','" + mDoctorAd.Designation + "','" + mDoctorAd.PhoneNo + "','" + mDoctorAd.ContactNo +"','" + mDoctorAd.Education + "','" + mDoctorAd.Status + "')", con);
 
             }
             else
             {
-                cmd = new SqlCommand("update doctors set FullName='" + mDoctor.FullName + "',FirstName='" + mDoctor.Firstname + "',LastName='" + mDoctor.LastName + "',Email='" + mDoctor.Email + "',Department='" + mDoctor.Department + "',Designation='" + mDoctor.Designation + "',PhoneNo='" + mDoctor.PhoneNo + "',ContactNo='" + mDoctor.ContactNo + "',Education='" + mDoctor.Education + "',Status='" + mDoctor.Status + "' where DoctorId=" + mDoctor.DoctorId + "", con);
+                cmd = new SqlCommand("update doctors set FullName='" + mDoctorAd.FullName + "',FirstName='" + mDoctorAd.Firstname + "',LastName='" + mDoctorAd.LastName + "',Email='" + mDoctorAd.Email + "',Department='" + mDoctorAd.Department + "',Designation='" + mDoctorAd.Designation + "',PhoneNo='" + mDoctorAd.PhoneNo + "',ContactNo='" + mDoctorAd.ContactNo + "',Education='" + mDoctorAd.Education + "',Status='" + mDoctorAd.Status + "' where DoctorId=" + mDoctorAd.DoctorId + "", con);
             }
                 cmd.ExecuteNonQuery();
             con.Close();
             
 
             List<MDoctorAd> mDoctors = new List<MDoctorAd>();
-            mDoctors = DoctorListAd("");
-            return mDoctors;
+            //mDoctors = DoctorListAd("");
+            //return mDoctors;
+
+            return DoctorListAd("");
 
         }
 
@@ -1491,7 +1494,7 @@ namespace Hospital_System.DAL
             List<MDriverAd> mDriverAds = new List<MDriverAd>();
 
             con.Open();
-            cmd = new SqlCommand("select * from anand", con);
+            cmd = new SqlCommand("select * from driver", con);
             reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -1735,6 +1738,40 @@ namespace Hospital_System.DAL
             return id;
         }
 
+        public List<Adminmenu> GetAdminmenus()
+        {
+            List<Adminmenu> adminmenus = new List<Adminmenu>();
+            string  query = "select * from adminmenu";
+            using (var con = new SqlConnection(_connectionString))
+            using (var cmd = new SqlCommand(query, con))
+            {
+                con.Open();
+
+                using (var reader = cmd.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+                        Adminmenu adminmenu = new Adminmenu();
+
+                        adminmenu.Id = Convert.ToInt32(reader["id"]);
+                        adminmenu.Name = reader.GetString(reader.GetOrdinal("Name"));
+                        adminmenu.Url = reader.GetString(reader.GetOrdinal("Url"));
+                        adminmenu.ParentId = reader.IsDBNull(reader.GetOrdinal("ParentId")) ? (int?)null : Convert.ToInt32(reader["ParentId"]);
+                        adminmenu.Isactive = reader.GetByte(reader.GetOrdinal("Isactive"));
+
+                        adminmenus.Add(adminmenu);
+                    }
+                }
+            }
+
+            //reader.Close();
+            //con.Close();
+            return adminmenus;
+
+
+        }
+
+     
 
     }
 }

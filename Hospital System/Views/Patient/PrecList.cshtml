@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<Hospital_System.Models.Medicine>
+@model Hospital_System.Viewmodel.Allview
 
 @{
     ViewBag.Title = "PrecList";
@@ -22,16 +22,16 @@
         }
 
         .container {
-            width: 75%;
+            width: 100%;
             max-width: 1200px;
             margin: 30px auto;
             padding: 20px;
             /*   background-color: #ffffff;*/
             border-radius: 8px;
             /*   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
-            margin-left: 262px;
+          /*  margin-left: 117px;*/
             position: absolute;
-            margin-top: 71px;
+           
         }
 
         h2 {
@@ -70,26 +70,37 @@
         .table-container {
             overflow-x: auto;
         }
+
+        .btn {
+            color: white;
+            background-color: dodgerblue;
+            width: 124%;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
+
+    <div style=" position: absolute; margin-top: 17px; margin-left: 29px;">
+        <button type="button" class=" btn" onclick="Back()"> Back</button>
+    </div>
     <div class="container">
-        <h2>@ViewBag.Title</h2>
+        <h2>Prescriptions</h2>
         <div class="table-container">
             <table>
                 <thead>
                     <tr>
-                        <th>@Html.DisplayNameFor(model => model.First().PatientName)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().DoctorName)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().Problem)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().MedicineName)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().Morning)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().Afternoon)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().Night)</th>
+                        <th>PatientName</th>
+                        <th>DoctorName</th>
+                        <th>Problem</th>
+                        <th>MedicineName</th>
+                        <th>Morning</th>
+                        <th>Afternoon</th>
+                        <th>Night</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Medicines)
                     {
                         <tr>
                             <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
@@ -105,9 +116,16 @@
                 </tbody>
             </table>
 
-            @Html.ActionLink("Back", "Dashboard", "Patient")
+
         </div>
     </div>
 </body>
 </html>
 
+<script>
+
+    function Back() {
+
+        window.location.href = "/Patient/Dashboard";
+    }
+</script>

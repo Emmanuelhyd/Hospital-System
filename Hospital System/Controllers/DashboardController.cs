@@ -18,6 +18,7 @@ namespace Hospital_System.Controllers
         {
             var model = new DashboardDetails
             {
+              
                 MAmbulanceCount = adminBAL.GetMAmbulanceCount(),
                 MAnnouncementCount = adminBAL.GetMAnnouncementCount(),
                 MAppointmentCount = adminBAL.GetMAppointmentCount(),
@@ -28,8 +29,16 @@ namespace Hospital_System.Controllers
                 MMedicineAdCount = adminBAL.GetMMedicineAdCount(),
                 MPatientCount = adminBAL.GetMPatientCount(),
                 MSheduleCount = adminBAL.GetMSheduleCount(),
+                Adminmenus = adminBAL.GetAdminmenus(),
 
             };
+            return View(model);
+        }
+
+
+        public ActionResult GetMenus()
+        {
+            var model = adminBAL.GetAdminmenus();
             return View(model);
         }
     }

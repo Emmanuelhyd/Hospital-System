@@ -1,4 +1,7 @@
-﻿@model IEnumerable<Hospital_System.Models.MShedule>
+﻿
+
+@model Hospital_System.Dash.DashboardDetails
+
 @{
     ViewBag.Title = "SheduleList";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -13,24 +16,25 @@
 
 @using (Html.BeginForm())
 {
-    <div style="position: absolute; width: 85%; margin-left: 15%; background-color: white;">
+    <div style="position: absolute; width: 85%; background-color: white;">
         <div>
-            <div><input type="button" value="CreateNew" onclick="CreateNew()">
+            <div>
+                <input type="button" value="CreateNew" onclick="CreateNew()">
                 <input type="search" id="Shedule" name="Shedule">
                 <input type="submit" value="Search">
             </div>
 
             <table>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.Id)</th>
-                    <th>@Html.DisplayNameFor(model => model.DoctorName)</th>
-                    <th>@Html.DisplayNameFor(model => model.StartTime)</th>
-                    <th>@Html.DisplayNameFor(model => model.EndTime)</th>
+                    <th>Id</th>
+                    <th>DoctorName</th>
+                    <th>StartTime</th>
+                    <th>EndTime</th>
                     @*<th>@Html.DisplayNameFor(model => model.PerPatientTime)</th>*@
-                    <th>@Html.DisplayNameFor(model => model.status)</th>
+                    <th>status</th>
                     <th>Action</th>
                 </tr>
-                @foreach (var item in Model)
+                @foreach (var item in Model.mShedules)
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.Id)</td>
@@ -49,7 +53,7 @@
                             </a>
 
 
-                            
+
                         </td>
                     </tr>
                 }

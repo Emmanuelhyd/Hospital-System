@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Hospital_System.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -17,5 +19,50 @@ namespace Hospital_System.Dash
         public int MMedicineAdCount { get; set; }
         public int MPatientCount { get; set; }
         public int MSheduleCount { get; set; }
+
+        public List<Adminmenu> Adminmenus { get; set; }
+
+        public List<MAmbulance> mAmbulances { get; set; }
+
+        public MAmbulance mAmbulance { get; set; }
+
+        public List<MAnnouncement> mAnnouncements { get; set; }
+
+        public List<MAppointmentAd> mAppointmentAds { get; set; }
+
+        public MAnnouncement mAnnouncement { get; set; }
+
+        public MAppointmentAd MAppointmentAd { get; set; }
+
+        public List<MComplaintAd>mComplaintAds { get; set;}
+
+        public MComplaintAd mComplaintAd { get; set; }
+
+       public List<MDoctorAd> mDoctorAds { get; set; }
+
+        public MDoctorAd MDoctorAd { get; set; }
+
+        public MMedicineAd MMedicineAd { get; set; }
+
+        public List<MMedicineAd> MedicineAds { get;set; }
+
+        public MPatient mPatient { get; set; }
+        public List<MPatient> mPatients { get; set; }
+
+        public MShedule MShedule { get; set; }
+
+        public List<MShedule> mShedules { get; set; }
+
+        public List<MDepartment> mDepartments { get; set; }
+
+        public MDepartment MDepartment { get; set; }
+
+
+        public List<MDriverAd> mDriverAds { get; set; }
+
+        public MDriverAd MDriverAd { get; set; }
+
+
+
     }
 }

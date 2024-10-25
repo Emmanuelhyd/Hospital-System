@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using AdminPages.Models;
 using Hospital_System.DAL;
 using Hospital_System.Models;
 
@@ -63,10 +64,10 @@ namespace Hospital_System.BAL
             return adminDAL.DoctorListAd(doc);
         }
         //add doctor
-        public List<MDoctorAd> AddDoctorAd(MDoctorAd mDoctor)
+        public List<MDoctorAd> AddDoctorAd(MDoctorAd mDoctorAd)
         {
             List<MDoctorAd> mDoctors = new List<MDoctorAd>();
-            mDoctors = adminDAL.AddDoctorAd(mDoctor);
+            mDoctors = adminDAL.AddDoctorAd(mDoctorAd);
             return mDoctors;
         }
 
@@ -93,7 +94,7 @@ namespace Hospital_System.BAL
             return adminDAL.PatientList(patient);
         }
 
-         //Add patient
+        //Add patient
 
         public List<MPatient> AddPatientAd(MPatient mPatient)
         {
@@ -162,8 +163,8 @@ namespace Hospital_System.BAL
         {
             return adminDAL.AnnouncementList(announcement);
         }
-       
-        
+
+
         //Add Announcement
 
         public List<MAnnouncement> AddAnnouncementAd(MAnnouncement mAnnouncement)
@@ -337,9 +338,15 @@ namespace Hospital_System.BAL
         //Driver View
         public MDriverAd Ambulancedriver(int Id)
         {
-           
+
             return adminDAL.Ambulancedriver(Id);
         }
 
+
+        public List<Adminmenu> GetAdminmenus()
+        {
+            return adminDAL.GetAdminmenus();
+
+        }
     }
 }

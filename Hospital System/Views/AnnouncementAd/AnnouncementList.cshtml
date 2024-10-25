@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Hospital_System.Models.MAnnouncement>
+﻿
+
+@model Hospital_System.Dash.DashboardDetails
 
 @{
     ViewBag.Title = "AnnouncementList";
@@ -13,11 +15,11 @@
 </script>
 @using (Html.BeginForm())
 {
-    <div style="position: absolute; width: 85%; margin-left: 15%; background-color: white;">
+    <div style="position: absolute; width: 85%;  background-color: white;">
         <div>
             <div>
                 <input type="button" value="CreateNew" onclick="CreateNew()" />
-            
+
                 <input type="search" id="announcement" name="announcement">
                 <input type="submit" value="Search" />
             </div>
@@ -25,22 +27,22 @@
             <table>
                 <thead>
                     <tr>
-                        <th>@Html.DisplayNameFor(model => model.First().Id)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().Announcement)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().AnnouncementFor)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().EndDate)</th>
+                        <th>Id</th>
+                        <th>Announcement</th>
+                        <th>AnnouncementFor</th>
+                        <th>EndDate</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.mAnnouncements)
                     {
                         <tr>
                             <td>@Html.DisplayFor(modelItem => item.Id)</td>
                             <td>@Html.DisplayFor(modelItem => item.Announcement)</td>
                             <td>@Html.DisplayFor(modelItem => item.AnnouncementFor)</td>
                             <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
-                            <td  style="display: flex; gap: 10px;">
+                            <td style="display: flex; gap: 10px;">
 
                                 <a href="@Url.Action("ALEdit", new { Id = item.Id })">
                                     <i class="fas fa-edit" style="color:blue;"></i>
@@ -51,7 +53,7 @@
                                 </a>
 
 
-                              
+
                             </td>
                         </tr>
                     }

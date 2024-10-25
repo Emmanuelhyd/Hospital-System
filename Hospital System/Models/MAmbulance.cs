@@ -21,6 +21,9 @@ namespace Hospital_System.Models
         public int AmbulanceDriverId { get; set; }
 
 
+        public List<Menu> GetMenus { get; set; }
+
+
         //public IEnumerable<SelectListItem> AmbulanceStatus { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using Hospital_System.DAL;
 using System.Reflection;
 using Hospital_System.Models;
 using AdminPages.Models;
+using Hospital_System.Dash;
 
 
 namespace Hospital_System.Controllers
@@ -24,7 +25,15 @@ namespace Hospital_System.Controllers
             List<MShedule> mShedule = new List<MShedule>();
 
             mShedule = adminBAL.SheduleList(Shedule);
-            return View(mShedule);
+
+            var schedule = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                mShedules= mShedule
+
+            };
+            
+            return View(schedule);
         }
 
        
@@ -50,7 +59,15 @@ namespace Hospital_System.Controllers
                 }
                 mShedule.Id = ids + 1;
 
-                return View(mShedule);
+                var schedule = new DashboardDetails
+                {
+                    Adminmenus = adminBAL.GetAdminmenus(),
+                    MShedule = mShedule
+
+                };
+
+                return View(schedule);
+
             }
             else
             {
@@ -92,10 +109,19 @@ namespace Hospital_System.Controllers
 
             MShedule mShedule = new MShedule();
             mShedule = adminBAL.SLEdit(Id);
+
+            var schedule = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                MShedule = mShedule
+
+            };
+
+
             if (mShedule.Id != 0)
             {
 
-                return View("AddSheduleAd", mShedule);
+                return View("AddSheduleAd", schedule);
             }
             else
             {

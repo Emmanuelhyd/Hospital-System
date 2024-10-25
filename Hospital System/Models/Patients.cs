@@ -57,9 +57,11 @@ namespace Hospital_System.Models
         [DataType(DataType.Password)]
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        public string UserNameOrEmail { get; set; }
 
         public IEnumerable<SelectListItem> BloodGroups { get; set; }
         public IEnumerable<SelectListItem> GetGenders { get; set; }
+        public IEnumerable<Menu> Menus { get; set; }
     }
 }
 

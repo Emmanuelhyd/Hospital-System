@@ -1,12 +1,12 @@
-﻿@model Hospital_System.Models.MDriverAd
+﻿@model Hospital_System.Dash.DashboardDetails
 
 
-<div >
+<div>
     <h2>Driver Details</h2>
-    <p><strong>Name:</strong> @Model.Name</p>
-    <p><strong>Contact:</strong> @Model.Contact</p>
-    <p><strong>Address:</strong> @Model.Address</p>
-    <p><strong>CNIC:</strong> @Model.CNIC</p>
+    <p><strong>Name:</strong> @Model.MDriverAd.Name</p>
+    <p><strong>Contact:</strong> @Model.MDriverAd.Contact</p>
+    <p><strong>Address:</strong> @Model.MDriverAd.Address</p>
+    <p><strong>CNIC:</strong> @Model.MDriverAd.CNIC</p>
 
     <button onclick="closePopup()" class="back">Back</button>
 </div>

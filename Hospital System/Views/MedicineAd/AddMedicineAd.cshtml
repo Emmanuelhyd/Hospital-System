@@ -1,4 +1,4 @@
-﻿@model Hospital_System.Models.MMedicineAd
+﻿@model Hospital_System.Dash.DashboardDetails
 
 @{
     ViewBag.Title = "AddMedicineAd";
@@ -8,432 +8,146 @@
 @using (Html.BeginForm("AddMedicineAd", "MedicineAd"))
 {
     <div class="form-container">
-        <div class="form-group" style="margin-left:100px;margin-top:10px;">
+        <div class="form-group">
             <div class="form-item">
-                <div>@Html.LabelFor(m => m.PatientId)</div>
-                <div>
-                    @Html.TextBoxFor(m => m.PatientId, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.PatientId, "", new { @class = "text-danger" })
-                </div>
+                <label>PatientId</label>
+                @Html.TextBoxFor(m => m.MMedicineAd.PatientId, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.MMedicineAd.PatientId, "", new { @class = "text-danger" })
             </div>
             <div class="form-item">
-                <div>@Html.LabelFor(m => m.PatientName)</div>
-                <div>
-                    @Html.TextBoxFor(m => m.PatientName, new { @required = "required", @placeholder = "Patient Name", @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.PatientName, "", new { @class = "text-danger" })
-                </div>
+                <label>PatientName</label>
+                @Html.TextBoxFor(m => m.MMedicineAd.PatientName, new { @required = "required", @placeholder = "Patient Name", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.MMedicineAd.PatientName, "", new { @class = "text-danger" })
             </div>
-
-
-            <div >
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.DoctorName)</div>
-                    <div>
-                        @Html.TextBoxFor(m => m.DoctorName, new { @required = "required", @placeholder = "Doctor Name", @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.DoctorName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.Problem)</div>
-                    <div>
-                        @Html.TextBoxFor(m => m.Problem, new { @required = "required", @placeholder = "Problem", @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Problem, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
             <div class="form-item">
-                <div>@Html.LabelFor(m => m.Description)</div>
-                <div>
-                    @Html.TextBoxFor(m => m.Description, new { @required = "required", @placeholder = "Description", @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
-                </div>
+                <label>DoctorName</label>
+                @Html.TextBoxFor(m => m.MMedicineAd.DoctorName, new { @required = "required", @placeholder = "Doctor Name", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.MMedicineAd.DoctorName, "", new { @class = "text-danger" })
             </div>
-
-            <div class="form-group">
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.MedicineName)</div>
-                    <div>
-                        @Html.TextBoxFor(m => m.MedicineName, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.MedicineName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.Morning)</div>
-                    <div>
-                        <select id="Morning" name="Morning" required class="form-control">
-                            <option value=""></option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                        </select>
-                    </div>
-                </div>
+            <div class="form-item">
+                <label>Problem</label>
+                @Html.TextBoxFor(m => m.MMedicineAd.Problem, new { @required = "required", @placeholder = "Problem", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.MMedicineAd.Problem, "", new { @class = "text-danger" })
             </div>
-
-            <div class="form-group">
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.Afternoon)</div>
-                    <div>
-                        <select id="Afternoon" name="Afternoon" required class="form-control">
-                            <option value=""></option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.Night)</div>
-                    <div>
-                        <select id="Night" name="Night" required class="form-control">
-                            <option value=""></option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                        </select>
-                        
-                    </div>
-                </div>
+            <div class="form-item">
+                <label>Description</label>
+                @Html.TextBoxFor(m => m.MMedicineAd.Description, new { @required = "required", @placeholder = "Description", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.MMedicineAd.Description, "", new { @class = "text-danger" })
             </div>
-
-            <div>
-                <input type="submit" value="Submit" class="submit-button">
+            <div class="form-item">
+                <label>MedicineName</label>
+                @Html.TextBoxFor(m => m.MMedicineAd.MedicineName, new { @class = "form-control" , @placeholder=" MedicineName"})
+                @Html.ValidationMessageFor(m => m.MMedicineAd.MedicineName, "", new { @class = "text-danger" })
             </div>
+            <div class="form-item">
+                <label>Morning</label>
+                @Html.DropDownListFor(m => m.MMedicineAd.Morning, new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem { Value = "Yes", Text = "Yes" },
+                    new SelectListItem { Value = "No", Text = "No" },
+                }, "Value", "Text"), "Select", new { @class = "form-control" })
+            </div>
+            <div class="form-item">
+                <label>Afternoon</label>
+                @Html.DropDownListFor(m => m.MMedicineAd.Afternoon, new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem { Value = "Yes", Text = "Yes" },
+                    new SelectListItem { Value = "No", Text = "No" },
+                }, "Value", "Text"), "Select", new { @class = "form-control" })
+            </div>
+            <div class="form-item">
+                <label>Night</label>
+                @Html.DropDownListFor(m => m.MMedicineAd.Night, new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem { Value = "Yes", Text = "Yes" },
+                    new SelectListItem { Value = "No", Text = "No" },
+                }, "Value", "Text"), "Select", new { @class = "form-control" })
+            </div>
+        </div>
 
+        <div class="form-actions">
+            <input type="submit" value="Submit" class="submit-button">
+            <button type="button" class="back-button" onclick="Back()"> Back </button>
         </div>
     </div>
 }
 
 <style>
     .form-container {
-        max-width: 600px; /* Adjust to fit your design */
-        margin: 0 auto; /* Center the form */
+        max-width: 600px;
+        margin: 20px auto;
         padding: 20px;
-        border: 1px solid #ccc; /* Light gray border */
-        border-radius: 5px; /* Rounded corners */
-        background-color: #f9f9f9; /* Light background color */
-        position: absolute;
-        width: 85%;
-        margin-left: 30%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
     }
 
     .form-group {
         display: flex;
-        flex-wrap: wrap; /* Wrap items to the next line if needed */
-        margin-bottom: 15px; /* Space between groups */
-        
+        flex-wrap: wrap;
+        margin-bottom: 15px;
     }
 
     .form-item {
-        flex: 1 1 45%; /* Flex basis allows for two items per row */
-        min-width: 200px; /* Minimum width for responsiveness */
-        margin-right: 15px; /* Space between items */
-        box-sizing: border-box; /* Include padding in width calculation */
+        flex: 1 1 45%;
+        margin-right: 15px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
     }
 
         .form-item:last-child {
-            margin-right: 0; /* Remove margin for the last item */
+            margin-right: 0;
         }
 
     .form-control {
-        width: 100%; /* Full width for input fields */
-        padding: 10px; /* Padding for comfort */
-        border: 1px solid #ccc; /* Light border for inputs */
-        border-radius: 4px; /* Rounded corners for inputs */
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
     }
 
     .text-danger {
-        color: red; /* Red text for validation messages */
+        color: red;
     }
 
     .submit-button {
-        padding: 10px 20px; /* Padding for the button */
-        background-color: #007bff; /* Primary button color */
-        color: white; /* Text color */
-        border: none; /* No border */
-        border-radius: 5px; /* Rounded corners */
-        cursor: pointer; /* Pointer on hover */
-        margin-top: 20px; /* Space above the button */
-        margin-left: 174px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
     }
-    
 
         .submit-button:hover {
-            background-color: #0056b3; /* Darken button on hover */
+            background-color: #0056b3;
         }
+
+    .back-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+    .form-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
 </style>
 
-
-
-@*@model Hospital_System.Models.MMedicineAd
-
-    @{
-        ViewBag.Title = "AddMedicineAd";
-        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+<script>
+    function Back() {
+        window.location.href = "/Dashboard/DashboardView";
     }
-
-    @using (Html.BeginForm("AddMedicineAd", "MedicineAd"))
-    {
-        <div class="form-container">
-            <div class="form-group">
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.PatientId)</div>
-                    <div>
-                        @Html.TextBoxFor(m => m.PatientId)
-                        @Html.ValidationMessageFor(m => m.PatientId, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.PatientName)</div>
-                    <div>
-                        @Html.TextBoxFor(m => m.PatientName, new { @required = "required", @placeholder = "Patient Name" })
-                        @Html.ValidationMessageFor(m => m.PatientName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.DoctorName)</div>
-                    <div>
-                        @Html.TextBoxFor(m => m.DoctorName, new { @required = "required", @placeholder = "Doctor Name" })
-                        @Html.ValidationMessageFor(m => m.DoctorName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.Problem)</div>
-                    <div>
-                        @Html.TextBoxFor(m => m.Problem, new { @required = "required", @placeholder = "Problem" })
-                        @Html.ValidationMessageFor(m => m.Problem, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-item">
-                <div>@Html.LabelFor(m => m.Description)</div>
-                <div>
-                    @Html.TextBoxFor(m => m.Description, new { @required = "required", @placeholder = "Description" })
-                    @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.MedicineName)</div>
-                    <div>
-                        @Html.TextBoxFor(m => m.MedicineName)
-                        @Html.ValidationMessageFor(m => m.MedicineName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.Morning)</div>
-                    <div>
-                        <select id="Morning" name="Morning" required>
-                            <option value=""></option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.Afternoon)</div>
-                    <div>
-                        @Html.TextBoxFor(m => m.Afternoon)
-                        @Html.ValidationMessageFor(m => m.Afternoon, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.Night)</div>
-                    <div>
-                        @Html.TextBoxFor(m => m.Night)
-                        @Html.ValidationMessageFor(m => m.Night, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <input type="submit" value="Submit" class="submit-button">
-            </div>
-        </div>
-    }*@
-
-
-
-
-@*@model Hospital_System.Models.MMedicineAd
-
-
-    @{
-        ViewBag.Title = "AddMedicineAd";
-        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-    }
-
-
-    @using (Html.BeginForm("AddMedicineAd", "MedicineAd"))
-    {
-        <div class="form-container">
-            <div class="form-group">
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.PatientId)</div>
-                    <div>
-                        @Html.TextBoxFor(m => m.PatientId)
-                        @Html.ValidationMessageFor(m => m.PatientId, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.PatientName)</div>
-                    <div>
-                        @Html.TextBoxFor(m => m.PatientName, new { @required = "required", @placeholder = "Patient Name" })
-                        @Html.ValidationMessageFor(m => m.PatientName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.DoctorName)</div>
-                    <div>
-                        @Html.TextBoxFor(m => m.DoctorName, new { @required = "required", @placeholder = "Doctor Name" })
-                        @Html.ValidationMessageFor(m => m.DoctorName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.Problem)</div>
-                    <div>
-                        @Html.TextBoxFor(m => m.Problem, new { @required = "required", @placeholder = "Problem" })
-                        @Html.ValidationMessageFor(m => m.Problem, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-item">
-                <div>@Html.LabelFor(m => m.Description)</div>
-                <div>
-                    @Html.TextBoxFor(m => m.Description, new { @required = "required", @placeholder = "Description" })
-                    @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.MedicineName)</div>
-                    <div>
-                        @Html.TextBoxFor(m => m.MedicineName)
-                        @Html.ValidationMessageFor(m => m.MedicineName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-item">
-                    <div>@Html.LabelFor(m => m.Morning)</div>
-                    <div>
-                        <select id="Morning" name="Morning" required>
-                            <option value=""></option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                        </select>
-                    </div>
-                </div>
-
-
-                <div class="form-group">
-                    <div class="form-item">
-                        <div>@Html.LabelFor(m => m.Afternoon)</div>
-                        <div>
-                            @Html.TextBoxFor(m => m.Afternoon)
-                            @Html.ValidationMessageFor(m => m.Afternoon, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-item">
-                        <div>@Html.LabelFor(m => m.Night)</div>
-                        <div>
-                            @Html.TextBoxFor(m => m.Night)
-                            @Html.ValidationMessageFor(m => m.Night, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <input type="submit" value="Submit" class="submit-button">
-                </div>
-            </div>
-        </div>
-    }*@
-
-@*<style>
-        /* General form styling */
-        .form-container {
-            position: absolute;
-            width: 85%;
-            margin-left: 15%;
-            background-color: white;
-            /*margin-top: 18px;*/
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Flexbox for grouping form items */
-        .form-group {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-        }
-
-        /* Individual form items */
-        .form-item {
-            flex: 1;
-            margin-right: 10px; /* Space between items */
-        }
-
-            /* Remove margin from the last item in the group */
-            .form-item:last-child {
-                margin-right: 0;
-            }
-
-        /* Styling for input fields */
-        input[type="text"],
-        select {
-            width: 50%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        /* Submit button styling */
-        .submit-button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-            /* Hover effect for the submit button */
-            .submit-button:hover {
-                background-color: #45a049;
-            }
-
-        /* Styling for labels */
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        /* Validation message styling */
-        .text-danger {
-            color: red;
-            font-size: 0.9em;
-            margin-top: -10px;
-            margin-bottom: 10px;
-        }
-    </style>*@
-
-
-
-
+</script>

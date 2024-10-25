@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Hospital_System.DAL;
 using Hospital_System.Models;
+using Hospital_System.Viewmodel;
 
 
 namespace Hospital_System.BAL

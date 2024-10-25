@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using Hospital_System.BAL;
 using Hospital_System.DAL;
 using System.Reflection;
+using Hospital_System.Dash;
 
 namespace Hospital_System.Controllers
 {
@@ -16,12 +17,21 @@ namespace Hospital_System.Controllers
         AdminDAL adminDAL;
         AdminBAL adminBAL = new AdminBAL();
         // GET: PatientAd
+
         public ActionResult PatientList(string patient)
         {
             MPatient mPatient1 = new MPatient();
             List<MPatient> mPatient = new List<MPatient>();
             mPatient = adminBAL.PatientList(patient);
-            return View(mPatient);
+
+            var mpatient = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                mPatients = mPatient
+            };
+
+               return View(mpatient);
+
         }
 
 
@@ -44,7 +54,7 @@ namespace Hospital_System.Controllers
             {
                 mPatients = adminBAL.AddPatientAd(mPatient);
             }
-            if (mPatients.Count == 0)
+            else if (mPatients.Count == 0)
             {
                 adminDAL = new AdminDAL();
                 if (mPatient.Id == 0)
@@ -53,12 +63,20 @@ namespace Hospital_System.Controllers
                 }
                 mPatient.Id = ids + 1;
 
-                return View(mPatient);
+                var mpatient = new DashboardDetails
+                {
+                    Adminmenus = adminBAL.GetAdminmenus(),
+                    mPatient = mPatient
+                };
+
+
+
+                return View(mpatient);
             }
-            else
-            {
+           
+            
                 return RedirectToAction("PatientList", mPatients);
-            }
+            
 
 
         }
@@ -70,10 +88,18 @@ namespace Hospital_System.Controllers
 
             MPatient mPatient = new MPatient();
             mPatient = adminBAL.PatientEdit(Id);
+
+            var mpatient = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                mPatient = mPatient
+            };
+
+
             if (mPatient.Id != 0)
             {
 
-                return View("AddPatientAd", mPatient);
+                return View("AddPatientAd", mpatient);
             }
             else
             {

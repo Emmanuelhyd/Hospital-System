@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Hospital_System.Models.MDepartment>
+﻿@model Hospital_System.Dash.DashboardDetails
 
 @{
     ViewBag.Title = "DepartmentList";
@@ -7,29 +7,34 @@
 
 <script>
     function CreateNew() {
-
         window.location.href = 'AddDepartment';
     }
 </script>
 
 @using (Html.BeginForm())
 {
-    <div style="position: absolute; width: 85%; margin-left: 15%; background-color: white;">
-        <div>
-            <div><input type="button" value="CeateNew" onclick="CreateNew()">            
-                <input type="search" id="dep" name="dep">
-                <input type="submit" value="Search">
+    <div style="width: 100%; background-color: white; margin: 44px auto; padding: 20px; border-radius: 8px;">
+        <h2 style="text-align: center;">Department List</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <div>
+                <input type="button" value="Create New" onclick="CreateNew()" style="margin-right: 10px;">
+                <input type="search" id="dep" name="dep" placeholder="Search Department" style="padding: 10px; width: 200px; border: 1px solid #ccc; border-radius: 4px;">
+                <input type="submit" value="Search" style="padding: 10px 15px;">
             </div>
+        </div>
 
-            <table>
+        <table>
+            <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.Id)</th>
-                    <th>@Html.DisplayNameFor(model => model.DepartmentName)</th>
-                    <th>@Html.DisplayNameFor(model => model.Description)</th>
-                    <th>@Html.DisplayNameFor(model => model.Status)</th>
+                    <th>Id</th>
+                    <th>Department Name</th>
+                    <th>Description</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
-                @foreach (var item in Model)
+            </thead>
+            <tbody>
+                @foreach (var item in Model.mDepartments)
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.Id)</td>
@@ -37,18 +42,17 @@
                         <td>@Html.DisplayFor(modelItem => item.Description)</td>
                         <td>@Html.DisplayFor(modelItem => item.Status)</td>
                         <td style="display: flex; gap: 10px;">
-                            <a href="@Url.Action("DLEdit", new { Id = item.Id })">
+                            <a href="@Url.Action("DLEdit", new { Id = item.Id })" title="Edit">
                                 <i class="fas fa-edit" style="color:blue;"></i>
                             </a>
-                            <a href="@Url.Action("DLDelete", new { Id = item.Id })">
-                                <i class="fas fa-trash-alt " style="color:red;"></i>
+                            <a href="@Url.Action("DLDelete", new { Id = item.Id })" title="Delete">
+                                <i class="fas fa-trash-alt" style="color:red;"></i>
                             </a>
-                            
                         </td>
                     </tr>
                 }
-            </table>
-        </div>
+            </tbody>
+        </table>
     </div>
 }
 
@@ -61,12 +65,8 @@
         background-color: #f4f4f4;
     }
 
-    h1 {
+    h2 {
         color: #333;
-        text-align: center;
-    }
-
-    div {
         margin-bottom: 20px;
     }
 
@@ -81,15 +81,8 @@
         transition: background-color 0.3s;
     }
 
-        input[type="button"]:hover, input[type="submit"]:hover {
-            background-color: #3051bd;
-        }
-
-    input[type="search"] {
-        padding: 10px;
-        width: 200px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+    input[type="button"]:hover, input[type="submit"]:hover {
+        background-color: #25499b; /* Darker shade for hover */
     }
 
     table {
@@ -97,10 +90,13 @@
         border-collapse: collapse;
         margin-top: 20px;
         background-color: white;
+        border-radius: 8px;
+        overflow: hidden; /* Rounded corners */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     th, td {
-        padding: 12px;
+        padding: 10px;
         text-align: left;
         border-bottom: 1px solid #ddd;
     }
@@ -113,7 +109,15 @@
         background-color: #f5f5f5;
     }
 
-    .action-link {
-        margin-right: 10px;
+  
+    
+
+        input[type="button"], input[type="submit"] {
+            padding: 8px 10px;
+        }
+
+        th, td {
+            font-size: 14px;
+        }
     }
 </style>

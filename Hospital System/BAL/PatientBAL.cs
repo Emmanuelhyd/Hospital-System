@@ -8,6 +8,7 @@ using Hospital_System.Models;
 using System.IO;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Hospital_System.Viewmodel;
 
 
 
@@ -36,12 +37,7 @@ namespace Hospital_System.BAL
 
             public string Updateprofile(Patients patients)
         {
-            string loggedInUsername = HttpContext.Current.Session["Username"] as string; // Retrieve username from session
-
-            if (!string.Equals(patients.UserName, loggedInUsername, StringComparison.OrdinalIgnoreCase))
-            {
-                return "Unauthorized: You can only update your own profile.";
-            }
+            
 
             return patient.Updateprofile(patients);
         }

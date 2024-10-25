@@ -8,11 +8,13 @@ using Hospital_System.Models;
 using Hospital_System.BAL;
 using Hospital_System.DAL;
 using System.Reflection;
+using Hospital_System.Dash;
+using System.Web.UI.WebControls;
 
 namespace Hospital_System.Controllers
 {
     public class AmbulanceAdController : Controller
-    {
+    {MenuBAL menuBAL = new MenuBAL();
         AdminDAL adminDAL;
         AdminBAL adminBAL = new AdminBAL();
         // GET: AmbulanceAd
@@ -22,7 +24,14 @@ namespace Hospital_System.Controllers
             List<MAmbulance> mAmbulance = new List<MAmbulance>();
 
             mAmbulance = adminBAL.AmbulanceListAd();
-            return View(mAmbulance);
+
+            var menu = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                mAmbulances = mAmbulance
+            };
+           
+            return View(menu);
         }
 
 
@@ -45,7 +54,7 @@ namespace Hospital_System.Controllers
             {
                 mAmbulances = adminBAL.AddAmbulanceAd(mAmbulance);
             }
-            if (mAmbulances.Count == 0)
+            else if(mAmbulances.Count == 0)
             {
                 adminDAL = new AdminDAL();
                 if (mAmbulance.Id == 0)
@@ -54,15 +63,21 @@ namespace Hospital_System.Controllers
                 }
                 mAmbulance.Id = ids + 1;
 
-                return View(mAmbulance);
-            }
-            else
-            {
-                return RedirectToAction("AmbulanceListAd", mAmbulances);
-            }
+                var ambulance = new DashboardDetails
+                {
+                    Adminmenus = adminBAL.GetAdminmenus(),
+                    mAmbulance = mAmbulance
+                };
 
 
+
+
+                return View(ambulance);
+            }
+           
             
+                return RedirectToAction("AmbulanceListAd", mAmbulances);
+               
         }
 
         //Ambulance ststus
@@ -87,10 +102,19 @@ namespace Hospital_System.Controllers
 
             MAmbulance mAmbulance = new MAmbulance();
             mAmbulance = adminBAL.AmbulanceEdit(Id);
+
+            var ambulance = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                mAmbulance = mAmbulance
+            };
+
+
+
             if (mAmbulance.Id != 0)
             {
 
-                return View("AddAmbulanceAd", mAmbulance);
+                return View("AddAmbulanceAd", ambulance);
             }
             else
             {
@@ -119,7 +143,13 @@ namespace Hospital_System.Controllers
                 return HttpNotFound("ID not found");
             }
 
-            return PartialView("_Ambulance", mAmbulance);
+            var model = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                mAmbulance = mAmbulance
+            };
+
+            return PartialView("_Ambulance", model);
 
 
         }
@@ -131,37 +161,48 @@ namespace Hospital_System.Controllers
             List<MDriverAd> mDriverAd = new List<MDriverAd>();
 
             mDriverAd = adminBAL.AmbulanceDriverAd(Driver);
-            return View(mDriverAd);
+
+            var driver = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                mDriverAds= mDriverAd
+            };
+            return View(driver);
         }
         //Add driver
         //[HttpPost]
         
-        public ActionResult AddDriverAd(MDriverAd mDriver)
+        public ActionResult AddDriverAd(MDriverAd mDriverAd)
         {
             var ids = 0;
 
             List<MDriverAd> mDriverAds = new List<MDriverAd>();
             
 
-            if (mDriver.Id != 0)
+            if (mDriverAd.Id != 0)
             {
-                mDriverAds = adminBAL.AddDriverAd(mDriver);
+                mDriverAds = adminBAL.AddDriverAd(mDriverAd);
             }
-            if (mDriverAds.Count == 0)
+            else  if (mDriverAds.Count == 0)
                 {
                 adminDAL = new AdminDAL();
-                if (mDriver.Id == 0)
+                if (mDriverAd.Id == 0)
                 {
                     ids = adminDAL.DynamicId();
                 }
-                mDriver.Id = ids+1;
-
-                return View(mDriver);
-                }
-                else
+                mDriverAd.Id = ids+1;
+                var drivers = new DashboardDetails
                 {
-                    return RedirectToAction("AmbulanceDriverAd", mDriverAds);
+                    Adminmenus = adminBAL.GetAdminmenus(),
+                    MDriverAd = mDriverAd
+                };
+
+                return View(drivers);
                 }
+               
+                
+                    return RedirectToAction("AmbulanceDriverAd", mDriverAds);
+                
            
 
             //return View(mDriver);
@@ -174,10 +215,17 @@ namespace Hospital_System.Controllers
 
             MDriverAd mDriver = new MDriverAd();
             mDriver = adminBAL.DriverEdit(Id);
+
+            var drivers = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                MDriverAd = mDriver
+            };
+
             if (mDriver.Id != 0)
             {
 
-                return View("AddDriverAd", mDriver);
+                return View("AddDriverAd", drivers);
             }
             else
             {
@@ -208,7 +256,13 @@ namespace Hospital_System.Controllers
                     return HttpNotFound("ID not found");
                 }
 
-                return PartialView("_Ambulancedriver", mDriver);
+            var driver = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                MDriverAd = mDriver
+            };
+                
+                return PartialView("_Ambulancedriver", driver);
 
             
         }

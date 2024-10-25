@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Hospital_System.Models.MDoctorAd>
+﻿
+
+@model Hospital_System.Dash.DashboardDetails
 
 
 @{
@@ -16,30 +18,31 @@
 
 @using (Html.BeginForm())
 {
-    <div style="position: absolute; width: 110%; margin-left: 15%; background-color: white;">
+    <div style="position: absolute; width: 110%; background-color: white;">
         <div>
-            <div><input type="button" value="CeateNew " onclick="CreateNew()">
+            <div>
+                <input type="button" value="CreateNew " onclick="CreateNew()">
                 <input type="search" id="doc" name="doc">
                 <input type="submit" value="Search">
             </div>
 
             <table border="1">
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.DoctorId)</th>
-                    <th>@Html.DisplayNameFor(model => model.FullName)</th>
-                    <th>@Html.DisplayNameFor(model => model.Firstname)</th>
-                    <th>@Html.DisplayNameFor(model => model.LastName)</th>
-                    <th>@Html.DisplayNameFor(model => model.Email)</th>
-                    <th>@Html.DisplayNameFor(model => model.Department)</th>
-                    <th>@Html.DisplayNameFor(model => model.Designation)</th>
-                    <th>@Html.DisplayNameFor(model => model.PhoneNo)</th>
-                    <th>@Html.DisplayNameFor(model => model.ContactNo)</th>
-                    <th>@Html.DisplayNameFor(model => model.Education)</th>
+                    <th>DoctorId</th>
+                    <th>FullName</th>
+                    <th>Firstname</th>
+                    <th>LastName</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Designation</th>
+                    <th>PhoneNo</th>
+                    <th>ContactNo</th>
+                    <th>Education</th>
                     @*<th>@Html.DisplayNameFor(model => model.Gender)</th>*@
-                    <th>@Html.DisplayNameFor(model => model.Status)</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
-                @foreach (var item in Model)
+                @foreach (var item in Model.mDoctorAds)
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.DoctorId)</td>
@@ -115,11 +118,12 @@
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
+        margin-left: -119px;
         background-color: white;
     }
 
     th, td {
-        padding: 12px;
+        padding: 8px;
         text-align: left;
         border-bottom: 1px solid #ddd;
     }

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Hospital_System.Models.MComplaintAd> 
+﻿
+@model Hospital_System.Dash.DashboardDetails
 
 @{
     ViewBag.Title = "ComplaintListAd";
@@ -14,24 +15,24 @@
 
 @using (Html.BeginForm())
 {
-    <div style="position: absolute; width: 85%; margin-left: 15%; background-color: white;">
+    <div style="position: absolute; width: 85%; @*margin-left: 15%;*@ background-color: white;">
         <div>
             <div><input type="button" value="CeateNew" onclick="CreateNew()"></div>
             @*<div>
-                <input type="search">
-                <input type="submit" value="Search">
-            </div>*@
+                    <input type="search">
+                    <input type="submit" value="Search">
+                </div>*@
 
             <table>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.Id)</th>
-                    <th>@Html.DisplayNameFor(model => model.Name)</th>
-                    <th>@Html.DisplayNameFor(model => model.Complaint)</th>
-                    <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
-                    <th>@Html.DisplayNameFor(model => model.Replay)</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Complaint)</th>
+                    <th>PhoneNumber)</th>
+                    <th>Replay</th>
                     <th>Action</th>
                 </tr>
-                @foreach (var item in Model)
+                @foreach (var item in Model.mComplaintAds)
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.Id)</td>
@@ -48,7 +49,7 @@
                             <a href="@Url.Action("ComplaintDelete", new { Id = item.Id })">
                                 <i class="fas fa-trash-alt" style="color:red;"></i>
                             </a>
-                            
+
                         </td>
                     </tr>
                 }

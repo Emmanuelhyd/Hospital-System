@@ -1,152 +1,133 @@
-﻿@model Hospital_System.Models.MDriverAd
+﻿@model Hospital_System.Dash.DashboardDetails
 
 @{
     ViewBag.Title = "AddDriverAd";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-
 @using (Html.BeginForm("AddDriverAd", "AmbulanceAd"))
 {
-    <div style="position: absolute; width: 85%; margin-left: -6%; background-color: white;">
-
-        <div  style="margin-left: 363px">
-            <h2 style="margin-left:-350px">Add Driver Details</h2>
-            <div>
-                <style>
-                    /* General form styles */
-                    body {
-                        font-family: Arial, sans-serif;
-                        background-color: #f8f8f8; /* Light background for contrast */
-                    }
-
-                    h2 {
-                        text-align: center;
-                        color: #333; /* Darker color for the heading */
-                    }
-
-                    div {
-                        padding: 20px;
-                        margin: 10px 0;
-                    }
-
-                    /* Container for the form */
-                    form {
-                        background-color: #fff; /* White background for the form */
-                        border-radius: 8px; /* Rounded corners */
-                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-                        max-width: 600px; /* Max width of the form */
-                        margin: auto; /* Center the form */
-                    }
-
-                    /* Label styles */
-                    label {
-                        display: block;
-                        margin-bottom: 5px; /* Space between label and input */
-                        font-weight: bold; /* Bold labels */
-                        color: #555; /* Slightly lighter text color */
-                    }
-
-                    /* Input styles */
-                    input[type="text"],
-                    input[type="submit"] {
-                        width: 40%; /* Full width inputs */
-                        padding: 10px; /* Padding inside inputs */
-                        margin-bottom: 15px; /* Space below inputs */
-                        border: 1px solid #ccc; /* Light border */
-                        border-radius: 4px; /* Slightly rounded corners */
-                        box-sizing: border-box; /* Include padding in width calculation */
-                    }
-
-                        /* Input focus styles */
-                        input[type="text"]:focus {
-                            border-color: #5b9ea0; /* Change border color on focus */
-                            outline: none; /* Remove default outline */
-                        }
-
-                    /* Submit button styles */
-                    input[type="submit"] {
-                        background-color: #5b9ea0; /* Primary color for the button */
-                        color: white; /* White text color */
-                        font-weight: bold; /* Bold text */
-                        cursor: pointer; /* Pointer cursor */
-                        transition: background-color 0.3s; /* Smooth transition */
-                        width:100px;
-                        margin-left: -170px;
-                        margin-top: 47px;
-                        position: absolute;
-                    }
-
-                        input[type="submit"]:hover {
-                            background-color: #4a7f80; /* Darker shade on hover */
-                        }
-
-                    /* Validation message styles */
-                    .validation-message {
-                        color: red; /* Red color for error messages */
-                        font-size: 0.9em; /* Slightly smaller font size */
-                        margin-top: -10px; /* Pull up closer to the input */
-                        margin-bottom: 10px; /* Space below the error message */
-                    }
-                </style>
-
-                @Html.LabelFor(m => m.Id)
-                @Html.TextBoxFor(m => m.Id)
-                @Html.ValidationMessageFor(m => m.Id, "", new { @class = "validation-message" })
-
-                @Html.LabelFor(m => m.Name)
-                @Html.TextBoxFor(m => m.Name, new { @required = "required", @placeholder = "Enter your Name" })
-
-                @Html.LabelFor(m => m.Contact)
-                @Html.TextBoxFor(m => m.Contact, new { @required = "required", @placeholder = "Registered Mobile Number" })
-
-                @Html.LabelFor(m => m.Address)
-                @Html.TextBoxFor(m => m.Address, new { @required = "required", @placeholder = "Enter your Address" })
-
-                @Html.LabelFor(m => m.CNIC)
-                @Html.TextBoxFor(m => m.CNIC, new { @required = "required", @placeholder = "Enter your CNIC" })
-
-                <input type="submit" value="Submit">
-            </div>
+    <div class="form-container">
+        <h2>Add Driver Details</h2>
+        <div class="form-group">
+            @Html.LabelFor(m => m.MDriverAd.Id)
+            @Html.TextBoxFor(m => m.MDriverAd.Id, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.MDriverAd.Id, "", new { @class = "validation-message" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.MDriverAd.Name)
+            @Html.TextBoxFor(m => m.MDriverAd.Name, new { @required = "required", @placeholder = "Enter your Name", @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.MDriverAd.Contact)
+            @Html.TextBoxFor(m => m.MDriverAd.Contact, new { @required = "required", @placeholder = "Registered Mobile Number", @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.MDriverAd.Address)
+            @Html.TextBoxFor(m => m.MDriverAd.Address, new { @required = "required", @placeholder = "Enter your Address", @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.MDriverAd.CNIC)
+            @Html.TextBoxFor(m => m.MDriverAd.CNIC, new { @required = "required", @placeholder = "Enter your CNIC", @class = "form-control" })
+        </div>
+        <div class="form-actions">
+            <input type="submit" value="Submit" class="submit-button" />
+            <button type="button" class="back-button" onclick="Back()">Back</button>
         </div>
     </div>
 }
 
+<script>
+    function Back() {
+        window.location.href = "/Dashboard/DashboardView";
+    }
+</script>
 
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f8f8; /* Light background for contrast */
+    }
 
+    .form-container {
+        width: 85%;
+        max-width: 600px; /* Max width for better layout */
+        margin: 50px auto; /* Center the form with some top margin */
+        background-color: white; /* White background for the form */
+        padding: 20px; /* Inner padding */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
 
+    h2 {
+        text-align: center;
+        color: #333; /* Darker color for the heading */
+        margin-bottom: 20px; /* Space below the heading */
+    }
 
-@*@using (Html.BeginForm("AddDriverAd", "AmbulanceAd"))
-    {
-        <div style="position: absolute; width: 85%; margin-left: 15%; background-color: white;">
+    .form-group {
+        margin-bottom: 15px; /* Space between form fields */
+    }
 
-            <div style="margin-left:30%;">
-                <div>
-                    @Html.LabelFor(m => m.Id)
-                    @Html.TextBoxFor(m => m.Id)
-                    @Html.ValidationMessageFor(m => m.Id, "", new { @class = "validation-message" })
+    label {
+        display: block;
+        margin-bottom: 5px; /* Space between label and input */
+        font-weight: bold; /* Bold labels */
+        color: #555; /* Slightly lighter text color */
+    }
 
-                    @Html.LabelFor(m => m.Name)
-                    @Html.TextBoxFor(m => m.Name, new { @required = "required", @placeholder = "Enter your Name" })
+    .form-control {
+        width: 100%; /* Full width inputs */
+        padding: 10px; /* Padding inside inputs */
+        border: 1px solid #ccc; /* Light border */
+        border-radius: 4px; /* Slightly rounded corners */
+        box-sizing: border-box; /* Include padding in width calculation */
+    }
 
+        .form-control:focus {
+            border-color: #5b9ea0; /* Change border color on focus */
+            outline: none; /* Remove default outline */
+        }
 
-                    @Html.LabelFor(m => m.Contact)
-                    @Html.TextBoxFor(m => m.Contact, new { @required = "required", @placeholder = "Registered Mobile Number" })
+    .submit-button {
+        background-color: #5b9ea0; /* Primary color for the button */
+        color: white; /* White text color */
+        font-weight: bold; /* Bold text */
+        cursor: pointer; /* Pointer cursor */
+        transition: background-color 0.3s; /* Smooth transition */
+        width: 100px; /* Fixed width for the button */
+    }
 
+        .submit-button:hover {
+            background-color: #4a7f80; /* Darker shade on hover */
+        }
 
-                    @Html.LabelFor(m => m.Address)
-                    @Html.TextBoxFor(m => m.Address, new { @required = "required", @placeholder = "Enter your Address" })
+    .back-button {
+        background-color: #007bff; /* Primary color */
+        color: white; /* Text color */
+        border: none; /* No border */
+        border-radius: 5px; /* Rounded corners */
+        padding: 10px 20px; /* Padding for size */
+        font-size: 16px; /* Font size */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    }
 
+        .back-button:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+        }
 
-                    @Html.LabelFor(m => m.CNIC)
-                    @Html.TextBoxFor(m => m.CNIC, new { @required = "required", @placeholder = "Enter your CNIC" })
+    .validation-message {
+        color: red; /* Red color for error messages */
+        font-size: 0.9em; /* Slightly smaller font size */
+        margin-top: -10px; /* Pull up closer to the input */
+        margin-bottom: 10px; /* Space below the error message */
+    }
 
-                    <input type="submit" value="Submit">
-                </div>
-            </div>
-        </div>
-    }*@
-
-
-
-
+    .form-actions {
+        display: flex; /* Flexbox for button alignment */
+        justify-content: space-between; /* Space between buttons */
+        margin-top: 20px; /* Space above buttons */
+    }
+</style>

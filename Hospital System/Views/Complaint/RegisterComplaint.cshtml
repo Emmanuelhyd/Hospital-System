@@ -1,4 +1,4 @@
-﻿@model Hospital_System.Models.MComplaint
+﻿@model Hospital_System.Viewmodel.Allview
 
 @{
     ViewBag.Title = "Register Complaint";
@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Register Complain</title>
+    <title>Register Complaint</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,33 +19,37 @@
         }
 
         .form-container {
-           
             margin: 50px auto;
             padding: 20px;
-            max-width: 422px;
-            
-            margin-left: 355px;
+            /* max-width: 422px; */
+            background-color: white;
             position: absolute;
-            margin-top: 74px;
+            margin-top: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-left: -117px;
+            width: 100%;
         }
-        
+
+
+
+
 
         label {
             font-weight: bold;
             margin-top: 10px;
             display: block;
-            margin-left: 100px;
+            margin-left: 138px;
         }
 
         input[type="text"],
         textarea {
-            width: 100%;
+            width: 50%; /* Adjusted for better layout */
             padding: 10px;
             margin-top: 5px;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
-            margin-left: 101px;
+            margin-left: 10%; /* Centering adjustments */
         }
 
         textarea {
@@ -60,55 +64,62 @@
             border-radius: 4px;
             padding: 10px;
             cursor: pointer;
-
             width: 62%;
             transition: background-color 0.3s;
             margin-top: 32px;
-            margin-left: 150px;
+            margin-left: 19%; /* Centering adjustments */
         }
 
             input[type="submit"]:hover {
                 background-color: #218838;
             }
 
-
-         
+        .form-control {
+            display: block;
+            width: 50%; /* Adjusted for responsiveness */
+            padding: .375rem .75rem;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+        }
     </style>
 </head>
 <body>
     <div class="form-container">
-        @using (Html.BeginForm("RegisterComplaint","Complaint"))
-
+        @using (Html.BeginForm("RegisterComplaint", "Complaint"))
         {
-           
-            <div style="margin-top: -67px;">
-                <h2 style="text-align: center;"> Register Your Complaints Here !</h2>
-            </div>
+            <h2 style="text-align: center;"> Register Your Complaints!</h2>
 
             <div>
-                @Html.LabelFor(m => m.Id)
-                @Html.TextBoxFor(m => m.Id, new { @class = "form-control" }) 
+                @Html.LabelFor(m => m.mComplaint.Id)
+                @Html.TextBoxFor(m => m.mComplaint.Id, new { @class = "form-control", @placeholder = "Enter Complaint ID" })
             </div>
             <div>
-                @Html.LabelFor(m => m.Name)
-                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-               
+                @Html.LabelFor(m => m.mComplaint.Name)
+                @Html.TextBoxFor(m => m.mComplaint.Name, new { @class = "form-control", @placeholder = "Enter Your Name" })
             </div>
             <div>
-                @Html.LabelFor(m => m.Complaint)
-                @Html.TextAreaFor(m => m.Complaint, new { @class = "form-control" })
-               
+                @Html.LabelFor(m => m.mComplaint.Complaint)
+                @Html.TextAreaFor(m => m.mComplaint.Complaint, new { @class = "form-control", @placeholder = "Describe your complaint" })
             </div>
             <div>
-                @Html.LabelFor(m => m.PhoneNumber)
-                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
-               
-
+                @Html.LabelFor(m => m.mComplaint.PhoneNumber)
+                @Html.TextBoxFor(m => m.mComplaint.PhoneNumber, new { @class = "form-control", @placeholder = "Enter Your Phone Number" })
             </div>
             <div>
                 <input type="submit" value="Register Complaint">
+            </div>
+
+            <div style=" margin-left: 159px; position:absolute; margin-top:-36px;">
+                <button type="button" onclick="Back()" style="color: white; background-color: dodgerblue; border-radius: 5%; border-color: dodgerblue;"> Back</button>
             </div>
         }
     </div>
 </body>
 </html>
+<script>
+
+    function Back() {
+
+        window.location.href = "Dashboard";
+    }
+</script>

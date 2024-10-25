@@ -1,15 +1,12 @@
-﻿@model Hospital_System.Models.MAmbulance
+﻿@model Hospital_System.Dash.DashboardDetails
 
-
-
-
-<div style="margin-left:500px;margin-top:200px;position:absolute;background-color:antiquewhite;">
+<div id="ambulanceDetails" style="padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #fff;">
     <h2>Ambulance Details</h2>
-    <p><strong>Name:</strong> @Model.Name</p>
-    <p><strong>AmbulanceId:</strong> @Model.AmbulanceId</p>
-    <p><strong>AmbulanceStatus:</strong> @Model.AmbulanceStatus</p>
-    <p><strong>AmbulanceDriver:</strong> @Model.AmbulanceDriver</p>
-    <p><strong>AmbulanceDriverId:</strong> @Model.AmbulanceDriverId</p>
+    <p><strong>Name:</strong> @Model.mAmbulance.Name</p>
+    <p><strong>AmbulanceId:</strong> @Model.mAmbulance.AmbulanceId</p>
+    <p><strong>AmbulanceStatus:</strong> @Model.mAmbulance.AmbulanceStatus</p>
+    <p><strong>AmbulanceDriver:</strong> @Model.mAmbulance.AmbulanceDriver</p>
+    <p><strong>AmbulanceDriverId:</strong> @Model.mAmbulance.AmbulanceDriverId</p>
 
     <button onclick="closePopup()" class="back">Back</button>
 </div>
@@ -22,13 +19,20 @@
 </script>
 
 <style>
-    /* You can customize styles specific to the popup here */
+    #ambulanceDetails {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+
     .back {
-        padding: 10px 15px;
-        background-color: #3051bd;
+        width: 100px;
+        height: 27px;
         color: white;
+        background-color: dodgerblue;
+        border-radius: 5px;
         border: none;
-        border-radius: 4px;
         cursor: pointer;
         transition: background-color 0.3s;
     }

@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Hospital_System.Models.MAppointmentAd>
+﻿
+
+@model Hospital_System.Dash.DashboardDetails
 
 @{
     ViewBag.Title = "AppointmentAdList";
@@ -14,29 +16,30 @@
 
 @using (Html.BeginForm())
 {
-    <div style="position: absolute; width: 85%; margin-left: 15%; background-color: white;">
-        <div >
-            <div><input type="button" value="CeateNew" onclick="CreateNew()">
-            
+    <div style="position: absolute; width: 85%;  background-color: white;">
+        <div>
+            <div>
+                <input type="button" value="CeateNew" onclick="CreateNew()">
+
                 <input type="search" id="app" name="app">
                 <input type="submit" value="Search">
             </div>
 
             <table>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.Id)</th>
-                    <th>@Html.DisplayNameFor(model => model.PatientName)</th>
-                    <th>@Html.DisplayNameFor(model => model.PatientType)</th>
-                    <th>@Html.DisplayNameFor(model => model.Gender)</th>
-                    <th>@Html.DisplayNameFor(model => model.Problem)</th>
-                    <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
-                    <th>@Html.DisplayNameFor(model => model.Address)</th>
-                    <th>@Html.DisplayNameFor(model => model.Date)</th>
-                    <th>@Html.DisplayNameFor(model => model.Time)</th>
-                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                    <th>Id</th>
+                    <th>PatientName</th>
+                    <th>PatientType</th>
+                    <th>Gender</th>
+                    <th>Problem</th>
+                    <th>PhoneNumber</th>
+                    <th>Address</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Description</th>
                     <th>Action</th>
                 </tr>
-                @foreach (var item in Model)
+                @foreach (var item in Model.mAppointmentAds)
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.Id)</td>

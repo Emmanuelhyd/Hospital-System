@@ -6,11 +6,13 @@ using System.Web;
 using System.Web.Mvc;
 using Hospital_System.Models;
 using Hospital_System.DAL;
+using Hospital_System.Viewmodel;
 
 namespace Hospital_System.Controllers
 {
     public class ComplaintController : Controller
     {
+        MenuBAL menuBAL = new MenuBAL();
         DoctorDAL doctorDAL;
         DoctorBAL doctorBAL = new DoctorBAL();
 
@@ -23,11 +25,17 @@ namespace Hospital_System.Controllers
         //    return View();
         //}
         //[HttpPost]
-        public ActionResult RegisterComplaint(MComplaint mComplaint)
+        public ActionResult RegisterComplaint( MComplaint mComplaint)
         {
             var ids = 0;
 
             List<MComplaint> mComplaints = new List<MComplaint>();
+
+            if(mComplaint ==null)
+            {
+                mComplaint = new MComplaint();
+
+            }
 
             if (mComplaint.Id != 0)
             {
@@ -44,7 +52,16 @@ namespace Hospital_System.Controllers
                 }
                 mComplaint.Id = ids + 1;
 
-                return View(mComplaint);
+                var model = new Allview
+                {
+                    Menus = menuBAL.GetMenus(),
+                    mComplaint = mComplaint
+                };
+
+
+
+
+                return View(model);
             }
 
             else
@@ -61,7 +78,13 @@ namespace Hospital_System.Controllers
             List<MComplaint> mComplaint = new List<MComplaint>();
 
             mComplaint = doctorBAL.ComplaintList();
-            return View(mComplaint);
+
+            var model = new Allview
+            {
+                Menus = menuBAL.GetMenus(),
+                mComplaints= mComplaint
+            };
+            return View(model);
         }
 
 
@@ -73,17 +96,28 @@ namespace Hospital_System.Controllers
 
             MComplaint mComplaint = new MComplaint();
             mComplaint = doctorBAL.CEdit(Id);
+
+            var model = new Allview
+            {
+                Menus = menuBAL.GetMenus(),
+                mComplaint = mComplaint
+            };
+              
+
             if (mComplaint.Id != 0)
             {
 
-                return View("RegisterComplaint", mComplaint);
+                return View("RegisterComplaint", model);
             }
             else
             {
-                return RedirectToAction("ComplaintList", "Complaint");
+                return RedirectToAction("ComplaintList", model);
 
 
             }
+
+          
+          
         }
     }
 }

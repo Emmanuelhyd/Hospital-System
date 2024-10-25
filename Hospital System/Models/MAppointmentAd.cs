@@ -23,6 +23,19 @@ namespace Hospital_System.Models
         public string Date { get; set; }
         public string Time { get; set; }
         public string Description { get; set; }
+       
+        public string AdmissionDate { get;set; }
+
+        public string DischargeDate { get; set; }
+
+        public string Typename { get; set; }
+
+        public int TreatmentDuration { get; set; }
+
+        public string Status { get; set; }
+        public string Dailycharge { get; set; }
+
+        public string Totalcharge { get; set; }
 
         public IEnumerable<SelectListItem> PatientTypes { get; set; }
 
