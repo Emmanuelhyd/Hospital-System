@@ -17,6 +17,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Drawing;
 using Hospital_System.Viewmodel;
+using System.Web.UI;
 
 
 
@@ -47,7 +48,7 @@ namespace Hospital_System.DAL
         {
             string res = " ";
             con.Open();
-            var sqlq = "select  PatientId, UserName, Password,Email from profiles where UserName='"+ patients.UserNameOrEmail + "' or Email ='"+patients.UserNameOrEmail+"' and Password='"+ patients.Password+"'";
+            var sqlq = "select  PatientId, UserName, Password,Email,Type from profiles where UserName='"+ patients.UserNameOrEmail + "' or Email ='"+patients.UserNameOrEmail+"' and Password='"+ patients.Password+"'";
             cmd = new SqlCommand(sqlq, con);
             reader = cmd.ExecuteReader();
 
@@ -62,12 +63,21 @@ namespace Hospital_System.DAL
                 string dbUserName = reader.GetString(reader.GetOrdinal("UserName"));
                 string dbPassword = reader.GetString(reader.GetOrdinal("Password")); //
                 string Email = reader.GetString(reader.GetOrdinal("Email"));
+                int Type = Convert.ToInt32(reader["Type"]);
+
+
+                if (!reader.IsDBNull(reader.GetOrdinal("Type")))
+                {
+                    patients.Type = reader.GetInt32(reader.GetOrdinal("Type")); 
+                }
 
                 if ( (patients.UserNameOrEmail ==dbUserName|| patients.UserNameOrEmail == Email) && patients.Password==dbPassword)
                 {
                    
                     res="success";
                     patients.Email = Email;
+
+                   
                 }
                 else
                 {
@@ -119,8 +129,10 @@ namespace Hospital_System.DAL
             {
                 return "Enter All the details";
             }
+
+            patients.Type = 3;
             con.Open();
-            var sqlq = "insert into profiles values('" + patients.UserName + "','" + patients.FirstName + "','" + patients.LastName + "','" + patients.Email + "','" + patients.Password + "','" + patients.BloodGroup + "','" + patients.Gender + "','" + patients.Age + "','" + patients.PhoneNo + "','" + patients.Address + "','" + patients.EmergencyContact + "')";
+            var sqlq = "insert into profiles values('" + patients.UserName + "','" + patients.FirstName + "','" + patients.LastName + "','" + patients.Email + "','" + patients.Password + "','" + patients.BloodGroup + "','" + patients.Gender + "','" + patients.Age + "','" + patients.PhoneNo + "','" + patients.Address + "','" + patients.EmergencyContact + "' ,"+patients.Type+")";
             cmd = new SqlCommand(sqlq, con);
             res = cmd.ExecuteNonQuery().ToString();
             con.Close();
@@ -208,7 +220,7 @@ namespace Hospital_System.DAL
         public int GetDepartmentCount()
         
         {
-            string query = "SELECT COUNT(*) FROM Department";
+            string query = "SELECT COUNT(*) FROM DepartmentAd";
             return ExecuteCountQuery(query);
         }
 
@@ -220,7 +232,7 @@ namespace Hospital_System.DAL
 
         public int GetPatientCount()
         {
-            string query = "SELECT COUNT(*) FROM Patients";
+            string query = "SELECT COUNT(*) FROM Bookapp";
             return ExecuteCountQuery(query);
         }
 

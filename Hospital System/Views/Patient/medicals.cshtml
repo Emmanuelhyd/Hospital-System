@@ -38,9 +38,7 @@
                /* background-color: #ffffff;*/
                 border-radius: 8px;
                /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
-                margin-left: 258px;
-                position: absolute;
-                margin-top: 71px;
+              
             }
 
             h2 {
@@ -79,14 +77,22 @@
             .table-container {
                 overflow-x: auto;
             }
+            .button {
+                color: white;
+                border-color: dodgerblue;
+                background-color: dodgerblue;
+              
+                position: absolute;
+                margin-top: -47px;
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <h2>@ViewBag.Title</h2>
 
-            <div style=" margin-left: 258px;">
-                <button type="button" onclick="Back()"> Back</button>
+            <div>
+                <button type="button"  class ="button" onclick="Back()"> Back</button>
             </div>
 
             <div class="table-container">

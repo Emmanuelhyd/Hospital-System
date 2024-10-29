@@ -49,11 +49,31 @@ namespace Hospital_System.Controllers
                 Session["Email"] = patients.Email;
                 Session["UsernameorEmail"] = patients.UserNameOrEmail;
 
+
+
                 //string Otp = GenerateOTP();
                 //Session["GenerateOTP"] = Otp;
                 //patientBAL.SendOTPtoMail(patients.Email, Otp); 
 
-                return RedirectToAction("Dashboard");
+                switch (patients.Type)
+                {
+                    case 1: // Assuming 1 is for Admin
+                        return RedirectToAction("DashboardView", "Dashboard", new { id = patients.PatientId });
+                    case 2: // Assuming 2 is for Doctor
+                        return RedirectToAction("Index", "Doctor", new { id = patients.PatientId });
+                    case 3: // Assuming 3 is for Patient
+                        return RedirectToAction("Dashboard", "Patient", new { id = patients.PatientId });
+                    case 4: // Assuming 4 is for Staff
+                        return RedirectToAction("Index", "Staff", new { id = patients.PatientId });
+                    case 5: // Assuming 5 is for Reception
+                        return RedirectToAction("Index", "Reception", new { id = patients.PatientId });
+                    default:
+                        return RedirectToAction("Error", "Home"); // Handle unexpected user types
+                }
+
+             
+
+                //return RedirectToAction("Dashboard");
             }
             else
             {
@@ -168,7 +188,7 @@ namespace Hospital_System.Controllers
             {
                 TempData["Message"] = "Profile updated successfully!";
 
-                return RedirectToAction("Login");
+                return RedirectToAction("Dashboard");
             }
 
           
@@ -239,6 +259,7 @@ namespace Hospital_System.Controllers
                 model.MedicineCount = 0;
             }
 
+           
             return View(model);
 
         }

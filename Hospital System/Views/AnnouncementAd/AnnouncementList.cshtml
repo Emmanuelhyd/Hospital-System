@@ -47,9 +47,8 @@
                                 <a href="@Url.Action("ALEdit", new { Id = item.Id })">
                                     <i class="fas fa-edit" style="color:blue;"></i>
                                 </a>
-
-                                <a href="@Url.Action("AnnouncementDelete", new { Id = item.Id })">
-                                    <i class="fas fa-trash-alt" style="color:red;"></i>
+                                <a href="javascript:void(0);" onclick="confirmDelete('@Url.Action("AnnouncementDelete", new {Id = item.Id })')">
+                                    <i class="fas fa-trash-alt"></i>
                                 </a>
 
 
@@ -129,3 +128,37 @@
         margin-right: 10px;
     }
 </style>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    function confirmDelete(deleteUrl) {
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this record!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            closeOnConfirm: false
+        }, function () {
+            // Make AJAX request to delete the record
+            $.ajax({
+                url: deleteUrl,
+                type: 'POST', // Use POST for delete action if needed
+                success: function (result) {
+                    // Reload or update the table as needed
+                    swal("Deleted!", "Your record has been deleted.", "success");
+                    location.reload(); // Reload the page to see changes
+                },
+                error: function (err) {
+                    swal("Error!", "There was a problem deleting the record.", "error");
+                }
+            });
+        });
+    }
+</script>

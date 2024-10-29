@@ -11,7 +11,7 @@
         flex-wrap: wrap;
         gap: 20px;
         margin-top: 27px;
-        background: linear-gradient(90deg, skyblue, pink);
+       /* background: linear-gradient(90deg, skyblue, pink);*/
     }
 
     .form-item {
@@ -141,7 +141,7 @@
                 <div> @Html.LabelFor(m => m.MDoctorAd.Status, "Status")</div>
                 @Html.DropDownListFor(m => m.MDoctorAd.Status, new SelectList(new List<SelectListItem>
                     {
-                            new SelectListItem{Value="Select Status",Text="Select Status"},
+                            
                             new SelectListItem { Value = "Active", Text = "Active" },
                             new SelectListItem { Value = "Inactive", Text = "Inactive" },
 
