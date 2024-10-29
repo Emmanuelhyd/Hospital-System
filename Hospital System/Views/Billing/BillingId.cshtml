@@ -1,0 +1,202 @@
+﻿@model Hospital_System.Models.Billing
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Billing Details</title>
+    <style>
+        body
+        {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+        }
+
+        .container {
+            background-color: white;
+            padding: 10px; /* Adjusted padding */
+            margin: 0; /* Remove margin to prevent empty space */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ef7d7d;
+            margin: 0; /* Remove margin from top of h1 */
+            padding: 10px 0; /* Add some padding for spacing */
+        }
+
+        .patient-info {
+            margin-bottom: 20px;
+        }
+
+        .patient-info strong {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px; /* Reduced margin for table */
+        }
+
+        th, td {
+            padding: 10px; /* Adjusted padding */
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #ef7d7d;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        media print {
+            #downloadBtn {
+                display: none; /* Hide button in PDF */
+            }
+
+            body {
+                margin: 0; /* Ensure no margins in print */
+                padding: 0; /* Ensure no padding in print */
+            }
+
+            .container {
+                page-break-inside: avoid; /* Prevent breaks inside the container */
+            }
+
+            table {
+                page-break-inside: auto; /* Allow page breaks inside the table */
+            }
+
+            h1 {
+                margin: 0; /* Remove margin from print header */
+                padding: 10px 0; /* Keep some padding */
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Billing Details</h1>
+        <div class="patient-info">
+            <strong>Patient Name: @Model.PatientName</strong> <br />
+            <strong>Diagnose: @Model.Problem</strong><br />
+            <strong>Bill Date: @Model.BillingDate</strong><br />
+            <strong>Treatment Duration: @Model.TreatmentDuration</strong><br />
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Billing Item</th>
+                    <th>Amount</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Doctor Fee</td>
+                    <td>@Model.DoctorFee</td>
+                   
+                </tr>
+                <tr>
+                    <td>Treatment Charges</td>
+                    <td>@Model.TreatmentCharges</td>
+                   
+                </tr>
+                <tr>
+                    <td>Medicine Charges</td>
+                    <td>@Model.MedicineCharges</td>
+                   
+                </tr>
+                <tr>
+                    <td>Room Fee</td>
+                    <td>@Model.RoomFee</td>
+                    
+                </tr>
+                <tr>
+                    <td>Others</td>
+                    <td>@Model.Others</td>
+                   
+                </tr>
+                <tr>
+                    <td>Others Cost</td>
+                    <td>@Model.OthersCost</td>
+                    
+                </tr>
+                <tr>
+                    <td>Total Bill</td>
+                    <td>@Model.TotalBill</td>
+                    
+                </tr>
+                <tr>
+                    <td>GST</td>
+                    <td>@Model.GST</td>
+                   
+                </tr>
+                <tr>
+                    <td>Total Amount</td>
+                    <td>@Model.TotalAmount</td>
+                  
+                </tr>
+                <tr>
+                    <td>Paid Bill</td>
+                    <td>@Model.PaidBill</td>
+
+                </tr>
+                <tr>
+                    <td>Balance Amount</td>
+                    <td>@Model.BalanceAmount</td>
+
+                </tr>
+                <tr>
+                    <td>Insurance Claimed</td>
+                    <td>@Model.InsuranceClaimed</td>
+
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>@Model.Status</td>
+                    
+                </tr>
+                <tr>
+                    <td>Method of Payment</td>
+                    <td>@Model.MethodOfPayment</td>
+                   
+                </tr>
+            </tbody>
+        </table>
+        <button id="downloadBtn" style="margin-top: 20px;">Download PDF</button>
+    </div>
+
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function () {
+            const element = document.querySelector('.container');
+            const options = {
+                margin: 0, // Remove margin for PDF
+                filename: 'billing_details.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 }, // Increase scale for better quality
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            html2pdf().from(element).set(options).save();
+        });
+    </script>
+</body>
+</html>

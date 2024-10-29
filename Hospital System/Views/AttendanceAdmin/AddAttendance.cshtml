@@ -1,0 +1,171 @@
+﻿@model Hospital_System.Models.AttendanceDo
+
+
+@{
+    ViewBag.Title = "AddAttendance";
+}
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full viewport height */
+        margin: 0;
+        background-color: #f5f5f5; /* Optional background color */
+    }
+
+    .form-container {
+        max-width: 400px; /* Set a max width for the form */
+        width: 100%; /* Full width for responsiveness */
+        padding: 20px; /* Add some padding */
+        border: 1px solid #ccc; /* Optional: add a border */
+        border-radius: 5px; /* Optional: add rounded corners */
+        background-color: #f9f9f9; /* Light background color */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    }
+
+        .form-container div {
+            margin-bottom: 15px; /* Space between form fields */
+        }
+
+        .form-container label {
+            display: block; /* Make labels block elements */
+            font-weight: bold; /* Bold labels */
+        }
+
+        .form-container input[type="text"],
+        .form-container select {
+            width: 100%; /* Full width for text fields and selects */
+            padding: 8px; /* Padding inside fields */
+            border: 1px solid #ccc; /* Border for fields */
+            border-radius: 4px; /* Rounded corners for fields */
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #007bff; /* Button color */
+            color: white; /* Text color */
+            border: none; /* Remove border */
+            padding: 10px 15px; /* Button padding */
+            border-radius: 4px; /* Rounded corners for button */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 16px; /* Font size */
+            width: 100%; /* Full width for submit button */
+        }
+
+            .form-container input[type="submit"]:hover {
+                background-color: #0056b3; /* Darker blue on hover */
+            }
+</style>
+
+@using (Html.BeginForm("AddAttendance", "AttendanceAdmin", FormMethod.Post, new { @class = "form-container" }))
+{
+    <div>
+        <h2>Add Attendance Here</h2>
+        <div>
+            @Html.LabelFor(m => m.Id)
+            @Html.TextBoxFor(m => m.Id)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @required = "required", @placeholder = "Name" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.JobTitle)
+            @Html.TextBoxFor(m => m.JobTitle, new { @required = "required", @placeholder = "Job Title" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Contact)
+            @Html.TextBoxFor(m => m.Contact, new { @required = "required", @placeholder = "Phone Number" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @required = "required", @placeholder = "Email" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Shift)
+            @Html.DropDownListFor(m => m.Shift, new SelectList(new List<SelectListItem>
+{
+new SelectListItem { Value = "Morning", Text = "Morning" },
+new SelectListItem { Value = "Afternoon", Text = "Afternoon" },
+new SelectListItem { Value = "Night", Text = "Night" },
+}, "Value", "Text"), "Select Shift", new { @class = "form-control" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Department)
+            @Html.DropDownListFor(m => m.Department, new SelectList(new List<SelectListItem>
+{
+    new SelectListItem { Value = "Cardio", Text = "Cardio" },
+    new SelectListItem { Value = "vascular", Text = "Vascular" },
+    new SelectListItem { Value = "Neuro", Text = "Neuro" },
+new SelectListItem { Value = "General", Text = "General" },
+}, "Value", "Text"), "Select Department", new { @class = "form-control" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Attendance)
+            @Html.DropDownListFor(m => m.Attendance, new SelectList(new List<SelectListItem>
+ {
+     new SelectListItem { Value = "Present", Text = "Present" },
+     new SelectListItem { Value = "Absent", Text = "Absent" },
+ }, "Value", "Text"), "Select Attendance", new { @class = "form-control" })
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </div>
+}
+
+
+
+
+
+@*@model InOutPatient.Models.AttendanceDo
+
+    @{
+        ViewBag.Title = "AddAttendance";
+    }
+
+    <h2>AddAttendance</h2>
+
+    @using (Html.BeginForm("AddAttendance", "AttendanceAdmin", FormMethod.Post, new { @class = "form-container" }))
+    {
+    <div>
+        <div>
+            <div>
+                @Html.LabelFor(m => m.Id)
+                @Html.TextBoxFor(m => m.Id)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.JobTitle)
+                @Html.TextBoxFor(m => m.JobTitle)
+                <div>
+                    @Html.LabelFor(m => m.Contact)
+                    @Html.TextBoxFor(m => m.Contact)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Shift)
+                    @Html.TextBoxFor(m => m.Shift)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Department)
+                    @Html.TextBoxFor(m => m.Department)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Attendance)
+                    @Html.TextBoxFor(m => m.Attendance)
+                </div>
+                <div>
+                    <input type="submit" value="Submit">
+                </div>
+            </div>
+        </div>
+    </div>
+    }*@

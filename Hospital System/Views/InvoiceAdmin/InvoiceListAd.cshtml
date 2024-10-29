@@ -1,0 +1,41 @@
+﻿@model InOutPatient.Models.InvoiceDo
+
+@{
+    ViewBag.Title = "Invoice Details";
+}
+
+<h2>Invoice Details</h2>
+
+<div class="invoice-details">
+    <h3>Patient ID: @Model.PatientId</h3>
+    <p><strong>Date of Service:</strong> @Model.DateOfService.ToShortDateString()</p>
+    <p><strong>Treatment Duration (days):</strong> @Model.TreatmentDuration</p>
+
+    @if (!string.IsNullOrEmpty(Model.AdmissionDate) && DateTime.TryParse(Model.AdmissionDate, out DateTime admissionDate))
+    {
+        <p><strong>Admission Date:</strong> @admissionDate.ToShortDateString()</p>
+    }
+    else
+    {
+        <p><strong>Admission Date:</strong> Not available</p>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.DischargeDate) && DateTime.TryParse(Model.DischargeDate, out DateTime dischargeDate))
+    {
+        <p><strong>Discharge Date:</strong> @dischargeDate.ToShortDateString()</p>
+    }
+    else
+    {
+        <p><strong>Discharge Date:</strong> Not available</p>
+    }
+
+    <h4>Charges</h4>
+    <ul>
+        <li><strong>Daily Room Charges:</strong> @Model.DailyroomCharges.ToString("C")</li>
+        <li><strong>Treatment Charges:</strong> @Model.TreatmentCharges.ToString("C")</li>
+        <li><strong>Medicine Charges:</strong> @Model.MedicineCharges.ToString("C")</li>
+        <li><strong>GST (18%):</strong> @Model.GST.ToString("C")</li>
+    </ul>
+
+    <h3>Total Amount Due: @Model.TotalAmountDue.ToString("C")</h3>
+</div>

@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Reception";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reception</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center; /* Center the container */
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping */
+            max-width: 800px; /* Set a max width for the container */
+            width: 100%; /* Full width */
+            gap: 10px; /* Space between items */
+        }
+
+        .link-box {
+            flex: 1 1 calc(25% - 10px); /* Four columns */
+            border: 1px solid #ddd; /* Border for each box */
+            padding: 32px; /* Padding inside the box */
+            text-align: center; /* Center the text */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s; /* Smooth transition for hover */
+            text-decoration: none; /* Remove underline */
+            color: inherit; /* Inherit text color */
+        }
+
+        .link-box:hover {
+            background:linear-gradient(90deg,pink,skyblue) /* Change background on hover */
+        }
+
+       
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a class="link-box" href="@Url.Action("Dashboard", "Patient")">Patient Registration</a>
+        <a class="link-box" href="@Url.Action("Dashboard", "Patient")">Appointment & Scheduling</a>
+        <a class="link-box" href="@Url.Action("OutP", "Outpatient")">Outpatient</a>
+        <a class="link-box" href="@Url.Action("Inpatient", "Inpatient")">Inpatient</a>
+        <a class="link-box" href="@Url.Action("InvoiceIP", "Billing")">Billing</a>
+        <a class="link-box" href="@Url.Action("Discharge", "Discharge")">Discharge</a>
+        <a class="link-box" href="@Url.Action("Consult", "Consult")">Consultant</a>
+        <a class="link-box" href="@Url.Action("Login", "Email")">Email Integration</a>
+        <a class="link-box" href="@Url.Action("Ambulance", "Ambulance")">Ambulance</a>
+        <a class="link-box" href="@Url.Action("AttendanceDetails", "Attendance")">Attendance</a>
+        <a class="link-box" href="@Url.Action("VaccineList", "Vaccination")">Vaccination</a>
+        <a class="link-box" href="@Url.Action("GetNurses", "Nurse")">Nurse</a>
+        <a class="link-box" href="@Url.Action("Feed", "Feedback")">Feedback</a>
+        <a class="link-box" href="@Url.Action("Dashboard", "Patient")">Security</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+﻿@*@model ReceptionManagement.Models.Vaccines
+    @{
+        ViewBag.Title = "VaccinesById";
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>VaccinesById</title>
+    </head>
+    <body>
+        <div>
+            <strong> VaccinationID : @Model.VaccineId</strong><br />
+            <strong> PatientName : @Model.PatientName</strong><br />
+            <strong> Age: @Model.Age</strong><br />
+            <strong> DoctorName : @Model.DoctorName</strong><br />
+            <strong> Vaccination Type : @Model.VaccineType</strong><br />
+            <strong> Date of Vaccinaion : @Model.DateOfVaccination</strong><br />
+            <strong> Dosage : @Model.Dosage</strong><br />
+            <strong> Follow-Up-Date : @Model.FollowupDate</strong><br />
+            <strong> Next-Due-Date : @Model.NextDueDate</strong><br />
+            <strong> Reaction  : @Model.ReactionType</strong><br />
+            <strong> Status : @Model.Status</strong><br />
+
+
+
+        </div>
+    </body>
+    </html>*@
+@model Hospital_System.Models.Vaccines
+
+@{
+    ViewBag.Title = "VaccinesById";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VaccinesById</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        strong {
+            color: #555;
+        }
+
+        .info {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+            .info:last-child {
+                border-bottom: none;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vaccination Details</h1>
+        <div class="info">
+            <strong>Vaccination ID:</strong> @Model.VaccineId
+        </div>
+        <div class="info">
+            <strong>Patient Name:</strong> @Model.PatientName
+        </div>
+        <div class="info">
+            <strong>Age:</strong> @Model.Age
+        </div>
+        <div class="info">
+            <strong>Doctor Name:</strong> @Model.DoctorName
+        </div>
+        <div class="info">
+            <strong>Vaccination Type:</strong> @Model.VaccineType
+        </div>
+        <div class="info">
+            <strong>Date of Vaccination:</strong> @Model.DateOfVaccination
+        </div>
+        <div class="info">
+            <strong>Dosage:</strong> @Model.Dosage
+        </div>
+        <div class="info">
+            <strong>Follow-Up Date:</strong> @Model.FollowupDate
+        </div>
+        <div class="info">
+            <strong>Next Due Date:</strong> @Model.NextDueDate
+        </div>
+        <div class="info">
+            <strong>Reaction:</strong> @Model.ReactionType
+        </div>
+        <div class="info">
+            <strong>Status:</strong> @Model.Status
+        </div>
+    </div>
+</body>
+</html>

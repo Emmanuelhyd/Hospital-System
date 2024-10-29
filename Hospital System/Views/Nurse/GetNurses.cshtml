@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Hospital_System.Models.Nurse>
+
+
+@{
+    ViewBag.Title = "GetNurses";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetNurses</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f9f9f9;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    thead {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+</style>
+
+<body>
+    <div>
+        <h1>  List of Nurses</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>NurseID</th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>ShiftType</th>
+                    <th>Employment Status</th>
+                    <th> Details</th>
+
+            </thead>
+            <tbody>
+                @foreach (var nurse in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(m => nurse.NurseId)</td>
+                        <td>@Html.DisplayFor(m => nurse.Name)</td>
+                        <td>@Html.DisplayFor(m => nurse.Contact)</td>
+                        <td>@Html.DisplayFor(m => nurse.Email)</td>
+                        <td>@Html.DisplayFor(m => nurse.ShiftType)</td>
+                        <td>@Html.DisplayFor(m => nurse.EmployeeStatus)</td>
+                        <td> <a href="@Url.Action("NurseDetails", "Nurse", new { NurseId = nurse.NurseId })">View</a></td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</body>
+</html>

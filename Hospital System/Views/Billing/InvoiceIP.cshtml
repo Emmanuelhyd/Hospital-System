@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Hospital_System.Models.Billing>
+
+
+@{
+    ViewBag.Title = "InvoiceIP";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #ef7d7d;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2; /* Zebra striping for even rows */
+    }
+
+    tr:hover {
+        background-color: #ddd; /* Highlight row on hover */
+    }
+
+</style>
+
+<h2>Create Invoice</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>PatientId</th>
+            <th>PatientName</th>
+            <th>Problem</th>
+            <th>BillingDate</th>
+            <th>DoctorFee</th>
+            <th>TreatmentDuration</th>
+            <th>TreatmentCharges</th>
+            <th>MedicineCharges</th>
+            <th>RoomFee</th>
+            <th>Others</th>
+            <th>OthersCost</th>
+            <th>TotalBill</th>
+            <th>GST</th>
+            <th>TotalAmount</th>
+            <th>PaidBill</th>
+            <th> Balance</th>
+            <th>InsuranceClaimed</th>
+            <th>Status</th>
+            <th>MethodOfPayment</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => item.PatientId)</td>
+                <td>@Html.DisplayFor(m => item.PatientName)</td>
+                <td>@Html.DisplayFor(m => item.Problem)</td>
+                <td>@Html.DisplayFor(m => item.BillingDate)</td>
+                <td>@Html.DisplayFor(m => item.DoctorFee)</td>
+                <td>@Html.DisplayFor(m => item.TreatmentDuration)</td>
+                <td>@Html.DisplayFor(m => item.TreatmentCharges)</td>
+                <td>@Html.DisplayFor(m => item.MedicineCharges)</td>
+                <td>@Html.DisplayFor(m => item.RoomFee)</td>
+                <td>@Html.DisplayFor(m => item.Others)</td>
+                <td>@Html.DisplayFor(m => item.OthersCost)</td>
+                <td>@Html.DisplayFor(m => item.TotalBill)</td>
+                <td>@Html.DisplayFor(m => item.GST)</td>
+                <td>@Html.DisplayFor(m => item.TotalAmount)</td>
+                <td>@Html.DisplayFor(m => item.PaidBill)</td>
+                <td>@Html.DisplayFor(m=>item.BalanceAmount)</td>
+                <td>@Html.DisplayFor(m => item.InsuranceClaimed)</td>
+                <td>@Html.DisplayFor(m => item.Status)</td>
+                <td>@Html.DisplayFor(m => item.MethodOfPayment)</td>
+                <td><a href="@Url.Action("BillingId", "Billing", new { PatientId = item.PatientId })">View</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

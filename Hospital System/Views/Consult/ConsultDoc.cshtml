@@ -1,0 +1,107 @@
+﻿@*@model  IEnumerable<ReceptionManagement.Models.HospPatient>
+    @{
+        ViewBag.Title="ConsutDoc";
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>ConsultDoc</title>
+    </head>
+    <body>
+        <div>
+            @foreach (var patient in Model)
+            {
+
+
+                    <p><strong>Doctor Name:</strong> @patient.DoctorName</p>
+                    <strong>Patient Name:</strong> @patient.PatientName<br />
+                    <strong>Problem:</strong> @patient.Problem<br />
+                    <strong>Description:</strong> @patient.Description<br />
+                    <strong>Status:</strong> @patient.Status<br />
+                    <hr />
+
+            }
+        </div>
+    </body>
+    </html>*@
+
+
+@model IEnumerable<Hospital_System.Models.HospPatient>
+@{
+    ViewBag.Title = "ConsultDoc";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ConsultDoc</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+       /* .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }*/
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .patient-info {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #fafafa;
+        }
+
+            .patient-info strong {
+                color: #333;
+            }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 10px 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+         <h1>Consultation Details</h1>
+        @foreach (var patient in Model)
+        {
+            <div class="patient-info">
+                <p><strong>Doctor Name:</strong> @patient.DoctorName</p>
+                <strong>Patient Name:</strong> @patient.PatientName<br />
+                <strong>Problem:</strong> @patient.Problem<br />
+                <strong>Description:</strong> @patient.Description<br />
+                <strong>Status:</strong> @patient.Status<br />
+            </div>
+            <hr />
+        }
+       
+</body>
+</html>

@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Hospital_System.Models.DischargPatient>
+
+@{
+    ViewBag.Title = "Discharge";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Discharge Summary </title>
+</head>
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f9f9f9;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    thead {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+</style>
+
+<body>
+    <form method="get" action="@Url.Action("Discharge", "Discharge")">
+        <div>
+            <label> Select Date</label>
+            <input type="datetime-local"  name=" date"/>
+        </div>
+        <div>
+            <label> ID</label>
+            <input type="number"  name="patientId"/>
+            <button type="submit"> Search </button>
+        </div>
+      </form>
+
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(m => m.PatientId)</th>
+                        <th> @Html.DisplayNameFor(m => m.PatientName)</th>
+                        <th> @Html.DisplayNameFor(m => m.Reason)</th>
+                       
+                        <th> @Html.DisplayNameFor(m => m.AdmissionDate)</th>
+                        <th> @Html.DisplayNameFor(m => m.ProcedureandTreatment)</th>
+                        <th> @Html.DisplayNameFor(m => m.TreatmentDuration)</th>
+                        <th> @Html.DisplayNameFor(m => m.DischargeDate)</th>
+                        <th> View </th>
+                           
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.PatientId)</td>
+                            <td>@Html.DisplayFor(m => item.PatientName)</td>
+                            <td>@Html.DisplayFor(m => item.Reason)</td>
+                            <td>@Html.DisplayFor(m => item.AdmissionDate)</td>
+                            <td>@Html.DisplayFor(m => item.ProcedureandTreatment)</td>
+                            <td>@Html.DisplayFor(m => item.TreatmentDuration)</td>
+                            <td>@Html.DisplayFor(m => item.DischargeDate)</td>
+                            <td><a href="@Url.Action("DischargeId", "Discharge", new { PatientId = item.PatientId })">View</a></td>
+                            
+                              
+                        </tr>
+
+
+
+                    }
+                </tbody>
+            </table>
+
+        </div>
+</body>
+</html>

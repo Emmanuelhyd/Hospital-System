@@ -1,0 +1,229 @@
+﻿@model Hospital_System.Models.VaccineDo
+
+@{
+    ViewBag.Title = "AddVaccine";
+}
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f5f5f5; /* Optional background color */
+    }
+
+    .form-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 800px; /* Set a width for the form */
+    }
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+    }
+
+    .form-group {
+        flex: 1; /* Allow fields to take equal space */
+        min-width: 220px; /* Set a minimum width for fields */
+        margin-right: 10px; /* Space between fields */
+    }
+
+        .form-group:last-child {
+            margin-right: 0; /* Remove margin for the last field */
+        }
+
+    .form-container label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="date"],
+    .form-container select,
+    .form-container input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .form-container input[type="submit"] {
+        background-color: #4CAF50; /* Green background */
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+</style>
+
+@using (Html.BeginForm("AddVaccine", "VaccinationAdmin"))
+{
+    <h2>Add Vaccine</h2>
+    <div class="form-container">
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.PatientId)
+                @Html.TextBoxFor(m => m.PatientId)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.PatientName)
+                @Html.TextBoxFor(m => m.PatientName, new { @required = "required", @placeholder = "Patient Name" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.DoctorName)
+                @Html.TextBoxFor(m => m.DoctorName, new { @required = "required", @placeholder = "Doctor Name" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Age)
+                @Html.TextBoxFor(m => m.Age, new { @required = "required", @placeholder = "Age" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.VaccineId)
+                @Html.TextBoxFor(m => m.VaccineId, new { @required = "required", @placeholder = "Vaccine Id" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.VaccineType)
+                <select id="VaccineType" name="VaccineType" required>
+                    <option value="">Vaccine Type</option>
+                    <option value="covoVAX">COVO-VAX</option>
+                    <option value="covi-shield">COVI-SHIELD</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Dosage)
+                @Html.TextBoxFor(m => m.Dosage, new { @required = "required", @placeholder = "Dosage" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.DateOfVaccination)
+                @Html.TextBoxFor(m => m.DateOfVaccination, new { @required = "required", @placeholder = "Date Of Vaccination", @type = "date" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.FollowupDate)
+                @Html.TextBoxFor(m => m.FollowupDate, new { @required = "required", @placeholder = "Followup Date", @type = "date" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.NextDueDate)
+                @Html.TextBoxFor(m => m.NextDueDate, new { @required = "required", @placeholder = "Next Due Date", @type = "date" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.ReactionType)
+                @Html.TextBoxFor(m => m.ReactionType, new { @required = "required", @placeholder = "Reaction Type" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Status)
+                @Html.DropDownListFor(m => m.Status, new SelectList(new List<SelectListItem>
+ {
+ new SelectListItem { Value = "Vaccinated", Text = "Vaccinated" },
+ new SelectListItem { Value = "Not-Vaccinated", Text = "Not-Vaccinated" },
+ },
+ "Value", "Text"), "AmbulanceStatus", new { @class = "form-control" })
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </div>
+}
+
+
+
+
+
+
+@*@model InOutPatient.Models.VaccineDo
+
+    @{
+        ViewBag.Title = "AddVaccine";
+    }
+
+    @using (Html.BeginForm("AddVaccine", "VaccinationAdmin"))
+    {
+        <h2>AddDischarge</h2>
+        <div style="margin-left:400px;">
+            <div class="form-group">
+                @Html.LabelFor(m => m.PatientId)
+                @Html.TextBoxFor(m => m.PatientId)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.PatientName)
+                @Html.TextBoxFor(m => m.PatientName, new { @required = "required", @placeholder = "Patient Name" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.DoctorName)
+                @Html.TextBoxFor(m => m.DoctorName, new { @required = "required", @placeholder = "DoctorName" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Age)
+                @Html.TextBoxFor(m => m.Age, new { @required = "required", @placeholder = "Age" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.VaccineId)
+                @Html.TextBoxFor(m => m.VaccineId, new { @required = "required", @placeholder = "VaccineId" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.VaccineType)
+                <div>
+                    <select id="VaccineType" name="VaccineType" required>
+                        <option value="">Vaccine Type</option>
+                        <option value="covoVAX">COVO-VAX</option>
+                        <option value="covi-shield">COVI-SHIELD</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Dosage)
+                @Html.TextBoxFor(m => m.Dosage, new { @required = "required", @placeholder = "Dosage" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.DateOfVaccination)
+                @Html.TextBoxFor(m => m.DateOfVaccination, new { @required = "required", @placeholder = "DateOfVaccination", @type = "date" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.FollowupDate)
+                @Html.TextBoxFor(m => m.FollowupDate, new { @required = "required", @placeholder = "Followup Date", @type = "date" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.NextDueDate)
+                @Html.TextBoxFor(m => m.NextDueDate, new { @required = "required", @placeholder = "NextDueDate", @type = "date" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ReactionType)
+                @Html.TextBoxFor(m => m.ReactionType, new { @required = "required", @placeholder = "ReactionType" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Status)
+
+                <div>
+                    <select id="Status" name="Status" required>
+                        <option value="">Select Status</option>
+                        <option value="anand">Anand</option>
+                        <option value="sagar">Sagar</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+        </div>
+    }*@
+

@@ -1,0 +1,227 @@
+﻿@model Hospital_System.Models.NurseDo
+
+
+@{
+    ViewBag.Title = "AddNurse";
+}
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full viewport height */
+        margin: 0;
+        background-color: #f5f5f5; /* Optional background color */
+    }
+
+    .form-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 800px; /* Set a width for the form */
+        max-width: 100%; /* Make it responsive */
+    }
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+    }
+
+    .form-group {
+        flex: 1; /* Allow fields to take equal space */
+        min-width: 220px; /* Set a minimum width for fields */
+        margin-right: 10px; /* Space between fields */
+    }
+
+        .form-group:last-child {
+            margin-right: 0; /* Remove margin for the last field */
+        }
+
+    .form-container label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="date"],
+    .form-container select {
+        width: 100%; /* Full width for text fields and selects */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .form-container input[type="submit"] {
+        background-color: #4CAF50; /* Green background */
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 4px;
+        width: 100%; /* Full width for submit button */
+    }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+</style>
+
+@using (Html.BeginForm("AddNurse", "NurseAdmin", FormMethod.Post, new { @class = "form-container" }))
+{
+    <div>
+        <h2>Add Nurse</h2>
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.NurseId)
+                @Html.TextBoxFor(m => m.NurseId)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name, new { @required = "required", @placeholder = "Name" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.DOB)
+                @Html.TextBoxFor(m => m.DOB, new { @required = "required", @placeholder = "DOB", @type = "date" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Contact)
+                @Html.TextBoxFor(m => m.Contact, new { @required = "required", @placeholder = "Phone Number" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { @required = "required", @placeholder = "Email" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Address)
+                @Html.TextBoxFor(m => m.Address, new { @required = "required", @placeholder = "Address" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.DateOfJoining)
+                @Html.TextBoxFor(m => m.DateOfJoining, new { @required = "required", @placeholder = "Joining Date", @type = "date" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Specialization)
+                <select id="Specialization" name="Specialization" required>
+                    <option value="">Specialization</option>
+                    <option value="cardio">Cardio</option>
+                    <option value="vascular">Vascular</option>
+                    <option value="neuro">Neuro</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.ShiftType)
+                <select id="ShiftType" name="ShiftType" required>
+                    <option value="">Shift Type</option>
+                    <option value="morning">Morning</option>
+                    <option value="afternoon">Afternoon</option>
+                    <option value="night">Night</option>
+                </select>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Education)
+                <select id="Education" name="Education" required>
+                    <option value="">Education</option>
+                    <option value="10th">X-Class</option>
+                    <option value="inter">Intermediate</option>
+                    <option value="diploma">Diploma</option>
+                    <option value="btech">B-Tech</option>
+                    <option value="mtech">M-Tech</option>
+                    <option value="mba">MBA</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.EmployeeStatus)
+                <select id="EmployeeStatus" name="EmployeeStatus" required>
+                    <option value="">Employee Status</option>
+                    <option value="Working">Working</option>
+                    <option value="Resigned">Resigned</option>
+                    <option value="Terminated">Terminated</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </div>
+}
+
+
+
+
+@*@model InOutPatient.Models.NurseDo
+
+    @{
+        ViewBag.Title = "AddNurse";
+    }
+
+    @using(Html.BeginForm("AddNurse","NurseAdmin"))
+    {
+        <div>
+            <div>
+                <div>
+                    @Html.LabelFor(m => m.NurseId)
+                    @Html.TextBoxFor(m => m.NurseId)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Name)
+                    @Html.TextBoxFor(m => m.Name)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.DOB)
+                    @Html.TextBoxFor(m => m.DOB)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Contact)
+                    @Html.TextBoxFor(m => m.Contact)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Address)
+                    @Html.TextBoxFor(m => m.Address)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.DateOfJoining)
+                    @Html.TextBoxFor(m => m.DateOfJoining)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Specialization)
+                    @Html.TextBoxFor(m => m.Specialization)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.ShiftType)
+                    @Html.TextBoxFor(m => m.ShiftType)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Education)
+                    @Html.TextBoxFor(m => m.Education)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.EmployeeStatus)
+                    @Html.TextBoxFor(m => m.EmployeeStatus)
+                </div>
+                <div>
+                    <input type="submit" value="Submit">
+                </div>
+
+            </div>
+        </div>
+
+    }*@
+

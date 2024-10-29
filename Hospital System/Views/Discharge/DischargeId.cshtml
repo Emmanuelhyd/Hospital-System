@@ -1,0 +1,121 @@
+﻿@*@model ReceptionManagement.Models.DischargPatient
+    @{
+        ViewBag.Title = "DischargeId";
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>DischargeId</title>
+    </head>
+    <body>
+        <div>
+
+            <strong> Name: @Model.PatientName</strong><br />
+
+
+            <strong> Reason: @Model.Reason</strong><br />
+
+            <strong> Diagnosis: @Model.Findings</strong><br />
+
+            <strong> Labreports: @Model.Labreports</strong><br />
+
+            <strong> Admission Details: @Model.AdmissionDate</strong><br />
+
+            <strong> ProcedureandTreatment: @Model.ProcedureandTreatment</strong><br />
+
+            <strong> TreatmentDuration: @Model.TreatmentDuration</strong><br />
+
+            <strong> DischargeDate: @Model.DischargeDate</strong><br />
+
+            <strong> FurtherInstruction: @Model.FurtherInstruction</strong><br />
+
+            <strong> Followup: @Model.Followup</strong><br />
+
+        </div>
+    </body>
+    </html>*@
+
+
+@model Hospital_System.Models.DischargPatient
+
+
+@{
+    ViewBag.Title = "DischargeId";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DischargeId</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+          /*  max-width: 600px;*/
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .info {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fafafa;
+            height:415px;
+        }
+
+            .info strong {
+                color: #333;
+            }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Discharge Summary</h1>
+
+        <div class="info">
+            <strong>Name:</strong> @Model.PatientName<br />
+            <hr />
+            <strong>Reason:</strong> @Model.Reason<br />
+            <strong>Diagnosis:</strong> @Model.Findings<br />
+            <hr />
+            <strong>Lab Reports:</strong> @Model.Labreports<br />
+            <hr />
+            <strong>Admission Details:</strong> @Model.AdmissionDate<br />
+            <strong>Procedure and Treatment:</strong> @Model.ProcedureandTreatment<br />
+            <strong>Treatment Duration:</strong> @Model.TreatmentDuration<br />
+            <strong>Discharge Date:</strong> @Model.DischargeDate<br />
+            <hr />
+            <strong>Further Instruction:</strong> @Model.FurtherInstruction<br />
+            <strong>Follow-up:</strong> @Model.Followup<br />
+        </div>
+
+       
+    </div>
+</body>
+</html>

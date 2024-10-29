@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Hospital_System.Models.Attend>
+
+
+@{
+    ViewBag.Title = "AttendanceDetails";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AttendanceDetails</title>
+</head>
+<style>
+    <style >
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f9f9f9;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    thead {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+</style>
+<body>
+    <div>
+        <h1> Attendance List </h1>
+        <table>
+            <thead>
+                <tr>
+                    <th> ID</th>
+                    <th> Name</th>
+                    <th> JobTitle</th>
+                    <th> Contact</th>
+                    <th> Department</th>
+                    <th> Attendance</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(m => item.Id)</td>
+                        <td>@Html.DisplayFor(m => item.Name)</td>
+                        <td>@Html.DisplayFor(m => item.JobTitle)</td>
+                        <td>@Html.DisplayFor(m => item.Contact)</td>
+                        <td>@Html.DisplayFor(m => item.Department)</td>
+                        <td>@Html.DisplayFor(m => item.Attendance)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

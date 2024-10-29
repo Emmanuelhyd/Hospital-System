@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Reception";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reception</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            / Center the container /
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+             max-width: 800px;
+             width: 100%;
+           gap: 10px;
+            / Space between items /
+        }
+
+        .link-box {
+            flex: 1 1 calc(25% - 10px);
+            border: 1px solid #ddd;
+            padding: 32px;
+           text-align: center;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+           border-radius: 5px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: inherit;
+            / Inherit text color /
+        }
+
+            .link-box:hover {
+                background: linear-gradient(90deg,pink,skyblue) ;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a class="link-box" href="@Url.Action("Dashboard", "Patient")">Patient Registration</a>
+        <a class="link-box" href="@Url.Action("CommonList", "CommonOP")">Appointment & Scheduling</a>
+        <a class="link-box" href="@Url.Action("OutPatientList", "OutPatientAdmin")">Outpatient</a>
+        <a class="link-box" href="@Url.Action("InPatientListAd", "InPatientAdmin")">Inpatient</a>
+        <a class="link-box" href="@Url.Action("BillList", "BillAdmin")">Billing</a>
+        <a class="link-box" href="@Url.Action("DischargeListAd", "DischargeAdmin")">Discharge</a>
+        <a class="link-box" href="@Url.Action("ConsultantList", "ConsultantAdmin")">Consultant</a>
+        <a class="link-box" href="@Url.Action("Login", "Email")">Email Integration</a>
+        <a class="link-box" href="@Url.Action("AmbulanceListAdmin", "AmbulanceAdmin")">Ambulance</a>
+        <a class="link-box" href="@Url.Action("AttendanceList", "AttendanceAdmin")">Attendance</a>
+        <a class="link-box" href="@Url.Action("VaccineListAdmin", "VaccinationAdmin")">Vaccination</a>
+        <a class="link-box" href="@Url.Action("NurseList", "NurseAdmin")">Nurse</a>
+        <a class="link-box" href="@Url.Action("FeedbackListAdmin", "FeedbackAdmin")">Feedback</a>
+        <a class="link-box" href="@Url.Action("Dashboard", "Patient")">Security</a>
+    </div>
+</body>
+</html>

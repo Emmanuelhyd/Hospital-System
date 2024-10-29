@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Hospital_System.Models.HospPatient>
+
+@{
+    ViewBag.Title = "Consult";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Consult</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f9f9f9;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    thead {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+</style>
+<body>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th> PatientId </th>
+                    <th>@Html.DisplayNameFor(m => m.PatientName)</th>
+                    <th>@Html.DisplayNameFor(m => m.DoctorName)</th>
+                    <th>AppointmentDate</th>
+                    <th>@Html.DisplayNameFor(m => m.Problem)</th>
+                    <th>@Html.DisplayNameFor(m => m.Description)</th>
+                    <th>@Html.DisplayNameFor(m => m.Address)</th>
+                    <th>@Html.DisplayNameFor(m => m.Status)</th>
+                    <th> Details</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(m => item.Id)</td>
+                        <td>@Html.DisplayFor(m => item.PatientName)</td>
+                        <td>@Html.DisplayFor(m => item.DoctorName)</td>
+                        <td>@Html.DisplayFor(m => item.Date)</td>
+                        <td>@Html.DisplayFor(m => item.Problem)</td>
+                        <td>@Html.DisplayFor(m => item.Description)</td>
+                        <td>@Html.DisplayFor(m => item.Address)</td>
+                        <td>@Html.DisplayFor(m => item.Status)</td>
+                        <td>  <a href="@Url.Action("ConsultDoc", "Consult", new { DoctorName = item.DoctorName })">View</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

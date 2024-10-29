@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Hospital_System.Models.AmbulanceDetails>
+
+
+@{
+    ViewBag.Title = "Ambulance";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ambulance</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f9f9f9;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    thead {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+</style>
+
+<body>
+    <div>
+        <h1> List of Ambulances </h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.Id)</th>
+                    <th>@Html.DisplayNameFor(m => m.Name)</th>
+                    <th>@Html.DisplayNameFor(m => m.AmbulanceDriverId)</th>
+                    <th>@Html.DisplayNameFor(m => m.AmbulanceStatus)</th>
+                    <th>@Html.DisplayNameFor(m => m.AmbulanceDriver)</th>
+                    <th>@Html.DisplayNameFor(m => m.AmbulanceDriverId)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ambulance in Model)
+                {
+                    <tr>
+
+                        <td> @Html.DisplayFor(m => ambulance.Id)</td>
+                        <td> @Html.DisplayFor(m => ambulance.Name)</td>
+                        <td> @Html.DisplayFor(m => ambulance.AmbulanceId)</td>
+                        <td> @Html.DisplayFor(m => ambulance.AmbulanceStatus)</td>
+                        <td> @Html.DisplayFor(m => ambulance.AmbulanceDriver)</td>
+                        <td> @Html.DisplayFor(m => ambulance.AmbulanceDriverId)</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

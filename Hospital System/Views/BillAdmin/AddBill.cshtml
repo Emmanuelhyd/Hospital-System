@@ -1,0 +1,192 @@
+﻿@model Hospital_System.Models.BillAd
+
+
+@{
+    ViewBag.Title = "AddBill";
+}
+
+<style>
+    .form-container {
+        max-width: 600px; /* Set a max width for the form */
+        margin: 20px auto; /* Center the form on the page */
+        padding: 20px; /* Add padding inside the form */
+        border: 1px solid #ddd; /* Light gray border */
+        border-radius: 8px; /* Rounded corners */
+        background-color: #f9f9f9; /* Light background color */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        display: flex; /* Use flexbox for layout */
+        flex-wrap: wrap; /* Allow wrapping of elements */
+    }
+
+    .form-group {
+        margin-bottom: 15px; /* Space between form groups */
+        display: flex; /* Use flexbox for each group */
+        align-items: center; /* Center align items vertically */
+        width: 100%; /* Full width of the container */
+    }
+
+    .form-group label {
+        display: block; /* Ensure labels are block elements */
+        margin-right: 10px; /* Space between label and input */
+        font-weight: bold; /* Bold text for labels */
+        width: 30%; /* Adjust width of the label */
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="date"],
+    .form-group select {
+        flex: 1; /* Allow input to grow */
+        padding: 10px; /* Padding for inputs */
+        border: 1px solid #ccc; /* Light gray border */
+        border-radius: 4px; /* Rounded corners for inputs */
+        box-sizing: border-box; /* Include padding in width calculation */
+    }
+
+    .form-group input[type="submit"] {
+        background-color: #007bff; /* Primary button color */
+        color: white; /* Text color for the button */
+        border: none; /* Remove default border */
+        border-radius: 4px; /* Rounded corners */
+        padding: 10px 15px; /* Padding for button */
+        cursor: pointer; /* Pointer cursor on hover */
+        font-size: 16px; /* Font size for button */
+        transition: background-color 0.3s; /* Smooth background color change */
+        width: 100%; /* Full width button */
+    }
+
+    .form-group input[type="submit"]:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+    }
+</style>
+
+
+@using (Html.BeginForm("AddBill", "BillAdmin", FormMethod.Post, new { @class = "form-container" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.PatientId)
+        @Html.TextBoxFor(m => m.PatientId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PatientName)
+        @Html.TextBoxFor(m => m.PatientName, new { @required = "required", @placeholder = "Patient Name" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Problem)
+        @Html.TextBoxFor(m => m.Problem, new { @required = "required", @placeholder = "Problem" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.BillingDate)
+        @Html.TextBoxFor(m => m.BillingDate, new { @required = "required", @placeholder = "Billing Date", @type = "date" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DoctorFee)
+        @Html.TextBoxFor(m => m.DoctorFee, new { @required = "required", @placeholder = "Doctor Fee", @value = "500", @id = "doctorFee", @oninput = "calculateTotal()" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TreatmentDuration)
+        @Html.TextBoxFor(m => m.TreatmentDuration, new { @required = "required", @placeholder = "Treatment Duration", @id = "treatmentDuration", @oninput = "calculateRoomFee()" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TreatmentCharges)
+        @Html.TextBoxFor(m => m.TreatmentCharges, new { @required = "required", @placeholder = "Treatment Charges", @id = "treatmentCharges", @oninput = "calculateTotal();" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.MedicineCharges)
+        @Html.TextBoxFor(m => m.MedicineCharges, new { @required = "required", @placeholder = "Medicine Charges", @id = "medicineCharges", @oninput = "calculateTotal();" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.RoomFee)
+        @Html.TextBoxFor(m => m.RoomFee, new { @required = "required", @placeholder = "Room Fee", @id = "roomFee", @readonly = "readonly" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Others)
+        @Html.TextBoxFor(m => m.Others, new { @required = "required", @placeholder = "Others" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.OthersCost)
+        @Html.TextBoxFor(m => m.OthersCost, new { @required = "required", @placeholder = "Others Cost", @id = "othersCost", @oninput = "calculateTotal();" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TotalBill)
+        @Html.TextBoxFor(m => m.TotalBill, new { @required = "required", @placeholder = "Total Bill", @id = "totalBill", @readonly = "readonly" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.GST)
+        @Html.TextBoxFor(m => m.GST, new { @required = "required", @placeholder = "GST", @id = "gstAmount", @readonly = "readonly" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TotalAmount)
+        @Html.TextBoxFor(m => m.TotalAmount, new { @required = "required", @placeholder = "Total Amount", @id = "totalAmount", @readonly = "readonly" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.InsuranceClaimed)
+        @Html.TextBoxFor(m => m.InsuranceClaimed, new { @required = "required", @placeholder = "Insurance Claimed", @id = "insuranceClaimed", @oninput = "calculateBillPaid();" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PaidBill)
+        @Html.TextBoxFor(m => m.PaidBill, new { @required = "required", @placeholder = "Bill Paid", @id = "billPaid", @readonly = "readonly" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Status)
+        @Html.DropDownListFor(m => m.Status, new SelectList(new List<SelectListItem>
+        {
+            new SelectListItem { Value = "paid", Text = "Paid" },
+            new SelectListItem { Value = "notpaid", Text = "Not Paid" },
+        }, "Value", "Text"), "Select Status", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.MethodOfPayment)
+        @Html.DropDownListFor(m => m.MethodOfPayment, new SelectList(new List<SelectListItem>
+        {
+            new SelectListItem { Value = "Cash", Text = "Cash" },
+            new SelectListItem { Value = "UPI", Text = "UPI" },
+            new SelectListItem { Value = "Credit Card", Text = "Credit Card" },
+        }, "Value", "Text"), "Select Payment Method", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Submit">
+    </div>
+}
+
+<script>
+    function calculateRoomFee() {
+        var treatmentDuration = document.getElementById("treatmentDuration").value;
+        var roomFee = treatmentDuration * 1000;
+        document.getElementById("roomFee").value = roomFee.toFixed(2);
+    }
+
+    function calculateTotal() {
+        var doctorFee = parseFloat(document.getElementById("doctorFee").value) || 0;
+        var treatmentCharges = parseFloat(document.getElementById("treatmentCharges").value) || 0;
+        var medicineCharges = parseFloat(document.getElementById("medicineCharges").value) || 0;
+        var roomFee = parseFloat(document.getElementById("roomFee").value) || 0;
+        var othersCost = parseFloat(document.getElementById("othersCost").value) || 0;
+
+        var total = doctorFee + treatmentCharges + medicineCharges + roomFee + othersCost;
+        document.getElementById("totalBill").value = total.toFixed(2);
+
+        calculateGST(); // Calculate GST after total
+    }
+
+    function calculateGST() {
+        var totalBill = parseFloat(document.getElementById("totalBill").value) || 0;
+        var gst = totalBill * 0.18; // 18% GST
+        document.getElementById("gstAmount").value = gst.toFixed(2);
+
+        calculateTotalAmount(totalBill, gst);
+    }
+
+    function calculateTotalAmount(totalBill, gst) {
+        var totalAmount = totalBill + gst;
+        document.getElementById("totalAmount").value = totalAmount.toFixed(2);
+    }
+
+    function calculateBillPaid() {
+        var totalAmount = parseFloat(document.getElementById("totalAmount").value) || 0;
+        var insuranceClaimed = parseFloat(document.getElementById("insuranceClaimed").value) || 0;
+
+        var billPaid = totalAmount - insuranceClaimed; // Correct calculation
+        document.getElementById("billPaid").value = billPaid.toFixed(2); // Format to 2 decimal places
+    }
+
+</script>

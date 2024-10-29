@@ -1,0 +1,300 @@
+﻿@model IEnumerable<Hospital_System.Models.MInPatient>
+@{
+    ViewBag.Title = "OutPatientListAd";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f4f4f4;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    input[type="search"], input[type="button"], input[type="submit"] {
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="button"], input[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+
+        input[type="button"]:hover, input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: white;
+        border: 2px solid #333;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        border-right: 2px solid #333;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    .icon-container {
+        display: none; /* Initially hide icons */
+    }
+
+    tr:hover .icon-container {
+        display: inline; /* Show icons on row hover */
+    }
+
+    .highlight-heading {
+        background-color: lightblue; /* Highlight color */
+        padding: 10px; /* Optional: Add some padding */
+        border-radius: 5px; /* Optional: Rounded corners */
+    }
+</style>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    function confirmDelete(deleteUrl) {
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this record!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            closeOnConfirm: false
+        }, function () {
+            // Make AJAX request to delete the record
+            $.ajax({
+                url: deleteUrl,
+                type: 'POST', // Use POST for delete action if needed
+                success: function (result) {
+                    // Reload or update the table as needed
+                    swal("Deleted!", "Your record has been deleted.", "success");
+                    location.reload(); // Reload the page to see changes
+                },
+                error: function (err) {
+                    swal("Error!", "There was a problem deleting the record.", "error");
+                }
+            });
+        });
+    }
+</script>
+
+
+
+
+@using (Html.BeginForm())
+{
+
+    <div>
+        <div style="position:absolute; margin-top:20px;width:100%;">
+            <div>
+                <a href="@Url.Action("ReceptionFrontPage", "ReceptionAdmin")" style="position:absolute;margin-top:-25px;">
+                    <i class="fas fa-arrow-circle-left" style="font-size: 40px;"></i>
+                </a>
+                <h4 class="highlight-heading" style="position: absolute; margin-left: 500px; margin-top: -25px;">Out Patient List</h4>
+            </div>
+            <table>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.PatientName)</th>
+                    <th>@Html.DisplayNameFor(model => model.Problem)</th>
+                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                    <th>@Html.DisplayNameFor(model => model.Gender)</th>
+                    <th>@Html.DisplayNameFor(model => model.Address)</th>
+                    <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+                    <th>Action</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Problem)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                        <td class="icon-container">
+                            <a href="@Url.Action("OutPatientEdit", new { Id = item.Id })">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="javascript:void(0);"
+                               onclick="confirmDelete('@Url.Action("OutPatientDelete", new { Id = item.Id })')">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+    </div>
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+
+
+
+
+
+
+
+@*@model IEnumerable<InOutPatient.Models.MInPatient>
+    @{
+        ViewBag.Title = "OutPatientListAd";
+    }
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        input[type="search"], input[type="button"], input[type="submit"] {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="button"], input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+            input[type="button"]:hover, input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+    </style>
+
+    @using (Html.BeginForm())
+    {
+        <h2>OutPatientListAd</h2>
+        <div style="background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);">
+            <div>
+                <div>
+                    <input type="button" value="Create New" onclick="window.location.href='@Url.Action("AddOutPatient", "OutPatientAdmin")'">
+
+                    <input type="search" placeholder="Search...">
+                    <input type="submit" value="Search">
+                </div>
+                <table>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.PatientId)</th>
+                        <th>@Html.DisplayNameFor(model => model.PatientName)</th>
+                        <th>@Html.DisplayNameFor(model => model.Problem)</th>
+                        <th>@Html.DisplayNameFor(model => model.Description)</th>
+                        <th>@Html.DisplayNameFor(model => model.Gender)</th>
+                        <th>@Html.DisplayNameFor(model => model.Address)</th>
+                        <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+                        <th>Action</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.PatientId)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Problem)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                            <td>
+                                <a href="@Url.Action("OutPatientEdit", new { PatientId = item.PatientId })">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="@Url.Action("OutPatientDelete", new { PatientId = item.PatientId })">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                                <a href="@Url.Action("OutPatientDelete", new { PatientId = item.PatientId })">
+                                    <i class="fas fa-fish"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <div>
+                    <input type="button" value="Back" onclick="window.location.href='@Url.Action("ReceptionFrontPage", "ReceptionAdmin")'">
+                </div>
+            </div>
+        </div>
+    }
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />*@
+
+

@@ -1,0 +1,193 @@
+﻿@model Hospital_System.Models.MInPatient
+
+
+@{
+    ViewBag.Title = "AddInpatient";
+}
+
+
+
+@using (Html.BeginForm("AddInpatient", "InPatientAdmin", FormMethod.Post, new { @class = "form-container" }))
+{
+    <h2>Add Inpatient</h2>
+
+    <div>
+        @Html.LabelFor(m => m.Id)
+        @Html.TextBoxFor(m => m.Id)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.PatientName)
+        @Html.TextBoxFor(m => m.PatientName, new { @required = "required", @placeholder = "Patient Name" })
+    </div>
+    <div>
+        @Html.LabelFor(m => m.AdmissionDate)
+        @Html.TextBoxFor(m => m.AdmissionDate, new { @required = "required", @placeholder = "Admission Date", @type = "date", })
+    </div>
+    <div>
+        @Html.LabelFor(m => m.DischargeDate)
+        @Html.TextBoxFor(m => m.DischargeDate, new { @required = "required", @placeholder = "Discharge Date", @type = "date" })
+    </div>
+    <div>
+        @Html.LabelFor(m => m.PatientType)
+        <select id="PatientType" name="PatientType" required>
+            <option value="">Patient Type</option>
+            <option value="inPatient">In Patient</option>
+            <option value="outpatient">Out Patient</option>
+        </select>
+    </div>
+    <div>
+        @Html.LabelFor(m => m.TreatmentDuration)
+        @Html.TextBoxFor(m => m.TreatmentDuration)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Date)
+        @Html.TextBoxFor(m => m.Date, new { @required = "required", @placeholder = "Appointment Date", @type = "date" })
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Status)
+        <select id="Status" name="Status" required>
+            <option value="">Select Status</option>
+            <option value="intreatment">In Treatment</option>
+            <option value="discharged">Discharged</option>
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Submit">
+    </div>
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+    }
+
+    h2 {
+        color: #333;
+        text-align: center;
+    }
+
+    .form-container {
+        max-width: 300px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    div {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+    }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+
+    .form-container {
+        padding: 15px;
+    }
+
+    input[type="submit"] {
+        font-size: 14px;
+    }
+</style>
+
+@*@model InOutPatient.Models.MInPatient
+
+    @{
+        ViewBag.Title = "AddInpatient";
+    }
+
+    @using (Html.BeginForm("AddInpatient","InPatientAdmin"))
+    {
+        <h2>AddInpatient</h2>
+
+        <div>
+            <div>
+                <div>
+                    <div>
+                        @Html.LabelFor(m => m.PatientId)
+                        @Html.TextBoxFor(m => m.PatientId)
+                    </div>
+                    <div>
+                        @Html.LabelFor(m => m.PatientName)
+                        @Html.TextBoxFor(m => m.PatientName, new {@required = "required",@placeholder="Patient Name"})
+                    </div>
+                    <div>
+                        @Html.LabelFor(m => m.AdmissionDate)
+                        @Html.TextBoxFor(m => m.AdmissionDate, new { @required = "required", @placeholder = "Admission Date", @type = "date" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(m => m.Dischargedate)
+                        @Html.TextBoxFor(m => m.Dischargedate, new { @required = "required", @placeholder = "Admission Date", @type = "date" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(m => m.TypeName)
+
+                            <select id="TypeName" name="TypeName" required>
+                                <option value="">Patient Type</option>
+                                <option value="inPatient">In Patient</option>
+                                <option value="outpatient">Out Patient</option>
+                            </select>
+
+                    </div>
+                        <div>
+                        @Html.LabelFor(m => m.TreatmentDuration)
+                        @Html.TextBoxFor(m => m.TreatmentDuration)
+                        </div>
+                        <div>
+                            @Html.LabelFor(m => m.AppointmentDate)
+                            @Html.TextBoxFor(m => m.AppointmentDate, new { @required = "required", @placeholder = "Admission Date", @type = "date" })
+                        </div>
+                            <div>
+                                @Html.LabelFor(m => m.Status)
+
+                                    <select id="Status" name="Status" required>
+                                        <option value="">Select Status</option>
+                                        <option value="intreatment">In Treatment</option>
+                                        <option value="discharged">discharged</option>
+                                    </select>
+
+
+                            </div>
+                    <div>
+                        <input type="submit" value="Submit">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    }*@
+
+
