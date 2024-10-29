@@ -29,6 +29,43 @@ namespace Hospital_System.BAL
 
 
 
+
+
+        //UpdateProfile List
+        public List<UpdateDO> UpdateList()
+        {
+            return adminDAL.UpdateList();
+        }
+
+        //add profile
+
+        public List<UpdateDO> AddProfile(UpdateDO updateDO)
+        {
+            List<UpdateDO> updateDOs = new List<UpdateDO>();
+            updateDOs = adminDAL.AddProfile(updateDO);
+            return updateDOs;
+        }
+
+        //Edit Profile
+
+        public UpdateDO ProfileEdit(int PatientId)
+        {
+            UpdateDO updateDOs = adminDAL.ProfileEdit(PatientId);
+
+            return updateDOs;
+        }
+
+        //Profile Delete   
+
+        public List<UpdateDO> ProfileDelete(int PatientId)
+        {
+            List<UpdateDO> updateDOs = adminDAL.ProfileDelete(PatientId);
+            return updateDOs;
+        }
+
+
+
+
         //Department list
         public List<MDepartment> DepartmentList(string dep)
         {

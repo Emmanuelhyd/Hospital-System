@@ -16,5 +16,10 @@ namespace Hospital_System.BAL
         {
             return opdal.GetPatients();
         }
+
+        public HospPatient OPID(int Id)
+        {
+            return opdal.OPID(Id);
+        }
     }
 }

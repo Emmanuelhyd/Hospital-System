@@ -1,4 +1,5 @@
-﻿@model IEnumerable <Hospital_System.Models.HospPatient>
+﻿@model IEnumerable<Hospital_System.Models.HospPatient>
+
 @{
     ViewBag.Title = "Inpatient";
 }
@@ -15,12 +16,20 @@
             background-color: #f9f9f9;
         }
 
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
             background-color: white;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
         }
 
         th, td {
@@ -30,7 +39,8 @@
         }
 
         thead {
-            background-color: #f2f2f2;
+            background-color: #4CAF50;
+            color: white;
         }
 
         tr:nth-child(even) {
@@ -41,9 +51,28 @@
             background-color: #f1f1f1;
         }
 
-        h1 {
+        .empty-state {
             text-align: center;
-            color: #333;
+            font-size: 18px;
+            color: #888;
+        }
+
+        .view-button {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+            .view-button:hover {
+                background-color: #0056b3;
+            }
+
+        .action-cell {
+            text-align: center;
         }
     </style>
 </head>
@@ -53,29 +82,42 @@
         <table>
             <thead>
                 <tr>
-                    <th> Patient Id</th>
-                    <th>@Html.DisplayNameFor(m => m.First().PatientName)</th>
-                    <th>@Html.DisplayNameFor(m => m.First().AdmissionDate)</th>
-                    <th>@Html.DisplayNameFor(m => m.First().Dischargedate)</th>
-                    <th>@Html.DisplayNameFor(m => m.First().TypeName)</th>
-                    <th>@Html.DisplayNameFor(m => m.First().TreatmentDuration)</th>
-                    <th>AppointmentDate</th>
-                    <th>@Html.DisplayNameFor(m => m.First().Status)</th>
+                    <th scope="col">Patient Id</th>
+                    <th scope="col">@Html.DisplayNameFor(m => m.First().PatientName)</th>
+                    <th scope="col">@Html.DisplayNameFor(m => m.First().AdmissionDate)</th>
+                    <th scope="col">@Html.DisplayNameFor(m => m.First().Dischargedate)</th>
+                    <th scope="col">@Html.DisplayNameFor(m => m.First().TypeName)</th>
+                    <th scope="col">@Html.DisplayNameFor(m => m.First().TreatmentDuration)</th>
+                    <th scope="col">Appointment Date</th>
+                    <th scope="col">@Html.DisplayNameFor(m => m.First().Status)</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @if (!Model.Any())
                 {
                     <tr>
-                        <td>@Html.DisplayFor(m => item.Id)</td>
-                        <td>@Html.DisplayFor(m => item.PatientName)</td>
-                        <td>@Html.DisplayFor(m => item.AdmissionDate)</td>
-                        <td>@Html.DisplayFor(m => item.Dischargedate)</td>
-                        <td>@Html.DisplayFor(m => item.TypeName)</td>
-                        <td>@Html.DisplayFor(m => item.TreatmentDuration)</td>
-                        <td>@Html.DisplayFor(m => item.Date)</td>
-                        <td>@Html.DisplayFor(m => item.Status)</td>
+                        <td colspan="9" class="empty-state">No patients found.</td>
                     </tr>
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.Id)</td>
+                            <td>@Html.DisplayFor(m => item.PatientName)</td>
+                            <td>@Html.DisplayFor(m => item.AdmissionDate)</td>
+                            <td>@Html.DisplayFor(m => item.Dischargedate)</td>
+                            <td>@Html.DisplayFor(m => item.TypeName)</td>
+                            <td>@Html.DisplayFor(m => item.TreatmentDuration)</td>
+                            <td>@Html.DisplayFor(m => item.Date)</td>
+                            <td>@Html.DisplayFor(m => item.Status)</td>
+                            <td class="action-cell">
+                                <a href="@Url.Action("GetHospPatient", "Inpatient", new { Id = item.Id })" class="view-button">View</a>
+                            </td>
+                        </tr>
+                    }
                 }
             </tbody>
         </table>

@@ -52,5 +52,45 @@ namespace Hospital_System.DAL
             return hospPatients;
 
         }
+
+
+        public HospPatient OPID (int Id)
+        {
+            HospPatient hospPatient = null;
+            con.Open();
+            cmd = new SqlCommand("Select * from Bookapp where Id=" + Id + "", con);
+            reader= cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                hospPatient = new HospPatient
+                {
+
+                    Id = Convert.ToInt32(reader["Id"]),
+                    PatientName = reader.GetString(reader.GetOrdinal("PatientName")),
+                    PatientType = reader.GetString(reader.GetOrdinal("PatientType")),
+                    Gender = reader.GetString(reader.GetOrdinal("Gender")),
+                    PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber")),
+                    Description= reader.GetString(reader.GetOrdinal("Description")),
+                    Address = reader.GetString(reader.GetOrdinal("Address")),
+                    AdmissionDate = reader.GetString(reader.GetOrdinal("AdmissionDate")),
+                    Dischargedate = reader.GetString(reader.GetOrdinal("Dischargedate")),
+                    TreatmentDuration = Convert.ToInt32(reader["TreatmentDuration"]),
+                    Problem = reader.GetString(reader.GetOrdinal("Problem")),
+                    Status = reader.IsDBNull(reader.GetOrdinal("Status")) ? null : reader.GetString(reader.GetOrdinal("Status")),
+
+                };
+            
+            }
+
+            reader.Close();
+            con.Close ();
+            return hospPatient;
+
+        }
+
+
+
+
     }
 }

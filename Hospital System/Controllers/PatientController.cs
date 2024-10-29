@@ -66,7 +66,7 @@ namespace Hospital_System.Controllers
                     case 4: // Assuming 4 is for Staff
                         return RedirectToAction("Index", "Staff", new { id = patients.PatientId });
                     case 5: // Assuming 5 is for Reception
-                        return RedirectToAction("Index", "Reception", new { id = patients.PatientId });
+                        return RedirectToAction("Reception", "Reception", new { id = patients.PatientId });
                     default:
                         return RedirectToAction("Error", "Home"); // Handle unexpected user types
                 }

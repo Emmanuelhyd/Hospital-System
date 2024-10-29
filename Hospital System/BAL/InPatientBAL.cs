@@ -17,5 +17,21 @@ namespace Hospital_System.BAL
 
             return inpatientsDAL.HospPatients();
         }
+
+
+        //public decimal TotalCharges(int ID)
+
+        //{
+        //    return inpatientsDAL.TotalCharges(ID);
+        //}
+
+
+
+
+        public HospPatient GetHospPatient(int Id)
+        {
+            return inpatientsDAL.GetHospPatient(Id);
+
+        }
     }
 }

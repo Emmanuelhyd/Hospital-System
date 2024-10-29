@@ -16,5 +16,19 @@ namespace Hospital_System.Controllers
             var model=opBal.GetPatients();
             return View(model); 
         }
+
+
+        public ActionResult OPID( int Id)
+        {
+           var model = opBal.OPID (Id);
+            if(model == null)
+            {
+                return RedirectToAction("OutP", "Outpatient");
+            }
+            return View(model);
+        }
+
+
+
     }
 }

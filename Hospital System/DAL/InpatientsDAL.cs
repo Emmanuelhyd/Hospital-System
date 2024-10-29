@@ -60,7 +60,7 @@ namespace Hospital_System.DAL
                 hospPatient.TreatmentDuration = reader.IsDBNull(ordinalTreatmentDuration) ? 0 : Convert.ToInt32(reader.GetValue(ordinalTreatmentDuration));
                 hospPatient.TypeName = reader.GetString(reader.GetOrdinal("TypeName"));
                 hospPatient.Date = reader.GetString(reader.GetOrdinal("Date"));
-                hospPatient.Status = reader.GetString(reader.GetOrdinal("Status"));
+                hospPatient.Status = reader.IsDBNull(reader.GetOrdinal("Status")) ? null : reader.GetString(reader.GetOrdinal("Status"));
 
                 hospPatients.Add(hospPatient);
             }
@@ -70,6 +70,44 @@ namespace Hospital_System.DAL
             con.Close();
             return hospPatients.Where(h => h.TypeName == "Inpatient").ToList();
         }
+
+
+
+     
+
+        public HospPatient GetHospPatient(int Id)
+        {
+            HospPatient hospPatient = null;
+            con.Open();
+            cmd = new SqlCommand("select * from bookapp where Id=" + Id + "", con);
+            reader = cmd.ExecuteReader();
+            if(reader.Read())
+            {
+                hospPatient = new HospPatient
+                {
+
+                    Id = Convert.ToInt32(reader["Id"]),
+                    PatientName = reader.GetString(reader.GetOrdinal("PatientName")),
+                    AdmissionDate = reader.GetString(reader.GetOrdinal("AdmissionDate")),
+                    Dischargedate = reader.GetString(reader.GetOrdinal("Dischargedate")),
+                    TreatmentDuration = Convert.ToInt32(reader["TreatmentDuration"]),
+                    Problem = reader.GetString(reader.GetOrdinal("Problem")),
+                    Status = reader.IsDBNull(reader.GetOrdinal("Status")) ? null : reader.GetString(reader.GetOrdinal("Status")),
+
+                };
+            }
+
+            reader.Close();
+            con.Close();
+            return hospPatient;
+        }
+
+
+
+
+
+
+
 
     }
 }

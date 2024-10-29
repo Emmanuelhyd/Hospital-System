@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Hospital_System.Models.HospPatient>
+
 @{
-    ViewBag.Title="OutP";
+    ViewBag.Title = "OutP";
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -13,41 +13,45 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            background-color: #f9f9f9;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        th, td {
-            border: 1px solid #dddddd;
-            padding: 12px;
-            text-align: left;
-        }
-
-        thead {
-            background-color: #f2f2f2;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
+            background-color: #f4f4f4;
         }
 
         h1 {
             text-align: center;
             color: #333;
         }
-    </style>
 
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+    </style>
 </head>
 <body>
     <h1>Outpatient Records</h1>
@@ -55,25 +59,27 @@
         <thead>
             <tr>
                 <th>Patient Id</th>
-                <th>PatientName</th>
-                <th>Problem</th>
-                <th>Description</th>
-                <th>Gender</th>
-                <th>Address</th>
-                <th>PhoneNumber</th>
+                <th>@Html.DisplayNameFor(m => m.First().PatientName)</th>
+                <th>@Html.DisplayNameFor(m => m.First().Problem)</th>
+                <th>@Html.DisplayNameFor(m => m.First().Description)</th>
+                <th>@Html.DisplayNameFor(m => m.First().Gender)</th>
+                <th>@Html.DisplayNameFor(m => m.First().Address)</th>
+                <th>@Html.DisplayNameFor(m => m.First().PhoneNumber)</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
                 <tr>
-                    <td> @Html.DisplayFor(m=>item.Id)</td>
+                    <td>@Html.DisplayFor(m => item.Id)</td>
                     <td>@Html.DisplayFor(m => item.PatientName)</td>
                     <td>@Html.DisplayFor(m => item.Problem)</td>
                     <td>@Html.DisplayFor(m => item.Description)</td>
                     <td>@Html.DisplayFor(m => item.Gender)</td>
                     <td>@Html.DisplayFor(m => item.Address)</td>
                     <td>@Html.DisplayFor(m => item.PhoneNumber)</td>
+                    <td><a href="@Url.Action("OPID", "Outpatient", new { Id = item.Id })">View</a></td>
                 </tr>
             }
         </tbody>

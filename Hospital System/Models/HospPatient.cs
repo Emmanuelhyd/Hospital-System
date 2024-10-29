@@ -15,6 +15,8 @@ namespace Hospital_System.Models
 
         public string Problem {  get; set; }
 
+        public string PatientType { get; set; }
+
         public string Description { get; set; }
 
         public  string Gender { get; set; }
@@ -36,6 +38,8 @@ namespace Hospital_System.Models
         public string Date { get; set; }
 
         public string Status { get; set; }
+
+        public decimal Dailycharge { get; set; }
        
 
 

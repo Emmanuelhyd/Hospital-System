@@ -10,7 +10,6 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Web.DynamicData;
 using Hospital_System.BAL;
-using AdminPages.Models;
 using System.Collections;
 
 namespace Hospital_System.DAL
@@ -129,6 +128,186 @@ namespace Hospital_System.DAL
         //    SqlParameter statusParameter = new SqlParameter("@Status", SqlDbType.Bit) { Value = false };
         //    return ExecuteCountQuery(query, statusParameter);
         //}
+
+
+
+        //UpdateProfile List
+        public List<UpdateDO> UpdateList()
+        {
+            List<UpdateDO> updateDOs = new List<UpdateDO>();
+
+            {
+
+                con.Open();
+                cmd = new SqlCommand("select * from profiles", con);
+                SqlDataReader sdr;
+                sdr = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(sdr);
+                foreach (DataRow row in dt.Rows)
+                    updateDOs.Add(
+                        new UpdateDO
+                        {
+                            PatientId = Convert.ToInt32(row["PatientId"]),
+                            UserName = row["UserName"].ToString(),
+                            FirstName = row["FirstName"].ToString(),
+                            LastName = row["LastName"].ToString(),
+                            Email = row["Email"].ToString(),
+                            Password = row["Password"].ToString(),
+                            BloodGroup = row["BloodGroup"].ToString(),
+                            Gender = row["Gender"].ToString(),
+                            Age = row["Age"].ToString(),
+                            PhoneNo = row["PhoneNo"].ToString(),
+                            EmergencyContact = row["EmergencyContact"].ToString(),
+                            Address = row["Address"].ToString(),
+                            Type = Convert.ToInt32(row["Type"]),
+
+
+                        });
+
+                return updateDOs;
+            }
+        }
+
+        //add profile
+
+        public List<UpdateDO> AddProfile(UpdateDO updateDO)
+        {
+
+            var ids = 0;
+            con.Open();
+            cmd = new SqlCommand("select * from profiles where PatientId='" + updateDO.PatientId + "'", con);
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                ids = Convert.ToInt32(reader["PatientId"]);
+            }
+
+            reader.Close();
+            con.Close();
+
+
+
+            con.Open();
+            if (ids == 0)
+            {
+                cmd = new SqlCommand("insert into profiles(PatientId,UserName,FirstName,LastName,Email,BloodGroup,Gender,Age,PhoneNo,EmergencyContact,Address,Type) values(" + updateDO.PatientId + ",'" + updateDO.UserName + "','" + updateDO.FirstName + "','" + updateDO.LastName + "','" + updateDO.Email + "','" + updateDO.BloodGroup + "','" + updateDO.Gender + "','" + updateDO.Age + "','" + updateDO.PhoneNo + "','" + updateDO.Age + "','" + updateDO.Address + "'," + updateDO.Type + ")", con);
+
+            }
+            else
+            {
+                cmd = new SqlCommand("update profiles set UserName='" + updateDO.UserName + "',FirstName='" + updateDO.FirstName + "',LastName='" + updateDO.LastName + "',Email='" + updateDO.Email + "',BloodGroup='" + updateDO.BloodGroup + "',Gender='" + updateDO.Gender + "',Age='" + updateDO.Age + "',PhoneNo='" + updateDO.PhoneNo + "',EmergencyContact='" + updateDO.EmergencyContact + "',Address='" + updateDO.Address + "',Type='" + updateDO.Type + "' where PatientId=" + updateDO.PatientId + "", con);
+            }
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+
+            List<UpdateDO> updateDOs = new List<UpdateDO>();
+            updateDOs = UpdateList();
+            return updateDOs;
+        }
+
+        //increment ProfileId
+
+        public int ProfileId()
+        {
+            int id = 0; // Default to 1 in case there are no records
+            con.Open();
+            cmd = new SqlCommand("SELECT MAX(PatientId) FROM profiles", con);
+            var result = cmd.ExecuteScalar(); // Use ExecuteScalar for a single value
+
+            // Check if result is null
+            if (result != DBNull.Value)
+            {
+                id = Convert.ToInt32(result); // Increment the maximum ID
+            }
+
+            con.Close();
+            return id;
+        }
+
+        // Profile Edit
+
+        public UpdateDO ProfileEdit(int PatientId)
+        {
+            UpdateDO updateDO = new UpdateDO();
+
+
+            SqlCommand cmd = new SqlCommand("Select * from profiles where PatientId='" + PatientId + "'", con);
+            {
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+
+                if (reader.Read())
+                {
+                    updateDO.PatientId = Convert.ToInt32(reader["PatientId"]);
+                    updateDO.UserName = reader["UserName"].ToString();
+                    updateDO.FirstName = reader["FirstName"].ToString();
+                    updateDO.LastName = reader["LastName"].ToString();
+                    updateDO.Email = reader["Email"].ToString();
+                    updateDO.BloodGroup = reader["BloodGroup"].ToString();
+                    updateDO.Gender = reader["Gender"].ToString();
+                    updateDO.Age = reader["Age"].ToString();
+                    updateDO.PhoneNo = reader["PhoneNo"].ToString();
+                    updateDO.EmergencyContact = reader["EmergencyContact"].ToString();
+                    updateDO.Address = reader["Address"].ToString();
+                    updateDO.Type = Convert.ToInt32(reader["Type"]);
+
+                }
+                reader.Close();
+                con.Close();
+
+            }
+            return updateDO;
+        }
+        // profile department
+
+        public List<UpdateDO> ProfileDelete(int PatientId)
+        {
+            con.Open();
+            cmd = new SqlCommand("Delete from Profiles where PatientId='" + PatientId + "'", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            List<UpdateDO> updateDOs = new List<UpdateDO>();
+
+            con.Open();
+            cmd = new SqlCommand("select * from Profiles", con);
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                UpdateDO updateDO = new UpdateDO();
+
+
+                updateDO.PatientId = Convert.ToInt32(reader["PatientId"]);
+                updateDO.UserName = reader["UserName"].ToString();
+                updateDO.FirstName = reader["FirstName"].ToString();
+                updateDO.LastName = reader["LastName"].ToString();
+                updateDO.Email = reader["Email"].ToString();
+                updateDO.BloodGroup = reader["BloodGroup"].ToString();
+                updateDO.Gender = reader["Gender"].ToString();
+                updateDO.Age = reader["Age"].ToString();
+                updateDO.PhoneNo = reader["PhoneNo"].ToString();
+                updateDO.EmergencyContact = reader["EmergencyContact"].ToString();
+                updateDO.Address = reader["Address"].ToString();
+                updateDO.Type = Convert.ToInt32(reader["Type"]);
+
+                updateDOs.Add(updateDO);
+
+            }
+
+            reader.Close();
+            con.Close();
+            return updateDOs;
+        }
+
+
+
+
+
 
 
 
