@@ -1,0 +1,120 @@
+﻿@model Hospital_System.Models.AmbulanceDo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+@using (Html.BeginForm("AddAmb", "AmbulanceR"))
+{
+    <div class="form-container">
+        <h2>Add Ambulance Details Here....</h2>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Id)
+            @Html.TextBoxFor(m => m.Id)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @required = "required", @placeholder = "Enter your Name" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.AmbulanceId)
+            @Html.TextBoxFor(m => m.AmbulanceId, new { @required = "required", @placeholder = "Enter your AmbulanceId" })
+            @Html.ValidationMessageFor(m => m.AmbulanceId, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.AmbulanceStatus)
+            @Html.DropDownListFor(m => m.AmbulanceStatus, new SelectList(new List<SelectListItem>
+            {
+            new SelectListItem { Value = "InActive", Text = "InActive" },
+            new SelectListItem { Value = "Repair", Text = "repair" },
+            new SelectListItem { Value = "Not Available", Text = "not available" },
+            },
+            "Value", "Text"), "AmbulanceStatus", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.AmbulanceDriver)
+            @Html.TextBoxFor(m => m.AmbulanceDriver, new { @required = "required", @placeholder = "Enter your AmbulanceDriver" })
+            @Html.ValidationMessageFor(m => m.AmbulanceDriver, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.AmbulanceDriverId)
+            @Html.TextBoxFor(m => m.AmbulanceDriverId, new { @required = "required", @placeholder = "Enter your AmbulanceDriverId" })
+            @Html.ValidationMessageFor(m => m.AmbulanceDriverId, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </div>
+}
+
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full viewport height */
+        margin: 0;
+        background-color: #f7f7f7; /* Light background color */
+    }
+
+    .form-container {
+        background: white; /* White background for the form */
+        padding: 20px;
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        width: 300px; /* Fixed width */
+    }
+
+    h2 {
+        text-align: center; /* Centered heading */
+    }
+
+    .form-group {
+        margin-bottom: 15px; /* Spacing between form fields */
+    }
+
+        .form-group label {
+            display: block; /* Block display for labels */
+            margin-bottom: 5px; /* Spacing below labels */
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%; /* Full width input/select */
+            padding: 8px; /* Padding for input/select */
+            border: 1px solid #ccc; /* Light border */
+            border-radius: 4px; /* Rounded corners */
+        }
+
+    .text-danger {
+        color: red; /* Error message color */
+        font-size: 12px; /* Smaller font size for error messages */
+    }
+
+    input[type="submit"] {
+        background-color: #007bff; /* Primary button color */
+        color: white; /* Button text color */
+        border: none; /* No border */
+        border-radius: 4px; /* Rounded corners */
+        padding: 10px; /* Padding for button */
+        cursor: pointer; /* Pointer cursor */
+        width: 100%; /* Full width button */
+        font-size: 16px; /* Larger font size for button */
+    }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Darker on hover */
+        }
+</style>
+
