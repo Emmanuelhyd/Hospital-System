@@ -1,0 +1,58 @@
+﻿@model Hospital_System.Models.HospPatient
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>OPID</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        div {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        strong {
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            color: #007BFF;
+        }
+
+        .field {
+            margin-bottom: 10px; /* Adds space between fields */
+        }
+    </style>
+</head>
+<body>
+    <h2>Patient Details</h2>
+    <div>
+        <div class="field"><strong>Name:</strong> @Model.PatientName</div>
+        <div class="field"><strong>Problem:</strong> @Model.PatientType</div>
+        <div class="field"><strong>Gender:</strong> @Model.Gender</div>
+        <div class="field"><strong>Phone Number:</strong> @Model.PhoneNumber</div>
+        <div class="field"><strong>Description:</strong> @Model.Description</div>
+        <div class="field"><strong>Address:</strong> @Model.Address</div>
+        <div class="field"><strong>Admission Date:</strong> @Model.AdmissionDate</div>
+        <div class="field"><strong>Discharge Date:</strong> @Model.Dischargedate</div>
+        <div class="field"><strong>Treatment Duration:</strong> @Model.TreatmentDuration</div>
+        <div class="field"><strong>Problem:</strong> @Model.Problem</div>
+        <div class="field"><strong>Status:</strong> @Model.Status</div>
+    </div>
+</body>
+</html>
