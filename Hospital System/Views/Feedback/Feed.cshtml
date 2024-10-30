@@ -1,185 +1,206 @@
 ﻿@model Hospital_System.Models.Feedbk
 
-
 @{
     Layout = null;
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Feedback</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        div {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        h3 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .underline-input {
-            padding: 10px;
-            width: 80%;
-            outline: none;
-            font-size: 16px;
-            margin-bottom: 15px;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-            transition: border-color 0.3s;
-        }
-
-            .underline-input:focus {
-                border-color: #28a745;
-            }
-
-        textarea {
-            width: 100%;
-            height: 100px;
-            border: 2px solid #ccc;
-            padding: 10px;
-            resize: none;
-            outline: none;
-            font-size: 16px;
-            border-radius: 4px;
-            margin-bottom: 15px;
-        }
-
-            textarea:focus {
-                border-color: #28a745;
-            }
-
-        .rating {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
-        }
-
-        .star {
-            font-size: 30px;
-            color: #ccc;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-            .star:hover,
-            .star.selected {
-                color: #f39c12; /* Gold color for selected stars */
-            }
-
-        button {
-            background-color: #ef7d7d;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            width: 100%;
-            transition: background-color 0.3s;
-        }
-
-            button:hover {
-                background-color: #218838;
-            }
-    </style>
-    <script>
-        function setRating(rating, group) {
-            const stars = document.querySelectorAll(`.${group} .star`);
-            stars.forEach((star, index) => {
-                star.classList.toggle('selected', index < rating);
-            });
-            document.getElementById(group).value = rating; // Store the rating value
-        }
-    </script>
-</head>
-<body>
+@using (Html.BeginForm())
+{
     <div>
-        <h3>Give us your valuable feedback!</h3>
+        <h1>Add Feedback</h1>
+        <div>
+            @Html.LabelFor(m => m.Id)
+            @Html.TextBoxFor(m => m.Id)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @required = "required", @placeholder = "Enter your Name" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Age)
+            @Html.TextBoxFor(m => m.Age, new { @required = "required", @placeholder = "Age" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @required = "required", @placeholder = "Email" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.phoneNumber)
+            @Html.TextBoxFor(m => m.phoneNumber, new { @required = "required", @placeholder = "Phone Number" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Feedback)
+            @Html.TextBoxFor(m => m.Feedback, new { @required = "required", @placeholder = "Your Valuable Feedback" })
+        </div>
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            @TempData["Message"]
-
-            <h4>Personal Information</h4>
-            <div class="input-group">
-                @Html.TextBoxFor(m => m.Name, new { @class = "underline-input", placeholder = "Name" })
-                @Html.TextBoxFor(m => m.Age, new { @class = "underline-input", placeholder = "Age" })
+        <div class="rating-container">
+            @Html.LabelFor(m => m.Doctor)
+            <div class="star-rating" data-input="RatingValue1">
+                @for (int i = 1; i <= 5; i++)
+                {
+                    <span class="fas fa-star @(int.TryParse(Model.Doctor ?? "0", out int doctorRating) && doctorRating >= i ? "active" : "")" data-value="@i"></span>
+                }
             </div>
+            <input type="hidden" id="RatingValue1" name="Doctor" value="@(Model.Doctor ?? "0")" />
+        </div>
 
-            <div class="input-group">
-                @Html.TextBoxFor(m => m.Email, new { @class = "underline-input", placeholder = "Email" })
-                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "underline-input", placeholder = "Phone Number" })
+        <div class="rating-container">
+            @Html.LabelFor(m => m.Staff)
+            <div class="star-rating" data-input="RatingValue2">
+                @for (int i = 1; i <= 5; i++)
+                {
+                    <span class="fas fa-star @(int.TryParse(Model.Staff ?? "0", out int staffRating) && staffRating >= i ? "active" : "")" data-value="@i"></span>
+                }
             </div>
+            <input type="hidden" id="RatingValue2" name="Staff" value="@(Model.Staff ?? "0")" />
+        </div>
 
-            <h2>How would you rate us?</h2>
-
-            <div>
-                <div>Our Waiting Room (is it clean & Comfortable)?</div>
-                <input type="hidden" id="waitingroom" name="Waitingroom" />
-                <div class="rating waitingroom">
-                    @for (int i = 1; i <= 5; i++)
-                    {
-                        <span class="star" onclick="setRating(@i, 'waitingroom')">&#9733;</span>
-                    }
-                </div>
+        <div class="rating-container">
+            @Html.LabelFor(m => m.Cleaning)
+            <div class="star-rating" data-input="RatingValue3">
+                @for (int i = 1; i <= 5; i++)
+                {
+                    <span class="fas fa-star @(int.TryParse(Model.Cleaning ?? "0", out int cleaningRating) && cleaningRating >= i ? "active" : "")" data-value="@i"></span>
+                }
             </div>
+            <input type="hidden" id="RatingValue3" name="Cleaning" value="@(Model.Cleaning ?? "0")" />
+        </div>
 
-            <div>
-                <div>Our Administration Staff (did they help you promptly and answer your questions)?</div>
-                <input type="hidden" id="staff" name="Staff" />
-                <div class="rating staff">
-                    @for (int i = 1; i <= 5; i++)
-                    {
-                        <span class="star" onclick="setRating(@i, 'staff')">&#9733;</span>
-                    }
-                </div>
+        <div class="rating-container">
+            @Html.LabelFor(m => m.Review)
+            <div class="star-rating" data-input="RatingValue4">
+                @for (int i = 1; i <= 5; i++)
+                {
+                    <span class="fas fa-star @(int.TryParse(Model.Review ?? "0", out int reviewRating) && reviewRating >= i ? "active" : "")" data-value="@i"></span>
+                }
             </div>
+            <input type="hidden" id="RatingValue4" name="Review" value="@(Model.Review ?? "0")" />
+        </div>
 
-            <div>
-                <div>Your Nurse (were they pleasant & Professional)?</div>
-                <input type="hidden" id="nurse" name="Nurse" />
-                <div class="rating nurse">
-                    @for (int i = 1; i <= 5; i++)
-                    {
-                        <span class="star" onclick="setRating(@i, 'nurse')">&#9733;</span>
-                    }
-                </div>
-            </div>
-
-            <div>
-                <div>Your Doctor (did they address your issue and answer your questions clearly)?</div>
-                <input type="hidden" id="doctor" name="Doctor" />
-                <div class="rating doctor">
-                    @for (int i = 1; i <= 5; i++)
-                    {
-                        <span class="star" onclick="setRating(@i, 'doctor')">&#9733;</span>
-                    }
-                </div>
-            </div>
-
-            <h3>Your Overall Experience</h3>
-            <label>Do you have any additional feedback?</label>
-            @Html.TextAreaFor(m => m.OverallExperience, new { @class = "underline-input" })
-
-            <button type="submit">Send</button>
-        }
+        <div>
+            <input type="submit" value="Submit" class="submit-button">
+        </div>
     </div>
-</body>
-</html>
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .form-container {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    div {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        transition: border-color 0.3s;
+        box-sizing: border-box;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    .submit-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+
+    .submit-button:hover {
+        background-color: #0056b3;
+    }
+
+    .rating-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .star-rating {
+        display: flex;
+        margin-top: 5px;
+    }
+
+    .star-rating .fa-star {
+        color: lightgray;
+        margin-right: 5px;
+        transition: color 0.3s;
+        cursor: pointer;
+    }
+
+    .star-rating .fa-star.active {
+        color: gold;
+    }
+
+    media (max-width: 400px) {
+        .form-container {
+            padding: 15px;
+        }
+    }
+</style>
+
+<script>
+    function setupStarRating(starContainer) {
+        const stars = starContainer.querySelectorAll('.fa-star');
+        const ratingInput = document.getElementById(starContainer.dataset.input);
+
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const value = star.getAttribute('data-value');
+
+                stars.forEach(s => s.classList.remove('active'));
+
+                for (let i = 0; i < value; i++) {
+                    stars[i].classList.add('active');
+                }
+
+                ratingInput.value = value;
+            });
+        });
+    }
+
+    document.querySelectorAll('.star-rating').forEach(setupStarRating);
+</script>

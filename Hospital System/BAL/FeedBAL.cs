@@ -11,10 +11,19 @@ namespace Hospital_System.BAL
     {
         FeedDAL feedDAL = new FeedDAL();
 
-        public string Feed(Feedbk feedbk)
-        {
-            return feedDAL.Feed(feedbk);
 
+        //List
+        public List<Feedbk> FeedList()
+        {
+            return feedDAL.FeedList();
+        }
+
+
+        public List<Feedbk> Feed(Feedbk feedbk)
+        {
+            List<Feedbk> feedbks = new List<Feedbk>();
+            feedbks = feedDAL.Feed(feedbk);
+            return feedbks;
         }
     }
 }

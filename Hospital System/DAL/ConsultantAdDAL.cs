@@ -63,7 +63,7 @@ namespace Hospital_System.DAL
 
             var ids = 0;
             con.Open();
-            cmd = new SqlCommand("select * from Consultant where Id='" + consultantDo.Id + "'", con);
+            cmd = new SqlCommand("select * from bookapp where Id='" + consultantDo.Id + "'", con);
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {

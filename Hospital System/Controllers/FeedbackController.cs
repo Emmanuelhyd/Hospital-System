@@ -1,4 +1,5 @@
 ﻿using Hospital_System.BAL;
+using Hospital_System.DAL;
 using Hospital_System.Models;
 using System;
 using System.Collections.Generic;
@@ -11,31 +12,50 @@ namespace Hospital_System.Controllers
     public class FeedbackController : Controller
     {
 
-
+        FeedDAL feedDAL;
         FeedBAL feedBAL = new FeedBAL();
         // GET: Feedback
 
-        [HttpGet]
-        public ActionResult Feed()
+
+        //feedback list
+
+        public ActionResult FeedList()
         {
-            return View();
+            Feedbk feedbk = new Feedbk();
+            List<Feedbk> feedbks = new List<Feedbk>();
+
+            feedbks = feedBAL.FeedList();
+            return View(feedbks);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Feed(Feedbk feedbk)
         {
-            if (ModelState.IsValid)
+
+            var ids = 0;
+
+            List<Feedbk> feedbks = new List<Feedbk>();
+
+
+            if (feedbk.Id != 0)
             {
-                string res = feedBAL.Feed(feedbk);
-                if (res == "Feedback Sent")
-                {
-                    TempData["Message"] = "Sent successfully";
-                    return View("Feed");
-                }
+                feedbks = feedBAL.Feed(feedbk);
             }
-            TempData["Message"] = "Error Occured";
-            return View(feedbk);
+            if (feedbks.Count == 0)
+            {
+                feedDAL = new FeedDAL();
+                if (feedbk.Id == 0)
+                {
+                    ids = feedDAL.FeedId();
+                }
+                feedbk.Id = ids + 1;
+
+                return View(feedbk);
+            }
+            else
+            {
+                return RedirectToAction("FeedList", feedbks);
+            }
+
         }
     }
 }

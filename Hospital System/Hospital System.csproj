@@ -104,6 +104,7 @@
     <Compile Include="BAL\AdminBAL.cs" />
     <Compile Include="BAL\AmbulanceAdBAL.cs" />
     <Compile Include="BAL\AmbulanceBAL.cs" />
+    <Compile Include="BAL\AmbulanceRBAL.cs" />
     <Compile Include="BAL\AttendanceBAL.cs" />
     <Compile Include="BAL\AttendBAL.cs" />
     <Compile Include="BAL\BillAdBAL.cs" />
@@ -128,8 +129,8 @@
     <Compile Include="BAL\VaccineAdBAL.cs" />
     <Compile Include="BAL\VaccineBAL.cs" />
     <Compile Include="Controllers\AmbulanceAdController.cs" />
-    <Compile Include="Controllers\AmbulanceAdminController.cs" />
     <Compile Include="Controllers\AmbulanceController.cs" />
+    <Compile Include="Controllers\AmbulanceRController.cs" />
     <Compile Include="Controllers\AnnouncementAdController.cs" />
     <Compile Include="Controllers\AppointmentAdController.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
@@ -168,8 +169,8 @@
     <Compile Include="Controllers\VaccinationAdminController.cs" />
     <Compile Include="Controllers\VaccinationController.cs" />
     <Compile Include="DAL\AdminDAL.cs" />
-    <Compile Include="DAL\AmbulanceAdDAL.cs" />
     <Compile Include="DAL\AmbulanceDAL.cs" />
+    <Compile Include="DAL\AmbulanceRDAL.cs" />
     <Compile Include="DAL\AttendanceAdDAL.cs" />
     <Compile Include="DAL\AttendDAL.cs" />
     <Compile Include="DAL\BillAdDAL.cs" />
@@ -328,8 +329,6 @@
     <Content Include="Views\Vaccination\Vaccine.cshtml" />
     <Content Include="Views\Vaccination\VaccineList.cshtml" />
     <Content Include="Views\Vaccination\VaccinesById.cshtml" />
-    <Content Include="Views\AmbulanceAdmin\AddAmbulanceAdmin.cshtml" />
-    <Content Include="Views\AmbulanceAdmin\AmbulanceListAdmin.cshtml" />
     <Content Include="Views\ConsultantAdmin\AddConsultant.cshtml" />
     <Content Include="Views\ConsultantAdmin\ConsultantList.cshtml" />
     <Content Include="Views\DischargeAdmin\AddDischarge.cshtml" />
@@ -353,6 +352,9 @@
     <Content Include="Views\BillAdmin\BillList.cshtml" />
     <Content Include="Views\AttendanceAdmin\AddAttendance.cshtml" />
     <Content Include="Views\AttendanceAdmin\AttendanceList.cshtml" />
+    <Content Include="Views\Feedback\FeedList.cshtml" />
+    <Content Include="Views\AmbulanceR\AmbList.cshtml" />
+    <Content Include="Views\AmbulanceR\AddAmb.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -362,6 +364,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AmbulanceAdmin\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
