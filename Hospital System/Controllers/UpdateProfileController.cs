@@ -8,6 +8,7 @@ using Hospital_System.Models;
 using Hospital_System.BAL;
 using Hospital_System.DAL;
 using System.Reflection;
+using Hospital_System.Dash;
 
 namespace Hospital_System.Controllers
 {
@@ -22,7 +23,14 @@ namespace Hospital_System.Controllers
             List<UpdateDO> updateDOs = new List<UpdateDO>();
 
             updateDOs = adminBAL.UpdateList();
-            return View(updateDOs);
+
+            var update = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                updateDOs = updateDOs
+            };
+
+            return View(update);
         }
 
         //Add Profile
@@ -47,7 +55,15 @@ namespace Hospital_System.Controllers
                 }
                 updateDO.PatientId = ids + 1;
 
-                return View(updateDO);
+                var role = new DashboardDetails
+                {
+                    Adminmenus = adminBAL.GetAdminmenus(),
+                    UpdateDO = updateDO
+                };
+
+
+
+                return View(role);
             }
             else
             {
@@ -64,10 +80,18 @@ namespace Hospital_System.Controllers
 
             updateDO = adminBAL.ProfileEdit(PatientId);
 
+            var role = new DashboardDetails
+            {
+                Adminmenus = adminBAL.GetAdminmenus(),
+                UpdateDO = updateDO
+            };
+
+
+
             if (updateDO.PatientId != 0)
             {
 
-                return View("AddProfile", updateDO);
+                return View("AddProfile", role);
             }
             else
             {

@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Login";
+    Layout = null;
 }
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMU01kpu1nY20dV62M4a9f1gAwl0Q8e61Kqgl" crossorigin="anonymous" />
 
@@ -137,7 +138,7 @@
 
 @using (Html.BeginForm())
 {
-    <a href="@Url.Action("DashboardView", "Dashboard")" class="form-link">ADMIN</a>
+   
     <div class="login-container">
         <h2>@ViewBag.Title</h2>
 

@@ -62,6 +62,9 @@ namespace Hospital_System.Dash
 
         public MDriverAd MDriverAd { get; set; }
 
+        public List<UpdateDO> updateDOs { get; set; }
+
+        public UpdateDO UpdateDO { get; set; }
 
 
     }

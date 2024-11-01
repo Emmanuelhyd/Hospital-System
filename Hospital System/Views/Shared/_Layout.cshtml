@@ -3,34 +3,75 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <title>@ViewBag.Title -Guru-Nanak Hospital</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
-
-
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid py-2 border-bottom d-none d-lg-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
+                    <div class="d-inline-flex align-items-center">
+                        <a class="text-decoration-none text-body pe-3" href=""><i class="bi bi-telephone me-2"></i>+91 022 42227777</a>
+                        <span class="text-body">|</span>
+                        <a class="text-decoration-none text-body px-3" href=""><i class="bi bi-envelope me-2"></i>corporate@gurunanakhospital.com</a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center text-lg-end">
+                    <div class="d-inline-flex align-items-center">
+                        <a class="text-body px-2" href="https://www.bing.com/ck/a?!&&p=dafbc3eee5545d99JmltdHM9MTcyNzIyMjQwMCZpZ3VpZD0zNzc2NWU2Yi1lMWIwLTY3MjEtMzg5ZS00YWQwZTAxZDY2MjUmaW5zaWQ9NTIxOQ&ptn=3&ver=2&hsh=3&fclid=37765e6b-e1b0-6721-389e-4ad0e01d6625&psq=gurunanakhospital&u=a1aHR0cHM6Ly93d3cuZ3VydW5hbmFraG9zcGl0YWwuY29tLyM6fjp0ZXh0PU91ciBTZXJ2aWNlcy4gV2UgYXJlIGhlcmUgdG8gcHJvdmlkZSB5b3Ugc3RhdGUgb2Y&ntb=1">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="text-body px-2" href="">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="text-body px-2" href="">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a class="text-body px-2" href="">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a class="text-body ps-2" href="">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <ul class="nav navbar-nav">
-        </ul>
-    </div>
-    </div>
-    </div>
+    <div class="container-fluid sticky-top bg-white shadow-sm">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
+                <a href="index.html" class="navbar-brand">
+                    <h3 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>History of Guru Nanak Hospital</h3>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="/" class="nav-item nav-link active">Home</a>
+                        <a href="/Home/About" class="nav-item nav-link">About</a>
+                        <a href="/Home/Services" class="nav-item nav-link">Service</a>
 
-    <div class="container body-content">
+                        <a href="/Home/Team" class="nav-item nav-link">Doctors</a>
+                        @*<a href="/Home/Testimonial" class="nav-item nav-link">Testimonial</a>*@
+                        <a href="/Home/Appointment" class="nav-item nav-link">Appointment</a>
+
+                        <a href="/Home/Contact" class="nav-item nav-link">Contact</a>
+                        <a href="/Patient/Login" class="nav-item nav-link">Login</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="container">
         @RenderBody()
-
-        <footer>
-        </footer>
     </div>
-
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
 </body>
 </html>
+
