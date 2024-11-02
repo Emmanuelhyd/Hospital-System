@@ -108,8 +108,16 @@
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.PhoneNumber)
-            @Html.TextBoxFor(m => m.PhoneNumber, new { @required = "required", @placeholder = "Phone Number" })
+            @Html.TextBoxFor(m => m.PhoneNumber, new
+            {
+                @required = "required",
+                @placeholder = "Phone Number",
+                @pattern = @"^[6789]\d{9}$", // Regex pattern for validation
+                @title = "Enter a valid 10-digit phone number starting with 6, 7, 8, or 9."
+            })
+            @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
         </div>
+
         <div class="form-group">
             @Html.LabelFor(m => m.Date)
             @Html.TextBoxFor(m => m.Date, new { @required = "required", @id = "AppointmentDate", @placeholder = "Appointment Date", @type = "date" })

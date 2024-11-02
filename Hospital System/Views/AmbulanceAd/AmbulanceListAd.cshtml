@@ -25,8 +25,11 @@
                     <th>Name</th>
                     <th>AmbulanceId</th>
                     <th>AmbulanceStatus</th>
-                    <th>AmbulanceDriver</th>
-                    <th>AmbulanceDriverId</th>
+                    <th>Driver Name</th>
+                    <th>Driver Id</th>
+                    <th>Contact</th>
+                    <th>Address</th>
+                    <th>CNIC</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -38,8 +41,11 @@
                         <td>@Html.DisplayFor(modelItem => item.Name)</td>
                         <td>@Html.DisplayFor(modelItem => item.AmbulanceId)</td>
                         <td>@Html.DisplayFor(modelItem => item.AmbulanceStatus)</td>
-                        <td>@Html.DisplayFor(modelItem => item.AmbulanceDriver)</td>
-                        <td>@Html.DisplayFor(modelItem => item.AmbulanceDriverId)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DriverName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DriverId)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Contact)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CNIC)</td>
                         <td style="display: flex; gap: 10px; ">
 
                             <a href="@Url.Action("AmbulanceEdit", new { Id = item.Id })">

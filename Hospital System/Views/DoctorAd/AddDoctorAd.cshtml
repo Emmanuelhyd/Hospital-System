@@ -97,20 +97,34 @@
                 @Html.TextBoxFor(m => m.MDoctorAd.FullName, new { @required = "required", @placeholder = "Doctor Name" })
             </div>
 
-            <div class="form-item">
-                @Html.LabelFor(m => m.MDoctorAd.Firstname, "Firstname")
-                @Html.TextBoxFor(m => m.MDoctorAd.Firstname, new { @required = "required", @placeholder = "First Name" })
-            </div>
+            @*<div class="form-item">
+            @Html.LabelFor(m => m.MDoctorAd.Firstname, "Firstname")
+            @Html.TextBoxFor(m => m.MDoctorAd.Firstname, new { @required = "required", @placeholder = "First Name" })
+        </div>
 
-            <div class="form-item">
-                @Html.LabelFor(m => m.MDoctorAd.LastName, "LastName")
-                @Html.TextBoxFor(m => m.MDoctorAd.LastName, new { @required = "required", @placeholder = "Last Name" })
-            </div>
+        <div class="form-item">
+            @Html.LabelFor(m => m.MDoctorAd.LastName, "LastName")
+            @Html.TextBoxFor(m => m.MDoctorAd.LastName, new { @required = "required", @placeholder = "Last Name" })
+        </div>*@
 
             <div class="form-item">
                 @Html.LabelFor(m => m.MDoctorAd.Email, "Email")
-                @Html.TextBoxFor(m => m.MDoctorAd.Email, new { @required = "required", @placeholder = "Email" })
+                @Html.TextBoxFor(m => m.MDoctorAd.Email, new
+                {
+                    @required = "required",
+                    @placeholder = "Email",
+                    @type = "email",
+                    @title = "Enter a valid email address like anandsagar@gmail.com"
+                })
+                @Html.ValidationMessageFor(m => m.MDoctorAd.Email, "", new { @class = "text-danger" })
             </div>
+
+
+
+            @*<div class="form-item">
+            @Html.LabelFor(m => m.MDoctorAd.Email, "Email")
+            @Html.TextBoxFor(m => m.MDoctorAd.Email, new { @required = "required", @placeholder = "Email" })
+        </div>*@
 
             <div class="form-item">
                 @Html.LabelFor(m => m.MDoctorAd.Department, "Department")
@@ -124,28 +138,61 @@
 
             <div class="form-item">
                 @Html.LabelFor(m => m.MDoctorAd.PhoneNo, "PhoneNo")
-                @Html.TextBoxFor(m => m.MDoctorAd.PhoneNo, new { @required = "required", @placeholder = "Mobile Number" })
+                @Html.TextBoxFor(m => m.MDoctorAd.PhoneNo, new
+                {
+                    @required = "required",
+                    @placeholder = "Mobile Number",
+                    @pattern = @"^[6789]\d{9}$",
+                    @title = "Enter a valid mobile number starting with 7, 8, or 9 followed by 9 digits."
+                })
             </div>
+            @*<div class="form-item">
+            @Html.LabelFor(m => m.MDoctorAd.PhoneNo, "PhoneNo")
+            @Html.TextBoxFor(m => m.MDoctorAd.PhoneNo, new { @required = "required", @placeholder = "Mobile Number" })
+        </div>*@
 
             <div class="form-item">
-                @Html.LabelFor(m => m.MDoctorAd.ContactNo, "ContactNo")
-                @Html.TextBoxFor(m => m.MDoctorAd.ContactNo, new { @required = "required", @placeholder = "Mobile Number" })
+                @Html.LabelFor(m => m.MDoctorAd.ContactNo, "Contact No")
+                @Html.TextBoxFor(m => m.MDoctorAd.ContactNo, new
+                {
+                    @required = "required",
+                    @placeholder = "e.g., 0401234567",
+                    @pattern = @"^040-\d{7}$",
+                    @title = "Enter a valid Hyderabad landline number starting with 040."
+                })
             </div>
+
+
+            @*<div class="form-item">
+            @Html.LabelFor(m => m.MDoctorAd.ContactNo, "ContactNo")
+            @Html.TextBoxFor(m => m.MDoctorAd.ContactNo, new { @required = "required", @placeholder = "Mobile Number" })
+        </div>*@
 
             <div class="form-item">
                 @Html.LabelFor(m => m.MDoctorAd.Education, "Education")
                 @Html.TextBoxFor(m => m.MDoctorAd.Education, new { @required = "required", @placeholder = "Education" })
             </div>
+            <div class="form-item">
+                <div> @Html.LabelFor(m => m.MDoctorAd.Gender, "Gender")</div>
+                @Html.DropDownListFor(m => m.MDoctorAd.Gender, new SelectList(new List<SelectListItem>
+                    {
 
+                new SelectListItem { Value = "Male", Text = "Male" },
+                            new SelectListItem { Value = "Female", Text = "Female" },
+                             new SelectListItem { Value = "Others", Text = "Others" },
+
+                    }, "Value", "Text"), "Select Gender", new { @class = "form-control", @required = "required", })
+
+            </div>
             <div class="form-item">
                 <div> @Html.LabelFor(m => m.MDoctorAd.Status, "Status")</div>
                 @Html.DropDownListFor(m => m.MDoctorAd.Status, new SelectList(new List<SelectListItem>
                     {
-                            
+
                             new SelectListItem { Value = "Active", Text = "Active" },
                             new SelectListItem { Value = "Inactive", Text = "Inactive" },
 
-                    }, "Value", "Text"), "Select Status", new { @class = "form-control" })
+                    }, "Value", "Text"), "Select Status", new { @required = "required", @class = "form-control" })
 
             </div>
 

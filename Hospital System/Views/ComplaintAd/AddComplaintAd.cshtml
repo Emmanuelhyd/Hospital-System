@@ -24,12 +24,22 @@
             </div>
 
             <div>
-                <div>PhoneNumber</div>
-                <div>@Html.TextBoxFor(m => m.mComplaintAd.PhoneNumber, new { @required = "required", @placeholder = "PhoneNumber" })</div>
+                <div>Phone Number</div>
+                <div>
+                    @Html.TextBoxFor(m => m.mComplaintAd.PhoneNumber, new
+                    {
+                        @required = "required",
+                        @placeholder = "Enter Phone Number",
+                        @pattern = @"^[6789]\d{9}$",
+                        @title = "Enter a valid 10-digit phone number starting with 6, 7, 8, or 9."
+                    })
+                    @Html.ValidationMessageFor(m => m.mComplaintAd.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
             </div>
+
             <div>
                 <div>Replay</div>
-                <div>@Html.TextBoxFor(m => m.mComplaintAd.Replay, new { @required = "required", @placeholder = "Replay" })</div>
+                <div>@Html.TextBoxFor(m => m.mComplaintAd.Replay, new { @placeholder = "Replay" })</div>
             </div>
 
             <div><input type="submit" value="Submit"></div>

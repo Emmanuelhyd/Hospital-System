@@ -95,16 +95,25 @@
             </div>
             <div>
                 @Html.LabelFor(m => m.mComplaint.Name)
-                @Html.TextBoxFor(m => m.mComplaint.Name, new { @class = "form-control", @placeholder = "Enter Your Name" })
+                @Html.TextBoxFor(m => m.mComplaint.Name, new { @class = "form-control", @placeholder = "Enter Your Name",@required="required" })
             </div>
             <div>
                 @Html.LabelFor(m => m.mComplaint.Complaint)
-                @Html.TextAreaFor(m => m.mComplaint.Complaint, new { @class = "form-control", @placeholder = "Describe your complaint" })
+                @Html.TextAreaFor(m => m.mComplaint.Complaint, new { @class = "form-control", @placeholder = "Describe your complaint", @required = "required" })
             </div>
-            <div>
-                @Html.LabelFor(m => m.mComplaint.PhoneNumber)
-                @Html.TextBoxFor(m => m.mComplaint.PhoneNumber, new { @class = "form-control", @placeholder = "Enter Your Phone Number" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.mAppointmentAd.PhoneNumber)
+                @Html.TextBoxFor(m => m.mAppointmentAd.PhoneNumber, new
+                {
+                    @required = "required",
+                    @placeholder = "Phone Number",
+                    @class = "form-control",
+                    @pattern = @"^[6789]\d{9}$", // Regex pattern for 10-digit phone number starting with 6, 7, 8, or 9
+                    @title = "Please enter a valid 10-digit phone number starting with 6, 7, 8, or 9." // Tooltip for users
+                })
+                @Html.ValidationMessageFor(m => m.mAppointmentAd.PhoneNumber, "", new {  @required = "required", @class = "text-danger" })
             </div>
+
             <div>
                 <input type="submit" value="Register Complaint">
             </div>

@@ -1,4 +1,4 @@
-﻿@model Hospital_System.Dash.DashboardDetails
+﻿@*@model Hospital_System.Dash.DashboardDetails
 
 @{
     ViewBag.Title = "AddDriverAd";
@@ -15,8 +15,12 @@
             @Html.ValidationMessageFor(m => m.MDriverAd.Id, "", new { @class = "validation-message" })
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.MDriverAd.Name)
-            @Html.TextBoxFor(m => m.MDriverAd.Name, new { @required = "required", @placeholder = "Enter your Name", @class = "form-control" })
+            @Html.LabelFor(m => m.MDriverAd.DriverName)
+            @Html.TextBoxFor(m => m.MDriverAd.DriverName, new { @required = "required", @placeholder = "Enter your Name", @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.MDriverAd.DriverId)
+            @Html.TextBoxFor(m => m.MDriverAd.DriverId, new { @required = "required", @placeholder = "Enter your Name", @class = "form-control" })
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.MDriverAd.Contact)
@@ -130,4 +134,4 @@
         justify-content: space-between; /* Space between buttons */
         margin-top: 20px; /* Space above buttons */
     }
-</style>
+</style>*@

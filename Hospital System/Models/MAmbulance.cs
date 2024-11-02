@@ -16,9 +16,12 @@ namespace Hospital_System.Models
         public int AmbulanceId { get; set; }
         public string AmbulanceStatus { get; set; }
 
-        public string AmbulanceDriver { get; set; }
+        public string DriverName { get; set; }
 
-        public int AmbulanceDriverId { get; set; }
+        public int DriverId { get; set; }
+        public string Contact { get; set; }
+        public string Address { get; set; }
+        public string CNIC { get; set; }
 
 
         public List<Menu> GetMenus { get; set; }

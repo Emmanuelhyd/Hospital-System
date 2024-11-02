@@ -22,6 +22,8 @@ namespace Hospital_System.Viewmodel
 
         public MAppointmentAd mAppointmentAd { get; set; }
 
+        public MDepartment mDepartment { get; set; }
+
         public MComplaint mComplaint { get; set; }
 
         public SelectList BloodGroups { get; set; }

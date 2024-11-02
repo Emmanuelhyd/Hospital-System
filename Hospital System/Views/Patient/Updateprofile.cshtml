@@ -109,97 +109,147 @@
     </style>
 </head>
 <body>
-    <div class="form-container">
+    <div>
+        
+        <div class="form-container">
 
-        <div>
-            <a href="javascript:void(0);" onclick="Back()" class="back-icon">
+            <div>
+                <a href="javascript:void(0);" onclick="Back()" class="back-icon">
 
-                <i class="fas fa-arrow-circle-left">   </i>
+                    <i class="fas fa-arrow-circle-left">   </i>
+
+                </a>
+            </div>
+            <h1>@ViewBag.Title</h1>
+
+            <div style="margin-bottom: 20px;">
+                <strong>Patient ID:</strong> @ViewBag.PatientId<br />
+                <strong>User Name:</strong> @Session["UserName"]<br />
+
+            </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Patients.PatientId)
+
                
-            </a>
-        </div>
-        <h1>@ViewBag.Title</h1>
 
-        <div style="margin-bottom: 20px;">
-            <strong>Patient ID: </strong>@ViewBag.PatientId
-        </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Patients.UserNameOrEmail)
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-            @Html.HiddenFor(m => m.Patients.PatientId)
+                        @Html.TextBoxFor(m => m.Patients.UserNameOrEmail, new { @class = "form-control", @readonly = "readonly", Value = @Session["UserName"] })
+                        @Html.ValidationMessageFor(m => m.Patients.UserNameOrEmail, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Patients.FirstName)
+                        @Html.TextBoxFor(m => m.Patients.FirstName, new
+                        {
+                            @placeholder = "First Name",
+                            @class = "form-control",
+                            @required = "required",
+                            Value = Session["FirstName"]
+                        })
+                        @Html.ValidationMessageFor(m => m.Patients.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Patients.UserName)
-                    @Html.TextBoxFor(m => m.Patients.UserName, new { @placeholder = "User Name", @class = "form-control" })<br />
-                    @Html.ValidationMessageFor(m => m.Patients.UserName, "", new { @class = "text-danger" })
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Patients.LastName)
+                        @Html.TextBoxFor(m => m.Patients.LastName, new { @placeholder = "Last Name", @class = "form-control", Value = @Session["LastName"] })<br />
+                        @Html.ValidationMessageFor(m => m.Patients.LastName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Patients.Email)
+                        @Html.TextBoxFor(m => m.Patients.Email, new { @required = "required", @placeholder = "Email", @class = "form-control", @type = "email", Value = @Session["Email"] })<br />
+                        @Html.ValidationMessageFor(m => m.Patients.Email, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Patients.FirstName)
-                    @Html.TextBoxFor(m => m.Patients.FirstName, new { @placeholder = "First Name", @class = "form-control" })<br />
-                    @Html.ValidationMessageFor(m => m.Patients.FirstName, "", new { @class = "text-danger" })
-                </div>
-            </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Patients.LastName)
-                    @Html.TextBoxFor(m => m.Patients.LastName, new { @placeholder = "Last Name", @class = "form-control" })<br />
-                    @Html.ValidationMessageFor(m => m.Patients.LastName, "", new { @class = "text-danger" })
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Patients.BloodGroup)
+                        @Html.DropDownListFor(m => m.Patients.BloodGroup, Model.BloodGroups, "Select Blood Group", new { @class = "form-control", @required = "required", Value = @Session["BloodGroups"] })<br />
+                        @Html.ValidationMessageFor(m => m.Patients.BloodGroup, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Patients.Gender)
+                        @Html.DropDownListFor(m => m.Patients.Gender, Model.GetGenders, "Select Gender", new { @class = "form-control", @required = "required", Value = @Session["Gender"] })<br />
+                        @Html.ValidationMessageFor(m => m.Patients.Gender, "", new { @class = "text-danger", @required = "requred" })
+                    </div>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Patients.Email)
-                    @Html.TextBoxFor(m => m.Patients.Email, new { @placeholder = "Email", @class = "form-control" })<br />
-                    @Html.ValidationMessageFor(m => m.Patients.Email, "", new { @class = "text-danger" })
-                </div>
-            </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Patients.BloodGroup)
-                    @Html.DropDownListFor(m => m.Patients.BloodGroup, Model.BloodGroups, "Select Blood Group", new { @class = "form-control" })<br />
-                    @Html.ValidationMessageFor(m => m.Patients.BloodGroup, "", new { @class = "text-danger" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Patients.Gender)
-                    @Html.DropDownListFor(m => m.Patients.Gender, Model.GetGenders, "Select Gender", new { @class = "form-control" })<br />
-                    @Html.ValidationMessageFor(m => m.Patients.Gender, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                <div class="form-row">
 
-            <div class="form-row">
-                <div class="form-group">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Patients.Age)
+                        <div style="display: flex; align-items: center;">
+                            <button type="button" class="btn btn-secondary" onclick="changeAge(1)" style="border-radius: 0; border: 1px solid #ccc;">▲</button>
+                            @Html.TextBoxFor(m => m.Patients.Age, new { @placeholder = "Age", @class = "form-control", @required = "required", @min = "0", @max = "120", @id = "ageInput", @style = "width: 70px; text-align: center;", Value = @Session["Age"] })
+                            <button type="button" class="btn btn-secondary" onclick="changeAge(-1)" style="border-radius: 0; border: 1px solid #ccc;">▼</button>
+                        </div>
+                        <br />
+                        @Html.ValidationMessageFor(m => m.Patients.Age, "", new { @class = "text-danger" })
+                    </div>
+
+
+
+
+                    @*<div class="form-group">
                     @Html.LabelFor(m => m.Patients.Age)
-                    @Html.TextBoxFor(m => m.Patients.Age, new { @placeholder = "Age", @class = "form-control" })<br />
-                    @Html.ValidationMessageFor(m => m.Patients.Age, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.Patients.Age, new { @placeholder = "Age", @class = "form-control", @required = "required" })<br />
+                    @Html.ValidationMessageFor(m => m.Patients.Age, "", new { @class = "text-danger", @required = "requred" })
+                </div>*@
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Patients.PhoneNo)
+                        @Html.TextBoxFor(m => m.Patients.PhoneNo, new
+                        {
+                            @class = "form-control",
+                            placeholder = "Enter Phone Number",
+                            @pattern = @"^[6789]\d{9}$",
+                            @title = "Phone number must be 10 digits and start with 6, 7, 8, or 9.",
+                            @required = "required"
+                        })<br />
+                        @Html.ValidationMessageFor(m => m.Patients.PhoneNo, "", new { @class = "text-danger", Value = @Session["PhoneNo"] })
+                    </div>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Patients.PhoneNo)
-                    @Html.TextBoxFor(m => m.Patients.PhoneNo, new { @class = "form-control", placeholder = "Enter Phone Number" })<br />
-                    @Html.ValidationMessageFor(m => m.Patients.PhoneNo, "", new { @class = "text-danger" })
-                </div>
-            </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Patients.EmergencyContact)
-                    @Html.TextBoxFor(m => m.Patients.EmergencyContact, new { @class = "form-control", placeholder = "Enter Emergency Contact" })<br />
-                    @Html.ValidationMessageFor(m => m.Patients.EmergencyContact, "", new { @class = "text-danger" })
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Patients.EmergencyContact)
+                        @Html.TextBoxFor(m => m.Patients.EmergencyContact, new { @class = "form-control", placeholder = "Enter Emergency Contact", Value = @Session["EmergencyContact"] })<br />
+                        @Html.ValidationMessageFor(m => m.Patients.EmergencyContact, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Patients.Address)
+                        @Html.TextBoxFor(m => m.Patients.Address, new { @placeholder = "Address", @class = "form-control", @required = "required", Value = @Session["Address"] })<br />
+                        @Html.ValidationMessageFor(m => m.Patients.Address, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Patients.Address)
-                    @Html.TextBoxFor(m => m.Patients.Address, new { @placeholder = "Address", @class = "form-control" })<br />
-                    @Html.ValidationMessageFor(m => m.Patients.Address, "", new { @class = "text-danger" })
+
+                <div class="form-row">
+                    <input type="submit" value="Update Profile" class="btn-submit" />
                 </div>
-            </div>
+            }
 
-            <div class="form-row">
-                <input type="submit" value="Update Profile" class="btn-submit" />
-            </div>
-        }
-
-        @TempData["Message"]
+            @TempData["Message"]
+        </div>
     </div>
 </body>
 </html>
+
+
+<script>
+    function changeAge(delta) {
+        const ageInput = document.getElementById('ageInput');
+        let currentValue = parseInt(ageInput.value) || 0; // Default to 0 if not a number
+        let newValue = currentValue + delta;
+
+        // Ensure new value is within the min and max limits
+        if (newValue < 0) newValue = 0;
+        if (newValue > 120) newValue = 120;
+
+        ageInput.value = newValue; // Update the input value
+    }
+</script>

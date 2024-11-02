@@ -16,9 +16,9 @@ namespace Hospital_System.Models
 
         public string AmbulanceStatus { get; set; }
 
-        public  string AmbulanceDriver {get; set; }
+        public  string DriverName {get; set; }
 
-        public int AmbulanceDriverId { get; set; }  
+        public int DriverId { get; set; }  
 
 
     }

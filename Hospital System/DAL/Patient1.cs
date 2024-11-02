@@ -118,6 +118,10 @@ namespace Hospital_System.DAL
 
         public string Insertprofile(Patients patients)
         {
+
+
+           
+
             string res = " ";
             if (string.IsNullOrWhiteSpace(patients.UserName) ||
                 string.IsNullOrWhiteSpace(patients.FirstName) ||
@@ -145,11 +149,11 @@ namespace Hospital_System.DAL
             if (string.IsNullOrWhiteSpace(patients.UserName) ||
                string.IsNullOrWhiteSpace(patients.FirstName) ||
                string.IsNullOrWhiteSpace(patients.Email) ||
-               string.IsNullOrWhiteSpace(patients.BloodGroup) ||
+               //string.IsNullOrWhiteSpace(patients.BloodGroup) ||
                string.IsNullOrWhiteSpace(patients.Gender) ||
                string.IsNullOrWhiteSpace(patients.Age)||
-                string.IsNullOrWhiteSpace(patients.PhoneNo) ||
-                 string.IsNullOrWhiteSpace(patients.Address))
+                string.IsNullOrWhiteSpace(patients.PhoneNo) )
+                 //string.IsNullOrWhiteSpace(patients.Address))
             {
                 return "Enter All the Details ";
             }
@@ -193,8 +197,8 @@ namespace Hospital_System.DAL
                             ambulance2.Name = reader.GetString(reader.GetOrdinal("Name"));
                             ambulance2.AmbulanceId = Convert.ToInt32(reader["AmbulanceId"]); ;
                             ambulance2.AmbulanceStatus = reader.GetString(reader.GetOrdinal("AmbulanceStatus"));
-                            ambulance2.AmbulanceDriver = reader.GetString(reader.GetOrdinal("AmbulanceDriver"));
-                            ambulance2.AmbulanceDriverId = Convert.ToInt32(reader["AmbulanceDriverId"]);
+                            ambulance2.DriverName = reader.GetString(reader.GetOrdinal("DriverName"));
+                            ambulance2.DriverId = Convert.ToInt32(reader["DriverId"]);
                     };
                         ambulances1.Add(ambulance2);
                     }

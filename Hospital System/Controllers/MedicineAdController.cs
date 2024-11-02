@@ -38,39 +38,47 @@ namespace Hospital_System.Controllers
         //add medicine
         public ActionResult AddMedicineAd(MMedicineAd mMedicineAd)
         {
+            //if (ModelState.IsValid)
+            //{
+            //    // Map values to symbols
+            //    mMedicineAd.Morning = mMedicineAd.Morning == "Yes" ? "✔" : "✖";
+            //    mMedicineAd.Afternoon = mMedicineAd.Afternoon == "Yes" ? "✔" : "✖";
+            //    mMedicineAd.Night = mMedicineAd.Night == "Yes" ? "✔" : "✖";
+               
+            //}
             var ids = 0;
-
             List<MMedicineAd> mMedicineAds = new List<MMedicineAd>();
 
 
-            if (mMedicineAd.PatientId != 0)
-            {
-                mMedicineAds = adminBAL.AddMedicineAd(mMedicineAd);
-            }
-            if (mMedicineAds.Count == 0)
-            {
-                adminDAL = new AdminDAL();
-                if (mMedicineAd.PatientId == 0)
+                if (mMedicineAd.PatientId != 0)
                 {
-                    ids = adminDAL.MedicineId();
+                    mMedicineAds = adminBAL.AddMedicineAd(mMedicineAd);
                 }
-                mMedicineAd.PatientId = ids + 1;
-
-                var medicine = new DashboardDetails
+                if (mMedicineAds.Count == 0)
                 {
-                    Adminmenus = adminBAL.GetAdminmenus(),
-                    MMedicineAd = mMedicineAd
-                };
+                    adminDAL = new AdminDAL();
+                    if (mMedicineAd.PatientId == 0)
+                    {
+                        ids = adminDAL.MedicineId();
+                    }
+                    mMedicineAd.PatientId = ids + 1;
+
+                    var medicine = new DashboardDetails
+                    {
+                        Adminmenus = adminBAL.GetAdminmenus(),
+                        MMedicineAd = mMedicineAd
+                    };
 
 
 
-                return View(medicine);
-            }
-            else
-            {
-                return RedirectToAction("MedicineAdList", mMedicineAds);
-            }
+                    return View(medicine);
+                }
+                else
+                {
+                    return RedirectToAction("MedicineAdList", mMedicineAds);
+                }
 
+            
         }
 
         //edit Medicine

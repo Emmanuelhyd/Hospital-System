@@ -12,8 +12,11 @@ namespace Hospital_System.Models
         public int Id { get; set; }
 
         public string DepartmentName { get; set; }
+        public string DoctorName { get; set; }
+        public string Education { get; set; }
 
         public string Description { get; set; }
+        public string Gender { get; set; }
 
         public string Status {  get; set; }
     }

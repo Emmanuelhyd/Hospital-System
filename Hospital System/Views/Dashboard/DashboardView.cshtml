@@ -7,6 +7,8 @@
 
 @using (Html.BeginForm())
 {
+
+   
     <div id="dashboard">
         <div class="link-container" id="tab1">
             <a href="/Department/DepartmentList" class="link">
@@ -78,8 +80,10 @@
                 </div>
                 <p class="count">@Model.MAmbulanceCount</p>
                 <span class="tag">Ambulance</span>
+
             </a>
         </div>
+
     </div>
 }
 
@@ -121,7 +125,8 @@
     .icon {
         font-size: 36px;
         margin-bottom: 15px;
-        color: palevioletred    }
+        color: palevioletred
+    }
 
     .count {
         font-size: 28px;

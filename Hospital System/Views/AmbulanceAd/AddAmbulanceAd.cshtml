@@ -31,14 +31,26 @@
             }, "Value", "Text"), "Select Status", new { @class = "form-control" })
         </div>
         <div class="form-group">
-            <label>@Html.LabelFor(m => m.mAmbulance.AmbulanceDriver)</label>
-            @Html.TextBoxFor(m => m.mAmbulance.AmbulanceDriver, new { @required = "required", @placeholder = "Enter your AmbulanceDriver", @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.mAmbulance.AmbulanceDriver, "", new { @class = "text-danger" })
+            <label>@Html.LabelFor(m => m.mAmbulance.DriverName)</label>
+            @Html.TextBoxFor(m => m.mAmbulance.DriverName, new { @required = "required", @placeholder = "Enter your AmbulanceDriver", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.mAmbulance.DriverName, "", new { @class = "text-danger" })
         </div>
         <div class="form-group">
-            <label>@Html.LabelFor(m => m.mAmbulance.AmbulanceDriverId)</label>
-            @Html.TextBoxFor(m => m.mAmbulance.AmbulanceDriverId, new { @required = "required", @placeholder = "Enter your AmbulanceDriverId", @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.mAmbulance.AmbulanceDriverId, "", new { @class = "text-danger" })
+            <label>@Html.LabelFor(m => m.mAmbulance.DriverId)</label>
+            @Html.TextBoxFor(m => m.mAmbulance.DriverId, new { @required = "required", @placeholder = "Enter your AmbulanceDriverId", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.mAmbulance.DriverId, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.mAmbulance.Contact)
+            @Html.TextBoxFor(m => m.mAmbulance.Contact, new { @required = "required", @placeholder = "Registered Mobile Number", @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.mAmbulance.Address)
+            @Html.TextBoxFor(m => m.mAmbulance.Address, new { @required = "required", @placeholder = "Enter your Address", @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.mAmbulance.CNIC)
+            @Html.TextBoxFor(m => m.mAmbulance.CNIC, new { @required = "required", @placeholder = "Enter your CNIC", @class = "form-control" })
         </div>
         <div class="form-actions">
             <input type="submit" class="back-button" value="Submit" />

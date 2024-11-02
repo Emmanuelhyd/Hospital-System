@@ -16,6 +16,11 @@ namespace Hospital_System.Controllers
         // GET: Dashboard
         public ActionResult DashboardView()
         {
+
+            Patients patients = new Patients();
+
+
+
             var model = new DashboardDetails
             {
               
@@ -30,6 +35,8 @@ namespace Hospital_System.Controllers
                 MPatientCount = adminBAL.GetMPatientCount(),
                 MSheduleCount = adminBAL.GetMSheduleCount(),
                 Adminmenus = adminBAL.GetAdminmenus(),
+                //TodayDate = DateTime.Now // Set today's date
+
 
             };
             return View(model);

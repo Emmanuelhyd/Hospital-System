@@ -10,34 +10,57 @@
 @using (Html.BeginForm("AddDepartment", "Department"))
 {
     <div style="position: absolute; width: 85%; margin-left: 15%; background-color: white;margin-top:18px;">
-        <div >
+        <div>
 
             <div>
                 <div>Id</div>
-                <div>@Html.TextBoxFor(m =>m.MDepartment.Id)</div>
+                <div>@Html.TextBoxFor(m => m.MDepartment.Id)</div>
             </div>
             <div>
                 <div>DepartmentName</div>
                 <div>@Html.TextBoxFor(m => m.MDepartment.DepartmentName, new { @required = "required", @placeholder = "Department Name" })</div>
             </div>
             <div>
+                <div>DoctorName</div>
+                <div>@Html.TextBoxFor(m => m.MDepartment.DoctorName, new { @required = "required", @placeholder = "Doctor Name" })</div>
+            </div>
+            <div>
+                <div>Education</div>
+                <div>@Html.TextBoxFor(m => m.MDepartment.Education, new { @required = "required", @placeholder = "Education" })</div>
+            </div>
+            <div>
                 <div>Description</div>
                 <div>@Html.TextBoxFor(m => m.MDepartment.Description, new { @required = "required", @placeholder = "Description" })</div>
             </div>
             <div>
-                <div> @Html.LabelFor(m => m.MDepartment.Status, "Status")</div>
-                
-                    @Html.DropDownListFor(m => m.MDepartment.Status, new SelectList(new List<SelectListItem>
-              {
-                    
-                     new SelectListItem { Value = "Active", Text = "Active" },
-                     new SelectListItem { Value = "Inactive", Text = "Inactive" },
-   
-                 }, "Value", "Text"), "Select Status", new { @class = "form-control" })
-                </div>
+                <div> @Html.LabelFor(m => m.MDepartment.Gender, "Status")</div>
+
+                @Html.DropDownListFor(m => m.MDepartment.Gender, new SelectList(new List<SelectListItem>
+          {
+
+                 new SelectListItem { Value = "Male", Text = "Male" },
+                 new SelectListItem { Value = "Female", Text = "Female" },
+                                  new SelectListItem { Value = "Others", Text = "Others" },
 
 
+             }, "Value", "Text"), "Select Gender", new { @class = "form-control", @required = "required" })
             </div>
+
+
+            <div>
+                <div> @Html.LabelFor(m => m.MDepartment.Status, "Status")</div>
+
+                @Html.DropDownListFor(m => m.MDepartment.Status, new SelectList(new List<SelectListItem>
+          {
+
+                 new SelectListItem { Value = "Active", Text = "Active" },
+                 new SelectListItem { Value = "Inactive", Text = "Inactive" },
+
+             }, "Value", "Text"), "Select Status", new { @class = "form-control", @required = "required" })
+            </div>
+
+
+        </div>
             <div ><input type="submit" value="Submit"></div>
         <div style="margin-left: 99px; margin-top: -43px;"> <button type="button" class="back-button" onclick=" Back()"> Back </button></div>
         </div>

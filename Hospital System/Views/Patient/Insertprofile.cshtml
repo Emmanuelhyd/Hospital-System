@@ -5,6 +5,7 @@
 
 @{
     ViewBag.Title = "Insert Profile";
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -126,54 +127,73 @@
                 @TempData["result"]
             </div>
 
-           
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.UserName)
-        @Html.TextBoxFor(m => m.UserName, new { @placeholder = "UserName", @class = "form-control" })     <br />
 
-    <div style="margin-left: -271px; margin-top: 59px;">   @Html.ValidationMessageFor(m => m.UserName, "", new { @required = "required", @class = "text-danger" })</div>
-    </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName, new { @placeholder = "UserName", @class = "form-control" ,@required="reqired"})     <br />
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.FirstName)
-        @Html.TextBoxFor(m => m.FirstName, new { @placeholder = "First Name", @class = "form-control" })<br />
-        <div style="margin-left: -271px; margin-top: 59px; "> @Html.ValidationMessageFor(m => m.FirstName, "", new { @required = "required", @class = "text-danger" })</div>
-    </div>
+                <div style="margin-left: -271px; margin-top: 59px;">   @Html.ValidationMessageFor(m => m.UserName, "", new { @required = "required", @class = "text-danger" })</div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.FirstName, new { @placeholder = "First Name", @class = "form-control",@required="required" })<br />
+                <div style="margin-left: -271px; margin-top: 59px; "> @Html.ValidationMessageFor(m => m.FirstName, "", new { @required = "required", @class = "text-danger" })</div>
+            </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.LastName)
-                @Html.TextBoxFor(m => m.LastName, new { @placeholder = "Last Name", @class = "form-control" }) <br />
-          
-      <div style="margin-left: -271px; margin-top: 59px; ">@Html.ValidationMessageFor(m => m.LastName, "", new { @required = "required", @class = "text-danger" })</div>
+                @Html.TextBoxFor(m => m.LastName, new { @placeholder = "Last Name", @class = "form-control",@required="required" }) <br />
+
+                <div style="margin-left: -271px; margin-top: 59px; ">@Html.ValidationMessageFor(m => m.LastName, "", new { @required = "required", @class = "text-danger" })</div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.Email)
-                @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email", @class = "form-control" })  <br />
+                @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email", @class = "form-control",@type="email" , @required = "required" })  <br />
                 <div style="margin-left: -271px; margin-top: 59px; ">
-                    @Html.ValidationMessageFor(m => m.Email, "", new { @required = "required", @class = "text-danger" })</div>
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @required = "required", @class = "text-danger" })
                 </div>
+            </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "form-control" }) <br />
+                @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "form-control",@required = "required" }) <br />
                 <div style="margin-left: -271px; margin-top: 59px; ">
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @required = "required", @class = "text-danger" })</div>
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @required = "required", @class = "text-danger" })
                 </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.PhoneNo)
-                    @Html.TextBoxFor(m => m.PhoneNo, new { @placeholder = "Phone Number", @class = "form-control" })<br />
-                    <div style="margin-left: -271px; margin-top: 59px; ">
-                        @Html.ValidationMessageFor(m => m.PhoneNo, "", new { @required = "required",@class = "text-danger" })</div>
-                    </div>
-
-                <div class="form-row">
-                    <input type="submit" value="Register" class="btn-submit" />
-                </div>
-                }
             </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.PhoneNo)
+                @Html.TextBoxFor(m => m.PhoneNo, new
+                {
+                    @placeholder = "Phone Number",
+                    @class = "form-control",
+                    @pattern = @"^[6789]\d{9}$",
+                    @title = "Phone number must be 10 digits and start with 6, 7, 8, or 9.",
+                    @required = "required"
+                })<br />
+                <div style="margin-left: -271px; margin-top: 59px;">
+                    @Html.ValidationMessageFor(m => m.PhoneNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            @*<div class="form-group">
+            @Html.LabelFor(m => m.PhoneNo)
+            @Html.TextBoxFor(m => m.PhoneNo, new { @placeholder = "Phone Number", @class = "form-control" })<br />
+            <div style="margin-left: -271px; margin-top: 59px; ">
+                @Html.ValidationMessageFor(m => m.PhoneNo, "", new { @required = "required",@class = "text-danger" })</div>
+            </div>*@
+
+            <div class="form-row">
+                <input type="submit" value="Register" class="btn-submit" />
+            </div>
+        }
+    </div>
 </body>
 </html>
 

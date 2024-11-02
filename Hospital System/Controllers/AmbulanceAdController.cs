@@ -172,100 +172,100 @@ namespace Hospital_System.Controllers
         //Add driver
         //[HttpPost]
         
-        public ActionResult AddDriverAd(MDriverAd mDriverAd)
-        {
-            var ids = 0;
+        //public ActionResult AddDriverAd(MDriverAd mDriverAd)
+        //{
+        //    var ids = 0;
 
-            List<MDriverAd> mDriverAds = new List<MDriverAd>();
+        //    List<MDriverAd> mDriverAds = new List<MDriverAd>();
             
 
-            if (mDriverAd.Id != 0)
-            {
-                mDriverAds = adminBAL.AddDriverAd(mDriverAd);
-            }
-            else  if (mDriverAds.Count == 0)
-                {
-                adminDAL = new AdminDAL();
-                if (mDriverAd.Id == 0)
-                {
-                    ids = adminDAL.DynamicId();
-                }
-                mDriverAd.Id = ids+1;
-                var drivers = new DashboardDetails
-                {
-                    Adminmenus = adminBAL.GetAdminmenus(),
-                    MDriverAd = mDriverAd
-                };
+        //    if (mDriverAd.Id != 0)
+        //    {
+        //        mDriverAds = adminBAL.AddDriverAd(mDriverAd);
+        //    }
+        //    else  if (mDriverAds.Count == 0)
+        //        {
+        //        adminDAL = new AdminDAL();
+        //        if (mDriverAd.Id == 0)
+        //        {
+        //            ids = adminDAL.DynamicId();
+        //        }
+        //        mDriverAd.Id = ids+1;
+        //        var drivers = new DashboardDetails
+        //        {
+        //            Adminmenus = adminBAL.GetAdminmenus(),
+        //            MDriverAd = mDriverAd
+        //        };
 
-                return View(drivers);
-                }
+        //        return View(drivers);
+        //        }
                
                 
-                    return RedirectToAction("AmbulanceDriverAd", mDriverAds);
+        //            return RedirectToAction("AmbulanceDriverAd", mDriverAds);
                 
            
 
-            //return View(mDriver);
-        }
-        //driver edit
-        public ActionResult DriverEdit(int Id)
-        {
-            if (Id <= 0)
-                return HttpNotFound();
+        //    //return View(mDriver);
+        //}
+        ////driver edit
+        //public ActionResult DriverEdit(int Id)
+        //{
+        //    if (Id <= 0)
+        //        return HttpNotFound();
 
-            MDriverAd mDriver = new MDriverAd();
-            mDriver = adminBAL.DriverEdit(Id);
+        //    MDriverAd mDriver = new MDriverAd();
+        //    mDriver = adminBAL.DriverEdit(Id);
 
-            var drivers = new DashboardDetails
-            {
-                Adminmenus = adminBAL.GetAdminmenus(),
-                MDriverAd = mDriver
-            };
+        //    var drivers = new DashboardDetails
+        //    {
+        //        Adminmenus = adminBAL.GetAdminmenus(),
+        //        MDriverAd = mDriver
+        //    };
 
-            if (mDriver.Id != 0)
-            {
+        //    if (mDriver.Id != 0)
+        //    {
 
-                return View("AddDriverAd", drivers);
-            }
-            else
-            {
-                return RedirectToAction("AmbulanceDriverAd", "AmbulanceAd");
+        //        return View("AddDriverAd", drivers);
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("AmbulanceDriverAd", "AmbulanceAd");
 
-            }
-        }
+        //    }
+        //}
 
-        //driver delete
+        ////driver delete
 
-        public ActionResult DriverDelete(int Id)
-        {
-            List<MDriverAd> mDriverAds = new List<MDriverAd>();
+        //public ActionResult DriverDelete(int Id)
+        //{
+        //    List<MDriverAd> mDriverAds = new List<MDriverAd>();
 
-            mDriverAds = adminBAL.DriverDelete(Id);
-            return RedirectToAction("AmbulanceDriverAd", "AmbulanceAd");
-        }
+        //    mDriverAds = adminBAL.DriverDelete(Id);
+        //    return RedirectToAction("AmbulanceDriverAd", "AmbulanceAd");
+        //}
 
-        // view driver details
+        //// view driver details
 
-        public ActionResult Ambulancedriver( int Id)
-            {
+        //public ActionResult Ambulancedriver( int Id)
+        //    {
            
-                MDriverAd mDriver = adminBAL.Ambulancedriver(Id);
+        //        MDriverAd mDriver = adminBAL.Ambulancedriver(Id);
 
-                if (mDriver == null)
-                {
-                    return HttpNotFound("ID not found");
-                }
+        //        if (mDriver == null)
+        //        {
+        //            return HttpNotFound("ID not found");
+        //        }
 
-            var driver = new DashboardDetails
-            {
-                Adminmenus = adminBAL.GetAdminmenus(),
-                MDriverAd = mDriver
-            };
+        //    var driver = new DashboardDetails
+        //    {
+        //        Adminmenus = adminBAL.GetAdminmenus(),
+        //        MDriverAd = mDriver
+        //    };
                 
-                return PartialView("_Ambulancedriver", driver);
+        //        return PartialView("_Ambulancedriver", driver);
 
             
-        }
+        //}
 
 
     }

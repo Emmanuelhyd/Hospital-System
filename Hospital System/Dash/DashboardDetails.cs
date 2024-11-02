@@ -66,6 +66,6 @@ namespace Hospital_System.Dash
 
         public UpdateDO UpdateDO { get; set; }
 
-
+        //public DateTime TodayDate { get; set; }
     }
 }

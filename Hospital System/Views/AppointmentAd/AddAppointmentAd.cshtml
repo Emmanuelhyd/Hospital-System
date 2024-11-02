@@ -26,21 +26,21 @@
             @Html.ValidationMessageFor(m => m.MAppointmentAd.PatientName, "", new { @class = "text-danger" })
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             <label for="PatientType">Patient Type</label>
             @Html.TextBoxFor(m => m.MAppointmentAd.PatientType, new { @class = "form-control", @required = "required", @placeholder = "Enter Patient Type" })
             @Html.ValidationMessageFor(m => m.MAppointmentAd.PatientType, "", new { @class = "text-danger" })
-        </div>
+        </div>*@
 
-        <div class="form-group">
-            <label for="Gender">Gender</label>
-            @Html.DropDownListFor(m => m.MAppointmentAd.Gender, new SelectList(new List<SelectListItem>
-            {
-                new SelectListItem { Value = "Male", Text = "Male" },
-                new SelectListItem { Value = "Female", Text = "Female" },
-                new SelectListItem { Value = "Others", Text = "Others" },
-            }, "Value", "Text"), "Select Gender", new { @class = "form-control" })
-        </div>
+    <div class="form-group">
+        <label for="Gender">Gender</label>
+        @Html.DropDownListFor(m => m.MAppointmentAd.Gender, new SelectList(new List<SelectListItem>
+        {
+            new SelectListItem { Value = "Male", Text = "Male" },
+            new SelectListItem { Value = "Female", Text = "Female" },
+            new SelectListItem { Value = "Others", Text = "Others" },
+        }, "Value", "Text"), "Select Gender", new { @class = "form-control", @required = "required" })
+    </div>
 
         <div class="form-group">
             <label for="Problem">Problem</label>
@@ -50,9 +50,22 @@
 
         <div class="form-group">
             <label for="PhoneNumber">Phone Number</label>
-            @Html.TextBoxFor(m => m.MAppointmentAd.PhoneNumber, new { @class = "form-control", @required = "required", @placeholder = "Enter Phone Number" })
+            @Html.TextBoxFor(m => m.MAppointmentAd.PhoneNumber, new
+            {
+                @class = "form-control",
+                @required = "required",
+                @placeholder = "Enter Phone Number",
+                @pattern = @"^[6789]\d{9}$",
+                @title = "Enter a valid 10-digit phone number starting with 7, 8, or 9."
+            })
             @Html.ValidationMessageFor(m => m.MAppointmentAd.PhoneNumber, "", new { @class = "text-danger" })
         </div>
+
+        @*<div class="form-group">
+            <label for="PhoneNumber">Phone Number</label>
+            @Html.TextBoxFor(m => m.MAppointmentAd.PhoneNumber, new { @class = "form-control", @required = "required", @placeholder = "Enter Phone Number" })
+            @Html.ValidationMessageFor(m => m.MAppointmentAd.PhoneNumber, "", new { @class = "text-danger" })
+        </div>*@
 
         <div class="form-group">
             <label for="Address">Address</label>
@@ -66,11 +79,24 @@
             @Html.ValidationMessageFor(m => m.MAppointmentAd.Date, "", new { @class = "text-danger" })
         </div>
 
+
         <div class="form-group">
+            <label for="Time">Time</label>
+            @Html.TextBoxFor(m => m.MAppointmentAd.Time, new
+            {
+                @class = "form-control",
+                @required = "required",
+                @placeholder = "Enter Time",
+                @type = "time"
+            })
+            @Html.ValidationMessageFor(m => m.MAppointmentAd.Time, "", new { @class = "text-danger" })
+        </div>
+
+        @*<div class="form-group">
             <label for="Time">Time</label>
             @Html.TextBoxFor(m => m.MAppointmentAd.Time, new { @class = "form-control", @required = "required", @placeholder = "Enter Time" })
             @Html.ValidationMessageFor(m => m.MAppointmentAd.Time, "", new { @class = "text-danger" })
-        </div>
+        </div>*@
 
         <div class="form-group">
             <label for="Description">Description</label>

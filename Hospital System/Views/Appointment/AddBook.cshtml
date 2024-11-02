@@ -113,11 +113,11 @@
                 @Html.ValidationMessageFor(m => m.mAppointmentAd.PatientName, "", new { @class = "text-danger" })
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(m => m.mAppointmentAd.PatientType)
-                @Html.DropDownListFor(m => m.mAppointmentAd.PatientType, Model.GetTypes, "Select Patient Type", new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.mAppointmentAd.PatientType, "", new { @class = "text-danger" })
-            </div>
+            @*<div class="form-group">
+            @Html.LabelFor(m => m.mAppointmentAd.PatientType)
+            @Html.DropDownListFor(m => m.mAppointmentAd.PatientType, Model.GetTypes, "Select Patient Type", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.mAppointmentAd.PatientType, "", new { @class = "text-danger" })
+        </div>*@
 
             <div class="form-group">
                 @Html.LabelFor(m => m.mAppointmentAd.Gender)
@@ -126,7 +126,7 @@
                     new SelectListItem { Value = "male", Text = "Male" },
                     new SelectListItem { Value = "female", Text = "Female" },
                     new SelectListItem { Value = "others", Text = "Others" }
-                }, "Value", "Text"), "Select Gender", new { @class = "form-control" })
+                }, "Value", "Text"), "Select Gender", new { @class = "form-control", @required = "required" })
             </div>
 
             <div class="form-group">
@@ -149,16 +149,24 @@
                     new SelectListItem { Value = "Oncology", Text = "Oncology" },
                     new SelectListItem { Value = "Radiology", Text = "Radiology" },
                     new SelectListItem { Value = "Dermatology", Text = "Dermatology" }
-                }, "Value", "Text"), "Select Department", new { @class = "form-control" })
+                }, "Value", "Text"), "Select Department", new {@required="required", @class = "form-control" })
             </div>
 
 
 
             <div class="form-group">
                 @Html.LabelFor(m => m.mAppointmentAd.PhoneNumber)
-                @Html.TextBoxFor(m => m.mAppointmentAd.PhoneNumber, new { @required = "required", @placeholder = "Phone Number", @class = "form-control" })
+                @Html.TextBoxFor(m => m.mAppointmentAd.PhoneNumber, new
+                {
+                    @required = "required",
+                    @placeholder = "Phone Number",
+                    @class = "form-control",
+                    @pattern = @"^[6789]\d{9}$", // Regex pattern for 10-digit phone number starting with 6, 7, 8, or 9
+                    @title = "Please enter a valid 10-digit phone number starting with 6, 7, 8, or 9." // Tooltip for users
+                })
                 @Html.ValidationMessageFor(m => m.mAppointmentAd.PhoneNumber, "", new { @class = "text-danger" })
             </div>
+
 
             <div class="form-group">
                 @Html.LabelFor(m => m.mAppointmentAd.Address)

@@ -8,7 +8,9 @@ namespace Hospital_System.Models
     public class MDriverAd
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+       
+        public string DriverName { get; set; }
+        public int DriverId { get; set; }
         public string Contact { get; set; }
         public string Address { get; set; }
         public string CNIC { get; set; }

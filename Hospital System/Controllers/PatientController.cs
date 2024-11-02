@@ -40,14 +40,20 @@ namespace Hospital_System.Controllers
         public ActionResult Login(Patients patients)
 
         {
+            
             string res = patientBAL.Login(patients);
 
             if (res == "success")
             {
-                Session["UserName"] = patients.UserName;
+
+
+               
+
+                Session["UserName"] = patients.UserNameOrEmail;
                 Session["PatientId"] = patients.PatientId;
                 Session["Email"] = patients.Email;
                 Session["UsernameorEmail"] = patients.UserNameOrEmail;
+                Session["FirstName"] = patients.FirstName;
 
 
 
@@ -136,6 +142,14 @@ namespace Hospital_System.Controllers
                 }
             }
 
+            
+            Session["LastName"] = patients.LastName;
+            Session["BloodGroup"] = patients.BloodGroup;
+            Session["Age"] = patients.Age;
+            Session["PhoneNo"] = patients.PhoneNo;
+            Session["EmergencyContact"] = patients.EmergencyContact;
+            Session["Address"] = patients.Address;
+
             TempData["result"] = "Enter All the details";
 
 
@@ -143,32 +157,82 @@ namespace Hospital_System.Controllers
         }
 
         [HttpGet]
-        public ActionResult Updateprofile()
+        public ActionResult UpdateProfile()
         {
+            Patients patients = new Patients();
+
+            Patients patients1 = new Patients();
+
+            SessionDAL sessionDAL = new SessionDAL();
+
+
+
+           
+
             var patientId = Session["PatientId"] != null ? (int)Session["PatientId"] : 0;
+           
             var menu = menuBAL.GetMenus();
 
-            var model = new Allview
+            patients1 = sessionDAL.GetPaientDetails(patientId);
 
+           var model = new Allview
             {
-
-                Patients = new Patients
-                {
-                    PatientId = patientId,
-                },
-
+                             
+                Patients = patients1,
                 Menus = menu,
                 BloodGroups = new SelectList(GetBloodGroups(), "Value", "Text"),
                 GetGenders = new SelectList(GetGenders(), "Value", "Text")
             };
+
+
             ViewBag.PatientId = patientId;
+
             return View(model);
         }
+
+
+
+
+
+
+        //public ActionResult Updateprofile()
+        //{
+
+        //    Patients patients=new Patients();
+
+
+        //    var patientId = Session["PatientId"] != null ? (int)Session["PatientId"] : 0;
+        //    var userName = Session["UserName"] != null ? (string)Session["UserName"] : string.Empty;  // Use string.Empty for a default value
+
+
+        //    var menu = menuBAL.GetMenus();
+
+
+
+        //    var model = new Allview
+
+        //    {
+
+        //        Patients = new Patients
+        //        {
+        //            PatientId = patientId,
+        //        },
+
+        //        Menus = menu,
+        //        BloodGroups = new SelectList(GetBloodGroups(), "Value", "Text"),
+        //        GetGenders = new SelectList(GetGenders(), "Value", "Text")
+        //    };
+        //    ViewBag.PatientId = patientId;
+        //    ViewBag.UserName = userName;
+
+        //    return View(model);
+        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult UpdateProfile(Patients patients)
         {
+
             if(ModelState.IsValid)
             {
                 patients.BloodGroups = new SelectList(GetBloodGroups(), "Value", "Text");

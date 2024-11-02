@@ -225,6 +225,7 @@
     <Compile Include="BAL\CommonBAL.cs" />
     <Compile Include="BAL\ConsultantAdBAL.cs" />
     <Compile Include="BAL\ConsultBAL.cs" />
+    <Compile Include="BAL\DepartmentPBAL.cs" />
     <Compile Include="BAL\DischargeAdBAL.cs" />
     <Compile Include="BAL\DischargeBAL.cs" />
     <Compile Include="BAL\DoctorBAL.cs" />
@@ -239,6 +240,7 @@
     <Compile Include="BAL\OPBAL.cs" />
     <Compile Include="BAL\OutPatientAdBAL.cs" />
     <Compile Include="BAL\PatientBAL.cs" />
+    <Compile Include="BAL\SessionBAL.cs" />
     <Compile Include="BAL\VaccineAdBAL.cs" />
     <Compile Include="BAL\VaccineBAL.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -259,6 +261,7 @@
     <Compile Include="Controllers\ConsultController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\DepartmentPatientController.cs" />
     <Compile Include="Controllers\DischargeAdminController.cs" />
     <Compile Include="Controllers\DischargeController.cs" />
     <Compile Include="Controllers\DoctorAdController.cs" />
@@ -295,6 +298,7 @@
     <Compile Include="DAL\CommonDAL.cs" />
     <Compile Include="DAL\ConsultantAdDAL.cs" />
     <Compile Include="DAL\ConsultDAL.cs" />
+    <Compile Include="DAL\DepartmentPDAL.cs" />
     <Compile Include="DAL\DischargeAdDAL.cs" />
     <Compile Include="DAL\DischargeDAL.cs" />
     <Compile Include="DAL\DoctorDAL.cs" />
@@ -309,6 +313,7 @@
     <Compile Include="DAL\OPDAL.cs" />
     <Compile Include="DAL\OutPatientAdDAL.cs" />
     <Compile Include="DAL\Patient1.cs" />
+    <Compile Include="DAL\SessionDAL.cs" />
     <Compile Include="DAL\VaccineDAL.cs" />
     <Compile Include="DAL\VacineAdDAL.cs" />
     <Compile Include="Dash\DashboardDetails.cs" />
@@ -626,6 +631,7 @@
     <Content Include="Views\Admin\TotalDonors.cshtml" />
     <Content Include="Views\Shared\_LayoutBlood.cshtml" />
     <Content Include="Views\Shared\_UserLayoutBlod.cshtml" />
+    <Content Include="Views\DepartmentPatient\DepList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

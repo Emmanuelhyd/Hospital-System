@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "Ambulance";
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -59,10 +60,10 @@
                 <tr>
                     <th>@Html.DisplayNameFor(m => m.Id)</th>
                     <th>@Html.DisplayNameFor(m => m.Name)</th>
-                    <th>@Html.DisplayNameFor(m => m.AmbulanceDriverId)</th>
+                    <th>@Html.DisplayNameFor(m => m.AmbulanceId)</th>
                     <th>@Html.DisplayNameFor(m => m.AmbulanceStatus)</th>
-                    <th>@Html.DisplayNameFor(m => m.AmbulanceDriver)</th>
-                    <th>@Html.DisplayNameFor(m => m.AmbulanceDriverId)</th>
+                    <th>@Html.DisplayNameFor(m => m.DriverName)</th>
+                    <th>@Html.DisplayNameFor(m => m.DriverId)</th>
                 </tr>
             </thead>
             <tbody>
@@ -74,8 +75,8 @@
                         <td> @Html.DisplayFor(m => ambulance.Name)</td>
                         <td> @Html.DisplayFor(m => ambulance.AmbulanceId)</td>
                         <td> @Html.DisplayFor(m => ambulance.AmbulanceStatus)</td>
-                        <td> @Html.DisplayFor(m => ambulance.AmbulanceDriver)</td>
-                        <td> @Html.DisplayFor(m => ambulance.AmbulanceDriverId)</td>
+                        <td> @Html.DisplayFor(m => ambulance.DriverName)</td>
+                        <td> @Html.DisplayFor(m => ambulance.DriverId)</td>
 
                     </tr>
                 }

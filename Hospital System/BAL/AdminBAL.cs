@@ -353,25 +353,25 @@ namespace Hospital_System.BAL
         }
         //add Driver
 
-        public List<MDriverAd> AddDriverAd(MDriverAd mDriverAd)
-        {
-            List<MDriverAd> mDriverAds = new List<MDriverAd>();
-            mDriverAds = adminDAL.AddDriverAd(mDriverAd);
-            return mDriverAds;
-        }
+        //public List<MDriverAd> AddDriverAd(MDriverAd mDriverAd)
+        //{
+        //    List<MDriverAd> mDriverAds = new List<MDriverAd>();
+        //    mDriverAds = adminDAL.AddDriverAd(mDriverAd);
+        //    return mDriverAds;
+        //}
         //Edit driver
-        public MDriverAd DriverEdit(int Id)
-        {
-            MDriverAd mDriverAds = adminDAL.DriverEdit(Id);
+        //public MDriverAd DriverEdit(int Id)
+        //{
+        //    MDriverAd mDriverAds = adminDAL.DriverEdit(Id);
 
-            return mDriverAds;
-        }
-        //driver delete
-        public List<MDriverAd> DriverDelete(int Id)
-        {
-            List<MDriverAd> mDriverAds = adminDAL.DriverDelete(Id);
-            return mDriverAds;
-        }
+        //    return mDriverAds;
+        //}
+        ////driver delete
+        //public List<MDriverAd> DriverDelete(int Id)
+        //{
+        //    List<MDriverAd> mDriverAds = adminDAL.DriverDelete(Id);
+        //    return mDriverAds;
+        //}
         //Driver View
         public MDriverAd Ambulancedriver(int Id)
         {
