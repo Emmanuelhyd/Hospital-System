@@ -1,0 +1,131 @@
+﻿@model IEnumerable<Hospital_System.Models.MDepartment>
+
+
+@{
+    ViewBag.Title = "Department List";
+    Layout = null;
+}
+
+@using (Html.BeginForm("Search", "YourControllerName", FormMethod.Post)) // Specify the action and controller for the form
+{
+    <div style="width: 100%; background-color: white; margin: 44px auto; padding: 20px; border-radius: 8px;">
+        <h2 style="text-align: center;">Department List</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Department Name</th>
+                    <th>Doctor Name</th>
+                    <th>Education</th>
+                    <th>Description</th>
+                    <th>Gender</th>
+                    <th>Status</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) // Corrected from mDepartment to mDepartments
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DepartmentName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DoctorName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Education)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f4f4f4;
+    }
+
+    h2 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    input[type="button"], input[type="submit"] {
+        padding: 10px 15px;
+        margin-right: 10px;
+        border: none;
+        background-color: #3051bd;
+        color: white;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+        input[type="button"]:hover, input[type="submit"]:hover {
+            background-color: #25499b; /* Darker shade for hover */
+        }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden; /* Rounded corners */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    function confirmDelete(deleteUrl) {
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this record!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            closeOnConfirm: false
+        }, function () {
+            $.ajax({
+                url: deleteUrl,
+                type: 'POST',
+                success: function (result) {
+                    swal("Deleted!", "Your record has been deleted.", "success");
+                    location.reload(); // Reload the page to see changes
+                },
+                error: function (err) {
+                    swal("Error!", "There was a problem deleting the record.", "error");
+                }
+            });
+        });
+    }
+</script>
