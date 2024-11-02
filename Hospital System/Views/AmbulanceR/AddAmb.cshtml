@@ -40,6 +40,7 @@
         </div>
 
         <div class="form-group">
+
             @Html.LabelFor(m => m.DriverName)
             @Html.TextBoxFor(m => m.DriverName, new { @required = "required", @placeholder = "Driver Name" })
             @Html.ValidationMessageFor(m => m.DriverName, "", new { @class = "text-danger" })
@@ -49,6 +50,17 @@
             @Html.LabelFor(m => m.DriverId)
             @Html.TextBoxFor(m => m.DriverId, new { @required = "required", @placeholder = "DriverId" })
             @Html.ValidationMessageFor(m => m.DriverId, "", new { @class = "text-danger" })
+
+            @Html.LabelFor(m => m.AmbulanceDriver)
+            @Html.TextBoxFor(m => m.AmbulanceDriver, new { @required = "required", @placeholder = "Enter your AmbulanceDriver" })
+            @Html.ValidationMessageFor(m => m.AmbulanceDriver, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.AmbulanceDriverId)
+            @Html.TextBoxFor(m => m.AmbulanceDriverId, new { @required = "required", @placeholder = "Enter your AmbulanceDriverId" })
+            @Html.ValidationMessageFor(m => m.AmbulanceDriverId, "", new { @class = "text-danger" })
+
         </div>
 
         <div>

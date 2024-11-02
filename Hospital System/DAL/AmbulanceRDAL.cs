@@ -33,7 +33,11 @@ namespace Hospital_System.DAL
             {
 
                 con.Open();
+<<<<<<< HEAD
                 cmd = new SqlCommand("select * from Ambulance", con);
+=======
+                cmd = new SqlCommand("select * from ambulance", con);
+>>>>>>> b59c9658e9de86ff70e78a0b23c6813c6975d124
                 SqlDataReader sdr;
                 sdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
@@ -46,8 +50,13 @@ namespace Hospital_System.DAL
                             Name = row["Name"].ToString(),
                             AmbulanceId = Convert.ToInt32(row["AmbulanceId"]),
                             AmbulanceStatus = row["AmbulanceStatus"].ToString(),
+<<<<<<< HEAD
                             DriverName = row["DriverName"].ToString(),
                             DriverId = Convert.ToInt32(row["DriverId"]),
+=======
+                            AmbulanceDriver = row["AmbulanceDriver"].ToString(),
+                            AmbulanceDriverId = Convert.ToInt32(row["AmbulanceDriverId"]),
+>>>>>>> b59c9658e9de86ff70e78a0b23c6813c6975d124
 
 
                         });
@@ -61,7 +70,11 @@ namespace Hospital_System.DAL
 
             var ids = 0;
             con.Open();
+<<<<<<< HEAD
             cmd = new SqlCommand("select * from Ambulance where Id='" + ambulanceDo.Id + "'", con);
+=======
+            cmd = new SqlCommand("select * from ambulance where Id='" + ambulanceDo.Id + "'", con);
+>>>>>>> b59c9658e9de86ff70e78a0b23c6813c6975d124
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
@@ -76,12 +89,20 @@ namespace Hospital_System.DAL
             con.Open();
             if (ids == 0)
             {
+<<<<<<< HEAD
                 cmd = new SqlCommand("insert into Ambulance(Id,Name,AmbulanceId,AmbulanceStatus,DriverName,DriverId) values(" + ambulanceDo.Id + ",'" + ambulanceDo.Name + "','" + ambulanceDo.AmbulanceId + "','" + ambulanceDo.AmbulanceStatus + "','" + ambulanceDo.DriverName + "','" + ambulanceDo.DriverId + "')", con);
+=======
+                cmd = new SqlCommand("insert into ambulance(Id,Name,AmbulanceId,AmbulanceStatus,AmbulanceDriver,AmbulanceDriverId) values(" + ambulanceDo.Id + ",'" + ambulanceDo.Name + "','" + ambulanceDo.AmbulanceId + "','" + ambulanceDo.AmbulanceStatus + "','" + ambulanceDo.AmbulanceDriver + "','" + ambulanceDo.AmbulanceDriverId + "')", con);
+>>>>>>> b59c9658e9de86ff70e78a0b23c6813c6975d124
 
             }
             else
             {
+<<<<<<< HEAD
                 cmd = new SqlCommand("update Ambulance set Name='" + ambulanceDo.Name + "',AmbulanceId='" + ambulanceDo.AmbulanceId + "',AmbulanceStatus='" + ambulanceDo.AmbulanceStatus + "',DriverName='" + ambulanceDo.DriverName + "',DriverId='" + ambulanceDo.DriverId + "' where Id=" + ambulanceDo.Id + "", con);
+=======
+                cmd = new SqlCommand("update ambulance set Name='" + ambulanceDo.Name + "',AmbulanceId='" + ambulanceDo.AmbulanceId + "',AmbulanceStatus='" + ambulanceDo.AmbulanceStatus + "',AmbulanceDriver='" + ambulanceDo.AmbulanceDriver + "',AmbulanceDriverId='" + ambulanceDo.AmbulanceDriverId + "' where Id=" + ambulanceDo.Id + "", con);
+>>>>>>> b59c9658e9de86ff70e78a0b23c6813c6975d124
             }
             cmd.ExecuteNonQuery();
             con.Close();
@@ -99,7 +120,11 @@ namespace Hospital_System.DAL
             AmbulanceDo ambulanceDo = new AmbulanceDo();
 
 
+<<<<<<< HEAD
             SqlCommand cmd = new SqlCommand("Select * from Ambulance where Id='" + Id + "'", con);
+=======
+            SqlCommand cmd = new SqlCommand("Select * from ambulance where Id='" + Id + "'", con);
+>>>>>>> b59c9658e9de86ff70e78a0b23c6813c6975d124
             {
 
                 con.Open();
@@ -112,8 +137,13 @@ namespace Hospital_System.DAL
                     ambulanceDo.Name = reader["Name"].ToString();
                     ambulanceDo.AmbulanceId = Convert.ToInt32(reader["AmbulanceId"]);
                     ambulanceDo.AmbulanceStatus = reader["AmbulanceStatus"].ToString();
+<<<<<<< HEAD
                     ambulanceDo.DriverName = reader["DriverName"].ToString();
                     ambulanceDo.DriverId = Convert.ToInt32(reader["DriverId"]);
+=======
+                    ambulanceDo.AmbulanceDriver = reader["AmbulanceDriver"].ToString();
+                    ambulanceDo.AmbulanceDriverId = Convert.ToInt32(reader["AmbulanceDriverId"]);
+>>>>>>> b59c9658e9de86ff70e78a0b23c6813c6975d124
 
 
                 }
@@ -129,14 +159,22 @@ namespace Hospital_System.DAL
         public List<AmbulanceDo> AmbDelete(int Id)
         {
             con.Open();
+<<<<<<< HEAD
             cmd = new SqlCommand("Delete from Ambulance where Id='" + Id + "'", con);
+=======
+            cmd = new SqlCommand("Delete from ambulance where Id='" + Id + "'", con);
+>>>>>>> b59c9658e9de86ff70e78a0b23c6813c6975d124
             cmd.ExecuteNonQuery();
             con.Close();
 
             List<AmbulanceDo> ambulanceDos = new List<AmbulanceDo>();
 
             con.Open();
+<<<<<<< HEAD
             cmd = new SqlCommand("select * from Ambulance", con);
+=======
+            cmd = new SqlCommand("select * from ambulance", con);
+>>>>>>> b59c9658e9de86ff70e78a0b23c6813c6975d124
             reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -147,8 +185,13 @@ namespace Hospital_System.DAL
                 ambulanceDo.Name = reader["Name"].ToString();
                 ambulanceDo.AmbulanceId = Convert.ToInt32(reader["AmbulanceId"]);
                 ambulanceDo.AmbulanceStatus = reader["AmbulanceStatus"].ToString();
+<<<<<<< HEAD
                 ambulanceDo.DriverName = reader["DriverName"].ToString();
                 ambulanceDo.DriverId = Convert.ToInt32(reader["DriverId"]);
+=======
+                ambulanceDo.AmbulanceDriver = reader["AmbulanceDriver"].ToString();
+                ambulanceDo.AmbulanceDriverId = Convert.ToInt32(reader["AmbulanceDriverId"]);
+>>>>>>> b59c9658e9de86ff70e78a0b23c6813c6975d124
 
 
                 ambulanceDos.Add(ambulanceDo);
@@ -167,7 +210,11 @@ namespace Hospital_System.DAL
         {
             int id = 0;
             con.Open();
+<<<<<<< HEAD
             cmd = new SqlCommand("SELECT MAX(Id) FROM Ambulance", con);
+=======
+            cmd = new SqlCommand("SELECT MAX(Id) FROM ambulance", con);
+>>>>>>> b59c9658e9de86ff70e78a0b23c6813c6975d124
             var result = cmd.ExecuteScalar();
 
             if (result != DBNull.Value)
