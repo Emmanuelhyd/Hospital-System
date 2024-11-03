@@ -22,15 +22,15 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa; /* Light background for contrast */
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
         }
 
         .container {
             max-width: 878px;
-            margin: -35px auto;
-            padding: 5px;
+            margin: 20px auto;
+            padding: 10px;
         }
 
         h2 {
@@ -42,7 +42,7 @@
         .table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px; /* Add space above the table */
+            margin-top: 20px;
         }
 
         th, td {
@@ -63,14 +63,13 @@
         }
 
         tr:hover {
-            background-color: #b1c7ef; /* Light cyan highlight on hover */
+            background-color: #b1c7ef;
         }
 
-        /* Back icon styles */
         .back-icon {
             text-decoration: none;
             color: dodgerblue;
-           
+            display: flex;
             align-items: center;
             margin-bottom: 20px;
         }
@@ -86,15 +85,13 @@
     </style>
 </head>
 <body>
-    <div class="container mt-5">
-        
-
+    <div class="container">
         <div>
             <a href="javascript:void(0);" onclick="Back()" class="back-icon">
-
-                <i class="fas fa-arrow-circle-left">   </i>
-                <h2>List of Ambulances</h2>
+                <i class="fas fa-arrow-circle-left"></i>
+                <span></span>
             </a>
+            <h2>List of Ambulances</h2>
         </div>
 
         <div class="table">
@@ -117,8 +114,10 @@
                             <td>@Html.DisplayFor(modelItem => ambulance.Name)</td>
                             <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceId)</td>
                             <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceStatus)</td>
-                            <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceDriver)</td>
-                            <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceDriverId)</td>
+                            <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceId)</td>
+                            <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceStatus)</td>
+                            @*<td>@Html.DisplayFor(modelItem => ambulance.AmbulanceDriver)</td>
+        <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceDriverId)</td>*@
                         </tr>
                     }
                 </tbody>

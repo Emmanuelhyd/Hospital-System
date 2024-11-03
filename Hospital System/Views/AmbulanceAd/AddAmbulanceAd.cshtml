@@ -1,29 +1,29 @@
 ﻿@model Hospital_System.Dash.DashboardDetails
 
 @{
-    ViewBag.Title = "AddAmbulanceAd";
+    ViewBag.Title = "Add Ambulance";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-@using (Html.BeginForm("AddAmbulanceAd", "AmbulanceAd"))
+@using (Html.BeginForm("AddAmbulanceAd", "AmbulanceAd", FormMethod.Post, new { @class = "form-container" }))
 {
-    <div class="form-container">
+    <div>
         <div class="form-group">
-            <label>@Html.LabelFor(m => m.mAmbulance.Id)</label>
+            @Html.LabelFor(m => m.mAmbulance.Id)
             @Html.TextBoxFor(m => m.mAmbulance.Id, new { @class = "form-control" })
         </div>
         <div class="form-group">
-            <label>@Html.LabelFor(m => m.mAmbulance.Name)</label>
+            @Html.LabelFor(m => m.mAmbulance.Name)
             @Html.TextBoxFor(m => m.mAmbulance.Name, new { @required = "required", @placeholder = "Enter your Name", @class = "form-control" })
             @Html.ValidationMessageFor(m => m.mAmbulance.Name, "", new { @class = "text-danger" })
         </div>
         <div class="form-group">
-            <label>@Html.LabelFor(m => m.mAmbulance.AmbulanceId)</label>
+            @Html.LabelFor(m => m.mAmbulance.AmbulanceId)
             @Html.TextBoxFor(m => m.mAmbulance.AmbulanceId, new { @required = "required", @placeholder = "Enter your AmbulanceId", @class = "form-control" })
             @Html.ValidationMessageFor(m => m.mAmbulance.AmbulanceId, "", new { @class = "text-danger" })
         </div>
         <div class="form-group">
-            <label>@Html.LabelFor(m => m.mAmbulance.AmbulanceStatus)</label>
+            @Html.LabelFor(m => m.mAmbulance.AmbulanceStatus)
             @Html.DropDownListFor(m => m.mAmbulance.AmbulanceStatus, new SelectList(new List<SelectListItem>
             {
                 new SelectListItem { Value = "Active", Text = "Active" },
@@ -31,13 +31,13 @@
             }, "Value", "Text"), "Select Status", new { @class = "form-control" })
         </div>
         <div class="form-group">
-            <label>@Html.LabelFor(m => m.mAmbulance.DriverName)</label>
-            @Html.TextBoxFor(m => m.mAmbulance.DriverName, new { @required = "required", @placeholder = "Enter your AmbulanceDriver", @class = "form-control" })
+            @Html.LabelFor(m => m.mAmbulance.DriverName)
+            @Html.TextBoxFor(m => m.mAmbulance.DriverName, new { @required = "required", @placeholder = "Enter your Ambulance Driver", @class = "form-control" })
             @Html.ValidationMessageFor(m => m.mAmbulance.DriverName, "", new { @class = "text-danger" })
         </div>
         <div class="form-group">
-            <label>@Html.LabelFor(m => m.mAmbulance.DriverId)</label>
-            @Html.TextBoxFor(m => m.mAmbulance.DriverId, new { @required = "required", @placeholder = "Enter your AmbulanceDriverId", @class = "form-control" })
+            @Html.LabelFor(m => m.mAmbulance.DriverId)
+            @Html.TextBoxFor(m => m.mAmbulance.DriverId, new { @required = "required", @placeholder = "Enter your Ambulance Driver ID", @class = "form-control" })
             @Html.ValidationMessageFor(m => m.mAmbulance.DriverId, "", new { @class = "text-danger" })
         </div>
         <div class="form-group">
@@ -67,13 +67,12 @@
 
 <style>
     .form-container {
-        position: relative;
         width: 85%;
         margin: 0 auto; /* Center the form */
         background-color: white;
         padding: 20px;
         border-radius: 8px;
-        
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .form-group {
@@ -87,8 +86,7 @@
         }
 
     .form-control {
-        width: 35%; 
-        height: calc(1.5em + .75rem + 2px);
+        width: 100%; /* Full width */
         padding: .375rem .75rem;
         font-size: 1rem;
         color: #495057;

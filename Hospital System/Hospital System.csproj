@@ -240,7 +240,6 @@
     <Compile Include="BAL\OPBAL.cs" />
     <Compile Include="BAL\OutPatientAdBAL.cs" />
     <Compile Include="BAL\PatientBAL.cs" />
-    <Compile Include="BAL\SessionBAL.cs" />
     <Compile Include="BAL\VaccineAdBAL.cs" />
     <Compile Include="BAL\VaccineBAL.cs" />
     <Compile Include="Controllers\AdminController.cs" />

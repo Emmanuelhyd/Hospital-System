@@ -1,90 +1,83 @@
 ﻿@model Hospital_System.Dash.DashboardDetails
 
 @{
-    ViewBag.Title = "AddPAtientAd";
+    ViewBag.Title = "Add Patient";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 @using (Html.BeginForm("AddPatientAd", "PatientAd"))
 {
-    <div style="position: absolute; width: 85%; margin-left: 15%; background-color: white;margin-top:18px;">
-        <div >
-            @*@Html.AntiForgeryToken()
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
-            <div>
-                <div>Id</div>
-                <div>
-                    @Html.TextBoxFor(m => m.mPatient.Id)
-                    @Html.ValidationMessageFor(m => m.mPatient.Id, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div>
-                <div>Name</div>
-                <div>
-                    @Html.TextBoxFor(m => m.mPatient.Name, new { @required = "required", @placeholder = "Enter your Name" })
-                    @Html.ValidationMessageFor(m => m.mPatient.Name, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div>
-                <div>PhoneNumber</div>
-                <div>
-                    @Html.TextBoxFor(m => m.mPatient.PhoneNumber, new { @required = "required", @placeholder = "Enter your Mobile Number" })
-                    @Html.ValidationMessageFor(m => m.mPatient.PhoneNumber, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div>
-                <div>BloodGroup</div>
-                <div>
-                    @Html.DropDownListFor(m => m.mPatient.BloodGroup, new SelectList(new List<SelectListItem>
-               {
-                         new SelectListItem{Value="Select BloodGroup",Text="Select BloodGroup"},
-                         new SelectListItem { Value = "A+", Text = "A+" },
-                         new SelectListItem { Value = "B+", Text = "B+" },
-                         new SelectListItem { Value = "O+", Text = "O+" },
-                         new SelectListItem { Value = "AB+", Text = "AB+"},
-                         new SelectListItem { Value = "AB-", Text = "AB-"},
-                         new SelectListItem { Value = "A-", Text = "A-" },
-                         new SelectListItem { Value = "B-", Text = "B-" },
-                         new SelectListItem { Value = "O-", Text = "O-" },
+    <div style="position: relative; width: 85%; margin: 18px auto; background-color: white; padding: 20px; border-radius: 8px;">
+        <h2>Add Patient</h2>
 
-                    }, "Value", "Text"), "Select BloodGroup", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.mPatient.BloodGroup, "", new { @class = "text-danger" })
-                </div>
-            </div>
+        <div>
             <div>
-                <div>Gender</div>
+                <label for="Id">Id</label>
+                @Html.TextBoxFor(m => m.mPatient.Id, new { @class = "form-control", @placeholder = "Enter Id" })
+                @Html.ValidationMessageFor(m => m.mPatient.Id, "", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                <label for="Name">Name</label>
+                @Html.TextBoxFor(m => m.mPatient.Name, new { @required = "required", @class = "form-control", @placeholder = "Enter your Name" })
+                @Html.ValidationMessageFor(m => m.mPatient.Name, "", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                <label for="PhoneNumber">Phone Number</label>
+                @Html.TextBoxFor(m => m.mPatient.PhoneNumber, new { @required = "required", @class = "form-control", @placeholder = "Enter your Mobile Number" })
+                @Html.ValidationMessageFor(m => m.mPatient.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                <label for="BloodGroup">Blood Group</label>
+                @Html.DropDownListFor(m => m.mPatient.BloodGroup, new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem{Value="", Text="Select Blood Group"},
+                    new SelectListItem { Value = "A+", Text = "A+" },
+                    new SelectListItem { Value = "B+", Text = "B+" },
+                    new SelectListItem { Value = "O+", Text = "O+" },
+                    new SelectListItem { Value = "AB+", Text = "AB+"},
+                    new SelectListItem { Value = "AB-", Text = "AB-"},
+                    new SelectListItem { Value = "A-", Text = "A-" },
+                    new SelectListItem { Value = "B-", Text = "B-" },
+                    new SelectListItem { Value = "O-", Text = "O-" },
+                }), "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.mPatient.BloodGroup, "", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                <label for="Gender">Gender</label>
                 @Html.DropDownListFor(m => m.mPatient.Gender, new SelectList(new List<SelectListItem>
                 {
-                  new SelectListItem{Value="Select Gender",Text="Select Gender"},
-                  new SelectListItem { Value = "Male", Text = "Male" },
-                  new SelectListItem { Value = "Female", Text = "Female" },
-                  new SelectListItem { Value = "Others", Text = "Others" },
-
-             }, "Value", "Text"), "Select Gender", new { @class = "form-control" })
+                    new SelectListItem{Value="", Text="Select Gender"},
+                    new SelectListItem { Value = "Male", Text = "Male" },
+                    new SelectListItem { Value = "Female", Text = "Female" },
+                    new SelectListItem { Value = "Others", Text = "Others" },
+                }), "", new { @class = "form-control" })
             </div>
-            <div><input type="submit" value="Submit"></div>
+
+            <div>
+                <input type="submit" value="Submit" class="btn-submit">
+            </div>
         </div>
 
-        <div style="margin-left: 397px; margin-top: -44px;"> <button type="button" class="back-button" onclick=" Back()"> Back </button></div>
+        <div style="margin-top: -60%; position: absolute; margin-left: 0%;">
+            <button type="button" class="back-button" onclick="Back()">Back</button>
+        </div>
     </div>
 }
 
-
 <style>
-    /* Container for the form */
-   
-
-    /* Styling for labels */
+    /* Styling for labels and input fields */
     label {
         font-weight: bold;
         margin-bottom: 5px;
         display: block;
     }
 
-    /* Input fields styling */
-    input[type="text"],
-    select {
-        width: 40%;
+    .form-control {
+        width: 100%;
         padding: 10px;
         margin-bottom: 15px;
         border: 1px solid #ccc;
@@ -92,7 +85,6 @@
         box-sizing: border-box;
     }
 
-    /* Styling for validation messages */
     .text-danger {
         color: red;
         font-size: 0.9em;
@@ -100,8 +92,7 @@
         margin-bottom: 10px;
     }
 
-    /* Submit button styling */
-    input[type="submit"] {
+    .btn-submit {
         background-color: #4CAF50;
         color: white;
         padding: 10px 15px;
@@ -111,55 +102,33 @@
         transition: background-color 0.3s;
     }
 
-        /* Hover effect for the submit button */
-        input[type="submit"]:hover {
+        .btn-submit:hover {
             background-color: #45a049;
         }
 
-
-    .form-control {
-        display: block;
-        width: 40%;
-        height: calc(1.5em + .75rem + 2px);
-        padding: .375rem .75rem;
-        font-size: 1rem;
-        font-weight: 400;
-        line-height: 1.5;
-        color: #495057;
-        background-color: #fff;
-        background-clip: padding-box;
-        border: 1px solid #ced4da;
-        border-radius: .25rem;
-        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    }
-
-
     .back-button {
-        background-color: #007bff; /* Primary color */
-        color: white; /* Text color */
-        border: none; /* No border */
-        border-radius: 5px; /* Rounded corners */
-        padding: 10px 20px; /* Padding for size */
-        font-size: 16px; /* Font size */
-        cursor: pointer; /* Pointer cursor on hover */
-        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
         .back-button:hover {
-            background-color: #0056b3; /* Darker shade on hover */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+            background-color: #0056b3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .back-button:focus {
-            outline: none; /* Remove outline on focus */
+            outline: none;
         }
 </style>
 
 <script>
-
-
     function Back() {
-
         window.location.href = "/Dashboard/DashboardView";
     }
 </script>

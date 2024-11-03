@@ -1,7 +1,7 @@
 ﻿@model Hospital_System.Dash.DashboardDetails
 
 @{
-    ViewBag.Title = "AddAnnouncementAd";
+    ViewBag.Title = "Add Announcement";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -9,22 +9,27 @@
 {
     <div class="form-container">
         <div class="form-title">Add Announcement</div>
+
         <div class="form-field">
             <label for="Id">Id</label>
             @Html.TextBoxFor(m => m.mAnnouncement.Id, new { @class = "form-input" })
         </div>
+
         <div class="form-field">
             <label for="Announcement">Announcement</label>
             @Html.TextAreaFor(m => m.mAnnouncement.Announcement, new { @required = "required", @placeholder = "Enter your Announcement", @class = "form-textarea" })
         </div>
+
         <div class="form-field">
             <label for="AnnouncementFor">Announcement For</label>
             @Html.TextAreaFor(m => m.mAnnouncement.AnnouncementFor, new { @required = "required", @placeholder = "Announcement For", @class = "form-textarea" })
         </div>
+
         <div class="form-field">
             <label for="EndDate">End Date</label>
             @Html.TextBoxFor(m => m.mAnnouncement.EndDate, new { @required = "required", @placeholder = "Enter your End Date", @type = "datetime-local", @class = "form-input" })
         </div>
+
         <div class="form-buttons">
             <input type="submit" value="Submit" class="submit-button">
             <button type="button" class="back-button" onclick="Back()">Back</button>
@@ -47,7 +52,6 @@
         padding: 20px;
         max-width: 600px;
         margin: auto;
-     
         margin-top: 20px;
     }
 
@@ -104,6 +108,8 @@
         font-size: 16px;
         cursor: pointer;
         transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        position: absolute;
+        margin-top: -42%;
     }
 
         .back-button:hover {

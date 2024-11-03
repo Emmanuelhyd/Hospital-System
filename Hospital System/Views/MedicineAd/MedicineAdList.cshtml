@@ -1,42 +1,66 @@
-﻿
-
-@model Hospital_System.Dash.DashboardDetails
+﻿@model Hospital_System.Dash.DashboardDetails
 
 @{
-    ViewBag.Title = "MedicineListAd";
+    ViewBag.Title = "Medicine List Admin";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <script>
     function CreateNew() {
-
         window.location.href = 'AddMedicineAd';
+    }
+
+    function confirmDelete(deleteUrl) {
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this record!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            closeOnConfirm: false
+        }, function () {
+            $.ajax({
+                url: deleteUrl,
+                type: 'POST',
+                success: function () {
+                    swal("Deleted!", "Your record has been deleted.", "success");
+                    location.reload();
+                },
+                error: function () {
+                    swal("Error!", "There was a problem deleting the record.", "error");
+                }
+            });
+        });
     }
 </script>
 
 @using (Html.BeginForm())
 {
-    <div style="position: absolute; width: 85%; @*margin-left: 15%;*@ background-color: white;" class="container">
-        <div>
-            <div>
-                <input type="button" value="CeateNew" onclick="CreateNew()">
-                <input type="search" id="med" name="med">
-                <input type="submit" value="Search">
-            </div>
+    <div class="container" style="background-color: white; padding: 20px;">
+        <div class="form-group">
+            <input type="button" value="Create New" onclick="CreateNew()" class="btn btn-primary">
+            <input type="search" id="med" name="med" placeholder="Search medicine..." class="form-control" style="display: inline-block; width: auto;">
+            <input type="submit" value="Search" class="btn btn-secondary">
+        </div>
 
-            <table>
+        <table class="table">
+            <thead>
                 <tr>
-                    <th>PatientId</th>
-                    <th>PatientName</th>
-                    <th>DoctorName</th>
+                    <th>Patient ID</th>
+                    <th>Patient Name</th>
+                    <th>Doctor Name</th>
                     <th>Problem</th>
-                    <th>MedicineName</th>
+                    <th>Medicine Name</th>
                     <th>Description</th>
                     <th>Morning</th>
                     <th>Afternoon</th>
                     <th>Night</th>
                     <th>Action</th>
                 </tr>
+            </thead>
+            <tbody>
                 @foreach (var item in Model.MedicineAds)
                 {
                     <tr>
@@ -44,34 +68,30 @@
                         <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
                         <td>@Html.DisplayFor(modelItem => item.DoctorName)</td>
                         <td>@Html.DisplayFor(modelItem => item.Problem)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
                         <td>@Html.DisplayFor(modelItem => item.MedicineName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
                         <td>@Html.DisplayFor(modelItem => item.Morning)</td>
                         <td>@Html.DisplayFor(modelItem => item.Afternoon)</td>
                         <td>@Html.DisplayFor(modelItem => item.Night)</td>
-
-
                         <td style="display: flex; gap: 10px;">
-                            <a href="@Url.Action("MedicineEdit", new { PatientId = item.PatientId })">
+                            <a href="@Url.Action("MedicineEdit", new { PatientId = item.PatientId })" class="action-link">
                                 <i class="fas fa-edit" style="color:blue;"></i>
                             </a>
-
-                           
-                            <a href="javascript:void(0);" onclick="confirmDelete('@Url.Action("MedicineDelete", new {PatientId = item.PatientId })')">
-                                <i class="fas fa-trash-alt"></i>
+                            <a href="javascript:void(0);" onclick="confirmDelete('@Url.Action("MedicineDelete", new { PatientId = item.PatientId })')">
+                                <i class="fas fa-trash-alt" style="color:red;"></i>
                             </a>
-
                         </td>
-
                     </tr>
                 }
-            </table>
-        </div>
+            </tbody>
+        </table>
     </div>
 }
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <style>
     body {
@@ -80,42 +100,40 @@
         background-color: #f4f4f4;
     }
 
-    h1 {
-        color: #333;
-        text-align: center;
+    .container {
+        width: 85%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
     }
 
-    div {
-        margin-bottom: 20px;
-    }
-
-    input[type="button"], input[type="submit"] {
+    .btn {
         padding: 10px 15px;
-        margin-right: 10px;
         border: none;
-        background-color: #3051bd;
-        color: white;
-        cursor: pointer;
         border-radius: 4px;
+        cursor: pointer;
         transition: background-color 0.3s;
     }
 
-        input[type="button"]:hover, input[type="submit"]:hover {
-            background-color: #3051bd;
-        }
-
-    input[type="search"] {
-        padding: 10px;
-        width: 200px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+    .btn-primary {
+        background-color: #3051bd;
+        color: white;
     }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            opacity: 0.9;
+        }
 
     table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
-        background-color: white;
     }
 
     th, td {
@@ -136,38 +154,3 @@
         margin-right: 10px;
     }
 </style>
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<script>
-    function confirmDelete(deleteUrl) {
-        swal({
-            title: "Are you sure?",
-            text: "You will not be able to recover this record!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel!",
-            closeOnConfirm: false
-        }, function () {
-            // Make AJAX request to delete the record
-            $.ajax({
-                url: deleteUrl,
-                type: 'POST', // Use POST for delete action if needed
-                success: function (result) {
-                    // Reload or update the table as needed
-                    swal("Deleted!", "Your record has been deleted.", "success");
-                    location.reload(); // Reload the page to see changes
-                },
-                error: function (err) {
-                    swal("Error!", "There was a problem deleting the record.", "error");
-                }
-            });
-        });
-    }
-</script>
