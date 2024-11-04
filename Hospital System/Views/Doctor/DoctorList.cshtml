@@ -1,41 +1,115 @@
-﻿@model Hospital_System.Viewmodel.Allview
-@{
-    ViewBag.Title = "Doctor List";
-    Layout = "~/Views/Shared/_PatientLayout.cshtml";
-}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor List</title>
+﻿@*@model Hospital_System.Viewmodel.Allview
 
-    <script>
-    function createNew() {
-        window.location.href = '@Url.Action("NewDoctor", "Doctor")'; // Ensure this matches your route
+    @{
+        ViewBag.Title = "Doctor List";
+        Layout = "~/Views/Shared/_PatientLayout.cshtml";
     }
-    </script>
 
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title</title>
 
-    <script>
+        <script>
+            function createNew() {
+                window.location.href = '@Url.Action("NewDoctor", "Doctor")';
+            }
 
-        function Back() {
+            function Back() {
+                window.location.href = "/Patient/Dashboard";
+            }
+        </script>
 
-            window.location.href = "/Patient/Dashboard";
-        }
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    @using (Html.BeginForm())
-    {
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        <div style=" position: absolute; margin-top:10px;">
-            <button type="button" class="btn" onclick="Back()"> Back</button>
-        </div>
+        <style>
+    /*        body {
+                font-family: Arial, sans-serif;
+                background-color: #f8f9fa;
+                margin: 0;
+                padding: 20px;
+            }*/
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                background-color: #ffffff;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+
+                .header input[type="search"] {
+                    width: 250px;
+                    padding: 8px;
+                    border: 1px solid #ced4da;
+                    border-radius: 4px;
+                }
+
+            .btn {
+                background-color: dodgerblue;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 8px 12px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+            }
+
+                .btn i {
+                    margin-right: 5px;
+                }
+
+                .btn:hover {
+                    background-color: #0056b3;
+                }
+
+            .doctor-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 10px;
+            }
+
+                .doctor-table th, .doctor-table td {
+                    padding: 12px;
+                    text-align: left;
+                    border-bottom: 1px solid #ddd;
+                }
+
+                .doctor-table th {
+                    background-color: #007BFF;
+                    color: white;
+                }
+
+                .doctor-table tbody tr:nth-child(even) {
+                    background-color: #f9f9f9;
+                }
+
+                .doctor-table tbody tr:hover {
+                    background-color: #e2e6ea;
+                }
+        </style>
+    </head>
+    <body>
         <div class="container">
             <div class="header">
-                <input type="search" id="searchvalue" name="searchvalue" placeholder="Search doctors..." style="width: 281px; height: 32px;">
-                <input type="submit" value="Search" class="butn" />
-
+                <button type="button" class="btn" onclick="Back()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <div>
+                    <input type="search" id="searchvalue" name="searchvalue" placeholder="Search doctors..." style=" position: absolute; margin-left: -35%; width: 34%;">
+                    <input type="submit" value="Search" class="btn" />
+                </div>
             </div>
 
             <table class="doctor-table">
@@ -45,7 +119,7 @@
                         <th>Email</th>
                         <th>Education</th>
                         <th>Department</th>
-                        <th>PhoneNo</th>
+                        <th>Phone No</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -60,56 +134,96 @@
                             <td>@Html.DisplayFor(modelItem => item.Department)</td>
                             <td>@Html.DisplayFor(modelItem => item.PhoneNo)</td>
                             <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                            <td>
+                                <button type="button" class="btn" onclick="window.location.href='@Url.Action("AddBook", "Appointment")'">
+                                    <i class="fas fa-calendar-plus"></i> Book
+                                </button>
+                            </td>
                             <td> <input type="button" value="Book" class="btn" onclick="window.location.href='@Url.Action("AddBook", "Appointment")'"></td>
                         </tr>
                     }
                 </tbody>
             </table>
-           
         </div>
-    }
+    </body>
+    </html>*@
 
-    <style>
-        /* General Container */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            /*   background-color: #ffffff;*/
-            border-radius: 8px;
-            /*  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
-            margin-left: 169px;
-            position: absolute;
-            margin-top: -1px;
+
+
+
+@model Hospital_System.Viewmodel.Allview
+
+@{
+    ViewBag.Title = "Doctor List";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <script>
+        function createNew() {
+            window.location.href = '@Url.Action("NewDoctor", "Doctor")';
         }
 
-        /* Header */
+        function Back() {
+            window.location.href = "/Patient/Dashboard";
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
         .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
         }
 
-        .butn {
-            width: 91px;
-            height: 30px;
-            color: white;
+            .header input[type="search"] {
+                width: 250px;
+                padding: 8px;
+                border: 1px solid #ced4da;
+                border-radius: 4px;
+            }
+
+        .btn {
             background-color: dodgerblue;
-            border-color: dodgerblue;
+            color: white;
+            border: none;
             border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
         }
 
+            .btn i {
+                margin-right: 5px;
+            }
 
+            .btn:hover {
+                background-color: #0056b3;
+            }
 
-        .btn:hover {
-            background-color: #0056b3; /* Darker shade on hover */
-        }
-
-        /* Table Styles */
         .doctor-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
-            margin-left: -303px;
         }
 
             .doctor-table th, .doctor-table td {
@@ -121,7 +235,6 @@
             .doctor-table th {
                 background-color: #007BFF;
                 color: white;
-                font-weight: bold;
             }
 
             .doctor-table tbody tr:nth-child(even) {
@@ -129,30 +242,55 @@
             }
 
             .doctor-table tbody tr:hover {
-                background-color: #e2e6ea; /* Light gray on hover */
-            }
-
-        /* Action Links */
-        .link-edit, .link-delete {
-            color: #007BFF;
-            text-decoration: none;
-        }
-
-            .link-edit:hover {
-                text-decoration: underline;
-            }
-
-        .link-delete {
-            color: #dc3545;
-        }
-
-            .link-delete:hover {
-                text-decoration: underline;
-            }
-
-            .btn{
-                color:white;
-                background-color:dodgerblue;
-                border-radius:5px
+                background-color: #e2e6ea;
             }
     </style>
+</head>
+<body>
+    <div class="container">
+        <form action="@Url.Action("DoctorList", "Doctor")" method="get">
+            <div class="header">
+                <button type="button" class="btn" onclick="Back()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <div>
+                    <input type="search" id="searchvalue" name="searchvalue" placeholder="Search doctors..." style="position: absolute; margin-left: -35%; width: 34%;">
+                    <input type="submit" value="Search" class="btn" />
+                </div>
+            </div>
+        </form>
+
+        <table class="doctor-table">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Education</th>
+                    <th>Department</th>
+                    <th>Phone No</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Doctors)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Education)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Department)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PhoneNo)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td>
+                            <button type="button" class="btn" onclick="window.location.href='@Url.Action("AddBook", "Appointment")'">
+                                <i class="fas fa-calendar-plus"></i> Book
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

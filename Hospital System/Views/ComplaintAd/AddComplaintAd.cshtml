@@ -1,78 +1,80 @@
 ﻿@model Hospital_System.Dash.DashboardDetails
 
 @{
-    ViewBag.Title = "AddComplaintAd";
+    ViewBag.Title = "Add Complaint";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 @using (Html.BeginForm("AddComplaintAd", "ComplaintAd"))
 {
-    <div style="position: absolute; width: 85%; margin-left: 15%; background-color: white;margin-top:18px;">
-        <div>
-            <div>
-                <div>Id</div>
-                <div>@Html.TextBoxFor(m => m.mComplaintAd.Id)</div>
-            </div>
+    <div class="container" style="background-color: white; padding: 20px; margin-top: 18px;">
+        <h2>Add Complaint</h2>
 
-            <div>
-                <div>Name</div>
-                <div>@Html.TextBoxFor(m => m.mComplaintAd.Name, new { @required = "required", @placeholder = "Name" })</div>
-            </div>
-            <div>
-                <div>Complaint</div>
-                <div>@Html.TextBoxFor(m => m.mComplaintAd.Complaint, new { @required = "required", @placeholder = "Complaint" })</div>
-            </div>
+        <div class="form-group">
+            <label for="Id">Id</label>
+            @Html.TextBoxFor(m => m.mComplaintAd.Id, new { @class = "form-control", @readonly = "readonly" })
+        </div>
 
-            <div>
-                <div>Phone Number</div>
-                <div>
-                    @Html.TextBoxFor(m => m.mComplaintAd.PhoneNumber, new
-                    {
-                        @required = "required",
-                        @placeholder = "Enter Phone Number",
-                        @pattern = @"^[6789]\d{9}$",
-                        @title = "Enter a valid 10-digit phone number starting with 6, 7, 8, or 9."
-                    })
-                    @Html.ValidationMessageFor(m => m.mComplaintAd.PhoneNumber, "", new { @class = "text-danger" })
-                </div>
-            </div>
+        <div class="form-group">
+            <label for="Name">Name</label>
+            @Html.TextBoxFor(m => m.mComplaintAd.Name, new { @class = "form-control", @required = "required", @placeholder = "Name" })
+        </div>
 
-            <div>
-                <div>Replay</div>
-                <div>@Html.TextBoxFor(m => m.mComplaintAd.Replay, new { @placeholder = "Replay" })</div>
-            </div>
+        <div class="form-group">
+            <label for="Complaint">Complaint</label>
+            @Html.TextBoxFor(m => m.mComplaintAd.Complaint, new { @class = "form-control", @required = "required", @placeholder = "Complaint" })
+        </div>
 
-            <div><input type="submit" value="Submit"></div>
-            <div style="margin-left: 108px; margin-top: -44px;"> <button type="button" class="back-button" onclick=" Back()"> Back </button></div>
+        <div class="form-group">
+            <label for="PhoneNumber">Phone Number</label>
+            @Html.TextBoxFor(m => m.mComplaintAd.PhoneNumber, new
+            {
+                @class = "form-control",
+                @required = "required",
+                @placeholder = "Enter Phone Number",
+                @pattern = @"^[6789]\d{9}$",
+                @title = "Enter a valid 10-digit phone number starting with 6, 7, 8, or 9."
+            })
+            @Html.ValidationMessageFor(m => m.mComplaintAd.PhoneNumber, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label for="Replay">Replay</label>
+            @Html.TextBoxFor(m => m.mComplaintAd.Replay, new { @class = "form-control", @placeholder = "Replay" })
+        </div>
+
+        <div class="form-actions">
+            <input type="submit" value="Submit" class="btn btn-success">
+            <button type="button" class="btn btn-primary back-button" onclick="Back()">Back</button>
         </div>
     </div>
 }
 
-
-
 <style>
-    /* Container for the form */
-    
+    .container {
+        width: 85%;
+        margin-left: 15%;
+        border-radius: 8px;
+    }
 
-    /* Styling for labels */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
     label {
         font-weight: bold;
         margin-bottom: 5px;
         display: block;
     }
 
-    /* Input fields styling */
-    input[type="text"],
-    select {
-        width: 40%;
+    .form-control {
+        width: 100%;
         padding: 10px;
-        margin-bottom: 15px;
         border: 1px solid #ccc;
         border-radius: 4px;
         box-sizing: border-box;
     }
 
-    /* Styling for validation messages */
     .text-danger {
         color: red;
         font-size: 0.9em;
@@ -80,10 +82,7 @@
         margin-bottom: 10px;
     }
 
-    /* Submit button styling */
-    input[type="submit"] {
-        background-color: #4CAF50;
-        color: white;
+    .btn {
         padding: 10px 15px;
         border: none;
         border-radius: 4px;
@@ -91,34 +90,31 @@
         transition: background-color 0.3s;
     }
 
-        /* Hover effect for the submit button */
-        input[type="submit"]:hover {
+    .btn-success {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+        .btn-success:hover {
             background-color: #45a049;
         }
 
     .back-button {
-        background-color: #007bff; /* Primary color */
-        color: white; /* Text color */
-        border: none; /* No border */
-        border-radius: 5px; /* Rounded corners */
-        padding: 10px 20px; /* Padding for size */
-        font-size: 16px; /* Font size */
-        cursor: pointer; /* Pointer cursor on hover */
-        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+        background-color: #007bff;
+        color: white;
     }
 
         .back-button:hover {
-            background-color: #0056b3; /* Darker shade on hover */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+            background-color: #0056b3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .back-button:focus {
-            outline: none; /* Remove outline on focus */
+            outline: none;
         }
 </style>
 
 <script>
-
     function Back() {
         window.location.href = "/Dashboard/DashboardView";
     }

@@ -456,38 +456,47 @@ namespace Hospital_System.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Changepassword(Patients patients)
         {
-            if (Session["UsernameorEmail"] != null || patients != null ||!string.IsNullOrEmpty(patients.UserNameOrEmail))
+           
+            if (Session["UsernameorEmail"] != null || patients != null ||string.IsNullOrEmpty(patients.UserNameOrEmail))
             {
-
                 var username = Session["UsernameorEmail"].ToString();
 
+                
                 if (username == patients.UserNameOrEmail)
-
-                { string res = patientBAL.Changepassword(patients);
-
-                    if (res == "1")
+                {
+                   
+                    if (patients.Password == patients.ConfirmPassword)
                     {
-                        TempData["valid"] = "Updated";
-                        return RedirectToAction("Login", "Patient");
-                    }
+                        string res = patientBAL.Changepassword(patients);
 
+                        if (res == "1")
+                        {
+                            TempData["valid"] = "Password updated successfully.";
+                            return RedirectToAction("Login", "Patient");
+                        }
+                        else
+                        {
+                            TempData["valid"] = "Error updating password. Please try again.";
+                        }
+                    }
+                    else
+                    {
+                        TempData["valid"] = "Passwords do not match. Please try again.";
+                    }
                 }
             }
 
-            
-           
-            TempData["valid"] = "Invalid UserName";
+            TempData["valid"] = "Invalid UserName or Session expired.";
 
+            // Prepare the model for the view
             var model = new Allview
             {
                 Menus = menuBAL.GetMenus(),
-              
-                
             };
-            
-             return View(model);
 
+            return View(model);
         }
+
         //forgotPassword
         [HttpGet]
         public ActionResult Forgotpassword()

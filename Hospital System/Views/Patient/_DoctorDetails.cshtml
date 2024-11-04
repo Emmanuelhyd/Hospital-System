@@ -1,35 +1,33 @@
 ﻿@model Hospital_System.Viewmodel.Allview
 
-<div id="doctorDetails" style="padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #fff;">
-    <h3>Doctor Details</h3>
-    <div>
-       
+<div id="doctorDetails" style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+    <h3 style="text-align: center; color: #007bff;">Doctor Details</h3>
+
+    <div style="margin-bottom: 15px;">
+        <strong>Name:</strong> <span>@Model.doctors.FullName</span>
     </div>
-    <div>
-        <strong>Name:</strong> @Model.doctors.FullName
+    <div style="margin-bottom: 15px;">
+        <strong>Email:</strong> <span>@Model.doctors.Email</span>
     </div>
-    <div>
-        <strong>Email:</strong> @Model.doctors.Email
+    <div style="margin-bottom: 15px;">
+        <strong>Department:</strong> <span>@Model.doctors.Department</span>
     </div>
-    <div>
-        <strong>Department:</strong> @Model.doctors.Department
+    <div style="margin-bottom: 15px;">
+        <strong>Education:</strong> <span>@Model.doctors.Education</span>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <strong>Designation:</strong> <span>@Model.doctors.Designation</span>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <strong>Status:</strong> <span>@Model.doctors.Status</span>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <strong>Phone:</strong> <span>@Model.doctors.PhoneNo</span>
     </div>
 
-    <div>
-        <strong>Education:</strong> @Model.doctors.Education
+    <div style="text-align: center;">
+        <button onclick="closePopup()" class="btn-back"><i class="fas fa-arrow-left"></i> Back</button>
     </div>
-
-    <div>
-        <strong>Designation:</strong> @Model.doctors.Designation
-    </div>
-    <div>
-        <strong>Status:</strong> @Model.doctors.Status
-    </div>
-    <div>
-        <strong>Phone:</strong> @Model.doctors.PhoneNo
-    </div>
-
-    <button onclick="closePopup()" class="back">Back</button>
 </div>
 
 <script>
@@ -38,17 +36,32 @@
         $('#overlay').hide();
     }
 </script>
+
 <style>
-    .back {
-        width: 100px;
-        height: 27px;
+    .btn-back {
+        width: 120px;
+        height: 35px;
         color: white;
         background-color: dodgerblue;
+        border: none;
         border-radius: 5px;
-        border-color: dodgerblue;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
     }
-    
 
+    .btn-back:hover {
+        background-color: #0056b3;
+    }
 
+    /* Optional: Add responsive styles */
+    media (max-width: 600px) {
+        #doctorDetails {
+            padding: 15px;
+        }
 
+        .btn-back {
+            width: 100%;
+        }
+    }
 </style>

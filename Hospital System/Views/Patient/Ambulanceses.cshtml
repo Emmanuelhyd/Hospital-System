@@ -22,15 +22,15 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa; /* Light background for contrast */
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
         }
 
         .container {
             max-width: 878px;
-            margin: -35px auto;
-            padding: 5px;
+            margin: 20px auto;
+            padding: 10px;
         }
 
         h2 {
@@ -42,7 +42,7 @@
         .table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px; /* Add space above the table */
+            margin-top: 20px;
         }
 
         th, td {
@@ -63,14 +63,13 @@
         }
 
         tr:hover {
-            background-color: #b1c7ef; /* Light cyan highlight on hover */
+            background-color: #b1c7ef;
         }
 
-        /* Back icon styles */
-        .back-icon {
+/*        .back-icon {
             text-decoration: none;
             color: dodgerblue;
-           
+            display: flex;
             align-items: center;
             margin-bottom: 20px;
         }
@@ -78,7 +77,23 @@
             .back-icon i {
                 font-size: 40px;
             }
+*/
+        .button-back {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            color: white;
+            background-color: dodgerblue;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
 
+            .button-back:hover {
+                background-color: #0056b3;
+            }
             .back-icon span {
                 font-size: 20px;
                 margin-left: 8px;
@@ -86,16 +101,15 @@
     </style>
 </head>
 <body>
-    <div class="container mt-5">
-        
-
-        <div>
-            <a href="javascript:void(0);" onclick="Back()" class="back-icon">
-
-                <i class="fas fa-arrow-circle-left">   </i>
-                <h2>List of Ambulances</h2>
-            </a>
-        </div>
+    <div class="container">
+        <!--<div>
+        <a href="javascript:void(0);" onclick="Back()" class="back-icon">
+            <i class="fas fa-arrow-circle-left"></i>-->
+        @*<span>Back</span>*@
+        <!--</a>
+        <h2>List of Ambulances</h2>
+    </div>-->
+        <button class="button-back" onclick="Back()"><i class="fas fa-arrow-left"></i>Back </button>
 
         <div class="table">
             <table>
@@ -105,8 +119,8 @@
                         <th>Name</th>
                         <th>AmbulanceId</th>
                         <th>AmbulanceStatus</th>
-                        <th>AmbulanceDriver</th>
-                        <th>AmbulanceDriverId</th>
+                        <th>DriverName</th>
+                        <th>DriverID</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -117,8 +131,8 @@
                             <td>@Html.DisplayFor(modelItem => ambulance.Name)</td>
                             <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceId)</td>
                             <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceStatus)</td>
-                            <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceDriver)</td>
-                            <td>@Html.DisplayFor(modelItem => ambulance.AmbulanceDriverId)</td>
+                            <td>@Html.DisplayFor(modelItem => ambulance.DriverName)</td>
+                            <td>@Html.DisplayFor(modelItem => ambulance.DriverId)</td>
                         </tr>
                     }
                 </tbody>

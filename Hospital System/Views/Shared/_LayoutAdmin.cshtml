@@ -1,17 +1,53 @@
 ﻿@model Hospital_System.Dash.DashboardDetails
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
- 
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background for better contrast */
+        }
+
+        .navbar {
+            background-color: #0094ff;
+            width: 107%;
+        }
+
+        .navbar-nav .nav-link {
+            color: white; /* Navbar link color */
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #ffdd57; /* Hover color for links */
+            }
+
+        .dropdown-menu {
+            background-color: #f8f9fa; /* Dropdown background */
+        }
+
+        .dropdown-item:hover {
+            background-color: #007bff; /* Dropdown item hover color */
+            color: white; /* Text color on hover */
+        }
+
+        .container {
+            padding: 20px;
+            max-height: 80vh; /* Limit container height */
+            overflow-y: auto; /* Allow scrolling */
+            background-color: white; /* White background for the main content */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+    </style>
 </head>
 <body>
     @using (Html.BeginForm())
     {
-        <nav class="navbar navbar-expand-lg" style="background-color: #0094ff; width: 123.5%;">
+        <nav class="navbar navbar-expand-lg">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,7 +58,7 @@
                         foreach (var item in Model.Adminmenus.Where(m => m.ParentId == null))
                         {
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="@item.Url" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white">
+                                <a class="nav-link dropdown-toggle" href="@item.Url" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     @item.Name
                                 </a>
                                 @if (Model.Adminmenus.Any(x => x.ParentId == item.Id))
@@ -43,7 +79,7 @@
     }
 
     <div class="container">
-        @RenderBody() 
+        @RenderBody()
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

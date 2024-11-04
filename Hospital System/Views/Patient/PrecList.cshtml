@@ -71,22 +71,39 @@
             overflow-x: auto;
         }
 
-        .btn {
+/*        .btn {
             color: white;
             background-color: dodgerblue;
             width: 124%;
             border-radius: 5px;
+        }*/
+        .button-back {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            color: white;
+            background-color: dodgerblue;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
         }
+
+            .button-back:hover {
+                background-color: #0056b3;
+            }
     </style>
 </head>
 <body>
 
-    <div style=" position: absolute; margin-top: 17px; margin-left: 29px;">
-        <button type="button" class=" btn" onclick="Back()"> Back</button>
-    </div>
+    @*<div style=" position: absolute; margin-top: 17px; margin-left: 29px;">
+            <button type="button" class=" btn" onclick="Back()"> Back</button>
+        </div>*@
+    <button class="button-back" onclick="Back()" style=" margin-left: 12%; margin-top: 0%; position: absolute;"><i class="fas fa-arrow-left"></i>Back </button>
     <div class="container">
         <h2>Prescriptions</h2>
-        <div class="table-container">
+        <div class="table-container" style=" margin-left: 10%;">
             <table>
                 <thead>
                     <tr>

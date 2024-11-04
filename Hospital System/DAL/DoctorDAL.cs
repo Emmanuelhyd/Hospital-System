@@ -231,7 +231,7 @@ namespace Hospital_System.DAL
         {
             List<Doctor> doctors = new List<Doctor>();
             con.Open();
-            cmd = new SqlCommand("select* from doctors where Department like '%" + searchvalue + "%'  or FullName like '%" +searchvalue+"%' or PhoneNo like'%"+searchvalue+"%'" , con);
+            cmd = new SqlCommand("select* from doctors where Department like '%" + searchvalue + "%'  or FullName like '%" +searchvalue+"%' or PhoneNo like'%"+searchvalue+"%' or Email like"  , con);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {

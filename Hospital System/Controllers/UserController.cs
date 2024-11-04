@@ -11,7 +11,7 @@ namespace Hospital_System.Controllers
 {
     public class UserController : Controller
     {
-        SqlConnection con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-DQHFGU1\\ANANDSAGAR");
+        SqlConnection con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-OUCP9Q2");
         SqlCommand cmd = null;
         SqlDataReader reader = null;
         // GET: User
@@ -24,7 +24,7 @@ namespace Hospital_System.Controllers
             var bloodGroups = new List<string> { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" };
             var users = new List<UserModel>();
 
-            using (var con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-DQHFGU1\\ANANDSAGAR"))
+            using (var con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-OUCP9Q2"))
             {
                 con.Open();
                 foreach (var bloodGroup in bloodGroups)
