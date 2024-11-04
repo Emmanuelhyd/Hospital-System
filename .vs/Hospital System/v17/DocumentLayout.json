@@ -1,434 +1,177 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Virat-Backp(project)\\Hospital-System\\",
+  "WorkspaceRootPath": "D:\\Git File\\Hospital-System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|c:\\virat-backp(project)\\hospital-system\\hospital system\\dal\\sessiondal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\dal\\sessiondal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\models\\patients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\models\\patients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\patient\\insertprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\insertprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|c:\\virat-backp(project)\\hospital-system\\hospital system\\bal\\sessionbal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\bal\\sessionbal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\dal\\patient1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\dal\\patient1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|c:\\virat-backp(project)\\hospital-system\\hospital system\\dal\\nursedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\dal\\nursedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\patient\\updateprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\updateprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|c:\\virat-backp(project)\\hospital-system\\hospital system\\views\\patient\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\dashboard\\dashboardview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\dashboard\\dashboardview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\dash\\dashboarddetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\dash\\dashboarddetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\models\\dasboarddetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\models\\dasboarddetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\shared\\_patientlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\shared\\_patientlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\complaint\\registercomplaint.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\complaint\\registercomplaint.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\appointment\\addbook.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\appointment\\addbook.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\controllers\\departmentpatientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\departmentpatientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\departmentpatient\\deplist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\departmentpatient\\deplist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\department\\departmentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\department\\departmentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\billadmin\\billlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\billadmin\\billlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\bal\\departmentpbal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\bal\\departmentpbal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\controllers\\dischargeadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\dischargeadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\controllers\\dischargecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\dischargecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\dal\\admindal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\dal\\admindal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\models\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\models\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\viewmodel\\allview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\viewmodel\\allview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\appointment\\booklist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\appointment\\booklist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\dal\\departmentpdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\dal\\departmentpdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\dal\\dischargeaddal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\dal\\dischargeaddal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\bal\\ambulanceadbal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\bal\\ambulanceadbal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\bal\\ambulancebal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\bal\\ambulancebal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\bal\\attendancebal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\bal\\attendancebal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\dal\\outpatientaddal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\dal\\outpatientaddal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\dal\\ambulancedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\dal\\ambulancedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\updateprofile\\updatelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\updateprofile\\updatelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\models\\hosppatient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\models\\hosppatient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\ambulance\\ambulance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\ambulance\\ambulance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\models\\ambulance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\models\\ambulance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\models\\ambulancedetails .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\models\\ambulancedetails .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\ambulancead\\addambulancead.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\ambulancead\\addambulancead.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\controllers\\ambulanceadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\ambulanceadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\bal\\adminbal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\bal\\adminbal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\ambulancer\\amblist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\ambulancer\\amblist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\ambulancead\\ambulancedriverad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\ambulancead\\ambulancedriverad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\ambulancead\\adddriverad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\ambulancead\\adddriverad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\models\\mambulance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\models\\mambulance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\ambulancead\\ambulancelistad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\ambulancead\\ambulancelistad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\ambulancead\\_ambulance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\ambulancead\\_ambulance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\models\\mdriverad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\models\\mdriverad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\ambulancer\\addamb.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\ambulancer\\addamb.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\dal\\ambulancerdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\dal\\ambulancerdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\models\\ambulancedo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\models\\ambulancedo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\ambulancead\\_ambulancedriver.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\ambulancead\\_ambulancedriver.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\dal\\attendanceaddal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\dal\\attendanceaddal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\models\\mdoctorad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\models\\mdoctorad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\feedbackadmin\\feedbacklistadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\feedbackadmin\\feedbacklistadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\feedbackadmin\\addfeedbackad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\feedbackadmin\\addfeedbackad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\nurseadmin\\nurselist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\nurseadmin\\nurselist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\nurseadmin\\addnurse.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\nurseadmin\\addnurse.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\vaccinationadmin\\vaccinelistadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\vaccinationadmin\\vaccinelistadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\vaccinationadmin\\addvaccine.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\vaccinationadmin\\addvaccine.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\attendanceadmin\\attendancelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\attendanceadmin\\attendancelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\attendanceadmin\\addattendance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\attendanceadmin\\addattendance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\consultantadmin\\consultantlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\consultantadmin\\consultantlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\consultantadmin\\addconsultant.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\consultantadmin\\addconsultant.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\dischargeadmin\\dischargelistad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\dischargeadmin\\dischargelistad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\dischargeadmin\\adddischarge.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\dischargeadmin\\adddischarge.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\billadmin\\billingid.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\billadmin\\billingid.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\billadmin\\addbill.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\billadmin\\addbill.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\inpatientadmin\\inpatientlistad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\inpatientadmin\\inpatientlistad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\inpatientadmin\\addinpatient.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\inpatientadmin\\addinpatient.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\outpatientadmin\\addoutpatient.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\outpatientadmin\\addoutpatient.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\outpatientadmin\\outpatientlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\outpatientadmin\\outpatientlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\commonop\\commonlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\commonop\\commonlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\commonop\\addcommonop.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\commonop\\addcommonop.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\receptionadmin\\receptionfrontpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\receptionadmin\\receptionfrontpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\doctorad\\adddoctorad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\doctorad\\adddoctorad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\appointmentad\\addappointmentad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\appointmentad\\addappointmentad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\complaintad\\addcomplaintad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\complaintad\\addcomplaintad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\complaintad\\complaintadlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\complaintad\\complaintadlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\medicinead\\addmedicinead.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\medicinead\\addmedicinead.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\controllers\\medicineadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\medicineadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\models\\medicine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\models\\medicine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\department\\adddepartment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\department\\adddepartment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\models\\mdepartment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\models\\mdepartment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\appointmentad\\appointmentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\appointmentad\\appointmentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\doctorad\\doctorlistad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\doctorad\\doctorlistad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\controllers\\doctoradcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\doctoradcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\dal\\doctordal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\dal\\doctordal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\dal\\doctordal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\bal\\doctorbal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\bal\\doctorbal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\dal\\admindal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\dal\\admindal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\controllers\\inpatientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\inpatientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\dal\\feedbackaddal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\dal\\feedbackaddal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\controllers\\updateprofilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\updateprofilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\updateprofile\\addprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\updateprofile\\addprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\views\\medicinead\\medicineadlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\medicinead\\medicineadlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\home\\services.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\views\\shared\\_patientlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\shared\\_patientlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\user\\userhome.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\user\\userhome.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\views\\ambulancead\\ambulancelistad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\ambulancead\\ambulancelistad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\controllers\\ambulanceadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\ambulanceadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\bal\\adminbal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\bal\\adminbal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\views\\ambulancead\\ambulancedriverad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\ambulancead\\ambulancedriverad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\views\\ambulancead\\_ambulance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\ambulancead\\_ambulance.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\controllers\\medicineadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\medicineadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\views\\appointmentad\\appointmentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\appointmentad\\appointmentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\views\\appointmentad\\addappointmentad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\appointmentad\\addappointmentad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\views\\doctorad\\doctorlistad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\doctorad\\doctorlistad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\controllers\\doctoradcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\doctoradcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\views\\department\\departmentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\department\\departmentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\views\\doctorad\\adddoctorad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\doctorad\\adddoctorad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\department\\adddepartment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\department\\adddepartment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|d:\\git file\\hospital-system\\hospital system\\viewmodel\\allview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\viewmodel\\allview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\dal\\patient1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\dal\\patient1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\dal\\ambulancerdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\dal\\ambulancerdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\controllers\\receptionadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\receptionadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\controllers\\specialitiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\specialitiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\models\\patients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\models\\patients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\doctor\\doctorlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\doctor\\doctorlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\complaint\\registercomplaint.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\complaint\\registercomplaint.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User2\\AppData\\Local\\Temp\\.vsdbgsrc\\1f8320609e45b37eef88b23a0a9061c98dd96b3cc5585e74f6b04be698024c07\\UserController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\home\\services.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\home\\services.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\shared\\_userlayoutblod.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\shared\\_userlayoutblod.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\reception\\reception.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\reception\\reception.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\ambulanceses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\ambulanceses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\admin\\adminhome.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\admin\\adminhome.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\models\\adminmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\models\\adminmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\admin\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\admin\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\models\\ambulance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\models\\ambulance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|C:\\Virat-Backp(project)\\Hospital-System\\hospital system\\views\\shared\\_layoutblood.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\shared\\_layoutblood.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\patient\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\patient\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|D:\\Git File\\Hospital-System\\hospital system\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{17D35EC3-77A2-4E43-A25B-41A51CAF6249}|Hospital System\\Hospital System.csproj|solutionrelative:hospital system\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -438,1398 +181,549 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "NurseDAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\NurseDAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\DAL\\NurseDAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\NurseDAL.cs",
-              "RelativeToolTip": "Hospital System\\DAL\\NurseDAL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T14:42:31.175Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SessionDAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\SessionDAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\DAL\\SessionDAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\SessionDAL.cs",
-              "RelativeToolTip": "Hospital System\\DAL\\SessionDAL.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAwwBgAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T14:38:21.295Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PatientController.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\PatientController.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Controllers\\PatientController.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\PatientController.cs",
-              "RelativeToolTip": "Hospital System\\Controllers\\PatientController.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAtwC4AAAAMAAAAAAAAAA==",
+              "Title": "AppointmentController.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\AppointmentController.cs",
+              "RelativeDocumentMoniker": "Hospital System\\Controllers\\AppointmentController.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\AppointmentController.cs",
+              "RelativeToolTip": "Hospital System\\Controllers\\AppointmentController.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAiwHMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T12:50:01.109Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Updateprofile.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Patient\\Updateprofile.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Updateprofile.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Patient\\Updateprofile.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Patient\\Updateprofile.cshtml",
-              "ViewState": "AgIAAIkAAAAAAAAAAAAYwJYAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T12:54:38.596Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Patients.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\Patients.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Models\\Patients.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\Patients.cs",
-              "RelativeToolTip": "Hospital System\\Models\\Patients.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAwwDQAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T13:35:37.478Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Patient1.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\Patient1.cs",
-              "RelativeDocumentMoniker": "Hospital System\\DAL\\Patient1.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\Patient1.cs",
-              "RelativeToolTip": "Hospital System\\DAL\\Patient1.cs",
-              "ViewState": "AgIAAIYBAAAAAAAAAAAiwI0BAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T12:50:01.15Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Insertprofile.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Patient\\Insertprofile.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Insertprofile.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Patient\\Insertprofile.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Patient\\Insertprofile.cshtml",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAAAKQAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T09:51:58.161Z",
+              "WhenOpened": "2024-11-04T09:13:46.652Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "SessionBAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\BAL\\SessionBAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\BAL\\SessionBAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\BAL\\SessionBAL.cs",
-              "RelativeToolTip": "Hospital System\\BAL\\SessionBAL.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "PatientController.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\PatientController.cs",
+              "RelativeDocumentMoniker": "Hospital System\\Controllers\\PatientController.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\PatientController.cs",
+              "RelativeToolTip": "Hospital System\\Controllers\\PatientController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAIAwwA0BAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T14:52:45.744Z",
+              "WhenOpened": "2024-11-04T04:50:14.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdminDAL.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\DAL\\AdminDAL.cs",
+              "RelativeDocumentMoniker": "Hospital System\\DAL\\AdminDAL.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\DAL\\AdminDAL.cs",
+              "RelativeToolTip": "Hospital System\\DAL\\AdminDAL.cs",
+              "ViewState": "AgIAAKUHAAAAAAAAAAAUwJQFAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T07:14:10.878Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "AppointmentController.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\AppointmentController.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Controllers\\AppointmentController.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\AppointmentController.cs",
-              "RelativeToolTip": "Hospital System\\Controllers\\AppointmentController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAswBgAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T20:26:35.251Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "DashboardView.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Dashboard\\DashboardView.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Dashboard\\DashboardView.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Dashboard\\DashboardView.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Dashboard\\DashboardView.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAADAAAAAAAAAA==",
+              "Title": "Changepassword.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Changepassword.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Changepassword.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Changepassword.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Patient\\Changepassword.cshtml",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAHoAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-02T05:50:57.792Z",
+              "WhenOpened": "2024-11-04T05:15:36.56Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DashboardDetails.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Dash\\DashboardDetails.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Dash\\DashboardDetails.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Dash\\DashboardDetails.cs",
-              "RelativeToolTip": "Hospital System\\Dash\\DashboardDetails.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAEBTwEQAAAAxAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Hospital System\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Hospital System\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAMwEkBAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T14:01:04.12Z",
+              "WhenOpened": "2024-11-04T04:18:58.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Web.config",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Web.config",
+              "RelativeDocumentMoniker": "Hospital System\\Web.config",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Web.config",
+              "RelativeToolTip": "Hospital System\\Web.config",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA8AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-11-04T05:36:18.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DoctorDAL.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\DAL\\DoctorDAL.cs",
+              "RelativeDocumentMoniker": "Hospital System\\DAL\\DoctorDAL.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\DAL\\DoctorDAL.cs",
+              "RelativeToolTip": "Hospital System\\DAL\\DoctorDAL.cs",
+              "ViewState": "AgIAABMBAAAAAAAAAAAqwGoBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T05:32:25.268Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InpatientController.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\InpatientController.cs",
+              "RelativeDocumentMoniker": "Hospital System\\Controllers\\InpatientController.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\InpatientController.cs",
+              "RelativeToolTip": "Hospital System\\Controllers\\InpatientController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T06:43:20.084Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MedicineAdList.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\MedicineAd\\MedicineAdList.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\MedicineAd\\MedicineAdList.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\MedicineAd\\MedicineAdList.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\MedicineAd\\MedicineAdList.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-04T07:53:40.605Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Patient\\Login.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Login.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Patient\\Login.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Patient\\Login.cshtml",
-              "ViewState": "AgIAAJEAAAAAAAAAAAAgwJgAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T13:28:16.536Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "DashboardController.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\DashboardController.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Controllers\\DashboardController.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\DashboardController.cs",
-              "RelativeToolTip": "Hospital System\\Controllers\\DashboardController.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAkwCUAAAA+AAAAAAAAAA==",
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Hospital System\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Hospital System\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAhwA0AAABuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T05:58:31.383Z",
+              "WhenOpened": "2024-11-04T05:35:54.971Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DasboardDetails.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\DasboardDetails.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Models\\DasboardDetails.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\DasboardDetails.cs",
-              "RelativeToolTip": "Hospital System\\Models\\DasboardDetails.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T06:13:00.947Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 10,
               "Title": "_PatientLayout.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Shared\\_PatientLayout.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Shared\\_PatientLayout.cshtml",
               "RelativeDocumentMoniker": "Hospital System\\Views\\Shared\\_PatientLayout.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Shared\\_PatientLayout.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Shared\\_PatientLayout.cshtml",
               "RelativeToolTip": "Hospital System\\Views\\Shared\\_PatientLayout.cshtml",
-              "ViewState": "AgIAAAEAAAAAAAAAAEBVwBEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFYAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-02T06:09:29.763Z",
+              "WhenOpened": "2024-11-04T06:46:42.355Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "BillList.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\BillAdmin\\BillList.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\BillAdmin\\BillList.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\BillAdmin\\BillList.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\BillAdmin\\BillList.cshtml",
-              "ViewState": "AgIAAHIAAAAAAAAAAIBpwJ4AAAAgAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "UserHome.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\User\\UserHome.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\User\\UserHome.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\User\\UserHome.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\User\\UserHome.cshtml",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAABcAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:08:36.478Z",
+              "WhenOpened": "2024-11-04T05:43:16.866Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 15,
-              "Title": "RegisterComplaint.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Complaint\\RegisterComplaint.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Complaint\\RegisterComplaint.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Complaint\\RegisterComplaint.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Complaint\\RegisterComplaint.cshtml",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAUwHEAAABYAAAAAAAAAA==",
+              "Title": "AmbulanceDriverAd.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\AmbulanceDriverAd.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\AmbulanceAd\\AmbulanceDriverAd.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\AmbulanceDriverAd.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\AmbulanceAd\\AmbulanceDriverAd.cshtml",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBMAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T21:04:42.822Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "DepartmentPBAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\BAL\\DepartmentPBAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\BAL\\DepartmentPBAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\BAL\\DepartmentPBAL.cs",
-              "RelativeToolTip": "Hospital System\\BAL\\DepartmentPBAL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T20:21:30.88Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "DepartmentPatientController.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\DepartmentPatientController.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Controllers\\DepartmentPatientController.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\DepartmentPatientController.cs",
-              "RelativeToolTip": "Hospital System\\Controllers\\DepartmentPatientController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAawCMAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T20:21:06.454Z",
+              "WhenOpened": "2024-11-04T07:59:17.348Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 16,
-              "Title": "AddBook.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Appointment\\AddBook.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Appointment\\AddBook.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Appointment\\AddBook.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Appointment\\AddBook.cshtml",
-              "ViewState": "AgIAAI8AAAAAAAAAAAAowKAAAAArAAAAAAAAAA==",
+              "Title": "_Ambulance.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\_Ambulance.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\AmbulanceAd\\_Ambulance.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\_Ambulance.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\AmbulanceAd\\_Ambulance.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAsAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T20:58:53.192Z",
+              "WhenOpened": "2024-11-04T08:07:50.658Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "DepartmentList.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Department\\DepartmentList.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Department\\DepartmentList.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Department\\DepartmentList.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Department\\DepartmentList.cshtml",
-              "ViewState": "AgIAAIgAAAAAAAAAAAAAwKQAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 12,
+              "Title": "AmbulanceListAd.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\AmbulanceListAd.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\AmbulanceAd\\AmbulanceListAd.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\AmbulanceListAd.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\AmbulanceAd\\AmbulanceListAd.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAC0AAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T07:48:15.629Z",
+              "WhenOpened": "2024-11-04T08:10:01.45Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AmbulanceAdController.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\AmbulanceAdController.cs",
+              "RelativeDocumentMoniker": "Hospital System\\Controllers\\AmbulanceAdController.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\AmbulanceAdController.cs",
+              "RelativeToolTip": "Hospital System\\Controllers\\AmbulanceAdController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T08:12:29.025Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 18,
-              "Title": "DepList.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\DepartmentPatient\\DepList.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\DepartmentPatient\\DepList.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\DepartmentPatient\\DepList.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\DepartmentPatient\\DepList.cshtml",
-              "ViewState": "AgIAABgAAAAAAAAAAIBZwDAAAAAAAAAAAAAAAA==",
+              "Title": "AppointmentList.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\AppointmentAd\\AppointmentList.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\AppointmentAd\\AppointmentList.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\AppointmentAd\\AppointmentList.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\AppointmentAd\\AppointmentList.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T20:37:26.884Z",
+              "WhenOpened": "2024-11-04T07:50:37.579Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "DischargeAdminController.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\DischargeAdminController.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Controllers\\DischargeAdminController.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\DischargeAdminController.cs",
-              "RelativeToolTip": "Hospital System\\Controllers\\DischargeAdminController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAIBJwBoAAAAmAAAAAAAAAA==",
+              "DocumentIndex": 14,
+              "Title": "AdminBAL.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\BAL\\AdminBAL.cs",
+              "RelativeDocumentMoniker": "Hospital System\\BAL\\AdminBAL.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\BAL\\AdminBAL.cs",
+              "RelativeToolTip": "Hospital System\\BAL\\AdminBAL.cs",
+              "ViewState": "AgIAADEBAAAAAAAAAAAywDsBAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T20:47:27.657Z",
+              "WhenOpened": "2024-11-04T07:13:50.823Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "MedicineAdController.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\MedicineAdController.cs",
+              "RelativeDocumentMoniker": "Hospital System\\Controllers\\MedicineAdController.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\MedicineAdController.cs",
+              "RelativeToolTip": "Hospital System\\Controllers\\MedicineAdController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T07:54:08.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AddAppointmentAd.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\AppointmentAd\\AddAppointmentAd.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\AppointmentAd\\AddAppointmentAd.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\AppointmentAd\\AddAppointmentAd.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\AppointmentAd\\AddAppointmentAd.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-04T07:50:30.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "DoctorAdController.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\DoctorAdController.cs",
+              "RelativeDocumentMoniker": "Hospital System\\Controllers\\DoctorAdController.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\DoctorAdController.cs",
+              "RelativeToolTip": "Hospital System\\Controllers\\DoctorAdController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABkAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T07:42:49.984Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 23,
-              "Title": "DischargeController.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\DischargeController.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Controllers\\DischargeController.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\DischargeController.cs",
-              "RelativeToolTip": "Hospital System\\Controllers\\DischargeController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAIBJwBkAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T20:47:14.708Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Department.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\Department.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Models\\Department.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\Department.cs",
-              "RelativeToolTip": "Hospital System\\Models\\Department.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T20:46:29.227Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "Allview.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Viewmodel\\Allview.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Viewmodel\\Allview.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Viewmodel\\Allview.cs",
-              "RelativeToolTip": "Hospital System\\Viewmodel\\Allview.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAA4wBgAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T20:40:50.421Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "BookList.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Appointment\\BookList.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Appointment\\BookList.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Appointment\\BookList.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Appointment\\BookList.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Title": "_LayoutAdmin.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T20:38:36.076Z",
+              "WhenOpened": "2024-11-04T07:33:16.973Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "DoctorListAd.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\DoctorAd\\DoctorListAd.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\DoctorAd\\DoctorListAd.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\DoctorAd\\DoctorListAd.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\DoctorAd\\DoctorListAd.cshtml",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAAEwAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-04T07:28:08.214Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 24,
-              "Title": "AdminDAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\AdminDAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\DAL\\AdminDAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\AdminDAL.cs",
-              "RelativeToolTip": "Hospital System\\DAL\\AdminDAL.cs",
-              "ViewState": "AgIAAEIBAAAAAAAAAIBJwFYBAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T12:50:01.173Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "DischargeAdDAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\DischargeAdDAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\DAL\\DischargeAdDAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\DischargeAdDAL.cs",
-              "RelativeToolTip": "Hospital System\\DAL\\DischargeAdDAL.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA1wBgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T20:22:57.438Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "AmbulanceAdBAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\BAL\\AmbulanceAdBAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\BAL\\AmbulanceAdBAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\BAL\\AmbulanceAdBAL.cs",
-              "RelativeToolTip": "Hospital System\\BAL\\AmbulanceAdBAL.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAIBJwBEAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T20:21:36.532Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "DepartmentPDAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\DepartmentPDAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\DAL\\DepartmentPDAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\DepartmentPDAL.cs",
-              "RelativeToolTip": "Hospital System\\DAL\\DepartmentPDAL.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAcwCAAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T20:20:14.343Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "AmbulanceBAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\BAL\\AmbulanceBAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\BAL\\AmbulanceBAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\BAL\\AmbulanceBAL.cs",
-              "RelativeToolTip": "Hospital System\\BAL\\AmbulanceBAL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T20:30:47.889Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "AttendanceBAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\BAL\\AttendanceBAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\BAL\\AttendanceBAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\BAL\\AttendanceBAL.cs",
-              "RelativeToolTip": "Hospital System\\BAL\\AttendanceBAL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T20:30:42.534Z",
+              "Title": "AddDoctorAd.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\DoctorAd\\AddDoctorAd.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\DoctorAd\\AddDoctorAd.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\DoctorAd\\AddDoctorAd.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\DoctorAd\\AddDoctorAd.cshtml",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-04T07:26:42.649Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 33,
-              "Title": "DepartmentController.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\DepartmentController.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Controllers\\DepartmentController.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\DepartmentController.cs",
-              "RelativeToolTip": "Hospital System\\Controllers\\DepartmentController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwCIAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T20:22:26.635Z",
+              "Title": "RegisterComplaint.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Complaint\\RegisterComplaint.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Complaint\\RegisterComplaint.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Complaint\\RegisterComplaint.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Complaint\\RegisterComplaint.cshtml",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAAAH4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-04T05:14:36.297Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "DepartmentList.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Department\\DepartmentList.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Department\\DepartmentList.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Department\\DepartmentList.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Department\\DepartmentList.cshtml",
+              "ViewState": "AgIAADoAAAAAAAAAAAAAwEkAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-04T06:20:40.908Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AddDepartment.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Department\\AddDepartment.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Department\\AddDepartment.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Department\\AddDepartment.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Department\\AddDepartment.cshtml",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-04T06:19:51.42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Patients.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Models\\Patients.cs",
+              "RelativeDocumentMoniker": "Hospital System\\Models\\Patients.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Models\\Patients.cs",
+              "RelativeToolTip": "Hospital System\\Models\\Patients.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAA7wDsAAACAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T05:52:34.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Allview.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Viewmodel\\Allview.cs",
+              "RelativeDocumentMoniker": "Hospital System\\Viewmodel\\Allview.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Viewmodel\\Allview.cs",
+              "RelativeToolTip": "Hospital System\\Viewmodel\\Allview.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAowDAAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T06:52:59.003Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Patient1.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\DAL\\Patient1.cs",
+              "RelativeDocumentMoniker": "Hospital System\\DAL\\Patient1.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\DAL\\Patient1.cs",
+              "RelativeToolTip": "Hospital System\\DAL\\Patient1.cs",
+              "ViewState": "AgIAAI0BAAAAAAAAAIA5wLIBAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T04:01:24.423Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "AmbulanceRDAL.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\DAL\\AmbulanceRDAL.cs",
+              "RelativeDocumentMoniker": "Hospital System\\DAL\\AmbulanceRDAL.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\DAL\\AmbulanceRDAL.cs",
+              "RelativeToolTip": "Hospital System\\DAL\\AmbulanceRDAL.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAwwGUAAAAbAQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T04:49:06.043Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "ReceptionAdminController.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\ReceptionAdminController.cs",
+              "RelativeDocumentMoniker": "Hospital System\\Controllers\\ReceptionAdminController.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\ReceptionAdminController.cs",
+              "RelativeToolTip": "Hospital System\\Controllers\\ReceptionAdminController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T06:11:35.394Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "SpecialitiesController.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\SpecialitiesController.cs",
+              "RelativeDocumentMoniker": "Hospital System\\Controllers\\SpecialitiesController.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\SpecialitiesController.cs",
+              "RelativeToolTip": "Hospital System\\Controllers\\SpecialitiesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T05:59:32.054Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 34,
-              "Title": "DoctorController.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\DoctorController.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Controllers\\DoctorController.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\DoctorController.cs",
-              "RelativeToolTip": "Hospital System\\Controllers\\DoctorController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\User2\\AppData\\Local\\Temp\\.vsdbgsrc\\1f8320609e45b37eef88b23a0a9061c98dd96b3cc5585e74f6b04be698024c07\\UserController.cs",
+              "ToolTip": "C:\\Users\\User2\\AppData\\Local\\Temp\\.vsdbgsrc\\1f8320609e45b37eef88b23a0a9061c98dd96b3cc5585e74f6b04be698024c07\\UserController.cs [Read Only]",
+              "ViewState": "AgIAABQAAAAAAAAAAAApwBkAAACEAAAAAQAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T06:12:02.849Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T05:40:04.8Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "DoctorList.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Doctor\\DoctorList.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Doctor\\DoctorList.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Doctor\\DoctorList.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Doctor\\DoctorList.cshtml",
+              "ViewState": "AgIAAOoAAAAAAAAAAAAAAPQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-04T04:40:18.286Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 35,
-              "Title": "OutPatientAdDAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\OutPatientAdDAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\DAL\\OutPatientAdDAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\OutPatientAdDAL.cs",
-              "RelativeToolTip": "Hospital System\\DAL\\OutPatientAdDAL.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T20:16:22.224Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Services.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Home\\Services.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Home\\Services.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Home\\Services.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Home\\Services.cshtml",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAADwAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T13:56:43.795Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "UpdateList.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\UpdateProfile\\UpdateList.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\UpdateProfile\\UpdateList.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\UpdateProfile\\UpdateList.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\UpdateProfile\\UpdateList.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T13:58:22.553Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "Ambulance.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\Ambulance.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Models\\Ambulance.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\Ambulance.cs",
-              "RelativeToolTip": "Hospital System\\Models\\Ambulance.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwBoAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T12:40:48.835Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T05:42:32.315Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 36,
-              "Title": "AmbulanceDAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\AmbulanceDAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\DAL\\AmbulanceDAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\AmbulanceDAL.cs",
-              "RelativeToolTip": "Hospital System\\DAL\\AmbulanceDAL.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAYwCcAAABdAAAAAAAAAA==",
+              "Title": "DoctorController.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\DoctorController.cs",
+              "RelativeDocumentMoniker": "Hospital System\\Controllers\\DoctorController.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Controllers\\DoctorController.cs",
+              "RelativeToolTip": "Hospital System\\Controllers\\DoctorController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB0AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T12:42:22.871Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "Ambulance.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Ambulance\\Ambulance.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Ambulance\\Ambulance.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Ambulance\\Ambulance.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Ambulance\\Ambulance.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBZwAUAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T12:46:52.894Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T05:02:23.668Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 38,
-              "Title": "HospPatient.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\HospPatient.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Models\\HospPatient.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\HospPatient.cs",
-              "RelativeToolTip": "Hospital System\\Models\\HospPatient.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAEBTwAAAAAAAAAAAAAAAAA==",
+              "Title": "Adminmenu.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Models\\Adminmenu.cs",
+              "RelativeDocumentMoniker": "Hospital System\\Models\\Adminmenu.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Models\\Adminmenu.cs",
+              "RelativeToolTip": "Hospital System\\Models\\Adminmenu.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T13:32:58.529Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T04:55:53.82Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAA0BAAAAAAAAAMB9wEQBAAANAAAAAAAAAA==",
+              "DocumentIndex": 39,
+              "Title": "Ambulance.cs",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Models\\Ambulance.cs",
+              "RelativeDocumentMoniker": "Hospital System\\Models\\Ambulance.cs",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Models\\Ambulance.cs",
+              "RelativeToolTip": "Hospital System\\Models\\Ambulance.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T04:47:06.962Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Ambulanceses.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Ambulanceses.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Ambulanceses.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Ambulanceses.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Patient\\Ambulanceses.cshtml",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAAAH4AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T13:57:33.187Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T04:36:07.146Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 41,
               "Title": "About.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Home\\About.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Home\\About.cshtml",
               "RelativeDocumentMoniker": "Hospital System\\Views\\Home\\About.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Home\\About.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Home\\About.cshtml",
               "RelativeToolTip": "Hospital System\\Views\\Home\\About.cshtml",
-              "ViewState": "AgIAAGgAAAAAAAAAAEBlwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAC4AAAB8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T12:55:00.016Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-03T16:23:53.768Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Login.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Patient\\Login.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Patient\\Login.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Patient\\Login.cshtml",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAAAGsAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-03T16:17:06.896Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 42,
-              "Title": "UserModel.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\UserModel.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Models\\UserModel.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\UserModel.cs",
-              "RelativeToolTip": "Hospital System\\Models\\UserModel.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T13:33:31.512Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 46,
-              "Title": "AddAmbulanceAd.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\AddAmbulanceAd.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\AmbulanceAd\\AddAmbulanceAd.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\AddAmbulanceAd.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\AmbulanceAd\\AddAmbulanceAd.cshtml",
-              "ViewState": "AgIAAB8AAAAAAAAAAGBnwDQAAAAuAAAAAAAAAA==",
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Hospital System\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Git File\\Hospital-System\\Hospital System\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Hospital System\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAA4AAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:15:30.147Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "AmbulanceDetails .cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\AmbulanceDetails .cs",
-              "RelativeDocumentMoniker": "Hospital System\\Models\\AmbulanceDetails .cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\AmbulanceDetails .cs",
-              "RelativeToolTip": "Hospital System\\Models\\AmbulanceDetails .cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBQAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T12:43:08.161Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 52,
-              "Title": "MAmbulance.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\MAmbulance.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Models\\MAmbulance.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\MAmbulance.cs",
-              "RelativeToolTip": "Hospital System\\Models\\MAmbulance.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBQAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T10:19:04.967Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 48,
-              "Title": "AdminBAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\BAL\\AdminBAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\BAL\\AdminBAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\BAL\\AdminBAL.cs",
-              "RelativeToolTip": "Hospital System\\BAL\\AdminBAL.cs",
-              "ViewState": "AgIAAGkBAAAAAAAAAAAUwHUBAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T06:12:52.16Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 51,
-              "Title": "AddDriverAd.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\AddDriverAd.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\AmbulanceAd\\AddDriverAd.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\AddDriverAd.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\AmbulanceAd\\AddDriverAd.cshtml",
-              "ViewState": "AgIAAGkAAAAAAAAAAABRwIkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:40:28.614Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 47,
-              "Title": "AmbulanceAdController.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\AmbulanceAdController.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Controllers\\AmbulanceAdController.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\AmbulanceAdController.cs",
-              "RelativeToolTip": "Hospital System\\Controllers\\AmbulanceAdController.cs",
-              "ViewState": "AgIAAIMAAAAAAAAAAAAUwAsBAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T11:30:09.051Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
-              "Title": "AmbulanceDriverAd.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\AmbulanceDriverAd.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\AmbulanceAd\\AmbulanceDriverAd.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\AmbulanceDriverAd.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\AmbulanceAd\\AmbulanceDriverAd.cshtml",
-              "ViewState": "AgIAAAgAAAAAAAAAAKBrwCYAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:41:17.896Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "AmbList.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AmbulanceR\\AmbList.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\AmbulanceR\\AmbList.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AmbulanceR\\AmbList.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\AmbulanceR\\AmbList.cshtml",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAnwEsAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:11:45.686Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 53,
-              "Title": "AmbulanceListAd.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\AmbulanceListAd.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\AmbulanceAd\\AmbulanceListAd.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\AmbulanceListAd.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\AmbulanceAd\\AmbulanceListAd.cshtml",
-              "ViewState": "AgIAAAsAAAAAAAAAAKBrwB8AAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:42:02.761Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 54,
-              "Title": "_Ambulance.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\_Ambulance.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\AmbulanceAd\\_Ambulance.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\_Ambulance.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\AmbulanceAd\\_Ambulance.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:15:07.061Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 55,
-              "Title": "MDriverAd.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\MDriverAd.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Models\\MDriverAd.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\MDriverAd.cs",
-              "RelativeToolTip": "Hospital System\\Models\\MDriverAd.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T10:18:53.054Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 56,
-              "Title": "AddAmb.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AmbulanceR\\AddAmb.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\AmbulanceR\\AddAmb.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AmbulanceR\\AddAmb.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\AmbulanceR\\AddAmb.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAABpAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:11:36.06Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 57,
-              "Title": "AmbulanceRDAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\AmbulanceRDAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\DAL\\AmbulanceRDAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\AmbulanceRDAL.cs",
-              "RelativeToolTip": "Hospital System\\DAL\\AmbulanceRDAL.cs",
-              "ViewState": "AgIAAG4AAAAAAAAAAAAIwKkAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T10:43:24.754Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 58,
-              "Title": "AmbulanceDo.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\AmbulanceDo.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Models\\AmbulanceDo.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\AmbulanceDo.cs",
-              "RelativeToolTip": "Hospital System\\Models\\AmbulanceDo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T10:44:32.447Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 59,
-              "Title": "_Ambulancedriver.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\_Ambulancedriver.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\AmbulanceAd\\_Ambulancedriver.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AmbulanceAd\\_Ambulancedriver.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\AmbulanceAd\\_Ambulancedriver.cshtml",
-              "ViewState": "AgIAAAQAAAAAAAAAAEBVwAYAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:39:03.784Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 60,
-              "Title": "AttendanceAdDAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\AttendanceAdDAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\DAL\\AttendanceAdDAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\AttendanceAdDAL.cs",
-              "RelativeToolTip": "Hospital System\\DAL\\AttendanceAdDAL.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T10:24:28.292Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 62,
-              "Title": "FeedbackListAdmin.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\FeedbackAdmin\\FeedbackListAdmin.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\FeedbackAdmin\\FeedbackListAdmin.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\FeedbackAdmin\\FeedbackListAdmin.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\FeedbackAdmin\\FeedbackListAdmin.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:14:07.318Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 63,
-              "Title": "AddFeedbackAd.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\FeedbackAdmin\\AddFeedbackAd.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\FeedbackAdmin\\AddFeedbackAd.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\FeedbackAdmin\\AddFeedbackAd.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\FeedbackAdmin\\AddFeedbackAd.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:13:58.59Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 61,
-              "Title": "MDoctorAd.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\MDoctorAd.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Models\\MDoctorAd.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\MDoctorAd.cs",
-              "RelativeToolTip": "Hospital System\\Models\\MDoctorAd.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBwAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T06:19:06.056Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 64,
-              "Title": "NurseList.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\NurseAdmin\\NurseList.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\NurseAdmin\\NurseList.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\NurseAdmin\\NurseList.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\NurseAdmin\\NurseList.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:13:44.876Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 65,
-              "Title": "AddNurse.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\NurseAdmin\\AddNurse.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\NurseAdmin\\AddNurse.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\NurseAdmin\\AddNurse.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\NurseAdmin\\AddNurse.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:13:32.903Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 66,
-              "Title": "VaccineListAdmin.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\VaccinationAdmin\\VaccineListAdmin.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\VaccinationAdmin\\VaccineListAdmin.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\VaccinationAdmin\\VaccineListAdmin.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\VaccinationAdmin\\VaccineListAdmin.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:12:41.185Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 67,
-              "Title": "AddVaccine.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\VaccinationAdmin\\AddVaccine.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\VaccinationAdmin\\AddVaccine.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\VaccinationAdmin\\AddVaccine.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\VaccinationAdmin\\AddVaccine.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:12:24.867Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 68,
-              "Title": "AttendanceList.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AttendanceAdmin\\AttendanceList.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\AttendanceAdmin\\AttendanceList.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AttendanceAdmin\\AttendanceList.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\AttendanceAdmin\\AttendanceList.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:12:07.268Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 69,
-              "Title": "AddAttendance.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AttendanceAdmin\\AddAttendance.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\AttendanceAdmin\\AddAttendance.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AttendanceAdmin\\AddAttendance.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\AttendanceAdmin\\AddAttendance.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:11:58.401Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 70,
-              "Title": "ConsultantList.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\ConsultantAdmin\\ConsultantList.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\ConsultantAdmin\\ConsultantList.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\ConsultantAdmin\\ConsultantList.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\ConsultantAdmin\\ConsultantList.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:10:45.577Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 71,
-              "Title": "AddConsultant.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\ConsultantAdmin\\AddConsultant.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\ConsultantAdmin\\AddConsultant.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\ConsultantAdmin\\AddConsultant.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\ConsultantAdmin\\AddConsultant.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:10:11.841Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 72,
-              "Title": "DischargeListAd.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\DischargeAdmin\\DischargeListAd.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\DischargeAdmin\\DischargeListAd.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\DischargeAdmin\\DischargeListAd.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\DischargeAdmin\\DischargeListAd.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:09:51.652Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 73,
-              "Title": "AddDischarge.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\DischargeAdmin\\AddDischarge.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\DischargeAdmin\\AddDischarge.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\DischargeAdmin\\AddDischarge.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\DischargeAdmin\\AddDischarge.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:09:37.895Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 74,
-              "Title": "BillingId.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\BillAdmin\\BillingId.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\BillAdmin\\BillingId.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\BillAdmin\\BillingId.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\BillAdmin\\BillingId.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:08:31.142Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 75,
-              "Title": "AddBill.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\BillAdmin\\AddBill.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\BillAdmin\\AddBill.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\BillAdmin\\AddBill.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\BillAdmin\\AddBill.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:08:09.923Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 76,
-              "Title": "InPatientListAd.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\InPatientAdmin\\InPatientListAd.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\InPatientAdmin\\InPatientListAd.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\InPatientAdmin\\InPatientListAd.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\InPatientAdmin\\InPatientListAd.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:07:48.51Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 77,
-              "Title": "AddInpatient.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\InPatientAdmin\\AddInpatient.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\InPatientAdmin\\AddInpatient.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\InPatientAdmin\\AddInpatient.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\InPatientAdmin\\AddInpatient.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:07:40.702Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 78,
-              "Title": "AddOutPatient.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\OutPatientAdmin\\AddOutPatient.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\OutPatientAdmin\\AddOutPatient.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\OutPatientAdmin\\AddOutPatient.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\OutPatientAdmin\\AddOutPatient.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:07:16.572Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 79,
-              "Title": "OutPatientList.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\OutPatientAdmin\\OutPatientList.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\OutPatientAdmin\\OutPatientList.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\OutPatientAdmin\\OutPatientList.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\OutPatientAdmin\\OutPatientList.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:06:53.295Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 80,
-              "Title": "CommonList.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\CommonOP\\CommonList.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\CommonOP\\CommonList.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\CommonOP\\CommonList.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\CommonOP\\CommonList.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T10:01:41.573Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 81,
-              "Title": "AddCommonOP.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\CommonOP\\AddCommonOP.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\CommonOP\\AddCommonOP.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\CommonOP\\AddCommonOP.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\CommonOP\\AddCommonOP.cshtml",
-              "ViewState": "AgIAAHsAAAAAAAAAAIBZwHcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T09:58:21.979Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 87,
-              "Title": "AddMedicineAd.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\MedicineAd\\AddMedicineAd.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\MedicineAd\\AddMedicineAd.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\MedicineAd\\AddMedicineAd.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\MedicineAd\\AddMedicineAd.cshtml",
-              "ViewState": "AgIAACYAAAAAAAAAAAAUwDAAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T08:01:53.263Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 84,
-              "Title": "AddAppointmentAd.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AppointmentAd\\AddAppointmentAd.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\AppointmentAd\\AddAppointmentAd.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AppointmentAd\\AddAppointmentAd.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\AppointmentAd\\AddAppointmentAd.cshtml",
-              "ViewState": "AgIAACQAAAAAAAAAAIBZwCoAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T06:46:30.127Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 82,
-              "Title": "ReceptionFrontPage.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\ReceptionAdmin\\ReceptionFrontPage.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\ReceptionAdmin\\ReceptionFrontPage.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\ReceptionAdmin\\ReceptionFrontPage.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\ReceptionAdmin\\ReceptionFrontPage.cshtml",
-              "ViewState": "AgIAACEAAAAAAAAAAIBZwDIAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T13:35:47.068Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 89,
-              "Title": "Medicine.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\Medicine.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Models\\Medicine.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\Medicine.cs",
-              "RelativeToolTip": "Hospital System\\Models\\Medicine.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T08:07:01.295Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 83,
-              "Title": "AddDoctorAd.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\DoctorAd\\AddDoctorAd.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\DoctorAd\\AddDoctorAd.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\DoctorAd\\AddDoctorAd.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\DoctorAd\\AddDoctorAd.cshtml",
-              "ViewState": "AgIAAGAAAAAAAAAAAIBZwHgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T06:24:28.37Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 85,
-              "Title": "AddComplaintAd.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\ComplaintAd\\AddComplaintAd.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\ComplaintAd\\AddComplaintAd.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\ComplaintAd\\AddComplaintAd.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\ComplaintAd\\AddComplaintAd.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAIBZwCYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T08:23:18.91Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 88,
-              "Title": "MedicineAdController.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\MedicineAdController.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Controllers\\MedicineAdController.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\MedicineAdController.cs",
-              "RelativeToolTip": "Hospital System\\Controllers\\MedicineAdController.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAgwC8AAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T08:07:24.781Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 86,
-              "Title": "ComplaintAdList.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\ComplaintAd\\ComplaintAdList.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\ComplaintAd\\ComplaintAdList.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\ComplaintAd\\ComplaintAdList.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\ComplaintAd\\ComplaintAdList.cshtml",
-              "ViewState": "AgIAAAcAAAAAAAAAAMBtwB4AAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T08:25:55.559Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 91,
-              "Title": "MDepartment.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\MDepartment.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Models\\MDepartment.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Models\\MDepartment.cs",
-              "RelativeToolTip": "Hospital System\\Models\\MDepartment.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBIAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T07:33:51.041Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 90,
-              "Title": "AddDepartment.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Department\\AddDepartment.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Department\\AddDepartment.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Department\\AddDepartment.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Department\\AddDepartment.cshtml",
-              "ViewState": "AgIAACIAAAAAAAAAAIBZwCMAAABPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T07:30:23.442Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 92,
-              "Title": "AppointmentList.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AppointmentAd\\AppointmentList.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\AppointmentAd\\AppointmentList.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\AppointmentAd\\AppointmentList.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\AppointmentAd\\AppointmentList.cshtml",
-              "ViewState": "AgIAABAAAAAAAAAAAMBtwC8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T06:46:45.238Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 93,
-              "Title": "DoctorListAd.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\DoctorAd\\DoctorListAd.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\DoctorAd\\DoctorListAd.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\DoctorAd\\DoctorListAd.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\DoctorAd\\DoctorListAd.cshtml",
-              "ViewState": "AgIAAAgAAAAAAAAAAKBrwDMAAABPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-01T06:28:16.013Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 95,
-              "Title": "DoctorDAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\DoctorDAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\DAL\\DoctorDAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\DoctorDAL.cs",
-              "RelativeToolTip": "Hospital System\\DAL\\DoctorDAL.cs",
-              "ViewState": "AgIAAK4AAAAAAAAAAAAzwOUAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T06:08:54.352Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 94,
-              "Title": "DoctorAdController.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\DoctorAdController.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Controllers\\DoctorAdController.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\DoctorAdController.cs",
-              "RelativeToolTip": "Hospital System\\Controllers\\DoctorAdController.cs",
-              "ViewState": "AgIAAG4AAAAAAAAAAAAwwBUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T06:07:25.044Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 96,
-              "Title": "DoctorBAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\BAL\\DoctorBAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\BAL\\DoctorBAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\BAL\\DoctorBAL.cs",
-              "RelativeToolTip": "Hospital System\\BAL\\DoctorBAL.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T06:07:10.777Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 98,
-              "Title": "FeedbackAdDAL.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\FeedbackAdDAL.cs",
-              "RelativeDocumentMoniker": "Hospital System\\DAL\\FeedbackAdDAL.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\DAL\\FeedbackAdDAL.cs",
-              "RelativeToolTip": "Hospital System\\DAL\\FeedbackAdDAL.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwBAAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T05:51:22.501Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 100,
-              "Title": "AddProfile.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\UpdateProfile\\AddProfile.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\UpdateProfile\\AddProfile.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\UpdateProfile\\AddProfile.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\UpdateProfile\\AddProfile.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T14:00:37.861Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 97,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "Hospital System\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAowAsAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T12:45:46.461Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 99,
-              "Title": "UpdateProfileController.cs",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\UpdateProfileController.cs",
-              "RelativeDocumentMoniker": "Hospital System\\Controllers\\UpdateProfileController.cs",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Controllers\\UpdateProfileController.cs",
-              "RelativeToolTip": "Hospital System\\Controllers\\UpdateProfileController.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAA5wFMAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T14:02:28.348Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 103,
-              "Title": "Reception.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Reception\\Reception.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Reception\\Reception.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Reception\\Reception.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Reception\\Reception.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T13:36:09.251Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 102,
-              "Title": "_UserLayoutBlod.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Shared\\_UserLayoutBlod.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Shared\\_UserLayoutBlod.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Shared\\_UserLayoutBlod.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Shared\\_UserLayoutBlod.cshtml",
-              "ViewState": "AgIAAEEAAAAAAAAAAIBZwGsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T13:26:23.984Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 101,
-              "Title": "Services.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Home\\Services.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Home\\Services.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Home\\Services.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Home\\Services.cshtml",
-              "ViewState": "AgIAACEAAAAAAAAAAIBZwDYAAADhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T12:45:01.305Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 105,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Admin\\Details.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Admin\\Details.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Admin\\Details.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Admin\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T12:58:31.766Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 106,
-              "Title": "_LayoutBlood.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Shared\\_LayoutBlood.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Shared\\_LayoutBlood.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Shared\\_LayoutBlood.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Shared\\_LayoutBlood.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T12:54:37.974Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 104,
-              "Title": "AdminHome.cshtml",
-              "DocumentMoniker": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Admin\\AdminHome.cshtml",
-              "RelativeDocumentMoniker": "Hospital System\\Views\\Admin\\AdminHome.cshtml",
-              "ToolTip": "C:\\Virat-Backp(project)\\Hospital-System\\Hospital System\\Views\\Admin\\AdminHome.cshtml",
-              "RelativeToolTip": "Hospital System\\Views\\Admin\\AdminHome.cshtml",
-              "ViewState": "AgIAAGgBAAAAAAAAAAAcwIYBAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T12:50:56.999Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-03T16:16:29.999Z"
             }
           ]
         }
