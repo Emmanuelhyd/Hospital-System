@@ -52,17 +52,8 @@
     @using (Html.BeginForm())
     {
         <nav class="navbar navbar-expand-lg">
-            @*<button id="logout" style="margin-left: 88%; position: absolute; font-size: small; font-weight: 700; border-radius: 5px; color: black;">
-                    LogOut
-                </button>*@
-
-
-
-            @*@Html.ActionLink("LogOut", "Login", "Patient", null, new { @id = "logout", @style = "margin-left: 88%; position: absolute; font-size: small; font-weight: 700; border-radius: 5px; color: black; background-color: lightgray; padding: 10px; text-decoration: none;" })*@
-
-            @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>*@
+           
+              
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     @if (Model?.Menus != null && Model.Menus.Any())
@@ -86,8 +77,16 @@
                         }
                     }
                 </ul>
-            </div>
-        </nav>
+
+                <div class="user-info ml-auto text-white">
+                    @if (Model.Patients != null && !string.IsNullOrEmpty(Model.Patients.UserNameOrEmail))
+                    {
+                        <span>@Model.Patients.UserNameOrEmail</span> 
+                    }
+                   
+                </div>
+
+</nav>
     }
 
     <div class="container mt-4">
@@ -98,39 +97,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    @*<script>
-            $(document).ready(function () {
-                $('#logout').click(function () {
-                 console.log("welcome to logout");
-                 window.location.href = '@Url.Action("Dashboard", "Patient")';
-             });
-         })
-        </script>*@
-    @*<script>
-            $(document).ready(function () {
-                $('#logout').click(function () {
-                    console.log("Logging out...");
-
-                    // Clear any session or token
-                    localStorage.removeItem('userToken');
-
-                    // Redirect to the Login action
-                    var loginUrl = '@Url.Action("Login", "Patient")';
-                    console.log("Redirecting to: " + loginUrl); // Log the URL for debugging
-                    window.location.href = loginUrl;
-                });
-            });
-        </script>*@
-
-    @*<script>
-            $(document).ready(function () {
-                $('#logout').click(function () {
-                    // Add your logout logic here (e.g., clear session, token, etc.)
-                    localStorage.removeItem('userToken'); // Example of clearing a token
-                });
-            });
-        </script>*@
-
+   
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

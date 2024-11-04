@@ -12,6 +12,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <!-- Main container -->
+@using(Html.BeginForm())
+{ 
 <div style="margin: 20px;">
     <h1>Doctor Management</h1>
 
@@ -21,10 +23,11 @@
             <input type="button" value="Create New" onclick="CreateNew()" class="btn-submit back-button">
         </div>
         <div class="form-item">
-            <input type="search" id="doc" name="doc" placeholder="Search Doctor" class="input-search">
+            <input type="search" id="doc" name="doc">
+            <input type="submit" value="search" class="btn-submit">
         </div>
         <div class="form-item">
-            <input type="submit" value="Search" class="btn-submit">
+
         </div>
     </div>
 
@@ -72,6 +75,7 @@
         </tbody>
     </table>
 </div>
+}
 
 <!-- Scripts for actions -->
 <script>

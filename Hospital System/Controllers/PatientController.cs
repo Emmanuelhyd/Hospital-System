@@ -310,9 +310,14 @@ namespace Hospital_System.Controllers
                 AmbulanceCount = patientBAL.GetAmbulanceCount(),
                 DriverCount = patientBAL.GetDriverCount(),
                 ActiveAppointmentsCount = patientBAL.GetActiveAppointmentsCount(),
-                PendingAppointmentsCount = patientBAL.GetPendingAppointmentsCount()
+                PendingAppointmentsCount = patientBAL.GetPendingAppointmentsCount(),
+                 Patients = new Patients() // Ensure Patients is initialized
+                 {
+                     UserNameOrEmail = Session["UsernameorEmail"]?.ToString() 
+                 }
             };
 
+         
             decimal patientId = LoggedInPatientId();
             if (patientId != 0)
             {
@@ -547,10 +552,6 @@ namespace Hospital_System.Controllers
             var medicines = patientBAL.GetMedicines(PatientId);
 
 
-            if (medicines == null || !medicines.Any())
-            {
-                return View(medicines);
-            }
 
 
             var model = new Allview
@@ -559,6 +560,11 @@ namespace Hospital_System.Controllers
                 Medicines = medicines
                 
             };
+
+            if (medicines == null || !medicines.Any())
+            {
+                return View(model);
+            }
 
 
             return View(model);

@@ -46,6 +46,8 @@ namespace Hospital_System.Viewmodel
         public SelectList GetTypes { get; set; }
         public SelectList Problems { get; set; }
 
+       public string UserNameorEmail { get; set; }
+
 
 
     }

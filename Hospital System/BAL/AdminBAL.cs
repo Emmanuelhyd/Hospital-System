@@ -311,9 +311,9 @@ namespace Hospital_System.BAL
 
 
         //Ambulance List
-        public List<MAmbulance> AmbulanceListAd()
+        public List<MAmbulance> AmbulanceListAd(string Driver)
         {
-            return adminDAL.AmbulanceListAd();
+            return adminDAL.AmbulanceListAd(Driver);
         }
 
 

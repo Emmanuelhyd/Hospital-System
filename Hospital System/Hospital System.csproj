@@ -118,7 +118,9 @@
     <Content Include="Images\4.png" />
     <Content Include="Images\doctor_3.png" />
     <Content Include="Images\doctor_PNG15987.png" />
+    <Content Include="Images\hms.jpg" />
     <Content Include="Images\login.jpg" />
+    <Content Include="Images\logo.jpg" />
     <Content Include="Images\png.png" />
     <Content Include="Images\R.png" />
     <Content Include="img\about.jpg" />
@@ -240,7 +242,6 @@
     <Compile Include="BAL\OPBAL.cs" />
     <Compile Include="BAL\OutPatientAdBAL.cs" />
     <Compile Include="BAL\PatientBAL.cs" />
-    <Compile Include="BAL\SessionBAL.cs" />
     <Compile Include="BAL\VaccineAdBAL.cs" />
     <Compile Include="BAL\VaccineBAL.cs" />
     <Compile Include="Controllers\AdminController.cs" />

@@ -10,7 +10,7 @@ namespace Hospital_System.Controllers
 {
     public class AdminController : Controller
     {
-        SqlConnection con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-DQHFGU1\\ANANDSAGAR");
+        SqlConnection con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-OUCP9Q2");
         SqlCommand cmd = null;
         SqlDataReader reader = null;
        
@@ -317,7 +317,7 @@ namespace Hospital_System.Controllers
             int totalDonors = 0;
             decimal totalBloodUnits = 0;
 
-            using (var con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-DQHFGU1\\ANANDSAGAR"))
+            using (var con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-OUCP9Q2"))
             {
                 con.Open();
 

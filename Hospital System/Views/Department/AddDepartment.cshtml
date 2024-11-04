@@ -40,22 +40,29 @@
 
             <div>
                 <label for="Gender">Gender</label>
-                @Html.DropDownListFor(m => m.MDepartment.Gender, new SelectList(new List<SelectListItem>
-                {
-                    new SelectListItem { Value = "Male", Text = "Male" },
-                    new SelectListItem { Value = "Female", Text = "Female" },
-                    new SelectListItem { Value = "Others", Text = "Others" },
-                }), "Select Gender", new { @class = "form-control", @required = "required" })
+                @Html.DropDownListFor(m => m.MDepartment.Gender,
+                    new SelectList(new List<SelectListItem>
+                    {
+                        new SelectListItem { Value = "Male", Text = "Male" },
+                        new SelectListItem { Value = "Female", Text = "Female" },
+                        new SelectListItem { Value = "Others", Text = "Others" },
+                    }, "Value", "Text"),
+                    "Select Gender",
+                    new { @class = "form-control", @required = "required" })
             </div>
 
             <div>
                 <label for="Status">Status</label>
-                @Html.DropDownListFor(m => m.MDepartment.Status, new SelectList(new List<SelectListItem>
-                {
-                    new SelectListItem { Value = "Active", Text = "Active" },
-                    new SelectListItem { Value = "Inactive", Text = "Inactive" },
-                }), "Select Status", new { @class = "form-control", @required = "required" })
+                @Html.DropDownListFor(m => m.MDepartment.Status,
+                    new SelectList(new List<SelectListItem>
+                    {
+                        new SelectListItem { Value = "Active", Text = "Active" },
+                        new SelectListItem { Value = "Inactive", Text = "Inactive" },
+                    }, "Value", "Text"), // Specify Value and Text for SelectListItem
+                    "Select Status",
+                    new { @class = "form-control", @required = "required" })
             </div>
+
 
             <div>
                 <input type="submit" value="Submit" class="btn-submit">

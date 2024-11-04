@@ -18,12 +18,12 @@ namespace Hospital_System.Controllers
         AdminDAL adminDAL;
         AdminBAL adminBAL = new AdminBAL();
         // GET: AmbulanceAd
-        public ActionResult AmbulanceListAd()
+        public ActionResult AmbulanceListAd(string Driver)
         {
             MAmbulance mAmbulances = new MAmbulance();
             List<MAmbulance> mAmbulance = new List<MAmbulance>();
 
-            mAmbulance = adminBAL.AmbulanceListAd();
+            mAmbulance = adminBAL.AmbulanceListAd(Driver);
 
             var menu = new DashboardDetails
             {

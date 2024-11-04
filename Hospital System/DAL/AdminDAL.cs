@@ -517,10 +517,10 @@ namespace Hospital_System.DAL
             
 
             List<MDoctorAd> mDoctors = new List<MDoctorAd>();
-            //mDoctors = DoctorListAd("");
-            //return mDoctors;
+            mDoctors = DoctorListAd("");
+            return mDoctors;
 
-            return DoctorListAd("");
+            
 
         }
 
@@ -1284,7 +1284,7 @@ namespace Hospital_System.DAL
             {
 
                 con.Open();
-                cmd = new SqlCommand("select * from medicine where Problem like'%" + med + "%'", con);
+                cmd = new SqlCommand("select * from medicine where PatientName like'%" + med + "%'", con);
                 SqlDataReader sdr;
                 sdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
@@ -1419,14 +1419,14 @@ namespace Hospital_System.DAL
 
         //Ambulance List
 
-        public List<MAmbulance> AmbulanceListAd()
+        public List<MAmbulance> AmbulanceListAd(string Driver)
         {
             List<MAmbulance> mAmbulances = new List<MAmbulance>();
 
             {
 
                 con.Open();
-                cmd = new SqlCommand("select * from Ambulance", con);
+                cmd = new SqlCommand("select * from Ambulance where Name like'%" + Driver + "%'",con);
                 SqlDataReader sdr;
                 sdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
@@ -1479,7 +1479,7 @@ namespace Hospital_System.DAL
             cmd.ExecuteNonQuery();
             con.Close();
             List<MAmbulance> mAmbulances = new List<MAmbulance>();
-            mAmbulances = AmbulanceListAd();
+            mAmbulances = AmbulanceListAd("");
             return mAmbulances;
         }
 
