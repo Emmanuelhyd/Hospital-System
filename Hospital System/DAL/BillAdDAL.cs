@@ -49,6 +49,7 @@ namespace Hospital_System.DAL
                             DoctorFee = Convert.ToInt32(row["DoctorFee"]),
                             TreatmentDuration = Convert.ToInt32(row["TreatmentDuration"]),
                             TreatmentCharges = Convert.ToInt32(row["TreatmentCharges"]),
+                            MedicineCharges = Convert.ToInt32(row["MedicineCharges"]),
                             RoomFee = Convert.ToInt32(row["RoomFee"]),
                             Others = row["Others"].ToString(),
                             OthersCost = Convert.ToInt32(row["OthersCost"]),

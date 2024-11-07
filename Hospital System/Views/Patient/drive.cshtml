@@ -120,6 +120,7 @@
         <div class="back-button">
             <button type="button" onclick="Back()" style="display: flex; align-items: center;">
                 <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+                <span>Back</span>
                 
             </button>
         </div>
@@ -141,7 +142,7 @@
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DriverName)</td>
                         <td>@Html.DisplayFor(modelItem => item.Contact)</td>
                         <td>@Html.DisplayFor(modelItem => item.Address)</td>
                         <td>@Html.DisplayFor(modelItem => item.CNIC)</td>

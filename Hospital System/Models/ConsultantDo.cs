@@ -7,13 +7,23 @@ namespace Hospital_System.Models
 {
     public class ConsultantDo
     {
-        public int Id { get; set; }
-        public string PatientName { get; set; }
-        public string DoctorName {  get; set; }
-        public string Date {  get; set; }
-        public string Problem { get; set; }
-        public string Description {  get; set; }
-        public string Address {  get; set; }
+        public int DoctorId { get; set; }
+
+        public string FullName { get; set; }
+        public string Firstname { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Department { get; set; }
+
+        public string Designation { get; set; }
+
+        public string PhoneNo { get; set; }
+        public string ContactNo { get; set; }
+
+        public string Education { get; set; }
+
+        public string Gender { get; set; }
+
         public string Status { get; set; }
     }
 }

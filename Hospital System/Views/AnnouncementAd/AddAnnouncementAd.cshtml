@@ -1,132 +1,1 @@
-﻿@model Hospital_System.Dash.DashboardDetails
-
-@{
-    ViewBag.Title = "Add Announcement";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-}
-
-@using (Html.BeginForm("AddAnnouncementAd", "AnnouncementAd"))
-{
-    <div class="form-container">
-        <button type="button" class="back-button" onclick="Back()">Back</button>
-        <div class="form-title">Add Announcement</div>
-
-        <div class="form-field">
-            <label for="Id">Id</label>
-            @Html.TextBoxFor(m => m.mAnnouncement.Id, new { @class = "form-input" })
-        </div>
-
-        <div class="form-field">
-            <label for="Announcement">Announcement</label>
-            @Html.TextAreaFor(m => m.mAnnouncement.Announcement, new { @required = "required", @placeholder = "Enter your Announcement", @class = "form-textarea" })
-        </div>
-
-        <div class="form-field">
-            <label for="AnnouncementFor">Announcement For</label>
-            @Html.TextAreaFor(m => m.mAnnouncement.AnnouncementFor, new { @required = "required", @placeholder = "Announcement For", @class = "form-textarea" })
-        </div>
-
-        <div class="form-field">
-            <label for="EndDate">End Date</label>
-            @Html.TextBoxFor(m => m.mAnnouncement.EndDate, new { @required = "required", @placeholder = "Enter your End Date", @type = "datetime-local", @class = "form-input" })
-        </div>
-
-        <div class="form-buttons">
-            <input type="submit" value="Submit" class="submit-button">
-
-        </div>
-    </div>
-}
-
-<style>
-/*    body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        margin: 0;
-        padding: 20px;
-    }*/
-
-    .form-container {
-        background-color: white;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        max-width: 600px;
-        margin: auto;
-        margin-top: 20px;
-    }
-
-    .form-title {
-        text-align: center;
-        font-size: 24px;
-        margin-bottom: 20px;
-        color: #343a40;
-    }
-
-    .form-field {
-        margin-bottom: 15px;
-    }
-
-    label {
-        font-weight: bold;
-        margin-bottom: 5px;
-        display: block;
-    }
-
-    .form-input, .form-textarea {
-        width: 100%;
-        padding: 10px;
-        margin-top: 5px;
-        border: 1px solid #ced4da;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-
-    .form-textarea {
-        height: 100px; /* Set a fixed height for textareas */
-    }
-
-    .submit-button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-        .submit-button:hover {
-            background-color: #45a049;
-        }
-
-    .back-button {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-/*        position: absolute;
-        margin-top: -42%;*/
-    }
-
-        .back-button:hover {
-            background-color: #0056b3;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-    .form-buttons {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
-    }
-</style>
-
-<script>
-    function Back() {
-        window.location.href = "/Dashboard/DashboardView";
-    }
-</script>
+﻿@model Hospital_System.Dash.DashboardDetails@{    ViewBag.Title = "Add Announcement";    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";}@using (Html.BeginForm("AddAnnouncementAd", "AnnouncementAd")){<div class="form-container">    <button type="button" class="back-button" onclick="Back()">Back</button>    <div class="form-title">Add Announcement</div>    <div class="form-fields">        <!-- Textboxes side by side -->        <div class="form-field">            <label for="Id">Id</label>            @Html.TextBoxFor(m => m.mAnnouncement.Id, new { @class = "form-input" })        </div>        <div class="form-field">            <label for="Announcement">Announcement</label>            @Html.TextAreaFor(m => m.mAnnouncement.Announcement, new { @required = "required", @placeholder = "Enter your Announcement", @class = "form-textarea" })        </div>    </div>    <div class="form-fields">        <!-- Textboxes side by side -->        <div class="form-field">            <label for="AnnouncementFor">Announcement For</label>            @Html.TextAreaFor(m => m.mAnnouncement.AnnouncementFor, new { @required = "required", @placeholder = "Announcement For", @class = "form-textarea" })        </div>        <div class="form-field">            <label for="EndDate">End Date</label>            @Html.TextBoxFor(m => m.mAnnouncement.EndDate, new { @required = "required", @placeholder = "Enter your End Date", @type = "datetime-local", @class = "form-input" })        </div>    </div>    <div class="form-buttons">        <input type="submit" value="Submit" class="submit-button">    </div></div>}<style>    / Container styling /    .form-container {        background-color: white;        border-radius: 8px;        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);        padding: 20px;        width: 100%;        max-width: 600px;        / Restricting max width / margin: auto;        box-sizing: border-box;    }    / Title styling /    .form-title {        text-align: center;        font-size: 24px;        margin-bottom: 20px;        color: #343a40;    }    / Form field container /    .form-fields {        display: flex;        flex-wrap: wrap;        gap: 20px;        / Adds spacing between fields / justify-content: space-between;    }    / Form field container /    .form-field {        flex: 1 1 calc(50% - 20px);        / Ensures two fields fit side by side / margin-bottom: 15px;    }    / Label styling /    label {        font-weight: bold;        margin-bottom: 5px;        display: block;    }    / Input fields and textarea styling /    .form-input, .form-textarea {        width: 100%;        padding: 10px;        margin-top: 5px;        border: 1px solid #ced4da;        border-radius: 4px;        box-sizing: border-box;    }    / Textarea specific styling /    .form-textarea {        height: 100px;    }    / Button styling /    .submit-button {        background-color: #4CAF50;        color: white;        padding: 10px 15px;        border: none;        border-radius: 4px;        cursor: pointer;        transition: background-color 0.3s;    }    .submit-button:hover {        background-color: #45a049;    }    / Back button styling /    .back-button {        background-color: #007bff;        color: white;        border: none;        border-radius: 5px;        padding: 10px 20px;        font-size: 16px;        cursor: pointer;        transition: background-color 0.3s ease, box-shadow 0.3s ease;        position: absolute;        top: 10px;        left: 10px;    }    .back-button:hover {        background-color: #0056b3;        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);    }    / Buttons container styling /    .form-buttons {        display: flex;        justify-content: center;        margin-top: 20px;    }    / Mobile responsiveness /    media (max-width: 768px) {        .form-container    {        padding: 10px;        width: 90%;    }    .form-fields {        flex-direction: column;        / Stack fields vertically on smaller screens /    }    .form-input, .form-textarea {        padding: 8px;    }    .submit-button {        padding: 10px 20px;    }    .back-button {        top: 20px;        left: 20px;    }    }    / No scrolling on body /    body {        overflow-x: hidden;    }</style><script>    function Back() {        window.location.href = "/Dashboard/DashboardView";    }</script>

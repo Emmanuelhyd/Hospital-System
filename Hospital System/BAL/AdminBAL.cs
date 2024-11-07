@@ -133,33 +133,33 @@ namespace Hospital_System.BAL
 
         //Add patient
 
-        public List<MPatient> AddPatientAd(MPatient mPatient)
-        {
-            List<MPatient> mPatients = new List<MPatient>();
-            mPatients = adminDAL.AddPatientAd(mPatient);
-            return mPatients;
-        }
+        //public List<MPatient> AddPatientAd(MPatient mPatient)
+        //{
+        //    List<MPatient> mPatients = new List<MPatient>();
+        //    mPatients = adminDAL.AddPatientAd(mPatient);
+        //    return mPatients;
+        //}
 
-        //edit patient
-        public MPatient PatientEdit(int Id)
-        {
-            MPatient mPatients = adminDAL.PatientEdit(Id);
+        ////edit patient
+        //public MPatient PatientEdit(int Id)
+        //{
+        //    MPatient mPatients = adminDAL.PatientEdit(Id);
 
-            return mPatients;
-        }
-        //patient delete
-        public List<MPatient> PatientDelete(int Id)
-        {
-            List<MPatient> mPatients = adminDAL.PatientDelete(Id);
-            return mPatients;
-        }
+        //    return mPatients;
+        //}
+        ////patient delete
+        //public List<MPatient> PatientDelete(int Id)
+        //{
+        //    List<MPatient> mPatients = adminDAL.PatientDelete(Id);
+        //    return mPatients;
+        //}
 
 
         //Shedule List
 
-        public List<MShedule> SheduleList(string Shedule)
+        public List<MShedule> SheduleList(string Schedule)
         {
-            return adminDAL.SheduleList(Shedule);
+            return adminDAL.SheduleList(Schedule);
         }
 
         //add shedule
@@ -353,25 +353,25 @@ namespace Hospital_System.BAL
         }
         //add Driver
 
-        //public List<MDriverAd> AddDriverAd(MDriverAd mDriverAd)
-        //{
-        //    List<MDriverAd> mDriverAds = new List<MDriverAd>();
-        //    mDriverAds = adminDAL.AddDriverAd(mDriverAd);
-        //    return mDriverAds;
-        //}
+        public List<MDriverAd> AddDriverAd(MDriverAd mDriverAd)
+        {
+            List<MDriverAd> mDriverAds = new List<MDriverAd>();
+            mDriverAds = adminDAL.AddDriverAd(mDriverAd);
+            return mDriverAds;
+        }
         //Edit driver
-        //public MDriverAd DriverEdit(int Id)
-        //{
-        //    MDriverAd mDriverAds = adminDAL.DriverEdit(Id);
+        public MDriverAd DriverEdit(int Id)
+        {
+            MDriverAd mDriverAds = adminDAL.DriverEdit(Id);
 
-        //    return mDriverAds;
-        //}
-        ////driver delete
-        //public List<MDriverAd> DriverDelete(int Id)
-        //{
-        //    List<MDriverAd> mDriverAds = adminDAL.DriverDelete(Id);
-        //    return mDriverAds;
-        //}
+            return mDriverAds;
+        }
+        //driver delete
+        public List<MDriverAd> DriverDelete(int Id)
+        {
+            List<MDriverAd> mDriverAds = adminDAL.DriverDelete(Id);
+            return mDriverAds;
+        }
         //Driver View
         public MDriverAd Ambulancedriver(int Id)
         {

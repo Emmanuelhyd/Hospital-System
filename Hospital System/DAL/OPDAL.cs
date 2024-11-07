@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI.WebControls;
 
@@ -34,15 +35,20 @@ namespace Hospital_System.DAL
             while(reader.Read())
             {
                hospPatient1 = new HospPatient();
-                int ordinalId = reader.GetOrdinal("Id");
-                hospPatient1.Id = reader.IsDBNull(ordinalId) ? 0 : Convert.ToInt32(reader.GetValue(ordinalId));
 
-                hospPatient1.PatientName = reader.GetString(reader.GetOrdinal("PatientName"));
-                hospPatient1.Problem = reader.GetString(reader.GetOrdinal("Problem"));
-                hospPatient1. Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description"));
-                hospPatient1.Gender = reader.GetString(reader.GetOrdinal("Gender"));
-                hospPatient1.Address = reader.GetString(reader.GetOrdinal("Address"));
-                hospPatient1.PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber"));
+                hospPatient1.Id = reader["Id"] != DBNull.Value ? Convert.ToInt32(reader["Id"]) : 0;
+                hospPatient1.PatientName = reader["PatientName"] != DBNull.Value ? reader["PatientName"].ToString() : string.Empty;
+                hospPatient1.AdmissionDate = reader["AdmissionDate"] != DBNull.Value ? reader["AdmissionDate"].ToString() : string.Empty;
+                hospPatient1.DischargeDate = reader["DischargeDate"] != DBNull.Value ? reader["DischargeDate"].ToString() : string.Empty;
+                hospPatient1.PatientType = reader["PatientType"] != DBNull.Value ? reader["PatientType"].ToString() : string.Empty;
+                hospPatient1.TreatmentDuration = reader["TreatmentDuration"] != DBNull.Value ? Convert.ToInt32(reader["TreatmentDuration"]) : 0;
+                hospPatient1.Date = reader["Date"] != DBNull.Value ? reader["Date"].ToString() : string.Empty;
+                hospPatient1.Status = reader["Status"] != DBNull.Value ? reader["Status"].ToString() : string.Empty;
+                hospPatient1.Problem = reader["Problem"] != DBNull.Value ? reader["Problem"].ToString() : string.Empty;
+                hospPatient1.Description = reader["Description"] != DBNull.Value ? reader["Description"].ToString() : string.Empty;
+                hospPatient1.Gender = reader["Gender"] != DBNull.Value ? reader["Gender"].ToString() : string.Empty;
+                hospPatient1.Address = reader["Address"] != DBNull.Value ? reader["Address"].ToString() : string.Empty;
+                hospPatient1.PhoneNumber = reader["PhoneNumber"] != DBNull.Value ? reader["PhoneNumber"].ToString() : string.Empty;
 
                 hospPatients.Add(hospPatient1);
 
@@ -65,19 +71,20 @@ namespace Hospital_System.DAL
             {
                 hospPatient = new HospPatient
                 {
+                    Id = reader["Id"] != DBNull.Value ? Convert.ToInt32(reader["Id"]) : 0,
+                    PatientName = reader["PatientName"] != DBNull.Value ? reader["PatientName"].ToString() : string.Empty,
+                    AdmissionDate = reader["AdmissionDate"] != DBNull.Value ? reader["AdmissionDate"].ToString() : string.Empty,
+                    DischargeDate = reader["DischargeDate"] != DBNull.Value ? reader["DischargeDate"].ToString() : string.Empty,
+                    PatientType = reader["PatientType"] != DBNull.Value ? reader["PatientType"].ToString() : string.Empty,
+                    TreatmentDuration = reader["TreatmentDuration"] != DBNull.Value ? Convert.ToInt32(reader["TreatmentDuration"]) : 0,
+                    Date = reader["Date"] != DBNull.Value ? reader["Date"].ToString() : string.Empty,
+                    Status = reader["Status"] != DBNull.Value ? reader["Status"].ToString() : string.Empty,
+                    Problem = reader["Problem"] != DBNull.Value ? reader["Problem"].ToString() : string.Empty,
+                    Description = reader["Description"] != DBNull.Value ? reader["Description"].ToString() : string.Empty,
+                    Gender = reader["Gender"] != DBNull.Value ? reader["Gender"].ToString() : string.Empty,
+                    Address = reader["Address"] != DBNull.Value ? reader["Address"].ToString() : string.Empty,
+                    PhoneNumber = reader["PhoneNumber"] != DBNull.Value ? reader["PhoneNumber"].ToString() : string.Empty
 
-                    Id = Convert.ToInt32(reader["Id"]),
-                    PatientName = reader.GetString(reader.GetOrdinal("PatientName")),
-                    PatientType = reader.GetString(reader.GetOrdinal("PatientType")),
-                    Gender = reader.GetString(reader.GetOrdinal("Gender")),
-                    PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber")),
-                    Description= reader.GetString(reader.GetOrdinal("Description")),
-                    Address = reader.GetString(reader.GetOrdinal("Address")),
-                    AdmissionDate = reader.GetString(reader.GetOrdinal("AdmissionDate")),
-                    Dischargedate = reader.GetString(reader.GetOrdinal("Dischargedate")),
-                    TreatmentDuration = Convert.ToInt32(reader["TreatmentDuration"]),
-                    Problem = reader.GetString(reader.GetOrdinal("Problem")),
-                    Status = reader.IsDBNull(reader.GetOrdinal("Status")) ? null : reader.GetString(reader.GetOrdinal("Status")),
 
                 };
             
@@ -89,6 +96,41 @@ namespace Hospital_System.DAL
 
         }
 
+
+        public List<HospPatient> GetHospPatients()
+        {
+            List<HospPatient> hospPatients = new List<HospPatient>();
+            HospPatient hospPatient1 = null;
+            con.Open();
+            cmd = new SqlCommand("select * from Bookapp ", con);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                hospPatient1 = new HospPatient();
+
+                hospPatient1.Id = reader["Id"] != DBNull.Value ? Convert.ToInt32(reader["Id"]) : 0;
+                hospPatient1.PatientName = reader["PatientName"] != DBNull.Value ? reader["PatientName"].ToString() : string.Empty;
+                hospPatient1.AdmissionDate = reader["AdmissionDate"] != DBNull.Value ? reader["AdmissionDate"].ToString() : string.Empty;
+                hospPatient1.DischargeDate = reader["DischargeDate"] != DBNull.Value ? reader["DischargeDate"].ToString() : string.Empty;
+                hospPatient1.PatientType = reader["PatientType"] != DBNull.Value ? reader["PatientType"].ToString() : string.Empty;
+                hospPatient1.TreatmentDuration = reader["TreatmentDuration"] != DBNull.Value ? Convert.ToInt32(reader["TreatmentDuration"]) : 0;
+                hospPatient1.Date = reader["Date"] != DBNull.Value ? reader["Date"].ToString() : string.Empty;
+                hospPatient1.Status = reader["Status"] != DBNull.Value ? reader["Status"].ToString() : string.Empty;
+                hospPatient1.Problem = reader["Problem"] != DBNull.Value ? reader["Problem"].ToString() : string.Empty;
+                hospPatient1.Description = reader["Description"] != DBNull.Value ? reader["Description"].ToString() : string.Empty;
+                hospPatient1.Gender = reader["Gender"] != DBNull.Value ? reader["Gender"].ToString() : string.Empty;
+                hospPatient1.Address = reader["Address"] != DBNull.Value ? reader["Address"].ToString() : string.Empty;
+                hospPatient1.PhoneNumber = reader["PhoneNumber"] != DBNull.Value ? reader["PhoneNumber"].ToString() : string.Empty;
+
+                hospPatients.Add(hospPatient1);
+
+            }
+            reader.Close();
+            con.Close();
+            return hospPatients;
+
+
+        }
 
 
 

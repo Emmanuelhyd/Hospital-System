@@ -37,6 +37,10 @@
         </select>
     </div>
     <div>
+        @Html.LabelFor(m => m.PatientType)
+        @Html.TextBoxFor(m => m.PatientType, new { @required = "required", @placeholder = "Address" })
+    </div>
+    <div>
         @Html.LabelFor(m => m.Address)
         @Html.TextBoxFor(m => m.Address, new { @required = "required", @placeholder = "Address" })
     </div>

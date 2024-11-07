@@ -37,9 +37,35 @@
         .field {
             margin-bottom: 10px; /* Adds space between fields */
         }
+
+        /* Back Button Styling */
+        .back-button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+            .back-button:hover {
+                background-color: #0056b3; /* Darker blue on hover */
+            }
+
+            .back-button:active {
+                background-color: #003f7f; /* Even darker blue when clicked */
+            }
     </style>
 </head>
 <body>
+
+    <!-- Back Button -->
+    <a href="javascript:history.back()" class="back-button">Back</a>
+
     <h2>Patient Details</h2>
     <div>
         <div class="field"><strong>Name:</strong> @Model.PatientName</div>
@@ -49,7 +75,7 @@
         <div class="field"><strong>Description:</strong> @Model.Description</div>
         <div class="field"><strong>Address:</strong> @Model.Address</div>
         <div class="field"><strong>Admission Date:</strong> @Model.AdmissionDate</div>
-        <div class="field"><strong>Discharge Date:</strong> @Model.Dischargedate</div>
+        <div class="field"><strong>Discharge Date:</strong> @Model.DischargeDate</div>
         <div class="field"><strong>Treatment Duration:</strong> @Model.TreatmentDuration</div>
         <div class="field"><strong>Problem:</strong> @Model.Problem</div>
         <div class="field"><strong>Status:</strong> @Model.Status</div>

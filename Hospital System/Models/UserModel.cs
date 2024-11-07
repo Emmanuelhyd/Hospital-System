@@ -9,13 +9,13 @@ namespace Hospital_System.Models
     public class UserModel
     {
         public int Id { get; set; }
-
+        public bool IsActive { get; set; }
         [Required]
         public string FirstName { get; set; }
-
+        public int totalQuantity { get; set; }
         public string LastName { get; set; }
 
-        [EmailAddress]
+        [Required]
         public string EmailId { get; set; }
 
         [Required]
@@ -27,9 +27,10 @@ namespace Hospital_System.Models
         public string Address { get; set; }
 
         public string DateOfBirth { get; set; }
-
+        [Required]
+        public int ReferenceId { get; set; }
         public string Gender { get; set; }
-
+        public string ApprovalStatus { get; set; }
         [Required]
         public string BloodGroup { get; set; }
         public string Quantity { get; set; }

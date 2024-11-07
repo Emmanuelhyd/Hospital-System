@@ -28,7 +28,11 @@ namespace Hospital_System.Controllers
             return View(model);
         }
 
-
+        public ActionResult PatientsList()
+        {
+            var model = opBal.GetHospPatients();
+            return View(model);
+        }
 
     }
 }

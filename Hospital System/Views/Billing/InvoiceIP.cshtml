@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "InvoiceIP";
+    Layout = null;
 }
 
 <style>
@@ -66,7 +67,7 @@
             <th>GST</th>
             <th>TotalAmount</th>
             <th>PaidBill</th>
-            <th> Balance</th>
+           
             <th>InsuranceClaimed</th>
             <th>Status</th>
             <th>MethodOfPayment</th>
@@ -91,8 +92,8 @@
                 <td>@Html.DisplayFor(m => item.TotalBill)</td>
                 <td>@Html.DisplayFor(m => item.GST)</td>
                 <td>@Html.DisplayFor(m => item.TotalAmount)</td>
+
                 <td>@Html.DisplayFor(m => item.PaidBill)</td>
-                <td>@Html.DisplayFor(m=>item.BalanceAmount)</td>
                 <td>@Html.DisplayFor(m => item.InsuranceClaimed)</td>
                 <td>@Html.DisplayFor(m => item.Status)</td>
                 <td>@Html.DisplayFor(m => item.MethodOfPayment)</td>

@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Reception";
-    Layout = null; 
+    Layout = "~/Views/Shared/_LayoutRec.cshtml";
 }
 
 <!DOCTYPE html>
@@ -46,7 +46,8 @@
             }
     </style>
 </head>
-<body>
+
+<body style="margin-top:10%;">
     <div class="container">
         <a class="link-box" href="@Url.Action("Insertprofile", "Patient")">Patient Registration</a>
         <a class="link-box" href="@Url.Action("CommonList", "CommonOP")">Appointment & Scheduling</a>
@@ -54,7 +55,7 @@
         <a class="link-box" href="@Url.Action("InPatientListAd", "InPatientAdmin")">Inpatient</a>
         <a class="link-box" href="@Url.Action("BillList", "BillAdmin")">Billing</a>
         <a class="link-box" href="@Url.Action("DischargeListAd", "DischargeAdmin")">Discharge</a>
-        <a class="link-box" href="@Url.Action("ConsultantList", "ConsultantAdmin")">Consultant</a>
+        <a class="link-box" href="@Url.Action("ConsultantList", "ConsultantAdmin")">Doctors</a>
         <a class="link-box" href="@Url.Action("Login", "Email")">Email Integration</a>
         <a class="link-box" href="@Url.Action("AmbList", "AmbulanceR")">Ambulance</a>
         <a class="link-box" href="@Url.Action("AttendanceList", "AttendanceAdmin")">Attendance</a>

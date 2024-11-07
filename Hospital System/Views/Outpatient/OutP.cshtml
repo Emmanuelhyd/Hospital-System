@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "OutP";
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -23,7 +24,7 @@
 
         table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: collapse; /* Ensures borders collapse together */
             margin: 20px 0;
             background-color: #fff;
         }
@@ -31,7 +32,7 @@
         th, td {
             padding: 12px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border: 1px solid #ddd; /* Adds border to columns and rows */
         }
 
         th {
@@ -51,9 +52,35 @@
             a:hover {
                 text-decoration: underline;
             }
+
+        /* Back Button Styling */
+        .back-button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+            .back-button:hover {
+                background-color: #0056b3; /* Darker blue on hover */
+            }
+
+            .back-button:active {
+                background-color: #003f7f; /* Even darker blue when clicked */
+            }
     </style>
 </head>
 <body>
+
+    <!-- Back Button -->
+    <a href="javascript:history.back()" class="back-button">Back</a>
+
     <h1>Outpatient Records</h1>
     <table>
         <thead>
@@ -84,5 +111,6 @@
             }
         </tbody>
     </table>
+
 </body>
 </html>

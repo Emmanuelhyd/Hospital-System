@@ -27,7 +27,7 @@ namespace Hospital_System.DAL
             List<AmbulanceDetails>ambulanceDetails = new List<AmbulanceDetails>();
 
             con.Open();
-            cmd= new SqlCommand("select * from Ambulance",con);
+            cmd= new SqlCommand("select * from Amb",con);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -38,7 +38,7 @@ namespace Hospital_System.DAL
                 ambulanceDetails1.AmbulanceId = Convert.ToInt32(reader["AmbulanceId"]);
                 ambulanceDetails1.AmbulanceStatus = reader.GetString(reader.GetOrdinal("AmbulanceStatus"));
                 ambulanceDetails1.DriverName = reader.GetString(reader.GetOrdinal("DriverName"));
-                ambulanceDetails1.DriverId = Convert.ToInt32((int)reader["DriverId"]);
+                ambulanceDetails1.DriverId = reader.GetString(reader.GetOrdinal("DriverId"));
 
                 ambulanceDetails.Add(ambulanceDetails1);
             }

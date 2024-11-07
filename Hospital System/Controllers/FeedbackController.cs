@@ -24,8 +24,8 @@ namespace Hospital_System.Controllers
             Feedbk feedbk = new Feedbk();
             List<Feedbk> feedbks = new List<Feedbk>();
 
-            feedbks = feedBAL.FeedList();
-            return View(feedbks);
+            var model = feedBAL.FeedList();
+            return View(model);
         }
 
         public ActionResult Feed(Feedbk feedbk)
@@ -48,14 +48,16 @@ namespace Hospital_System.Controllers
                     ids = feedDAL.FeedId();
                 }
                 feedbk.Id = ids + 1;
-
+                TempData["ShowPopup"] = true;
+                TempData["Message"] = "Feedback submitted successfully.";
                 return View(feedbk);
             }
             else
             {
-                return RedirectToAction("FeedList", feedbks);
-            }
+                TempData["Valid"] = "Sent successfully";
+                return RedirectToAction("Feed");
 
+            }
         }
     }
 }

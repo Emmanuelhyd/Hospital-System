@@ -3,8 +3,8 @@
 
 @{
     ViewData["Title"] = "Available Blood Groups";
-    Layout = "~/Views/Shared/_UserLayoutBlod.cshtml";
-}
+    Layout = "~/Views/Shared/_UserLayoutBlood.cshtml"; 
+    }
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,8 +17,26 @@
     <style>
         body {
             background-color: #f7f7f7;
-            margin-top: -50px;
-            margin-right: 50px;
+            padding: 20px;
+        }
+
+        .container-fluid {
+            max-width: 1000px;
+            margin: auto;
+            position: relative;
+        }
+
+        .chart-container {
+            max-width: 300px;
+            margin: auto;
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin: 20px 0;
         }
 
         .blood-group-card {
@@ -27,155 +45,185 @@
             border: 1px solid #ddd;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
             transition: transform 0.2s;
-            width: 100%;
+            height: 140px;
         }
 
             .blood-group-card:hover {
                 transform: translateY(-5px);
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             }
 
-        .blood-drop {
-            width: 50px;
-            height: auto;
-            margin-bottom: 10px;
-        }
-
-        .chart-container {
-            position: relative;
-            width: 27%; 
-            margin: auto;
-        }
-
-        .page-title {
-            font-size: 36px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
+        .availability-item {
+            font-size: 14px;
+            margin: 5px 0;
             text-align: center;
         }
 
         .donation-box {
-            padding: 5px;
-            margin-top: 20px;
+            padding: 10px;
+            margin: 20px auto;
             text-align: center;
-            background-color: #28a745;
+            background-color: blue;
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
-            width: 150px;
-            margin-left: auto;
-            margin-right: auto;
+            color: white;
+            transition: background-color 0.3s;
+            width: 15%;
         }
 
-        .donation-link a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-            padding: 5px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
+            .donation-box:hover {
+                background-color: #218838;
+            }
+
+        .percentage-list {
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="container-fluid mt-4">
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-9">
-                <h1 class="page-title">@ViewData["Title"]</h1>
+    <div class="container-fluid">       
+        <h1 class="page-title">@ViewData["Title"]</h1>
 
-                <div class="chart-container mb-4">
-                    <canvas id="bloodGroupDoughnutChart"></canvas> 
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="chart-container">
+                    <canvas id="bloodGroupDoughnutChart"></canvas>
                 </div>
-
-                <div class="row mt-3">
+            </div>
+            <div class="col-md-6 percentage-list">
+                <h5 style="margin-left:100px">Blood Group in Percentages</h5>
+                <div class="availability-list">
                     @if (Model == null || !Model.Any())
                     {
-                        <div class="col-12">
-                            <div class="alert alert-warning">No blood groups available.</div>
-                        </div>
+                        <div>No blood groups available.</div>
                     }
                     else
                     {
+                        double totalQuantity = Model.Sum(u =>
+                        {
+                            var quantityStr = u.Quantity.Replace("L", "").Trim();
+                            double quantity;
+                            return double.TryParse(quantityStr, out quantity) ? quantity : 0;
+                        });
+
                         foreach (var user in Model)
                         {
-                            <div class="col-6 col-md-3 mb-3">
-                                <div class="card text-center blood-group-card">
-                                    <div class="card-body">
-                                        <img src="~/Blood Drop/Blood Drop.jpg" alt="Blood Drop" class="blood-drop" />
-                                        <h5 class="card-title">@user.BloodGroup</h5>
-                                        <p class="card-text">Available: @(string.IsNullOrEmpty(user.Quantity) || user.Quantity == "0" ? "Out of Stock" : user.Quantity)</p>
-                                    </div>
-                                </div>
+                            double quantity = 0;
+                            var quantityStr = user.Quantity.Replace("L", "").Trim();
+                            double.TryParse(quantityStr, out quantity);
+                            double percentage = totalQuantity > 0 ? (quantity / totalQuantity) * 100 : 0;
+
+                            <div class="availability-item">
+                                @user.BloodGroup: @percentage.ToString("0.00")%
                             </div>
                         }
                     }
                 </div>
+            </div>
+        </div>
 
-                <div class="donation-box">
-                    <div class="donation-link">
-                        <a href="@Url.Action("DonationForm", "User")">Donate Now</a>
+        <div class="row">
+            @foreach (var user in Model)
+            {
+                <div class="col-6 col-md-3">
+                    <div class="card text-center blood-group-card" data-blood-group="@user.BloodGroup" data-quantity="@user.Quantity">
+                        <div class="card-body">
+                            <img src="~/Blood Drop/Blood Drop.jpg" alt="Blood Drop" class="blood-drop" style="width: 40px; height: auto; margin-bottom: 5px;" />
+                            <h5 class="card-title">@user.BloodGroup</h5>
+                            <p class="card-text" id="quantity-@user.BloodGroup">Available: </p>
+                        </div>
                     </div>
                 </div>
+            }
+        </div>
 
+        <div class="donation-box">
+            <div>
+                <a href="@Url.Action("DonationForm", "User")" style="color: white; text-decoration: none; font-weight: bold;">Donate Now</a>
             </div>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-    const ctx = document.getElementById('bloodGroupDoughnutChart').getContext('2d');
-    const bloodGroups = [];
-    const quantities = [];
-    const backgroundColors = [];
+        // Function to convert ml to liters with a capital "L"
+        function convertToLiters(value) {
+            value = value.trim().toLowerCase();  // Convert to lowercase for consistency
 
-    const colorMapping = {
-        "A+": 'rgba(255, 99, 132, 1)', 
-        "A-": 'rgba(128, 0, 128, 1)',
-        "B+": 'rgba(75, 192, 192, 1)',   
-        "B-": 'rgba(54, 162, 235, 1)',   
-        "O+": 'rgba(255, 206, 86, 1)',    
-        "O-": 'rgba(153, 102, 255, 1)',   
-        "AB+": 'rgba(255, 20, 147, 1)',   
-        "AB-": 'rgba(255, 159, 64, 1)',
-        }; 
-
-    @foreach (var user in Model)
-    {
-        <text>
-            bloodGroups.push('@user.BloodGroup');
-            quantities.push(parseFloat('@user.Quantity'.replace('L', '').trim()) || 0);
-            backgroundColors.push(colorMapping['@user.BloodGroup'] || 'rgba(0, 0, 0, 1)');
-        </text>
-    }
-
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: bloodGroups,
-            datasets: [{
-                label: 'Available Blood Quantity',
-                data: quantities,
-                backgroundColor: backgroundColors,
-                hoverOffset: 4
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'Blood Group Availability'
-                }
+            // If input is in ml, convert to L
+            if (value.includes("ml")) {
+                const mlValue = parseFloat(value.replace("ml", "").trim());
+                return (mlValue / 1000).toFixed(2) + " L";  // Convert to liters with two decimals and add "L"
+            } else if (value.includes("l")) {
+                return value.toUpperCase();  // Ensure "L" is in uppercase if it's already in liters
+            } else {
+                return value + " L";  // Assume it's numeric and convert to L with uppercase "L"
             }
         }
-    });
-    </script>
 
+        // Loop through each card to update quantity in liters
+        document.querySelectorAll('.blood-group-card').forEach(function(card) {
+            const bloodGroup = card.getAttribute('data-blood-group');
+            const quantityElement = card.querySelector('.card-text');
+            const rawQuantity = card.getAttribute('data-quantity'); // Get raw quantity value
+
+            // Convert and update the card text
+            const convertedQuantity = convertToLiters(rawQuantity);
+            quantityElement.innerHTML = `Available: ${convertedQuantity}`;
+        });
+
+        // Chart.js Doughnut Chart for Blood Group Availability
+        const ctx = document.getElementById('bloodGroupDoughnutChart').getContext('2d');
+        const bloodGroups = [];
+        const quantities = [];
+        const backgroundColors = [];
+
+        const colorMapping = {
+            "A+": 'rgba(255, 99, 132, 1)',
+            "A-": 'rgba(128, 0, 128, 1)',
+            "B+": 'rgba(75, 192, 192, 1)',
+            "B-": 'rgba(54, 162, 235, 1)',
+            "O+": 'rgba(255, 206, 86, 1)',
+            "O-": 'rgba(153, 102, 255, 1)',
+            "AB+": 'rgba(255, 20, 147, 1)',
+            "AB-": 'rgba(255, 159, 64, 1)',
+        };
+
+        @foreach (var user in Model)
+        {
+            <text>
+                bloodGroups.push('@user.BloodGroup');
+                quantities.push(parseFloat('@user.Quantity'.replace('L', '').trim()) || 0);
+                backgroundColors.push(colorMapping['@user.BloodGroup'] || 'rgba(0, 0, 0, 1)');
+            </text>
+        }
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: bloodGroups,
+                datasets: [{
+                    label: 'Available Blood Quantity',
+                    data: quantities,
+                    backgroundColor: backgroundColors,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Blood Group Availability'
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

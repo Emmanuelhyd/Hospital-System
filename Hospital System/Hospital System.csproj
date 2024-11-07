@@ -242,6 +242,7 @@
     <Compile Include="BAL\OPBAL.cs" />
     <Compile Include="BAL\OutPatientAdBAL.cs" />
     <Compile Include="BAL\PatientBAL.cs" />
+    <Compile Include="BAL\RoleBAL.cs" />
     <Compile Include="BAL\VaccineAdBAL.cs" />
     <Compile Include="BAL\VaccineBAL.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -283,6 +284,7 @@
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\ReceptionAdminController.cs" />
     <Compile Include="Controllers\ReceptionController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\SheduleAdController.cs" />
     <Compile Include="Controllers\SpecialitiesController.cs" />
     <Compile Include="Controllers\UpdateProfileController.cs" />
@@ -314,6 +316,7 @@
     <Compile Include="DAL\OPDAL.cs" />
     <Compile Include="DAL\OutPatientAdDAL.cs" />
     <Compile Include="DAL\Patient1.cs" />
+    <Compile Include="DAL\RoleDAL.cs" />
     <Compile Include="DAL\SessionDAL.cs" />
     <Compile Include="DAL\VaccineDAL.cs" />
     <Compile Include="DAL\VacineAdDAL.cs" />
@@ -340,6 +343,7 @@
     <Compile Include="Models\DischargPatient.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\Doctors.cs" />
+    <Compile Include="Models\DriverDo.cs" />
     <Compile Include="Models\FeedbackDo.cs" />
     <Compile Include="Models\Feedbk.cs" />
     <Compile Include="Models\Gmail.cs" />
@@ -365,6 +369,7 @@
     <Compile Include="Models\Nurse.cs" />
     <Compile Include="Models\NurseDo.cs" />
     <Compile Include="Models\Patients.cs" />
+    <Compile Include="Models\RoleDO.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\UpdateDO.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -614,12 +619,16 @@
     <Content Include="Views\Specialities\Rheumatology.cshtml" />
     <Content Include="Views\Specialities\Urology.cshtml" />
     <Content Include="Views\Shared\_Layout_1.cshtml" />
-    <Content Include="Views\User\BloodRequestForm.cshtml" />
-    <Content Include="Views\User\DonationForm.cshtml" />
-    <Content Include="Views\User\RegisterForm.cshtml" />
-    <Content Include="Views\User\RelativeInfo.cshtml" />
-    <Content Include="Views\User\UserHome.cshtml" />
-    <Content Include="Views\User\UserLogIn.cshtml" />
+    <Content Include="Views\DepartmentPatient\DepList.cshtml" />
+    <Content Include="Views\RolesAdmin\RolesList.cshtml" />
+    <Content Include="Views\RolesAdmin\AddRole.cshtml" />
+    <Content Include="Views\AmbulanceR\DriveList.cshtml" />
+    <Content Include="Views\AmbulanceR\AddDrive.cshtml" />
+    <Content Include="Views\Shared\_LayoutRec.cshtml" />
+    <Content Include="Views\Shared\_LayoutPatRec.cshtml" />
+    <Content Include="Views\Shared\_LayoutBlood.cshtml" />
+    <Content Include="Views\Shared\_UserLayoutBlood.cshtml" />
+    <Content Include="Views\Admin\AddRelativeInfo.cshtml" />
     <Content Include="Views\Admin\AdminHome.cshtml" />
     <Content Include="Views\Admin\AdminLogIn.cshtml" />
     <Content Include="Views\Admin\ApprovedBloodRequests.cshtml" />
@@ -628,11 +637,22 @@
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\DonationRequests.cshtml" />
     <Content Include="Views\Admin\FamilyDetails.cshtml" />
+    <Content Include="Views\Admin\LatestDonations.cshtml" />
     <Content Include="Views\Admin\LatestDonorInfo.cshtml" />
+    <Content Include="Views\Admin\RejectedBloodRequests.cshtml" />
+    <Content Include="Views\Admin\RejectedDonors.cshtml" />
     <Content Include="Views\Admin\TotalDonors.cshtml" />
-    <Content Include="Views\Shared\_LayoutBlood.cshtml" />
-    <Content Include="Views\Shared\_UserLayoutBlod.cshtml" />
-    <Content Include="Views\DepartmentPatient\DepList.cshtml" />
+    <Content Include="Views\User\BloodRequestForm.cshtml" />
+    <Content Include="Views\User\BloodRequestHistory.cshtml" />
+    <Content Include="Views\User\DonationForm.cshtml" />
+    <Content Include="Views\User\DonationHistory.cshtml" />
+    <Content Include="Views\User\ForgotPassword.cshtml" />
+    <Content Include="Views\User\RegisterForm.cshtml" />
+    <Content Include="Views\User\RelativeInfo.cshtml" />
+    <Content Include="Views\User\UserHome.cshtml" />
+    <Content Include="Views\User\UserLogIn.cshtml" />
+    <Content Include="Views\Outpatient\PatientsList.cshtml" />
+    <Content Include="Views\Inpatient\DoctorsList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

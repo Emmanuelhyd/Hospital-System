@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -13,5 +14,6 @@ namespace Hospital_System.Models
         public string AmbulanceStatus { get; set; }
         public string DriverName { get; set; }
         public int DriverId { get; set; }
+       
     }
 }

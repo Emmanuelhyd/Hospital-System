@@ -20,16 +20,18 @@ namespace Hospital_System.Models
 
         [Required]
         public string Password { get; set; }
-
+        public DateTime RejectedTime { get; set; }
         [Phone]
         public string PhoneNumber { get; set; }
-
+        public string ApprovalStatus { get; set; }
+        [Required]
+        public int ReferenceId { get; set; }
         public string Address { get; set; }
 
         public string DateOfBirth { get; set; }
 
         public string Gender { get; set; }
-
+        public string Status { get; set; }
         [Required]
         public string BloodGroup { get; set; }
         public string Quantity { get; set; }

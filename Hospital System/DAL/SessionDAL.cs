@@ -1,4 +1,5 @@
-﻿using Hospital_System.Models;
+﻿using AdminPages.Models;
+using Hospital_System.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -32,7 +33,7 @@ namespace Hospital_System.DAL
             if (reader.Read())
             {
 
-                patient.PatientId = Convert.ToInt32(reader.GetOrdinal("PatientId"));
+                patient.PatientId = Convert.ToInt32(reader["PatientId"]);
                 patient.UserName = reader.GetString(reader.GetOrdinal("UserName"));
                 patient.FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
                 patient.LastName = reader.GetString(reader.GetOrdinal("LastName"));
@@ -42,6 +43,7 @@ namespace Hospital_System.DAL
                 patient.Age = reader.GetString(reader.GetOrdinal("Age"));
                 patient.PhoneNo = reader.GetString(reader.GetOrdinal("PhoneNo"));
                 patient.Address = reader.GetString(reader.GetOrdinal("Address"));
+               
 
                
 
@@ -53,6 +55,9 @@ namespace Hospital_System.DAL
             return patient;
         }
 
+
+
+       
 
     }
 }

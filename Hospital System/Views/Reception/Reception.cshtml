@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Reception";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPatRec.cshtml";
 }
 
 <!DOCTYPE html>
@@ -38,23 +38,20 @@
             color: inherit; /* Inherit text color */
         }
 
-        .link-box:hover {
-            background:linear-gradient(90deg,pink,skyblue) /* Change background on hover */
-        }
-
-       
-        
+            .link-box:hover {
+                background: linear-gradient(90deg,pink,skyblue) /* Change background on hover */
+            }
     </style>
 </head>
-<body>
+<body style="margin-top:10%">
     <div class="container">
-        <a class="link-box" href="@Url.Action("Dashboard", "Patient")">Patient Registration</a>
-        <a class="link-box" href="@Url.Action("Dashboard", "Patient")">Appointment & Scheduling</a>
+        <a class="link-box" href="@Url.Action("Insertprofile", "Patient")">Patient Registration</a>
+        <a class="link-box" href="@Url.Action("PatientsList", "Outpatient")">Appointment & Scheduling</a>
         <a class="link-box" href="@Url.Action("OutP", "Outpatient")">Outpatient</a>
         <a class="link-box" href="@Url.Action("Inpatient", "Inpatient")">Inpatient</a>
         <a class="link-box" href="@Url.Action("InvoiceIP", "Billing")">Billing</a>
         <a class="link-box" href="@Url.Action("Discharge", "Discharge")">Discharge</a>
-        <a class="link-box" href="@Url.Action("Consult", "Consult")">Consultant</a>
+        <a class="link-box" href="@Url.Action("DoctorsList", "Inpatient")">Doctors</a>
         <a class="link-box" href="@Url.Action("Login", "Email")">Email Integration</a>
         <a class="link-box" href="@Url.Action("Ambulance", "Ambulance")">Ambulance</a>
         <a class="link-box" href="@Url.Action("AttendanceDetails", "Attendance")">Attendance</a>

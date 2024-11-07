@@ -69,7 +69,15 @@ namespace Hospital_System.Controllers
             };
             return View(model);
         }
+        private decimal LoggedInPatientId()
+        {
+            if (Session["PatientId"] != null && decimal.TryParse(Session["PatientId"].ToString(), out decimal patientId))
+            {
+                return patientId;
+            }
 
+            return 0;
+        }
         public ActionResult AddBook(MAppointmentAd mAppointmentAd)
         {
            
@@ -87,6 +95,14 @@ namespace Hospital_System.Controllers
             {
                 mAppointmentAds = doctorBAL.AddBook(mAppointmentAd);
             }
+
+
+
+            SessionDAL session = new SessionDAL();
+
+            var patientId = Session["PatientId"] != null ? (int)Session["PatientId"] : 0;
+            var patient = session.GetPaientDetails(patientId);
+
             if (mAppointmentAds.Count == 0)
             {
                 doctorDAL = new DoctorDAL();
@@ -96,13 +112,25 @@ namespace Hospital_System.Controllers
                 }
                 mAppointmentAd.Id = ids + 1;
 
+                mAppointmentAd.PatientName = patient.UserName;  
+                mAppointmentAd.Gender = patient.Gender;   
+                mAppointmentAd.PhoneNumber = patient.PhoneNo; 
+                mAppointmentAd.Address= patient.Address;
+                mAppointmentAd.Date = DateTime.Now.ToString("yyyy-MM-dd");
+                mAppointmentAd.Time = DateTime.Now.ToString("HH:mm");
+
+                
+
+
 
                 var model = new Allview
                 {
+                   
                     Menus = menuBAL.GetMenus(),
-                    GetTypes= new SelectList(GetPatientTypes(),"Value","Text"),
-                    Problems = new SelectList(Getproblems(),"Value","Text"),
-                   mAppointmentAd= mAppointmentAd
+                    GetTypes = new SelectList(GetPatientTypes(), "Value", "Text"),
+                    Problems = new SelectList(Getproblems(), "Value", "Text"),
+                    mAppointmentAd = mAppointmentAd
+
                 };
 
                

@@ -18,8 +18,9 @@ namespace Hospital_System.Models
 
         public  string DriverName {get; set; }
 
-        public int DriverId { get; set; }  
+        //public int DriverId { get; set; }  
 
+        public string DriverId { get; set; }
 
     }
 }

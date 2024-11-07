@@ -36,7 +36,7 @@
             </div>
             <div class="form-item">
                 <label>MedicineName</label>
-                @Html.TextBoxFor(m => m.MMedicineAd.MedicineName, new { @class = "form-control" , @placeholder=" MedicineName"})
+                @Html.TextBoxFor(m => m.MMedicineAd.MedicineName, new { @required = "required", @class = "form-control" , @placeholder=" MedicineName"})
                 @Html.ValidationMessageFor(m => m.MMedicineAd.MedicineName, "", new { @class = "text-danger" })
             </div>
             <div class="form-item">
@@ -45,7 +45,7 @@
                 {
                     new SelectListItem { Value = "Yes", Text = "Yes" },
                     new SelectListItem { Value = "No", Text = "No" },
-                }, "Value", "Text"), "Select", new { @class = "form-control" })
+                }, "Value", "Text"), "Select", new { @class = "form-control", @required = "required" })
             </div>
             <div class="form-item">
                 <label>Afternoon</label>
@@ -53,7 +53,7 @@
                 {
                     new SelectListItem { Value = "Yes", Text = "Yes" },
                     new SelectListItem { Value = "No", Text = "No" },
-                }, "Value", "Text"), "Select", new { @class = "form-control" })
+                }, "Value", "Text"), "Select", new { @class = "form-control", @required = "required" })
             </div>
             <div class="form-item">
                 <label>Night</label>
@@ -61,7 +61,7 @@
                 {
                     new SelectListItem { Value = "Yes", Text = "Yes" },
                     new SelectListItem { Value = "No", Text = "No" },
-                }, "Value", "Text"), "Select", new { @class = "form-control" })
+                }, "Value", "Text"), "Select", new { @class = "form-control", @required = "required" })
             </div>
         </div>
 

@@ -136,9 +136,10 @@
                     <th>@Html.DisplayNameFor(model => model.Problem)</th>
                     <th>@Html.DisplayNameFor(model => model.Description)</th>
                     <th>@Html.DisplayNameFor(model => model.Gender)</th>
+                    @*<th>@Html.DisplayNameFor(model => model.PatientType)</th>*@
                     <th>@Html.DisplayNameFor(model => model.Address)</th>
                     <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
-                    <th>Action</th>
+                    @*<th>Action</th>*@
                 </tr>
                 @foreach (var item in Model)
                 {
@@ -148,9 +149,10 @@
                         <td>@Html.DisplayFor(modelItem => item.Problem)</td>
                         <td>@Html.DisplayFor(modelItem => item.Description)</td>
                         <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                        @*<td>@Html.DisplayFor(modelItem => item.PatientType)</td>*@
                         <td>@Html.DisplayFor(modelItem => item.Address)</td>
                         <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
-                        <td class="icon-container">
+                        @*<td class="icon-container">
                             <a href="@Url.Action("OutPatientEdit", new { Id = item.Id })">
                                 <i class="fas fa-edit"></i>
                             </a>
@@ -159,7 +161,7 @@
                                 <i class="fas fa-trash-alt"></i>
                             </a>
 
-                        </td>
+                        </td>*@
                     </tr>
                 }
             </table>

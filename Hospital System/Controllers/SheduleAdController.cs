@@ -19,12 +19,12 @@ namespace Hospital_System.Controllers
         AdminDAL adminDAL;
         AdminBAL adminBAL = new AdminBAL();
         // GET: SheduleAd
-        public ActionResult SheduleList(string Shedule)
+        public ActionResult SheduleList(string Schedule)
         {
             MShedule mShedule1 = new MShedule();
             List<MShedule> mShedule = new List<MShedule>();
 
-            mShedule = adminBAL.SheduleList(Shedule);
+            mShedule = adminBAL.SheduleList(Schedule);
 
             var schedule = new DashboardDetails
             {

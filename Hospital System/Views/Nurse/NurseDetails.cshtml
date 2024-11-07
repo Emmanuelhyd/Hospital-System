@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "NurseDetails";
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -41,9 +42,35 @@
                 width: 150px; /* Fixed width for labels */
                 color: #555;
             }
+
+        /* Back Button Styling */
+        .back-button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+            .back-button:hover {
+                background-color: #0056b3;
+            }
+
+            .back-button:active {
+                background-color: #003f7f;
+            }
     </style>
 </head>
 <body>
+
+    <!-- Back Button -->
+    <a href="javascript:history.back()" class="back-button">Back</a>
+
     <div class="container">
         <h2>Nurse Details</h2>
         <div class="detail">
@@ -80,5 +107,6 @@
             <strong>Employment Status:</strong> @Model.EmployeeStatus
         </div>
     </div>
+
 </body>
 </html>

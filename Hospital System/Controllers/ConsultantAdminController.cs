@@ -34,18 +34,18 @@ namespace Hospital_System.Controllers
             List<ConsultantDo> consultantDos = new List<ConsultantDo>();
 
 
-            if (consultantDo.Id != 0)
+            if (consultantDo.DoctorId != 0)
             {
                 consultantDos = consultantBAL.AddConsultant(consultantDo);
             }
             if (consultantDos.Count == 0)
             {
                 consultantDAL = new ConsultantDAL();
-                if (consultantDo.Id == 0)
+                if (consultantDo.DoctorId == 0)
                 {
                     ids = consultantDAL.ConsultantId();
                 }
-                consultantDo.Id = ids + 1;
+                consultantDo.DoctorId = ids + 1;
 
                 return View(consultantDo);
             }
@@ -59,14 +59,14 @@ namespace Hospital_System.Controllers
 
         //Consultant Edit
 
-        public ActionResult ConsultantEdit(int Id)
+        public ActionResult ConsultantEdit(int DoctorId)
         {
-            if (Id <= 0)
+            if (DoctorId <= 0)
                 return HttpNotFound();
 
             ConsultantDo consultantDo = new ConsultantDo();
-            consultantDo = consultantBAL.ConsultantEdit(Id);
-            if (consultantDo.Id != 0)
+            consultantDo = consultantBAL.ConsultantEdit(DoctorId);
+            if (consultantDo.DoctorId != 0)
             {
 
                 return View("AddConsultant", consultantDo);
@@ -80,11 +80,11 @@ namespace Hospital_System.Controllers
 
         //Consultant Delete
 
-        public ActionResult ConsultantDelete(int Id)
+        public ActionResult ConsultantDelete(int DoctorId)
         {
             List<ConsultantDo> consultantDos = new List<ConsultantDo>();
 
-            consultantDos = consultantBAL.ConsultantDelete(Id);
+            consultantDos = consultantBAL.ConsultantDelete(DoctorId);
             return RedirectToAction("ConsultantList", "ConsultantAdmin");
         }
 

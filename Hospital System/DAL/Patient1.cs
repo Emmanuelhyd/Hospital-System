@@ -18,6 +18,7 @@ using System.Net.Mail;
 using System.Drawing;
 using Hospital_System.Viewmodel;
 using System.Web.UI;
+using System.Net.Cache;
 
 
 
@@ -146,17 +147,7 @@ namespace Hospital_System.DAL
         public string Updateprofile(Patients patients)
         {   string res = "";
 
-            if (string.IsNullOrWhiteSpace(patients.UserName) ||
-               string.IsNullOrWhiteSpace(patients.FirstName) ||
-               string.IsNullOrWhiteSpace(patients.Email) ||
-               //string.IsNullOrWhiteSpace(patients.BloodGroup) ||
-               string.IsNullOrWhiteSpace(patients.Gender) ||
-               string.IsNullOrWhiteSpace(patients.Age)||
-                string.IsNullOrWhiteSpace(patients.PhoneNo) )
-                 //string.IsNullOrWhiteSpace(patients.Address))
-            {
-                return "Enter All the Details ";
-            }
+           
 
             con.Open();
            
@@ -177,6 +168,9 @@ namespace Hospital_System.DAL
 
         }
 
+       
+
+
 
         public List<Ambulance> GetAmbulances()
         {
@@ -186,7 +180,7 @@ namespace Hospital_System.DAL
                 {
 
                     con.Open();
-                    cmd = new SqlCommand("select* from ambulance", con);
+                    cmd = new SqlCommand("select* from amb", con);
                     reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
@@ -242,13 +236,13 @@ namespace Hospital_System.DAL
 
         public int GetAmbulanceCount()
         {
-            string query = "SELECT COUNT(*) FROM Ambulance";
+            string query = "SELECT COUNT(*) FROM Amb";
             return ExecuteCountQuery(query);
         }
 
         public int GetDriverCount()
         {
-            string query = "SELECT COUNT(*) FROM Driver";
+            string query = "SELECT COUNT(*) FROM Drivers";
             return ExecuteCountQuery(query);
         }
 
@@ -263,9 +257,13 @@ namespace Hospital_System.DAL
 
         public int GetActiveAppointmentsCount()
         {
-            string query = "SELECT COUNT(*) FROM Appointments WHERE Status = @Status";
-            SqlParameter statusParameter = new SqlParameter("@Status", SqlDbType.Bit) { Value = true };
-            return ExecuteCountQuery(query, statusParameter);
+            //string query = "SELECT COUNT(*) FROM Bookapp WHERE Status = @Status";
+            //SqlParameter statusParameter = new SqlParameter("@Status", SqlDbType.Bit) { Value = true };
+            //return ExecuteCountQuery(query, statusParameter);
+            string query = "SELECT COUNT(*) FROM Bookapp";
+            return ExecuteCountQuery(query);
+
+
         }
 
         public int GetPendingAppointmentsCount()
@@ -281,15 +279,15 @@ namespace Hospital_System.DAL
         {
             List<AmbulanceDriver>drivers= new List<AmbulanceDriver>();
             con.Open();
-            cmd = new SqlCommand("select*from driver", con);
+            cmd = new SqlCommand("select*from drivers", con);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 AmbulanceDriver driver = new AmbulanceDriver();
 
                 driver.Id = Convert.ToInt32(reader["Id"]);
-                driver.Name=reader.GetString(reader.GetOrdinal("Name"));
-                driver.Contact =reader. GetString(reader.GetOrdinal("Name"));
+                driver.DriverName=reader.GetString(reader.GetOrdinal("DriverName"));
+                driver.Contact =reader. GetString(reader.GetOrdinal("Contact"));
                 driver.Address=reader.GetString(reader.GetOrdinal("address"));
                 driver.CNIC = reader.GetString(reader.GetOrdinal("CNIC"));
 
@@ -308,14 +306,14 @@ namespace Hospital_System.DAL
             AmbulanceDriver ambulanceDriver = null;
             string res = "";
             con.Open();
-            cmd = new SqlCommand("select* from driver where Id=" + Id + "", con);
+            cmd = new SqlCommand("select* from drivers where Id=" + Id + "", con);
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
                 ambulanceDriver= new AmbulanceDriver()
                 {
                     Id = Convert.ToInt32(reader.GetOrdinal("Id")),
-                    Name = reader.GetString(reader.GetOrdinal("Name")),
+                    DriverName = reader.GetString(reader.GetOrdinal("DriverName")),
                     Contact = reader.GetString(reader.GetOrdinal("Contact")),
                     Address = reader.GetString(reader.GetOrdinal("Address")),
                     CNIC = reader.GetString(reader.GetOrdinal("CNIC")),
@@ -335,21 +333,22 @@ namespace Hospital_System.DAL
         {
             List<Doctor> doctors= new List<Doctor>();
             con.Open();
-            cmd = new SqlCommand("select * from doctors", con);
+            cmd = new SqlCommand("select * from doctors where Status ='Active'", con);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 Doctor doctor = new Doctor();
-                int ordinalDoctorId = reader.GetOrdinal("DoctorId");
-              doctor.DoctorId = reader.IsDBNull(ordinalDoctorId) ? 0 : Convert.ToInt32(reader.GetValue(ordinalDoctorId));
-                doctor.FullName = reader.GetString(reader.GetOrdinal("FullName"));
-                doctor.Email = reader.GetString(reader.GetOrdinal("Email"));
-                doctor.Department = reader.GetString(reader.GetOrdinal("department"));
-                doctor.Education = reader.GetString(reader.GetOrdinal("Education"));
-                doctor.Designation = reader.GetString(reader.GetOrdinal("designation"));
-                doctor.Status = reader.GetString(reader.GetOrdinal("status"));
-                //doctor. PhotoUrl = reader.IsDBNull(reader.GetOrdinal("PhotoUrl")) ? null : reader.GetString(reader.GetOrdinal("PhotoUrl"));
+                doctor.DoctorId = reader.IsDBNull(reader.GetOrdinal("DoctorId")) ? 0 : Convert.ToInt32(reader["DoctorId"]);
+                doctor.FullName = reader.IsDBNull(reader.GetOrdinal("FullName")) ? string.Empty : reader["FullName"].ToString();
+                doctor.Email = reader.IsDBNull(reader.GetOrdinal("Email")) ? string.Empty : reader["Email"].ToString();
+                doctor.Department = reader.IsDBNull(reader.GetOrdinal("Department")) ? string.Empty : reader["Department"].ToString();
+                doctor.Education = reader.IsDBNull(reader.GetOrdinal("Education")) ? string.Empty : reader["Education"].ToString();
+                doctor.Designation = reader.IsDBNull(reader.GetOrdinal("Designation")) ? string.Empty : reader["Designation"].ToString();
+                doctor.PhoneNo = reader.IsDBNull(reader.GetOrdinal("PhoneNo")) ? string.Empty : reader["PhoneNo"].ToString();
+                doctor.Status = reader.IsDBNull(reader.GetOrdinal("Status")) ? string.Empty : reader["Status"].ToString();
+
                 doctors.Add(doctor);
+
 
             }
 
@@ -437,7 +436,7 @@ namespace Hospital_System.DAL
 
        
             con.Open();
-            cmd = new SqlCommand("Update profiles set Password='" + patients.Password + "' where UserName='" + patients.UserNameOrEmail + "'", con);
+            cmd = new SqlCommand("Update profiles set Password='" + patients.Password + "' where UserName='" + patients.UserName + "'", con);
             res = cmd.ExecuteNonQuery().ToString();
             con.Close();
             return res;

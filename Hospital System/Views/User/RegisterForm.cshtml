@@ -1,9 +1,10 @@
 ﻿@model Hospital_System.Models.UserModel
 
+
 @{
-    ViewBag.Title = "Relative Information";
-    Layout = "~/Views/Shared/_UserLayoutBlod.cshtml";
+    Layout = null;
 }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,41 +77,89 @@
                 background-color: #d32f2f;
                 transform: translateY(-2px);
             }
+
+        .alert {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
     </style>
 </head>
 <body>
     <div class="form-container">
         <h4>Registration Page</h4>
+
+        <!-- Success Message -->
+        @if (ViewData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @ViewData["SuccessMessage"]
+            </div>
+        }
+
+        <!-- Error Message -->
+        @if (ViewData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @ViewData["ErrorMessage"]
+            </div>
+        }
+
         @using (Html.BeginForm("RegisterForm", "User"))
         {
             <div class="mb-3">
                 @Html.LabelFor(m => m.FirstName, new { @class = "form-label" })
-                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name", required = "required", aria_required = "true" })
             </div>
+
             <div class="mb-3">
                 @Html.LabelFor(m => m.LastName, new { @class = "form-label" })
-                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last Name" })
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last Name", required = "required", aria_required = "true" })
             </div>
+
             <div class="mb-3">
                 @Html.LabelFor(m => m.EmailId, new { @class = "form-label" })
-                @Html.TextBoxFor(m => m.EmailId, new { @class = "form-control", placeholder = "Email Address" })
+                @Html.TextBoxFor(m => m.EmailId, new
+                  {
+                      @class = "form-control",
+                      placeholder = "Enter Email",
+                      type = "email",
+                      required = "required",
+                      pattern = "^[a-zA-Z0-9._%+-]+@gmail\\.[a-zA-Z]{2,}$",
+                      title = "Please enter a valid Gmail address ending with @gmail. (e.g., example@gmail.com, user123@gmail.in)"
+                  })
             </div>
+
             <div class="mb-3">
                 @Html.LabelFor(m => m.Password, new { @class = "form-label" })
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", required = "required", aria_required = "true" })
             </div>
+
             <div class="mb-3">
                 @Html.LabelFor(m => m.PhoneNumber, new { @class = "form-label" })
-                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Phone Number" })
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Enter Phone Number", required = "required", pattern = @"\d{10}", maxlength = "10", title = "Phone number must be exactly 10 digits" })
             </div>
+
             <div class="mb-3">
                 @Html.LabelFor(m => m.DateOfBirth, new { @class = "form-label" })
-                @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", id = "datepicker", placeholder = "Select Date" })
+                @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", id = "datepicker", placeholder = "Select Date", required = "required", aria_required = "true" })
             </div>
+
             <div class="mb-3">
                 @Html.LabelFor(m => m.Address, new { @class = "form-label" })
-                @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Address" })
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Address", required = "required", aria_required = "true" })
             </div>
+
             <div>
                 <input type="submit" value="Submit" class="btn btn-primary" />
             </div>

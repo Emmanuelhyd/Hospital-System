@@ -1,77 +1,101 @@
 ﻿@model IEnumerable<Hospital_System.Models.Vaccines>
 
-
 @{
     ViewBag.Title = "VaccineList";
+    Layout = null;
 }
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>VaccineList</title>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #dddddd;
+            text-align: left;
+        }
+
+        /* Table header styling */
+        thead {
+            background-color: #3498db; /* Static blue header color */
+            color: white;
+        }
+
+        /* Zebra striping for rows */
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1; /* Highlight row on hover */
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+            .back-button:hover {
+                background-color: #0056b3;
+            }
+    </style>
 </head>
-
-    <style >
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-        background-color: #f9f9f9;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 20px 0;
-        background-color: white;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    th, td {
-        border: 1px solid #dddddd;
-        padding: 12px;
-        text-align: left;
-    }
-
-    thead {
-        background-color: #f2f2f2;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-
-    tr:hover {
-        background-color: #f1f1f1;
-    }
-
-    h1 {
-        text-align: center;
-        color: #333;
-    }
-</style>
-
 <body>
+
+    <!-- Back Button -->
     <div>
-       
+        <a href="javascript:history.back()" class="back-button">Back</a>
+    </div>
+
+    <h1>Vaccine List</h1>
+
+    <div>
         @using (Html.BeginForm())
-
         {
-            <input type="search" , name="searchvalue" ,id="searchvalue" />
-            <button type="submit"> Search</button>
+            <input type="search" name="searchvalue" id="searchvalue" placeholder="Search by patient name..." />
+            <button type="submit">Search</button>
 
-            @Html.ActionLink("Book Slot","Vaccine","Vaccination")
             <table>
                 <thead>
                     <tr>
-                        <th> VaccinationId</th>
+                        <th>VaccinationId</th>
                         <th>PatientName</th>
                         <th>DoctorName</th>
                         <th>Age</th>
                         <th>VaccineType</th>
                         <th>Dosage</th>
-                        @*<th>Follow-Up-Date</th>*@
                         <th>Next Due Date</th>
                         <th>Status</th>
                         <th>Report</th>
@@ -81,22 +105,23 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td> @Html.DisplayFor(m => item.VaccineId)</td>
-                            <td> @Html.DisplayFor(m => item.PatientName)</td>
-                            <td> @Html.DisplayFor(m => item.DoctorName)</td>
-                            <td> @Html.DisplayFor(m => item.Age)</td>
-                            <td> @Html.DisplayFor(m => item.VaccineType)</td>
-                            <td> @Html.DisplayFor(m => item.Dosage)</td>
-                            @*<td> @Html.DisplayFor(m => item.FollowupDate)</td>*@
-                            <td> @Html.DisplayFor(m => item.NextDueDate)</td>
-                            <td> @Html.DisplayFor(m => item.Status)</td>
-                            <td> <a href="@Url.Action("VaccinesById", "Vaccination", new { VaccineId = item.VaccineId })">View</a></td>
+                            <td>@Html.DisplayFor(m => item.VaccineId)</td>
+                            <td>@Html.DisplayFor(m => item.PatientName)</td>
+                            <td>@Html.DisplayFor(m => item.DoctorName)</td>
+                            <td>@Html.DisplayFor(m => item.Age)</td>
+                            <td>@Html.DisplayFor(m => item.VaccineType)</td>
+                            <td>@Html.DisplayFor(m => item.Dosage)</td>
+                            <td>@Html.DisplayFor(m => item.NextDueDate)</td>
+                            <td>@Html.DisplayFor(m => item.Status)</td>
+                            <td>
+                                <a href="@Url.Action("VaccinesById", "Vaccination", new { VaccineId = item.VaccineId })">View</a>
+                            </td>
                         </tr>
                     }
                 </tbody>
             </table>
         }
-
     </div>
+
 </body>
 </html>

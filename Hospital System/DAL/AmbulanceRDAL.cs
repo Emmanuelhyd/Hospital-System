@@ -14,8 +14,10 @@ namespace Hospital_System.DAL
     {
         string _connectionString;
         SqlConnection con = null;
-        SqlCommand cmd = null;
-        SqlDataReader reader = null;
+        //SqlCommand cmd = null;
+        //SqlDataReader reader = null;
+        SqlCommand cmd;
+        SqlDataReader reader;
 
         public AmbulanceRDAL()
         {
@@ -26,7 +28,7 @@ namespace Hospital_System.DAL
 
         //Ambulanace List admin
 
-        public List<AmbulanceDo> AmbList()
+        public List<AmbulanceDo> AmbList(String And)
         {
             List<AmbulanceDo> ambulanceDos = new List<AmbulanceDo>();
 
@@ -34,9 +36,9 @@ namespace Hospital_System.DAL
 
                 con.Open();
 
-                cmd = new SqlCommand("select * from Ambulance", con);
+               
 
-                cmd = new SqlCommand("select * from ambulance", con);
+                cmd = new SqlCommand("select * from Amb where Name like'%" + And + "%'", con);
 
                 SqlDataReader sdr;
                 sdr = cmd.ExecuteReader();
@@ -47,14 +49,11 @@ namespace Hospital_System.DAL
                         new AmbulanceDo
                         {
                             Id = Convert.ToInt32(row["Id"]),
-                            Name = row["Name"].ToString(),
-                            AmbulanceId = Convert.ToInt32(row["AmbulanceId"]),
-                            AmbulanceStatus = row["AmbulanceStatus"].ToString(),
-
-                            DriverName = row["DriverName"].ToString(),
-                            DriverId = Convert.ToInt32(row["DriverId"]),
-
-                            
+                            Name = row["Name"] != DBNull.Value ? row["Name"].ToString() : string.Empty,
+                            AmbulanceId = row["AmbulanceId"] != DBNull.Value ? Convert.ToInt32(row["AmbulanceId"]) : 0,
+                            AmbulanceStatus = row["AmbulanceStatus"] != DBNull.Value ? row["AmbulanceStatus"].ToString() : string.Empty,
+                            DriverName = row["DriverName"] != DBNull.Value ? row["DriverName"].ToString() : string.Empty,
+                            DriverId = row["DriverId"] != DBNull.Value ? Convert.ToInt32(row["DriverId"]) : 0
 
 
 
@@ -68,11 +67,8 @@ namespace Hospital_System.DAL
         {
 
             var ids = 0;
-
-            cmd = new SqlCommand("select * from Ambulance where Id='" + ambulanceDo.Id + "'", con);
-
-            cmd = new SqlCommand("select * from ambulance where Id='" + ambulanceDo.Id + "'", con);
-
+            con.Open();
+            cmd = new SqlCommand("select * from Amb where Id='" + ambulanceDo.Id + "'", con);
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
@@ -83,32 +79,31 @@ namespace Hospital_System.DAL
             con.Close();
 
 
+          
+                con.Open();
+                if (ids == 0)
+                {
 
-            con.Open();
-            if (ids == 0)
-            {
-
-                cmd = new SqlCommand("insert into Ambulance(Id,Name,AmbulanceId,AmbulanceStatus,DriverName,DriverId) values(" + ambulanceDo.Id + ",'" + ambulanceDo.Name + "','" + ambulanceDo.AmbulanceId + "','" + ambulanceDo.AmbulanceStatus + "','" + ambulanceDo.DriverName + "','" + ambulanceDo.DriverId + "')", con);
-
-                cmd = new SqlCommand("insert into ambulance(Id,Name,AmbulanceId,AmbulanceStatus,AmbulanceDriver,AmbulanceDriverId) values(" + ambulanceDo.Id + ",'" + ambulanceDo.Name + "','" + ambulanceDo.AmbulanceId + "','" + ambulanceDo.AmbulanceStatus + "','" + ambulanceDo.DriverName + "','" + ambulanceDo.DriverId + "')", con);
+                    cmd = new SqlCommand("insert into Amb(Id,Name,AmbulanceId,AmbulanceStatus,DriverName,DriverId) values(" + ambulanceDo.Id + ",'" + ambulanceDo.Name + "','" + ambulanceDo.AmbulanceId + "','" + ambulanceDo.AmbulanceStatus + "','" + ambulanceDo.DriverName + "','" + ambulanceDo.DriverId + "')", con);
 
 
-            }
-            else
-            {
 
-                cmd = new SqlCommand("update Ambulance set Name='" + ambulanceDo.Name + "',AmbulanceId='" + ambulanceDo.AmbulanceId + "',AmbulanceStatus='" + ambulanceDo.AmbulanceStatus + "',DriverName='" + ambulanceDo.DriverName + "',DriverId='" + ambulanceDo.DriverId + "' where Id=" + ambulanceDo.Id + "", con);
+                }
+                else
+                {
 
-                cmd = new SqlCommand("update ambulance set Name='" + ambulanceDo.Name + "',AmbulanceId='" + ambulanceDo.AmbulanceId + "',AmbulanceStatus='" + ambulanceDo.AmbulanceStatus + "',AmbulanceDriver='" + ambulanceDo.DriverName + "',AmbulanceDriverId='" + ambulanceDo.DriverId + "' where Id=" + ambulanceDo.Id + "", con);
-
-            }
-            cmd.ExecuteNonQuery();
-            con.Close();
+                    cmd = new SqlCommand("update Amb set Name='" + ambulanceDo.Name + "',AmbulanceId='" + ambulanceDo.AmbulanceId + "',AmbulanceStatus='" + ambulanceDo.AmbulanceStatus + "',DriverName='" + ambulanceDo.DriverName + "',DriverId='" + ambulanceDo.DriverId + "'  where Id=" + ambulanceDo.Id + "", con);
 
 
-            List<AmbulanceDo> ambulanceDos = new List<AmbulanceDo>();
-            ambulanceDos = AmbList();
-            return ambulanceDos;
+                }
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+
+                List<AmbulanceDo> ambulanceDos = new List<AmbulanceDo>();
+                ambulanceDos = AmbList("");
+                return ambulanceDos;
+            
         }
 
         //outpatient Edit
@@ -119,7 +114,7 @@ namespace Hospital_System.DAL
 
 
 
-            SqlCommand cmd = new SqlCommand("Select * from Ambulance where Id='" + Id + "'", con);
+            SqlCommand cmd = new SqlCommand("Select * from Amb where Id='" + Id + "'", con);
            
 
             {
@@ -131,15 +126,16 @@ namespace Hospital_System.DAL
                 if (reader.Read())
                 {
                     ambulanceDo.Id = Convert.ToInt32(reader["Id"]);
-                    ambulanceDo.Name = reader["Name"].ToString();
-                    ambulanceDo.AmbulanceId = Convert.ToInt32(reader["AmbulanceId"]);
-                    ambulanceDo.AmbulanceStatus = reader["AmbulanceStatus"].ToString();
+                    ambulanceDo.Name = reader["Name"] != DBNull.Value ? reader["Name"].ToString() : string.Empty;
+                    ambulanceDo.AmbulanceId = reader["AmbulanceId"] != DBNull.Value ? Convert.ToInt32(reader["AmbulanceId"]) : 0;
+                    ambulanceDo.AmbulanceStatus = reader["AmbulanceStatus"] != DBNull.Value ? reader["AmbulanceStatus"].ToString() : string.Empty;
 
-                    ambulanceDo.DriverName = reader["DriverName"].ToString();
-                    ambulanceDo.DriverId = Convert.ToInt32(reader["DriverId"]);
+                    ambulanceDo.DriverName = reader["DriverName"] != DBNull.Value ? reader["DriverName"].ToString() : string.Empty;
+                    ambulanceDo.DriverId = reader["DriverId"] != DBNull.Value ? Convert.ToInt32(reader["DriverId"]) : 0;
 
-                   
-                   
+
+
+
 
 
 
@@ -157,9 +153,9 @@ namespace Hospital_System.DAL
         {
             con.Open();
 
-            cmd = new SqlCommand("Delete from Ambulance where Id='" + Id + "'", con);
+            cmd = new SqlCommand("Delete from Amb where Id='" + Id + "'", con);
 
-            cmd = new SqlCommand("Delete from ambulance where Id='" + Id + "'", con);
+         
 
             cmd.ExecuteNonQuery();
             con.Close();
@@ -168,9 +164,9 @@ namespace Hospital_System.DAL
 
             con.Open();
 
-            cmd = new SqlCommand("select * from Ambulance", con);
+            cmd = new SqlCommand("select * from Amb", con);
 
-            cmd = new SqlCommand("select * from ambulance", con);
+        
 
             reader = cmd.ExecuteReader();
 
@@ -179,14 +175,15 @@ namespace Hospital_System.DAL
                 AmbulanceDo ambulanceDo = new AmbulanceDo();
 
                 ambulanceDo.Id = Convert.ToInt32(reader["Id"]);
-                ambulanceDo.Name = reader["Name"].ToString();
-                ambulanceDo.AmbulanceId = Convert.ToInt32(reader["AmbulanceId"]);
-                ambulanceDo.AmbulanceStatus = reader["AmbulanceStatus"].ToString();
+                ambulanceDo.Name = reader["Name"] != DBNull.Value ? reader["Name"].ToString() : string.Empty;
+                ambulanceDo.AmbulanceId = reader["AmbulanceId"] != DBNull.Value ? Convert.ToInt32(reader["AmbulanceId"]) : 0;
+                ambulanceDo.AmbulanceStatus = reader["AmbulanceStatus"] != DBNull.Value ? reader["AmbulanceStatus"].ToString() : string.Empty;
 
-                ambulanceDo.DriverName = reader["DriverName"].ToString();
-                ambulanceDo.DriverId = Convert.ToInt32(reader["DriverId"]);
+                ambulanceDo.DriverName = reader["DriverName"] != DBNull.Value ? reader["DriverName"].ToString() : string.Empty;
+                ambulanceDo.DriverId = reader["DriverId"] != DBNull.Value ? Convert.ToInt32(reader["DriverId"]) : 0;
 
-                
+
+
 
 
 
@@ -207,9 +204,9 @@ namespace Hospital_System.DAL
             int id = 0;
             con.Open();
 
-            cmd = new SqlCommand("SELECT MAX(Id) FROM Ambulance", con);
+            cmd = new SqlCommand("SELECT MAX(Id) FROM Amb", con);
 
-            cmd = new SqlCommand("SELECT MAX(Id) FROM ambulance", con);
+            
 
             var result = cmd.ExecuteScalar();
 
@@ -219,6 +216,165 @@ namespace Hospital_System.DAL
             }
             con.Close();
             return id;
+        }
+
+
+
+
+        //Driver  List admin
+
+        public List<DriverDo> DriveList(string Dri)
+        {
+            List<DriverDo> driverDos = new List<DriverDo>();
+
+            {
+
+                con.Open();
+
+
+
+                cmd = new SqlCommand("select * from Drivers where DriverName like'%" + Dri + "%'", con);
+
+                SqlDataReader sdr;
+                sdr = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(sdr);
+                foreach (DataRow row in dt.Rows)
+                    driverDos.Add(
+                        new DriverDo
+                        {
+                            Id = Convert.ToInt32(row["Id"]),
+                            DriverName = row["DriverName"] != DBNull.Value ? row["DriverName"].ToString() : string.Empty,
+                            DriverId = row["DriverId"] != DBNull.Value ? Convert.ToInt32(row["DriverId"]) : 0,
+                             Contact = row["Contact"] != DBNull.Value ? row["Contact"].ToString() : string.Empty,
+                            Address = row["Address"] != DBNull.Value ? row["Address"].ToString() : string.Empty,
+                            CNIC = row["CNIC"] != DBNull.Value ? row["CNIC"].ToString() : string.Empty,
+
+
+                        });
+
+                return driverDos;
+            }
+        }
+
+        //add Driver
+        public List<DriverDo> AddDrive(DriverDo driverDo)
+        {
+            var ids = 0;
+            con.Open();
+            cmd = new SqlCommand("select * from Drivers where Id='" + driverDo.Id + "'", con);
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                ids = Convert.ToInt32(reader["Id"]);
+            }
+
+            reader.Close();
+            con.Close();
+
+
+
+            con.Open();
+            if (ids == 0)
+            {
+                cmd = new SqlCommand("insert into Drivers(Id,DriverName,DriverId,Contact,Address,CNIC) values(" + driverDo.Id + ",'" + driverDo.DriverName + "','" + driverDo.DriverId + "','" + driverDo.Contact + "','" + driverDo.Address + "','" + driverDo.CNIC + "')", con);
+
+            }
+            else
+            {
+                cmd = new SqlCommand("update Drivers set DriverName='" + driverDo.DriverName + "',DriverId='" + driverDo.DriverId + "',Contact='" + driverDo.Contact + "',Address='" + driverDo.Address + "',CNIC='" + driverDo.CNIC + "' where Id=" + driverDo.Id + "", con);
+            }
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+
+            List<DriverDo> driverDos = new List<DriverDo>();
+            driverDos = DriveList("");
+            return driverDos;
+        }
+
+
+        //Id Increment
+        public int DriverRId()
+        {
+            int id = 0; // Default to 1 in case there are no records
+            con.Open();
+            cmd = new SqlCommand("SELECT MAX(Id) FROM Drivers", con);
+            var result = cmd.ExecuteScalar(); // Use ExecuteScalar for a single value
+
+            // Check if result is null
+            if (result != DBNull.Value)
+            {
+                id = Convert.ToInt32(result); // Increment the maximum ID
+            }
+
+            con.Close();
+            return id;
+        }
+
+        //Edit driver
+
+        public DriverDo DriveREdit(int Id)
+        {
+            DriverDo driverDo = new DriverDo();
+
+            SqlCommand cmd = new SqlCommand("Select * from Drivers where Id='" + Id + "'", con);
+            {
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+
+                if (reader.Read())
+                {
+                    driverDo.Id = Convert.ToInt32(reader["Id"]);
+                    driverDo.DriverName = reader["DriverName"].ToString();
+                    driverDo.DriverId = Convert.ToInt32(reader["DriverId"]);
+                    driverDo.Contact = reader["Contact"].ToString();
+                    driverDo.Address = reader["Address"].ToString();
+                    driverDo.CNIC = reader["CNIC"].ToString();
+
+                }
+                reader.Close();
+                con.Close();
+
+            }
+            return driverDo;
+        }
+
+        //delete driver
+        public List<DriverDo> DriveRDelete(int Id)
+        {
+            con.Open();
+            cmd = new SqlCommand("Delete from Drivers where Id='" + Id + "'", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            List<DriverDo> driverDos = new List<DriverDo>();
+
+            con.Open();
+            cmd = new SqlCommand("select * from Drivers", con);
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                DriverDo driverDo = new DriverDo();
+
+                driverDo.Id = Convert.ToInt32(reader["Id"]);
+                driverDo.DriverName = reader["DriverName"].ToString();
+                driverDo.DriverId = Convert.ToInt32(reader["DriverId"]);
+                driverDo.Contact = reader["Contact"].ToString();
+                driverDo.Address = reader["Address"].ToString();
+                driverDo.CNIC = reader["CNIC"].ToString();
+
+
+                driverDos.Add(driverDo);
+
+            }
+
+            reader.Close();
+            con.Close();
+            return driverDos;
         }
     }
 }

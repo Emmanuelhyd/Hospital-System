@@ -1,103 +1,1 @@
-﻿@model Hospital_System.Viewmodel.Allview
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-
-        .navbar {
-            background-color: blue;
-        }
-
-        .navbar-nav .nav-link {
-            color: #ffffff; 
-        }
-
-        .dropdown-item {
-            color: #343a40; 
-        }
-
-            .dropdown-item:hover {
-                background-color: #007bff;
-                color: #ffffff; 
-            }
-
-        .dropdown-menu {
-            display: none; 
-        }
-
-        .dropdown:hover .dropdown-menu {
-            display: block; 
-        }
-
-        .dropdown-menu {
-            display: none;
-            transition: all 0.3s ease; 
-        }
-
-        .dropdown:hover .dropdown-menu {
-            display: block;
-            opacity: 1; 
-        }
-    </style>
- 
-</head>
-<body>
-    @using (Html.BeginForm())
-    {
-        <nav class="navbar navbar-expand-lg">
-           
-              
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    @if (Model?.Menus != null && Model.Menus.Any())
-                    {
-                        foreach (var item in Model.Menus.Where(m => m.ParentId == null))
-                        {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="@item.Url" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    @item.Name
-                                </a>
-                                @if (Model.Menus.Any(x => x.ParentId == item.Id))
-                                {
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        @foreach (var subItem in Model.Menus.Where(x => x.ParentId == item.Id))
-                                        {
-                                            <a class="dropdown-item" href="@subItem.Url">@subItem.Name</a>
-                                        }
-                                    </div>
-                                }
-                            </li>
-                        }
-                    }
-                </ul>
-
-                <div class="user-info ml-auto text-white">
-                    @if (Model.Patients != null && !string.IsNullOrEmpty(Model.Patients.UserNameOrEmail))
-                    {
-                        <span>@Model.Patients.UserNameOrEmail</span> 
-                    }
-                   
-                </div>
-
-</nav>
-    }
-
-    <div class="container mt-4">
-        @RenderBody()
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-   
-</body>
-</html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+﻿@model Hospital_System.Viewmodel.Allview<!DOCTYPE html><html><head>    <meta name="viewport" content="width=device-width" />    <title>@ViewBag.Title</title>    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    <style>        body {            background-color: #f8f9fa;        }        .navbar {            background-color: blue;        }        .navbar-nav .nav-link {            color: #ffffff;        }        .dropdown-item {            color: #343a40;        }            .dropdown-item:hover {                background-color: #007bff;                color: #ffffff;            }        .dropdown-menu {            display: none;        }        .dropdown:hover .dropdown-menu {            display: block;        }        .dropdown-menu {            display: none;            transition: all 0.3s ease;        }        .dropdown:hover .dropdown-menu {            display: block;            opacity: 1;        }    </style></head><body>    @using (Html.BeginForm())    {<nav class="navbar navbar-expand-lg">    <div class="collapse navbar-collapse" id="navbarNav">        <ul class="navbar-nav">            @if (Model?.Menus != null && Model.Menus.Any())            {                foreach (var item in Model.Menus.Where(m => m.ParentId == null))                {<li class="nav-item dropdown">    <a class="nav-link dropdown-toggle" href="@item.Url" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">        @item.Name    </a>    @if (Model.Menus.Any(x => x.ParentId == item.Id))    {<div class="dropdown-menu" aria-labelledby="navbarDropdown">    @foreach (var subItem in Model.Menus.Where(x => x.ParentId == item.Id))    {<a class="dropdown-item" href="@subItem.Url">@subItem.Name</a>}</div>}</li>}}        </ul>        <div class="user-info ml-auto text-white">            @if (Model.Patients != null && !string.IsNullOrEmpty(Model.Patients.UserNameOrEmail))            {<span>@Model.Patients.UserNameOrEmail</span>}        </div></nav>}    <div class="container mt-4">        @RenderBody()    </div>    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script></body></html><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

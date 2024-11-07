@@ -66,6 +66,9 @@ namespace Hospital_System.Dash
 
         public UpdateDO UpdateDO { get; set; }
 
+        public RoleDO RoleDO { get; set; }
+        public List<RoleDO> RoleDOs { get; set; }
+
         //public DateTime TodayDate { get; set; }
     }
 }

@@ -1,7 +1,4 @@
-﻿               
-
-     
-@model Hospital_System.Models.Patients
+﻿@model Hospital_System.Models.Patients
 
 @{
     ViewBag.Title = "Insert Profile";
@@ -15,104 +12,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title</title>
     <style>
+        /* Base styling */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
             margin: 0;
             padding: 0;
         }
 
+        /* Form container */
         .form-container {
-            max-width: 670px;
+            max-width: 600px;
             margin: 30px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-top: -24px;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
-            .form-container h1 {
-                text-align: center;
-                margin-bottom: 20px;
-                color: #333;
-            }
-
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
+        .form-container h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 600;
         }
 
+        /* Form group styling */
         .form-group {
-            flex: 1;
-            display: flex; /* Use flex to align label and input */
-            align-items: center; /* Center vertically */
-            margin-right: 10px;
-            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
         }
 
-            .form-group:last-child {
-                margin-right: 0;
-            }
-
-            .form-group label {
-                width: 40%; /* Adjust label width */
-                font-weight: bold;
-                margin-bottom: 0; /* Remove bottom margin */
-                color: #333;
-                text-align: right; /* Align label text to the right */
-                padding-right: 10px; /* Space between label and input */
-            }
-
-            .form-group input,
-            .form-group select {
-                width: 60%; /* Adjust input width */
-                padding: 12px; /* Increased padding for comfort */
-                border: 1px solid #007bff; /* Primary color border */
-                border-radius: 4px; /* Rounded corners */
-                box-sizing: border-box; /* Include padding and border in total width */
-                font-size: 16px; /* Larger font size for readability */
-                transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition effects */
-            }
-
-                .form-group input:focus,
-                .form-group select:focus {
-                    border-color: #0056b3; /* Darker shade on focus */
-                    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle glow effect */
-                    outline: none; /* Remove default outline */
-                }
-
-            .form-group .text-danger {
-                color: #dc3545;
-                font-size: 0.875rem;
-                font-weight: 600;
-                font-style: oblique;
-                margin-left: 10px; /* Space for error message */
-            }
-
-        .form-row:nth-child(even) {
-            margin-top: 10px;
-        }
-
-        .form-container .btn-submit {
-            display: block;
-            width: 24%;
-            padding: 10px;
+        .form-group label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
             font-size: 1rem;
-            color: #fff;
-            background-color: #007bff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-top: 15px;
-            margin-left: 327px;
+            text-align: left;
         }
 
-            .form-container .btn-submit:hover {
-                background-color: #0056b3;
+        /* Input and select field styling */
+        .form-group input,
+        .form-group select {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            width: 70%;
+            transition: border-color 0.3s, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+
+        .form-group .text-danger {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 5px;
+        }
+
+        /* Submit button styling */
+        .form-container .btn-submit {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.2rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .form-container .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+        /* Success or error message */
+        .form-container .result {
+            font-weight: bold;
+            color: #28a745;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container .error {
+            font-weight: bold;
+            color: #dc3545;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Media query for responsiveness */
+        media (max-width: 768px) {
+            .form-container {
+                padding: 20px;
+                width: 90%;
             }
+        }
     </style>
 </head>
 <body>
@@ -123,71 +127,50 @@
         {
             @Html.AntiForgeryToken()
 
-            <div style="font-weight: 600; font-style: oblique; text-align: center;">
+            <!-- Display result or error messages -->
+            <div class="result" style="display: @(TempData["result"] != null ? "block" : "none")">
                 @TempData["result"]
             </div>
+            <div class="error" style="display: @(TempData["error"] != null ? "block" : "none")">
+                @TempData["error"]
+            </div>
 
-
-
+            <!-- Form Fields -->
             <div class="form-group">
                 @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName, new { @placeholder = "UserName", @class = "form-control" ,@required="reqired"})     <br />
-
-                <div style="margin-left: -271px; margin-top: 59px;">   @Html.ValidationMessageFor(m => m.UserName, "", new { @required = "required", @class = "text-danger" })</div>
+                @Html.TextBoxFor(m => m.UserName, new { @placeholder = "UserName", @class = "form-control", @required = "required" })
+                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.FirstName)
-                @Html.TextBoxFor(m => m.FirstName, new { @placeholder = "First Name", @class = "form-control",@required="required" })<br />
-                <div style="margin-left: -271px; margin-top: 59px; "> @Html.ValidationMessageFor(m => m.FirstName, "", new { @required = "required", @class = "text-danger" })</div>
+                @Html.TextBoxFor(m => m.FirstName, new { @placeholder = "First Name", @class = "form-control", @required = "required" })
+                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.LastName)
-                @Html.TextBoxFor(m => m.LastName, new { @placeholder = "Last Name", @class = "form-control",@required="required" }) <br />
-
-                <div style="margin-left: -271px; margin-top: 59px; ">@Html.ValidationMessageFor(m => m.LastName, "", new { @required = "required", @class = "text-danger" })</div>
+                @Html.TextBoxFor(m => m.LastName, new { @placeholder = "Last Name", @class = "form-control", @required = "required" })
+                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.Email)
-                @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email", @class = "form-control",@type="email" , @required = "required" })  <br />
-                <div style="margin-left: -271px; margin-top: 59px; ">
-                    @Html.ValidationMessageFor(m => m.Email, "", new { @required = "required", @class = "text-danger" })
-                </div>
+                @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email", @class = "form-control", @type = "email", @required = "required" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "form-control",@required = "required" }) <br />
-                <div style="margin-left: -271px; margin-top: 59px; ">
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @required = "required", @class = "text-danger" })
-                </div>
+                @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "form-control", @required = "required" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
             </div>
-
 
             <div class="form-group">
                 @Html.LabelFor(m => m.PhoneNo)
-                @Html.TextBoxFor(m => m.PhoneNo, new
-                {
-                    @placeholder = "Phone Number",
-                    @class = "form-control",
-                    @pattern = @"^[6789]\d{9}$",
-                    @title = "Phone number must be 10 digits and start with 6, 7, 8, or 9.",
-                    @required = "required"
-                })<br />
-                <div style="margin-left: -271px; margin-top: 59px;">
-                    @Html.ValidationMessageFor(m => m.PhoneNo, "", new { @class = "text-danger" })
-                </div>
+                @Html.TextBoxFor(m => m.PhoneNo, new { @placeholder = "Phone Number", @class = "form-control", @pattern = @"^[6789]\d{9}$", @title = "Phone number must be 10 digits and start with 6, 7, 8, or 9.", @required = "required" })
+                @Html.ValidationMessageFor(m => m.PhoneNo, "", new { @class = "text-danger" })
             </div>
-
-
-            @*<div class="form-group">
-            @Html.LabelFor(m => m.PhoneNo)
-            @Html.TextBoxFor(m => m.PhoneNo, new { @placeholder = "Phone Number", @class = "form-control" })<br />
-            <div style="margin-left: -271px; margin-top: 59px; ">
-                @Html.ValidationMessageFor(m => m.PhoneNo, "", new { @required = "required",@class = "text-danger" })</div>
-            </div>*@
 
             <div class="form-row">
                 <input type="submit" value="Register" class="btn-submit" />
@@ -196,4 +179,3 @@
     </div>
 </body>
 </html>
-

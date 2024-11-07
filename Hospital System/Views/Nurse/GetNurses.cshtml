@@ -1,59 +1,81 @@
 ﻿@model IEnumerable<Hospital_System.Models.Nurse>
 
-
 @{
     ViewBag.Title = "GetNurses";
+    Layout = null;
 }
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>GetNurses</title>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #dddddd;
+            text-align: left;
+        }
+
+        thead {
+            background-color: #3498db; /* Static blue header color */
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+            .back-button:hover {
+                background-color: #0056b3;
+            }
+    </style>
 </head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-        background-color: #f9f9f9;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 20px 0;
-        background-color: white;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    th, td {
-        border: 1px solid #dddddd;
-        padding: 12px;
-        text-align: left;
-    }
-
-    thead {
-        background-color: #f2f2f2;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-
-    tr:hover {
-        background-color: #f1f1f1;
-    }
-
-    h1 {
-        text-align: center;
-        color: #333;
-    }
-</style>
 
 <body>
+    <!-- Back Button -->
     <div>
-        <h1>  List of Nurses</h1>
+        <a href="javascript:history.back()" class="back-button">Back</a>
+    </div>
+
+    <h1>List of Nurses</h1>
+
+    <div>
         <table>
             <thead>
                 <tr>
@@ -63,8 +85,8 @@
                     <th>Email</th>
                     <th>ShiftType</th>
                     <th>Employment Status</th>
-                    <th> Details</th>
-
+                    <th>Details</th>
+                </tr>
             </thead>
             <tbody>
                 @foreach (var nurse in Model)
@@ -76,11 +98,10 @@
                         <td>@Html.DisplayFor(m => nurse.Email)</td>
                         <td>@Html.DisplayFor(m => nurse.ShiftType)</td>
                         <td>@Html.DisplayFor(m => nurse.EmployeeStatus)</td>
-                        <td> <a href="@Url.Action("NurseDetails", "Nurse", new { NurseId = nurse.NurseId })">View</a></td>
+                        <td><a href="@Url.Action("NurseDetails", "Nurse", new { NurseId = nurse.NurseId })">View</a></td>
                     </tr>
                 }
             </tbody>
-
         </table>
     </div>
 </body>

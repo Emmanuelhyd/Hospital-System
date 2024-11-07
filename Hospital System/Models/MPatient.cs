@@ -8,12 +8,13 @@ namespace Hospital_System.Models
 {
     public class MPatient
     {
-        
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public long PhoneNumber { get; set; }
-        public string BloodGroup { get; set; }
-        public string Gender { get; set; }
 
+        public int Id { get; set; }
+        
+        public string PatientName { get; set; }
+        public string DoctorName { get; set; }
+        public string Department { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
     }
 }

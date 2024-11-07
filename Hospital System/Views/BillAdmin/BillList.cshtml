@@ -107,7 +107,7 @@
                 <a href="@Url.Action("ReceptionFrontPage", "ReceptionAdmin")" style="position:absolute;margin-top:-25px;">
                     <i class="fas fa-arrow-circle-left" style="font-size: 40px;"></i>
                 </a>
-                <input type="button" value="Create New" style="position: absolute; margin-left: 50px; margin-top: -25px;" onclick="window.location.href='@Url.Action("AddBill", "BillAdmin")'">
+                <input type="button" value="Add New" style="position: absolute; margin-left: 50px; margin-top: -25px;" onclick="window.location.href='@Url.Action("AddBill", "BillAdmin")'">
                 <h4 style="position: absolute; margin-left: 500px; margin-top: -25px;" class="highlight-heading">Billing List</h4>
             </div>
             <table>
@@ -162,7 +162,7 @@
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                             <a href="@Url.Action("BillingId", new { PatientId = item.PatientId })">
-                                <i class="fas fa-edit"></i>
+                                <i class="fas fa-eye"></i> 
                             </a>
                         </td>
                     </tr>

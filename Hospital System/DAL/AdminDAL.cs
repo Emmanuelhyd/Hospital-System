@@ -610,7 +610,7 @@ namespace Hospital_System.DAL
             {
 
                 con.Open();
-                cmd = new SqlCommand("select * from PatientAd where Name like'%" + patient +"%'", con);
+                cmd = new SqlCommand("select * from bookapp where PatientName like'%" + patient + "%'", con);
                 SqlDataReader sdr;
                 sdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
@@ -620,11 +620,12 @@ namespace Hospital_System.DAL
                         new MPatient
                         {
                             Id = Convert.ToInt32(row["Id"]),
-                            Name = row["Name"].ToString(),
-                            PhoneNumber = Convert.ToInt64(row["PhoneNumber"]),
-                            BloodGroup = row["BloodGroup"].ToString(),
-                            Gender = row["Gender"].ToString(),
-                           
+                            PatientName = row["PatientName"].ToString(),
+                            DoctorName = row["DoctorName"].ToString(),
+                            Department = row["Department"].ToString(),
+                            Date = row["Date"].ToString(),
+                            Time = row["Time"].ToString(),
+
 
                         });
 
@@ -632,104 +633,104 @@ namespace Hospital_System.DAL
             }
         }
         //add patient
-        public List<MPatient> AddPatientAd(MPatient mPatient)
-        {
+        //public List<MPatient> AddPatientAd(MPatient mPatient)
+        //{
 
-            var ids = 0;
-            con.Open();
-            cmd = new SqlCommand("select * from PatientAd where Id='" + mPatient.Id + "'", con);
-            reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-                ids = Convert.ToInt32(reader["Id"]);
-            }
+        //    var ids = 0;
+        //    con.Open();
+        //    cmd = new SqlCommand("select * from PatientAd where Id='" + mPatient.Id + "'", con);
+        //    reader = cmd.ExecuteReader();
+        //    if (reader.Read())
+        //    {
+        //        ids = Convert.ToInt32(reader["Id"]);
+        //    }
 
-            reader.Close();
-            con.Close();
-
-
-
-            con.Open();
-            if (ids == 0)
-            {
-                cmd = new SqlCommand("insert into PatientAd(Id,Name,PhoneNumber,BloodGroup,Gender) values(" + mPatient.Id + ",'" + mPatient.Name + "','" + mPatient.PhoneNumber + "','" + mPatient.BloodGroup + "','"+ mPatient .Gender+ "')", con);
-
-            }
-            else
-            {
-                cmd = new SqlCommand("update PatientAd set Name='" + mPatient.Name + "',PhoneNumber='" + mPatient.PhoneNumber + "',BloodGroup='" + mPatient.BloodGroup + "',Gender='" + mPatient.Gender+"' where Id=" + mPatient.Id + "", con);
-            }
-            cmd.ExecuteNonQuery();
-            con.Close();
+        //    reader.Close();
+        //    con.Close();
 
 
-            List<MPatient> mPatients = new List<MPatient>();
-            mPatients = PatientList("");
-            return mPatients;
-        }
+
+        //    con.Open();
+        //    if (ids == 0)
+        //    {
+        //        cmd = new SqlCommand("insert into PatientAd(Id,Name,PhoneNumber,BloodGroup,Gender) values(" + mPatient.Id + ",'" + mPatient.Name + "','" + mPatient.PhoneNumber + "','" + mPatient.BloodGroup + "','"+ mPatient .Gender+ "')", con);
+
+        //    }
+        //    else
+        //    {
+        //        cmd = new SqlCommand("update PatientAd set Name='" + mPatient.Name + "',PhoneNumber='" + mPatient.PhoneNumber + "',BloodGroup='" + mPatient.BloodGroup + "',Gender='" + mPatient.Gender+"' where Id=" + mPatient.Id + "", con);
+        //    }
+        //    cmd.ExecuteNonQuery();
+        //    con.Close();
+
+
+        //    List<MPatient> mPatients = new List<MPatient>();
+        //    mPatients = PatientList("");
+        //    return mPatients;
+        //}
 
         //edit patient
 
-        public MPatient PatientEdit(int Id)
-        {
-            MPatient mPatient = new MPatient();
+        //public MPatient PatientEdit(int Id)
+        //{
+        //    MPatient mPatient = new MPatient();
 
-            SqlCommand cmd = new SqlCommand("Select * from PatientAd where Id='" + Id + "'", con);
-            {
+        //    SqlCommand cmd = new SqlCommand("Select * from PatientAd where Id='" + Id + "'", con);
+        //    {
 
-                con.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
+        //        con.Open();
+        //        SqlDataReader reader = cmd.ExecuteReader();
 
 
-                if (reader.Read())
-                {
-                    mPatient.Id = Convert.ToInt32(reader["Id"]);
-                    mPatient.Name = reader["Name"].ToString();
-                    mPatient.PhoneNumber = Convert.ToInt64(reader["PhoneNumber"]);
-                    mPatient.BloodGroup = reader["BloodGroup"].ToString();
-                    mPatient.Gender = reader["Gender"].ToString();
+        //        if (reader.Read())
+        //        {
+        //            mPatient.Id = Convert.ToInt32(reader["Id"]);
+        //            mPatient.Name = reader["Name"].ToString();
+        //            mPatient.PhoneNumber = Convert.ToInt64(reader["PhoneNumber"]);
+        //            mPatient.BloodGroup = reader["BloodGroup"].ToString();
+        //            mPatient.Gender = reader["Gender"].ToString();
 
-                }
-                reader.Close();
-                con.Close();
+        //        }
+        //        reader.Close();
+        //        con.Close();
 
-            }
-            return mPatient;
-        }
+        //    }
+        //    return mPatient;
+        //}
 
         //delete patient
 
-        public List<MPatient> PatientDelete(int Id)
-        {
-            con.Open();
-            cmd = new SqlCommand("Delete from PatientAd where Id='" + Id + "'", con);
-            cmd.ExecuteNonQuery();
-            con.Close();
+        //public List<MPatient> PatientDelete(int Id)
+        //{
+        //    con.Open();
+        //    cmd = new SqlCommand("Delete from PatientAd where Id='" + Id + "'", con);
+        //    cmd.ExecuteNonQuery();
+        //    con.Close();
 
-            List<MPatient> mPatients = new List<MPatient>();
+        //    List<MPatient> mPatients = new List<MPatient>();
 
-            con.Open();
-            cmd = new SqlCommand("select * from PatientAd", con);
-            reader = cmd.ExecuteReader();
+        //    con.Open();
+        //    cmd = new SqlCommand("select * from PatientAd", con);
+        //    reader = cmd.ExecuteReader();
 
-            while (reader.Read())
-            {
-                MPatient mPatient = new MPatient();
+        //    while (reader.Read())
+        //    {
+        //        MPatient mPatient = new MPatient();
 
-                mPatient.Id = Convert.ToInt32(reader["Id"]);
-                mPatient.Name = reader["Name"].ToString();
-                mPatient.PhoneNumber = Convert.ToInt64(reader["PhoneNumber"]);
-                mPatient.BloodGroup = reader["BloodGroup"].ToString();
-                mPatient.Gender = reader["Gender"].ToString();
+        //        mPatient.Id = Convert.ToInt32(reader["Id"]);
+        //        mPatient.Name = reader["Name"].ToString();
+        //        mPatient.PhoneNumber = Convert.ToInt64(reader["PhoneNumber"]);
+        //        mPatient.BloodGroup = reader["BloodGroup"].ToString();
+        //        mPatient.Gender = reader["Gender"].ToString();
 
-                mPatients.Add(mPatient);
+        //        mPatients.Add(mPatient);
 
-            }
+        //    }
 
-            reader.Close();
-            con.Close();
-            return mPatients;
-        }
+        //    reader.Close();
+        //    con.Close();
+        //    return mPatients;
+        //}
 
 
         
@@ -738,14 +739,14 @@ namespace Hospital_System.DAL
 
         //shedule list
 
-        public List<MShedule> SheduleList(string Shedule)
+        public List<MShedule> SheduleList(string Schedule)
         {
             List<MShedule> mShedules = new List<MShedule>();
 
             {
 
                 con.Open();
-                cmd = new SqlCommand("select * from SheduleAd where DoctorName like'%" + Shedule + "%'", con);
+                cmd = new SqlCommand("select * from SheduleAd where DoctorName like'%" + Schedule + "%'", con);
                 SqlDataReader sdr;
                 sdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
@@ -1003,7 +1004,10 @@ namespace Hospital_System.DAL
                             PatientName = row["PatientName"].ToString(),
                             //PatientType = row["PatientType"].ToString(),
                             Gender = row["Gender"].ToString(),
+                            Department= row["Department"].ToString(),
+
                             Problem = row["Problem"].ToString(),
+                            DoctorName = row["DoctorName"] != DBNull.Value ? row["DoctorName"].ToString() : string.Empty,
                             PhoneNumber = row["PhoneNumber"].ToString(),
                             Address = row["Address"].ToString(),
                             Date = row["Date"].ToString(),
@@ -1041,12 +1045,12 @@ namespace Hospital_System.DAL
             con.Open();
             if (ids == 0)
             {
-                cmd = new SqlCommand("insert into bookapp(Id,PatientName,Gender,Problem,PhoneNumber,Address,Date,Time,Description) values(" + mAppointmentAd.Id + ",'" + mAppointmentAd.PatientName + "','" + mAppointmentAd.Gender + "','"+mAppointmentAd.Problem+"','"+mAppointmentAd.PhoneNumber + "','"+mAppointmentAd.Address +"','"+mAppointmentAd.Date + "','"+mAppointmentAd.Time + "','"+mAppointmentAd.Description + "')", con);
+                cmd = new SqlCommand("insert into bookapp(Id,PatientName,Gender,Department,Problem,PhoneNumber,Address,Date,Time,Description) values(" + mAppointmentAd.Id + ",'" + mAppointmentAd.PatientName + "','" + mAppointmentAd.Gender + "','"+mAppointmentAd.Department+"','" + mAppointmentAd.Problem+ "','" + mAppointmentAd.PhoneNumber + "','"+mAppointmentAd.Address +"','"+mAppointmentAd.Date + "','"+mAppointmentAd.Time + "','"+mAppointmentAd.Description + "','"+mAppointmentAd.DoctorName+"')", con);
 
             }
             else
             {
-                cmd = new SqlCommand("update bookapp set PatientName='" + mAppointmentAd.PatientName + "',Gender='" + mAppointmentAd.Gender + "',Problem='"+mAppointmentAd.Problem+ "',PhoneNumber='" + mAppointmentAd.PhoneNumber + "',Address='" + mAppointmentAd.Address + "',Date='" + mAppointmentAd.Date + "',Time='" + mAppointmentAd.Time + "',Description='" + mAppointmentAd.Description + "' where Id=" + mAppointmentAd.Id + "", con);
+                cmd = new SqlCommand("update bookapp set PatientName='" + mAppointmentAd.PatientName + "',Gender='" + mAppointmentAd.Gender + "',Department='" + mAppointmentAd.Department + "',Problem='" + mAppointmentAd.Problem+ "',PhoneNumber='" + mAppointmentAd.PhoneNumber + "',Address='" + mAppointmentAd.Address + "',Date='" + mAppointmentAd.Date + "',Time='" + mAppointmentAd.Time + "',Description='" + mAppointmentAd.Description + "', DoctorName ='"+mAppointmentAd.DoctorName+"' where Id=" + mAppointmentAd.Id + "", con);
             }
             cmd.ExecuteNonQuery();
             con.Close();
@@ -1081,7 +1085,9 @@ namespace Hospital_System.DAL
                     mAppointmentAd.PatientName = reader["PatientName"].ToString();
                     //mAppointmentAd.PatientType = reader["PatientType"].ToString();
                     mAppointmentAd.Gender = reader["Gender"].ToString();
+                    mAppointmentAd.Department = reader["Department"].ToString();
                     mAppointmentAd.Problem = reader["Problem"].ToString();
+                    mAppointmentAd.DoctorName = reader["DoctorName"] != DBNull.Value ? reader["DoctorName"].ToString() : string.Empty;
                     mAppointmentAd.PhoneNumber = reader["PhoneNumber"].ToString();
                     mAppointmentAd.Address = reader["Address"].ToString();
                     mAppointmentAd.Date = reader["Date"].ToString();
@@ -1120,7 +1126,9 @@ namespace Hospital_System.DAL
                 mAppointmentAd.PatientName = reader["PatientName"].ToString();
                 //mAppointmentAd.PatientType = reader["PatientType"].ToString();
                 mAppointmentAd.Gender = reader["Gender"].ToString();
+                mAppointmentAd.Department = reader["Department"].ToString();
                 mAppointmentAd.Problem = reader["Problem"].ToString();
+                mAppointmentAd.DoctorName = reader["DoctorName"] != DBNull.Value ? reader["DoctorName"].ToString() : string.Empty;
                 mAppointmentAd.PhoneNumber = reader["PhoneNumber"].ToString();
                 mAppointmentAd.Address = reader["Address"].ToString();
                 mAppointmentAd.Date = reader["Date"].ToString();
@@ -1426,7 +1434,7 @@ namespace Hospital_System.DAL
             {
 
                 con.Open();
-                cmd = new SqlCommand("select * from Ambulance where Name like'%" + Driver + "%'",con);
+                cmd = new SqlCommand("select * from Amb where Name like'%" + Driver + "%'",con);
                 SqlDataReader sdr;
                 sdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
@@ -1441,9 +1449,9 @@ namespace Hospital_System.DAL
                             AmbulanceStatus = row["AmbulanceStatus"].ToString(),
                             DriverName = row["DriverName"].ToString(),
                             DriverId = Convert.ToInt32(row["DriverId"]),
-                            Contact = row["Contact"].ToString(),
-                            Address = row["Address"].ToString(),
-                            CNIC = row["CNIC"].ToString(),
+                            //Contact = row["Contact"].ToString(),
+                            //Address = row["Address"].ToString(),
+                            //CNIC = row["CNIC"].ToString(),
 
                         });
 
@@ -1458,7 +1466,7 @@ namespace Hospital_System.DAL
         {
             var ids = 0;
             con.Open();
-            cmd = new SqlCommand("select * from Ambulance where Id='" + mAmbulance.Id + "'", con);
+            cmd = new SqlCommand("select * from Amb where Id='" + mAmbulance.Id + "'", con);
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
@@ -1469,12 +1477,12 @@ namespace Hospital_System.DAL
             con.Open();
             if (ids == 0)
             {
-                cmd = new SqlCommand("insert into Ambulance(Id,Name,AmbulanceId,AmbulanceStatus,DriverName,DriverId,Contact,Address,CNIC) values(" + mAmbulance.Id + ",'" + mAmbulance.Name + "','" + mAmbulance.AmbulanceId + "','" + mAmbulance.AmbulanceStatus + "','" + mAmbulance.DriverName + "','" + mAmbulance.DriverId + "','" + mAmbulance.Contact + "','" + mAmbulance.Address + "','" + mAmbulance.CNIC + "')", con);
+                cmd = new SqlCommand("insert into Amb(Id,Name,AmbulanceId,AmbulanceStatus,DriverName,DriverId) values(" + mAmbulance.Id + ",'" + mAmbulance.Name + "','" + mAmbulance.AmbulanceId + "','" + mAmbulance.AmbulanceStatus + "','" + mAmbulance.DriverName + "','" + mAmbulance.DriverId + "')", con);
 
             }
             else
             {
-                cmd = new SqlCommand("update Ambulance set Name='" + mAmbulance.Name + "',AmbulanceId='" + mAmbulance.AmbulanceId + "',AmbulanceStatus='" + mAmbulance.AmbulanceStatus + "',DriverName='" + mAmbulance.DriverName + "',DriverId='" + mAmbulance.DriverId + "',Contact='" + mAmbulance.Contact + "',Address='" + mAmbulance.Address + "',CNIC='" + mAmbulance.CNIC + "' where Id=" + mAmbulance.Id + "", con);
+                cmd = new SqlCommand("update Amb set Name='" + mAmbulance.Name + "',AmbulanceId='" + mAmbulance.AmbulanceId + "',AmbulanceStatus='" + mAmbulance.AmbulanceStatus + "',DriverName='" + mAmbulance.DriverName + "',DriverId='" + mAmbulance.DriverId + "' where Id=" + mAmbulance.Id + "", con);
             }
             cmd.ExecuteNonQuery();
             con.Close();
@@ -1489,7 +1497,7 @@ namespace Hospital_System.DAL
         {
             MAmbulance mAmbulance = new MAmbulance();
 
-            SqlCommand cmd = new SqlCommand("Select * from Ambulance where Id='" + Id + "'", con);
+            SqlCommand cmd = new SqlCommand("Select * from Amb where Id='" + Id + "'", con);
             {
 
                 con.Open();
@@ -1504,9 +1512,9 @@ namespace Hospital_System.DAL
                     mAmbulance.AmbulanceStatus = reader["AmbulanceStatus"].ToString();
                     mAmbulance.DriverName = reader["DriverName"].ToString();
                     mAmbulance.DriverId = Convert.ToInt32(reader["DriverId"]);
-                    mAmbulance.Contact = reader["Contact"].ToString();
-                    mAmbulance.Address = reader["Address"].ToString();
-                    mAmbulance.CNIC = reader["CNIC"].ToString();
+                    //mAmbulance.Contact = reader["Contact"].ToString();
+                    //mAmbulance.Address = reader["Address"].ToString();
+                    //mAmbulance.CNIC = reader["CNIC"].ToString();
                 }
                 reader.Close();
                 con.Close();
@@ -1519,14 +1527,14 @@ namespace Hospital_System.DAL
         public List<MAmbulance> AmbulanceDelete(int Id)
         {
             con.Open();
-            cmd = new SqlCommand("Delete from Ambulance where Id='" + Id + "'", con);
+            cmd = new SqlCommand("Delete from Amb where Id='" + Id + "'", con);
             cmd.ExecuteNonQuery();
             con.Close();
 
             List<MAmbulance> mAmbulances = new List<MAmbulance>();
 
             con.Open();
-            cmd = new SqlCommand("select * from AmbulanceAd", con);
+            cmd = new SqlCommand("select * from Amb", con);
             reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -1539,9 +1547,9 @@ namespace Hospital_System.DAL
                 mAmbulance.AmbulanceStatus = reader["AmbulanceStatus"].ToString();
                 mAmbulance.DriverName = reader["DriverName"].ToString();
                 mAmbulance.DriverId = Convert.ToInt32(reader["DriverId"]);
-                mAmbulance.Contact = reader["Contact"].ToString();
-                mAmbulance.Address = reader["Address"].ToString();
-                mAmbulance.CNIC = reader["CNIC"].ToString();
+                //mAmbulance.Contact = reader["Contact"].ToString();
+                //mAmbulance.Address = reader["Address"].ToString();
+                //mAmbulance.CNIC = reader["CNIC"].ToString();
 
                 mAmbulances.Add(mAmbulance);
 
@@ -1559,7 +1567,7 @@ namespace Hospital_System.DAL
         {
             MAmbulance mAmbulance = null;
             con.Open();
-            cmd = new SqlCommand("select * from  Ambulance where Id =" + Id + "", con);
+            cmd = new SqlCommand("select * from  Amb where Id =" + Id + "", con);
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
@@ -1573,9 +1581,9 @@ namespace Hospital_System.DAL
                 mAmbulance.AmbulanceStatus = reader["AmbulanceStatus"].ToString();
                 mAmbulance.DriverName = reader["DriverName"].ToString();
                 mAmbulance.DriverId = Convert.ToInt32(reader["DriverId"]);
-                mAmbulance.Contact = reader["Contact"].ToString();
-                mAmbulance.Address = reader["Address"].ToString();
-                mAmbulance.CNIC = reader["CNIC"].ToString();
+                //mAmbulance.Contact = reader["Contact"].ToString();
+                //mAmbulance.Address = reader["Address"].ToString();
+                //mAmbulance.CNIC = reader["CNIC"].ToString();
 
             }
             reader.Close();
@@ -1593,7 +1601,7 @@ namespace Hospital_System.DAL
             {
 
                 con.Open();
-                cmd = new SqlCommand("select * from Ambulance where Name like'%" + Driver + "%'", con);
+                cmd = new SqlCommand("select * from Drivers where DriverName like'%" + Driver + "%'", con);
                 SqlDataReader sdr;
                 sdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
@@ -1603,7 +1611,7 @@ namespace Hospital_System.DAL
                         new MDriverAd
                         {
                             Id = Convert.ToInt32(row["Id"]),
-                            DriverName = row["Name"].ToString(),
+                            DriverName = row["DriverName"].ToString(),
                             DriverId = Convert.ToInt32(row["DriverId"]),
                             Contact = row["Contact"].ToString(),
                             Address = row["Address"].ToString(),
@@ -1618,105 +1626,105 @@ namespace Hospital_System.DAL
 
         //Add Driver
 
-        //public List<MDriverAd> AddDriverAd(MDriverAd mDriverAd)
-        //{
-        //    var ids = 0;
-        //        con.Open();
-        //        cmd = new SqlCommand("select * from Ambulance where Id='" + mDriverAd.Id + "'", con);
-        //        reader = cmd.ExecuteReader();
-        //        if (reader.Read())
-        //        {
-        //            ids = Convert.ToInt32(reader["Id"]);
-        //        }
+        public List<MDriverAd> AddDriverAd(MDriverAd mDriverAd)
+        {
+            var ids = 0;
+            con.Open();
+            cmd = new SqlCommand("select * from Drivers where Id='" + mDriverAd.Id + "'", con);
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                ids = Convert.ToInt32(reader["Id"]);
+            }
 
-        //        reader.Close();
-        //        con.Close();
-           
-
-
-        //    con.Open();
-        //    if (ids == 0)
-        //    {
-        //        cmd = new SqlCommand("insert into Ambulance(Id,DriverName,DriverId,Contact,Address,CNIC) values(" + mDriverAd.Id+",'" + mDriverAd.DriverName + "','" + mDriverAd.DriverId + "','" + mDriverAd.Contact + "','"+mDriverAd.Address+"','" + mDriverAd.CNIC + "')", con);
-
-        //    }
-        //    else
-        //    {
-        //        cmd = new SqlCommand("update Ambulance set Name='" + mDriverAd.DriverName + "',Name='" + mDriverAd.DriverId + "',Contact='" + mDriverAd.Contact + "',Address='" + mDriverAd.Address + "',CNIC='"+mDriverAd.CNIC+"' where Id=" + mDriverAd.Id + "", con);
-        //    }
-        //    cmd.ExecuteNonQuery();
-        //    con.Close();
+            reader.Close();
+            con.Close();
 
 
-        //    List<MDriverAd> mDepartments = new List<MDriverAd>();
-        //    mDepartments = AmbulanceDriverAd("");
-        //    return mDepartments;
-        //}
+
+            con.Open();
+            if (ids == 0)
+            {
+                cmd = new SqlCommand("insert into Drivers(Id,DriverName,DriverId,Contact,Address,CNIC) values(" + mDriverAd.Id + ",'" + mDriverAd.DriverName + "','" + mDriverAd.DriverId + "','" + mDriverAd.Contact + "','" + mDriverAd.Address + "','" + mDriverAd.CNIC + "')", con);
+
+            }
+            else
+            {
+                cmd = new SqlCommand("update Drivers set DriverName='" + mDriverAd.DriverName + "',DriverId='" + mDriverAd.DriverId + "',Contact='" + mDriverAd.Contact + "',Address='" + mDriverAd.Address + "',CNIC='" + mDriverAd.CNIC + "' where Id=" + mDriverAd.Id + "", con);
+            }
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+
+            List<MDriverAd> mDepartments = new List<MDriverAd>();
+            mDepartments = AmbulanceDriverAd("");
+            return mDepartments;
+        }
 
         //Edit driver
 
-        //public MDriverAd DriverEdit(int Id)
-        //{
-        //    MDriverAd mDriverAd = new MDriverAd();
+        public MDriverAd DriverEdit(int Id)
+        {
+            MDriverAd mDriverAd = new MDriverAd();
 
-        //    SqlCommand cmd = new SqlCommand("Select * from Ambulance where Id='" + Id + "'", con);
-        //    {
+            SqlCommand cmd = new SqlCommand("Select * from Drivers where Id='" + Id + "'", con);
+            {
 
-        //        con.Open();
-        //        SqlDataReader reader = cmd.ExecuteReader();
-
-
-        //        if (reader.Read())
-        //        {
-        //            mDriverAd.Id = Convert.ToInt32(reader["Id"]);
-        //            mDriverAd.DriverName = reader["DriverName"].ToString();
-        //            mDriverAd.DriverId = Convert.ToInt32(reader["DriverId"]);
-        //            mDriverAd.Contact = reader["Contact"].ToString();
-        //            mDriverAd.Address = reader["Address"].ToString();
-        //            mDriverAd.CNIC = reader["CNIC"].ToString();
-
-        //        }
-        //        reader.Close();
-        //        con.Close();
-
-        //    }
-        //    return mDriverAd;
-        //}
-
-        ////delete driver
-        //public List<MDriverAd> DriverDelete(int Id)
-        //{
-        //    con.Open();
-        //    cmd = new SqlCommand("Delete from Ambulance where Id='" + Id + "'", con);
-        //    cmd.ExecuteNonQuery();
-        //    con.Close();
-
-        //    List<MDriverAd> mDriverAds = new List<MDriverAd>();
-
-        //    con.Open();
-        //    cmd = new SqlCommand("select * from Ambulance", con);
-        //    reader = cmd.ExecuteReader();
-
-        //    while (reader.Read())
-        //    {
-        //        MDriverAd mDriverAd = new MDriverAd();
-
-        //        mDriverAd.Id = Convert.ToInt32(reader["Id"]);
-        //        mDriverAd.DriverName = reader["DriverName"].ToString();
-        //        mDriverAd.DriverId = Convert.ToInt32(reader["DriverId"]);
-        //        mDriverAd.Contact = reader["Contact"].ToString();
-        //        mDriverAd.Address = reader["Address"].ToString();
-        //        mDriverAd.CNIC = reader["CNIC"].ToString();
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
 
 
-        //        mDriverAds.Add(mDriverAd);
+                if (reader.Read())
+                {
+                    mDriverAd.Id = Convert.ToInt32(reader["Id"]);
+                    mDriverAd.DriverName = reader["DriverName"].ToString();
+                    mDriverAd.DriverId = Convert.ToInt32(reader["DriverId"]);
+                    mDriverAd.Contact = reader["Contact"].ToString();
+                    mDriverAd.Address = reader["Address"].ToString();
+                    mDriverAd.CNIC = reader["CNIC"].ToString();
 
-        //    }
+                }
+                reader.Close();
+                con.Close();
 
-        //    reader.Close();
-        //    con.Close();
-        //    return mDriverAds;
-        //}
+            }
+            return mDriverAd;
+        }
+
+        //delete driver
+        public List<MDriverAd> DriverDelete(int Id)
+        {
+            con.Open();
+            cmd = new SqlCommand("Delete from Drivers where Id='" + Id + "'", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            List<MDriverAd> mDriverAds = new List<MDriverAd>();
+
+            con.Open();
+            cmd = new SqlCommand("select * from Drivers", con);
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                MDriverAd mDriverAd = new MDriverAd();
+
+                mDriverAd.Id = Convert.ToInt32(reader["Id"]);
+                mDriverAd.DriverName = reader["DriverName"].ToString();
+                mDriverAd.DriverId = Convert.ToInt32(reader["DriverId"]);
+                mDriverAd.Contact = reader["Contact"].ToString();
+                mDriverAd.Address = reader["Address"].ToString();
+                mDriverAd.CNIC = reader["CNIC"].ToString();
+
+
+                mDriverAds.Add(mDriverAd);
+
+            }
+
+            reader.Close();
+            con.Close();
+            return mDriverAds;
+        }
 
         //driver details
 
@@ -1724,7 +1732,7 @@ namespace Hospital_System.DAL
         {
             MDriverAd mDriverAd = null;
             con.Open();
-            cmd = new SqlCommand("select * from  Ambulance where Id =" + Id + "", con);
+            cmd = new SqlCommand("select * from  Drivers where Id =" + Id + "", con);
             reader = cmd.ExecuteReader();
             if(reader.Read())
             {
@@ -1755,7 +1763,7 @@ namespace Hospital_System.DAL
         {
             int id = 0; // Default to 1 in case there are no records
             con.Open();
-            cmd = new SqlCommand("SELECT MAX(Id) FROM Ambulance", con);
+            cmd = new SqlCommand("SELECT MAX(Id) FROM Drivers", con);
             var result = cmd.ExecuteScalar(); // Use ExecuteScalar for a single value
 
             // Check if result is null
@@ -1773,7 +1781,7 @@ namespace Hospital_System.DAL
         {
             int id = 0; // Default to 1 in case there are no records
             con.Open();
-            cmd = new SqlCommand("SELECT MAX(Id) FROM Ambulance", con);
+            cmd = new SqlCommand("SELECT MAX(Id) FROM Amb", con);
             var result = cmd.ExecuteScalar(); // Use ExecuteScalar for a single value
 
             // Check if result is null
@@ -1944,7 +1952,7 @@ namespace Hospital_System.DAL
         public List<Adminmenu> GetAdminmenus()
         {
             List<Adminmenu> adminmenus = new List<Adminmenu>();
-            string  query = "select * from adminmenu";
+            string  query = "select * from adminmenu where isactive = 1";
             using (var con = new SqlConnection(_connectionString))
             using (var cmd = new SqlCommand(query, con))
             {

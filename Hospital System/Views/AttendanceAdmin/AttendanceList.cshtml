@@ -129,7 +129,7 @@
                 <a href="@Url.Action("ReceptionFrontPage", "ReceptionAdmin")" style="position:absolute;margin-top:-25px;">
                     <i class="fas fa-arrow-circle-left" style="font-size: 40px;"></i>
                 </a>
-                <input type="button" value="Create New" style="position: absolute; margin-left: 49px; margin-top: -25px;" onclick="window.location.href='@Url.Action("AddAttendance", "AttendanceAdmin")'">
+                <input type="button" value="Add New" style="position: absolute; margin-left: 49px; margin-top: -25px;" onclick="window.location.href='@Url.Action("AddAttendance", "AttendanceAdmin")'">
                 <h4 class="highlight-heading" style="position: absolute; margin-left: 441px; margin-top: -22px;">Attendance List</h4>
             </div>
             <table>
@@ -137,12 +137,15 @@
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
+                        <th>Department</th>
                         <th>Job Title</th>
                         <th>Contact</th>
-                        <th>Email</th>
+
                         <th>Shift</th>
-                        <th>Department</th>
-                        <th>Attendance</th>
+                        <th>Time</th>
+                        <th>LoginTime</th>
+                        <th>LogoutTime</th>
+                        <th>Statua</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -152,12 +155,15 @@
                         <tr>
                             <td>@Html.DisplayFor(modelItem => item.Id)</td>
                             <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Department)</td>
                             <td>@Html.DisplayFor(modelItem => item.JobTitle)</td>
                             <td>@Html.DisplayFor(modelItem => item.Contact)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+
                             <td>@Html.DisplayFor(modelItem => item.Shift)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Department)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Attendance)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Time)</td>
+                            <td>@Html.DisplayFor(modelItem => item.LoginTime)</td>
+                            <td>@Html.DisplayFor(modelItem => item.LogoutTime)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Status)</td>
                             <td class="icon-container">
                                 <a href="@Url.Action("AttendanceEdit", new { Id = item.Id })" title="Edit">
                                     <i class="fas fa-edit" style="color:blue;"></i>

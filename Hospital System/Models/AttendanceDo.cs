@@ -9,12 +9,15 @@ namespace Hospital_System.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Department { get; set; }
         public string JobTitle { get; set; }
         public string Contact { get; set; }
-        public string Email { get; set; }
+       
         public string Shift { get; set; }
-        public string Department { get; set; }
-        public string Attendance { get; set; }
+        public string Time { get; set; }
+        public string LoginTime { get; set; }
+        public string LogoutTime { get; set; }
+        public string Status { get; set; }
 
     }
 }

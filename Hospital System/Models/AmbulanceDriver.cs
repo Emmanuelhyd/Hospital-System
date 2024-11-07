@@ -12,7 +12,7 @@ namespace Hospital_System.Models
     {
         public int Id { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string DriverName { get; set; }
         [Required]
         public string Contact { get; set; }
         [Required]

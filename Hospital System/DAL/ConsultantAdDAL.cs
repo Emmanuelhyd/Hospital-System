@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Web.Mvc;
 using Hospital_System.Models;
 using System.Data;
+using AdminPages.Models;
 
 namespace Hospital_System.DAL
 {
@@ -31,7 +32,7 @@ namespace Hospital_System.DAL
             {
 
                 con.Open();
-                cmd = new SqlCommand("select * from bookapp", con);
+                cmd = new SqlCommand("select * from doctors", con);
                 SqlDataReader sdr;
                 sdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
@@ -40,15 +41,18 @@ namespace Hospital_System.DAL
                     consultantDos.Add(
                         new ConsultantDo
                         {
-                            Id = Convert.ToInt32(row["Id"]),
-                            PatientName = row["PatientName"].ToString(),
-                            DoctorName = row["DoctorName"].ToString(),
-                            Date = row["Date"].ToString(),
-                            Problem = row["Problem"].ToString(),
-                            Description = row["Description"].ToString(),
-                            Address = row["Address"].ToString(),
+                            DoctorId = Convert.ToInt32(row["DoctorId"]),
+                            FullName = row["FullName"].ToString(),
+                            //Firstname = row["Firstname"].ToString(),
+                            //LastName = row["LastName"].ToString(),
+                            Email = row["Email"].ToString(),
+                            Department = row["Department"].ToString(),
+                            Designation = row["Designation"].ToString(),
+                            PhoneNo = row["PhoneNo"].ToString(),
+                            ContactNo = row["ContactNo"].ToString(),
+                            Education = row["Education"].ToString(),
+                            Gender = row["Gender"].ToString(),
                             Status = row["Status"].ToString(),
-
 
                         });
 
@@ -63,11 +67,11 @@ namespace Hospital_System.DAL
 
             var ids = 0;
             con.Open();
-            cmd = new SqlCommand("select * from bookapp where Id='" + consultantDo.Id + "'", con);
+            cmd = new SqlCommand("select * from doctors where DoctorId='" + consultantDo.DoctorId + "'", con);
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                ids = Convert.ToInt32(reader["Id"]);
+                ids = Convert.ToInt32(reader["DoctorId"]);
             }
 
             reader.Close();
@@ -78,17 +82,14 @@ namespace Hospital_System.DAL
             con.Open();
             if (ids == 0)
             {
-                cmd = new SqlCommand("insert into bookapp(Id,PatientName,DoctorName,AppointmentDate,Problem,Description,Address,Status) values(" + consultantDo.Id + ",'" + consultantDo.PatientName + "','" + consultantDo.DoctorName + "','" + consultantDo.Date + "','" + consultantDo.Problem + "','" + consultantDo.Description + "','" + consultantDo.Address + "','" + consultantDo.Status + "')", con);
-
+                cmd = new SqlCommand("insert into doctors(DoctorId,FullName,Email,Department,Designation,PhoneNo,ContactNo,Education,Gender,Status) values(" + consultantDo.DoctorId + ",'" + consultantDo.FullName + "','" + consultantDo.Email + "','" + consultantDo.Department + "','" + consultantDo.Designation + "','" + consultantDo.PhoneNo + "','" + consultantDo.ContactNo + "','" + consultantDo.Education + "','" + consultantDo.Gender + "','" + consultantDo.Status + "')", con);
             }
             else
             {
-                cmd = new SqlCommand("update bookapp set PatientName='" + consultantDo.PatientName + "',DoctorName='" + consultantDo.DoctorName + "',Date='" + consultantDo.Date + "',Problem='" + consultantDo.Problem + "',Description='" + consultantDo.Description + "',Address='" + consultantDo.Address + "',Status='" + consultantDo.Status + "' where Id=" + consultantDo.Id + "", con);
+                cmd = new SqlCommand("update doctors set FullName='" + consultantDo.FullName + "',Email='" + consultantDo.Email + "',Department='" + consultantDo.Department + "',Designation='" + consultantDo.Designation + "',PhoneNo='" + consultantDo.PhoneNo + "',ContactNo='" + consultantDo.ContactNo + "',Education='" + consultantDo.Education + "',Gender='" + consultantDo.Gender + "',Status='" + consultantDo.Status + "' where DoctorId=" + consultantDo.DoctorId + "", con);
             }
             cmd.ExecuteNonQuery();
             con.Close();
-
-
             List<ConsultantDo> consultantDos = new List<ConsultantDo>();
             consultantDos = ConsultantList();
             return consultantDos;
@@ -99,9 +100,8 @@ namespace Hospital_System.DAL
         {
             int id = 0;
             con.Open();
-            cmd = new SqlCommand("SELECT MAX(Id) FROM bookapp", con);
+            cmd = new SqlCommand("SELECT MAX(DoctorId) FROM doctors", con);
             var result = cmd.ExecuteScalar();
-
             if (result != DBNull.Value)
             {
                 id = Convert.ToInt32(result);
@@ -113,72 +113,63 @@ namespace Hospital_System.DAL
 
         //Attendance Edit
 
-        public ConsultantDo ConsultantEdit(int Id)
+        public ConsultantDo ConsultantEdit(int DoctorId)
         {
             ConsultantDo consultantDo = new ConsultantDo();
-
-
-            SqlCommand cmd = new SqlCommand("Select * from bookapp where Id='" + Id + "'", con);
+            SqlCommand cmd = new SqlCommand("Select * from doctors where DoctorId='" + DoctorId + "'", con);
             {
-
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
-
-
                 if (reader.Read())
                 {
-                    consultantDo.Id = Convert.ToInt32(reader["Id"]);
-                    consultantDo.PatientName = reader["PatientName"].ToString();
-                    consultantDo.DoctorName = reader["DoctorName"].ToString();
-                    consultantDo.Date = reader["Date"].ToString();
-                    consultantDo.Problem = reader["Problem"].ToString();
-                    consultantDo.Description = reader["Description"].ToString();
-                    consultantDo.Address = reader["Address"].ToString();
+                    consultantDo.DoctorId = Convert.ToInt32(reader["DoctorId"]);
+                    consultantDo.FullName = reader["FullName"].ToString();
+                    //consultantDo.Firstname = reader["Firstname"].ToString();
+                    //consultantDo.LastName = reader["LastName"].ToString();
+                    consultantDo.Email = reader["Email"].ToString();
+                    consultantDo.Department = reader["Department"].ToString();
+                    consultantDo.Designation = reader["Designation"].ToString();
+                    consultantDo.PhoneNo = reader["PhoneNo"].ToString();
+                    consultantDo.ContactNo = reader["ContactNo"].ToString();
+                    consultantDo.Education = reader["Education"].ToString();
+                    consultantDo.Gender = reader["Gender"].ToString();
                     consultantDo.Status = reader["Status"].ToString();
-
-
-
                 }
                 reader.Close();
                 con.Close();
-
             }
             return consultantDo;
         }
 
         //outpatient delete
 
-        public List<ConsultantDo> ConsultantDelete(int Id)
+        public List<ConsultantDo> ConsultantDelete(int DoctorId)
         {
             con.Open();
-            cmd = new SqlCommand("Delete from bookapp where Id='" + Id + "'", con);
+            cmd = new SqlCommand("Delete from doctors where DoctorId='" + DoctorId + "'", con);
             cmd.ExecuteNonQuery();
             con.Close();
-
             List<ConsultantDo> consultantDos = new List<ConsultantDo>();
-
             con.Open();
-            cmd = new SqlCommand("select * from bookapp", con);
+            cmd = new SqlCommand("select * from doctors", con);
             reader = cmd.ExecuteReader();
-
             while (reader.Read())
             {
                 ConsultantDo consultantDo = new ConsultantDo();
 
-                consultantDo.Id = Convert.ToInt32(reader["Id"]);
-                consultantDo.PatientName = reader["PatientName"].ToString();
-                consultantDo.DoctorName = reader["DoctorName"].ToString();
-                consultantDo.Date = reader["Date"].ToString();
-                consultantDo.Problem = reader["Problem"].ToString();
-                consultantDo.Description = reader["Description"].ToString();
-                consultantDo.Address = reader["Address"].ToString();
+                consultantDo.DoctorId = Convert.ToInt32(reader["DoctorId"]);
+                consultantDo.FullName = reader["FullName"].ToString();
+                //consultantDo.Firstname = reader["Firstname"].ToString();
+                //consultantDo.LastName = reader["LastName"].ToString();
+                consultantDo.Email = reader["Email"].ToString();
+                consultantDo.Department = reader["Department"].ToString();
+                consultantDo.Designation = reader["Designation"].ToString();
+                consultantDo.PhoneNo = reader["PhoneNo"].ToString();
+                consultantDo.ContactNo = reader["ContactNo"].ToString();
+                consultantDo.Education = reader["Education"].ToString();
+                consultantDo.Gender = reader["Gender"].ToString();
                 consultantDo.Status = reader["Status"].ToString();
-
-
-                consultantDos.Add(consultantDo);
-
             }
-
             reader.Close();
             con.Close();
             return consultantDos;

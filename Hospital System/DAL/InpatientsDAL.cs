@@ -54,7 +54,7 @@ namespace Hospital_System.DAL
                 hospPatient.AdmissionDate = reader.IsDBNull(ordinalAdmissionDate) ? null : reader.GetString(ordinalAdmissionDate);
 
                 int ordinalDischargedate = reader.GetOrdinal("Dischargedate");
-                hospPatient.Dischargedate = reader.IsDBNull(ordinalDischargedate) ? null : reader.GetString(ordinalDischargedate);
+                hospPatient.DischargeDate = reader.IsDBNull(ordinalDischargedate) ? null : reader.GetString(ordinalDischargedate);
 
                 int ordinalTreatmentDuration = reader.GetOrdinal("TreatmentDuration");
                 hospPatient.TreatmentDuration = reader.IsDBNull(ordinalTreatmentDuration) ? 0 : Convert.ToInt32(reader.GetValue(ordinalTreatmentDuration));
@@ -89,7 +89,7 @@ namespace Hospital_System.DAL
                     Id = Convert.ToInt32(reader["Id"]),
                     PatientName = reader.GetString(reader.GetOrdinal("PatientName")),
                     AdmissionDate = reader.GetString(reader.GetOrdinal("AdmissionDate")),
-                    Dischargedate = reader.GetString(reader.GetOrdinal("Dischargedate")),
+                    DischargeDate = reader.GetString(reader.GetOrdinal("DischargeDate")),
                     TreatmentDuration = Convert.ToInt32(reader["TreatmentDuration"]),
                     Problem = reader.GetString(reader.GetOrdinal("Problem")),
                     Status = reader.IsDBNull(reader.GetOrdinal("Status")) ? null : reader.GetString(reader.GetOrdinal("Status")),
@@ -104,10 +104,42 @@ namespace Hospital_System.DAL
 
 
 
+        public List<Doctor> GetDoctors()
+        {
+            List<Doctor> doctors = new List<Doctor>();
+            con.Open();
+            cmd = new SqlCommand("SELECT * FROM doctors where Status = 'Active'", con);
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Doctor doctor = new Doctor();
+
+
+                doctor.DoctorId = reader.IsDBNull(reader.GetOrdinal("DoctorId")) ? 0 : Convert.ToInt32(reader["DoctorId"]);
+                doctor.FullName = reader.IsDBNull(reader.GetOrdinal("FullName")) ? string.Empty : reader["FullName"].ToString();
+                doctor.Email = reader.IsDBNull(reader.GetOrdinal("Email")) ? string.Empty : reader["Email"].ToString();
+                doctor.Department = reader.IsDBNull(reader.GetOrdinal("Department")) ? string.Empty : reader["Department"].ToString();
+                doctor.Education = reader.IsDBNull(reader.GetOrdinal("Education")) ? string.Empty : reader["Education"].ToString();
+                doctor.Designation = reader.IsDBNull(reader.GetOrdinal("Designation")) ? string.Empty : reader["Designation"].ToString();
+                doctor.PhoneNo  = reader.IsDBNull(reader.GetOrdinal("PhoneNo"))? string.Empty : reader["PhoneNo"].ToString() ;
+                doctor.Status = reader.IsDBNull(reader.GetOrdinal("Status")) ? string.Empty : reader["Status"].ToString();
 
 
 
+                doctors.Add(doctor);
+            }
 
+            reader.Close();
+            con.Close();
+            return doctors;
+        }
 
     }
+
+
+
+
+
+
 }

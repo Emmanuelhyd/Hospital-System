@@ -1,87 +1,107 @@
 ﻿@model IEnumerable<Hospital_System.Models.AmbulanceDetails>
 
-
 @{
     ViewBag.Title = "Ambulance";
     Layout = null;
 }
 
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
     <title>Ambulance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #dddddd;
+            text-align: left;
+        }
+
+        /* Table header styling */
+        thead {
+            background-color: #3498db; /* Static blue header color */
+            color: white;
+        }
+
+        /* Zebra striping for rows */
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1; /* Highlight row on hover */
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+            .back-button:hover {
+                background-color: #0056b3;
+            }
+    </style>
 </head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-        background-color: #f9f9f9;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 20px 0;
-        background-color: white;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    th, td {
-        border: 1px solid #dddddd;
-        padding: 12px;
-        text-align: left;
-    }
-
-    thead {
-        background-color: #f2f2f2;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-
-    tr:hover {
-        background-color: #f1f1f1;
-    }
-
-    h1 {
-        text-align: center;
-        color: #333;
-    }
-</style>
-
 <body>
+    <!-- Back Button -->
     <div>
-        <h1> List of Ambulances </h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(m => m.Id)</th>
-                    <th>@Html.DisplayNameFor(m => m.Name)</th>
-                    <th>@Html.DisplayNameFor(m => m.AmbulanceId)</th>
-                    <th>@Html.DisplayNameFor(m => m.AmbulanceStatus)</th>
-                    <th>@Html.DisplayNameFor(m => m.DriverName)</th>
-                    <th>@Html.DisplayNameFor(m => m.DriverId)</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var ambulance in Model)
-                {
-                    <tr>
-
-                        <td> @Html.DisplayFor(m => ambulance.Id)</td>
-                        <td> @Html.DisplayFor(m => ambulance.Name)</td>
-                        <td> @Html.DisplayFor(m => ambulance.AmbulanceId)</td>
-                        <td> @Html.DisplayFor(m => ambulance.AmbulanceStatus)</td>
-                        <td> @Html.DisplayFor(m => ambulance.DriverName)</td>
-                        <td> @Html.DisplayFor(m => ambulance.DriverId)</td>
-
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <a href="javascript:history.back()" class="back-button">Back</a>
     </div>
+
+    <h1> List of Ambulances </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.Id)</th>
+                <th>@Html.DisplayNameFor(m => m.Name)</th>
+                <th>@Html.DisplayNameFor(m => m.AmbulanceId)</th>
+                <th>@Html.DisplayNameFor(m => m.AmbulanceStatus)</th>
+                <th>@Html.DisplayNameFor(m => m.DriverName)</th>
+                <th>@Html.DisplayNameFor(m => m.DriverId)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ambulance in Model)
+            {
+                <tr>
+                    <td> @Html.DisplayFor(m => ambulance.Id)</td>
+                    <td> @Html.DisplayFor(m => ambulance.Name)</td>
+                    <td> @Html.DisplayFor(m => ambulance.AmbulanceId)</td>
+                    <td> @Html.DisplayFor(m => ambulance.AmbulanceStatus)</td>
+                    <td> @Html.DisplayFor(m => ambulance.DriverName)</td>
+                    <td> @Html.DisplayFor(m => ambulance.DriverId)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </body>
 </html>

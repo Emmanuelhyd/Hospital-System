@@ -42,12 +42,14 @@ namespace Hospital_System.DAL
                         {
                             Id = Convert.ToInt32(row["Id"]),
                             Name = row["Name"].ToString(),
+                            Department = row["Department"].ToString(),
                             JobTitle = row["JobTitle"].ToString(),
                             Contact = row["Contact"].ToString(),
-                            Email = row["Email"].ToString(),
                             Shift = row["Shift"].ToString(),
-                            Department = row["Department"].ToString(),
-                            Attendance = row["Attendance"].ToString(),
+                            Time = row["Time"].ToString(),
+                            LoginTime = row["LoginTime"].ToString(),
+                            LogoutTime = row["LogoutTime"].ToString(),
+                            Status = row["Status"].ToString(),
 
 
                         });
@@ -78,12 +80,12 @@ namespace Hospital_System.DAL
             con.Open();
             if (ids == 0)
             {
-                cmd = new SqlCommand("insert into Attendance(Id,Name,JobTitle,Contact,Email,Shift,Department,Attendance) values(" + attendanceDo.Id + ",'" + attendanceDo.Name + "','" + attendanceDo.JobTitle + "','" + attendanceDo.Contact + "','" + attendanceDo.Email + "','" + attendanceDo.Shift + "','" + attendanceDo.Department + "','" + attendanceDo.Attendance + "')", con);
+                cmd = new SqlCommand("insert into Attendance(Id,Name,Department,JobTitle,Contact,Shift,Time,LoginTime,LogoutTime,Status) values(" + attendanceDo.Id + ",'" + attendanceDo.Name + "','" + attendanceDo.Department + "','" + attendanceDo.JobTitle + "','" + attendanceDo.Contact + "','" + attendanceDo.Shift + "','" + attendanceDo.Time + "','" + attendanceDo.LoginTime + "','" + attendanceDo.LogoutTime + "','" + attendanceDo.Status + "')", con);
 
             }
             else
             {
-                cmd = new SqlCommand("update Attendance set Name='" + attendanceDo.Name + "',JobTitle='" + attendanceDo.JobTitle + "',Contact='" + attendanceDo.Contact + "',Email='" + attendanceDo.Email + "',Shift='" + attendanceDo.Shift + "',Department='" + attendanceDo.Department + "',Attendance='" + attendanceDo.Attendance + "' where Id=" + attendanceDo.Id + "", con);
+                cmd = new SqlCommand("update Attendance set Name='" + attendanceDo.Name + "',Department='" + attendanceDo.Department + "',JobTitle='" + attendanceDo.JobTitle + "',Contact='" + attendanceDo.Contact + "',Shift='" + attendanceDo.Shift + "',Time='" + attendanceDo.Time + "',LoginTime='" + attendanceDo.LoginTime + "',LogoutTime='" + attendanceDo.LogoutTime + "',Status='" + attendanceDo.Status + "' where Id=" + attendanceDo.Id + "", con);
             }
             cmd.ExecuteNonQuery();
             con.Close();
@@ -128,12 +130,15 @@ namespace Hospital_System.DAL
                 {
                     attendanceDo.Id = Convert.ToInt32(reader["Id"]);
                     attendanceDo.Name = reader["Name"].ToString();
+                    attendanceDo.Department = reader["Department"].ToString();
                     attendanceDo.JobTitle = reader["JobTitle"].ToString();
                     attendanceDo.Contact = reader["Contact"].ToString();
-                    attendanceDo.Email = reader["Email"].ToString();
+                   
                     attendanceDo.Shift = reader["Shift"].ToString();
-                    attendanceDo.Department = reader["Department"].ToString();
-                    attendanceDo.Attendance = reader["Attendance"].ToString();
+                    attendanceDo.Time = reader["Time"].ToString();
+                    attendanceDo.LoginTime = reader["LoginTime"].ToString();
+                    attendanceDo.LogoutTime = reader["LogoutTime"].ToString();
+                    attendanceDo.Status = reader["Status"].ToString();
 
 
 
@@ -166,12 +171,15 @@ namespace Hospital_System.DAL
 
                 attendanceDo.Id = Convert.ToInt32(reader["Id"]);
                 attendanceDo.Name = reader["Name"].ToString();
+                attendanceDo.Department = reader["Department"].ToString();
                 attendanceDo.JobTitle = reader["JobTitle"].ToString();
                 attendanceDo.Contact = reader["Contact"].ToString();
-                attendanceDo.Email = reader["Email"].ToString();
+
                 attendanceDo.Shift = reader["Shift"].ToString();
-                attendanceDo.Department = reader["Department"].ToString();
-                attendanceDo.Attendance = reader["Attendance"].ToString();
+                attendanceDo.Time = reader["Time"].ToString();
+                attendanceDo.LoginTime = reader["LoginTime"].ToString();
+                attendanceDo.LogoutTime = reader["LogoutTime"].ToString();
+                attendanceDo.Status = reader["Status"].ToString();
 
 
                 attendanceDos.Add(attendanceDo);

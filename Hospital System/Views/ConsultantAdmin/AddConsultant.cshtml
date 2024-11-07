@@ -66,34 +66,68 @@
 
 @using (Html.BeginForm("AddConsultant", "ConsultantAdmin", FormMethod.Post, new { @class = "form-container" }))
 {
-    
+
     <div class="form-group">
-        @Html.LabelFor(m => m.Id)
-        @Html.TextBoxFor(m => m.Id)
+        @Html.LabelFor(m => m.DoctorId)
+        @Html.TextBoxFor(m => m.DoctorId)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.PatientName)
-        @Html.TextBoxFor(m => m.PatientName, new { @required = "required", @placeholder = "Patient Name" })
+        @Html.LabelFor(m => m.FullName)
+        @Html.TextBoxFor(m => m.FullName, new { @required = "required", @placeholder = "FullName" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.DoctorName)
-        @Html.TextBoxFor(m => m.DoctorName, new { @required = "required", @placeholder = "Doctor Name" })
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new
+   {
+       @required = "required",
+       @placeholder = "Email",
+       @type = "email",
+       @title = "Enter a valid email address like anandsagar@gmail.com"
+   })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Date)
-        @Html.TextBoxFor(m => m.Date, new { @required = "required", @placeholder = "Appointment Date", @type = "date" })
+        @Html.LabelFor(m => m.Department)
+        @Html.TextBoxFor(m => m.Department, new { @required = "required", @placeholder = "Department" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Problem)
-        @Html.TextBoxFor(m => m.Problem, new { @required = "required", @placeholder = "Problem" })
+        @Html.LabelFor(m => m.Designation)
+        @Html.TextBoxFor(m => m.Designation, new { @required = "required", @placeholder = "Designation" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Description)
-        @Html.TextBoxFor(m => m.Description, new { @required = "required", @placeholder = "Description" })
+        @Html.LabelFor(m => m.PhoneNo)
+        @Html.TextBoxFor(m => m.PhoneNo, new
+   {
+       @required = "required",
+       @placeholder = "Mobile Number",
+       @pattern = @"^[6789]\d{9}$",
+       @title = "Enter a valid mobile number starting with 7, 8, or 9 followed by 9 digits."
+   })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Address)
-        @Html.TextBoxFor(m => m.Address, new { @required = "required", @placeholder = "Address" })
+        @Html.LabelFor(m => m.ContactNo)
+        @Html.TextBoxFor(m => m.ContactNo, new
+   {
+       @required = "required",
+       @placeholder = "e.g., 0401234567",
+       @pattern = @"^040-\d{7}$",
+       @title = "Enter a valid Hyderabad landline number starting with 040."
+   })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Education)
+        @Html.TextBoxFor(m => m.Education, new { @required = "required", @placeholder = "Education" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Gender)
+        @Html.DropDownListFor(m => m.Gender, new SelectList(new List<SelectListItem>
+                    {
+
+                new SelectListItem { Value = "Male", Text = "Male" },
+                            new SelectListItem { Value = "Female", Text = "Female" },
+                             new SelectListItem { Value = "Others", Text = "Others" },
+
+                    }, "Value", "Text"), "Select Gender", new { @class = "form-control", @required = "required", })
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Status)

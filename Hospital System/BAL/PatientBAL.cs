@@ -42,7 +42,9 @@ namespace Hospital_System.BAL
             return patient.Updateprofile(patients);
         }
 
-        public string Insertprofile(Patients patients)
+
+     
+            public string Insertprofile(Patients patients)
         {
             string res = patient.Insertprofile(patients);
             return res;

@@ -44,18 +44,20 @@ namespace Hospital_System.DAL
                         new MInPatient
                         {
                             Id = Convert.ToInt32(row["Id"]),
-                            PatientName = row["PatientName"].ToString(),
-                            AdmissionDate = row["AdmissionDate"].ToString(),
-                            DischargeDate = row["DischargeDate"].ToString(),
-                            PatientType = row["PatientType"].ToString(),
-                            TreatmentDuration = Convert.ToInt32(row["TreatmentDuration"]),
-                            Date = row["Date"].ToString(),
-                            Status = row["Status"].ToString(),
-                            Problem = row["Problem"].ToString(),
-                            Description = row["Description"].ToString(),
-                            Gender = row["Gender"].ToString(),
-                            Address = row["Address"].ToString(),
-                            PhoneNumber = row["PhoneNumber"].ToString(),
+                            PatientName = row["PatientName"] == DBNull.Value ? string.Empty : row["PatientName"].ToString(),
+
+                            AdmissionDate = row["AdmissionDate"] != DBNull.Value ? row["AdmissionDate"].ToString() : string.Empty,
+                            DischargeDate = row["DischargeDate"] != DBNull.Value ? row["DischargeDate"].ToString() : string.Empty,
+                            PatientType = row["PatientType"] != DBNull.Value ? row["PatientType"].ToString() : string.Empty,
+                            TreatmentDuration = row["TreatmentDuration"] != DBNull.Value ? Convert.ToInt32(row["TreatmentDuration"]) : 0,
+                            Date = row["Date"] != DBNull.Value ? row["Date"].ToString() : string.Empty,
+                            Status = row["Status"] != DBNull.Value ? row["Status"].ToString() : string.Empty,
+                            Problem = row["Problem"] != DBNull.Value ? row["Problem"].ToString() : string.Empty,
+                            Description = row["Description"] != DBNull.Value ? row["Description"].ToString() : string.Empty,
+                            Gender = row["Gender"] != DBNull.Value ? row["Gender"].ToString() : string.Empty,
+                            Address = row["Address"] != DBNull.Value ? row["Address"].ToString() : string.Empty,
+                            PhoneNumber = row["PhoneNumber"] != DBNull.Value ? row["PhoneNumber"].ToString() : string.Empty
+
 
 
                         });
@@ -136,18 +138,19 @@ namespace Hospital_System.DAL
                 if (reader.Read())
                 {
                     mInPatient.Id = Convert.ToInt32(reader["Id"]);
-                    mInPatient.PatientName = reader["PatientName"].ToString();
-                    mInPatient.AdmissionDate = reader["AdmissionDate"].ToString();
-                    mInPatient.DischargeDate = reader["DischargeDate"].ToString();
-                    mInPatient.PatientType = reader["PatientType"].ToString();
-                    mInPatient.TreatmentDuration = Convert.ToInt32(reader["TreatmentDuration"]);
-                    mInPatient.Date = reader["Date"].ToString();
-                    mInPatient.Status = reader["Status"].ToString();
-                    mInPatient.Problem = reader["Problem"].ToString();
-                    mInPatient.Description = reader["Description"].ToString();
-                    mInPatient.Gender = reader["Gender"].ToString();
-                    mInPatient.Address = reader["Address"].ToString();
-                    mInPatient.PhoneNumber = reader["PhoneNumber"].ToString();
+                    mInPatient.PatientName = reader["PatientName"] != DBNull.Value ? reader["PatientName"].ToString() : string.Empty;
+                    mInPatient.AdmissionDate = reader["AdmissionDate"] != DBNull.Value ? reader["AdmissionDate"].ToString() : string.Empty;
+                    mInPatient.DischargeDate = reader["DischargeDate"] != DBNull.Value ? reader["DischargeDate"].ToString() : string.Empty;
+                    mInPatient.PatientType = reader["PatientType"] != DBNull.Value ? reader["PatientType"].ToString() : string.Empty;
+                    mInPatient.TreatmentDuration = reader["TreatmentDuration"] != DBNull.Value ? Convert.ToInt32(reader["TreatmentDuration"]) : 0;  // Default to 0 if null
+                    mInPatient.Date = reader["Date"] != DBNull.Value ? reader["Date"].ToString() : string.Empty;
+                    mInPatient.Status = reader["Status"] != DBNull.Value ? reader["Status"].ToString() : string.Empty;
+                    mInPatient.Problem = reader["Problem"] != DBNull.Value ? reader["Problem"].ToString() : string.Empty;
+                    mInPatient.Description = reader["Description"] != DBNull.Value ? reader["Description"].ToString() : string.Empty;
+                    mInPatient.Gender = reader["Gender"] != DBNull.Value ? reader["Gender"].ToString() : string.Empty;
+                    mInPatient.Address = reader["Address"] != DBNull.Value ? reader["Address"].ToString() : string.Empty;
+                    mInPatient.PhoneNumber = reader["PhoneNumber"] != DBNull.Value ? reader["PhoneNumber"].ToString() : string.Empty;
+
 
 
                 }
@@ -177,19 +180,18 @@ namespace Hospital_System.DAL
                 MInPatient mInPatient = new MInPatient();
 
                 mInPatient.Id = Convert.ToInt32(reader["Id"]);
-                mInPatient.PatientName = reader["PatientName"].ToString();
-                mInPatient.AdmissionDate = reader["AdmissionDate"].ToString();
-                mInPatient.DischargeDate = reader["DischargeDate"].ToString();
-                mInPatient.PatientType = reader["PatientType"].ToString();
-                mInPatient.TreatmentDuration = Convert.ToInt32(reader["TreatmentDuration"]);
-                mInPatient.Date = reader["Date"].ToString();
-                //mInPatient.AdmissionDate = reader["AdmissionDate"].ToString();
-                mInPatient.Status = reader["Status"].ToString();
-                mInPatient.Problem = reader["Problem"].ToString();
-                mInPatient.Description = reader["Description"].ToString();
-                mInPatient.Gender = reader["Gender"].ToString();
-                mInPatient.Address = reader["Address"].ToString();
-                mInPatient.PhoneNumber = reader["PhoneNumber"].ToString();
+                mInPatient.PatientName = reader["PatientName"] != DBNull.Value ? reader["PatientName"].ToString() : string.Empty;
+                mInPatient.AdmissionDate = reader["AdmissionDate"] != DBNull.Value ? reader["AdmissionDate"].ToString() : string.Empty;
+                mInPatient.DischargeDate = reader["DischargeDate"] != DBNull.Value ? reader["DischargeDate"].ToString() : string.Empty;
+                mInPatient.PatientType = reader["PatientType"] != DBNull.Value ? reader["PatientType"].ToString() : string.Empty;
+                mInPatient.TreatmentDuration = reader["TreatmentDuration"] != DBNull.Value ? Convert.ToInt32(reader["TreatmentDuration"]) : 0;  // Default to 0 if null
+                mInPatient.Date = reader["Date"] != DBNull.Value ? reader["Date"].ToString() : string.Empty;
+                mInPatient.Status = reader["Status"] != DBNull.Value ? reader["Status"].ToString() : string.Empty;
+                mInPatient.Problem = reader["Problem"] != DBNull.Value ? reader["Problem"].ToString() : string.Empty;
+                mInPatient.Description = reader["Description"] != DBNull.Value ? reader["Description"].ToString() : string.Empty;
+                mInPatient.Gender = reader["Gender"] != DBNull.Value ? reader["Gender"].ToString() : string.Empty;
+                mInPatient.Address = reader["Address"] != DBNull.Value ? reader["Address"].ToString() : string.Empty;
+                mInPatient.PhoneNumber = reader["PhoneNumber"] != DBNull.Value ? reader["PhoneNumber"].ToString() : string.Empty;
 
 
                 mInPatients.Add(mInPatient);

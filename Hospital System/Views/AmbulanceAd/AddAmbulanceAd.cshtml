@@ -8,50 +8,53 @@
 @using (Html.BeginForm("AddAmbulanceAd", "AmbulanceAd", FormMethod.Post, new { @class = "form-container" }))
 {
     <div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.mAmbulance.Id)
-            @Html.TextBoxFor(m => m.mAmbulance.Id, new { @class = "form-control" })
+        <!-- Flex container for side-by-side fields -->
+        <div class="form-fields">
+            <div class="form-group">
+                @Html.LabelFor(m => m.mAmbulance.Id)
+                @Html.TextBoxFor(m => m.mAmbulance.Id, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.mAmbulance.Name)
+                @Html.TextBoxFor(m => m.mAmbulance.Name, new { @required = "required", @placeholder = "Enter your Name", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.mAmbulance.Name, "", new { @class = "text-danger" })
+            </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.mAmbulance.Name)
-            @Html.TextBoxFor(m => m.mAmbulance.Name, new { @required = "required", @placeholder = "Enter your Name", @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.mAmbulance.Name, "", new { @class = "text-danger" })
+
+        <!-- Flex container for side-by-side fields -->
+        <div class="form-fields">
+            <div class="form-group">
+                @Html.LabelFor(m => m.mAmbulance.AmbulanceId)
+                @Html.TextBoxFor(m => m.mAmbulance.AmbulanceId, new { @required = "required", @placeholder = "Enter your AmbulanceId", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.mAmbulance.AmbulanceId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.mAmbulance.AmbulanceStatus)
+                @Html.DropDownListFor(m => m.mAmbulance.AmbulanceStatus, new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem { Value = "Active", Text = "Active" },
+                    new SelectListItem { Value = "Inactive", Text = "Inactive" },
+                }, "Value", "Text"), "Select Status", new { @class = "form-control" })
+            </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.mAmbulance.AmbulanceId)
-            @Html.TextBoxFor(m => m.mAmbulance.AmbulanceId, new { @required = "required", @placeholder = "Enter your AmbulanceId", @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.mAmbulance.AmbulanceId, "", new { @class = "text-danger" })
+
+        <!-- Flex container for side-by-side fields -->
+        <div class="form-fields">
+            <div class="form-group">
+                @Html.LabelFor(m => m.mAmbulance.DriverName)
+                @Html.TextBoxFor(m => m.mAmbulance.DriverName, new { @required = "required", @placeholder = "Enter your Ambulance Driver", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.mAmbulance.DriverName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.mAmbulance.DriverId)
+                @Html.TextBoxFor(m => m.mAmbulance.DriverId, new { @required = "required", @placeholder = "Enter your Ambulance Driver ID", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.mAmbulance.DriverId, "", new { @class = "text-danger" })
+            </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.mAmbulance.AmbulanceStatus)
-            @Html.DropDownListFor(m => m.mAmbulance.AmbulanceStatus, new SelectList(new List<SelectListItem>
-            {
-                new SelectListItem { Value = "Active", Text = "Active" },
-                new SelectListItem { Value = "Inactive", Text = "Inactive" },
-            }, "Value", "Text"), "Select Status", new { @class = "form-control" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.mAmbulance.DriverName)
-            @Html.TextBoxFor(m => m.mAmbulance.DriverName, new { @required = "required", @placeholder = "Enter your Ambulance Driver", @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.mAmbulance.DriverName, "", new { @class = "text-danger" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.mAmbulance.DriverId)
-            @Html.TextBoxFor(m => m.mAmbulance.DriverId, new { @required = "required", @placeholder = "Enter your Ambulance Driver ID", @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.mAmbulance.DriverId, "", new { @class = "text-danger" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.mAmbulance.Contact)
-            @Html.TextBoxFor(m => m.mAmbulance.Contact, new { @required = "required", @placeholder = "Registered Mobile Number", @class = "form-control" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.mAmbulance.Address)
-            @Html.TextBoxFor(m => m.mAmbulance.Address, new { @required = "required", @placeholder = "Enter your Address", @class = "form-control" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.mAmbulance.CNIC)
-            @Html.TextBoxFor(m => m.mAmbulance.CNIC, new { @required = "required", @placeholder = "Enter your CNIC", @class = "form-control" })
-        </div>
+
         <div class="form-actions">
             <input type="submit" class="back-button" value="Submit" />
             <button type="button" class="back-button" onclick="Back()">Back</button>
@@ -66,8 +69,10 @@
 </script>
 
 <style>
+    /* Main container styling */
     .form-container {
-        width: 85%;
+        width: 100%; /* Make sure form takes full width */
+        max-width: 800px; /* Limit the maximum width to prevent it from stretching too much */
         margin: 0 auto; /* Center the form */
         background-color: white;
         padding: 20px;
@@ -75,16 +80,27 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
+    /* Flex container for side-by-side form fields */
+    .form-fields {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px; /* Space between fields */
+        flex-wrap: wrap; /* Allow wrapping when needed */
+    }
+
+    /* Form group styling (each field will take up half the container) */
     .form-group {
+        flex: 1 1 calc(50% - 20px); /* Each form group will take up 50% of the container width */
         margin-bottom: 15px;
     }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
 
+    /* Form control styling */
     .form-control {
         width: 100%; /* Full width */
         padding: .375rem .75rem;
@@ -108,12 +124,136 @@
         margin: 5px; /* Space between buttons */
     }
 
-        .back-button:hover {
-            background-color: #0056b3; /* Darker shade on hover */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+    .back-button:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+    }
+
+    .back-button:focus {
+        outline: none; /* Remove outline on focus */
+    }
+
+    /* Ensure the form fields fit properly without overflow */
+    media (max-width: 768px) {
+        .form-fields {
+            flex-direction: column; /* Stack fields vertically on small screens */
         }
 
-        .back-button:focus {
-            outline: none; /* Remove outline on focus */
+        .form-group {
+            flex: 1 1 100%; /* Ensure each form group takes up full width */
         }
+    }
 </style>
+
+
+
+
+
+@*@model Hospital_System.Dash.DashboardDetails
+
+    @{
+        ViewBag.Title = "Add Ambulance";
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+
+    @using (Html.BeginForm("AddAmbulanceAd", "AmbulanceAd", FormMethod.Post, new { @class = "form-container" }))
+    {
+        <div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.mAmbulance.Id)
+                @Html.TextBoxFor(m => m.mAmbulance.Id, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.mAmbulance.Name)
+                @Html.TextBoxFor(m => m.mAmbulance.Name, new { @required = "required", @placeholder = "Enter your Name", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.mAmbulance.Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.mAmbulance.AmbulanceId)
+                @Html.TextBoxFor(m => m.mAmbulance.AmbulanceId, new { @required = "required", @placeholder = "Enter your AmbulanceId", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.mAmbulance.AmbulanceId, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.mAmbulance.AmbulanceStatus)
+                @Html.DropDownListFor(m => m.mAmbulance.AmbulanceStatus, new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem { Value = "Active", Text = "Active" },
+                    new SelectListItem { Value = "Inactive", Text = "Inactive" },
+                }, "Value", "Text"), "Select Status", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.mAmbulance.DriverName)
+                @Html.TextBoxFor(m => m.mAmbulance.DriverName, new { @required = "required", @placeholder = "Enter your Ambulance Driver", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.mAmbulance.DriverName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.mAmbulance.DriverId)
+                @Html.TextBoxFor(m => m.mAmbulance.DriverId, new { @required = "required", @placeholder = "Enter your Ambulance Driver ID", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.mAmbulance.DriverId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-actions">
+                <input type="submit" class="back-button" value="Submit" />
+                <button type="button" class="back-button" onclick="Back()">Back</button>
+            </div>
+        </div>
+    }
+
+    <script>
+        function Back() {
+            window.location.href = "/Dashboard/DashboardView";
+        }
+    </script>
+
+    <style>
+        .form-container {
+            width: 85%;
+            margin: 0 auto; /* Center the form */
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+        .form-control {
+            width: 100%; /* Full width */
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            color: #495057;
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        .back-button {
+            background-color: #007bff; /* Primary color */
+            color: white; /* Text color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            padding: 10px 20px; /* Padding for size */
+            font-size: 16px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+            margin: 5px; /* Space between buttons */
+        }
+
+            .back-button:hover {
+                background-color: #0056b3; /* Darker shade on hover */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+            }
+
+            .back-button:focus {
+                outline: none; /* Remove outline on focus */
+            }
+    </style>*@

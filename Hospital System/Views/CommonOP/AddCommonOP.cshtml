@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "AddCommonOP";
+    Layout = null;
 }
 
 <style>
@@ -95,12 +96,11 @@
             @Html.LabelFor(m => m.Gender)
             @Html.DropDownListFor(m => m.Gender, new SelectList(new List<SelectListItem>
 {
-           new SelectListItem{Value="Select Gender",Text="Select Gender"},
            new SelectListItem { Value = "Male", Text = "Male" },
            new SelectListItem { Value = "Female", Text = "Female" },
             new SelectListItem { Value = "Others", Text = "Others" },
 
-       }, "Value", "Text"), "Select Status", new { @class = "form-control" })
+       }, "Value", "Text"), "Select Gender", new { @class = "form-control" })
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Address)

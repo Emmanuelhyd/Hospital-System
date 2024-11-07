@@ -154,20 +154,22 @@
                 <a href="@Url.Action("ReceptionFrontPage", "ReceptionAdmin")" style="position:absolute;margin-top:-25px;">
                     <i class="fas fa-arrow-circle-left" style="font-size: 40px;"></i>
                 </a>
-                <input type="button" value="Create New" style="position: absolute; margin-top: -25px; margin-left: 44px;" onclick="window.location.href='@Url.Action("AddConsultant", "ConsultantAdmin")'">
-                <h4 class="highlight-heading" style="position: absolute; margin-left: 478px; margin-top: -12px;">Consultant List</h4>
+                <input type="button" value="Add New" style="position: absolute; margin-top: -25px; margin-left: 44px;" onclick="window.location.href='@Url.Action("AddConsultant", "ConsultantAdmin")'">
+                <h4 class="highlight-heading" style="position: absolute; margin-left: 478px; margin-top: -12px;">Doctor List</h4>
 
             </div>
             <table>
                 <thead>
                     <tr>
-                        <th>Patient Id</th>
-                        <th>Patient Name</th>
-                        <th>Doctor Name</th>
-                        <th>Appointment Date</th>
-                        <th>Problem</th>
-                        <th>Description</th>
-                        <th>Address</th>
+                        <th>DoctorId</th>
+                        <th>FullName</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Designation</th>
+                        <th>PhoneNo</th>
+                        <th>ContactNo</th>
+                        <th>Education</th>
+                        <th>Gender</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -176,20 +178,22 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                            <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.DoctorName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Problem)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Description)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DoctorId)</td>
+                            <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Department)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Designation)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PhoneNo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ContactNo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Education)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Gender)</td>
                             <td>@Html.DisplayFor(modelItem => item.Status)</td>
                             <td class="icon-container">
-                                <a href="@Url.Action("ConsultantEdit", new { Id = item.Id })" title="Edit">
+                                <a href="@Url.Action("ConsultantEdit", new { DoctorId = item.DoctorId })" title="Edit">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <a href="javascript:void(0);"
-                                   onclick="confirmDelete('@Url.Action("ConsultantDelete", new { Id = item.Id })')">
+                                   onclick="confirmDelete('@Url.Action("ConsultantDelete", new { DoctorId = item.DoctorId })')">
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
 

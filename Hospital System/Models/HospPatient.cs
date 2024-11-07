@@ -29,7 +29,7 @@ namespace Hospital_System.Models
 
         public string AdmissionDate {get; set; }
 
-        public string Dischargedate { get; set; }   
+        public string DischargeDate { get; set; }   
 
         public string TypeName { get; set; }
 

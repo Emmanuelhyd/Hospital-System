@@ -51,6 +51,10 @@ namespace Hospital_System.Controllers
                 }
                 mAppointmentAd.Id = ids + 1;
 
+
+                mAppointmentAd.Date = DateTime.Now.ToString("yyyy-mm-dd");
+                mAppointmentAd.Time = DateTime.Now.ToString("hh:mm");
+
                 var appoint = new DashboardDetails
                 {
                     Adminmenus = adminBAL.GetAdminmenus(),

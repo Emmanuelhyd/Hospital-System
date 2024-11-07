@@ -42,9 +42,10 @@ namespace Hospital_System.DAL
                 billing.DoctorFee = Convert.ToDecimal(reader["DoctorFee"]);
                 billing.TreatmentDuration = Convert.ToInt32(reader["TreatmentDuration"]);
                 billing.TreatmentCharges = Convert.ToDecimal(reader["TreatmentCharges"]);
+                billing.MedicineCharges = Convert.ToDecimal(reader["MedicineCharges"]);
                 billing.RoomFee = Convert.ToDecimal(reader["RoomFee"]);
-                //billing.Others = reader.GetString(reader.GetOrdinal("Others"));
-                //billing.OthersCost = Convert.ToInt32(reader["OthersCost"]);
+                billing.Others = reader.GetString(reader.GetOrdinal("Others"));
+                billing.OthersCost = Convert.ToInt32(reader["OthersCost"]);
                 billing.TotalBill = Convert.ToInt32(reader["TotalBill"]);
                 billing.GST = Convert.ToInt32(reader["GST"]);
                 billing.TotalAmount = Convert.ToInt32(reader["TotalAmount"]);
@@ -81,16 +82,16 @@ namespace Hospital_System.DAL
                 billing.TreatmentDuration = Convert.ToInt32(reader["TreatmentDuration"]);
                 billing.TreatmentCharges = Convert.ToDecimal(reader["TreatmentCharges"]);
                 billing.RoomFee = Convert.ToDecimal(reader["RoomFee"]);
-                //billing.Others = reader.GetString(reader.GetOrdinal("Others"));
-                //billing.OthersCost = Convert.ToInt32(reader["OthersCost"]);
+                billing.Others = reader.GetString(reader.GetOrdinal("Others"));
+                billing.OthersCost = Convert.ToInt32(reader["OthersCost"]);
                 billing.TotalBill = Convert.ToInt32(reader["TotalBill"]);
                 billing.GST = Convert.ToInt32(reader["GST"]);
                 billing.TotalAmount = Convert.ToInt32(reader["TotalAmount"]);
-                //billing.InsuranceClaimed = Convert.ToInt32(reader["InsuranceClaimed"]);
+                billing.InsuranceClaimed = Convert.ToInt32(reader["InsuranceClaimed"]);
                 billing.PaidBill = Convert.ToInt32(reader["PaidBill"]);
                 billing.Status = reader.GetString(reader.GetOrdinal("Status"));
                 billing.MethodOfPayment = reader.GetString(reader.GetOrdinal("MethodOfPayment"));
-                billing.BalanceAmount = Convert.ToDecimal(reader["BalanceAmount"]);
+                //billing.BalanceAmount = Convert.ToDecimal(reader["BalanceAmount"]);
 
 
             }

@@ -1,183 +1,1 @@
-﻿@model Hospital_System.Viewmodel.Allview
-
-@{
-    ViewBag.Title = "Doctors";
-    Layout = "~/Views/Shared/_PatientLayout.cshtml";
-}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>@ViewBag.Title</title>
-    <style>
-        body {
-            background-color: #f4f7fa; /* Light background */
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-
-        .button-back {
-            display: inline-block;
-            margin: 10px 0;
-            padding: 10px 20px;
-            color: white;
-            background-color: dodgerblue;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-
-            .button-back:hover {
-                background-color: #0056b3;
-            }
-
-        .table {
-/*            width: 100%;*/
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th {
-            background-color: #007bff; /* Header color */
-            color: white;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border: 1px solid #ddd;
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tbody tr:hover {
-            background-color: #e0e7ff;
-        }
-
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-            a:hover {
-                text-decoration: underline;
-            }
-
-        /* Popup styles */
-        #doctorPopup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            border: 1px solid #ccc;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            display: none;
-            z-index: 1000;
-        }
-
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-            z-index: 999;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <h2>@ViewBag.Title</h2>
-        <button class="button-back" onclick="Back()"><i class="fas fa-arrow-left"></i>Back </button>
-
-        <div class="table" style=" margin-left: 15%;">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Department</th>
-                        <th>Designation</th>
-                        <th>Status</th>
-                        <th>Profile</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Doctors)
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.FullName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Department)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Designation)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Status)</td>
-                            <td>
-                                <a href="javascript:void(0);" onclick="showDoctorDetails(@item.DoctorId)"><i class="fas fa-eye"></i> View</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div id="doctorPopup"></div>
-    <div id="overlay"></div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        function Back() {
-            window.location.href = "Dashboard";
-        }
-
-        function showDoctorDetails(doctorId) {
-            $.ajax({
-                url: '@Url.Action("Doctordetails", "Patient")',
-                type: 'GET',
-                data: { DoctorId: doctorId },
-                success: function (data) {
-                    $('#doctorPopup').html(data).show();
-                    $('#overlay').show();
-                },
-                error: function () {
-                    alert("Error loading doctor details.");
-                }
-            });
-        }
-
-        $('#overlay').click(function () {
-            $('#doctorPopup').hide();
-            $('#overlay').hide();
-        });
-    </script>
-</body>
-</html>
+﻿@model Hospital_System.Viewmodel.Allview@{    ViewBag.Title = "Doctors";    Layout = "~/Views/Shared/_PatientLayout.cshtml";}<!DOCTYPE html><html lang="en"><head>    <meta charset="utf-8" />    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">    <title>@ViewBag.Title</title>    <style>        body {            background-color: #f4f7fa;            / Light background / font-family: Arial, sans-serif;            margin: 0;            padding: 20px;        }        .container {            max-width: 1200px;            margin: auto;            padding: 20px;            background: white;            border-radius: 8px;            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);        }        h2 {            text-align: center;            color: #333;        }        .button-back {            display: inline-block;            margin: 10px 0;            padding: 10px 20px;            color: white;            background-color: dodgerblue;            border: none;            border-radius: 5px;            cursor: pointer;            font-size: 16px;            transition: background-color 0.3s;        }            .button-back:hover {                background-color: #0056b3;            }        .table {            margin-top: 20px;        }        th {            background-color: #007bff;            / Header color / color: white;            font-weight: bold;            text-transform: uppercase;        }        th, td {            padding: 12px;            text-align: left;            border: 1px solid #ddd;        }        tbody tr:nth-child(even) {            background-color: #f9f9f9;        }        tbody tr:hover {            background-color: #e0e7ff;        }        a {            color: #007bff;            text-decoration: none;        }            a:hover {                text-decoration: underline;            }        / Popup styles /        #doctorPopup {            position: fixed;            top: 50%;            left: 50%;            transform: translate(-50%, -50%);            background: white;            padding: 20px;            border: 1px solid #ccc;            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);            display: none;            z-index: 1000;        }        #overlay {            position: fixed;            top: 0;            left: 0;            width: 100%;            height: 100%;            background: rgba(0, 0, 0, 0.5);            display: none;            z-index: 999;        }    </style></head><body>    <div class="container">        <h2>@ViewBag.Title</h2>        <button class="button-back" onclick="Back()" style=" margin-left: 10%;"><i class="fas fa-arrow-left"></i>Back </button>        <div class="table" style=" margin-left: 15%;">            <table>                <thead>                    <tr>                        <th>Full Name</th>                        <th>Email</th>                        <th>Department</th>                        <th>Designation</th>                        <th>Status</th>                        <th>Profile</th>                    </tr>                </thead>                <tbody>                    @foreach (var item in Model.Doctors)                    {        <tr>            <td>@Html.DisplayFor(modelItem => item.FullName)</td>            <td>@Html.DisplayFor(modelItem => item.Email)</td>            <td>@Html.DisplayFor(modelItem => item.Department)</td>            <td>@Html.DisplayFor(modelItem => item.Designation)</td>            <td>@Html.DisplayFor(modelItem => item.Status)</td>            <td>                <a href="javascript:void(0);" onclick="showDoctorDetails(@item.DoctorId)"><i class="fas fa-eye"></i> View</a>            </td>        </tr>    }                </tbody>            </table>        </div>    </div>    <div id="doctorPopup"></div>    <div id="overlay"></div>    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>    <script>        function Back() {            window.location.href = "Dashboard";        }        function showDoctorDetails(doctorId) {            $.ajax({                url: '@Url.Action("Doctordetails", "Patient")',                type: 'GET',                data: { DoctorId: doctorId },                success: function (data) {                    $('#doctorPopup').html(data).show();                    $('#overlay').show();                },                error: function () {                    alert("Error loading doctor details.");                }            });        }        $('#overlay').click(function () {            $('#doctorPopup').hide();            $('#overlay').hide();        });    </script></body></html>

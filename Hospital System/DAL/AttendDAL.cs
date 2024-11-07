@@ -36,10 +36,14 @@ namespace Hospital_System.DAL
 
                 attend.Id = Convert.ToInt32(reader["Id"]);
                 attend.Name = reader.GetString(reader.GetOrdinal("Name"));
+                attend.Department = reader.GetString(reader.GetOrdinal("Department"));
                 attend.JobTitle = reader.GetString(reader.GetOrdinal("JobTitle"));
                 attend.Contact = reader.GetString(reader.GetOrdinal("contact"));
-                attend.Department = reader.GetString(reader.GetOrdinal("Department"));
-                attend.Attendance = reader.GetString(reader.GetOrdinal("Attendance"));
+                attend.Shift = reader.GetString(reader.GetOrdinal("Shift"));
+                attend.Time = reader.GetString(reader.GetOrdinal("Time"));
+                attend.LoginTime = reader.GetString(reader.GetOrdinal("LoginTime"));
+                attend.LogoutTime = reader.GetString(reader.GetOrdinal("LogoutTime"));
+                attend.Status = reader.GetString(reader.GetOrdinal("Status"));
 
                 attends.Add(attend);
 

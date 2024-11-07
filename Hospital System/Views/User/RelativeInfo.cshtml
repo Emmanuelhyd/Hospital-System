@@ -2,8 +2,9 @@
 
 @{
     ViewBag.Title = "Relative Information";
-    Layout = "~/Views/Shared/_UserLayoutBlod.cshtml";
+    Layout = "~/Views/Shared/_UserLayoutBlood.cshtml";
 }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +27,7 @@
             padding: 30px;
             margin: auto;
             max-width: 900px;
+            position: relative; /* For absolute positioning of the back button */
         }
 
         h2 {
@@ -51,38 +53,79 @@
         .btn-submit {
             width: 33%;
         }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: blue; /* Blue background for the back button */
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .back-button:hover {
+                background-color: darkblue; /* Darker blue on hover */
+            }
     </style>
 </head>
 <body>
 
     <div class="form-container">
+        <button class="back-button" onclick="window.history.back()">Back</button>
+
         @using (Html.BeginForm("RelativeInfo", "User", FormMethod.Post))
         {
             <h2>Relative Information</h2>
 
             <div class="mb-3 row">
                 <div class="col-md-6">
+                    @Html.LabelFor(m => m.ReferenceId, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.ReferenceId, new { @class = "form-control", placeholder = "Enter Reference Id", required = "required", aria_required = "true" })
+                </div>
+                <div class="col-md-6">
                     @Html.LabelFor(m => m.Name, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Enter Name", required = "required", aria_required = "true" })
                 </div>
+            </div>
+
+            <div class="mb-3 row">
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.RelationWithDonor, new { @class = "form-label" })
-                    @Html.TextBoxFor(m => m.RelationWithDonor, new { @class = "form-control", placeholder = "Relation with Donor", required = "required", aria_required = "true" })
+                    @Html.DropDownList("RelationWithDonor", new SelectList(new List<SelectListItem>
+                    {
+                        new SelectListItem { Value = "Father", Text = "Father" },
+                        new SelectListItem { Value = "Mother", Text = "Mother" },
+                        new SelectListItem { Value = "Brother", Text = "Brother" },
+                        new SelectListItem { Value = "Sister", Text = "Sister" },
+                        new SelectListItem { Value = "Spouse", Text = "Spouse" },
+                        new SelectListItem { Value = "Friend", Text = "Friend" },
+                        new SelectListItem { Value = "Relative", Text = "Relative" },
+                        new SelectListItem { Value = "Colleague", Text = "Colleague" },
+                        new SelectListItem { Value = "Other", Text = "Other" }
+                    }, "Value", "Text"), "Select Relation with Donor", new { @class = "form-select", required = "required", aria_required = "true" })
                 </div>
-            </div>
-
-            <div class="mb-3 row">
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.EmailId, new { @class = "form-label" })
-                    @Html.TextBoxFor(m => m.EmailId, new { @class = "form-control", placeholder = "Enter Email", required = "required", aria_required = "true" })
-                </div>
-                <div class="col-md-6">
-                    @Html.LabelFor(m => m.PhoneNumber, new { @class = "form-label" })
-                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Enter Phone Number", required = "required", aria_required = "true" })
+                    @Html.TextBoxFor(m => m.EmailId, new
+                    {
+                        @class = "form-control",
+                        placeholder = "Enter Email",
+                        type = "email",
+                        required = "required",
+                        pattern = "^[a-zA-Z0-9._%+-]+@gmail\\.[a-zA-Z]{2,}$",
+                        title = "Please enter a valid Gmail address ending with @gmail. (e.g., example@gmail.com, user123@gmail.in)"
+                    })
                 </div>
             </div>
 
             <div class="mb-3 row">
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.PhoneNumber, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Enter Phone Number", required = "required", pattern = @"\d{10}", maxlength = "10", title = "Phone number must be exactly 10 digits" })
+                </div>
                 <div class="col-md-6">
                     @Html.Label("Gender", new { @class = "form-label" })
                     @Html.DropDownList("Gender", new SelectList(new List<SelectListItem>
@@ -92,31 +135,38 @@
                         new SelectListItem { Value = "Other", Text = "Other" }
                     }, "Value", "Text"), "Select Gender", new { @class = "form-select", required = "required", aria_required = "true" })
                 </div>
-                <div class="col-md-6">
-                    @Html.LabelFor(m => m.StreetAddress, new { @class = "form-label" })
-                    @Html.TextBoxFor(m => m.StreetAddress, new { @class = "form-control", placeholder = "Enter Street Address", required = "required", aria_required = "true" })
-                </div>
             </div>
 
-            <div class="mb-3 row">
+            <div class="row mb-3">
                 <div class="col-md-6">
-                    @Html.LabelFor(m => m.City, new { @class = "form-label" })
-                    @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "Enter City", required = "required", aria_required = "true" })
+                    @Html.LabelFor(m => m.Country, new { @class = "form-label" })
+                    @Html.DropDownList("Country", new SelectList(new List<SelectListItem>
+                    {
+                        new SelectListItem { Value = "India", Text = "India" }
+                    }, "Value", "Text"), "Select Country", new { @class = "form-select", required = "required", aria_required = "true", id = "countryDropdown" })
                 </div>
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.State, new { @class = "form-label" })
-                    @Html.TextBoxFor(m => m.State, new { @class = "form-control", placeholder = "Enter State", required = "required", aria_required = "true" })
+                    @Html.DropDownList("State", new SelectList(Enumerable.Empty<SelectListItem>()), "Select State", new { @class = "form-select", required = "required", aria_required = "true", id = "stateDropdown" })
                 </div>
             </div>
 
-            <div class="mb-3 row">
+            <div class="row mb-3">
+
                 <div class="col-md-6">
-                    @Html.LabelFor(m => m.ZipCode, new { @class = "form-label" })
-                    @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control", placeholder = "Enter Zip Code", required = "required", aria_required = "true" })
+                    @Html.LabelFor(m => m.City, new { @class = "form-label" })
+                    @Html.DropDownList("City", new SelectList(Enumerable.Empty<SelectListItem>()), "Select City", new { @class = "form-select", required = "required", aria_required = "true", id = "cityDropdown" })
                 </div>
                 <div class="col-md-6">
-                    @Html.LabelFor(m => m.Country, new { @class = "form-label" })
-                    @Html.TextBoxFor(m => m.Country, new { @class = "form-control", placeholder = "Enter Country", required = "required", aria_required = "true" })
+                    @Html.LabelFor(m => m.ZipCode, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control", placeholder = "Enter Zip Code", required = "required", maxlength = "6", pattern = "^[1-9][0-9]{5}$", title = "Zip code must be a 6 digit number." })
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.StreetAddress, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.StreetAddress, new { @class = "form-control", placeholder = "Enter Street Address", required = "required", aria_required = "true" })
                 </div>
             </div>
 
@@ -128,5 +178,108 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        $(document).ready(function () {
+            flatpickr("#datepicker", {
+                dateFormat: "d-m-Y",
+                maxDate: "today"
+            });
+
+            var countryData = {
+                "India": {
+                    "states": [
+                        "Andhra Pradesh", "Maharashtra", "Karnataka", "Tamil Nadu"
+                    ],
+                    "cities": {
+                        "Andhra Pradesh": ["Visakhapatnam", "Vijayawada", "Guntur"],
+                        "Maharashtra": ["Mumbai", "Pune", "Nagpur"],
+                        "Karnataka": ["Bengaluru", "Mysuru", "Hubli"],
+                        "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai"]
+                    },
+                    "districts": {
+                        "Andhra Pradesh": ["Visakhapatnam", "Vijayawada", "Guntur"],
+                        "Maharashtra": ["Mumbai", "Pune", "Nagpur"],
+                        "Karnataka": ["Bengaluru", "Mysuru", "Hubli"],
+                        "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai"]
+                    },
+                    "zipCodes": {
+                        "Andhra Pradesh": {
+                            "Visakhapatnam": "530001",
+                            "Vijayawada": "520001",
+                            "Guntur": "522001"
+                        },
+                        "Maharashtra": {
+                            "Mumbai": "400001",
+                            "Pune": "411001",
+                            "Nagpur": "440001"
+                        },
+                        "Karnataka": {
+                            "Bengaluru": "560001",
+                            "Mysuru": "570001",
+                            "Hubli": "580001"
+                        },
+                        "Tamil Nadu": {
+                            "Chennai": "600001",
+                            "Coimbatore": "641001",
+                            "Madurai": "625001"
+                        }
+                    }
+                }
+            };
+
+            $('#countryDropdown').change(function () {
+                var selectedCountry = $(this).val();
+
+                if (selectedCountry === "India") {
+                    var states = countryData["India"].states;
+                    var $stateDropdown = $('#stateDropdown');
+                    $stateDropdown.empty();
+                    $stateDropdown.append('<option value="">Select State</option>');
+
+                    $.each(states, function (index, state) {
+                        $stateDropdown.append('<option value="' + state + '">' + state + '</option>');
+                    });
+
+                    $('#cityDropdown').empty().append('<option value="">Select City</option>');
+                    $('#ZipCode').val('');
+                }
+            });
+
+            $('#stateDropdown').change(function () {
+                var selectedState = $(this).val();
+                var selectedCountry = $('#countryDropdown').val();
+
+                if (selectedCountry === "India" && selectedState) {
+                    var cities = countryData["India"].cities[selectedState] || [];
+                    var $cityDropdown = $('#cityDropdown');
+                    $cityDropdown.empty();
+                    $cityDropdown.append('<option value="">Select City</option>');
+
+                    $.each(cities, function (index, city) {
+                        $cityDropdown.append('<option value="' + city + '">' + city + '</option>');
+                    });
+
+                    $('#ZipCode').val('');
+                } else {
+                    $('#cityDropdown').empty().append('<option value="">Select City</option>');
+                    $('#ZipCode').val('');
+                }
+            });
+
+            $('#cityDropdown').change(function () {
+                var selectedState = $('#stateDropdown').val();
+                var selectedCity = $(this).val();
+                var selectedCountry = $('#countryDropdown').val();
+
+                if (selectedCountry === "India" && selectedState && selectedCity) {
+                    var zipCode = countryData["India"].zipCodes[selectedState][selectedCity];
+                    $('#ZipCode').val(zipCode);  // Populate the zip code field
+                } else {
+                    $('#ZipCode').val('');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

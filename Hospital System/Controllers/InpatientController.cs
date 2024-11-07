@@ -17,12 +17,7 @@ namespace Hospital_System.Controllers
             var model = inpatientBal.HospPatients();
             return View (model);
         }
-        //public ActionResult TotalCharge( int Id)
-        //{
-        //    var inpatient = inpatientBal.TotalCharges(Id);
-
-        //    return View(inpatient);
-        //}
+       
 
 
         public ActionResult GetHospPatient(int Id)
@@ -35,6 +30,13 @@ namespace Hospital_System.Controllers
             }
 
             return View(hospPatient);
+        }
+
+
+        public ActionResult DoctorsList()
+        {
+            var model = inpatientBal.GetDoctors();
+            return View(model);
         }
     }
 }

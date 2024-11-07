@@ -43,77 +43,77 @@ namespace Hospital_System.Controllers
 
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult AddPatientAd(MPatient mPatient)
-        {
-            var ids = 0;
+        //public ActionResult AddPatientAd(MPatient mPatient)
+        //{
+        //    var ids = 0;
 
-            List<MPatient> mPatients = new List<MPatient>();
-
-
-            if (mPatient.Id != 0)
-            {
-                mPatients = adminBAL.AddPatientAd(mPatient);
-            }
-            else if (mPatients.Count == 0)
-            {
-                adminDAL = new AdminDAL();
-                if (mPatient.Id == 0)
-                {
-                    ids = adminDAL.PatientId();
-                }
-                mPatient.Id = ids + 1;
-
-                var mpatient = new DashboardDetails
-                {
-                    Adminmenus = adminBAL.GetAdminmenus(),
-                    mPatient = mPatient
-                };
+        //    List<MPatient> mPatients = new List<MPatient>();
 
 
+        //    if (mPatient.Id != 0)
+        //    {
+        //        mPatients = adminBAL.AddPatientAd(mPatient);
+        //    }
+        //    else if (mPatients.Count == 0)
+        //    {
+        //        adminDAL = new AdminDAL();
+        //        if (mPatient.Id == 0)
+        //        {
+        //            ids = adminDAL.PatientId();
+        //        }
+        //        mPatient.Id = ids + 1;
 
-                return View(mpatient);
-            }
+        //        var mpatient = new DashboardDetails
+        //        {
+        //            Adminmenus = adminBAL.GetAdminmenus(),
+        //            mPatient = mPatient
+        //        };
+
+
+
+        //        return View(mpatient);
+        //    }
            
             
-                return RedirectToAction("PatientList", mPatients);
+        //        return RedirectToAction("PatientList", mPatients);
             
 
 
-        }
+        //}
 
-        public ActionResult PatientEdit(int Id)
-        {
-            if (Id <= 0)
-                return HttpNotFound();
+        //public ActionResult PatientEdit(int Id)
+        //{
+        //    if (Id <= 0)
+        //        return HttpNotFound();
 
-            MPatient mPatient = new MPatient();
-            mPatient = adminBAL.PatientEdit(Id);
+        //    MPatient mPatient = new MPatient();
+        //    mPatient = adminBAL.PatientEdit(Id);
 
-            var mpatient = new DashboardDetails
-            {
-                Adminmenus = adminBAL.GetAdminmenus(),
-                mPatient = mPatient
-            };
+        //    var mpatient = new DashboardDetails
+        //    {
+        //        Adminmenus = adminBAL.GetAdminmenus(),
+        //        mPatient = mPatient
+        //    };
 
 
-            if (mPatient.Id != 0)
-            {
+        //    if (mPatient.Id != 0)
+        //    {
 
-                return View("AddPatientAd", mpatient);
-            }
-            else
-            {
-                return RedirectToAction("PatientList", "PatientAd");
+        //        return View("AddPatientAd", mpatient);
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("PatientList", "PatientAd");
 
-            }
-        }
-        public ActionResult PatientDelete(int Id)
-        {
-            List<MPatient> mPatients = new List<MPatient>();
+        //    }
+        //}
+        //public ActionResult PatientDelete(int Id)
+        //{
+        //    List<MPatient> mPatients = new List<MPatient>();
 
-            mPatients = adminBAL.PatientDelete(Id);
-            return RedirectToAction("PatientList", "PatientAd");
-        }
+        //    mPatients = adminBAL.PatientDelete(Id);
+        //    return RedirectToAction("PatientList", "PatientAd");
+        //}
 
     }
 }

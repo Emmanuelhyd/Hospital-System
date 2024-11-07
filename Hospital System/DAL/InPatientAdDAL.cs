@@ -33,7 +33,7 @@ namespace Hospital_System.DAL
             {
 
                 con.Open();
-                cmd = new SqlCommand("select * from bookapp", con);
+                cmd = new SqlCommand("select * from bookapp Where PatientType like '%In Patient%' ", con);
                 SqlDataReader sdr;
                 sdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();

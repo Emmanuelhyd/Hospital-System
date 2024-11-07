@@ -33,5 +33,10 @@ namespace Hospital_System.BAL
             return inpatientsDAL.GetHospPatient(Id);
 
         }
+
+        public List<Doctor> GetDoctors()
+        {
+            return inpatientsDAL.GetDoctors();
+        }
     }
 }

@@ -142,6 +142,13 @@ namespace Hospital_System.DAL
         {
 
             var ids = 0;
+
+            if (string.IsNullOrEmpty(mComplaint.PhoneNumber))
+            {
+                
+                throw new ArgumentException("Phone number cannot be null or empty.");
+            }
+
             con.Open();
             cmd = new SqlCommand("select * from complaints where Id='" + mComplaint.Id + "'", con);
             reader = cmd.ExecuteReader();
@@ -231,7 +238,7 @@ namespace Hospital_System.DAL
         {
             List<Doctor> doctors = new List<Doctor>();
             con.Open();
-            cmd = new SqlCommand("select* from doctors where Department like '%" + searchvalue + "%'  or FullName like '%" +searchvalue+"%' or PhoneNo like'%"+searchvalue+"%' or Email like '%"+searchvalue+"%' or Education like '%"+searchvalue+"%' " , con);
+            cmd = new SqlCommand("select* from doctors where Department like '%" + searchvalue + "%'  or FullName like '%" +searchvalue+ "%' or PhoneNo like '%" +searchvalue+ "%' or Email like '%"+searchvalue+"%' or Education like '%"+searchvalue+"%'  " , con);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -252,6 +259,38 @@ namespace Hospital_System.DAL
             con.Close();
             return doctors;
         }
+
+
+
+        public Doctor GetIdDoctor(int DoctorId)
+        {
+            Doctor doctor1 = null;
+
+            con.Open();
+            cmd = new SqlCommand("select * from doctors where DoctorId= "+ DoctorId +"", con);
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                doctor1 = new Doctor
+                {
+
+                    DoctorId = reader.IsDBNull(reader.GetOrdinal("DoctorId")) ? 0 : Convert.ToInt32(reader["DoctorId"]),
+                    FullName = reader.IsDBNull(reader.GetOrdinal("FullName")) ? string.Empty : reader.GetString(reader.GetOrdinal("FullName")),
+                    Email = reader.IsDBNull(reader.GetOrdinal("Email")) ? string.Empty : reader.GetString(reader.GetOrdinal("Email")),
+                    Department = reader.IsDBNull(reader.GetOrdinal("Department")) ? string.Empty : reader.GetString(reader.GetOrdinal("Department")),
+                    Education = reader.IsDBNull(reader.GetOrdinal("Education")) ? string.Empty : reader.GetString(reader.GetOrdinal("Education")),
+                    Designation = reader.IsDBNull(reader.GetOrdinal("Designation")) ? string.Empty : reader.GetString(reader.GetOrdinal("Designation")),
+                    Status = reader.IsDBNull(reader.GetOrdinal("Status")) ? string.Empty : reader.GetString(reader.GetOrdinal("Status"))
+
+                };
+            }
+
+
+            reader.Close();
+            con.Close();
+            return doctor1;
+        }
+
 
         public int dynamicint()
         {
@@ -295,6 +334,7 @@ namespace Hospital_System.DAL
                             PatientType = row["PatientType"].ToString(),
                             Gender = row["Gender"].ToString(),
                             Problem = row["Problem"].ToString(),
+                           
                             PhoneNumber = row["PhoneNumber"].ToString(),
                             Address = row["Address"].ToString(),
                             Date = row["Date"].ToString(),

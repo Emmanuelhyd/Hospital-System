@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "GetHospPatient";
+    Layout = null;
 }
 
 <style>
@@ -15,7 +16,7 @@
     h2 {
         color: #333;
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     .patient-details {
@@ -34,14 +35,40 @@
         .patient-details br {
             margin: 10px 0;
         }
+
+    /* Back button styling */
+    .back-button {
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: #007BFF;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-bottom: 20px;
+        transition: background-color 0.3s ease;
+        margin-left: 20px; /* Adds some space from the left */
+    }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-button:active {
+            background-color: #003f7f;
+        }
 </style>
+
+<!-- Back Button -->
+<a href="javascript:history.back()" class="back-button">Back</a>
 
 <h2>Patient Details</h2>
 
 <div class="patient-details">
     <strong>Patient Name:</strong> @Model.PatientName <br />
     <strong>Admission Date:</strong> @Model.AdmissionDate <br />
-    <strong>Discharge Date:</strong> @Model.Dischargedate <br />
+    <strong>Discharge Date:</strong> @Model.DischargeDate <br />
     <strong>Problem:</strong> @Model.Problem <br />
     <strong>Status:</strong> @Model.Status <br />
 </div>
