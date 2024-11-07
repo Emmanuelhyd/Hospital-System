@@ -1,0 +1,168 @@
+﻿@model Hospital_System.Models.AdminModel
+
+
+    @{
+        
+        Layout = "~/Views/Shared/_LayoutBlood.cshtml";
+    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Relative Information</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f7f7f7;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: auto;
+            max-width: 900px;
+            position: relative; /* For absolute positioning of the back button */
+        }
+
+        h2 {
+            color: #343a40;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.85rem;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .btn-submit {
+            width: 33%;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: blue; /* Blue background for the back button */
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .back-button:hover {
+                background-color: darkblue; /* Darker blue on hover */
+            }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <button class="back-button" onclick="window.history.back()">Back</button>
+
+        @using (Html.BeginForm("AddRelativeInfo", "Admin", FormMethod.Post))
+        {
+            <h2>Edit Relative Information</h2>
+
+            <div class="mb-3 row">
+
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.ReferenceId, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.ReferenceId, new { @class = "form-control", placeholder = "Enter ReferenceId", required = "required", aria_required = "true" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.Name, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Enter Name", required = "required", aria_required = "true" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.RelationWithDonor, new { @class = "form-label" })
+                    @Html.DropDownList("RelationWithDonor", new SelectList(new List<SelectListItem>
+                    {
+                        new SelectListItem { Value = "Father", Text = "Father" },
+                        new SelectListItem { Value = "Mother", Text = "Mother" },
+                        new SelectListItem { Value = "Brother", Text = "Brother" },
+                        new SelectListItem { Value = "Sister", Text = "Sister" },
+                        new SelectListItem { Value = "Spouse", Text = "Spouse" },
+                        new SelectListItem { Value = "Friend", Text = "Friend" },
+                        new SelectListItem { Value = "Relative", Text = "Relative" },
+                        new SelectListItem { Value = "Colleague", Text = "Colleague" },
+                        new SelectListItem { Value = "Other", Text = "Other" }
+                    }, "Value", "Text"), "Select Relation with Donor", new { @class = "form-select", required = "required", aria_required = "true" })
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.EmailId, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.EmailId, new { @class = "form-control", placeholder = "Enter Email", required = "required", aria_required = "true" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.PhoneNumber, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Enter Phone Number", required = "required", aria_required = "true" })
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col-md-6">
+                    @Html.Label("Gender", new { @class = "form-label" })
+                    @Html.DropDownList("Gender", new SelectList(new List<SelectListItem>
+                    {
+                        new SelectListItem { Value = "Male", Text = "Male" },
+                        new SelectListItem { Value = "Female", Text = "Female" },
+                        new SelectListItem { Value = "Other", Text = "Other" }
+                    }, "Value", "Text"), "Select Gender", new { @class = "form-select", required = "required", aria_required = "true" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.StreetAddress, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.StreetAddress, new { @class = "form-control", placeholder = "Enter Street Address", required = "required", aria_required = "true" })
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.City, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "Enter City", required = "required", aria_required = "true" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.State, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.State, new { @class = "form-control", placeholder = "Enter State", required = "required", aria_required = "true" })
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.ZipCode, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control", placeholder = "Enter Zip Code", required = "required", aria_required = "true" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.Country, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Country, new { @class = "form-control", placeholder = "Enter Country", required = "required", aria_required = "true" })
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+            </div>
+        }
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

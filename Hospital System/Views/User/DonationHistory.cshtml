@@ -1,0 +1,203 @@
+﻿@model IEnumerable<Hospital_System.Models.UserModel>
+
+@{
+    ViewBag.Title = "Donation History";
+    Layout = "~/Views/Shared/_UserLayoutBlood.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donation History</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f7f7f7;
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative; /* For absolute positioning of the back button */
+        }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: blue; /* Blue background for the back button */
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .back-button:hover {
+                background-color: darkblue; /* Darker blue on hover */
+            }
+
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #f8f9fa;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .card-body {
+            padding: 10px;
+        }
+
+        .card-footer {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .action-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-remove {
+            background-color: #ff6f61;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+            .btn-remove:hover {
+                background-color: #e63946;
+            }
+
+        .btn-icon {
+            margin-right: 5px;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            padding: 10px;
+            width: 60%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-button {
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+            .search-button:hover {
+                background-color: #0056b3;
+            }
+
+        .highlight {
+            background-color: yellow;
+            color: black;
+        }
+
+        .alert {
+            color: red;
+            display: none;
+            text-align: center;
+        }
+
+        .print-button {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+            .print-button:hover {
+                background-color: darkred;
+            }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <button class="back-button" onclick="window.history.back()">Back</button>
+        <h2 class="text-center">My Donation History</h2>
+        @using (Html.BeginForm())
+        {
+            <div class="card-container">
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var user in Model)
+                    {
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>
+                                    @Html.DisplayFor(m => user.FirstName) @Html.DisplayFor(m => user.LastName)
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-id"><strong>ID:</strong> @Html.DisplayFor(m => user.Id)</p>
+                                <p class="card-email"><strong>Email:</strong> @Html.DisplayFor(m => user.EmailId)</p>
+                                <p class="card-phone"><strong>Phone:</strong> @Html.DisplayFor(m => user.PhoneNumber)</p>
+                                <p><strong>Gender:</strong> @Html.DisplayFor(m => user.Gender)</p>
+                                <p><strong>Blood Group:</strong> @Html.DisplayFor(m => user.BloodGroup)</p>
+                                <p><strong>Quantity:</strong> @Html.DisplayFor(m => user.Quantity)</p>
+                                <p><strong>Decease:</strong> @Html.DisplayFor(m => user.Decease)</p>
+                                <p>
+                                    <strong>Address:</strong>
+                                    @Html.DisplayFor(m => user.StreetAddress),
+                                    @Html.DisplayFor(m => user.City),
+                                    @Html.DisplayFor(m => user.State),
+                                    @Html.DisplayFor(m => user.ZipCode),
+                                    @Html.DisplayFor(m => user.Country)
+                                </p>
+                                <p><strong>Status:</strong>Approved</p>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="text-center">Pending Your Request Please Wait....</div>
+                }
+            </div>
+        }
+
+        <div class="text-center mt-4">
+            <button class="print-button" onclick="window.print()">Print</button>
+        </div>
+    </div>
+</body>
+</html>

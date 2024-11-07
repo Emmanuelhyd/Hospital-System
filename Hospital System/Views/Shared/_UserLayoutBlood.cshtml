@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Blood Bank Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            transition: opacity 0.5s ease;
+            opacity: 0;
+        }
+
+        .vertical-span {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 70px;
+            width: 100%;
+            background-color: #007bff; /* Strong blue for impact */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 500;
+            padding: 15px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+            .vertical-span a {
+                color: white;
+                text-decoration: none;
+                margin: 0 20px;
+                transition: color 0.3s;
+            }
+
+                .vertical-span a:hover {
+                    color: #f1c40f; /* Bright yellow on hover */
+                }
+
+        main {
+            margin-top: 80px; /* Space for vertical span */
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50; /* Darker shade for headings */
+            margin-bottom: 20px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+            }
+
+        .card-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #2980b9; /* Accent color */
+        }
+
+        .card-text {
+            font-size: 1.1rem;
+            color: #34495e; /* Softer text color */
+        }
+        .session-info {
+            position: fixed;
+            top: 75px;
+            right: 5px;
+            background-color: #ffffff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            color: #333;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="session-info">
+        Logged in as: @Session["FirstName"] @Session["LastName"]
+    </div>
+    <div class="vertical-span">
+        <div style="display: flex; justify-content: center; width: 100%;">
+            <a href="@Url.Action("UserHome", "User")">Home</a>
+            <a href="@Url.Action("DonationForm", "User")">Donation</a>
+            <a href="@Url.Action("RelativeInfo", "User")">Family Details</a>
+            <a href="@Url.Action("BloodRequestForm", "User")">Blood Request</a>
+            <a href="@Url.Action("DonationHistory", "User")">Donation History</a>
+            <a href="@Url.Action("BloodRequestHistory", "User")">Blood Request History</a>
+            <a href="@Url.Action("AdminHome", "Admin")" style="margin-left: auto;">Logout</a>
+        </div>
+    </div>
+
+    <main id="content">
+        @RenderBody()
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            document.body.style.opacity = 1;
+        });
+
+        window.onpageshow = function (event) {
+            if (event.persisted) {
+                document.body.style.opacity = 1;
+            }
+        };
+    </script>
+</body>
+</html>

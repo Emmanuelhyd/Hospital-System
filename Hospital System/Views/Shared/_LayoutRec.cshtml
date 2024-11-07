@@ -1,0 +1,47 @@
+﻿
+
+
+
+@{
+    ViewBag.Title = "_LayoutRec";
+}
+
+<div style="position: absolute; height: 20%; width: 100%; background: linear-gradient(45deg, aqua, purple, orange, green, blue); margin-top: -150px;">
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Reception</title>
+        <style>
+        /* Keyframe animation to change colors */
+        keyframes colorChange {
+            0% { color: red; }
+            25% { color: green; }
+            50% { color: blue; }
+            75% { color: orange; }
+            100% { color: purple; }
+        }
+
+            .marquee-text {
+                display: flex;
+                justify-content: center;
+                font-size: 100px;
+                font-weight: bold;
+                animation: colorChange 1s infinite; /* 5 seconds for each cycle */
+            }
+        </style>
+    </head>
+    <body>
+
+        <!-- Marquee with animated color changes -->
+        <marquee class="marquee-text" behavior="scroll" direction="left" scrollamount="40" align="center" loop="infinite">
+            Reception &nbsp;&nbsp;  Reception &nbsp;&nbsp; Reception &nbsp;&nbsp; Reception &nbsp;&nbsp;
+        </marquee>
+
+    </body>
+    </html>
+</div>
+
+<div class="container">
+    @RenderBody()
+</div>

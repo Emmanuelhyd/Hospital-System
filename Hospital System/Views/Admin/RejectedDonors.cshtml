@@ -1,0 +1,213 @@
+﻿@model IEnumerable<Hospital_System.Models.AdminModel>
+
+
+@{
+
+    Layout = "~/Views/Shared/_LayoutBlood.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Blood Bank Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f7f7f7;
+            margin: 0;
+        }
+
+        .content {
+            padding: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative; /* For absolute positioning of the back button */
+        }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: blue; /* Blue background for the back button */
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .back-button:hover {
+                background-color: darkblue; /* Darker blue on hover */
+            }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            padding: 10px;
+            width: 60%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-button {
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+            .search-button:hover {
+                background-color: #0056b3;
+            }
+
+        .highlight {
+            background-color: yellow;
+            color: black;
+        }
+
+        .alert {
+            color: red;
+            display: none;
+            text-align: center;
+        }
+
+        .print-button {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+            .print-button:hover {
+                background-color: darkred;
+            }
+
+        /* Additional CSS for adjusting table layout */
+        table {
+            table-layout: auto; /* Allow column width to adjust dynamically based on content */
+            width: 100%; /* Full width */
+        }
+
+        th, td {
+            word-wrap: break-word; /* Break long words to prevent overflow */
+            white-space: normal; /* Allow content to wrap instead of being cut off */
+            padding: 12px 15px; /* Add padding for better readability */
+            text-align: left; /* Align text to the left for better readability */
+        }
+
+        th {
+            background-color: #f8f9fa; /* Light background for headers */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <button class="back-button" onclick="window.history.back()">Back</button>
+        <h1 class="text-center">@ViewData["Title"]</h1>
+        <h2 class="text-center">Rejected Donors</h2>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search by ID, name, email, or phone..." onkeyup="searchRequests()" />
+            <button class="search-button" onclick="searchRequests()">Search</button>
+        </div>
+        <div id="searchAlert" class="alert">Please enter a keyword to search.</div>
+
+        <div class="table-responsive">
+            @if (Model != null && Model.Any())
+            {
+                <table class="table table-bordered table-striped" id="donationsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email Id</th>
+                            <th>Blood Group</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var admin in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(m => admin.Id)</td>
+                                <td>@Html.DisplayFor(m => admin.FirstName) @Html.DisplayFor(m => admin.LastName)</td>
+                                <td>@Html.DisplayFor(m => admin.EmailId)</td>
+                                <td>@Html.DisplayFor(m => admin.BloodGroup)</td>
+                                <td>@Html.DisplayFor(m => admin.Quantity)</td>
+                                <td>Rejected</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="text-center">No records found.</div>
+            }
+        </div>
+
+        <div class="text-center mt-4">
+            <button class="print-button" onclick="window.print()">Print</button>
+        </div>
+    </div>
+
+    <script>
+        function searchRequests() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById('donationsTable');
+            const rows = table.getElementsByTagName('tr');
+            const alert = document.getElementById('searchAlert');
+
+            // Check if input is empty and show/hide alert accordingly
+            if (filter) {
+                alert.style.display = 'none'; // Hide alert if there is input
+            } else {
+                alert.style.display = 'block'; // Show alert if no input
+            }
+
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                let rowContainsFilter = false;
+
+                for (let j = 0; j < cells.length; j++) {
+                    const cellText = cells[j].textContent.toLowerCase();
+                    if (cellText.includes(filter)) {
+                        rowContainsFilter = true;
+                        // Highlight matching text
+                        const regex = new RegExp(filter, 'gi');
+                        cells[j].innerHTML = cells[j].textContent.replace(regex, '<span class="highlight">$&</span>');
+                    } else {
+                        cells[j].innerHTML = cells[j].textContent; // Restore original text
+                    }
+                }
+
+                // Show or hide the row based on matches
+                rows[i].style.display = rowContainsFilter ? '' : 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

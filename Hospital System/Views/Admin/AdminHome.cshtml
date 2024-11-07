@@ -1,0 +1,269 @@
+﻿@model IEnumerable<Hospital_System.Models.AdminModel>
+
+    @{
+
+        Layout = "~/Views/Shared/_LayoutBlood.cshtml";
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Blood Bank Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #f7f7f7;
+            margin-top: -50px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .blood-group-card {
+            background-color: white;
+            color: black;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            width: 250px;
+            height: 140px;
+        }
+
+            .blood-group-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            }
+
+        .blood-drop {
+            width: 40px;
+            height: auto;
+            margin-bottom: 5px;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            margin: auto;
+        }
+
+        .page-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .card-body {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            margin: 5px 0;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .print-button {
+            margin-top: 20px;
+            padding: 5px 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+            .print-button:hover {
+                background-color: darkred;
+            }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="page-title">@ViewData["Title"]</h1>
+
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="chart-container">
+                    <canvas id="bloodGroupDoughnutChart"></canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h5 style="margin-left:100px;margin-top:40px">Availability in Percentages</h5>
+                <div class="availability-list" style="margin-left:120px;margin-top:20px">
+                    @if (Model == null || !Model.Any())
+                    {
+                        <div>No blood groups available.</div>
+                    }
+                    else
+                    {
+                        double totalQuantity = Model.Sum(u => double.TryParse(u.Quantity.Replace("L", "").Trim(), out double quantity) ? quantity : 0);
+
+                        foreach (var user in Model)
+                        {
+                            double quantity = double.TryParse(user.Quantity.Replace("L", "").Trim(), out double parsedQuantity) ? parsedQuantity : 0;
+                            double percentage = totalQuantity > 0 ? (quantity / totalQuantity) * 100 : 0;
+
+                            <div class="availability-item">
+                                @user.BloodGroup: @percentage.ToString("0.00")%
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3 justify-content-center">
+            @if (Model == null || !Model.Any())
+            {
+                <div class="col-12">
+                    <div class="alert alert-warning">No blood groups available.</div>
+                </div>
+            }
+            else
+            {
+                foreach (var admin in Model.GroupBy(x => x.BloodGroup).Select(g => g.First()))
+                {
+                    var quantityInLiters = ConvertToLiters(admin.Quantity);
+
+                    <div class="col-6 col-md-3 mb-3 d-flex justify-content-center">
+                        <a href="@Url.Action("Details", "Admin", new { bloodGroup = admin.BloodGroup })" class="text-decoration-none">
+                            <div class="card text-center blood-group-card">
+                                <div class="card-body">
+                                    <img src="~/Blood Drop/Blood Drop.jpg" alt="Blood Drop" class="blood-drop" />
+                                    <h5 class="card-title">@admin.BloodGroup</h5>
+                                    <p class="card-text">Available: @(string.IsNullOrEmpty(admin.Quantity) || admin.Quantity == "0" ? "Out of Stock" : quantityInLiters)</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+
+                <div class="col-6 col-md-3 mb-3 d-flex justify-content-center">
+                    <a href="@Url.Action("TotalDonors", "Admin")" class="text-decoration-none">
+                        <div class="card text-center blood-group-card">
+                            <div class="card-body">
+                                <img src="~/Blood Drop/vector-group-people-icon.jpg" alt="Group of Donors" class="blood-drop" />
+                                <h6 class="card-title">Total Donors</h6>
+                                <p class="card-text" style="font-size: 18px; font-weight: bold;">
+                                    @(ViewBag.TotalDonors.ToString("N0"))
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-6 col-md-3 mb-3 d-flex justify-content-center">
+                    <div class="card text-center blood-group-card">
+                        <div class="card-body">
+                            <img src="~/Blood Drop/TU.png" alt="Total Blood Units" class="blood-drop" />
+                            <h6 class="card-title">Total Blood Units</h6>
+                            <p class="card-text" style="font-size: 18px; font-weight: bold;">
+                                @(ViewBag.TotalBloodUnitsInLiters != null
+                                  ? ViewBag.TotalBloodUnitsInLiters
+                                  : "0.0L")
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <button class="print-button" onclick="window.print()">Print</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const ctx = document.getElementById('bloodGroupDoughnutChart').getContext('2d');
+        const bloodGroups = [];
+        const quantities = [];
+        const backgroundColors = [];
+
+        const colorMapping = {
+            "A+": 'rgba(255, 99, 132, 1)',
+            "A-": 'rgba(128, 0, 128, 1)',
+            "B+": 'rgba(75, 192, 192, 1)',
+            "B-": 'rgba(54, 162, 235, 1)',
+            "O+": 'rgba(255, 206, 86, 1)',
+            "O-": 'rgba(153, 102, 255, 1)',
+            "AB+": 'rgba(255, 20, 147, 1)',
+            "AB-": 'rgba(255, 159, 64, 1)',
+        };
+
+        @foreach (var admin in Model.GroupBy(x => x.BloodGroup).Select(g => g.First()))
+        {
+            <text>
+                bloodGroups.push('@admin.BloodGroup');
+                quantities.push(parseFloat('@admin.Quantity'.replace('L', '').trim()) || 0);
+                backgroundColors.push(colorMapping['@admin.BloodGroup'] || 'rgba(0, 0, 0, 1)');
+            </text>
+        }
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: bloodGroups,
+                datasets: [{
+                    label: 'Available Blood Quantity',
+                    data: quantities,
+                    backgroundColor: backgroundColors,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Blood Group Availability'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+@functions {
+    public string ConvertToLiters(string quantity)
+    {
+        if (string.IsNullOrEmpty(quantity)) return "0L";
+        double ml;
+        if (double.TryParse(quantity.Replace("ml", "").Trim(), out ml))
+        {
+            return (ml / 1000).ToString("0.00") + "L";
+        }
+        return quantity;
+    }
+}

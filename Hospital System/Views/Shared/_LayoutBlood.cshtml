@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Blood Bank Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            transition: opacity 0.5s ease;
+            opacity: 0;
+        }
+
+        .vertical-span {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 70px;
+            width: 100%; /* Full width */
+            background-color: #007bff; /* Strong blue for impact */
+            color: white;
+            display: flex;
+            align-items: center; /* Vertically center the links */
+            justify-content: space-between; /* Distribute items evenly */
+            font-size: 16px; /* Adjust font size to fit */
+            font-weight: bold;
+            z-index: 500;
+            padding: 0 10px; /* Adjust horizontal padding */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            white-space: nowrap; /* Prevent links from wrapping to the next line */
+        }
+
+            /* Menu links */
+            .vertical-span a {
+                color: white;
+                text-decoration: none;
+                margin: 0 8px; /* Reduced margin for better fit */
+                transition: color 0.3s;
+            }
+
+                .vertical-span a:hover {
+                    color: #f1c40f; /* Bright yellow on hover */
+                }
+
+        main {
+            margin-top: 80px; /* Space for vertical span */
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50; /* Darker shade for headings */
+            margin-bottom: 20px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+            }
+
+        .card-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #2980b9; /* Accent color */
+        }
+
+        .card-text {
+            font-size: 1.1rem;
+            color: #34495e; /* Softer text color */
+        }
+    </style>
+</head>
+<body>
+    <div class="vertical-span">
+        <a href="@Url.Action("AdminHome", "Admin")">Home</a>
+        <a href="@Url.Action("DonationRequests", "Admin")">Donation Requests</a>
+        <a href="@Url.Action("ApprovedDonations", "Admin")">Approved Donations</a>
+        <a href="@Url.Action("RejectedDonors", "Admin")">Rejected Donors</a>
+        <a href="@Url.Action("LatestDonations", "Admin")">Latest Donations</a>
+        <a href="@Url.Action("FamilyDetails", "Admin")">Family Details</a>
+        <a href="@Url.Action("BloodRequests", "Admin")">Blood Requests</a>
+        <a href="@Url.Action("ApprovedBloodRequests", "Admin")">Approved Blood Requests</a>
+        <a href="@Url.Action("RejectedBloodRequests", "Admin")">Rejected Blood Requests</a>
+        <a href="@Url.Action("UserHome", "User")">Logout</a>
+    </div>
+
+    <main id="content">
+        @RenderBody()
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            document.body.style.opacity = 1;
+        });
+
+        window.onpageshow = function (event) {
+            if (event.persisted) {
+                document.body.style.opacity = 1;
+            }
+        };
+    </script>
+</body>
+</html>

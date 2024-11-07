@@ -1,0 +1,229 @@
+﻿@model IEnumerable<Hospital_System.Models.AdminModel>
+
+
+@{
+
+    Layout = "~/Views/Shared/_LayoutBlood.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Details Of Donors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f7f7f7;
+            margin: 0;
+        }
+
+        .content {
+            padding: 20px;
+            width: auto; /* Change to auto */
+            max-width: 1200px; /* Keep max-width for large screens */
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: blue;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .back-button:hover {
+                background-color: darkblue;
+            }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            padding: 10px;
+            width: 60%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-button {
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+            .search-button:hover {
+                background-color: #0056b3;
+            }
+
+        .highlight {
+            background-color: yellow;
+            color: black;
+        }
+
+        .alert {
+            color: red;
+            display: none;
+            text-align: center;
+        }
+
+        .print-button {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+            .print-button:hover {
+                background-color: darkred;
+            }
+
+        .table {
+            width: 100%;
+            min-width: 1000px;
+        }
+
+            .table th, .table td {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <button class="back-button" onclick="window.history.back()">Back</button>
+        <h1 class="text-center">Details Of Donors</h1>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search by ID, name, email, or phone..." onkeyup="searchRequests()" />
+            <button class="search-button" onclick="searchRequests()">Search</button>
+        </div>
+        <div id="searchAlert" class="alert">Please enter a keyword to search.</div>
+
+        <div class="table-responsive">
+            @if (Model != null && Model.Any())
+            {
+                <table class="table table-bordered table-striped table-sm" id="requestsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email Id</th>
+                            <th>DateOfBirth</th>
+                            <th>Phone Number</th>
+                            <th>Gender</th>
+                            <th>Blood Group</th>
+                            <th>Quantity</th>
+                            <th>Decease</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var admin in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(m => admin.Id)</td>
+                                <td>@Html.DisplayFor(m => admin.FirstName)</td>
+                                <td>@Html.DisplayFor(m => admin.LastName)</td>
+                                <td>@Html.DisplayFor(m => admin.EmailId)</td>
+                                <td>@Html.DisplayFor(m => admin.DateOfBirth)</td>
+                                <td>@Html.DisplayFor(m => admin.PhoneNumber)</td>
+                                <td>@Html.DisplayFor(m => admin.Gender)</td>
+                                <td>@Html.DisplayFor(m => admin.BloodGroup)</td>
+                                <td>@Html.DisplayFor(m => admin.Quantity)</td>
+                                <td>@Html.DisplayFor(m => admin.Decease)</td>
+                                <td>@Html.DisplayFor(m => admin.City)</td>
+                                <td>@Html.DisplayFor(m => admin.State)</td>
+                                <td>@Html.DisplayFor(m => admin.Country)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="text-center">No records found.</div>
+            }
+        </div>
+
+        <div class="text-center mt-4">
+            <button class="print-button" onclick="window.print()">Print</button>
+        </div>
+    </div>
+
+    <script>
+        function searchRequests() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById('requestsTable'); // Fixed table ID
+            const rows = table.getElementsByTagName('tr');
+            const alert = document.getElementById('searchAlert');
+
+            // Show alert if no input is provided
+            if (!filter) {
+                alert.style.display = 'block';
+            } else {
+                alert.style.display = 'none';
+            }
+
+            // Loop through the rows and apply search logic
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                let rowContainsFilter = false;
+
+                // Loop through each cell in the row
+                for (let j = 0; j < cells.length; j++) {
+                    const cell = cells[j];
+                    const cellText = cell.textContent.toLowerCase();
+
+                    // If the cell contains text (not a button or link)
+                    if (cellText.includes(filter)) {
+                        rowContainsFilter = true;
+
+                        // Only highlight text, not HTML elements like buttons/links
+                        if (cell.querySelector('a') || cell.querySelector('button')) {
+                            continue; // Skip cells that contain links or buttons
+                        }
+
+                        // Highlight matching text
+                        const regex = new RegExp(filter, 'gi');
+                        cell.innerHTML = cell.textContent.replace(regex, '<span class="highlight">$&</span>');
+                    } else {
+                        // Restore original text without highlighting
+                        if (cell.querySelector('a') || cell.querySelector('button')) {
+                            continue; // Skip cells that contain links or buttons
+                        }
+                        cell.innerHTML = cell.textContent; // Restore original text
+                    }
+                }
+
+                // Show or hide the row based on matching filter
+                rows[i].style.display = rowContainsFilter ? '' : 'none';
+            }
+        }
+    </script>
+</body>
+</html>

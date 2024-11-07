@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Hospital_System.Models.AdminModel>
+
+@{
+
+    Layout = "~/Views/Shared/_LayoutBlood.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donation Requests</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f7f7f7;
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .card-header {
+            background-color: #f8f9fa;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .card-body {
+            padding: 10px;
+        }
+
+        .card-footer {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h2 class="text-center">Latest Donors</h2>
+
+        @using (Html.BeginForm())
+        {
+            <div class="card-container">
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var admin in Model)
+                    {
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>
+                                    @Html.DisplayFor(m => admin.FirstName) @Html.DisplayFor(m => admin.LastName)
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>ID:</strong> @Html.DisplayFor(m => admin.Id)</p>
+                                <p><strong>Email:</strong> @Html.DisplayFor(m => admin.EmailId)</p>
+                                <p><strong>DOB:</strong> @Html.DisplayFor(m => admin.DateOfBirth)</p>
+                                <p><strong>Phone:</strong> @Html.DisplayFor(m => admin.PhoneNumber)</p>
+                                <p><strong>Gender:</strong> @Html.DisplayFor(m => admin.Gender)</p>
+                                <p><strong>Quantity:</strong> @Html.DisplayFor(m => admin.Quantity)</p>
+                                <p><strong>Decease:</strong> @Html.DisplayFor(m => admin.Decease)</p>
+                                <p><strong>Address:</strong> @Html.DisplayFor(m => admin.StreetAddress), @Html.DisplayFor(m => admin.City), @Html.DisplayFor(m => admin.State), @Html.DisplayFor(m => admin.ZipCode), @Html.DisplayFor(m => admin.Country)</p>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="text-center">No records found.</div>
+                }
+            </div>
+        }
+    </div>
+</body>
+</html>
