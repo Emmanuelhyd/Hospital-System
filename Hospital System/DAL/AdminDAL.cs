@@ -1045,7 +1045,7 @@ namespace Hospital_System.DAL
             con.Open();
             if (ids == 0)
             {
-                cmd = new SqlCommand("insert into bookapp(Id,PatientName,Gender,Department,Problem,PhoneNumber,Address,Date,Time,Description) values(" + mAppointmentAd.Id + ",'" + mAppointmentAd.PatientName + "','" + mAppointmentAd.Gender + "','"+mAppointmentAd.Department+"','" + mAppointmentAd.Problem+ "','" + mAppointmentAd.PhoneNumber + "','"+mAppointmentAd.Address +"','"+mAppointmentAd.Date + "','"+mAppointmentAd.Time + "','"+mAppointmentAd.Description + "','"+mAppointmentAd.DoctorName+"')", con);
+                cmd = new SqlCommand("insert into bookapp(Id,PatientName,Gender,Department,Problem,DoctorName,PhoneNumber,Address,Date,Time,Description) values(" + mAppointmentAd.Id + ",'" + mAppointmentAd.PatientName + "','" + mAppointmentAd.Gender + "','"+mAppointmentAd.Department+"','" + mAppointmentAd.Problem+ "','"+mAppointmentAd.DoctorName+"','" + mAppointmentAd.PhoneNumber + "','"+mAppointmentAd.Address +"','"+mAppointmentAd.Date + "','"+mAppointmentAd.Time + "','"+mAppointmentAd.Description + "')", con);
 
             }
             else

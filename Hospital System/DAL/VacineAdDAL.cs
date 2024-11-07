@@ -84,7 +84,7 @@ namespace Hospital_System.DAL
             con.Open();
             if (ids == 0)
             {
-                cmd = new SqlCommand("insert into Vaccine(PatientId,PatientName,DoctorName,Age,VaccineId,VaccineType,Dosage,DateOfVaccination,FollowupDate,NextDueDate,ReactionType,Status) values(" + vaccineDo.PatientId + ",'" + vaccineDo.PatientName + "','" + vaccineDo.DoctorName + "','" + vaccineDo.Age + "','" + vaccineDo.VaccineId + "','" + vaccineDo.VaccineType + "','" + vaccineDo.Dosage + "','" + vaccineDo.DateOfVaccination + "','" + vaccineDo.FollowupDate + "','" + vaccineDo.NextDueDate + "','" + vaccineDo.ReactionType + "','" + vaccineDo.Status + "')", con);
+                cmd = new SqlCommand("insert into Vaccine(PatientName,DoctorName,Age,VaccineId,VaccineType,Dosage,DateOfVaccination,FollowupDate,NextDueDate,ReactionType,Status) values('" + vaccineDo.PatientName + "','" + vaccineDo.DoctorName + "','" + vaccineDo.Age + "','" + vaccineDo.VaccineId + "','" + vaccineDo.VaccineType + "','" + vaccineDo.Dosage + "','" + vaccineDo.DateOfVaccination + "','" + vaccineDo.FollowupDate + "','" + vaccineDo.NextDueDate + "','" + vaccineDo.ReactionType + "','" + vaccineDo.Status + "')", con);
 
             }
             else

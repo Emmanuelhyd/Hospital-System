@@ -11,7 +11,7 @@
         flex-wrap: wrap;
         gap: 20px;
         margin-top: 27px;
-       /* background: linear-gradient(90deg, skyblue, pink);*/
+        /* background: linear-gradient(90deg, skyblue, pink);*/
     }
 
     .form-item {
@@ -83,8 +83,12 @@
 
 @using (Html.BeginForm("AddDoctorAd", "DoctorAd"))
 {
+   
+
     <div style=" padding: 20px">
+        <div style="margin-left: 108px; margin-top: -44px;"> <button type="button" class="back-button" onclick=" Back()"> Back </button></div>
         <div class="form-container">
+
 
             @Html.AntiForgeryToken()
             <div class="form-item">
@@ -94,18 +98,25 @@
 
             <div class="form-item">
                 @Html.LabelFor(m => m.MDoctorAd.FullName, "FullName")
-                @Html.TextBoxFor(m => m.MDoctorAd.FullName, new { @required = "required", @placeholder = "Doctor Name" })
+                @Html.TextBoxFor(m => m.MDoctorAd.FullName, new
+{
+@class = "form-control",
+@placeholder = "FullName ",
+@required = "required",
+@pattern = "^[A-Za-z\\s]+$",
+@title = "Please enter a valid name (letters and spaces only)"
+})
             </div>
 
             @*<div class="form-item">
-            @Html.LabelFor(m => m.MDoctorAd.Firstname, "Firstname")
-            @Html.TextBoxFor(m => m.MDoctorAd.Firstname, new { @required = "required", @placeholder = "First Name" })
-        </div>
+                @Html.LabelFor(m => m.MDoctorAd.Firstname, "Firstname")
+                @Html.TextBoxFor(m => m.MDoctorAd.Firstname, new { @required = "required", @placeholder = "First Name" })
+            </div>
 
-        <div class="form-item">
-            @Html.LabelFor(m => m.MDoctorAd.LastName, "LastName")
-            @Html.TextBoxFor(m => m.MDoctorAd.LastName, new { @required = "required", @placeholder = "Last Name" })
-        </div>*@
+            <div class="form-item">
+                @Html.LabelFor(m => m.MDoctorAd.LastName, "LastName")
+                @Html.TextBoxFor(m => m.MDoctorAd.LastName, new { @required = "required", @placeholder = "Last Name" })
+            </div>*@
 
             <div class="form-item">
                 @Html.LabelFor(m => m.MDoctorAd.Email, "Email")
@@ -122,18 +133,32 @@
 
 
             @*<div class="form-item">
-            @Html.LabelFor(m => m.MDoctorAd.Email, "Email")
-            @Html.TextBoxFor(m => m.MDoctorAd.Email, new { @required = "required", @placeholder = "Email" })
-        </div>*@
+                @Html.LabelFor(m => m.MDoctorAd.Email, "Email")
+                @Html.TextBoxFor(m => m.MDoctorAd.Email, new { @required = "required", @placeholder = "Email" })
+            </div>*@
 
             <div class="form-item">
                 @Html.LabelFor(m => m.MDoctorAd.Department, "Department")
-                @Html.TextBoxFor(m => m.MDoctorAd.Department, new { @required = "required", @placeholder = "Department" })
+                @Html.TextBoxFor(m => m.MDoctorAd.Department, new
+{
+    @class = "form-control",
+    @placeholder = "Department Name",
+    @required = "required",
+    @pattern = "^[A-Za-z\\s]+$",
+    @title = "Please enter a valid name (letters and spaces only)"
+})
             </div>
 
             <div class="form-item">
                 @Html.LabelFor(m => m.MDoctorAd.Designation, "Designation")
-                @Html.TextBoxFor(m => m.MDoctorAd.Designation, new { @required = "required", @placeholder = "Designation" })
+                @Html.TextBoxFor(m => m.MDoctorAd.Designation, new
+{
+@class = "form-control",
+@placeholder = "Designation Name",
+@required = "required",
+@pattern = "^[A-Za-z\\s]+$",
+@title = "Please enter a valid name (letters and spaces only)"
+})
             </div>
 
             <div class="form-item">
@@ -147,9 +172,9 @@
                 })
             </div>
             @*<div class="form-item">
-            @Html.LabelFor(m => m.MDoctorAd.PhoneNo, "PhoneNo")
-            @Html.TextBoxFor(m => m.MDoctorAd.PhoneNo, new { @required = "required", @placeholder = "Mobile Number" })
-        </div>*@
+                @Html.LabelFor(m => m.MDoctorAd.PhoneNo, "PhoneNo")
+                @Html.TextBoxFor(m => m.MDoctorAd.PhoneNo, new { @required = "required", @placeholder = "Mobile Number" })
+            </div>*@
 
             <div class="form-item">
                 @Html.LabelFor(m => m.MDoctorAd.ContactNo, "Contact No")
@@ -164,9 +189,9 @@
 
 
             @*<div class="form-item">
-            @Html.LabelFor(m => m.MDoctorAd.ContactNo, "ContactNo")
-            @Html.TextBoxFor(m => m.MDoctorAd.ContactNo, new { @required = "required", @placeholder = "Mobile Number" })
-        </div>*@
+                @Html.LabelFor(m => m.MDoctorAd.ContactNo, "ContactNo")
+                @Html.TextBoxFor(m => m.MDoctorAd.ContactNo, new { @required = "required", @placeholder = "Mobile Number" })
+            </div>*@
 
             <div class="form-item">
                 @Html.LabelFor(m => m.MDoctorAd.Education, "Education")
@@ -201,7 +226,7 @@
         <div class="form-submit">
             <input type="submit" value="Submit" class="btn-submit">
         </div>
-        <div style="margin-left: 108px; margin-top: -44px;"> <button type="button" class="back-button" onclick=" Back()"> Back </button></div>
+
     </div>
 }
 

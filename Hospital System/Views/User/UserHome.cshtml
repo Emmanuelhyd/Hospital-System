@@ -45,15 +45,14 @@
             border: 1px solid #ddd;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            padding: 10px;
-            text-align: center;
             transition: transform 0.2s;
+            width: 250px;
             height: 140px;
         }
 
             .blood-group-card:hover {
                 transform: translateY(-5px);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             }
 
         .availability-item {
@@ -124,10 +123,10 @@
             </div>
         </div>
 
-        <div class="row">
+        <div  class="row mt-3 justify-content-center">
             @foreach (var user in Model)
             {
-                <div class="col-6 col-md-3">
+                <div class="col-6 col-md-3 mb-3 d-flex justify-content-center">
                     <div class="card text-center blood-group-card" data-blood-group="@user.BloodGroup" data-quantity="@user.Quantity">
                         <div class="card-body">
                             <img src="~/Blood Drop/Blood Drop.jpg" alt="Blood Drop" class="blood-drop" style="width: 40px; height: auto; margin-bottom: 5px;" />

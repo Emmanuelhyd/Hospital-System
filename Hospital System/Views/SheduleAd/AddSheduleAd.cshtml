@@ -20,7 +20,15 @@
 
                 <div class="form-group">
                     <label>Doctor Name</label>
-                    @Html.TextBoxFor(m => m.MShedule.DoctorName, new { @required = "required", @placeholder = "Enter Doctor Name", @class = "form-control" })
+                    @Html.TextBoxFor(m => m.MShedule.DoctorName, new
+{
+@class = "form-control",
+@placeholder = "FullName ",
+@required = "required",
+@pattern = "^[A-Za-z\\s]+$",
+@title = "Please enter a valid name (letters and spaces only)"
+})
+                </div>
                 </div>
             </div>
 
@@ -55,7 +63,7 @@
                 <button type="button" onclick="window.location.href='/Dashboard/DashboardView'" style="background-color: #007BFF; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.3s;">Back</button>
             </div>
         </div>
-    </div>
+   
 }
 
 <script>

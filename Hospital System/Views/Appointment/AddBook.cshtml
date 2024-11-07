@@ -136,7 +136,7 @@
 
             <div class="form-group">
                 @Html.LabelFor(m => m.mAppointmentAd.Problem)
-                @Html.DropDownListFor(m => m.mAppointmentAd.Problem, Model.Problems, "Select Problem", new { @class = "form-control" })
+                @Html.DropDownListFor(m => m.mAppointmentAd.Problem, Model.Problems, "Select Problem", new { @class = "form-control", @required = "required" })
                 @Html.ValidationMessageFor(m => m.mAppointmentAd.Problem, "", new { @class = "text-danger" })
             </div>
 

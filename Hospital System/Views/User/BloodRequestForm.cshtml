@@ -159,15 +159,15 @@
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.Quantity, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.Quantity, new
-                    {
-                        @class = "form-control",
-                        placeholder = "Quantity in mL (e.g., 50mL, 100mL)",
-                        required = "required",
-                        pattern = "^[1-9][0-9]*(\\.[0-9]{1,2})?(mL|L)$",
-                        title = "Quantity must be a valid number with units (e.g., 50mL, 1L, 150mL)",
-                        aria_required = "true",
-                        @id = "quantityInput"
-                    })
+               {
+                   @class = "form-control",
+                   placeholder = "Quantity in ml (e.g., 50ml, 100ml)",
+                   required = "required",
+                   pattern = "^[1-9][0-9]*(\\.[0-9]{1,2})?(ml|l)$",
+                   title = "Quantity must be a valid number with units (e.g., 50ml, 1l, 150ml)",
+                   aria_required = "true",
+                   @id = "quantityInput"
+               })
                 </div>
             </div>
 

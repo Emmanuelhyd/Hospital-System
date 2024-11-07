@@ -16,27 +16,77 @@
             </div>
             <div class="form-item">
                 <label>PatientName</label>
-                @Html.TextBoxFor(m => m.MMedicineAd.PatientName, new { @required = "required", @placeholder = "Patient Name", @class = "form-control" })
+                @Html.TextBoxFor(m => m.MMedicineAd.PatientName, new
+{
+@class = "form-control",
+@placeholder = "PatientName",
+@required = "required",
+@pattern = "^[A-Za-z\\s]+$",
+@title = "Please enter a valid name (letters and spaces only)"
+
+
+
+})
                 @Html.ValidationMessageFor(m => m.MMedicineAd.PatientName, "", new { @class = "text-danger" })
             </div>
             <div class="form-item">
                 <label>DoctorName</label>
-                @Html.TextBoxFor(m => m.MMedicineAd.DoctorName, new { @required = "required", @placeholder = "Doctor Name", @class = "form-control" })
+                @Html.TextBoxFor(m => m.MMedicineAd.DoctorName, new
+{
+@class = "form-control",
+@placeholder = "DoctorName",
+@required = "required",
+@pattern = "^[A-Za-z\\s]+$",
+@title = "Please enter a valid name (letters and spaces only)"
+
+
+
+})
                 @Html.ValidationMessageFor(m => m.MMedicineAd.DoctorName, "", new { @class = "text-danger" })
             </div>
             <div class="form-item">
                 <label>Problem</label>
-                @Html.TextBoxFor(m => m.MMedicineAd.Problem, new { @required = "required", @placeholder = "Problem", @class = "form-control" })
+                @Html.TextBoxFor(m => m.MMedicineAd.Problem, new
+{
+@class = "form-control",
+@placeholder = "Problem",
+@required = "required",
+@pattern = "^[A-Za-z\\s]+$",
+@title = "Please enter a valid name (letters and spaces only)"
+
+
+
+})
                 @Html.ValidationMessageFor(m => m.MMedicineAd.Problem, "", new { @class = "text-danger" })
             </div>
             <div class="form-item">
                 <label>Description</label>
-                @Html.TextBoxFor(m => m.MMedicineAd.Description, new { @required = "required", @placeholder = "Description", @class = "form-control" })
+                @Html.TextBoxFor(m => m.MMedicineAd.Description, new
+{
+@class = "form-control",
+@placeholder = "Description",
+@required = "required",
+@pattern = "^[A-Za-z\\s]+$",
+@title = "Please enter a valid name (letters and spaces only)"
+
+
+
+})
                 @Html.ValidationMessageFor(m => m.MMedicineAd.Description, "", new { @class = "text-danger" })
             </div>
             <div class="form-item">
                 <label>MedicineName</label>
-                @Html.TextBoxFor(m => m.MMedicineAd.MedicineName, new { @required = "required", @class = "form-control" , @placeholder=" MedicineName"})
+                @Html.TextBoxFor(m => m.MMedicineAd.MedicineName, new
+{
+@class = "form-control",
+@placeholder = "MedicineName",
+@required = "required",
+@pattern = "^[A-Za-z\\s]+$",
+@title = "Please enter a valid name (letters and spaces only)"
+
+
+
+})
                 @Html.ValidationMessageFor(m => m.MMedicineAd.MedicineName, "", new { @class = "text-danger" })
             </div>
             <div class="form-item">
