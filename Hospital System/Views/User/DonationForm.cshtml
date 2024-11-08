@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Donation Form";
     Layout = "~/Views/Shared/_UserLayoutBlood.cshtml";
-    }
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,27 +82,28 @@
     <div class="form-container">
         <button class="back-button" onclick="window.history.back()">Back</button>
 
-        @using (Html.BeginForm("DonationForm", "User", FormMethod.Post))
+        @using (Html.BeginForm("DonationForm", "User", FormMethod.Post, new { id = "donationForm" }))
         {
             <h2>Donation Form</h2>
 
             <div class="row mb-3">
-
-                <div class="col-md-6">
-                    @Html.LabelFor(m => m.Id, new { @class = "form-label" })
-                    @Html.TextBoxFor(m => m.Id, new { @class = "form-control", placeholder = "Set Your Id", required = "required", aria_required = "true", @value= Session["Id"] })
+                <div class="col-md-6" style="margin-top:8px">
+                    @Html.LabelFor(model => model.Id, "User ID")
+                    @Html.TextBoxFor(model => model.Id, new { @readonly = "readonly", @class = "form-control" })
                 </div>
+
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.FirstName, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Enter First Name", required = "required", aria_required = "true" })
                 </div>
+
+            </div>
+
+            <div class="row mb-3">
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.LastName, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Enter Last Name", required = "required", aria_required = "true" })
                 </div>
-            </div>
-
-            <div class="row mb-3">
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.EmailId, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.EmailId, new
@@ -115,17 +116,22 @@
                         title = "Please enter a valid Gmail address ending with @gmail. (e.g., example@gmail.com, user123@gmail.in)"
                     })
                 </div>
-                <div class="col-md-6">
-                    @Html.Label("Date of Birth*", new { @class = "form-label" })
-                    @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", @id = "datepicker", @placeholder = "Select Date of Birth", required = "required", aria_required = "true" })
-                </div>
+
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-6">
+                    @Html.Label("Date of Birth*", new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", @id = "datepicker", @placeholder = "Select Date of Birth", required = "required", aria_required = "true" })
+                </div>
+                <div class="col-md-6">
                     @Html.LabelFor(m => m.PhoneNumber, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Enter Phone Number", required = "required", pattern = @"\d{10}", maxlength = "10", title = "Phone number must be exactly 10 digits" })
                 </div>
+
+            </div>
+
+            <div class="row mb-3">
                 <div class="col-md-6">
                     @Html.Label("Gender*", new { @class = "form-label" })
                     @Html.DropDownList("Gender", new SelectList(new List<SelectListItem>
@@ -135,8 +141,6 @@
                         new SelectListItem { Value = "Other", Text = "Other" }
                     }, "Value", "Text"), "Select Gender", new { @class = "form-select", required = "required", aria_required = "true" })
                 </div>
-            </div>
-            <div class="row mb-3">
                 <div class="col-md-6">
                     @Html.Label("Blood Group*", new { @class = "form-label" })
                     @Html.DropDownList("BloodGroup", new SelectList(new List<SelectListItem>
@@ -151,26 +155,31 @@
                         new SelectListItem { Value = "O-", Text = "O-" }
                     }, "Value", "Text"), "Select Blood Group", new { @class = "form-select", required = "required", aria_required = "true" })
                 </div>
+
+            </div>
+
+            <div class="row mb-3">
                 <div class="col-12 col-md-6">
                     @Html.LabelFor(m => m.Decease, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.Decease, new { @class = "form-control", placeholder = "Decease", required = "required", aria_required = "true" })
                 </div>
-            </div>
-            <div class="row mb-3">
-
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.Quantity, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.Quantity, new
-                        {
-                            @class = "form-control",
-                            placeholder = "Quantity in ml (e.g., 50ml, 100ml)",
-                            required = "required",
-                            pattern = "^[1-9][0-9]*(\\.[0-9]{1,2})?(ml|l)$",
-                            title = "Quantity must be a valid number with units (e.g., 50ml, 1l, 150ml)",
-                            aria_required = "true",
-                            @id = "quantityInput"
-                        })
+                    {
+                        @class = "form-control",
+                        placeholder = "Quantity in ml (e.g., 50ml, 100ml)",
+                        required = "required",
+                        pattern = "^[1-9][0-9]*(\\.[0-9]{1,2})?(ml|l)$",
+                        title = "Quantity must be a valid number with units (e.g., 50ml, 1l, 150ml)",
+                        aria_required = "true",
+                        @id = "quantityInput"
+                    })
                 </div>
+
+            </div>
+
+            <div class="row mb-3">
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.Country, new { @class = "form-label" })
                     @Html.DropDownList("Country", new SelectList(new List<SelectListItem>
@@ -178,42 +187,96 @@
                         new SelectListItem { Value = "India", Text = "India" }
                     }, "Value", "Text"), "Select Country", new { @class = "form-select", required = "required", aria_required = "true", id = "countryDropdown" })
                 </div>
-
-            </div>
-
-            <div class="row mb-3">
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.State, new { @class = "form-label" })
                     @Html.DropDownList("State", new SelectList(Enumerable.Empty<SelectListItem>()), "Select State", new { @class = "form-select", required = "required", aria_required = "true", id = "stateDropdown" })
                 </div>
-                <div class="col-md-6">
-                    @Html.LabelFor(m => m.City, new { @class = "form-label" })
-                    @Html.DropDownList("City", new SelectList(Enumerable.Empty<SelectListItem>()), "Select City", new { @class = "form-select", required = "required", aria_required = "true", id = "cityDropdown" })
-                </div>
+
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-6">
+                    @Html.LabelFor(m => m.City, new { @class = "form-label" })
+                    @Html.DropDownList("City", new SelectList(Enumerable.Empty<SelectListItem>()), "Select City", new { @class = "form-select", required = "required", aria_required = "true", id = "cityDropdown" })
+                </div>
+                <div class="col-md-6">
                     @Html.LabelFor(m => m.ZipCode, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control", placeholder = "Enter Zip Code", required = "required", maxlength = "6", pattern = "^[1-9][0-9]{5}$", title = "Zip code must be a 6 digit number." })
                 </div>
-               
+
+
+            </div>
+            <div class="row mb-3">
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.StreetAddress, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.StreetAddress, new { @class = "form-control", placeholder = "Enter Street Address", required = "required", aria_required = "true" })
                 </div>
             </div>
-            
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-submit">Submit</button>
-            </div>
-        }
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+                </div>
+         }
+
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
+            <!-- Success Modal -->
+            <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="successModalLabel">Success</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Your donation has been successfully submitted! User ID: <span id="userId"></span></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+            <script>
+        $(document).ready(function () {
+            // Initialize the datepicker
+            flatpickr("#datepicker", {
+                dateFormat: "d-m-Y",
+                maxDate: "today"
+            });
+
+            // Submit the form via AJAX
+            $('#donationForm').submit(function (e) {
+                e.preventDefault(); // Prevent the default form submission
+
+                var formData = $(this).serialize(); // Serialize the form data
+
+                $.ajax({
+                    url: '@Url.Action("DonationForm", "User")', // The action URL to submit the form
+                    type: 'POST',
+                    data: formData,
+                    success: function (response) {
+                        // Assuming the response contains the UserId, show the success modal
+                        $('#userId').text(response.UserId); // Display the user ID in the modal
+                        $('#successModal').modal('show'); // Show the modal
+
+                        // Optionally clear the form or redirect the user
+                        $('#donationForm')[0].reset(); // Reset the form after successful submission
+                    },
+                    error: function () {
+                        alert('Error in form submission. Please try again.');
+                    }
+                });
+            });
+        });
+
+
+
+
         $(document).ready(function () {
             flatpickr("#datepicker", {
                 dateFormat: "d-m-Y",
@@ -309,6 +372,6 @@
                 }
             });
         });
-    </script>
+            </script>
 </body>
 </html>

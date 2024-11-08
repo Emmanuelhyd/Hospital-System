@@ -162,7 +162,6 @@
                 <table class="table table-bordered table-striped" id="donationsTable">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Reference Id</th>
                             <th>Name</th>
                             <th>Phone Number</th>
@@ -181,7 +180,6 @@
                         @foreach (var admin in Model)
                         {
                             <tr>
-                                <td>@Html.DisplayFor(m => admin.Id)</td>
                                 <td>@Html.DisplayFor(m => admin.ReferenceId)</td>
                                 <td>@Html.DisplayFor(m => admin.Name)</td>
                                 <td>@Html.DisplayFor(m => admin.PhoneNumber)</td>
@@ -194,10 +192,10 @@
                                 <td>@Html.DisplayFor(m => admin.ZipCode)</td>
                                 <td>@Html.DisplayFor(m => admin.Country)</td>
                                 <td class="action-links">
-                                    <a href="@Url.Action("REdit", new { Id = admin.Id })" class="btn-edit" aria-label="Edit user">
+                                    <a href="@Url.Action("REdit", new { EmailId = admin.EmailId })" class="btn-edit" aria-label="Edit user">
                                         <i class="fas fa-edit btn-icon"></i>Edit
                                     </a>
-                                    <a href="@Url.Action("BDelete", new { id = admin.Id })" class="btn-delete"
+                                    <a href="@Url.Action("BDelete", new { EmailId = admin.EmailId })" class="btn-delete"
                                        onclick="return confirm('Are you sure you want to delete this item?');" aria-label="Delete user">
                                         <i class="fas fa-trash btn-icon"></i>Delete
                                     </a>

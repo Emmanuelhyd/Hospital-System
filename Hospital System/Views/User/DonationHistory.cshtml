@@ -183,7 +183,7 @@
                                     @Html.DisplayFor(m => user.ZipCode),
                                     @Html.DisplayFor(m => user.Country)
                                 </p>
-                                <p><strong>Status:</strong>Approved</p>
+                                <p><strong>Status:</strong> @Html.DisplayFor(m => user.IsApproved)</p>
                             </div>
                         </div>
                     }

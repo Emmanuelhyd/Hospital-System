@@ -34,7 +34,7 @@
             justify-content: flex-start; /* Align buttons to the left */
         }
 
-        .btn-approve, .btn-delete {
+        .btn-edit, .btn-delete {
             padding: 5px 10px;
             border-radius: 5px;
             color: white;
@@ -45,20 +45,12 @@
             align-items: center;
         }
 
-        .btn-approve {
+        .btn-edit {
             background-color: #4caf50;
         }
 
-            .btn-approve:hover {
+            .btn-edit:hover {
                 background-color: #45a049;
-            }
-
-        .btn-delete {
-            background-color: #ff6f61;
-        }
-
-            .btn-delete:hover {
-                background-color: #e63946;
             }
 
         .btn-icon {
@@ -175,6 +167,7 @@
                             <th>City</th>
                             <th>State</th>
                             <th>Country</th>
+                            <th>IsApproved</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -195,13 +188,12 @@
                                 <td>@Html.DisplayFor(m => admin.City)</td>
                                 <td>@Html.DisplayFor(m => admin.State)</td>
                                 <td>@Html.DisplayFor(m => admin.Country)</td>
+                                <td>@Html.DisplayFor(m => admin.IsApproved)</td>
                                 <td class="action-links">
-                                    <a href="@Url.Action("ApproveDonor", new { id = admin.Id })" class="btn-approve">
-                                        <i class="fas fa-check"></i> Approve
+                                    <a href="@Url.Action("LEdit", new { EmailId = admin.EmailId })" class="btn-edit" aria-label="Edit user">
+                                        <i class="fas fa-edit btn-icon"></i>Edit
                                     </a>
-                                    <a href="@Url.Action("Reject", new { id = admin.Id })" class="btn-delete" onclick="return confirm('Are you sure you want to reject this request?');">
-                                        <i class="fas fa-times"></i> Reject
-                                    </a>
+                                    
                                 </td>
                             </tr>
                         }

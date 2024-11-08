@@ -50,6 +50,6 @@ namespace Hospital_System.Models
         public string Name { get; set; }
 
         public bool RememberMe { get; set; }
-        public bool IsApproved { get; set; }
+        public string IsApproved { get; set; }
     }
 }

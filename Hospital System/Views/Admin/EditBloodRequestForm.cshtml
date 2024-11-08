@@ -1,8 +1,8 @@
-﻿@model Hospital_System.Models.UserModel
+﻿@model Hospital_System.Models.AdminModel
 
 @{
     ViewBag.Title = "Blood Request Form";
-    Layout = "~/Views/Shared/_UserLayoutBlood.cshtml";
+    Layout = "~/Views/Shared/_LayoutBlood.cshtml";
 }
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blood Request Form</title>
+    <title>Edit Blood Request Form</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
@@ -76,37 +76,49 @@
             .result-container .result-label {
                 font-weight: bold;
             }
+
+        .form-control, .form-select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
     <div class="form-container">
         <button class="back-button" onclick="window.history.back()">Back</button>
 
-        @using (Html.BeginForm("BloodRequestForm", "User", FormMethod.Post, new { id = "bloodRequestForm" }))
+        @using (Html.BeginForm("EditBloodRequestForm", "Admin", FormMethod.Post, new { id = "editbloodRequestForm" }))
         {
-            <h2>Blood Request Form</h2>
+            <h2>Edit Blood Request Form</h2>
 
+            <!-- User ID -->
             <div class="row mb-3">
-
-                <div class="col-md-6"style="margin-top:8px">
-                    @Html.LabelFor(model => model.Id, "User ID")
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Id, "User ID", new { @class = "form-label" })
                     @Html.TextBoxFor(model => model.Id, new { @readonly = "readonly", @class = "form-control" })
                 </div>
+            </div>
 
+            <!-- Name -->
+            <div class="row mb-3">
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.FirstName, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Enter First Name", required = "required", aria_required = "true" })
                 </div>
-                
-            </div>
-
-            <div class="row mb-3">
-
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.LastName, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Enter Last Name", required = "required", aria_required = "true" })
                 </div>
+            </div>
 
+            <!-- Email and Phone Number -->
+            <div class="row mb-3">
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.EmailId, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.EmailId, new
@@ -119,11 +131,6 @@
                         title = "Please enter a valid Gmail address ending with @gmail. (e.g., example@gmail.com, user123@gmail.in)"
                     })
                 </div>
-                
-            </div>
-
-            <div class="row mb-3">
-
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.PhoneNumber, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.PhoneNumber, new
@@ -136,7 +143,10 @@
                         title = "Phone number must be exactly 10 digits"
                     })
                 </div>
+            </div>
 
+            <!-- Gender and Blood Group -->
+            <div class="row mb-3">
                 <div class="col-md-6">
                     @Html.Label("Gender*", new { @class = "form-label" })
                     @Html.DropDownList("Gender", new SelectList(new List<SelectListItem>
@@ -146,10 +156,6 @@
                         new SelectListItem { Value = "Other", Text = "Other" }
                     }, "Value", "Text"), "Select Gender", new { @class = "form-select", required = "required", aria_required = "true" })
                 </div>
-               
-            </div>
-
-            <div class="row mb-3">
                 <div class="col-md-6">
                     @Html.Label("Blood Group*", new { @class = "form-label" })
                     @Html.DropDownList("BloodGroup", new SelectList(new List<SelectListItem>
@@ -164,67 +170,74 @@
                         new SelectListItem { Value = "O-", Text = "O-" }
                     }, "Value", "Text"), "Select Blood Group", new { @class = "form-select", required = "required", aria_required = "true" })
                 </div>
+            </div>
 
-                <div class="col-12 col-md-6">
+            <!-- Decease and Quantity -->
+            <div class="row mb-3">
+                <div class="col-md-6">
                     @Html.LabelFor(m => m.Decease, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.Decease, new { @class = "form-control", placeholder = "Decease", required = "required", aria_required = "true" })
                 </div>
-               
-            </div>
-
-            <div class="row mb-3">
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.Quantity, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.Quantity, new
-               {
-                   @class = "form-control",
-                   placeholder = "Quantity in ml (e.g., 50ml, 100ml)",
-                   required = "required",
-                   pattern = "^[1-9][0-9]*(\\.[0-9]{1,2})?(ml|l)$",
-                   title = "Quantity must be a valid number with units (e.g., 50ml, 1l, 150ml)",
-                   aria_required = "true",
-                   @id = "quantityInput"
-               })
+                    {
+                        @class = "form-control",
+                        placeholder = "Quantity in ml (e.g., 50ml, 100ml)",
+                        required = "required",
+                        pattern = "^[1-9][0-9]*(\\.[0-9]{1,2})?(ml|l)$",
+                        title = "Quantity must be a valid number with units (e.g., 50ml, 1l, 150ml)",
+                        aria_required = "true",
+                        @id = "quantityInput"
+                    })
                 </div>
+            </div>
+
+            <!-- Address Fields -->
+            <div class="row mb-3">
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.Country, new { @class = "form-label" })
-                    @Html.DropDownList("Country", new SelectList(new List<SelectListItem>
-                    {
-                        new SelectListItem { Value = "India", Text = "India" }
-                    }, "Value", "Text"), "Select Country", new { @class = "form-select", required = "required", aria_required = "true", id = "countryDropdown" })
+                    @Html.TextBoxFor(m => m.Country, new { @class = "form-control", placeholder = "Enter Country" })
                 </div>
-               
-            </div>
-
-            <div class="row mb-3">
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.State, new { @class = "form-label" })
-                    @Html.DropDownList("State", new SelectList(Enumerable.Empty<SelectListItem>()), "Select State", new { @class = "form-select", required = "required", aria_required = "true", id = "stateDropdown" })
+                    @Html.TextBoxFor(m => m.State, new { @class = "form-control", placeholder = "Enter State" })
                 </div>
-                <div class="col-md-6">
-                    @Html.LabelFor(m => m.City, new { @class = "form-label" })
-                    @Html.DropDownList("City", new SelectList(Enumerable.Empty<SelectListItem>()), "Select City", new { @class = "form-select", required = "required", aria_required = "true", id = "cityDropdown" })
-                </div>
-               
             </div>
 
             <div class="row mb-3">
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.City, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "Enter City" })
+                </div>
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.ZipCode, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control", placeholder = "Enter Zip Code", required = "required", maxlength = "6", pattern = "^[1-9][0-9]{5}$", title = "Zip code must be a 6 digit number." })
                 </div>
+            </div>
+
+            <!-- Street Address and Status -->
+            <div class="row mb-3">
                 <div class="col-md-6">
                     @Html.LabelFor(m => m.StreetAddress, new { @class = "form-label" })
                     @Html.TextBoxFor(m => m.StreetAddress, new { @class = "form-control", placeholder = "Enter Street Address", required = "required", aria_required = "true" })
                 </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.IsApproved, new { @class = "form-label" })
+                    @Html.DropDownList("IsApproved", new SelectList(new List<SelectListItem>
+                    {
+                        new SelectListItem { Value = "Approved", Text = "Approved" },
+                        new SelectListItem { Value = "Rejected", Text = "Rejected" }
+                    }, "Value", "Text"), "Select Status", new { @class = "form-select", required = "required", aria_required = "true" })
+                </div>
             </div>
 
+            <!-- Submit Button -->
             <div class="text-center">
                 <button type="submit" class="btn btn-primary btn-submit">Submit</button>
             </div>
         }
     </div>
-
 
     <!-- Success Modal -->
     <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
@@ -235,7 +248,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Your request has been successfully submitted!  <span id="userId"></span></p>
+                    <p>Your request has been successfully submitted! <span id="userId"></span></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -244,128 +257,9 @@
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        $(document).ready(function () {
-            var countryData = {
-                "India": {
-                    "states": [
-                        "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa",
-                        "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala",
-                        "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland",
-                        "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura",
-                        "Uttar Pradesh", "Uttarakhand", "West Bengal"
-                    ],
-                    "cities": {
-                        "Andhra Pradesh": ["Visakhapatnam", "Vijayawada", "Guntur"],
-                        "Maharashtra": ["Mumbai", "Pune", "Nagpur"],
-                        "Karnataka": ["Bengaluru", "Mysuru", "Hubli"],
-                        "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai"]
-                    },
-                    "zipCodes": {
-                        "Andhra Pradesh": {
-                            "Visakhapatnam": ["530001", "530002"],
-                            "Vijayawada": ["520001", "520002"],
-                            "Guntur": ["522001", "522002"]
-                        },
-                        "Maharashtra": {
-                            "Mumbai": ["400001", "400002"],
-                            "Pune": ["411001", "411002"],
-                            "Nagpur": ["440001", "440002"]
-                        },
-                        "Karnataka": {
-                            "Bengaluru": ["560001", "560002"],
-                            "Mysuru": ["570001", "570002"],
-                            "Hubli": ["580001", "580002"]
-                        },
-                        "Tamil Nadu": {
-                            "Chennai": ["600001", "600002"],
-                            "Coimbatore": ["641001", "641002"],
-                            "Madurai": ["625001", "625002"]
-                        }
-                    }
-                }
-            };
-
-            $('#countryDropdown').change(function () {
-                var selectedCountry = $(this).val();
-
-                if (selectedCountry === "India") {
-                    var states = countryData["India"].states;
-                    var $stateDropdown = $('#stateDropdown');
-                    $stateDropdown.empty();
-                    $stateDropdown.append('<option value="">Select State</option>');
-
-                    $.each(states, function (index, state) {
-                        $stateDropdown.append('<option value="' + state + '">' + state + '</option>');
-                    });
-
-                    $('#cityDropdown').empty().append('<option value="">Select City</option>');
-                    $('#ZipCode').val('');
-                }
-            });
-
-            $('#stateDropdown').change(function () {
-                var selectedState = $(this).val();
-                var selectedCountry = $('#countryDropdown').val();
-
-                if (selectedCountry === "India" && selectedState) {
-                    var cities = countryData["India"].cities[selectedState] || [];
-                    var $cityDropdown = $('#cityDropdown');
-                    $cityDropdown.empty();
-                    $cityDropdown.append('<option value="">Select City</option>');
-
-                    $.each(cities, function (index, city) {
-                        $cityDropdown.append('<option value="' + city + '">' + city + '</option>');
-                    });
-
-                    $('#ZipCode').val('');  // Clear the ZipCode field
-                }
-            });
-
-            $('#cityDropdown').change(function () {
-                var selectedCity = $(this).val();
-                var selectedState = $('#stateDropdown').val();
-                var selectedCountry = $('#countryDropdown').val();
-
-                if (selectedCountry === "India" && selectedState && selectedCity) {
-                    var zipCodes = countryData["India"].zipCodes[selectedState] && countryData["India"].zipCodes[selectedState][selectedCity];
-                    if (zipCodes && zipCodes.length > 0) {
-                        $('#ZipCode').val(zipCodes[0]);  // Populate ZipCode
-                    }
-                }
-            });
-        });
-
-
-
-
-            // Submit the form via AJAX
-        $('#bloodRequestForm').submit(function (e) {
-        e.preventDefault(); // Prevent the default form submission
-
-        var formData = $(this).serialize(); // Serialize the form data
-
-        $.ajax({
-            url: '@Url.Action("bloodRequestForm", "User")', // The action URL to submit the form
-            type: 'POST',
-            data: formData,
-            success: function (response) {
-                // Assuming the response contains the UserId, show the success modal
-                $('#userId').text(response.UserId); // Display the user ID in the modal
-                $('#successModal').modal('show'); // Show the modal
-
-                // Optionally clear the form or redirect the user
-                $('#bloodRequestForm')[0].reset(); // Reset the form after successful submission
-            },
-            error: function () {
-                alert('Error in form submission. Please try again.');
-            }
-        });
-    });
-     
-    </script>
 </body>
 </html>

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
@@ -57,6 +58,7 @@ namespace Hospital_System.Controllers
                 admin.State = reader.GetString(reader.GetOrdinal("State"));
                 admin.ZipCode = reader.GetString(reader.GetOrdinal("ZipCode"));
                 admin.Country = reader.GetString(reader.GetOrdinal("Country"));
+                admin.IsApproved = reader["IsApproved"] != DBNull.Value ? reader["IsApproved"].ToString() : string.Empty;
                 admins.Add(admin);
             }
             reader.Close();
@@ -64,7 +66,7 @@ namespace Hospital_System.Controllers
             return View(admins);
         }
         //Reject Donor 
-        public ActionResult Reject(AdminModel admin)
+        public ActionResult LReject(AdminModel admin)
         {
             try
             {
@@ -123,7 +125,7 @@ namespace Hospital_System.Controllers
         {
             con.Open();
             List<AdminModel> admins = new List<AdminModel>();
-            cmd = new SqlCommand("select*from RejectedDonors", con);
+            cmd = new SqlCommand("select*from DonorInfo  where IsApproved ='Rejected'", con);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -141,72 +143,69 @@ namespace Hospital_System.Controllers
             return View(admins);
         }
         //Approve Donor
-        public ActionResult ApproveDonor(AdminModel admin)
+        public ActionResult LEdit(String EmailId)
         {
-            try
+            
+            con.Open();
+            AdminModel admin = new AdminModel();
+            cmd = new SqlCommand("Select * from DonorInfo where EmailId ='" + EmailId + "' ", con);
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
             {
-                con.Open();
-                cmd = new SqlCommand("SELECT * FROM DonorInfo WHERE Id = @Id", con);
-                cmd.Parameters.AddWithValue("@Id", admin.Id);
-                reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    admin.Id = reader.GetInt32(reader.GetOrdinal("Id"));
-                    admin.FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
-                    admin.LastName = reader.GetString(reader.GetOrdinal("LastName"));
-                    admin.EmailId = reader.GetString(reader.GetOrdinal("EmailId"));
-                    admin.DateOfBirth = reader.GetString(reader.GetOrdinal("DateOfBirth"));
-                    admin.PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber"));
-                    admin.Gender = reader.GetString(reader.GetOrdinal("Gender"));
-                    admin.BloodGroup = reader.GetString(reader.GetOrdinal("BloodGroup"));
-                    admin.Quantity = reader.GetString(reader.GetOrdinal("Quantity"));
-                    admin.Decease = reader.GetString(reader.GetOrdinal("Decease"));
-                    admin.StreetAddress = reader.GetString(reader.GetOrdinal("StreetAddress"));
-                    admin.City = reader.GetString(reader.GetOrdinal("City"));
-                    admin.State = reader.GetString(reader.GetOrdinal("State"));
-                    admin.ZipCode = reader.GetString(reader.GetOrdinal("ZipCode"));
-                    admin.Country = reader.GetString(reader.GetOrdinal("Country"));
-                }
+                admin.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                admin.FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
+                admin.LastName = reader.GetString(reader.GetOrdinal("LastName"));
+                admin.EmailId = reader.GetString(reader.GetOrdinal("EmailId"));
+                admin.DateOfBirth = reader.GetString(reader.GetOrdinal("DateOfBirth"));
+                admin.PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber"));
+                admin.Gender = reader.GetString(reader.GetOrdinal("Gender"));
+                admin.BloodGroup = reader.GetString(reader.GetOrdinal("BloodGroup"));
+                admin.Quantity = reader.GetString(reader.GetOrdinal("Quantity"));
+                admin.Decease = reader.GetString(reader.GetOrdinal("Decease"));
+                admin.StreetAddress = reader.GetString(reader.GetOrdinal("StreetAddress"));
+                admin.City = reader.GetString(reader.GetOrdinal("City"));
+                admin.State = reader.GetString(reader.GetOrdinal("State"));
+                admin.ZipCode = reader.GetString(reader.GetOrdinal("ZipCode"));
+                admin.Country = reader.GetString(reader.GetOrdinal("Country"));
+
                 reader.Close();
-                string insertQuery = "INSERT INTO ApprovedDonations (FirstName, LastName, EmailId, DateOfBirth, PhoneNumber, Gender, BloodGroup, Quantity, Decease, StreetAddress, City, State, ZipCode, Country) " +
-                                     "VALUES (@FirstName, @LastName, @EmailId, @DateOfBirth, @PhoneNumber, @Gender, @BloodGroup, @Quantity, @Decease, @StreetAddress, @City, @State, @ZipCode, @Country)";
-
-                cmd = new SqlCommand(insertQuery, con);
-                cmd.Parameters.AddWithValue("@FirstName", admin.FirstName);
-                cmd.Parameters.AddWithValue("@LastName", admin.LastName);
-                cmd.Parameters.AddWithValue("@EmailId", admin.EmailId);
-                cmd.Parameters.AddWithValue("@DateOfBirth", admin.DateOfBirth);
-                cmd.Parameters.AddWithValue("@PhoneNumber", admin.PhoneNumber);
-                cmd.Parameters.AddWithValue("@Gender", admin.Gender);
-                cmd.Parameters.AddWithValue("@BloodGroup", admin.BloodGroup);
-                cmd.Parameters.AddWithValue("@Quantity", admin.Quantity);
-                cmd.Parameters.AddWithValue("@Decease", admin.Decease);
-                cmd.Parameters.AddWithValue("@StreetAddress", admin.StreetAddress);
-                cmd.Parameters.AddWithValue("@City", admin.City);
-                cmd.Parameters.AddWithValue("@State", admin.State);
-                cmd.Parameters.AddWithValue("@ZipCode", admin.ZipCode);
-                cmd.Parameters.AddWithValue("@Country", admin.Country);
-
-                cmd.ExecuteNonQuery(); 
-                string deleteQuery = "DELETE FROM DonorInfo WHERE Id = @Id";
-                cmd = new SqlCommand(deleteQuery, con);
-                cmd.Parameters.AddWithValue("@Id", admin.Id);
-                cmd.ExecuteNonQuery();
-
                 con.Close();
-                return RedirectToAction("DonationRequests");
+                return View("EditDonationForm", admin);
             }
-            catch (Exception ex)
+            else
             {
-                ViewBag.ErrorMessage = "An error occurred: " + ex.Message;
-                return View();
+                return HttpNotFound();
             }
+        }
+        public ActionResult EditDonationForm(AdminModel admin)
+        {
+            if (admin.EmailId != null)
+
+            {
+                string res = "";
+                con.Open();
+                cmd = new SqlCommand("update  DonorInfo set  Id = " + admin.Id + ", FirstName ='" + admin.FirstName + "', LastName ='" + admin.LastName + "',DateOfBirth ='" + admin.DateOfBirth + "',PhoneNumber='" + admin.PhoneNumber + "',Gender='" + admin.Gender + "',BloodGroup='" + admin.BloodGroup + "',Quantity='" + admin.Quantity + "',Decease='" + admin.Decease + "',StreetAddress='" + admin.StreetAddress + "',City ='" + admin.City + "',State='" + admin.State + "',ZipCode='" + admin.ZipCode + "',Country ='" + admin.Country + "', IsApproved ='"+admin.IsApproved+"' where EmailId='" + admin.EmailId + "'", con);
+                res = cmd.ExecuteNonQuery().ToString();
+                con.Close();
+
+                if(res=="1")
+                {
+                    return RedirectToAction("DonationRequests", "Admin");
+                }
+                else
+                {
+                    TempData["Error"] = "Error Updating";
+                    return View(admin);
+                }
+            }
+
+            return View(admin);
         }
         public ActionResult ApprovedDonations(AdminModel admin)
         {
             con.Open();
             List<AdminModel> admins = new List<AdminModel>();
-            cmd = new SqlCommand("select*from ApprovedDonations", con);
+            cmd = new SqlCommand("select * from  DonorInfo  where IsApproved ='Approved'", con);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -226,6 +225,7 @@ namespace Hospital_System.Controllers
                 admin.State = reader.GetString(reader.GetOrdinal("State"));
                 admin.ZipCode = reader.GetString(reader.GetOrdinal("ZipCode"));
                 admin.Country = reader.GetString(reader.GetOrdinal("Country"));
+                admin.IsApproved = reader.GetString(reader.GetOrdinal("IsApproved"));
                 admins.Add(admin);
             }
             reader.Close();
@@ -236,7 +236,7 @@ namespace Hospital_System.Controllers
         public ActionResult ERemove(AdminModel admin)
         {
             con.Open();
-            cmd = new SqlCommand("Delete from ApprovedDonations where Id='" + admin.Id + "' ", con);
+            cmd = new SqlCommand("Delete from DonorInfo where EmailId='" + admin.EmailId + "' ", con);
             cmd.ExecuteNonQuery();
             con.Close();
             return RedirectToAction("ApprovedDonations");
@@ -255,7 +255,7 @@ namespace Hospital_System.Controllers
             while (reader.Read())
             {
                 admin = new AdminModel();
-                admin.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                
                 admin.ReferenceId = reader.GetInt32(reader.GetOrdinal("ReferenceId"));
                 admin.Name = reader.GetString(reader.GetOrdinal("Name"));
                 admin.PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber"));
@@ -274,22 +274,17 @@ namespace Hospital_System.Controllers
             return View(admins);
         }
         //Edit Family Details
-        public ActionResult REdit(int Id)
-        {
-
-            if (Id <= 0)
-                return HttpNotFound();
-
+        public ActionResult REdit(string EmailId)
+        {            
             con.Open();
             
-            cmd = new SqlCommand("Select * from DetailsOfFamilyRelatives where Id ='" + Id+ "' ", con);
+            cmd = new SqlCommand("Select * from DetailsOfFamilyRelatives where EmailId ='" + EmailId + "' ", con);
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
 
                 AdminModel admin = new AdminModel();
 
-                admin.Id = Convert.ToInt32(reader["id"]);
                 admin.ReferenceId = reader.GetInt32(reader.GetOrdinal("ReferenceId"));
                 admin.Name = reader.GetString(reader.GetOrdinal("Name"));
                 admin.PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber"));
@@ -340,7 +335,7 @@ namespace Hospital_System.Controllers
         public ActionResult BDelete(AdminModel admin)
         {
             con.Open();
-            cmd = new SqlCommand("Delete from DetailsOfFamilyRelatives where Id='" + admin.Id + "' ", con);
+            cmd = new SqlCommand("Delete from DetailsOfFamilyRelatives where EmailId='" + admin.EmailId + "' ", con);
             cmd.ExecuteNonQuery();
             con.Close();
             return RedirectToAction("FamilyDetails");
@@ -370,70 +365,73 @@ namespace Hospital_System.Controllers
                 admin.State = reader.GetString(reader.GetOrdinal("State"));
                 admin.ZipCode = reader.GetString(reader.GetOrdinal("ZipCode"));
                 admin.Country = reader.GetString(reader.GetOrdinal("Country"));
+                admin.IsApproved = reader["IsApproved"] != DBNull.Value ? reader["IsApproved"].ToString() : string.Empty;
                 Admins.Add(admin);
             }
             reader.Close();
             con.Close();
             return View(Admins);
         }
-        //Reject BloodRequest
-        public ActionResult EReject(AdminModel admin)
+        public ActionResult EEdit(string EmailId)
         {
-            try
+            con.Open();
+            AdminModel admin = new AdminModel();
+            cmd = new SqlCommand("Select * from PatientInfo where EmailId ='" + EmailId + "' ", con);
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
             {
-                con.Open();
-                string selectQuery = "SELECT * FROM PatientInfo WHERE Id = @Id";
-                cmd = new SqlCommand(selectQuery, con);
-                cmd.Parameters.AddWithValue("@Id", admin.Id);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    admin.Id = reader.GetInt32(reader.GetOrdinal("Id"));
-                    admin.FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
-                    admin.LastName = reader.GetString(reader.GetOrdinal("LastName"));
-                    admin.EmailId = reader.GetString(reader.GetOrdinal("EmailId"));
-                    admin.PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber"));
-                    admin.Gender = reader.GetString(reader.GetOrdinal("Gender"));
-                    admin.BloodGroup = reader.GetString(reader.GetOrdinal("BloodGroup"));
-                    admin.Quantity = reader.GetString(reader.GetOrdinal("Quantity"));
-                    admin.Decease = reader.GetString(reader.GetOrdinal("Decease"));
-                    admin.StreetAddress = reader.GetString(reader.GetOrdinal("StreetAddress"));
-                    admin.City = reader.GetString(reader.GetOrdinal("City"));
-                    admin.State = reader.GetString(reader.GetOrdinal("State"));
-                    admin.ZipCode = reader.GetString(reader.GetOrdinal("ZipCode"));
-                    admin.Country = reader.GetString(reader.GetOrdinal("Country"));
-                }
+                admin.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                admin.FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
+                admin.LastName = reader.GetString(reader.GetOrdinal("LastName"));
+                admin.EmailId = reader.GetString(reader.GetOrdinal("EmailId"));
+                admin.PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber"));
+                admin.Gender = reader.GetString(reader.GetOrdinal("Gender"));
+                admin.BloodGroup = reader.GetString(reader.GetOrdinal("BloodGroup"));
+                admin.Quantity = reader.GetString(reader.GetOrdinal("Quantity"));
+                admin.Decease = reader.GetString(reader.GetOrdinal("Decease"));
+                admin.StreetAddress = reader.GetString(reader.GetOrdinal("StreetAddress"));
+                admin.City = reader.GetString(reader.GetOrdinal("City"));
+                admin.State = reader.GetString(reader.GetOrdinal("State"));
+                admin.ZipCode = reader.GetString(reader.GetOrdinal("ZipCode"));
+                admin.Country = reader.GetString(reader.GetOrdinal("Country"));
                 reader.Close();
-                string insertQuery = "INSERT INTO RejectedBloodRequests (FirstName, LastName, EmailId, BloodGroup, Quantity) " +
-                                     "VALUES (@FirstName, @LastName, @EmailId, @BloodGroup, @Quantity)";
-
-                cmd = new SqlCommand(insertQuery, con);
-                cmd.Parameters.AddWithValue("@FirstName", admin.FirstName);
-                cmd.Parameters.AddWithValue("@LastName", admin.LastName);
-                cmd.Parameters.AddWithValue("@EmailId", admin.EmailId);
-                cmd.Parameters.AddWithValue("@BloodGroup", admin.BloodGroup);
-                cmd.Parameters.AddWithValue("@Quantity", admin.Quantity);
-                cmd.ExecuteNonQuery();
-                string deleteQuery = "DELETE FROM PatientInfo WHERE Id = @Id";
-                cmd = new SqlCommand(deleteQuery, con);
-                cmd.Parameters.AddWithValue("@Id", admin.Id);
-                cmd.ExecuteNonQuery();
                 con.Close();
-                return RedirectToAction("BloodRequests");
+                return View("EditBloodRequestForm", admin);
             }
-            catch (Exception ex)
+            else
             {
-                ViewBag.ErrorMessage = "An error occurred: " + ex.Message;
-                return View();
+                return HttpNotFound();
             }
+        }
+        public ActionResult EditBloodRequestForm(AdminModel admin) 
+        {
+            if (admin.EmailId != null)
+
+            {
+                string res = "";
+                con.Open();
+                cmd = new SqlCommand("update PatientInfo set  Id = " + admin.Id + ", FirstName ='" + admin.FirstName + "', LastName ='" + admin.LastName + "',PhoneNumber='" + admin.PhoneNumber + "',Gender='" + admin.Gender + "',BloodGroup='" + admin.BloodGroup + "',Quantity='" + admin.Quantity + "',Decease='" + admin.Decease + "',StreetAddress='" + admin.StreetAddress + "',City ='" + admin.City + "',State='" + admin.State + "',ZipCode='" + admin.ZipCode + "',Country ='" + admin.Country + "', IsApproved ='" + admin.IsApproved + "' where EmailId='" + admin.EmailId + "'", con);
+                res = cmd.ExecuteNonQuery().ToString();
+                con.Close();
+
+                if (res == "1")
+                {
+                    return RedirectToAction("BloodRequests", "Admin");
+                }
+                else
+                {
+                    TempData["Error"] = "Error Updating";
+                    return View(admin);
+                }
+            }
+
+            return View(admin);
         }
         public ActionResult RejectedBloodRequests(AdminModel admin)
         {
             con.Open();
             List<AdminModel> admins = new List<AdminModel>();
-            cmd = new SqlCommand("select*from RejectedBloodRequests", con);
+            cmd = new SqlCommand("select*from PatientInfo where IsApproved ='Rejected'", con);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -449,71 +447,12 @@ namespace Hospital_System.Controllers
             reader.Close();
             con.Close();
             return View(admins);
-        }
-        //Approve BloodRequest
-        public ActionResult ApproveBloodRequest(AdminModel admin)
-        {
-            try
-            {
-                con.Open();
-                string selectQuery = "SELECT * FROM PatientInfo WHERE Id = @Id";
-                cmd = new SqlCommand(selectQuery, con);
-                cmd.Parameters.AddWithValue("@Id", admin.Id);
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    admin.Id = reader.GetInt32(reader.GetOrdinal("Id"));
-                    admin.FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
-                    admin.LastName = reader.GetString(reader.GetOrdinal("LastName"));
-                    admin.EmailId = reader.GetString(reader.GetOrdinal("EmailId"));
-                    admin.PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber"));
-                    admin.Gender = reader.GetString(reader.GetOrdinal("Gender"));
-                    admin.BloodGroup = reader.GetString(reader.GetOrdinal("BloodGroup"));
-                    admin.Quantity = reader.GetString(reader.GetOrdinal("Quantity"));
-                    admin.Decease = reader.GetString(reader.GetOrdinal("Decease"));
-                    admin.StreetAddress = reader.GetString(reader.GetOrdinal("StreetAddress"));
-                    admin.City = reader.GetString(reader.GetOrdinal("City"));
-                    admin.State = reader.GetString(reader.GetOrdinal("State"));
-                    admin.ZipCode = reader.GetString(reader.GetOrdinal("ZipCode"));
-                    admin.Country = reader.GetString(reader.GetOrdinal("Country"));
-                }
-                reader.Close();
-                string insertQuery = "INSERT INTO ApproveBloodRequests (FirstName, LastName, EmailId, PhoneNumber, Gender, BloodGroup, Quantity, Decease, StreetAddress, City, State, ZipCode, Country) " +
-                                     "VALUES (@FirstName, @LastName, @EmailId, @PhoneNumber, @Gender, @BloodGroup, @Quantity, @Decease, @StreetAddress, @City, @State, @ZipCode, @Country)";
-
-                cmd = new SqlCommand(insertQuery, con);
-                cmd.Parameters.AddWithValue("@FirstName", admin.FirstName);
-                cmd.Parameters.AddWithValue("@LastName", admin.LastName);
-                cmd.Parameters.AddWithValue("@EmailId", admin.EmailId);
-                cmd.Parameters.AddWithValue("@PhoneNumber", admin.PhoneNumber);
-                cmd.Parameters.AddWithValue("@Gender", admin.Gender);
-                cmd.Parameters.AddWithValue("@BloodGroup", admin.BloodGroup);
-                cmd.Parameters.AddWithValue("@Quantity", admin.Quantity);
-                cmd.Parameters.AddWithValue("@Decease", admin.Decease);
-                cmd.Parameters.AddWithValue("@StreetAddress", admin.StreetAddress);
-                cmd.Parameters.AddWithValue("@City", admin.City);
-                cmd.Parameters.AddWithValue("@State", admin.State);
-                cmd.Parameters.AddWithValue("@ZipCode", admin.ZipCode);
-                cmd.Parameters.AddWithValue("@Country", admin.Country);
-                cmd.ExecuteNonQuery();
-                string deleteQuery = "DELETE FROM PatientInfo WHERE Id = @Id";
-                cmd = new SqlCommand(deleteQuery, con);
-                cmd.Parameters.AddWithValue("@Id", admin.Id);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                return RedirectToAction("BloodRequests");
-            }
-            catch (Exception ex)
-            {
-                ViewBag.ErrorMessage = "An error occurred: " + ex.Message;
-                return View();
-            }
-        }
+        }       
         public ActionResult ApprovedBloodRequests(AdminModel admin)
         {
             con.Open();
             List<AdminModel> Admins = new List<AdminModel>();
-            cmd = new SqlCommand("Select*from ApproveBloodRequests", con);
+            cmd = new SqlCommand("Select*from PatientInfo where IsApproved ='Approved'", con);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -532,6 +471,7 @@ namespace Hospital_System.Controllers
                 admin.State = reader.GetString(reader.GetOrdinal("State"));
                 admin.ZipCode = reader.GetString(reader.GetOrdinal("ZipCode"));
                 admin.Country = reader.GetString(reader.GetOrdinal("Country"));
+                admin.IsApproved = reader.GetString(reader.GetOrdinal("IsApproved"));
                 Admins.Add(admin);
             }
             reader.Close();
@@ -542,7 +482,7 @@ namespace Hospital_System.Controllers
         public ActionResult DRemove(AdminModel admin)
         {
             con.Open();
-            cmd = new SqlCommand("Delete from ApproveBloodRequests where Id='" + admin.Id + "' ", con);
+            cmd = new SqlCommand("Delete from PatientInfo where EmailId='" + admin.EmailId + "' ", con);
             cmd.ExecuteNonQuery();
             con.Close();
             return RedirectToAction("ApprovedBloodRequests");
@@ -568,7 +508,7 @@ namespace Hospital_System.Controllers
                         TRY_CAST(SUBSTRING(Quantity, 1, LEN(Quantity) - 2) AS DECIMAL(10, 2)) / 1000 -- Convert mL to L
                     ELSE 0
                 END)
-                FROM ApprovedDonations 
+                FROM DonorInfo 
                 WHERE BloodGroup = @BloodGroup", con);
 
                     cmd.Parameters.AddWithValue("@BloodGroup", bloodGroup);
@@ -582,7 +522,7 @@ namespace Hospital_System.Controllers
                     });
                     totalBloodUnitsInLiters += totalQuantityInLiters; 
                 }
-                using (var donorCmd = new SqlCommand("SELECT COUNT(DISTINCT Id) FROM ApprovedDonations", con))
+                using (var donorCmd = new SqlCommand("SELECT COUNT(DISTINCT Id) FROM DonorInfo", con))
                 {
                     totalDonors = (int)donorCmd.ExecuteScalar();
                 }
@@ -597,7 +537,7 @@ namespace Hospital_System.Controllers
         {
             con.Open();
             List<AdminModel> admins = new List<AdminModel>();
-            cmd = new SqlCommand("Select*from ApprovedDonations where BloodGroup='" + admin.BloodGroup + "'", con);
+            cmd = new SqlCommand("Select*from DonorInfo where BloodGroup='" + admin.BloodGroup + "'", con);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -627,7 +567,7 @@ namespace Hospital_System.Controllers
         {
             con.Open();
             List<AdminModel> admins = new List<AdminModel>();
-            cmd = new SqlCommand("Select*from ApprovedDonations", con);
+            cmd = new SqlCommand("Select*from DonorInfo", con);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {

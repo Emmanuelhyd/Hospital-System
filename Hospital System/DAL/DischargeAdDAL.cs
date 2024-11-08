@@ -51,7 +51,7 @@ namespace Hospital_System.DAL
                             AdmissionDate = row["AdmissionDate"].ToString(),
                             DischargeDate = row["DischargeDate"].ToString(),
                             TreatmentDuration = row["TreatmentDuration"].ToString(),
-                            //DischargeAmount = row["DischargeAmount"].ToString(),
+                            DischargeAmount = row["DischargeAmount"] != DBNull.Value ? row["DischargeAmount"].ToString() : string.Empty,
                             FollowUp = row["FollowUp"].ToString(),
                            
 
@@ -88,7 +88,7 @@ namespace Hospital_System.DAL
             }
             else
             {
-                cmd = new SqlCommand("update Discharge set PatientName='" + dischargeDo.PatientName + "',Reason='" + dischargeDo.Reason + "',Findings='" + dischargeDo.Findings + "',Labreports='" + dischargeDo.Labreports + "',ProcedureandTreatment='" + dischargeDo.ProcedureandTreatment + "',FurtherInstruction='" + dischargeDo.FurtherInstruction + "',AdmissionDate='" + dischargeDo.AdmissionDate + "',DischargeDate='" + dischargeDo.DischargeDate + "',TreatmentDuration='" + dischargeDo.TreatmentDuration + "',FollowUp='" + dischargeDo.FollowUp + "' where PatientId=" + dischargeDo.PatientId + "", con);
+                cmd = new SqlCommand("update Discharge set PatientName='" + dischargeDo.PatientName + "',Reason='" + dischargeDo.Reason + "',Findings='" + dischargeDo.Findings + "',Labreports='" + dischargeDo.Labreports + "',ProcedureandTreatment='" + dischargeDo.ProcedureandTreatment + "',FurtherInstruction='" + dischargeDo.FurtherInstruction + "',AdmissionDate='" + dischargeDo.AdmissionDate + "',DischargeDate='" + dischargeDo.DischargeDate + "',TreatmentDuration='" + dischargeDo.TreatmentDuration + "',FollowUp='" + dischargeDo.FollowUp + "',DischargeAmount ='"+dischargeDo.DischargeAmount+"' where PatientId=" + dischargeDo.PatientId + "", con);
             }
             cmd.ExecuteNonQuery();
             con.Close();
@@ -125,7 +125,7 @@ namespace Hospital_System.DAL
                     dischargeDo.AdmissionDate = reader["AdmissionDate"].ToString();
                     dischargeDo.DischargeDate = reader["DischargeDate"].ToString();
                     dischargeDo.TreatmentDuration = reader["TreatmentDuration"].ToString();
-                    //dischargeDo.DischargeAmount = reader["DischargeAmount"].ToString();
+                    dischargeDo.DischargeAmount = reader["DischargeAmount"].ToString();
                     dischargeDo.FollowUp = reader["FollowUp"].ToString();
                  
 
@@ -165,7 +165,7 @@ namespace Hospital_System.DAL
                 dischargeDo.AdmissionDate = reader["AdmissionDate"].ToString();
                 dischargeDo.DischargeDate = reader["DischargeDate"].ToString();
                 dischargeDo.TreatmentDuration = reader["TreatmentDuration"].ToString();
-                //dischargeDo.DischargeAmount = reader["DischargeAmount"].ToString();
+                dischargeDo.DischargeAmount = reader["DischargeAmount"].ToString();
                 dischargeDo.FollowUp = reader["FollowUp"].ToString();
 
 

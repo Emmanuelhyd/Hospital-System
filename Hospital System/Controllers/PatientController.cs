@@ -189,7 +189,7 @@ namespace Hospital_System.Controllers
 
             ViewBag.PatientId = patientId;
 
-            return View(model);
+            return View(model); 
         }
 
 

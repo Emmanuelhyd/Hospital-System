@@ -177,9 +177,9 @@
                                 <td>@Html.DisplayFor(m => admin.City)</td>
                                 <td>@Html.DisplayFor(m => admin.State)</td>
                                 <td>@Html.DisplayFor(m => admin.Country)</td>
-                                <td>Approved</td>
+                                <td>@Html.DisplayFor(m => admin.IsApproved)</td>
                                 <td class="action-links">
-                                    <a href="@Url.Action("DRemove", "Admin", new { id = admin.Id })"
+                                    <a href="@Url.Action("DRemove", "Admin", new { EmailId = admin.EmailId })"
                                        class="btn-remove"
                                        onclick="return confirm('Are you sure you want to remove this request?');">
                                         Remove

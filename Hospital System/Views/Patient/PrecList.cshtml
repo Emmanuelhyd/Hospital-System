@@ -1,5 +1,4 @@
-﻿
-@model Hospital_System.Viewmodel.Allview
+﻿@model Hospital_System.Viewmodel.Allview
 
 @{
     ViewBag.Title = "PrecList";
@@ -14,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>@ViewBag.Title</title>
     <style>
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
@@ -26,12 +26,11 @@
             max-width: 1200px;
             margin: 30px auto;
             padding: 20px;
-            /*   background-color: #ffffff;*/
+            background-color: #fff;
             border-radius: 8px;
-            /*   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
-          /*  margin-left: 117px;*/
-            position: absolute;
-           
+            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+            position: relative;
+            margin-top: 71px;
         }
 
         h2 {
@@ -41,42 +40,7 @@
             text-align: center;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 0;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #007bff;
-            color: #ffffff;
-            font-weight: bold;
-        }
-
-        tbody tr:nth-child(odd) {
-            background-color: #f4f4f4;
-        }
-
-        tbody tr:hover {
-            background-color: #e2e2e2;
-        }
-
-        .table-container {
-            overflow-x: auto;
-        }
-
-/*        .btn {
-            color: white;
-            background-color: dodgerblue;
-            width: 124%;
-            border-radius: 5px;
-        }*/
+        /* Button Styles */
         .button-back {
             display: inline-block;
             margin: 10px 0;
@@ -88,29 +52,83 @@
             cursor: pointer;
             font-size: 16px;
             transition: background-color 0.3s;
+            position: absolute;
+            top: 30px;
+            left: 20px;
         }
 
-            .button-back:hover {
-                background-color: #0056b3;
+        .button-back:hover {
+            background-color: #0056b3;
+        }
+
+        /* Table Styles */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f4f4f4;
+        }
+
+        tbody tr:hover {
+            background-color: #e2e2e2;
+        }
+
+        /* Responsive Table Styles */
+        media (max-width: 768px) {
+            th, td {
+                padding: 8px;
             }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .button-back {
+                font-size: 14px;
+                padding: 8px 16px;
+                top: 20px;
+                left: 10px;
+            }
+        }
     </style>
 </head>
 <body>
-
-    @*<div style=" position: absolute; margin-top: 17px; margin-left: 29px;">
-            <button type="button" class=" btn" onclick="Back()"> Back</button>
-        </div>*@
-    <button class="button-back" onclick="Back()" style=" margin-left: 12%; margin-top: 0%; position: absolute;"><i class="fas fa-arrow-left"></i>Back </button>
+    <button class="button-back" onclick="Back()"><i class="fas fa-arrow-left"></i> Back </button>
     <div class="container">
         <h2>Prescriptions</h2>
-        <div class="table-container" style=" margin-left: 10%;">
+        <div class="table-container">
             <table>
                 <thead>
                     <tr>
-                        <th>PatientName</th>
-                        <th>DoctorName</th>
+                        <th>Patient Name</th>
+                        <th>Doctor Name</th>
                         <th>Problem</th>
-                        <th>MedicineName</th>
+                        <th>Medicine Name</th>
                         <th>Morning</th>
                         <th>Afternoon</th>
                         <th>Night</th>
@@ -127,22 +145,17 @@
                             <td>@Html.DisplayFor(modelItem => item.Morning)</td>
                             <td>@Html.DisplayFor(modelItem => item.Afternoon)</td>
                             <td>@Html.DisplayFor(modelItem => item.Night)</td>
-
                         </tr>
                     }
                 </tbody>
             </table>
-
-
         </div>
     </div>
+
+    <script>
+        function Back() {
+            window.location.href = "/Patient/Dashboard";
+        }
+    </script>
 </body>
 </html>
-
-<script>
-
-    function Back() {
-
-        window.location.href = "/Patient/Dashboard";
-    }
-</script>
