@@ -1,0 +1,179 @@
+﻿@model Hospital_System.Models.Vaccines
+
+@{
+    ViewBag.Title = "AddVaccine";
+    Layout = null;
+
+}
+<body>
+    <style>
+
+        .form-container {
+            width: 65%;
+            margin: 30px auto;
+            padding: 20px;
+            /*border-radius: 8px;*/
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            margin-top: -25px;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                font-weight: bold;
+                margin-bottom: 5px;
+                display: block;
+            }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            height: 42px;
+        }
+
+            .form-control:focus {
+                border-color: #007bff;
+                outline: none;
+                box-shadow: 0 0 5px rgba(0, 123, 255, .6);
+            }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .text-danger {
+            color: #dc3545;
+        }
+
+        .validation-summary {
+            margin-bottom: 15px;
+            color: #dc3545;
+        }
+
+        .btn {
+            color: white;
+            background-color: #e74715;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30%;
+        }
+
+            .btn:hover {
+                background-color: #e74715;
+            }
+    </style>
+
+    @using (Html.BeginForm("AddVaccine", "Vaccination"))
+    {
+
+        <div style="padding: 14px 36px; background: #002147; margin-top: 8px; margin-left: 215px; width: 833px; color: white;">
+            <h4>Book Your Slot</h4>
+        </div>
+
+        <div class="form-container">
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PatientId)
+                    @Html.TextBoxFor(m => m.PatientId, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PatientName)
+                    @Html.TextBoxFor(m => m.PatientName, new { @required = "required", @placeholder = "Patient Name", @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DoctorName)
+                    @Html.TextBoxFor(m => m.DoctorName, new { @required = "required", @placeholder = "Doctor Name", @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Age)
+                    @Html.TextBoxFor(m => m.Age, new { @required = "required", @placeholder = "Age", @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.VaccineId)
+                    @Html.TextBoxFor(m => m.VaccineId, new { @required = "required", @placeholder = "Vaccine Id", @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.VaccineType)
+                    @Html.DropDownListFor(m => m.VaccineType, new SelectList(new List<SelectListItem>
+    {
+    new SelectListItem { Value = "CoVaccine", Text = "CoVaccine" },
+    new SelectListItem { Value = "Covid-Shield", Text = "Covid-Shield" },
+    },
+    "Value", "Text"), "VaccineType", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Dosage)
+                    @Html.TextBoxFor(m => m.Dosage, new { @required = "required", @placeholder = "Dosage", @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DateOfVaccination)
+                    @Html.TextBoxFor(m => m.DateOfVaccination, new { @required = "required", @placeholder = "Date Of Vaccination", @type = "date", @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FollowupDate)
+                    @Html.TextBoxFor(m => m.FollowupDate, new { @required = "required", @placeholder = "Followup Date", @type = "date", @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.NextDueDate)
+                    @Html.TextBoxFor(m => m.NextDueDate, new { @required = "required", @placeholder = "Next Due Date", @type = "date", @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ReactionType)
+                    @Html.TextBoxFor(m => m.ReactionType, new { @required = "required", @placeholder = "Reaction Type", @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Status)
+                    @Html.DropDownListFor(m => m.Status, new SelectList(new List<SelectListItem>
+     {
+     new SelectListItem { Value = "Vaccinated", Text = "Vaccinated" },
+     new SelectListItem { Value = "Not-Vaccinated", Text = "Not-Vaccinated" },
+     },
+     "Value", "Text"), "VaccineStatus", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-row">
+                <input type="submit" value="Submit" class="btn" style="margin-left: 298px;">
+            </div>
+        </div>
+    }
+
+</body>
