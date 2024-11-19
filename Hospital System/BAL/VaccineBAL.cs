@@ -29,5 +29,12 @@ namespace Hospital_System.BAL
         {
             return vaccineDAL.vac(vaccineId);
         }
+
+        public List<Vaccines> AddVaccine(Vaccines vaccine)
+        {
+            List<Vaccines> vaccines = new List<Vaccines>();
+            vaccines = vaccineDAL.AddVaccine(vaccine);
+            return vaccines;
+        }
     }
 }

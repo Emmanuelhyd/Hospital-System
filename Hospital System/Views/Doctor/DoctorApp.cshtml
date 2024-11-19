@@ -1,0 +1,184 @@
+﻿@model Hospital_System.Viewmodel.Allview
+
+@{
+    Layout = "~/Views/Shared/_LayoutPatientPage1.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doctor App</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <style>
+        /* Basic Styling for the Calendar */
+        .calendar {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+            flex-wrap: wrap;
+        }
+
+        .day {
+            text-align: center;
+            width: 16%; /* Adjust width for each day container */
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            height: 200px; /* Increased height to accommodate time slots */
+        }
+
+            .day:hover {
+                background-color: #f1f1f1;
+                transform: translateY(-5px);
+            }
+
+        .day-name {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .date {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .time-slots {
+            margin-top: 10px;
+        }
+
+        .slot-container {
+            margin-bottom: 10px; /* Space between slot containers */
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 4px;
+          /*  display: flex;*/
+            justify-content: space-between;
+            align-items: center;
+            width: 100%; 
+            transition: background-color 0.3s ease;
+        }
+
+            .slot-container:hover {
+                background-color: #e1e1e1;
+            }
+
+        .slot-time {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .btn-book {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #f44336;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            margin-left: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn-book:hover {
+                background-color: #f44336;
+            }
+
+        .calendar .no-time {
+            color: red;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .container {
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sb2-2" style="margin-top: 76px; height: 120vh;">
+        <div class="sb2-2-2">
+            <ul>
+                <li>
+                    <a href="/Patient/Dashboard"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="active-bre">
+                    <a href="#"> Dashboard</a>
+                </li>
+                <li class="page-back">
+                    <a href="/Patient/Dashboard"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container">
+            <!-- Doctor Details -->
+            <div class="doctor-details">
+                <strong style="font-family:Broadway">Dr.@Model.doctors.FullName</strong><br />
+                <strong>@Model.doctors.Email</strong><br />
+                <strong>@Model.doctors.Department</strong><br />
+                @*<strong>@Model.doctors.Education</strong><br />
+                <strong>@Model.doctors.Designation</strong><br />*@
+                @*<strong>@Model.doctors.Status</strong><br />*@
+            </div>
+        </div>
+
+
+        <div style="padding: 14px 36px; background: #002147; margin-top: 25px; margin-left: 0px; width: 100%; color: white;">
+            <h4>Available Time Slots</h4>
+        </div>
+        <div class="container">
+            @if (Model.DoctorTimeSlots != null && Model.DoctorTimeSlots.Any())
+            {
+                <div class="calendar">
+                    @foreach (var timeSlot in Model.DoctorTimeSlots)
+                    {
+                        <!-- Loop over the days of the week and assign slots -->
+                        for (int i = 0; i < 5; i++) // For Monday to Friday (Slot1 to Slot5)
+                        {
+                            var currentDay = (int)DateTime.Now.DayOfWeek; // Get the current day as an integer
+                            var dayIndex = (currentDay + i) % 7; // Add the index and use modulo 7 to get the correct day
+                            var dayName = ((DayOfWeek)dayIndex).ToString(); // Convert back to DayOfWeek to get the day name
+                            var slotTime = timeSlot.GetType().GetProperty($"Slot{i + 1}")?.GetValue(timeSlot); // Get Slot1, Slot2, etc.
+
+                            if (slotTime != null && timeSlot.IsAvailable)
+                            {
+                                <div class="day">
+                                    <span class="day-name">@dayName</span>
+                                    <span class="date">@DateTime.Now.AddDays(i).ToString("dd MMM yyyy")</span> <!-- Date for current day -->
+                                    <div class="time-slots">
+                                        <div class="slot-container">
+                                            <span class="slot-time">@((DateTime)slotTime)</span>
+
+                                        </div>
+                                    </div>
+                                    <a href="@Url.Action("AddBook", "Appointment", new { timeSlotId = timeSlot.TimeSlotId })" class="btn-book">
+                                        <i class="fas fa-calendar-plus"></i> Book Slot
+                                    </a>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            }
+            else
+            {
+                <p>No available time slots.</p>
+            }
+        </div>
+    </div>
+   
+</body>
+</html>

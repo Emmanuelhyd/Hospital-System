@@ -2,10 +2,9 @@
 
 @{
     ViewBag.Title = "Book List";
-    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+    Layout = "~/Views/Shared/_LayoutPatientPage1.cshtml";
 }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <script>
     function CreateNew() {
@@ -17,108 +16,71 @@
     }
 </script>
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-    }
 
-    /* Container for the table */
-    .table-container {
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        width: 80%; /* Responsive width */
-    }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    /* Style the table */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 20px 0;
-    }
-
-    th, td {
-        padding: 12px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-
-    th {
-        background-color: #007bff;
-        color: white;
-    }
-
-    tr:hover {
-        background-color: #f1f1f1;
-    }
-
-    /* Responsive styling */
-    media (max-width: 768px) {
-        th, td {
-            font-size: 12px;
-            padding: 8px;
-        }
-    }
-
-    .btn {
-        color: white;
-        background-color: dodgerblue;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 15px;
-        cursor: pointer;
-        margin-right: 10px; /* Space between buttons */
-        display: flex;
-        align-items: center;
-    }
-
-    .btn:hover {
-        background-color: #0056b3; /* Darker shade on hover */
-    }
-</style>
 
 @using (Html.BeginForm())
 {
-    
 
-    <div class="table-container">
-        <div style="margin: 20px;">
-            <button type="button" class="btn" onclick="Back()"><i class="fas fa-arrow-left"></i> Back</button>
-
+    <div class="sb2-2" style="margin-top: 76px; height: 92%;">
+        <div class="sb2-2-2">
+            <ul>
+                <li>
+                    <a href="/Patient/Dashboard"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="active-bre">
+                    <a href="#"> List Of Appointments</a>
+                </li>
+                <li class="page-back">
+                    <a href="/Patient/Dashboard"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                </li>
+            </ul>
         </div>
-       
-        <h2>Appointment list </h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Patient Name</th>
-                    <th>Gender</th>
-                    <th>Problem</th>
-                    <th>Phone Number</th>
-                    <th>Address</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.MAppointmentAds)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Gender)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Problem)</td>
-                        <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Time)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    </div>
+
+    <div class="row" style="margin-left: 272px;">
+        <div class="col-md-12" style="margin-top:-465px;">
+            <div class="box-inn-sp">
+                <div class="inn-title" style="color:white;">
+                    <h2>Appointment list </h2>
+
+                </div>
+
+                <div class="tab-inn">
+                    <div class="table-responsive table-desi">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Patient Name</th>
+                                    <th>Gender</th>
+                                    <th>Problem</th>
+                                    <th>Phone Number</th>
+                                    <th>Address</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.MAppointmentAds)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Problem)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Time)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 }

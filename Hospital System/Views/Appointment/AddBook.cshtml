@@ -2,31 +2,21 @@
 
 @{
     ViewBag.Title = "Add Book";
-    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+    Layout = "~/Views/Shared/_LayoutPatientPage1.cshtml";
 }
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<script>
-    function Back() {
-        window.location.href = "/Patient/Dashboard";
-    }
-</script>
-
 <style>
-    body {
-        background-color: #f8f9fa;
-        font-family: Arial, sans-serif;
-    }
-
     .form-container {
-        width: 60%;
+        width: 90%;
         margin: 30px auto;
         padding: 20px;
-        border-radius: 8px;
+        /*border-radius: 8px;*/
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         background-color: #ffffff;
+        margin-top: 2px;
     }
 
     .form-row {
@@ -69,9 +59,6 @@
         padding: 10px 15px;
         border-radius: 4px;
         cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         width: 100%;
     }
 
@@ -104,99 +91,159 @@
         .btn:hover {
             background-color: #0056b3;
         }
+
+    
+
+    /*.sb2-2-2 ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+    }
+
+        .sb2-2-2 ul li {
+            margin-right: 10px;
+        }
+
+            .sb2-2-2 ul li a {
+                text-decoration: none;
+                color: #007bff;
+            }
+
+            .sb2-2-2 ul li.active-bre a {
+                color: #0056b3;
+                font-weight: bold;
+            }
+
+            .sb2-2-2 ul li.page-back a {
+                color: #ff5733;
+            }*/
 </style>
 
-@using (Html.BeginForm("AddBook", "Appointment"))
-{
-    <div class="form-container">
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true, "", new { @class = "validation-summary" })
-
-        <div class="form-row">
-            <div class="form-group">
-                @Html.LabelFor(m => m.mAppointmentAd.Id)
-                @Html.TextBoxFor(m => m.mAppointmentAd.Id, new { @class = "form-control" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.mAppointmentAd.PatientName)
-                @Html.TextBoxFor(m => m.mAppointmentAd.PatientName, new { @required = "required", @placeholder = "Enter Patient Name", @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.mAppointmentAd.PatientName, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.mAppointmentAd.Gender)
-                @Html.DropDownListFor(m => m.mAppointmentAd.Gender, new SelectList(new List<SelectListItem>
-                {
-                    new SelectListItem { Value = "male", Text = "Male" },
-                    new SelectListItem { Value = "female", Text = "Female" },
-                    new SelectListItem { Value = "others", Text = "Others" }
-                }, "Value", "Text"), "Select Gender", new { @class = "form-control", @required = "required" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.mAppointmentAd.Problem)
-                @Html.DropDownListFor(m => m.mAppointmentAd.Problem, Model.Problems, "Select Problem", new { @class = "form-control", @required = "required" })
-                @Html.ValidationMessageFor(m => m.mAppointmentAd.Problem, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.mAppointmentAd.Department)
-                @Html.DropDownListFor(m => m.mAppointmentAd.Department, new SelectList(new List<SelectListItem>
-                {
-                    new SelectListItem{Value="General Medicine",Text="General Medicine"},
-                    new SelectListItem { Value = "Cardiology", Text = "Cardiology" },
-                    new SelectListItem { Value = "Neurology", Text = "Neurology" },
-                    new SelectListItem { Value = "Orthopedics", Text = "Orthopedics" },
-                    new SelectListItem { Value = "Pediatrics", Text = "Pediatrics" },
-                    new SelectListItem { Value = "Emergency", Text = "Emergency" },
-                    new SelectListItem { Value = "Oncology", Text = "Oncology" },
-                    new SelectListItem { Value = "Radiology", Text = "Radiology" },
-                    new SelectListItem { Value = "Dermatology", Text = "Dermatology" }
-                }, "Value", "Text"), "Select Department", new { @required = "required", @class = "form-control" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.mAppointmentAd.PhoneNumber)
-                @Html.TextBoxFor(m => m.mAppointmentAd.PhoneNumber, new
-                {
-                    @required = "required",
-                    @placeholder = "Phone Number",
-                    @class = "form-control",
-                    @pattern = @"^[6789]\d{9}$",
-                    @title = "Please enter a valid 10-digit phone number starting with 6, 7, 8, or 9."
-                })
-                @Html.ValidationMessageFor(m => m.mAppointmentAd.PhoneNumber, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.mAppointmentAd.Address)
-                @Html.TextBoxFor(m => m.mAppointmentAd.Address, new { @required = "required", @placeholder = "Address", @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.mAppointmentAd.Address, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.mAppointmentAd.Date)
-                @Html.TextBoxFor(m => m.mAppointmentAd.Date, "{0:yyyy-MM-dd}", new { @required = "required", @placeholder = "Appointment Date", @type = "date", @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.mAppointmentAd.Date, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.mAppointmentAd.Time)
-                @Html.TextBoxFor(m => m.mAppointmentAd.Time, new { @required = "required", @placeholder = "Time", @class = "form-control", @type = "time" })
-                @Html.ValidationMessageFor(m => m.mAppointmentAd.Time, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.mAppointmentAd.Description)
-                @Html.TextBoxFor(m => m.mAppointmentAd.Description, new { @required = "required", @placeholder = "Description", @class = "form-control", rows = 5, cols = 20 })
-                @Html.ValidationMessageFor(m => m.mAppointmentAd.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div style="display: flex; justify-content: space-between;">
-            <input type="submit" class="btn btn-primary" value="Submit">
-            <button type="button" class="btn" onclick="Back()"><i class="fas fa-arrow-left"></i> Back</button>
-        </div>
+<div class="sb2-2" style="margin-top: 76px; height: 120%;">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="/Patient/Dashboard"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#"> Appointment</a>
+            </li>
+            <li class="page-back">
+                <a href="/Patient/Dashboard"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
     </div>
-}
+
+    @using (Html.BeginForm("AddBook", "Appointment"))
+    {
+        <div style="padding: 14px 36px; background: #002147; margin-top:25px; margin-left: 50px; width: 90%; color:white;">
+            <h4>Book Your Appointment</h4>
+        </div>
+        <div class="form-container">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "validation-summary" })
+
+
+
+            <!-- Patient Name & ID -->
+            <div class="form-row">
+                <div class="form-group">
+                    @*@Html.LabelFor(m => m.mAppointmentAd.Id)*@
+                    @Html.TextBoxFor(m => m.mAppointmentAd.Id, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(m => m.mAppointmentAd.PatientName)*@
+                    @Html.TextBoxFor(m => m.mAppointmentAd.PatientName, new { @required = "required", @placeholder = "Enter Patient Name", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.mAppointmentAd.PatientName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Gender & Problem -->
+            <div class="form-row">
+                <div class="form-group">
+                    @*@Html.LabelFor(m => m.mAppointmentAd.Gender)*@
+                    @Html.DropDownListFor(m => m.mAppointmentAd.Gender, new SelectList(new List<SelectListItem>
+                    {
+                        new SelectListItem { Value = "male", Text = "Male" },
+                        new SelectListItem { Value = "female", Text = "Female" },
+                        new SelectListItem { Value = "others", Text = "Others" }
+                    }, "Value", "Text"), "Select Gender", new { @class = "form-control", @required = "required" })
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(m => m.mAppointmentAd.Problem)*@
+                    @Html.DropDownListFor(m => m.mAppointmentAd.Problem, Model.Problems, "Select Problem", new { @class = "form-control", @required = "required" })
+                    @Html.ValidationMessageFor(m => m.mAppointmentAd.Problem, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Department & Phone Number -->
+            <div class="form-row">
+                <div class="form-group">
+                    @*@Html.LabelFor(m => m.mAppointmentAd.Department)*@
+                    @Html.DropDownListFor(m => m.mAppointmentAd.Department, new SelectList(new List<SelectListItem>
+                    {
+                        new SelectListItem { Value = "General Medicine", Text = "General Medicine" },
+                        new SelectListItem { Value = "Cardiology", Text = "Cardiology" },
+                        new SelectListItem { Value = "Neurology", Text = "Neurology" },
+                        new SelectListItem { Value = "Orthopedics", Text = "Orthopedics" },
+                        new SelectListItem { Value = "Pediatrics", Text = "Pediatrics" },
+                        new SelectListItem { Value = "Emergency", Text = "Emergency" },
+                        new SelectListItem { Value = "Oncology", Text = "Oncology" },
+                        new SelectListItem { Value = "Radiology", Text = "Radiology" },
+                        new SelectListItem { Value = "Dermatology", Text = "Dermatology" }
+                    }, "Value", "Text"), "Select Department", new { @required = "required", @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(m => m.mAppointmentAd.PhoneNumber)*@
+                    @Html.TextBoxFor(m => m.mAppointmentAd.PhoneNumber, new
+                    {
+                        @required = "required",
+                        @placeholder = "Phone Number",
+                        @class = "form-control",
+                        @pattern = @"^[6789]\d{9}$",
+                        @title = "Please enter a valid 10-digit phone number starting with 6, 7, 8, or 9."
+                    })
+                    @Html.ValidationMessageFor(m => m.mAppointmentAd.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Address & Date -->
+            <div class="form-row">
+                <div class="form-group">
+                    @*@Html.LabelFor(m => m.mAppointmentAd.Address)*@
+                    @Html.TextBoxFor(m => m.mAppointmentAd.Address, new { @required = "required", @placeholder = "Address", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.mAppointmentAd.Address, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(m => m.mAppointmentAd.Date)*@
+                    @Html.TextBoxFor(m => m.mAppointmentAd.Date, "{0:yyyy-MM-dd}", new { @required = "required", @placeholder = "Appointment Date", @type = "date", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.mAppointmentAd.Date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Time & Description -->
+            <div class="form-row">
+                <div class="form-group">
+                    @*@Html.LabelFor(m => m.mAppointmentAd.Time)*@
+                    @Html.TextBoxFor(m => m.mAppointmentAd.Time, new { @required = "required", @placeholder = "Time", @class = "form-control", @type = "time" })
+                    @Html.ValidationMessageFor(m => m.mAppointmentAd.Time, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(m => m.mAppointmentAd.Description)*@
+                    @Html.TextBoxFor(m => m.mAppointmentAd.Description, new { @required = "required", @placeholder = "Description", @class = "form-control", rows = 5, cols = 20 })
+                    @Html.ValidationMessageFor(m => m.mAppointmentAd.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div style="display: flex; justify-content: center; ">
+                <input type="submit" class="btn-submit" value="Submit" style="border-color: #e74715">
+            </div>
+        </div>
+    }
+</div>

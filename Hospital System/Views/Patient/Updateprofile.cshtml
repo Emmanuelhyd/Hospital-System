@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Update Profile";
-    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+    Layout = "~/Views/Shared/_LayoutPatientPage1.cshtml";
 }
 
 <!DOCTYPE html>
@@ -26,14 +26,14 @@
 
             // Set the icon and message based on the type
             if (type === 'success') {
-                popupIcon.innerHTML = "<i class='fas fa-check-circle'></i>";  // Checkmark icon
+                popupIcon.innerHTML = "<i class='fas fa-check-circle'></i>";  // Success icon
                 popup.style.backgroundColor = "#28a745"; // Green for success
             } else if (type === 'error') {
-                popupIcon.innerHTML = "<i class='fas fa-exclamation-circle'></i>"; // Exclamation mark icon
+                popupIcon.innerHTML = "<i class='fas fa-exclamation-circle'></i>"; // Error icon
                 popup.style.backgroundColor = "#dc3545"; // Red for error
             } else {
                 popupIcon.innerHTML = "<i class='fas fa-info-circle'></i>"; // Info icon
-                popup.style.backgroundColor = "#17a2b8"; // Blue for information
+                popup.style.backgroundColor = "#17a2b8"; // Blue for info
             }
 
             popupMessage.innerText = message;
@@ -55,30 +55,32 @@
         }
 
         .form-container {
-            max-width: 800px;
             margin: 30px auto;
-            padding: 20px;
+            padding: 25px;
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            height:88%;
         }
 
             .form-container h1 {
                 text-align: center;
-                margin-bottom: 20px;
+                margin-bottom: 25px;
                 color: #007bff;
             }
 
         .form-row {
             display: flex;
             flex-wrap: wrap;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .form-group {
             flex: 1;
-            margin-right: 10px;
-            margin-bottom: 10px;
+            margin-right: 15px;
+            margin-bottom: 15px;
         }
 
             .form-group:last-child {
@@ -87,18 +89,28 @@
 
             .form-group label {
                 font-weight: bold;
-                margin-bottom: 5px;
+                margin-bottom: 8px;
                 color: #495057;
             }
 
             .form-group input,
             .form-group select {
-                width: 75%;
-                padding: 10px;
+                width: 100%;
+                padding: 12px;
                 border: 1px solid #ced4da;
-                border-radius: 4px;
+                border-radius: 6px;
                 box-sizing: border-box;
+                font-size: 1.5rem;
+                transition: all 0.3s;
+                height:50px;
             }
+
+                .form-group input:focus,
+                .form-group select:focus {
+                    border-color: #007bff;
+                    outline: none;
+                    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+                }
 
             .form-group .text-danger {
                 color: #d78484;
@@ -109,38 +121,21 @@
 
         .btn-submit {
             display: block;
-            width: 53%;
-            padding: 12px;
-            font-size: 1rem;
+            width: 30%;
+            padding: 14px;
+            font-size: 1.1rem;
             color: #fff;
             background-color: dodgerblue;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s;
-            margin: 10px auto;
+            margin: 20px auto;
         }
 
             .btn-submit:hover {
                 background-color: #218838;
                 transform: scale(1.05);
-            }
-
-        .button-back {
-            display: inline-block;
-            margin: 10px 0;
-            padding: 10px 20px;
-            color: white;
-            background-color: dodgerblue;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-
-            .button-back:hover {
-                background-color: #0056b3;
             }
 
         /* Popup Style */
@@ -163,8 +158,33 @@
                 font-size: 24px;
                 margin-right: 10px;
             }
+
+        .button-back {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            color: white;
+            background-color: dodgerblue;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+            .button-back:hover {
+                background-color: #0056b3;
+            }
+        .s {
+            margin-left: 591px;
+            position: absolute;
+            margin-top: 17px;
+            font-weight: 700;
+        }
+            }
     </style>
 </head>
+
 <body>
     <!-- Popup for success/error messages -->
     <div id="popup">
@@ -172,17 +192,29 @@
         <div id="popupMessage"></div>
     </div>
 
-    <div>
+    <div class="sb2-2" style="margin-top: 76px; height: 120%;">
+        <div class="sb2-2-2">
+            <ul>
+                <li>
+                    <a href="/Patient/Dashboard"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="active-bre">
+                    <a href="#"> Profile</a>
+                </li>
+                <li class="page-back">
+                    <a href="/Patient/Dashboard"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                </li>
+            </ul>
+        </div>
+    
+
         <div class="form-container">
-            <div>
-                <a href="javascript:void(0);" onclick="Back()" class="back-icon">
-                    <i class="fas fa-arrow-circle-left"> </i>
-                </a>
+            <div style="padding: 14px 36px; background: #002147; margin-top: -26px; margin-left: -25px; width: 107%; color:white;">
+                <h4>Update Your Profile</h4>
             </div>
-            <h1>@ViewBag.Title</h1>
 
             <div style="margin-bottom: 20px;">
-                <strong>Patient ID:</strong> @ViewBag.PatientId<br />
+                <span class="s">Patient ID: @ViewBag.PatientId </span><br />
                 <strong>User Name:</strong> @Session["UserName"]<br />
             </div>
 
@@ -191,59 +223,68 @@
                 @Html.AntiForgeryToken()
                 @Html.HiddenFor(m => m.Patients.PatientId)
 
+                <!-- First Row (User Name & First Name) -->
                 <div class="form-row">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Patients.UserName)
+                        @*@Html.LabelFor(m => m.Patients.UserName)*@
                         @Html.TextBoxFor(m => m.Patients.UserName, new { @class = "form-control", @readonly = "readonly", Value = @Session["UserName"] })
                         @Html.ValidationMessageFor(m => m.Patients.UserName, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Patients.FirstName)
+                        @*@Html.LabelFor(m => m.Patients.FirstName)*@
                         @Html.TextBoxFor(m => m.Patients.FirstName, new { @placeholder = "First Name", @class = "form-control", @required = "required", Value = Session["FirstName"] })
                         @Html.ValidationMessageFor(m => m.Patients.FirstName, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
+                <!-- Second Row (Last Name & Email) -->
                 <div class="form-row">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Patients.LastName)
-                        @Html.TextBoxFor(m => m.Patients.LastName, new { @placeholder = "Last Name", @class = "form-control", Value = @Session["LastName"] })<br />
+                        @*@Html.LabelFor(m => m.Patients.LastName)*@
+                        @Html.TextBoxFor(m => m.Patients.LastName, new { @placeholder = "Last Name", @class = "form-control", Value = @Session["LastName"] })
                         @Html.ValidationMessageFor(m => m.Patients.LastName, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Patients.Email)
-                        @Html.TextBoxFor(m => m.Patients.Email, new { @required = "required", @placeholder = "Email", @class = "form-control", @type = "email", Value = @Session["Email"] })<br />
+                        @*@Html.LabelFor(m => m.Patients.Email)*@
+                        @Html.TextBoxFor(m => m.Patients.Email, new { @required = "required", @placeholder = "Email", @class = "form-control", @type = "email", Value = @Session["Email"] })
                         @Html.ValidationMessageFor(m => m.Patients.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
+                <!-- Third Row (Blood Group & Gender) -->
                 <div class="form-row">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Patients.BloodGroup)
-                        @Html.DropDownListFor(m => m.Patients.BloodGroup, Model.BloodGroups, "Select Blood Group", new { @class = "form-control", @required = "required", Value = @Session["BloodGroups"] })<br />
+                        @*@Html.LabelFor(m => m.Patients.BloodGroup)*@
+                        @Html.DropDownListFor(m => m.Patients.BloodGroup, Model.BloodGroups, "Select Blood Group", new { @class = "form-control", @required = "required", Value = @Session["BloodGroups"] })
                         @Html.ValidationMessageFor(m => m.Patients.BloodGroup, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Patients.Gender)
-                        @Html.DropDownListFor(m => m.Patients.Gender, Model.GetGenders, "Select Gender", new { @class = "form-control", @required = "required", Value = @Session["Gender"] })<br />
+                        @*@Html.LabelFor(m => m.Patients.Gender)*@
+                        @Html.DropDownListFor(m => m.Patients.Gender, Model.GetGenders, "Select Gender", new { @class = "form-control", @required = "required", Value = @Session["Gender"] })
                         @Html.ValidationMessageFor(m => m.Patients.Gender, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
+                <!-- Fourth Row (Age & Phone Number) -->
                 <div class="form-row">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Patients.Age)
-                        <div style="display: flex; align-items: center;">
-                            <button type="button" class="btn btn-secondary" onclick="changeAge(1)" style="border-radius: 0; border: 1px solid #ccc;">▲</button>
-                            @Html.TextBoxFor(m => m.Patients.Age, new { @placeholder = "Age", @class = "form-control", @required = "required", @min = "0", @max = "120", @id = "ageInput", @style = "width: 70px; text-align: center;", Value = @Session["Age"] })
-                            <button type="button" class="btn btn-secondary" onclick="changeAge(-1)" style="border-radius: 0; border: 1px solid #ccc;">▼</button>
-                        </div>
-                        <br />
+                        @*@Html.LabelFor(m => m.Patients.Age)<br />*@
+                        @Html.TextBoxFor(m => m.Patients.Age, new
+                        {
+                            @class = "form-control",
+                            @required = "required",
+                            @placeholder = "Age",
+                            @type = "number",
+                            @min = "1",
+                            @max = "150",
+                            @step = "1",
+                            @title = "Enter a valid age between 1 and 150"
+                        })
                         @Html.ValidationMessageFor(m => m.Patients.Age, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Patients.PhoneNo)
+                        @*@Html.LabelFor(m => m.Patients.PhoneNo)*@
                         @Html.TextBoxFor(m => m.Patients.PhoneNo, new
                         {
                             @class = "form-control",
@@ -251,55 +292,45 @@
                             @pattern = @"^[6789]\d{9}$",
                             @title = "Phone number must be 10 digits and start with 6, 7, 8, or 9.",
                             @required = "required"
-                        })<br />
-                        @Html.ValidationMessageFor(m => m.Patients.PhoneNo, "", new { @class = "text-danger", Value = @Session["PhoneNo"] })
+                        })
+                        @Html.ValidationMessageFor(m => m.Patients.PhoneNo, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
+                <!-- Fifth Row (Emergency Contact & Address) -->
                 <div class="form-row">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Patients.EmergencyContact)
-                        @Html.TextBoxFor(m => m.Patients.EmergencyContact, new { @class = "form-control", placeholder = "Enter Emergency Contact", Value = @Session["EmergencyContact"] })<br />
+                        @*@Html.LabelFor(m => m.Patients.EmergencyContact)*@
+                        @Html.TextBoxFor(m => m.Patients.EmergencyContact, new { @class = "form-control", placeholder = "Enter Emergency Contact", Value = @Session["EmergencyContact"] })
                         @Html.ValidationMessageFor(m => m.Patients.EmergencyContact, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Patients.Address)
-                        @Html.TextBoxFor(m => m.Patients.Address, new { @placeholder = "Address", @class = "form-control", @required = "required", Value = @Session["Address"] })<br />
+                        @*@Html.LabelFor(m => m.Patients.Address)*@
+                        @Html.TextBoxFor(m => m.Patients.Address, new { @placeholder = "Address", @class = "form-control", @required = "required", Value = @Session["Address"] })
                         @Html.ValidationMessageFor(m => m.Patients.Address, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-
+                <!-- Submit Button -->
                 <div class="form-row">
-                    <input type="submit" value="Update Profile" class="btn-submit" />
+                    <input type="submit" value="Update Profile" class="btn-submit" style="margin-top:-10px;" />
                 </div>
             }
-
         </div>
-    </div>
 
-    <script>
-
-        @if (TempData["Message"] != null)
-        {
-            <text>
-                showPopup('@TempData["Message"]', 'success');
-            </text>
-        }
-    </script>
-    <script>
-        function changeAge(delta) {
-            const ageInput = document.getElementById('ageInput');
-            let currentValue = parseInt(ageInput.value) || 0; // Default to 0 if not a number
-            let newValue = currentValue + delta;
-
-            // Ensure new value is within the min and max limits
-            if (newValue < 0) newValue = 0;
-            if (newValue > 120) newValue = 120;
-
-            ageInput.value = newValue; // Update the input value
-        }
-    </script>
-
+        <script>
+            @if (TempData["Message"] != null)
+            {
+                <text>
+                    showPopup('@TempData["Message"]', 'success');
+                </text>
+            }
+            else if (TempData["ErrorMessage"] != null)
+            {
+                <text>
+                    showPopup('@TempData["ErrorMessage"]', 'error');
+                </text>
+            }
+        </script>
 </body>
 </html>

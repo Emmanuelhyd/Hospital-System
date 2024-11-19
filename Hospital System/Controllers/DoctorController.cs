@@ -39,7 +39,21 @@ namespace Hospital_System4r.Controllers
         }
 
 
+        public ActionResult DoctorApp(int DoctorId)
+        {
+            var doc = doctorBAL.DoctorApp(DoctorId);
+            var doctorTimeSlots = doctorBAL.TimeSlot(DoctorId);
 
+            var model = new Allview
+            {
+                Menus = menuBAL.GetMenus(),
+                doctors = doc,
+                DoctorTimeSlots = doctorTimeSlots
+            };
+            return View(model);
+
+
+        }
 
 
 

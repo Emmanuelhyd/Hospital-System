@@ -1,269 +1,267 @@
 ﻿@model Hospital_System.Viewmodel.Allview
-
 @{
     ViewBag.Title = "Dashboard";
-    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+    Layout = "~/Views/Shared/_LayoutPatientPage1.cshtml";
 }
 
+<title>Dashboard</title>
 
+<style>
+    h1 {
+        text-align: center;
+        margin-top: 20px;
+        color: #343a40;
+    }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+    .link-container {
+        position: absolute;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        text-align: center;
+        padding: 20px;
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 195px;
+        height: 165px;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .link-container:hover {
+            background-color: #6baef6;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-            color: #343a40;
-        }
+    .icon {
+        font-size: 36px;
+        margin-bottom: 15px;
+    }
 
-       
-        .link-container {
-            position: absolute;
-            background-color: #ffffff; 
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-            text-align: center;
-            padding: 20px;
-            text-decoration: none;
-            color: inherit; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 220px; 
-            height: 170px; 
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
+    #tab1 .icon {
+        color: #007bff;
+    }
 
-            .link-container:hover {
-                background-color: #6baef6; 
-                box-shadow: 0 6px 12px rgba(0,0,0,0.15); 
-            }
+    #tab2 .icon {
+        color: #28a745;
+    }
 
-      
-        .icon {
-            font-size: 36px; 
-            margin-bottom: 15px; 
-        }
+    #tab3 .icon {
+        color: #dc3545;
+    }
 
-        
-        #tab1 .icon {
-            color: #007bff;
-        }
-        
-        #tab2 .icon {
-            color: #28a745;
-        }
-       
-        #tab3 .icon {
-            color: #dc3545;
-        }
-       
-        #tab4 .icon {
-            color: #ffc107;
-        }
-       
-        #tab5 .icon {
-            color: #17a2b8;
-        }
-       
-        #tab6 .icon {
-            color: #6c757d;
-        }
-       
-        #tab7 .icon {
-            color: #e83e8c;
-        }
-        
-        #tab8 .icon {
-            color: #fd7e14;
-        }
-        
+    #tab4 .icon {
+        color: #ffc107;
+    }
 
-        .count {
-            font-size: 28px; 
-            color: #343a40;
-            margin: 10px 0; 
-        }
+    #tab5 .icon {
+        color: #17a2b8;
+    }
 
-      
-        .tag {
-            font-weight: 900;
-            color: blue;
-        }
+    #tab6 .icon {
+        color: #6c757d;
+    }
 
-            .tag:hover {
-                background-color: #0056b3; 
-            }
+    #tab7 .icon {
+        color: #e83e8c;
+    }
 
-       
-        #tab1 {
-            
-            position: absolute;
-            margin-top: 20px;
-        }
+    #tab8 .icon {
+        color: #fd7e14;
+    }
 
-        #tab2 {
-            margin-left: 268px;
-            margin-top: 20px;
-        }
+    .count {
+        font-size: 28px;
+        color: #343a40;
+        margin: 10px 0;
+        color: whitesmoke
+    }
 
-        #tab3 {
-            margin-left: 541px;
-            margin-top: 20px;
-        }
+    .tag {
+        font-weight: 900;
+        font-size: larger;
+        color: whitesmoke;
+    }
 
-        #tab4 {
-            margin-left: 820px;
-            margin-top: 20px;
-        }
+    /*.tag:hover {
+        background-color: #0056b3;
+    }*/
 
-        #tab5 {
-           
-            margin-top: 240px;
-        }
+    #tab1 {
+        margin-top: 20px;
+    }
 
-        #tab6 {
-            margin-left: 268px;
-            margin-top: 240px;
-        }
+    #tab2 {
+        margin-left: -21px;
+        margin-top: 20px;
+        width: 19%;
+    }
 
-        #tab7 {
-            margin-left: 541px;
-            margin-top: 240px;
-        }
+    #tab3 {
+        margin-left: 541px;
+        margin-top: 20px;
+    }
 
-        #tab8 {
-            margin-left: 820px;
-            margin-top: 240px;
-        }
+    #tab4 {
+        margin-left: 729px;
+        margin-top: 18px;
+        width: 18%;
+    }
 
-       
-        .link-container a {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 226px;
-            height: 48vh;
-            text-decoration: none;
-            color: inherit;
-        }
+    #tab5 {
+        margin-top: 240px;
+    }
 
-        /*
-        tab1 {
-            background-color: #f4f4f4;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            width: 225px;
-            width: 225px;
-            width: 225px;
-            width: 225px;
-            height: 48vh;
-        }*/
-    </style>
-</head>
-<div style=" position: absolute; width: 800px; height: 100vh; margin-left: 201px;">
-    <div style="margin-left:-195px;width:750px;position:absolute;">
-        <body>
-           
-            @TempData["UserName"]
+    #tab6 {
+        margin-left: 268px;
+        margin-top: 240px;
+    }
 
-            <div id="tab1" class="link-container">
-                <a href="#" class="link">
-                    <div class="icon">
-                        <i class="fa fa-building"></i>
-                    </div>
-                    <p class="count">@Model.DepartmentCount</p>
-                    <span class="tag">Departments</span>
-                </a>
-            </div>
+    #tab7 {
+        margin-left: 237px;
+        margin-top: 20px;
+        width: 18%;
+    }
 
-            <div id="tab2" class="link-container">
-                <a href="Doc" class="link">
-                    <div class="icon">
-                        <i class="fa fa-user-md"></i>
-                    </div>
-                    <p class="count">@Model.DoctorCount</p>
-                    <span class="tag">Doctors</span>
-                </a>
-            </div>
+    #tab8 {
+        margin-left: 483px;
+        margin-top: 20px;
+        width: 18%;
+    }
 
-            <div id="tab3" class="link-container">
-                <a href="#" class="link">
-                    <div class="icon">
-                        <i class="fa fa-user"></i>
-                    </div>
-                    <p class="count">@Model.PatientCount</p>
-                    <span class="tag">Patients</span>
-                </a>
-            </div>
+    .link-container a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 226px;
+        height: 48vh;
+        text-decoration: none;
+        color: inherit;
+    }
 
-            <div id="tab4" class="link-container">
-                <a href="Ambulanceses" class="link">
-                    <div class="icon">
-                        <i class="fa fa-ambulance"></i>
-                    </div>
-                    <p class="count">@Model.AmbulanceCount</p>
-                    <span class="tag">Ambulances</span>
-                </a>
-            </div>
+    /* Set fixed size for the pie chart */
+    #pieChartContainer {
+        width: 50%; /* Fixed width, adjust as needed */
+        height: 400px; /* Fixed height */
+        margin: 20px auto;
+        text-align: center;
+    }
 
-            <div id="tab5" class="link-container">
-                <a href="#" class="link">
-                    <div class="icon">
-                        <i class="fa fa-calendar-check"></i>
-                    </div>
-                    <p class="count">@Model.ActiveAppointmentsCount</p>
-                    <span class="tag">Active Appointments</span>
-                </a>
-            </div>
+    canvas {
+        width: 100% !important; /* Make canvas responsive */
+        height: 100% !important; /* Ensure canvas fits container */
+    }
+</style>
 
-            <div id="tab6" class="link-container">
-                <a href="#" class="link">
-                    <div class="icon">
-                        <i class="fa fa-calendar-times"></i>
-                    </div>
-                    <p class="count">@Model.PendingAppointmentsCount</p>
-                    <span class="tag">Pending Appointments</span>
-                </a>
-            </div>
+@TempData["UserName"]
 
-            <div id="tab7" class="link-container">
-                <a href="medicals" class="link">
-                    <div class="icon">
-                        <i class="fa fa-capsules"></i>
-                    </div>
-                    <p class="count">@Model.MedicineCount</p>
-                    <span class="tag">Medicines</span>
-                </a>
-            </div>
+<!-- Navigation and Dashboard Links -->
+<div class="sb2-2" style="margin-top: 76px; height: 120vh;">
+    <div class="sb2-2-2">
+        <ul>
+            <li><a href="/Patient/Dashboard"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+            <li class="active-bre"><a href="#"> Dashboard</a></li>
+            <li class="page-back"><a href="/Patient/Dashboard"><i class="fa fa-backward" aria-hidden="true"></i> Back</a></li>
+        </ul>
+    </div>
 
-            <div id="tab8" class="link-container">
-                <a href="Drive" class="link">
-                    <div class="icon">
-                        <i class="fa fa-car"></i>
-                    </div>
-                    <p class="count">@Model.DriverCount</p>
-                    <span class="tag">Drivers</span>
-                </a>
-            </div>
-        </body>
+    <div class="sb2-2-1" style="height: 35%; background-color: #e3e8ea;">
+
+        <!-- Dynamic Dashboard Link Containers -->
+        <div id="tab2" class="link-container" style=" background-image: url('../../images/portrait-male-doctors-nurse-using-digital-tablet-corridor_107420-71369.png'); background-size: cover; background-position: center;">
+
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); z-index: 0;"></div>
+            <a href="Doc" class="link" data-chart="Doctors" style="position: relative; z-index: 1;">
+
+                <p class="count">@Model.DoctorCount</p>
+                <span class="tag">Doctors</span>
+            </a>
+        </div>
+        <div id="tab4" class="link-container" style=" background-image: url('../../images/ambulance-truck.png'); background-size: cover; background-position: center;">
+
+
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); z-index: 0;"></div>
+
+            <!-- Link with text -->
+            <a href="Ambulanceses" class="link" data-chart="Ambulances" style="position: relative; z-index: 1;">
+                <p class="count">@Model.AmbulanceCount</p>
+                <span class="tag">
+                    Ambulances
+                </span>
+            </a>
+        </div>
+
+        <div id="tab7" class="link-container" style="background-image: url('../../Images/medicine.png'); background-size: cover; background-position: center; ">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); z-index: 0;"></div>
+            <a href="medicals" class="link" data-chart="Medicines" style="position: relative; z-index: 1;">
+
+                <p class="count">@Model.MedicineCount</p>
+                <span class="tag">Medicines</span>
+
+            </a>
+        </div>
+        <div id="tab8" class="link-container" style="background-image: url('../../Images/driver.png'); background-size: cover; background-position: center; ">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); z-index: 0;"></div>
+            <a href="Drive" class="link" data-chart="Drivers" style="position: relative; z-index: 1;">
+
+                <p class="count">@Model.DriverCount</p>
+                <span class="tag">Drivers</span>
+            </a>
+        </div>
+
     </div>
 </div>
-</html>
+
+@using (Html.BeginForm())
+{
+
+<div class="row" style="margin-left: 272px;">
+    <div class="col-md-12" style="margin-top:-420px; width:96%">
+        <div class="box-inn-sp" style="margin-left: 25px; ">
+            <div class="inn-title">
+                <h4> Doctor List </h4>
+
+            </div>
+
+            <div class="tab-inn">
+                <div class="table-responsive table-desi">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Department</th>
+                                <th>Designation</th>
+                                <th>Status</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Doctors)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Department)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Designation)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                                    
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+}
+
 
 
 

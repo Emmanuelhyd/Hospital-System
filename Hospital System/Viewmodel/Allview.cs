@@ -49,6 +49,9 @@ namespace Hospital_System.Viewmodel
        public string UserNameorEmail { get; set; }
 
 
+        public List<DoctorTimeSlot> DoctorTimeSlots { get; set; }
+
+        public DoctorTimeSlot Time { get; set; }
 
     }
 }

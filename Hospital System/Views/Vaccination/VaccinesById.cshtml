@@ -1,119 +1,101 @@
-﻿@*@model ReceptionManagement.Models.Vaccines
-    @{
-        ViewBag.Title = "VaccinesById";
-    }
-
-    <!DOCTYPE html>
-
-    <html>
-    <head>
-        <meta name="viewport" content="width=device-width" />
-        <title>VaccinesById</title>
-    </head>
-    <body>
-        <div>
-            <strong> VaccinationID : @Model.VaccineId</strong><br />
-            <strong> PatientName : @Model.PatientName</strong><br />
-            <strong> Age: @Model.Age</strong><br />
-            <strong> DoctorName : @Model.DoctorName</strong><br />
-            <strong> Vaccination Type : @Model.VaccineType</strong><br />
-            <strong> Date of Vaccinaion : @Model.DateOfVaccination</strong><br />
-            <strong> Dosage : @Model.Dosage</strong><br />
-            <strong> Follow-Up-Date : @Model.FollowupDate</strong><br />
-            <strong> Next-Due-Date : @Model.NextDueDate</strong><br />
-            <strong> Reaction  : @Model.ReactionType</strong><br />
-            <strong> Status : @Model.Status</strong><br />
-
-
-
-        </div>
-    </body>
-    </html>*@
-@model Hospital_System.Models.Vaccines
+﻿@model Hospital_System.Models.Vaccines
 
 @{
     ViewBag.Title = "VaccinesById";
     Layout = null;
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>VaccinesById</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f9f9f9;
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f9f9f9;
+    }
+
+    div {
+        background-color: #fff;
+        padding: 20px;
+        /* border-radius: 8px;*/
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        max-width: 700px;
+        margin: auto;
+    }
+
+    strong {
+        color: #333;
+    }
+
+
+    /*.field {
+        margin-bottom: 10px;*/ /* Adds space between fields */
+    /*}*/
+
+    /* Back Button Styling */
+    .back-button {
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: #ff6a00;
+        border-color: #ff6a00;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 5px;
+        text-decoration: none;
+        /*   margin-bottom: 20px;*/
+        transition: background-color 0.3s ease;
+    }
+
+        .back-button:hover {
+            background-color: #ff6a00; /* Darker blue on hover */
         }
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        .back-button:active {
+            background-color: #ff6a00; /* Even darker blue when clicked */
         }
+</style>
 
-        h1 {
-            text-align: center;
-            color: #333;
-        }
+<button onclick="window.history.back();" class="back-button"> Back</button>
 
-        strong {
-            color: #555;
-        }
+<div style="padding: 14px 36px; background: #002147; margin-top: -43px; margin-left: 284px; width: 670px; color: white;">
+    <h4>Vaccination Details</h4>
 
-        .info {
-            margin-bottom: 15px;
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
+</div>
 
-            .info:last-child {
-                border-bottom: none;
-            }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Vaccination Details</h1>
-        <div class="info">
-            <strong>Vaccination ID:</strong> @Model.VaccineId
-        </div>
-        <div class="info">
-            <strong>Patient Name:</strong> @Model.PatientName
-        </div>
-        <div class="info">
-            <strong>Age:</strong> @Model.Age
-        </div>
-        <div class="info">
-            <strong>Doctor Name:</strong> @Model.DoctorName
-        </div>
-        <div class="info">
-            <strong>Vaccination Type:</strong> @Model.VaccineType
-        </div>
-        <div class="info">
-            <strong>Date of Vaccination:</strong> @Model.DateOfVaccination
-        </div>
-        <div class="info">
-            <strong>Dosage:</strong> @Model.Dosage
-        </div>
-        <div class="info">
-            <strong>Follow-Up Date:</strong> @Model.FollowupDate
-        </div>
-        <div class="info">
-            <strong>Next Due Date:</strong> @Model.NextDueDate
-        </div>
-        <div class="info">
-            <strong>Reaction:</strong> @Model.ReactionType
-        </div>
-        <div class="info">
-            <strong>Status:</strong> @Model.Status
-        </div>
+<div>
+
+    <div class="field">
+        <strong>Vaccination ID:</strong> @Model.VaccineId
     </div>
-</body>
-</html>
+    <div class="field">
+        <strong>Patient Name:</strong> @Model.PatientName
+    </div>
+    <div class="field">
+        <strong>Age:</strong> @Model.Age
+    </div>
+    <div class="field">
+        <strong>Doctor Name:</strong> @Model.DoctorName
+    </div>
+    <div class="field">
+        <strong>Vaccination Type:</strong> @Model.VaccineType
+    </div>
+    <div class="field">
+        <strong>Date of Vaccination:</strong> @Model.DateOfVaccination
+    </div>
+    <div class="field">
+        <strong>Dosage:</strong> @Model.Dosage
+    </div>
+    <div class="field">
+        <strong>Follow-Up Date:</strong> @Model.FollowupDate
+    </div>
+    <div class="field">
+        <strong>Next Due Date:</strong> @Model.NextDueDate
+    </div>
+    <div class="field">
+        <strong>Reaction:</strong> @Model.ReactionType
+    </div>
+    <div class="field">
+        <strong>Status:</strong> @Model.Status
+    </div>
+</div>
+

@@ -2,99 +2,72 @@
 
 @{
     ViewBag.Title = "Complaint List";
-    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+    Layout = "~/Views/Shared/_LayoutPatientPage1.cshtml";
 }
 
-<div style="margin-top: 15px; margin-left: 21px;">
-    @Html.ActionLink("Back", "Dashboard", "Patient", null, new { @class = "btn btn-primary" })
-</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 @using (Html.BeginForm())
 {
-    <div class="table-container">
-        <h2>List Of Complaints</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Complaint</th>
-                    <th>Phone Number</th>
-                    <th>Reply</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.mComplaints)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Complaint)</td>
-                        <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Replay)</td>
-                        <td>
-                            <a href="@Url.Action("CEdit", new { Id = item.Id })" class="edit-link" title="Edit">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+
+    <div class="sb2-2" style="margin-top: 76px; height: 120vh;">
+        <div class="sb2-2-2">
+            <ul>
+                <li>
+                    <a href="/Patient/Dashboard"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="active-bre">
+                    <a href="#"> ComplaintList</a>
+                </li>
+                <li class="page-back">
+                    <a href="/Patient/Dashboard"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row" style="margin-left: 272px;">
+        <div class="col-md-12" style="margin-top:-610px;">
+            <div class="box-inn-sp">
+                <div class="inn-title">
+                    <h4>Complaint List</h4>
+
+                </div>
+
+                <div class="tab-inn">
+                    <div class="table-responsive table-desi">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Complaint</th>
+                                    <th>Phone Number</th>
+                                    <th>Reply</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.mComplaints)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Complaint)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Replay)</td>
+                                        <td>
+                                            <a href="@Url.Action("CEdit", new { Id = item.Id })" class="edit-link" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 }
-
-<style>
-    .table-container {
-        padding: 20px;
-        margin: 20px auto; /* Center the container */
-        width: 80%; /* Adjusted for better layout */
-        background-color: white; /* Added background for contrast */
-        border-radius: 8px; /* Rounded corners */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 20px 0;
-    }
-
-    th, td {
-        padding: 15px;
-        border: 1px solid #ddd;
-        text-align: left;
-    }
-
-    th {
-        background-color: #007bff;
-        color: #fff;
-        font-weight: bold;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-
-    tr:hover {
-        background-color: #e9ecef;
-    }
-
-    a {
-        color: #007bff;
-        text-decoration: none;
-    }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-    .edit-link {
-        font-size: 1.2em;
-        color: #007bff;
-    }
-</style>
-
-<!-- Include Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />

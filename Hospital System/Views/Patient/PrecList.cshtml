@@ -2,160 +2,71 @@
 
 @{
     ViewBag.Title = "PrecList";
-    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+    Layout = "~/Views/Shared/_LayoutPatientPage1.cshtml";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>@ViewBag.Title</title>
-    <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-        }
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-            position: relative;
-            margin-top: 71px;
-        }
+    @using (Html.BeginForm())
+    {
 
-        h2 {
-            margin-bottom: 20px;
-            color: #343a40;
-            font-size: 2rem;
-            text-align: center;
-        }
-
-        /* Button Styles */
-        .button-back {
-            display: inline-block;
-            margin: 10px 0;
-            padding: 10px 20px;
-            color: white;
-            background-color: dodgerblue;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-            position: absolute;
-            top: 30px;
-            left: 20px;
-        }
-
-        .button-back:hover {
-            background-color: #0056b3;
-        }
-
-        /* Table Styles */
-        .table-container {
-            overflow-x: auto;
-            margin-top: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 0;
-            font-size: 14px;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #007bff;
-            color: white;
-            font-weight: bold;
-        }
-
-        tbody tr:nth-child(odd) {
-            background-color: #f9f9f9;
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: #f4f4f4;
-        }
-
-        tbody tr:hover {
-            background-color: #e2e2e2;
-        }
-
-        /* Responsive Table Styles */
-        media (max-width: 768px) {
-            th, td {
-                padding: 8px;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            .button-back {
-                font-size: 14px;
-                padding: 8px 16px;
-                top: 20px;
-                left: 10px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <button class="button-back" onclick="Back()"><i class="fas fa-arrow-left"></i> Back </button>
-    <div class="container">
-        <h2>Prescriptions</h2>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Patient Name</th>
-                        <th>Doctor Name</th>
-                        <th>Problem</th>
-                        <th>Medicine Name</th>
-                        <th>Morning</th>
-                        <th>Afternoon</th>
-                        <th>Night</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Medicines)
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.DoctorName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Problem)</td>
-                            <td>@Html.DisplayFor(modelItem => item.MedicineName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Morning)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Afternoon)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Night)</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+        <div class="sb2-2" style="margin-top: 76px; height: 120vh;">
+            <div class="sb2-2-2">
+                <ul>
+                    <li>
+                        <a href="/Patient/Dashboard"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                    </li>
+                    <li class="active-bre">
+                        <a href="#"> Prescription</a>
+                    </li>
+                    <li class="page-back">
+                        <a href="/Patient/Dashboard"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
 
-    <script>
-        function Back() {
-            window.location.href = "/Patient/Dashboard";
-        }
-    </script>
-</body>
-</html>
+        <div class="row" style="margin-left: 272px;">
+            <div class="col-md-12" style="margin-top:-650px;width:96%">
+                <div class="box-inn-sp">
+                    <div class="inn-title">
+                        <h4>Prescription</h4>
+
+                    </div>
+
+                    <div class="tab-inn">
+                        <div class="table-responsive table-desi">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Patient Name</th>
+                                        <th>Doctor Name</th>
+                                        <th>Problem</th>
+                                        <th>Medicine Name</th>
+                                        <th>Morning</th>
+                                        <th>Afternoon</th>
+                                        <th>Night</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Medicines)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.DoctorName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Problem)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.MedicineName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Morning)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Afternoon)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Night)</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }

@@ -75,10 +75,60 @@ namespace Hospital_System.DAL
             return nurse;
 
         }
+        //Add Nurse
+
+        public List<Nurse> AddNurse(Nurse nurse)
+        {
+
+            var ids = 0;
+            con.Open();
+            cmd = new SqlCommand("select * from Nurse where NurseId='" + nurse.NurseId + "'", con);
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                ids = Convert.ToInt32(reader["NurseId"]);
+            }
+
+            reader.Close();
+            con.Close();
 
 
 
+            con.Open();
+            if (ids == 0)
+            {
+                cmd = new SqlCommand("insert into Nurse(NurseId,Name,DOB,Contact,Email,Address,DateOfJoining,Specialization,ShiftType,Education,EmployeeStatus) values(" + nurse.NurseId + ",'" + nurse.Name + "','" + nurse.DOB + "','" + nurse.Contact + "','" + nurse.Email + "','" + nurse.Address + "','" + nurse.DateOfJoining + "','" + nurse.Specialization + "','" + nurse.ShiftType + "','" + nurse.Education + "','" + nurse.EmployeeStatus + "')", con);
 
+            }
+            else
+            {
+                cmd = new SqlCommand("update Nurse set Name='" + nurse.Name + "',DOB='" + nurse.DOB + "',Contact='" + nurse.Contact + "',Email='" + nurse.Email + "',Address='" + nurse.Address + "',DateOfJoining='" + nurse.DateOfJoining + "',Specialization='" + nurse.Specialization + "' ,ShiftType='" + nurse.ShiftType + "',Education='" + nurse.Education + "',EmployeeStatus='" + nurse.EmployeeStatus + "' where NurseId=" + nurse.NurseId + "", con);
+            }
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+
+            List<Nurse> nurses= new List<Nurse>();
+            nurses = GetNurses();
+            return nurses;
+        }
+
+
+
+        public int NurseId()
+        {
+            int id = 0;
+            con.Open();
+            cmd = new SqlCommand("SELECT MAX(NurseId) FROM Nurse", con);
+            var result = cmd.ExecuteScalar();
+
+            if (result != DBNull.Value)
+            {
+                id = Convert.ToInt32(result);
+            }
+            con.Close();
+            return id;
+        }
 
 
     }

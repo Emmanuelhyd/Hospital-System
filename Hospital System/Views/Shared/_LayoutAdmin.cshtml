@@ -9,21 +9,29 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #f8f9fa; /* Light background for better contrast */
+            background-color: white;
         }
 
         .navbar {
             background-color: #0094ff;
-            width: 107%;
+            width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
         }
 
-        .navbar-nav .nav-link {
-            color: white; /* Navbar link color */
+        .navbar-nav {
+            flex-direction: column; /* Change navbar items to a vertical layout */
         }
 
-            .navbar-nav .nav-link:hover {
-                color: #ffdd57; /* Hover color for links */
+            .navbar-nav .nav-link {
+                color: white; /* Navbar link color */
+                padding-left: 15px;
+                padding-right: 15px;
             }
+
+                .navbar-nav .nav-link:hover {
+                    color: #ffdd57; /* Hover color for links */
+                }
 
         .dropdown-menu {
             background-color: #f8f9fa; /* Dropdown background */
@@ -37,10 +45,7 @@
         .container {
             padding: 20px;
             max-height: 80vh; /* Limit container height */
-           
-            background-color: white; /* White background for the main content */
             border-radius: 8px; /* Rounded corners */
-           
         }
     </style>
 </head>

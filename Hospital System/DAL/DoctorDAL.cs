@@ -243,7 +243,7 @@ namespace Hospital_System.DAL
             while (reader.Read())
             {
                 Doctor doctor = new Doctor();
-
+                doctor.DoctorId = reader.IsDBNull(reader.GetOrdinal("DoctorId")) ? 0 : Convert.ToInt32(reader["DoctorId"]);
                 doctor.FullName = reader.GetString(reader.GetOrdinal("FullName"));
                 doctor.Email = reader.GetString(reader.GetOrdinal("Email"));
                 doctor.Education = reader.GetString(reader.GetOrdinal("Education"));
@@ -419,5 +419,74 @@ namespace Hospital_System.DAL
             return id;
         }
 
+
+        public Doctor DoctorApp(int DoctorId)
+        {
+            Doctor doctor1 = null;
+
+            con.Open();
+            cmd = new SqlCommand("select * from doctors where DoctorId= " + DoctorId + "", con);
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                doctor1 = new Doctor
+                {
+
+                    DoctorId = reader.IsDBNull(reader.GetOrdinal("DoctorId")) ? 0 : Convert.ToInt32(reader["DoctorId"]),
+                    FullName = reader.IsDBNull(reader.GetOrdinal("FullName")) ? string.Empty : reader.GetString(reader.GetOrdinal("FullName")),
+                    Email = reader.IsDBNull(reader.GetOrdinal("Email")) ? string.Empty : reader.GetString(reader.GetOrdinal("Email")),
+                    Department = reader.IsDBNull(reader.GetOrdinal("Department")) ? string.Empty : reader.GetString(reader.GetOrdinal("Department")),
+                    Education = reader.IsDBNull(reader.GetOrdinal("Education")) ? string.Empty : reader.GetString(reader.GetOrdinal("Education")),
+                    Designation = reader.IsDBNull(reader.GetOrdinal("Designation")) ? string.Empty : reader.GetString(reader.GetOrdinal("Designation")),
+                    Status = reader.IsDBNull(reader.GetOrdinal("Status")) ? string.Empty : reader.GetString(reader.GetOrdinal("Status"))
+
+                };
+            }
+
+
+            reader.Close();
+            con.Close();
+            return doctor1;
+        }
+
+
+        public List<DoctorTimeSlot> TimeSlot(int DoctorId)
+        {
+            List<DoctorTimeSlot> doctorTime = new List<DoctorTimeSlot>();
+            con.Open();
+            string query = $@"
+               SELECT 
+               TimeSlotId,
+               DoctorId,
+              Slot1,Slot2,Slot3,Slot4,Slot5,IsAvailable
+             
+             FROM DoctortimeSlots 
+             WHERE DoctorId = {DoctorId}";
+            cmd = new SqlCommand(query, con);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                DoctorTimeSlot doctorTime1 = new DoctorTimeSlot
+                {
+                    TimeSlotId = reader.IsDBNull(reader.GetOrdinal("TimeSlotId")) ? 0 : Convert.ToInt32(reader["TimeSlotId"]),
+                    DoctorId = reader.IsDBNull(reader.GetOrdinal("DoctorId")) ? 0 : Convert.ToInt32(reader["DoctorId"]),
+                    Slot1 = reader.IsDBNull(reader.GetOrdinal("Slot1")) ? DateTime.MinValue : Convert.ToDateTime(reader["Slot1"]),
+                    Slot2 = reader.IsDBNull(reader.GetOrdinal("Slot2")) ? DateTime.MinValue : Convert.ToDateTime(reader["Slot2"]),
+                    Slot3 = reader.IsDBNull(reader.GetOrdinal("Slot3")) ? DateTime.MinValue : Convert.ToDateTime(reader["Slot3"]),
+                    Slot4 = reader.IsDBNull(reader.GetOrdinal("Slot4")) ? DateTime.MinValue : Convert.ToDateTime(reader["Slot4"]),
+                    Slot5 = reader.IsDBNull(reader.GetOrdinal("Slot5")) ? DateTime.MinValue : Convert.ToDateTime(reader["Slot5"]),
+                    IsAvailable = reader.IsDBNull(reader.GetOrdinal("IsAvailable")) ? false : Convert.ToBoolean(reader["IsAvailable"])
+
+                };
+                doctorTime.Add(doctorTime1);
+            }
+
+            con.Close();
+            reader.Close();
+            return doctorTime;
+
+        }
+
     }
 }
+

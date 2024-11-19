@@ -21,5 +21,12 @@ namespace Hospital_System.BAL
             return nurseDAL.NurseDetails(NurseId);
 
         }
+
+        public List<Nurse> AddNurse(Nurse nurse)
+        {
+            List<Nurse> nurseDos = new List<Nurse>();
+            nurseDos = nurseDAL.AddNurse(nurse);
+            return nurseDos;
+        }
     }
 }

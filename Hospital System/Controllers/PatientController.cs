@@ -275,6 +275,7 @@ namespace Hospital_System.Controllers
         
         public ActionResult Dashboard()
         {
+            var doctor = patientBAL.GetDoctors();
             var model = new Allview
             {
                 Menus = menuBAL.GetMenus(),
@@ -285,10 +286,14 @@ namespace Hospital_System.Controllers
                 DriverCount = patientBAL.GetDriverCount(),
                 ActiveAppointmentsCount = patientBAL.GetActiveAppointmentsCount(),
                 PendingAppointmentsCount = patientBAL.GetPendingAppointmentsCount(),
-                 Patients = new Patients() // Ensure Patients is initialized
-                 {
-                     UserNameOrEmail = Session["UsernameorEmail"]?.ToString() 
-                 }
+                Doctors = doctor,
+                Patients = new Patients() // Ensure Patients is initialized
+                {
+                    UserNameOrEmail = Session["UsernameorEmail"]?.ToString()
+
+                }
+                  
+
             };
 
          

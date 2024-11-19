@@ -92,7 +92,63 @@ namespace Hospital_System.DAL
             con.Close();
             return vaccines;
         }
-    
-    
+
+
+        public List<Vaccines> AddVaccine(Vaccines vaccine)
+        {
+
+            var ids = 0;
+            con.Open();
+            cmd = new SqlCommand("select * from Vaccine where PatientId='" + vaccine.PatientId + "'", con);
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                ids = Convert.ToInt32(reader["PatientId"]);
+            }
+
+            reader.Close();
+            con.Close();
+
+
+
+            con.Open();
+            if (ids == 0)
+            {
+                cmd = new SqlCommand("insert into Vaccine(PatientName,DoctorName,Age,VaccineId,VaccineType,Dosage,DateOfVaccination,FollowupDate,NextDueDate,ReactionType,Status) values('" + vaccine.PatientName + "','" + vaccine.DoctorName + "','" + vaccine.Age + "','" + vaccine.VaccineId + "','" + vaccine.VaccineType + "','" + vaccine.Dosage + "','" + vaccine.DateOfVaccination + "','" + vaccine.FollowupDate + "','" + vaccine.NextDueDate + "','" + vaccine.ReactionType + "','" + vaccine.Status + "')", con);
+
+            }
+            else
+            {
+                cmd = new SqlCommand("update Vaccine set PatientName='" + vaccine.PatientName + "',DoctorName='" + vaccine.DoctorName + "',Age='" + vaccine.Age + "',VaccineId='" + vaccine.VaccineId + "',VaccineType='" + vaccine.VaccineType + "',Dosage='" + vaccine.Dosage + "',DateOfVaccination='" + vaccine.DateOfVaccination + "',FollowupDate='" + vaccine.FollowupDate + "',NextDueDate='" + vaccine.NextDueDate + "',ReactionType='" + vaccine.ReactionType + "',Status='" + vaccine.Status + "' where PatientId=" + vaccine.PatientId + "", con);
+            }
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+
+            List<Vaccines> vaccines = new List<Vaccines>();
+            vaccines = VaccinesList("searchvalue");
+            return vaccines;
+        }
+
+        //Vaccine Id Increment
+
+        public int VaccineId()
+        {
+            int id = 0;
+            con.Open();
+            cmd = new SqlCommand("SELECT MAX(PatientId) FROM Vaccine", con);
+            var result = cmd.ExecuteScalar();
+
+            if (result != DBNull.Value)
+            {
+                id = Convert.ToInt32(result);
+            }
+            con.Close();
+            return id;
+        }
+
+
+
+
     }
 }

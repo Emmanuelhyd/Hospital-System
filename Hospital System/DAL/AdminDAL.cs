@@ -1981,8 +1981,45 @@ namespace Hospital_System.DAL
 
 
         }
+        // doctor list Dashboard
 
-     
+        public List<MDoctorAd> DoctorList()
+        {
+            List<MDoctorAd> mDoctors = new List<MDoctorAd>();
+
+            {
+
+                con.Open();
+                cmd = new SqlCommand("select * from doctors where Status ='Active'", con);
+                SqlDataReader sdr;
+                sdr = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(sdr);
+                foreach (DataRow row in dt.Rows)
+                    mDoctors.Add(
+                        new MDoctorAd
+                        {
+                            DoctorId = Convert.ToInt32(row["DoctorId"]),
+                            FullName = row["FullName"].ToString(),
+                            //Firstname = row["Firstname"].ToString(),
+                            //LastName = row["LastName"].ToString(),
+                            Email = row["Email"].ToString(),
+                            Department = row["Department"].ToString(),
+                            Designation = row["Designation"].ToString(),
+                            PhoneNo = row["PhoneNo"].ToString(),
+                            ContactNo = row["ContactNo"].ToString(),
+                            Education = row["Education"].ToString(),
+                            Gender = row["Gender"].ToString(),
+                            Status = row["Status"].ToString(),
+
+                        });
+
+                sdr.Close();
+                con.Close();
+                return mDoctors;
+            }
+        }
+
 
     }
 }

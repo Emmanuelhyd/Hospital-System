@@ -5,215 +5,182 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@ViewBag.Title</title>
-    <style>
-        /* Base styling */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7fa;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+    /* Full-page background image */
+    html, body {
+        height: 100%; /* Ensures the background covers the full height of the page */
+        margin: 0; /* Removes any default margin */
+        padding: 0; /* Removes any padding */
+    }
 
-        /* Form container */
-        .form-container {
-            max-width: 600px;
-            margin: 30px auto;
-            padding: 30px;
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
+    body {
+        background-image: url('/Images/portrait-male-doctors-nurse-using-digital-tablet-corridor_107420-71369.png'); /* Correct path to your image */
+        background-size: cover; /* Ensures the image covers the entire viewport */
+        background-position: center center; /* Centers the image */
+        background-repeat: no-repeat; /* Prevents the image from repeating */
+        background-attachment: fixed; /* Keeps the background fixed when scrolling */
+        margin: 0;
+        padding: 0;
+    }
 
-            .form-container h1 {
-                text-align: center;
-                font-size: 2rem;
-                margin-bottom: 20px;
-                color: #333;
-                font-weight: 600;
-            }
-
-        /* Form group styling */
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 20px;
-        }
-
-            .form-group label {
-                font-weight: bold;
-                color: #333;
-                margin-bottom: 8px;
-                font-size: 1rem;
-                text-align: left;
-            }
-
-            /* Input and select field styling */
-            .form-group input,
-            .form-group select {
-                padding: 12px;
-                border: 1px solid #ccc;
-                border-radius: 6px;
-                font-size: 1rem;
-                width: 70%;
-                transition: border-color 0.3s, box-shadow 0.3s ease;
-            }
-
-                .form-group input:focus,
-                .form-group select:focus {
-                    border-color: #007bff;
-                    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-                    outline: none;
-                }
-
-            .form-group .text-danger {
-                color: #dc3545;
-                font-size: 0.875rem;
-                margin-top: 5px;
-            }
-
-        /* Submit button styling */
-        .form-container .btn-submit {
+        /* Optional: Add a semi-transparent overlay to darken the background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 14px;
-            font-size: 1.2rem;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
+            height: 120vh;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
+            z-index: -1; /* Place the overlay behind all content */
         }
 
-            .form-container .btn-submit:hover {
-                background-color: #0056b3;
-            }
+    /* Form container styling */
+    .form-container {
+        width: 36%;
+        margin: 50px auto;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: rgba(255, 255, 255, 0.9);
+       /* border-radius: 8px;*/
+        position: absolute;
+        /* z-index: 1; */
+        margin-left: 435px;
+        margin-top: 1px;
+    }
 
-        /* Success or error message */
-        .form-container .result {
+    /* Form elements styling */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
             font-weight: bold;
-            color: #28a745;
-            text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 5px;
+            display: block;
         }
 
-        .form-container .error {
-            font-weight: bold;
-            color: #dc3545;
-            text-align: center;
-            margin-bottom: 20px;
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        height: 42px;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, .6);
         }
 
-        /* Media query for responsiveness */
-        media (max-width: 768px) {
-            .form-container
+    .btn {
+        background-color: #e74715;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        border-color: #e74715;
+    }
 
-        {
-            padding: 20px;
-            width: 90%;
+        .btn:hover {
+            background-color: #c03f12;
         }
-        }
-    </style>
-</head>
+
+    .text-danger {
+        color: #dc3545;
+    }
+</style>
+
 <body>
-    <div class="form-container">
-        <h1>Register</h1>
+    @using (Html.BeginForm("Insertprofile", "Patient"))
+    {
+       <div style="padding: 14px 36px; background: #002147; margin-top: 24px; margin-left: 433px; width: 458px; color: white; ">
+           <h4>Register here!</h4>
+       </div>
 
-        @using (Html.BeginForm("Insertprofile", "Patient", FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-            <!-- Display result or error messages -->
-            <div class="result" style="display: @(TempData["result"] != null ? "block" : "none")">
-                @TempData["result"]
-            </div>
-            <div class="error" style="display: @(TempData["error"] != null ? "block" : "none")">
-                @TempData["error"]
-            </div>
+        <!-- Display result or error messages -->
+        <div class="result" style="display: @(TempData["result"] != null ? "block" : "none")">
+            @TempData["result"]
+        </div>
+        <div class="error" style="display: @(TempData["error"] != null ? "block" : "none")">
+            @TempData["error"]
+        </div>
 
-            <!-- Form Fields -->
+        <div class="form-container">
             <div class="form-group">
                 @Html.LabelFor(m => m.UserName)
                 @Html.TextBoxFor(m => m.UserName, new
-        {
-        @class = "form-control",
-        @placeholder = "Enter Your Name",
-        @required = "required",
-        @pattern = "^[A-Za-z\\s]+$",
-        @title = "Please enter a valid name (letters and spaces only)"
-
-
-
-        })
+                {
+                    @class = "form-control",
+                    @placeholder = "Enter Your Name",
+                    @required = "required",
+                    @pattern = "^[A-Za-z\\s]+$",
+                    @title = "Please enter a valid name (letters and spaces only)"
+                })
                 @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.FirstName)
                 @Html.TextBoxFor(m => m.FirstName, new
-        {
-        @class = "form-control",
-        @placeholder = "Enter Your FirstName",
-        @required = "required",
-        @pattern = "^[A-Za-z\\s]+$",
-        @title = "Please enter a valid name (letters and spaces only)"
-
-
-
-        })
+                {
+                    @class = "form-control",
+                    @placeholder = "Enter Your FirstName",
+                    @required = "required",
+                    @pattern = "^[A-Za-z\\s]+$",
+                    @title = "Please enter a valid name (letters and spaces only)"
+                })
                 @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.LastName)
                 @Html.TextBoxFor(m => m.LastName, new
-                  {
-                                @class = "form-control",
-                                @placeholder = "Enter Your LastName",
-                                 @required = "required",
-                                @pattern = "^[A-Za-z\\s]+$",
-                              @title = "Please enter a valid name (letters and spaces only)"
-
-        })
+                {
+                    @class = "form-control",
+                    @placeholder = "Enter Your LastName",
+                    @required = "required",
+                    @pattern = "^[A-Za-z\\s]+$",
+                    @title = "Please enter a valid name (letters and spaces only)"
+                })
                 @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
             </div>
-       
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Email)
-            @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email", @class = "form-control", @type = "email", @required = "required" })
-            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email", @class = "form-control", @type = "email", @required = "required" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Password)
-            @Html.PasswordFor(m => m.Password, new
-            {
-                @placeholder = "Password",
-                @class = "form-control",
-                @required = "required",
-                @pattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}",  // Example pattern for a strong password
-                @title = "Password must be at least 8 characters long, include an uppercase letter, a number, and a special character."
-            })
-            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password, new
+                {
+                    @placeholder = "Password",
+                    @class = "form-control",
+                    @required = "required",
+                    @pattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}",
+                    @title = "Password must be at least 8 characters long, include an uppercase letter, a number, and a special character."
+                })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.PhoneNo)
-            @Html.TextBoxFor(m => m.PhoneNo, new { @placeholder = "Phone Number", @class = "form-control", @pattern = @"^[6789]\d{9}$", @title = "Phone number must be 10 digits and start with 6, 7, 8, or 9.", @required = "required" })
-            @Html.ValidationMessageFor(m => m.PhoneNo, "", new { @class = "text-danger" })
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.PhoneNo)
+                @Html.TextBoxFor(m => m.PhoneNo, new { @placeholder = "Phone Number", @class = "form-control", @pattern = @"^[6789]\d{9}$", @title = "Phone number must be 10 digits and start with 6, 7, 8, or 9.", @required = "required" })
+                @Html.ValidationMessageFor(m => m.PhoneNo, "", new { @class = "text-danger" })
+            </div>
 
-        <div class="form-row">
-            <input type="submit" value="Register" class="btn-submit" />
+            <!-- Submit Button -->
+            <div class="form-row">
+                <input type="submit" value="Register" class="btn" />
+            </div>
         </div>
     }
-        </div>
-    </body>
-</html>
+</body>

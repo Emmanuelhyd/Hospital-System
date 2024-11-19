@@ -84,5 +84,16 @@ namespace Hospital_System.BAL
             return mAppointmentAds;
         }
 
+        public Doctor DoctorApp(int DoctorId)
+        {
+            return doctorDAL.DoctorApp(DoctorId);
+        }
+
+        public List<DoctorTimeSlot> TimeSlot(int DoctorId)
+        {
+
+            return doctorDAL.TimeSlot(DoctorId);
+        }
+
     }
 }

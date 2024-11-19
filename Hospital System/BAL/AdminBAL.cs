@@ -385,5 +385,11 @@ namespace Hospital_System.BAL
             return adminDAL.GetAdminmenus();
 
         }
+
+        public List<MDoctorAd> DoctorList()
+        {
+            return adminDAL.DoctorList();
+           
+        }
     }
 }

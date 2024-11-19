@@ -3,6 +3,7 @@ using Hospital_System.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Web;
 
 namespace Hospital_System.BAL
@@ -27,5 +28,20 @@ namespace Hospital_System.BAL
 
             return opdal.GetHospPatients();
         }
+
+        public HospPatient PatientEdit(int Id)
+        {
+            return opdal.PatientEdit(Id);
+        }
+
+
+        public List<HospPatient> AddPatients(HospPatient hosp)
+        {
+               List<HospPatient> list = new List<HospPatient>();
+                list = opdal.AddPatients(hosp);
+                return list;
+            
+        }
+
     }
 }

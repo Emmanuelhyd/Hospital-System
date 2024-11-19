@@ -1,4 +1,5 @@
 ﻿using Hospital_System.BAL;
+using Hospital_System.DAL;
 using Hospital_System.Models;
 using System;
 using System.Collections.Generic;
@@ -97,5 +98,39 @@ namespace Hospital_System.Controllers
 
             return View(vaccines);
         }
+
+
+
+        public ActionResult AddVaccine(Vaccines vaccine)
+        {
+
+            var ids = 0;
+
+            List<Vaccines> vaccines = new List<Vaccines>();
+
+
+            if (vaccine.PatientId != 0)
+            {
+                vaccines = vaccineBAL.AddVaccine(vaccine);
+            }
+            if (vaccines.Count == 0)
+            {
+                VaccineDAL vaccine1 = new VaccineDAL();
+                if (vaccine.PatientId == 0)
+                {
+                    ids = vaccine1.VaccineId();
+                }
+                vaccine.PatientId = ids + 1;
+
+                return View(vaccine);
+            }
+            else
+            {
+                return RedirectToAction("VaccineList", "Vaccination");
+            }
+        }
+
+
+
     }
 }

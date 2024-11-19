@@ -1,1 +1,76 @@
-﻿@model Hospital_System.Viewmodel.Allview@{    ViewBag.Title = "Doctor List";    Layout = "~/Views/Shared/_PatientLayout.cshtml";}<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>@ViewBag.Title</title>    <script>        function createNew() {            window.location.href = '@Url.Action("NewDoctor", "Doctor")';        }        function Back() {            window.location.href = "/Patient/Dashboard";        }    </script>    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">    <style>        .container {            max-width: 1200px;            margin: 0 auto;            background-color: #ffffff;            border-radius: 8px;            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);            padding: 20px;        }        .header {            display: flex;            justify-content: space-between;            align-items: center;            margin-bottom: 20px;        }            .header input[type="search"] {                width: 250px;                padding: 8px;                border: 1px solid #ced4da;                border-radius: 4px;            }        .btn {            background-color: dodgerblue;            color: white;            border: none;            border-radius: 5px;            padding: 8px 12px;            cursor: pointer;            display: flex;            align-items: center;        }            .btn i {                margin-right: 5px;            }            .btn:hover {                background-color: #0056b3;            }        .doctor-table {            width: 100%;            border-collapse: collapse;            margin-top: 10px;        }            .doctor-table th, .doctor-table td {                padding: 12px;                text-align: left;                border-bottom: 1px solid #ddd;            }            .doctor-table th {                background-color: #007BFF;                color: white;            }            .doctor-table tbody tr:nth-child(even) {                background-color: #f9f9f9;            }            .doctor-table tbody tr:hover {                background-color: #e2e6ea;            }    </style></head><body>    <div class="container">        <form action="@Url.Action("DoctorList", "Doctor")" method="get">            <div class="header">                <button type="button" class="btn" onclick="Back()">                    <i class="fas fa-arrow-left"></i> Back                </button>                <div>                    <input type="search" id="searchvalue" name="searchvalue" placeholder="Search doctors..." style="position: absolute; margin-left: -35%; width: 34%;">                    <input type="submit" value="Search" class="btn" />                </div>            </div>        </form>        <table class="doctor-table">            <thead>                <tr>                    <th>Full Name</th>                    <th>Email</th>                    <th>Education</th>                    <th>Department</th>                    <th>Phone No</th>                    <th>Status</th>                    <th>Action</th>                </tr>            </thead>            <tbody>                @foreach (var item in Model.Doctors)                {    <tr>        <td>@Html.DisplayFor(modelItem => item.FullName)</td>        <td>@Html.DisplayFor(modelItem => item.Email)</td>        <td>@Html.DisplayFor(modelItem => item.Education)</td>        <td>@Html.DisplayFor(modelItem => item.Department)</td>        <td>@Html.DisplayFor(modelItem => item.PhoneNo)</td>        <td>@Html.DisplayFor(modelItem => item.Status)</td>        <td>            <button type="button" class="btn" onclick="window.location.href='@Url.Action("AddBook", "Appointment")'">                <i class="fas fa-calendar-plus"></i> Book            </button>        </td>    </tr>}            </tbody>        </table>    </div></body></html>
+﻿@model Hospital_System.Viewmodel.Allview
+@{
+    ViewBag.Title = "Doctor List";
+    Layout = "~/Views/Shared/_LayoutPatientPage1.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="sb2-2" style="margin-top: 76px; height: 120vh;">
+        <div class="sb2-2-2">
+            <ul>
+                <li>
+                    <a href="/Patient/Dashboard"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="active-bre">
+                    <a href="#"> Doctors</a>
+                </li>
+                <li class="page-back">
+                    <a href="/Patient/Dashboard"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row" style="margin-left: 272px;">
+        <div class="col-md-12" style="margin-top:-650px;">
+            <div class="box-inn-sp">
+                <div class="inn-title" style="height:60px;">
+                    <h4>Doctor List</h4>
+                    <div>
+                        <input type="search" id="searchvalue" name="searchvalue" placeholder="Search doctors..." style="position: absolute; margin-left: 25%; width: 36%; height: 40px; margin-top: -27px;">
+                       <div> <input type="submit" value="Search" style="margin-left: 670px; position: absolute; margin-top: -27px; height: 40px; width: 9%; background-color: #f44336; border-color: #f44336;  border-radius:5px; color:white;" /></div>
+
+                    </div>
+                </div>
+
+                <div class="tab-inn">
+                    <div class="table-responsive table-desi">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Education</th>
+                                    <th>Department</th>
+                                    <th>Phone No</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Doctors)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Education)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Department)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.PhoneNo)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+
+                                        <!--<button type="button" class="label label-success"style="border-radius: 5px; border-color: #5cb85c" onclick="window.location.href='@Url.Action("AddBook", "Appointment")'">-->
+                                        @*<i class="fas fa-calendar-plus"></i>*@
+                                        <!--Book
+                                       </button>-->
+                                        <td><a href="@Url.Action("DoctorApp", "Doctor", new { DoctorId = item.DoctorId })" class="ad-st-view">View</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

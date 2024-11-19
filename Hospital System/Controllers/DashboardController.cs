@@ -1,4 +1,5 @@
-﻿using Hospital_System.BAL;
+﻿using AdminPages.Models;
+using Hospital_System.BAL;
 using Hospital_System.DAL;
 using Hospital_System.Dash;
 using Hospital_System.Models;
@@ -19,11 +20,11 @@ namespace Hospital_System.Controllers
 
             Patients patients = new Patients();
 
-
+            var doctor = adminBAL.DoctorList();
 
             var model = new DashboardDetails
             {
-              
+
                 MAmbulanceCount = adminBAL.GetMAmbulanceCount(),
                 MAnnouncementCount = adminBAL.GetMAnnouncementCount(),
                 MAppointmentCount = adminBAL.GetMAppointmentCount(),
@@ -35,6 +36,7 @@ namespace Hospital_System.Controllers
                 MPatientCount = adminBAL.GetMPatientCount(),
                 MSheduleCount = adminBAL.GetMSheduleCount(),
                 Adminmenus = adminBAL.GetAdminmenus(),
+                mDoctorAds = doctor
                 //TodayDate = DateTime.Now // Set today's date
 
 

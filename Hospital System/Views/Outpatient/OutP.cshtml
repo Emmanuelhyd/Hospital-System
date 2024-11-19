@@ -5,112 +5,84 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
-<html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Outpatients</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700&display=swap" rel="stylesheet">
 
-        h1 {
-            text-align: center;
-            color: #333;
-        }
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-        table {
-            width: 100%;
-            border-collapse: collapse; /* Ensures borders collapse together */
-            margin: 20px 0;
-            background-color: #fff;
-        }
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/All css/css/bootstrap.css" rel="stylesheet">
 
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border: 1px solid #ddd; /* Adds border to columns and rows */
-        }
+    <!-- Template Stylesheet -->
+    <link href="~/All css/css/style.css" rel="stylesheet">
+    <link href="~/All css/css/style-mob.css" rel="stylesheet">
 
-        th {
-            background-color: #007BFF;
-            color: white;
-        }
+    <link href="~/All css/animate/animate.css" rel="stylesheet" />
+    <link href="~/All css/animate/animate.min.css" rel="stylesheet" />
 
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-
-            a:hover {
-                text-decoration: underline;
-            }
-
-        /* Back Button Styling */
-        .back-button {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #007bff;
-            color: white;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-bottom: 20px;
-            transition: background-color 0.3s ease;
-        }
-
-            .back-button:hover {
-                background-color: #0056b3; /* Darker blue on hover */
-            }
-
-            .back-button:active {
-                background-color: #003f7f; /* Even darker blue when clicked */
-            }
-    </style>
+    <!-- External styles for SweetAlert -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 </head>
-<body>
 
-    <!-- Back Button -->
-    <a href="javascript:history.back()" class="back-button">Back</a>
 
-    <h1>Outpatient Records</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Patient Id</th>
-                <th>@Html.DisplayNameFor(m => m.First().PatientName)</th>
-                <th>@Html.DisplayNameFor(m => m.First().Problem)</th>
-                <th>@Html.DisplayNameFor(m => m.First().Description)</th>
-                <th>@Html.DisplayNameFor(m => m.First().Gender)</th>
-                <th>@Html.DisplayNameFor(m => m.First().Address)</th>
-                <th>@Html.DisplayNameFor(m => m.First().PhoneNumber)</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(m => item.Id)</td>
-                    <td>@Html.DisplayFor(m => item.PatientName)</td>
-                    <td>@Html.DisplayFor(m => item.Problem)</td>
-                    <td>@Html.DisplayFor(m => item.Description)</td>
-                    <td>@Html.DisplayFor(m => item.Gender)</td>
-                    <td>@Html.DisplayFor(m => item.Address)</td>
-                    <td>@Html.DisplayFor(m => item.PhoneNumber)</td>
-                    <td><a href="@Url.Action("OPID", "Outpatient", new { Id = item.Id })">View</a></td>
-                </tr>
-            }
-        </tbody>
-    </table>
 
-</body>
-</html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+
+
+
+
+
+
+<div class="row">
+    <div class="col-md-12" ">
+        <div class="box-inn-sp">
+            <div class="inn-title">
+                <li class="page-back">
+                    <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                </li>
+                <h4>Outpatient List</h4>
+
+            </div>
+
+            <div class="tab-inn">
+                <div class="table-responsive table-desi">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Patient Id</th>
+                                <th>@Html.DisplayNameFor(m => m.First().PatientName)</th>
+                                <th>@Html.DisplayNameFor(m => m.First().Problem)</th>
+                                <th>@Html.DisplayNameFor(m => m.First().Description)</th>
+                                <th>@Html.DisplayNameFor(m => m.First().Gender)</th>
+                                <th>@Html.DisplayNameFor(m => m.First().Address)</th>
+                                <th>@Html.DisplayNameFor(m => m.First().PhoneNumber)</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(m => item.Id)</td>
+                                    <td>@Html.DisplayFor(m => item.PatientName)</td>
+                                    <td>@Html.DisplayFor(m => item.Problem)</td>
+                                    <td>@Html.DisplayFor(m => item.Description)</td>
+                                    <td>@Html.DisplayFor(m => item.Gender)</td>
+                                    <td>@Html.DisplayFor(m => item.Address)</td>
+                                    <td>@Html.DisplayFor(m => item.PhoneNumber)</td>
+                                    <td><a href="@Url.Action("OPID", "Outpatient", new { Id = item.Id })" class="ad-st-view">View</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+       </div>
+    </div>
+  </div>
+   

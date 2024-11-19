@@ -88,6 +88,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="All css\animate\animate.css" />
+    <Content Include="All css\animate\animate.min.css" />
+    <Content Include="All css\css\bootstrap.css" />
+    <Content Include="All css\css\font-awesome.min.css" />
+    <Content Include="All css\css\materialize.css" />
+    <Content Include="All css\css\style-mob.css" />
+    <Content Include="All css\css\style.css" />
+    <Content Include="All css\fonts\fontawesome-webfont5b62.svg" />
+    <Content Include="All css\fonts\glyphicons-halflings-regular-2.html" />
+    <Content Include="All css\fonts\glyphicons-halflings-regular-3.html" />
+    <Content Include="All css\fonts\glyphicons-halflings-regular-4.html" />
+    <Content Include="All css\fonts\glyphicons-halflings-regular-5.html" />
+    <Content Include="All css\fonts\glyphicons-halflings-regular.html" />
+    <Content Include="All css\fonts\glyphicons-halflings-regulard41d.html" />
+    <Content Include="All css\fonts\roboto\Roboto-Bold-2.html" />
+    <Content Include="All css\fonts\roboto\Roboto-Bold.html" />
+    <Content Include="All css\fonts\roboto\Roboto-Light-2.html" />
+    <Content Include="All css\fonts\roboto\Roboto-Light.html" />
+    <Content Include="All css\fonts\roboto\Roboto-Medium-2.html" />
+    <Content Include="All css\fonts\roboto\Roboto-Medium.html" />
+    <Content Include="All css\fonts\roboto\Roboto-Regular-2.html" />
+    <Content Include="All css\fonts\roboto\Roboto-Regular.html" />
+    <Content Include="All css\fonts\roboto\Roboto-Thin-2.html" />
+    <Content Include="All css\fonts\roboto\Roboto-Thin.html" />
+    <Content Include="All css\js\bootstrap.min.js" />
+    <Content Include="All css\js\custom.js" />
+    <Content Include="All css\js\main.min.js" />
+    <Content Include="All css\js\materialize.min.js" />
     <Content Include="Blood Drop\Blood Drop.jpg" />
     <Content Include="Blood Drop\TU.png" />
     <Content Include="Blood Drop\vector-group-people-icon.jpg" />
@@ -116,12 +144,22 @@
     <Content Include="guru-img\uddhavrag.jpg" />
     <Content Include="Images\0834.jpg_wh860.jpg" />
     <Content Include="Images\4.png" />
+    <Content Include="Images\ambulance-truck.png" />
+    <Content Include="Images\Ann.png" />
+    <Content Include="Images\Appt.png" />
+    <Content Include="Images\dep.png" />
+    <Content Include="Images\department.png" />
     <Content Include="Images\doctor_3.png" />
     <Content Include="Images\doctor_PNG15987.png" />
+    <Content Include="Images\driver.png" />
     <Content Include="Images\hms.jpg" />
     <Content Include="Images\login.jpg" />
     <Content Include="Images\logo.jpg" />
+    <Content Include="Images\medicine.png" />
+    <Content Include="Images\OIP.png" />
+    <Content Include="Images\patient.png" />
     <Content Include="Images\png.png" />
+    <Content Include="Images\portrait-male-doctors-nurse-using-digital-tablet-corridor_107420-71369.png" />
     <Content Include="Images\R.png" />
     <Content Include="img\about.jpg" />
     <Content Include="img\blog-1.jpg" />
@@ -336,6 +374,7 @@
     <Compile Include="Models\AttendanceDo.cs" />
     <Compile Include="Models\BillAd.cs" />
     <Compile Include="Models\Billing .cs" />
+    <Compile Include="Models\BloodLogin.cs" />
     <Compile Include="Models\ConsultantDo.cs" />
     <Compile Include="Models\DasboardDetails.cs" />
     <Compile Include="Models\Department.cs" />
@@ -343,6 +382,7 @@
     <Compile Include="Models\DischargPatient.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\Doctors.cs" />
+    <Compile Include="Models\DoctorTimeSlot.cs" />
     <Compile Include="Models\DriverDo.cs" />
     <Compile Include="Models\FeedbackDo.cs" />
     <Compile Include="Models\Feedbk.cs" />
@@ -394,6 +434,11 @@
     <Content Include="obj\Debug\HSB-Webs.CB63EC0D.Up2Date" />
     <Content Include="obj\Debug\HSB-Website.csproj.AssemblyReference.cache" />
     <Content Include="obj\Debug\HSB-Website.csproj.CoreCompileInputs.cache" />
+    <Content Include="All css\fonts\fontawesome-webfont5b62.eot" />
+    <Content Include="All css\fonts\fontawesome-webfont5b62.ttf" />
+    <Content Include="All css\fonts\fontawesome-webfont5b62.woff" />
+    <Content Include="All css\fonts\fontawesome-webfont5b62.woff2" />
+    <Content Include="All css\fonts\fontawesome-webfontd41d.eot" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -653,6 +698,14 @@
     <Content Include="Views\User\UserLogIn.cshtml" />
     <Content Include="Views\Outpatient\PatientsList.cshtml" />
     <Content Include="Views\Inpatient\DoctorsList.cshtml" />
+    <Content Include="Views\Admin\EditDonationForm.cshtml" />
+    <Content Include="Views\Admin\EditBloodRequestForm.cshtml" />
+    <Content Include="Views\Outpatient\AddPatient.cshtml" />
+    <Content Include="Views\Nurse\AddNurse.cshtml" />
+    <Content Include="Views\Vaccination\AddVaccine.cshtml" />
+    <Content Include="Views\Shared\_LayoutPatientPage1.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdminPage1.cshtml" />
+    <Content Include="Views\Doctor\DoctorApp.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
