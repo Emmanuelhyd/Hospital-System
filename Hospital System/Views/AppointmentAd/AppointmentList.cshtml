@@ -1,1 +1,166 @@
-﻿@model Hospital_System.Dash.DashboardDetails@{    ViewBag.Title = "Appointment List";    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";}<script>    function CreateNew() {        window.location.href = 'AddAppointmentAd';    }</script>@using (Html.BeginForm()){<div class="container">    <h1>Appointment List</h1>    <div class="controls">        <input type="button" value="Add New" onclick="CreateNew()" class="btn-action">        <input type="search" id="app" name="app" placeholder="Search appointments" class="form-control">        @*<input type="search" id="app" name="app" placeholder="Search appointments" class="search-input">*@        <input type="submit" value="Search" class="btn-action">    </div>    <table class="Appointment" style=" width: 100%; border-collapse: collapse; margin-top: 20px; background-color: white;">        <thead>            <tr style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">                <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Id</th>                <th>Patient Name</th>                <th>Gender</th>                <th>Department</th>                <th>Problem</th>                <th> DoctorName</th>                <th>Phone Number</th>                <th>Address</th>                <th>Date</th>                <th>Time</th>                <th>Description</th>                <th>Action</th>            </tr>        </thead>        <tbody>            @foreach (var item in Model.mAppointmentAds)            {<tr>    <td>@Html.DisplayFor(modelItem => item.Id)</td>    <td>@Html.DisplayFor(modelItem => item.PatientName)</td>    <td>@Html.DisplayFor(modelItem => item.Gender)</td>    <td>@Html.DisplayFor(modelItem => item.Department)</td>    <td>@Html.DisplayFor(modelItem => item.Problem)</td>    <td>@Html.DisplayFor(modelItem => item.DoctorName)</td>    <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>    <td>@Html.DisplayFor(modelItem => item.Address)</td>    <td>@Html.DisplayFor(modelItem => item.Date)</td>    <td>@Html.DisplayFor(modelItem => item.Time)</td>    <td>@Html.DisplayFor(modelItem => item.Description)</td>    <td class="action-buttons">        <a href="@Url.Action("AppointmentEdit", new { Id = item.Id })" class="edit-link">            <i class="fas fa-edit"></i>        </a>        <a href="javascript:void(0);" onclick="confirmDelete('@Url.Action("AppointmentAdDelete", new { Id = item.Id })')" class="delete-link">            <i class="fas fa-trash-alt"></i>        </a>    </td></tr>}        </tbody>    </table></div>}<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"><style>    .container {        background-color: white;        border-radius: 8px;        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);        padding: 20px;        width: 85%;        margin: auto;    }    h1 {        color: #333;        text-align: center;    }    .controls {        margin-bottom: 20px;        display: flex;        justify-content: space-between;    }    .btn-action {        padding: 10px 15px;        border: none;        background-color: #3051bd;        color: white;        cursor: pointer;        border-radius: 4px;        transition: background-color 0.3s;    }        .btn-action:hover {            background-color: #253f8f;        }    .form-control {        display: block;        width: 35%;        height: calc(1.5em + .75rem + 2px);        padding: .375rem .75rem;        font-size: 1rem;        font-weight: 400;        line-height: 1.5;        color: #495057;        background-color: #fff;        background-clip: padding-box;        border: 1px solid #ced4da;        border-radius: .25rem;        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;        .td    {        padding: 12px;        text-align: left;        border-bottom: 1px solid #ddd;    }    th {        background-color: #f2f2f2;    }    tr:hover {        background-color: #f5f5f5;    }    .action-buttons {        display: flex;        gap: 10px;    }    .edit-link {        color: blue;    }    .delete-link {        color: red;    }</style><script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script>    function confirmDelete(deleteUrl) {        swal({            title: "Are you sure?",            text: "You will not be able to recover this record!",            type: "warning",            showCancelButton: true,            confirmButtonColor: "#DD6B55",            confirmButtonText: "Yes, delete it!",            cancelButtonText: "No, cancel!",            closeOnConfirm: false        }, function () {            $.ajax({                url: deleteUrl,                type: 'POST',                success: function () {                    swal("Deleted!", "Your record has been deleted.", "success");                    location.reload();                },                error: function () {                    swal("Error!", "There was a problem deleting the record.", "error");                }            });        });    }</script>
+﻿@model Hospital_System.Dash.DashboardDetails
+
+@{
+    ViewBag.Title = "Appointment List";
+    Layout = "~/Views/Shared/_LayoutTech.cshtml";
+}
+
+
+<script>
+    // Function to handle "Add New" button click with loading indicator
+    function CreateNew() {
+        // Show SweetAlert loading spinner
+        swal({
+            title: "Loading...",
+            text: "Redirecting to Add New Appointment...",
+            icon: "info",
+            button: false,
+            closeOnClickOutside: false,
+            closeOnEsc: false
+        });
+
+        // Redirect to Add Appointment page after a short delay (1.5s)
+        setTimeout(function () {
+            window.location.href = 'AddAppointmentAd'; // Replace with actual URL to add appointment
+        }, 1500);
+    }
+
+    // Confirm delete function
+    function confirmDelete(deleteUrl) {
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this record!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            closeOnConfirm: false
+        }, function () {
+            $.ajax({
+                url: deleteUrl,
+                type: 'POST',
+                success: function () {
+                    swal("Deleted!", "Your record has been deleted.", "success");
+                    location.reload();
+                },
+                error: function () {
+                    swal("Error!", "There was a problem deleting the record.", "error");
+                }
+            });
+        });
+    }
+</script>
+
+
+
+@using (Html.BeginForm())
+{
+    <div class="sb2-2" style="height: 20px; position: absolute; margin-top: 65px;">
+        <div class="sb2-2-2">
+            <ul>
+                <li>
+                    <a href="/Dashboard/DashboardView"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="active-bre">
+                    <a href="#"> Appointments</a>
+                </li>
+                <li class="page-back">
+                    <a href="/Dashboard/DashboardView"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="sb2-2-3" style="margin-left: 20%; position: absolute; width: 80%; margin-top:135px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-inn-sp">
+                    <div class="inn-titles">
+
+
+                        <!-- Controls: Add New button, search box, and search button side by side -->
+                        <div class="controls">
+                            <h1 style="margin-left: 250px; color: #808080">Appointment List</h1>
+                            <input type="button" value="Add New" onclick="CreateNew()" class="my-btn" style="position: absolute; margin-top: -42px;" />
+                            <input type="search" id="app" name="app" placeholder="Search appointments" class="search-box" style="padding: 10px; width: 200px; border: 1px solid #ccc; border-radius: 4px; position: absolute; margin-left: 600px; margin-top: -50px;">
+                            <input type="submit" value="Search" class="my-btn" style="position: absolute; margin-left: 800px; margin-top: -45px; " />
+                        </div>
+                    </div>
+                    <div class="tab-inn">
+                        <div class="table-responsive table-desi">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Patient Name</th>
+                                        <th>Gender</th>
+                                        <th>Department</th>
+                                        <th>Problem</th>
+                                        <th>Doctor Name</th>
+                                        <th>Phone Number</th>
+                                        <th>Address</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.mAppointmentAds)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Department)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Problem)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.DoctorName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Time)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                                            <td style="display:flex;gap:5px;">
+                                                <a href="@Url.Action("AppointmentEdit", new { Id = item.Id })" class="edit-link">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a href="javascript:void(0);" onclick="confirmDelete('@Url.Action("AppointmentAdDelete", new { Id = item.Id })')" class="delete-link">
+                                                    <i class="fas fa-trash-alt" style="color:red;"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+
+
+<style>
+    .my-btn {
+        color: #ffffff;
+        background: #57666d;
+        padding: 10px;
+        line-height: 10px;
+        font-weight: 1000;
+    }
+
+    .inn-titles {
+        padding: 1px 25px;
+        background: #002147;
+    }
+</style>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">

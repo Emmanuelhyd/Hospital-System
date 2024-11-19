@@ -2,166 +2,205 @@
 
 @{
     ViewBag.Title = "Add Profile";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    //Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_LayoutTech.cshtml";
 }
 
-<style>
-    /* Styling for form rows */
-    .form-row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 20px; /* Space between rows */
-        flex-wrap: wrap; /* Allow items to wrap to next line on smaller screens */
-    }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    /* Styling for each form field */
-    .form-group {
-        flex: 1 1 calc(50% - 20px); /* 50% width minus gap */
-        margin-right: 20px; /* Space between columns */
-        box-sizing: border-box; /* Ensure padding is included in total width */
-    }
-
-    /* Remove margin from last form group in row */
-    .form-group:last-child {
-        margin-right: 0;
-    }
-
-    /* Label styling */
-    label {
-        display: block;
-        margin-bottom: 5px; /* Space between label and input */
-        font-weight: bold;
-        color: #555;
-    }
-
-    /* Input field styling */
-    .form-control {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        transition: border-color 0.3s ease;
-    }
-
-    /* Focused input field styling */
-    .form-control:focus {
-        border-color: #4CAF50;
-        outline: none; /* Remove default outline */
-    }
-
-    /* Submit button styling */
-    .btn-submit {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        margin-top: 20px;
-        transition: background-color 0.3s;
-    }
-
-    /* Hover effect for submit button */
-    .btn-submit:hover {
-        background-color: #45a049;
-    }
-
-    /* Error message styling */
-    .text-danger {
-        color: red;
-        font-size: 0.9em;
-    }
-
-    /* Responsive design */
-    media (max-width: 768px) {
-        .form-group {
-            flex: 1 1 100%; /* Make form groups take full width */
-            margin-right: 0;
-        }
-    }
-</style>
 
 @using (Html.BeginForm("AddProfile", "UpdateProfile"))
 {
-    <!-- Row 1 -->
-    <div class="form-row">
-        <div class="form-group">
-            @Html.LabelFor(m => m.UpdateDO.PatientId)
-            @Html.TextBoxFor(m => m.UpdateDO.PatientId, new { @placeholder = "Patient ID", @class = "form-control" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.UpdateDO.UserName)
-            @Html.TextBoxFor(m => m.UpdateDO.UserName, new { @placeholder = "User Name", @class = "form-control" })
-        </div>
-    </div>
-
-    <!-- Row 2 -->
-    <div class="form-row">
-        <div class="form-group">
-            @Html.LabelFor(m => m.UpdateDO.FirstName)
-            @Html.TextBoxFor(m => m.UpdateDO.FirstName, new { @placeholder = "First Name", @class = "form-control" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.UpdateDO.LastName)
-            @Html.TextBoxFor(m => m.UpdateDO.LastName, new { @placeholder = "Last Name", @class = "form-control" })
+    <div class="sb2-2" style="height: 110%; position: absolute; margin-top: 65px;">
+        <div class="sb2-2-2" style="margin-left:30px;">
+            <ul>
+                <li>
+                    <a href="/Dashboard/DashboardView"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="active-bre">
+                    <a href="#"> Profile</a>
+                </li>
+                <li class="page-back">
+                    <a href="/Dashboard/DashboardView"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                </li>
+            </ul>
         </div>
     </div>
 
-    <!-- Row 3 -->
-    <div class="form-row">
-        <div class="form-group">
-            @Html.LabelFor(m => m.UpdateDO.Email)
-            @Html.TextBoxFor(m => m.UpdateDO.Email, new { @placeholder = "Email", @class = "form-control" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.UpdateDO.PhoneNo)
-            @Html.TextBoxFor(m => m.UpdateDO.PhoneNo, new { @class = "form-control", placeholder = "Enter Phone Number" })
-            @Html.ValidationMessageFor(m => m.UpdateDO.PhoneNo, "", new { @class = "text-danger" })
-        </div>
+    <div style="padding: 14px 36px; background: #002147; margin-top:145px; margin-left: 25%; width: 70%; color:white;position:absolute;">
+        <h4>Add New Profile</h4>
     </div>
 
-    <!-- Row 4 -->
-    <div class="form-row">
-        <div class="form-group">
-            @Html.LabelFor(m => m.UpdateDO.BloodGroup)
-            @Html.TextBoxFor(m => m.UpdateDO.BloodGroup, new { @placeholder = "Blood Group", @class = "form-control" })
+    <div class="form-container">
+        <!-- Row 1 -->
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.UpdateDO.PatientId)
+                @Html.TextBoxFor(m => m.UpdateDO.PatientId, new { @placeholder = "Patient ID", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.UpdateDO.UserName)
+                @Html.TextBoxFor(m => m.UpdateDO.UserName, new { @placeholder = "User Name", @class = "form-control" })
+            </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.UpdateDO.Gender)
-            @Html.TextBoxFor(m => m.UpdateDO.Gender, new { @placeholder = "Gender", @class = "form-control" })
-        </div>
-    </div>
 
-    <!-- Row 5 -->
-    <div class="form-row">
-        <div class="form-group">
-            @Html.LabelFor(m => m.UpdateDO.Age)
-            @Html.TextBoxFor(m => m.UpdateDO.Age, new { @placeholder = "Age", @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.UpdateDO.Age, "", new { @class = "text-danger" })
+        <!-- Row 2 -->
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.UpdateDO.FirstName)
+                @Html.TextBoxFor(m => m.UpdateDO.FirstName, new { @placeholder = "First Name", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.UpdateDO.LastName)
+                @Html.TextBoxFor(m => m.UpdateDO.LastName, new { @placeholder = "Last Name", @class = "form-control" })
+            </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.UpdateDO.EmergencyContact)
-            @Html.TextBoxFor(m => m.UpdateDO.EmergencyContact, new { @class = "form-control", placeholder = "Emergency Contact" })
-            @Html.ValidationMessageFor(m => m.UpdateDO.EmergencyContact, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <!-- Row 6 -->
-    <div class="form-row">
-        <div class="form-group">
-            @Html.LabelFor(m => m.UpdateDO.Address)
-            @Html.TextBoxFor(m => m.UpdateDO.Address, new { @placeholder = "Address", @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.UpdateDO.Address, "", new { @class = "text-danger" })
+        <!-- Row 3 -->
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.UpdateDO.Email)
+                @Html.TextBoxFor(m => m.UpdateDO.Email, new { @placeholder = "Email", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.UpdateDO.PhoneNo)
+                @Html.TextBoxFor(m => m.UpdateDO.PhoneNo, new { @class = "form-control", placeholder = "Enter Phone Number" })
+                @Html.ValidationMessageFor(m => m.UpdateDO.PhoneNo, "", new { @class = "text-danger" })
+            </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.UpdateDO.Type)
-            @Html.TextBoxFor(m => m.UpdateDO.Type, new { @placeholder = "Type", @class = "form-control" })
-        </div>
-    </div>
 
-    <!-- Submit button -->
-    <div class="form-row">
-        <input type="submit" value="Update Profile" class="btn-submit" />
+        <!-- Row 4 -->
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.UpdateDO.BloodGroup)
+                @Html.TextBoxFor(m => m.UpdateDO.BloodGroup, new { @placeholder = "Blood Group", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.UpdateDO.Gender)
+                @Html.TextBoxFor(m => m.UpdateDO.Gender, new { @placeholder = "Gender", @class = "form-control" })
+            </div>
+        </div>
+
+        <!-- Row 5 -->
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.UpdateDO.Age)
+                @Html.TextBoxFor(m => m.UpdateDO.Age, new { @placeholder = "Age", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.UpdateDO.Age, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.UpdateDO.EmergencyContact)
+                @Html.TextBoxFor(m => m.UpdateDO.EmergencyContact, new { @class = "form-control", placeholder = "Emergency Contact" })
+                @Html.ValidationMessageFor(m => m.UpdateDO.EmergencyContact, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Row 6 -->
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.UpdateDO.Address)
+                @Html.TextBoxFor(m => m.UpdateDO.Address, new { @placeholder = "Address", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.UpdateDO.Address, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.UpdateDO.Type)
+                @Html.TextBoxFor(m => m.UpdateDO.Type, new { @placeholder = "Type", @class = "form-control" })
+            </div>
+        </div>
+
+        <!-- Submit button -->
+        <div style="display: flex; justify-content: center; ">
+            <input type="submit" class="btn-submit" value="Submit" style="border-color: #e74715">
+        </div>
     </div>
 }
+
+
+<style>
+    .form-container {
+        position: absolute;
+        width: 70%;
+        margin-top: 200px;
+        /*margin: 30px auto;*/
+        /*padding: 20px;*/
+        /border-radius: 8px;
+        / box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        margin-left: 25%;
+    }
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .form-group {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 5px;
+        margin-left: 30px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        width: 95%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 42px;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, .6);
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .validation-summary {
+        margin-bottom: 15px;
+        color: #dc3545;
+    }
+
+    .btn {
+        color: white;
+        background-color: dodgerblue;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30%;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+</style>

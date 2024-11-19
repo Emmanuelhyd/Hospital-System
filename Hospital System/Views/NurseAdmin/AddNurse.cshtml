@@ -7,223 +7,225 @@
 
 }
 
-<style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh; /* Full viewport height */
-        margin: 0;
-        background-color: #f5f5f5; /* Optional background color */
-    }
 
-    .form-container {
-        background-color: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        width: 800px; /* Set a width for the form */
-        max-width: 100%; /* Make it responsive */
-    }
 
-    .form-row {
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: 15px;
-    }
-
-    .form-group {
-        flex: 1; /* Allow fields to take equal space */
-        min-width: 220px; /* Set a minimum width for fields */
-        margin-right: 10px; /* Space between fields */
-    }
-
-        .form-group:last-child {
-            margin-right: 0; /* Remove margin for the last field */
-        }
-
-    .form-container label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-    }
-
-    .form-container input[type="text"],
-    .form-container input[type="date"],
-    .form-container select {
-        width: 100%; /* Full width for text fields and selects */
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-
-    .form-container input[type="submit"] {
-        background-color: #4CAF50; /* Green background */
-        color: white;
-        border: none;
-        cursor: pointer;
-        padding: 10px;
-        border-radius: 4px;
-        width: 100%; /* Full width for submit button */
-    }
-
-        .form-container input[type="submit"]:hover {
-            background-color: #45a049; /* Darker green on hover */
-        }
-</style>
-
-@using (Html.BeginForm("AddNurse", "NurseAdmin", FormMethod.Post, new { @class = "form-container" }))
+@using (Html.BeginForm("AddNurse", "NurseAdmin", FormMethod.Post))
 {
-    <div>
-        <h2>Add Nurse</h2>
+    <div style="padding: 14px 36px; background: #002147; width: 100%; color:white;position:absolute;">
+        <h4 style="margin-left:500px;margin-top:-5px;font-size:20px;">Add Nurse</h4>
+    </div>
+
+
+
+
+    <div class="form-container">
         <div class="form-row">
             <div class="form-group">
                 @Html.LabelFor(m => m.NurseId)
-                @Html.TextBoxFor(m => m.NurseId)
+                @Html.TextBoxFor(m => m.NurseId, new { @class = "form-control" })
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Name)
-                @Html.TextBoxFor(m => m.Name, new { @required = "required", @placeholder = "Name" })
+                @Html.TextBoxFor(m => m.Name, new { @required = "required", @placeholder = "Name", @class = "form-control" })
             </div>
         </div>
         <div class="form-row">
             <div class="form-group">
                 @Html.LabelFor(m => m.DOB)
-                @Html.TextBoxFor(m => m.DOB, new { @required = "required", @placeholder = "DOB", @type = "date" })
+                @Html.TextBoxFor(m => m.DOB, new { @required = "required", @placeholder = "DOB", @type = "date", @class = "form-control" })
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Contact)
-                @Html.TextBoxFor(m => m.Contact, new { @required = "required", @placeholder = "Phone Number" })
+                @Html.TextBoxFor(m => m.Contact, new
+           {
+               @class = "form-control",
+               @required = "required",
+               @placeholder = "Mobile Number",
+               @pattern = @"^[6789]\d{9}$",
+               @title = "Enter a valid mobile number starting with 7, 8, or 9 followed by 9 digits."
+           })
             </div>
+
         </div>
         <div class="form-row">
             <div class="form-group">
                 @Html.LabelFor(m => m.Email)
-                @Html.TextBoxFor(m => m.Email, new { @required = "required", @placeholder = "Email" })
+                @Html.TextBoxFor(m => m.Email, new
+           {
+               @class = "form-control",
+               @required = "required",
+               @placeholder = "Email",
+               @type = "email",
+               @title = "Enter a valid email address like anandsagar@gmail.com"
+           })
             </div>
+
+
             <div class="form-group">
                 @Html.LabelFor(m => m.Address)
-                @Html.TextBoxFor(m => m.Address, new { @required = "required", @placeholder = "Address" })
+                @Html.TextBoxFor(m => m.Address, new { @required = "required", @placeholder = "Address", @class = "form-control" })
             </div>
         </div>
         <div class="form-row">
             <div class="form-group">
                 @Html.LabelFor(m => m.DateOfJoining)
-                @Html.TextBoxFor(m => m.DateOfJoining, new { @required = "required", @placeholder = "Joining Date", @type = "date" })
+                @Html.TextBoxFor(m => m.DateOfJoining, new { @required = "required", @placeholder = "Joining Date", @type = "date", @class = "form-control" })
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Specialization)
-                <select id="Specialization" name="Specialization" required>
-                    <option value="">Specialization</option>
-                    <option value="cardio">Cardio</option>
-                    <option value="vascular">Vascular</option>
-                    <option value="neuro">Neuro</option>
-                </select>
+                @Html.DropDownListFor(m => m.Specialization, new SelectList(new List<SelectListItem>
+      {
+      new SelectListItem { Value = "Cardio", Text = "Cardio" },
+      new SelectListItem { Value = "Vascular", Text = "Vascular" },
+      new SelectListItem { Value = "Nuero", Text = "Nuero" },
+new SelectListItem { Value = "Physcio", Text = "Physcio" },
+      },
+      "Value", "Text"), "Specialization", new { @class = "form-control", @required = "required" })
             </div>
         </div>
         <div class="form-row">
             <div class="form-group">
                 @Html.LabelFor(m => m.ShiftType)
-                <select id="ShiftType" name="ShiftType" required>
-                    <option value="">Shift Type</option>
-                    <option value="morning">Morning</option>
-                    <option value="afternoon">Afternoon</option>
-                    <option value="night">Night</option>
-                </select>
+                @Html.DropDownListFor(m => m.ShiftType, new SelectList(new List<SelectListItem>
+                    {
+
+                    new SelectListItem { Value = "Morning", Text = "Morning" },
+                    new SelectListItem { Value = "Afternoon", Text = "Afternoon" },
+                    new SelectListItem { Value = "Night", Text = "Night" },
+                    },
+                    "Value", "Text"), "ShiftType", new { @class = "form-control", @required = "required" })
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Education)
-                <select id="Education" name="Education" required>
-                    <option value="">Education</option>
-                    <option value="10th">X-Class</option>
-                    <option value="inter">Intermediate</option>
-                    <option value="diploma">Diploma</option>
-                    <option value="btech">B-Tech</option>
-                    <option value="mtech">M-Tech</option>
-                    <option value="mba">MBA</option>
-                </select>
+                @Html.DropDownListFor(m => m.Education, new SelectList(new List<SelectListItem>
+                {
+                new SelectListItem { Value = "X-Class", Text = "X-Class" },
+                new SelectListItem { Value = "Intermediate", Text = "Intermediate" },
+                new SelectListItem { Value = "Diploma", Text = "Diploma" },
+                new SelectListItem { Value = "B-Tech", Text = "B-Tech" },
+                 new SelectListItem { Value = "M-Tech", Text = "M-Tech" },
+                    new SelectListItem { Value = "MBA", Text = "MBA" },
+                },
+                "Value", "Text"), "Education", new { @class = "form-control", @required = "required" })
             </div>
         </div>
         <div class="form-row">
             <div class="form-group">
                 @Html.LabelFor(m => m.EmployeeStatus)
-                <select id="EmployeeStatus" name="EmployeeStatus" required>
-                    <option value="">Employee Status</option>
-                    <option value="Working">Working</option>
-                    <option value="Resigned">Resigned</option>
-                    <option value="Terminated">Terminated</option>
-                </select>
+                @Html.DropDownListFor(m => m.EmployeeStatus, new SelectList(new List<SelectListItem>
+                    {
+
+                    new SelectListItem { Value = "Working", Text = "Working" },
+                    new SelectListItem { Value = "Resigned", Text = "Resigned" },
+                    new SelectListItem { Value = "Terminated", Text = "Terminated" },
+                    },
+                    "Value", "Text"), "EmployeeStatus", new { @class = "form-control" ,@required="required"})
             </div>
         </div>
-        <div>
-            <input type="submit" value="Submit">
+        <div style="display: flex; justify-content: center; ">
+            <input type="submit" class="btn-submit" value="Submit" style="border-color: #e74715">
+            <input type="button" class="btn-submit" value="Back" style="border-color: #e74715" onclick="window.location.href='/ReceptionAdmin/ReceptionFrontPage';">
+
         </div>
     </div>
 }
 
 
 
-
-@*@model InOutPatient.Models.NurseDo
-
-    @{
-        ViewBag.Title = "AddNurse";
+<style>
+    .form-container {
+        position: absolute;
+        width: 100%;
+        margin-top: 50px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
     }
 
-    @using(Html.BeginForm("AddNurse","NurseAdmin"))
-    {
-        <div>
-            <div>
-                <div>
-                    @Html.LabelFor(m => m.NurseId)
-                    @Html.TextBoxFor(m => m.NurseId)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.Name)
-                    @Html.TextBoxFor(m => m.Name)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.DOB)
-                    @Html.TextBoxFor(m => m.DOB)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.Contact)
-                    @Html.TextBoxFor(m => m.Contact)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.Email)
-                    @Html.TextBoxFor(m => m.Email)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.Address)
-                    @Html.TextBoxFor(m => m.Address)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.DateOfJoining)
-                    @Html.TextBoxFor(m => m.DateOfJoining)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.Specialization)
-                    @Html.TextBoxFor(m => m.Specialization)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.ShiftType)
-                    @Html.TextBoxFor(m => m.ShiftType)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.Education)
-                    @Html.TextBoxFor(m => m.Education)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.EmployeeStatus)
-                    @Html.TextBoxFor(m => m.EmployeeStatus)
-                </div>
-                <div>
-                    <input type="submit" value="Submit">
-                </div>
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
 
-            </div>
-        </div>
+    .form-group {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 20px;
+        margin-left: 30px;
+    }
 
-    }*@
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
 
+    .form-control {
+        width: 95%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 42px;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, .6);
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .validation-summary {
+        margin-bottom: 15px;
+        color: #dc3545;
+    }
+
+    .btn {
+        color: white;
+        background-color: dodgerblue;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30%;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-submit {
+        color: #fff;
+        background: #e74715;
+        background: -webkit-linear-gradient(to top, #d83d0c, #FF5722);
+        background: linear-gradient(to top, #d83d0c, #FF5722);
+        padding: 4px 34px;
+        line-height: 32px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 14px;
+    }
+</style>

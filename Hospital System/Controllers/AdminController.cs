@@ -11,7 +11,7 @@ namespace Hospital_System.Controllers
 {
     public class AdminController : Controller
     {
-        SqlConnection con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-OUCP9Q2");
+        SqlConnection con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-DQHFGU1\\ANANDSAGAR");
         SqlCommand cmd = null;
         SqlDataReader reader = null;
 
@@ -494,7 +494,7 @@ namespace Hospital_System.Controllers
             int totalDonors = 0;
             decimal totalBloodUnitsInLiters = 0m;
 
-            using (var con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-OUCP9Q2"))
+            using (var con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-DQHFGU1\\ANANDSAGAR"))
             {
                 con.Open();
 
@@ -627,7 +627,7 @@ namespace Hospital_System.Controllers
         {
             var admins = new List<AdminModel>();
 
-            using (var con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-OUCP9Q2"))
+            using (var con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-DQHFGU1\\ANANDSAGAR"))
             {
                 con.Open();
                 using (var cmd = new SqlCommand("SELECT * FROM DonorInfo", con))

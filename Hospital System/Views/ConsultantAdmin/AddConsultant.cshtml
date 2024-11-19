@@ -6,143 +6,207 @@
 
 }
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f9f9f9;
-        margin: 0;
-        padding: 20px;
-    }
 
-    .form-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 15px; /* Space between grid items */
-        max-width: 600px; /* Maximum width for the form */
-        margin: 0 auto; /* Center the form */
-        background: white; /* White background for form */
-        padding: 20px; /* Padding around form */
-        border-radius: 8px; /* Rounded corners */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    }
 
-    .form-group {
-        display: flex;
-        flex-direction: column;
-    }
-
-        .form-group label {
-            margin-bottom: 5px;
-            color: #555;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="date"],
-        .form-group select {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            width: 100%;
-            box-sizing: border-box; /* Ensures padding is included in width */
-        }
-
-    input[type="submit"] {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        grid-column: span 2; /* Span the button across two columns */
-        margin-top: 10px;
-    }
-
-        input[type="submit"]:hover {
-            background-color: #0056b3; /* Darker shade on hover */
-        }
-</style>
-
-@using (Html.BeginForm("AddConsultant", "ConsultantAdmin", FormMethod.Post, new { @class = "form-container" }))
+@using (Html.BeginForm("AddConsultant", "ConsultantAdmin", FormMethod.Post))
 {
+    <div style="padding: 14px 36px; background: #002147; width: 100%; color:white;position:absolute;">
+        <h4 style="margin-left:500px;margin-top:-5px;font-size:20px;">Add Doctor </h4>
+    </div>
+   
+    
+    <div class="form-container">
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.DoctorId)
+                @Html.TextBoxFor(m => m.DoctorId, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.FullName)
+                @Html.TextBoxFor(m => m.FullName, new { @required = "required", @placeholder = "FullName", @class = "form-control" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.DoctorId)
-        @Html.TextBoxFor(m => m.DoctorId)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.FullName)
-        @Html.TextBoxFor(m => m.FullName, new { @required = "required", @placeholder = "FullName" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email)
-        @Html.TextBoxFor(m => m.Email, new
-   {
-       @required = "required",
-       @placeholder = "Email",
-       @type = "email",
-       @title = "Enter a valid email address like anandsagar@gmail.com"
-   })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Department)
-        @Html.TextBoxFor(m => m.Department, new { @required = "required", @placeholder = "Department" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Designation)
-        @Html.TextBoxFor(m => m.Designation, new { @required = "required", @placeholder = "Designation" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.PhoneNo)
-        @Html.TextBoxFor(m => m.PhoneNo, new
-   {
-       @required = "required",
-       @placeholder = "Mobile Number",
-       @pattern = @"^[6789]\d{9}$",
-       @title = "Enter a valid mobile number starting with 7, 8, or 9 followed by 9 digits."
-   })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ContactNo)
-        @Html.TextBoxFor(m => m.ContactNo, new
-   {
-       @required = "required",
-       @placeholder = "e.g., 0401234567",
-       @pattern = @"^040-\d{7}$",
-       @title = "Enter a valid Hyderabad landline number starting with 040."
-   })
-    </div>
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new
+           {
+               @class = "form-control",
+               @required = "required",
+               @placeholder = "Email",
+               @type = "email",
+               @title = "Enter a valid email address like anandsagar@gmail.com"
+           })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Department)
+                @Html.TextBoxFor(m => m.Department, new { @required = "required", @placeholder = "Department", @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Designation)
+                @Html.TextBoxFor(m => m.Designation, new { @required = "required", @placeholder = "Designation", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.PhoneNo)
+                @Html.TextBoxFor(m => m.PhoneNo, new
+           {
+               @class = "form-control",
+               @required = "required",
+               @placeholder = "Mobile Number",
+               @pattern = @"^[6789]\d{9}$",
+               @title = "Enter a valid mobile number starting with 7, 8, or 9 followed by 9 digits."
+           })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.ContactNo)
+                @Html.TextBoxFor(m => m.ContactNo, new
+           {
+               @class = "form-control",
+               @required = "required",
+               @placeholder = "e.g., 0401234567",
+               @pattern = @"^040-\d{7}$",
+               @title = "Enter a valid Hyderabad landline number starting with 040."
+           })
+            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Education)
-        @Html.TextBoxFor(m => m.Education, new { @required = "required", @placeholder = "Education" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Gender)
-        @Html.DropDownListFor(m => m.Gender, new SelectList(new List<SelectListItem>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Education)
+                @Html.TextBoxFor(m => m.Education, new { @required = "required", @placeholder = "Education", @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Gender)
+                @Html.DropDownListFor(m => m.Gender, new SelectList(new List<SelectListItem>
+                            {
+
+                        new SelectListItem { Value = "Male", Text = "Male" },
+                                    new SelectListItem { Value = "Female", Text = "Female" },
+                                     new SelectListItem { Value = "Others", Text = "Others" },
+
+                            }, "Value", "Text"), "Select Gender", new { @class = "form-control", @required = "required", })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Status)
+                @Html.DropDownListFor(m => m.Status, new SelectList(new List<SelectListItem>
                     {
+                    new SelectListItem { Value = "Active", Text = "Active" },
+                    new SelectListItem { Value = "InActive", Text = "InActive" },
+                    },
+                    "Value", "Text"), "Status", new { @class = "form-control",@required="required" })
+            </div>
+        </div>
+        <div style="display: flex; justify-content: center; ">
+            <input type="submit" class="btn-submit" value="Submit" style="border-color: #e74715">
+            <input type="button" class="btn-submit" value="Back" style="border-color: #e74715" onclick="window.location.href='/ReceptionAdmin/ReceptionFrontPage';">
 
-                new SelectListItem { Value = "Male", Text = "Male" },
-                            new SelectListItem { Value = "Female", Text = "Female" },
-                             new SelectListItem { Value = "Others", Text = "Others" },
-
-                    }, "Value", "Text"), "Select Gender", new { @class = "form-control", @required = "required", })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Status)
-        @Html.DropDownListFor(m => m.Status, new SelectList(new List<SelectListItem>
-{
-new SelectListItem { Value = "Active", Text = "Active" },
-new SelectListItem { Value = "InActive", Text = "InActive" },
-},
-"Value", "Text"), "Status", new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Submit">
+        </div>
     </div>
 }
 
 
+<style>
+    .form-container {
+        position: absolute;
+        width: 100%;
+        margin-top:50px;
+       
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+      
+    }
 
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .form-group {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 20px;
+        margin-left: 30px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        width: 95%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 42px;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, .6);
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .validation-summary {
+        margin-bottom: 15px;
+        color: #dc3545;
+    }
+
+    .btn {
+        color: white;
+        background-color: dodgerblue;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30%;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-submit {
+        color: #fff;
+        background: #e74715;
+        background: -webkit-linear-gradient(to top, #d83d0c, #FF5722);
+        background: linear-gradient(to top, #d83d0c, #FF5722);
+        padding: 4px 34px;
+        line-height: 32px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 14px;
+    }
+</style>
 

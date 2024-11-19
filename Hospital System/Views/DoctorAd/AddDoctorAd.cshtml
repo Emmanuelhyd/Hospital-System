@@ -2,242 +2,275 @@
 
 @{
     ViewBag.Title = "AddDoctorAd";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    //Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_LayoutTech.cshtml";
 }
 
-<style>
-    .form-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        margin-top: 27px;
-        /* background: linear-gradient(90deg, skyblue, pink);*/
-    }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    .form-item {
-        width: 25%;
-        margin-left: 55px;
-    }
 
-        .form-item label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .form-item input,
-        .form-item select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-            .form-item input:focus,
-            .form-item select:focus {
-                border-color: #007bff;
-                outline: none;
-                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-            }
-
-    .form-submit {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .btn-submit {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-        .btn-submit:hover {
-            background-color: #0056b3;
-        }
-
-    .back-button {
-        background-color: #007bff; /* Primary color */
-        color: white; /* Text color */
-        border: none; /* No border */
-        border-radius: 5px; /* Rounded corners */
-        padding: 10px 20px; /* Padding for size */
-        font-size: 16px; /* Font size */
-        cursor: pointer; /* Pointer cursor on hover */
-        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
-    }
-
-        .back-button:hover {
-            background-color: #0056b3; /* Darker shade on hover */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
-        }
-
-        .back-button:focus {
-            outline: none; /* Remove outline on focus */
-        }
-</style>
 
 @using (Html.BeginForm("AddDoctorAd", "DoctorAd"))
 {
-   
+    //common
+    <div class="sb2-2" style="height: 100%; position: absolute; margin-top: 65px;">
+        <div class="sb2-2-2" style="margin-left:30px;">
+            <ul>
+                <li>
+                    <a href="/Dashboard/DashboardView"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="active-bre">
+                    <a href="#"> Doctors</a>
+                </li>
+                <li class="page-back" >
+                    <a href="/Dashboard/DashboardView"><i class="fa fa-backward" aria-hidden="true" ></i> Back</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-    <div style=" padding: 20px">
-        <div style="margin-left: 108px; margin-top: -44px;"> <button type="button" class="back-button" onclick=" Back()"> Back </button></div>
-        <div class="form-container">
+    //heading
+    <div style="padding: 14px 36px; background: #002147; margin-top:145px; margin-left: 25%; width: 70%; color:white;position:absolute;">
+        <h4>Add Doctors</h4>
+    </div>
 
-
-            @Html.AntiForgeryToken()
-            <div class="form-item">
+    <div class="form-container">
+        @*//row 1*@
+        <div class="form-row">
+            <div class="form-group">
                 @Html.LabelFor(m => m.MDoctorAd.DoctorId)
-                @Html.TextBoxFor(m => m.MDoctorAd.DoctorId, new { @readonly = "readonly" }) <!-- Read-only if auto-generated -->
+                @Html.TextBoxFor(m => m.MDoctorAd.DoctorId, new { @class = "form-control", @readonly = "readonly" }) <!-- Read-only if auto-generated -->
             </div>
 
-            <div class="form-item">
+            <div class="form-group">
                 @Html.LabelFor(m => m.MDoctorAd.FullName, "FullName")
                 @Html.TextBoxFor(m => m.MDoctorAd.FullName, new
-{
-@class = "form-control",
-@placeholder = "FullName ",
-@required = "required",
-@pattern = "^[A-Za-z\\s]+$",
-@title = "Please enter a valid name (letters and spaces only)"
-})
+                {
+                    @class = "form-control",
+                    @placeholder = "FullName ",
+                    @required = "required",
+                    @pattern = "^[A-Za-z\\s]+$",
+                    @title = "Please enter a valid name (letters and spaces only)"
+                })
             </div>
+        </div>
 
-            @*<div class="form-item">
-                @Html.LabelFor(m => m.MDoctorAd.Firstname, "Firstname")
-                @Html.TextBoxFor(m => m.MDoctorAd.Firstname, new { @required = "required", @placeholder = "First Name" })
-            </div>
-
-            <div class="form-item">
-                @Html.LabelFor(m => m.MDoctorAd.LastName, "LastName")
-                @Html.TextBoxFor(m => m.MDoctorAd.LastName, new { @required = "required", @placeholder = "Last Name" })
-            </div>*@
-
-            <div class="form-item">
+        @*//row2*@
+        <div class="form-row">
+            <div class="form-group">
                 @Html.LabelFor(m => m.MDoctorAd.Email, "Email")
                 @Html.TextBoxFor(m => m.MDoctorAd.Email, new
-                {
+           {
+               @class = "form-control",
                     @required = "required",
-                    @placeholder = "Email",
-                    @type = "email",
-                    @title = "Enter a valid email address like anandsagar@gmail.com"
-                })
+               @placeholder = "Email",
+               @type = "email",
+               @title = "Enter a valid email address like anandsagar@gmail.com"
+           })
                 @Html.ValidationMessageFor(m => m.MDoctorAd.Email, "", new { @class = "text-danger" })
             </div>
-
-
-
-            @*<div class="form-item">
-                @Html.LabelFor(m => m.MDoctorAd.Email, "Email")
-                @Html.TextBoxFor(m => m.MDoctorAd.Email, new { @required = "required", @placeholder = "Email" })
-            </div>*@
-
-            <div class="form-item">
+            <div class="form-group">
                 @Html.LabelFor(m => m.MDoctorAd.Department, "Department")
                 @Html.TextBoxFor(m => m.MDoctorAd.Department, new
-{
-    @class = "form-control",
-    @placeholder = "Department Name",
-    @required = "required",
-    @pattern = "^[A-Za-z\\s]+$",
-    @title = "Please enter a valid name (letters and spaces only)"
-})
+                {
+                    @class = "form-control",
+                    @placeholder = "Department Name",
+                    @required = "required",
+                    @pattern = "^[A-Za-z\\s]+$",
+                    @title = "Please enter a valid name (letters and spaces only)"
+                })
             </div>
+        </div>
 
-            <div class="form-item">
+        @*//row3*@
+        <div class="form-row">
+            <div class="form-group">
                 @Html.LabelFor(m => m.MDoctorAd.Designation, "Designation")
                 @Html.TextBoxFor(m => m.MDoctorAd.Designation, new
-{
-@class = "form-control",
-@placeholder = "Designation Name",
-@required = "required",
-@pattern = "^[A-Za-z\\s]+$",
-@title = "Please enter a valid name (letters and spaces only)"
-})
+                {
+                    @class = "form-control",
+                    @placeholder = "Designation Name",
+                    @required = "required",
+                    @pattern = "^[A-Za-z\\s]+$",
+                    @title = "Please enter a valid name (letters and spaces only)"
+                })
             </div>
 
-            <div class="form-item">
+            <div class="form-group">
                 @Html.LabelFor(m => m.MDoctorAd.PhoneNo, "PhoneNo")
                 @Html.TextBoxFor(m => m.MDoctorAd.PhoneNo, new
-                {
-                    @required = "required",
-                    @placeholder = "Mobile Number",
-                    @pattern = @"^[6789]\d{9}$",
-                    @title = "Enter a valid mobile number starting with 7, 8, or 9 followed by 9 digits."
-                })
+           {
+               @class = "form-control",
+               @required = "required",
+               @placeholder = "Mobile Number",
+               @pattern = @"^[6789]\d{9}$",
+               @title = "Enter a valid mobile number starting with 7, 8, or 9 followed by 9 digits."
+           })
             </div>
-            @*<div class="form-item">
-                @Html.LabelFor(m => m.MDoctorAd.PhoneNo, "PhoneNo")
-                @Html.TextBoxFor(m => m.MDoctorAd.PhoneNo, new { @required = "required", @placeholder = "Mobile Number" })
-            </div>*@
+        </div>
 
-            <div class="form-item">
+        @*//row4*@
+        <div class="form-row">
+            <div class="form-group">
                 @Html.LabelFor(m => m.MDoctorAd.ContactNo, "Contact No")
                 @Html.TextBoxFor(m => m.MDoctorAd.ContactNo, new
-                {
-                    @required = "required",
-                    @placeholder = "e.g., 0401234567",
-                    @pattern = @"^040-\d{7}$",
-                    @title = "Enter a valid Hyderabad landline number starting with 040."
-                })
+           {
+               @class = "form-control",
+               @required = "required",
+               @placeholder = "e.g., 0401234567",
+               @pattern = @"^040-\d{7}$",
+               @title = "Enter a valid Hyderabad landline number starting with 040."
+           })
             </div>
-
-
-            @*<div class="form-item">
-                @Html.LabelFor(m => m.MDoctorAd.ContactNo, "ContactNo")
-                @Html.TextBoxFor(m => m.MDoctorAd.ContactNo, new { @required = "required", @placeholder = "Mobile Number" })
-            </div>*@
-
-            <div class="form-item">
+            <div class="form-group">
                 @Html.LabelFor(m => m.MDoctorAd.Education, "Education")
-                @Html.TextBoxFor(m => m.MDoctorAd.Education, new { @required = "required", @placeholder = "Education" })
+                @Html.TextBoxFor(m => m.MDoctorAd.Education, new { @class = "form-control", @required = "required", @placeholder = "Education" })
             </div>
-            <div class="form-item">
-                <div> @Html.LabelFor(m => m.MDoctorAd.Gender, "Gender")</div>
+        </div>
+
+        @*//row5*@
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.MDoctorAd.Gender, "Gender")
                 @Html.DropDownListFor(m => m.MDoctorAd.Gender, new SelectList(new List<SelectListItem>
-                    {
-
-                new SelectListItem { Value = "Male", Text = "Male" },
-                            new SelectListItem { Value = "Female", Text = "Female" },
-                             new SelectListItem { Value = "Others", Text = "Others" },
-
-                    }, "Value", "Text"), "Select Gender", new { @class = "form-control", @required = "required", })
-
+                {
+                    new SelectListItem { Value = "Male", Text = "Male" },
+                    new SelectListItem { Value = "Female", Text = "Female" },
+                    new SelectListItem { Value = "Others", Text = "Others" },
+                }, "Value", "Text"), "Select Gender", new { @class = "form-control", @required = "required" })
             </div>
-            <div class="form-item">
-                <div> @Html.LabelFor(m => m.MDoctorAd.Status, "Status")</div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.MDoctorAd.Status, "Status")
                 @Html.DropDownListFor(m => m.MDoctorAd.Status, new SelectList(new List<SelectListItem>
-                    {
-
-                            new SelectListItem { Value = "Active", Text = "Active" },
-                            new SelectListItem { Value = "Inactive", Text = "Inactive" },
-
-                    }, "Value", "Text"), "Select Status", new { @required = "required", @class = "form-control" })
-
+                {
+                    new SelectListItem { Value = "Active", Text = "Active" },
+                    new SelectListItem { Value = "Inactive", Text = "Inactive" },
+                }, "Value", "Text"), "Select Status", new { @required = "required", @class = "form-control" })
             </div>
-
         </div>
 
-        <div class="form-submit">
-            <input type="submit" value="Submit" class="btn-submit">
+        <div style="display: flex; justify-content: center;">
+            <input type="submit" class="btn-submit" value="Submit" style="border-color: #e74715">
         </div>
-
     </div>
 }
 
-<script>
 
-    function Back() {
-        window.location.href = "/Dashboard/DashboardView";
+<style>
+    .form-container {
+        position: absolute;
+        width: 70%;
+        margin-top: 200px;
+        /*margin: 30px auto;*/
+        /*padding: 20px;*/
+        /border-radius: 8px;
+        / box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        margin-left: 25%;
     }
-</script>
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .form-group {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 20px;
+        margin-left: 30px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        width: 95%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 42px;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, .6);
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .validation-summary {
+        margin-bottom: 15px;
+        color: #dc3545;
+    }
+
+    .btn {
+        color: white;
+        background-color: dodgerblue;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30%;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
 
 
+
+    /*.sb2-2-2 ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+    }
+
+        .sb2-2-2 ul li {
+            margin-right: 10px;
+        }
+
+            .sb2-2-2 ul li a {
+                text-decoration: none;
+                color: #007bff;
+            }
+
+            .sb2-2-2 ul li.active-bre a {
+                color: #0056b3;
+                font-weight: bold;
+            }
+
+            .sb2-2-2 ul li.page-back a {
+                color: #ff5733;
+            }*/
+</style>
 
 
 

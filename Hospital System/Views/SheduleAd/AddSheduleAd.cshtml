@@ -2,15 +2,38 @@
 
 @{
     ViewBag.Title = "Add Schedule Advertisement";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    //Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_LayoutTech.cshtml";
 }
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
 @using (Html.BeginForm("AddSheduleAd", "SheduleAd"))
 {
-    <div style="position: relative; width: 85%; margin: 18px auto; background-color: white; padding: 20px; border-radius: 8px;">
-        <h2 style="text-align: center;">Add Schedule Advertisement</h2>
 
-        <div style="display: flex; flex-direction: column; align-items: center;">
+    <div class="sb2-2" style="height: 100%; position: absolute; margin-top: 65px;">
+        <div class="sb2-2-2" style="margin-left:30px;">
+            <ul>
+                <li>
+                    <a href="/Dashboard/DashboardView"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="active-bre">
+                    <a href="#"> Shedules</a>
+                </li>
+                <li class="page-back">
+                    <a href="/Dashboard/DashboardView"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="padding: 14px 36px; background: #002147; margin-top:145px; margin-left: 25%; width: 70%; color:white;position:absolute;">
+        <h4>Add Shedule</h4>
+    </div>
+
+        <div class="form-container">
             <!-- Form Row 1: Two fields in one row -->
             <div class="form-row">
                 <div class="form-group">
@@ -21,16 +44,16 @@
                 <div class="form-group">
                     <label>Doctor Name</label>
                     @Html.TextBoxFor(m => m.MShedule.DoctorName, new
-{
-@class = "form-control",
-@placeholder = "FullName ",
-@required = "required",
-@pattern = "^[A-Za-z\\s]+$",
-@title = "Please enter a valid name (letters and spaces only)"
-})
-                </div>
+                    {
+                    @class = "form-control",
+                    @placeholder = "FullName ",
+                    @required = "required",
+                    @pattern = "^[A-Za-z\\s]+$",
+                    @title = "Please enter a valid name (letters and spaces only)"
+                    })
                 </div>
             </div>
+
 
             <!-- Form Row 2: Two fields in one row -->
             <div class="form-row">
@@ -53,80 +76,100 @@
                     {
                         new SelectListItem { Value = "Active", Text = "Active" },
                         new SelectListItem { Value = "Inactive", Text = "Inactive" },
-                    }, "Value", "Text"), "Select Status", new { @class = "form-control",@required="required" })
+                    }, "Value", "Text"), "Select Status", new { @class = "form-control", @required = "required" })
                 </div>
             </div>
 
-            <!-- Submit and Back Buttons -->
-            <div style="display: flex; justify-content: center; margin-top: 20px;">
-                <input type="submit" value="Submit" style="margin-right: 10px;">
-                <button type="button" onclick="window.location.href='/Dashboard/DashboardView'" style="background-color: #007BFF; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.3s;">Back</button>
+            <div style="display: flex; justify-content: center; ">
+                <input type="submit" class="btn-submit" value="Submit" style="border-color: #e74715">
             </div>
         </div>
-   
+    
 }
 
-<script>
-    // Optional: Back button functionality
-    function Back() {
-        window.location.href = "/Dashboard/DashboardView";
-    }
-</script>
 
 <style>
-    /* General form styling */
-    label {
-        font-weight: bold;
-        margin-bottom: 5px;
-        display: block;
+    .form-container {
+        position: absolute;
+        width: 70%;
+        margin-top: 200px;
+        
+        background-color: #ffffff;
+        margin-left: 25%;
     }
 
-    /* Flexbox for rows */
     .form-row {
         display: flex;
-        justify-content: space-between;
-        width: 100%;
-        gap: 15px;
-        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 20px;
     }
 
-    /* Form group inside each row */
     .form-group {
-        flex: 1 1 45%; /* Each field takes up 45% of the row (leaving space for gap) */
-        margin-bottom: 15px;
-        box-sizing: border-box;
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 20px;
+        margin-left: 30px;
     }
 
-    /* Styling for textboxes and dropdowns */
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
     .form-control {
-        width: 100%;
+        width: 95%;
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 4px;
         box-sizing: border-box;
+        height: 42px;
     }
 
-    /* Submit button styling */
-    input[type="submit"],
-    button {
-        background-color: #4CAF50;
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, .6);
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
         color: white;
         padding: 10px 15px;
-        border: none;
         border-radius: 4px;
         cursor: pointer;
-        transition: background-color 0.3s;
+        width: 100%;
     }
 
-    input[type="submit"]:hover,
-    button:hover {
-        background-color: #45a049;
-    }
-
-    /* Mobile responsiveness: Stack fields vertically if the screen width is small */
-    media (max-width: 768px) {
-        .form-group {
-            flex: 1 1 100%; /* Stack items vertically on small screens */
+        .btn-primary:hover {
+            background-color: #0056b3;
         }
+
+    .text-danger {
+        color: #dc3545;
     }
+
+    .validation-summary {
+        margin-bottom: 15px;
+        color: #dc3545;
+    }
+
+    .btn {
+        color: white;
+        background-color: dodgerblue;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30%;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
 </style>

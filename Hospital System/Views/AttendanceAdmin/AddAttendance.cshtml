@@ -5,121 +5,27 @@
     Layout = null;
 }
 
-<style>
-    /* General Body Styles */
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #f5f5f5;
-    }
-
-    /* Form Container */
-    .form-container {
-        display: flex;
-        flex-direction: column; /* Stack rows vertically */
-        max-width: 800px;  /* Maximum form width */
-        width: 100%;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        background-color: #fff;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        margin: 20px;
-    }
-
-    /* Row Style: each row will be a flex container */
-    .form-row {
-        display: flex;
-        justify-content: space-between; /* Aligns the items side by side */
-        margin-bottom: 20px;
-    }
-
-    /* Form Field Style: each field takes up 48% of the row's width */
-    .form-row .form-group {
-        width: 48%; /* 2 fields per row */
-        box-sizing: border-box;
-    }
-
-    /* Label Styling */
-    .form-container label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 8px;
-    }
-
-    /* Input field styling */
-    .form-container input[type="text"],
-    .form-container select,
-    .form-container input[type="time"] {
-        width: 100%;  /* Full width of each field */
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 14px;
-        background-color: #f9f9f9;
-    }
-
-    /* Submit Button Styling */
-    .form-container input[type="submit"] {
-        width: 100%;  /* Full width for submit button */
-        padding: 12px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s ease;
-    }
-
-    /* Hover Effect on Submit Button */
-    .form-container input[type="submit"]:hover {
-        background-color: #0056b3;
-    }
-
-    /* Media Query for Smaller Screens */
-    media (max-width: 768px) {
-        .form-row {
-            flex-direction: column;  /* Stack form fields vertically on small screens */
-        }
-
-        .form-row .form-group {
-            width: 100%;  /* Full width for form fields on smaller screens */
-        }
-
-        .form-container input[type="submit"] {
-            width: 100%;  /* Ensure submit button is full width on small screens */
-        }
-    }
 
 
-    .form1 {
-        width: 100%;
-        height: 41px;
-        border-radius: 5px;
-    }
-</style>
-
-@using (Html.BeginForm("AddAttendance", "AttendanceAdmin", FormMethod.Post, new { @class = "form-container" }))
+@using (Html.BeginForm("AddAttendance", "AttendanceAdmin", FormMethod.Post))
 {
-    <div>
-        <h2 style="text-align: center; width: 100%; margin-bottom: 20px;">Add Attendance Here</h2>
+    <div style="padding: 14px 36px; background: #002147; width: 100%; color:white;position:absolute;">
+        <h4 style="margin-left:500px;margin-top:-5px;font-size:30px;">Add Attendance</h4>
+    </div>
 
-        <!-- Row 1: Id and Name -->
+
+    <div class="form-container">
         <div class="form-row">
             <div class="form-group">
                 <!-- Id Field -->
                 @Html.LabelFor(m => m.Id)
-                @Html.TextBoxFor(m => m.Id)
+                @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })
             </div>
 
             <div class="form-group">
                 <!-- Name Field -->
                 @Html.LabelFor(m => m.Name)
-                @Html.TextBoxFor(m => m.Name, new { @required = "required", @placeholder = "Name" })
+                @Html.TextBoxFor(m => m.Name, new { @required = "required", @placeholder = "Name", @class = "form-control" })
             </div>
         </div>
 
@@ -128,13 +34,13 @@
             <div class="form-group">
                 <!-- Department Field -->
                 @Html.LabelFor(m => m.Department)
-                @Html.TextBoxFor(m => m.Department, new { @required = "required", @placeholder = "Department" })
+                @Html.TextBoxFor(m => m.Department, new { @required = "required", @placeholder = "Department", @class = "form-control" })
             </div>
 
             <div class="form-group">
                 <!-- Job Title Field -->
                 @Html.LabelFor(m => m.JobTitle)
-                @Html.TextBoxFor(m => m.JobTitle, new { @required = "required", @placeholder = "Job Title" })
+                @Html.TextBoxFor(m => m.JobTitle, new { @required = "required", @placeholder = "Job Title", @class = "form-control" })
             </div>
         </div>
 
@@ -151,8 +57,9 @@
                @maxlength = "10",
                @pattern = "^[6789][0-9]{9}$",  // Pattern to ensure it starts with 6, 7, 8, or 9 and is exactly 10 digits
                @title = "Phone number must start with 6, 7, 8, or 9 and must be 10 digits long.",
-               @class = "form1"
-                })
+               
+               @class = "form-control"
+           })
             </div>
 
             <div class="form-group">
@@ -172,13 +79,13 @@
             <div class="form-group">
                 <!-- Time Field -->
                 @Html.LabelFor(m => m.Time)
-                @Html.TextBoxFor(m => m.Time, new { @required = "required", @type = "text", @id = "timeField", @readonly = "readonly" })
+                @Html.TextBoxFor(m => m.Time, new { @required = "required", @type = "text", @id = "timeField", @readonly = "readonly", @class = "form-control" })
             </div>
 
             <div class="form-group">
                 <!-- Login Time Field -->
                 @Html.LabelFor(m => m.LoginTime)
-                @Html.TextBoxFor(m => m.LoginTime, new { @required = "required", @type = "time" })
+                @Html.TextBoxFor(m => m.LoginTime, new { @required = "required", @type = "time", @class = "form-control" })
             </div>
         </div>
 
@@ -187,7 +94,7 @@
             <div class="form-group">
                 <!-- Logout Time Field -->
                 @Html.LabelFor(m => m.LogoutTime)
-                @Html.TextBoxFor(m => m.LogoutTime, new { @required = "required", @type = "time" })
+                @Html.TextBoxFor(m => m.LogoutTime, new { @required = "required", @type = "time", @class = "form-control" })
             </div>
 
             <div class="form-group">
@@ -202,8 +109,10 @@
         </div>
 
         <!-- Submit Button -->
-        <div>
-            <input type="submit" value="Submit" />
+        <div style="display: flex; justify-content: center; ">
+            <input type="submit" class="btn-submit" value="Submit" style="border-color: #e74715">
+            <input type="button" class="btn-submit" value="Back" style="border-color: #e74715" onclick="window.location.href='/ReceptionAdmin/ReceptionFrontPage';">
+
         </div>
     </div>
 }
@@ -231,3 +140,102 @@
         document.getElementById("shiftDropdown").dispatchEvent(new Event("change"));
     };
 </script>
+
+
+<style>
+    .form-container {
+        position: absolute;
+        width: 100%;
+        margin-top: 50px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+    }
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .form-group {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 20px;
+        margin-left: 30px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        width: 95%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 42px;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, .6);
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .validation-summary {
+        margin-bottom: 15px;
+        color: #dc3545;
+    }
+
+    .btn {
+        color: white;
+        background-color: dodgerblue;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30%;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-submit {
+        color: #fff;
+        background: #e74715;
+        background: -webkit-linear-gradient(to top, #d83d0c, #FF5722);
+        background: linear-gradient(to top, #d83d0c, #FF5722);
+        padding: 4px 34px;
+        line-height: 32px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 14px;
+    }
+</style>
