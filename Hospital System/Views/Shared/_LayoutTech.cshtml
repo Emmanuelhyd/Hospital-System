@@ -1,0 +1,213 @@
+﻿<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/All css/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="~/All css/css/style.css" rel="stylesheet">
+    <link href="~/All css/css/style-mob.css" rel="stylesheet">
+
+    <link href="~/All css/animate/animate.css" rel="stylesheet" />
+    <link href="~/All css/animate/animate.min.css" rel="stylesheet" />
+
+    <!-- External styles for SweetAlert -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+</head>
+
+<body>
+    <div class="container-fluid sb1">
+        <div class="row">
+            <!--== SEARCH ==-->
+            <div class="col-md-6 col-sm-6 d-none d-md-block">
+                <form class="app-search">
+                    <input type="text" placeholder="Search..." class="form-control">
+                    <a href="#"><i class="fa fa-search"></i></a>
+                </form>
+            </div>
+
+            <!--== MY ACCOUNT ==-->
+            <div class="col-md-2 col-sm-3 col-xs-6">
+                <!-- Dropdown Trigger -->
+                <a class="waves-effect dropdown-toggle top-user-pro" href="#" id="top-menu-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="images/user/6.png" alt="">My Account <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </a>
+                <!-- Dropdown Menu -->
+                <ul class="dropdown-menu" aria-labelledby="top-menu-toggle">
+                    <li><a href="#" class="dropdown-item">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sb2-13" style="position: absolute; width: 20%; margin-top: 65px;">
+        <ul class="collapsible" id="sidebar-menu">
+            <!-- Dashboard -->
+            <li>
+                <a href="/Dashboard/DashboardView" class="menu-active">
+                    <i class="fa fa-bar-chart" aria-hidden="true"></i> Dashboard
+                </a>
+            </li>
+
+            <!-- Department -->
+            <li>
+                <a href="javascript:void(0)" class="collapsible-header" data-bs-toggle="collapse" data-bs-target="#department-menu">
+                    <i class="fa fa-building" aria-hidden="true"></i> Department
+                </a>
+                <div class="collapse" id="department-menu">
+                    <ul class="left-sub-menu">
+                        <li><a href="/Department/DepartmentList">All Departments</a></li>
+                        <li><a href="/Department/AddDepartment">Add New Department</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Doctors -->
+            <li>
+                <a href="javascript:void(0)" class="collapsible-header" data-bs-toggle="collapse" data-bs-target="#doctors-menu">
+                    <i class="fa-solid fa-user-md" aria-hidden="true"></i> Doctors
+                </a>
+                <div class="collapse" id="doctors-menu">
+                    <ul class="left-sub-menu">
+                        <li><a href="/DoctorAd/DoctorListAd">All Doctors</a></li>
+                        <li><a href="/DoctorAd/AddDoctorAd">Add New Doctor</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Schedules -->
+            <li>
+                <a href="javascript:void(0)" class="collapsible-header" data-bs-toggle="collapse" data-bs-target="#schedules-menu">
+                    <i class="fa fa-calendar" aria-hidden="true"></i> Schedules
+                </a>
+                <div class="collapse" id="schedules-menu">
+                    <ul class="left-sub-menu">
+                        <li><a href="/SheduleAd/SheduleList">All Schedules</a></li>
+                        <li><a href="/SheduleAd/AddSheduleAd">Create New Schedule</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Appointments -->
+            <li>
+                <a href="javascript:void(0)" class="collapsible-header" data-bs-toggle="collapse" data-bs-target="#appointments-menu">
+                    <i class="fa fa-clock" aria-hidden="true"></i> Appointments
+                </a>
+                <div class="collapse" id="appointments-menu">
+                    <ul class="left-sub-menu">
+                        <li><a href="/AppointmentAd/AppointmentList">All Appointments</a></li>
+                        <li><a href="/AppointmentAd/AddAppointmentAd">Add New Appointment</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="/PatientAd/PatientList"><i class="fa fa-users" aria-hidden="true"></i> Patients</a>
+            </li>
+            <!-- Announcements -->
+            <li>
+                <a href="javascript:void(0)" class="collapsible-header" data-bs-toggle="collapse" data-bs-target="#announcements-menu">
+                    <i class="fa-solid fa-bullhorn" aria-hidden="true"></i> Announcements
+                </a>
+                <div class="collapse" id="announcements-menu">
+                    <ul class="left-sub-menu">
+                        <li><a href="/AnnouncementAd/AnnouncementList">All Announcements</a></li>
+                        <li><a href="/AnnouncementAd/AddAnnouncementAd">Create New Announcement</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Complaints -->
+            <li>
+                <a href="javascript:void(0)" class="collapsible-header" data-bs-toggle="collapse" data-bs-target="#complaints-menu">
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Complaints
+                </a>
+                <div class="collapse" id="complaints-menu">
+                    <ul class="left-sub-menu">
+                        <li><a href="/ComplaintAd/ComplaintAdList">All Complaints</a></li>
+                        <li><a href="/ComplaintAd/AddComplaintAd">Create New Complaint</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Prescription -->
+            <li>
+                <a href="javascript:void(0)" class="collapsible-header" data-bs-toggle="collapse" data-bs-target="#prescription-menu">
+                    <i class="fa fa-pills" aria-hidden="true"></i> Prescription
+                </a>
+                <div class="collapse" id="prescription-menu">
+                    <ul class="left-sub-menu">
+                        <li><a href="/MedicineAd/MedicineAdList">Prescription List</a></li>
+                        <li><a href="/MedicineAd/AddMedicineAd">Create New Prescription</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Ambulance -->
+            <li>
+                <a href="javascript:void(0)" class="collapsible-header" data-bs-toggle="collapse" data-bs-target="#ambulance-menu">
+                    <i class="fa fa-ambulance" aria-hidden="true"></i> Ambulance
+                </a>
+                <div class="collapse" id="ambulance-menu">
+                    <ul class="left-sub-menu">
+                        <li><a href="/AmbulanceAd/AmbulanceListAd">All Ambulances</a></li>
+                        <li><a href="/AmbulanceAd/AddAmbulanceAd">Add New Ambulance</a></li>
+                        <li><a href="/AmbulanceAd/AmbulanceDriverAd">All Drivers</a></li>
+                        <li><a href="/AmbulanceAd/AddDriverAd">Create New Driver</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- User Roles -->
+            <li>
+                <a href="javascript:void(0)" class="collapsible-header" data-bs-toggle="collapse" data-bs-target="#userroles-menu">
+                    <i class="fa fa-key" aria-hidden="true"></i> UserRoles & Types
+                </a>
+                <div class="collapse" id="userroles-menu">
+                    <ul class="left-sub-menu">
+                        <li><a href="/UpdateProfile/UpdateList">All Updated Profiles</a></li>
+                        <li><a href="/UpdateProfile/AddProfile">Add New Profile</a></li>
+                        <li><a href="/RolesAdmin/RolesList">All Roles</a></li>
+                        <li><a href="/RolesAdmin/AddRole">Add New Role</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Manage -->
+            <li>
+                <a href="javascript:void(0)" class="collapsible-header" data-bs-toggle="collapse" data-bs-target="#manage-menu">
+                    <i class="fa fa-cogs" aria-hidden="true"></i> Manage
+                </a>
+                <div class="collapse" id="manage-menu">
+                    <ul class="left-sub-menu">
+                        <li><a href="/ReceptionAdmin/ReceptionFrontPage">Admin Reception</a></li>
+                        <li><a href="/Admin/AdminHome">Admin Blood Bank</a></li>
+                        <li><a href="/home/index">Log Out</a></li>
+
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Include necessary JavaScript libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="~/All css/js/main.min.js"></script>
+    <script src="~/All css/js/custom.js"></script>
+
+    <!-- Sweetalert -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+</body>
+
+<div>
+    @RenderBody()
+</div>
