@@ -23,5 +23,20 @@ namespace Hospital_System.BAL
         {
             return dischargeDAL.DischargeId(patientId);
         }
+
+
+        public List<DischargPatient> AddDischarge(DischargPatient discharge)
+        {
+            List<DischargPatient> dischargeDos = new List<DischargPatient>();
+            dischargeDos = dischargeDAL.AddDischarge(discharge);
+            return dischargeDos;
+        }
+        //Discharge edit
+        public DischargPatient DischargeE(int PatientId)
+        {
+            DischargPatient dischargeDo = dischargeDAL.DischargeE(PatientId);
+
+            return dischargeDo;
+        }
     }
 }

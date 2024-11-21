@@ -1,4 +1,5 @@
 ﻿using Hospital_System.BAL;
+using Hospital_System.DAL;
 using Hospital_System.Models;
 using System;
 using System.Collections.Generic;
@@ -35,8 +36,56 @@ namespace Hospital_System.Controllers
             return View(dischargPatient);
 
         }
-       
 
-       
+        public ActionResult AddDischarge(DischargPatient dischargeDo)
+        {
+
+            var ids = 0;
+
+            List<DischargPatient> dischargeDos = new List<DischargPatient>();
+
+
+            if (dischargeDo.PatientId != 0)
+            {
+                dischargeDos = dischargeBAL.AddDischarge(dischargeDo);
+            }
+            if (dischargeDos.Count == 0)
+            {
+               DischargeDAL dischargeDAL = new DischargeDAL();
+                if (dischargeDo.PatientId == 0)
+                {
+                    ids = dischargeDAL.DischargeId();
+                }
+                dischargeDo.PatientId = ids + 1;
+
+                return View(dischargeDo);
+            }
+            else
+            {
+                return RedirectToAction("DischargeListAd", dischargeDos);
+            }
+        }
+
+        //Discharge Edit
+
+        public ActionResult DischargeE(int PatientId)
+        {
+            if (PatientId <= 0)
+                return HttpNotFound();
+
+            DischargPatient dischargeDo = new DischargPatient();
+            dischargeDo = dischargeBAL.DischargeE(PatientId);
+            if (dischargeDo.PatientId != 0)
+            {
+
+                return View("AddDischarge", dischargeDo);
+            }
+            else
+            {
+                return RedirectToAction("Discharge", "Discharge");
+
+            }
+        }
+
     }
 }

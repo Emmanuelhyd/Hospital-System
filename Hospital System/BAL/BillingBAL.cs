@@ -23,5 +23,21 @@ namespace Hospital_System.BAL
             return billingdal.Billing1(PatientId);
 
         }
+
+        public List<Billing> AddBill(Billing Billing)
+        {
+            List<Billing> billAds = new List<Billing>();
+            billAds = billingdal.AddBill(Billing);
+            return billAds;
+        }
+
+
+        //Bill edit
+        public Billing BillE(int PatientId)
+        {
+            Billing billAds = billingdal.BillE(PatientId);
+
+            return billAds;
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace Hospital_System.Models
 {
     public class DischargPatient
     {
-        public int? PatientId { get; set;}
+        public int PatientId { get; set;}
         public string PatientName { get; set;}
         public string Reason { get; set;}
         public string Findings { get; set;}

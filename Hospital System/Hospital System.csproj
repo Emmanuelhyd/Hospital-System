@@ -706,6 +706,8 @@
     <Content Include="Views\VaccinationAdmin\VaccineListAdmin.cshtml" />
     <Content Include="Views\ReceptionAdmin\ReceptionFrontPage.cshtml" />
     <Content Include="Views\Shared\_LayoutRec.cshtml" />
+    <Content Include="Views\Billing\AddBill.cshtml" />
+    <Content Include="Views\Discharge\AddDischarge.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

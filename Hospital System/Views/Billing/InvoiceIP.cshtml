@@ -59,6 +59,7 @@
                                 <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
                             </li>*@
                         <h4>Billing List</h4>
+                        <input type="button" value="Add New" style="position: absolute; margin-left: 129px; margin-top: -30px; color: white; background-color: #58b392; border-color: #58b392; border-radius: 5px; width: 7%; height: 36px; " onclick="window.location.href='@Url.Action("AddBill", "Billing")'">
                     </div>
                     <div class="tab-inn">
                         <div class="table-responsive table-desi">
@@ -86,6 +87,7 @@
                                             <th>Status</th>*@
                                         <th>MethodOfPayment</th>
                                         <th>Action</th>
+
                                     </tr>
                                 </thead>
 
@@ -112,7 +114,16 @@
                                             @*<td>@Html.DisplayFor(m => item.InsuranceClaimed)</td>
                                                 <td>@Html.DisplayFor(m => item.Status)</td>*@
                                             <td>@Html.DisplayFor(m => item.MethodOfPayment)</td>
-                                            <td><a href="@Url.Action("BillingId", "Billing", new { PatientId = item.PatientId })" class="ad-st-view">View</a></td>
+
+                                            <td style="display:flex;gap:5px;">
+
+                                                <a href="@Url.Action("BillingId", "Billing", new { PatientId = item.PatientId })">   <i class="fas fa-eye"></i> </a>
+
+
+                                                <a href="@Url.Action("BillE", new { PatientId = item.PatientId })">
+                                                    <i class="fas fa-edit" style="font-size: 20px; color: blue; background: none; margin-top: -5px;"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                     }
                                 </tbody>
