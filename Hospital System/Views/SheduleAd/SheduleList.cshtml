@@ -36,7 +36,7 @@
                         <div>
 
                             <input type="button" value="Add New" onclick="window.location.href='@Url.Action("AddSheduleAd", "SheduleAd")'" class="my-btn" style="position: absolute; margin-top: -10px;">
-                            <h1 style="margin-left: 200px; color: #808080 ">Schedule List</h1>
+                            <h1 style="margin-left: 200px; color: white; font-size:20px; ">Schedule List</h1>
                             <input type="search" id="Schedule" name="Schedule" placeholder="Search Schedule"  class="search-box" style="padding: 10px; width: 200px; border: 1px solid #ccc; border-radius: 4px; position: absolute; margin-left: 600px; margin-top: -50px; ">
                             <input type="submit" value="Search" class="my-btn" style="position: absolute; margin-left: 800px; margin-top: -45px; ">
                         </div>
@@ -66,10 +66,10 @@
                                             <td>@Html.DisplayFor(modelItem => item.status)</td>
                                             <td style="display: flex; gap: 10px;">
                                                 <a href="@Url.Action("SLEdit", new { Id = item.Id })" title="Edit">
-                                                    <i class="fas fa-edit" style="color: blue;"></i>
+                                                    <i class="fas fa-edit" style="color: blue;font-size:20px;background:none;"></i>
                                                 </a>
                                                 <a href="javascript:void(0);" onclick="confirmDelete('@Url.Action("SheduleDelete", new { Id = item.Id })')" title="Delete">
-                                                    <i class="fas fa-trash-alt" style="color:red;"></i>
+                                                    <i class="fas fa-trash-alt" style="color: red; font-size: 20px; background: none;"></i>
                                                 </a>
                                             </td>
                                         </tr>

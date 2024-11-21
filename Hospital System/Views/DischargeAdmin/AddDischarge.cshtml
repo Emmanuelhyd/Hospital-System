@@ -2,18 +2,36 @@
 
 @{
     ViewBag.Title = "AddDischarge";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutRec.cshtml";
 
 }
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
-@using (Html.BeginForm("AddDischarge", "DischargeAdmin", FormMethod.Post, new { @class = "form-container" }))
+@using (Html.BeginForm("AddDischarge", "DischargeAdmin", FormMethod.Post))
 {
-    <div style="padding: 14px 36px; background: #002147; width: 100%; color:white;position:absolute;">
-        <h4 style="margin-left:500px;margin-top:-5px;font-size:20px;">Add Disharge summary</h4>
+    <div class="sb2-2" style="height: 130%; position: absolute; margin-top: 65px;">
+        <div class="sb2-2-2" style="margin-left:30px;">
+            <ul>
+                <li>
+                    <a href="/ReceptionAdmin/ReceptionFrontPage"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="active-bre">
+                    <a href="#">Add New Discharge Summary</a>
+                </li>
+                <li class="page-back">
+                    <a href="/ReceptionAdmin/ReceptionFrontPage"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                </li>
+            </ul>
+        </div>
     </div>
 
+
+    <div style="padding: 14px 36px; background: #002147; margin-top:145px; margin-left: 25%; width: 70%; color:white;position:absolute;">
+        <h4 style="color:white;">Add New Discharge summary</h4>
+    </div>
 
     <div class="form-container">
         <div class="form-row">
@@ -29,11 +47,11 @@
         <div class="form-row">
             <div class="form-group">
                 @Html.LabelFor(m => m.Reason)
-                @Html.TextBoxFor(m => m.Reason, new { @required = "required", @placeholder = "Reason",@class = "form-control" })
+                @Html.TextBoxFor(m => m.Reason, new { @required = "required", @placeholder = "Reason", @class = "form-control" })
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Findings)
-                @Html.TextBoxFor(m => m.Findings, new { @required = "required", @placeholder = "Findings" , @class = "form-control" })
+                @Html.TextBoxFor(m => m.Findings, new { @required = "required", @placeholder = "Findings", @class = "form-control" })
             </div>
         </div>
         <div class="form-row">
@@ -49,7 +67,7 @@
         <div class="form-row">
             <div class="form-group">
                 @Html.LabelFor(m => m.FurtherInstruction)
-                @Html.TextBoxFor(m => m.FurtherInstruction, new { @required = "required", @placeholder = "Further Instruction" , @class = "form-control" })
+                @Html.TextBoxFor(m => m.FurtherInstruction, new { @required = "required", @placeholder = "Further Instruction", @class = "form-control" })
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.AdmissionDate)
@@ -59,7 +77,7 @@
         <div class="form-row">
             <div class="form-group">
                 @Html.LabelFor(m => m.DischargeDate)
-                @Html.TextBoxFor(m => m.DischargeDate, new { @required = "required", @placeholder = "Discharge Date", @type = "date" , @class = "form-control" })
+                @Html.TextBoxFor(m => m.DischargeDate, new { @required = "required", @placeholder = "Discharge Date", @type = "date", @class = "form-control" })
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.TreatmentDuration)
@@ -78,7 +96,6 @@
         </div>
         <div style="display: flex; justify-content: center; ">
             <input type="submit" class="btn-submit" value="Submit" style="border-color: #e74715">
-            <input type="button" class="btn-submit" value="Back" style="border-color: #e74715" onclick="window.location.href='/ReceptionAdmin/ReceptionFrontPage';">
 
         </div>
     </div>
@@ -90,12 +107,10 @@
 <style>
     .form-container {
         position: absolute;
-        width: 100%;
-        margin-top: 50px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 70%;
+        margin-top: 200px;
         background-color: #ffffff;
-        margin-left:30px;
+        margin-left: 25%;
     }
 
     .form-row {
@@ -171,17 +186,4 @@
         .btn:hover {
             background-color: #0056b3;
         }
-
-    .btn-submit {
-        color: #fff;
-        background: #e74715;
-        background: -webkit-linear-gradient(to top, #d83d0c, #FF5722);
-        background: linear-gradient(to top, #d83d0c, #FF5722);
-        padding: 4px 34px;
-        line-height: 32px;
-        border-radius: 3px;
-        text-transform: uppercase;
-        font-weight: 500;
-        font-size: 14px;
-    }
 </style>

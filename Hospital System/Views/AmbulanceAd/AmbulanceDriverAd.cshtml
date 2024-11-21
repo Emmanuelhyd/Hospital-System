@@ -102,7 +102,7 @@
 
                             <div class="search-container">
                                 <input type="button" value="Add New" onclick="CreateNew()" class="my-btn" style="margin-top:20px;"/>
-                                <h1 style="margin-left: 200px; margin-top: -30px; color: #808080;">Ambulance drivers</h1>
+                                <h1 style="margin-left: 200px; margin-top: -30px; color: white; font-size:20px;">Ambulance drivers</h1>
                                 <input type="search" placeholder="Search..." id="Driver" name="Driver" class="search-box" style="padding: 10px; width: 200px; border: 1px solid #ccc; border-radius: 4px; position: absolute; margin-left: 600px; margin-top: -50px; " />
                                 <input type="submit" value="Search" class="my-btn" style="position: absolute; margin-left: 800px; margin-top: -45px; " />
                             </div>
@@ -122,7 +122,7 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody style="background: linear-gradient(45deg, #e6e6fa, #ffffff); ">
+                                <tbody >
                                     @foreach (var item in Model.mDriverAds)
                                     {
                                         <tr class="driver-row">
@@ -134,10 +134,10 @@
                                             <td>@Html.DisplayFor(modelItem => item.CNIC)</td>
                                             <td class="action-links" style="display: flex; gap: 2px;">
                                                 <a href="@Url.Action("DriverEdit", new { Id = item.Id })" title="Edit">
-                                                    <i class="fas fa-edit" style="color:blue;"></i>
+                                                    <i class="fas fa-edit" style="color:blue;background:none;font-size:20px;"></i>
                                                 </a>
                                                 <a href="javascript:void(0);" onclick="confirmDelete('@Url.Action("DriverDelete", new { Id = item.Id })')" title="Delete">
-                                                    <i class="fas fa-trash-alt" style="color:red;"></i>
+                                                    <i class="fas fa-trash-alt" style="color: red; background: none; font-size: 20px;"></i>
                                                 </a>
                                                 @*<a href="javascript:void(0);" onclick="showAmbulancedriver(@item.Id)" title="View Details">
                                                     <i class="fas fa-eye" style="color:green;"></i>

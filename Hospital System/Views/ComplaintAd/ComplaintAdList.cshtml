@@ -105,7 +105,7 @@
                     <div class="inn-title">
                         <div>
                             <input type="button" value="Add New" onclick="window.location.href='@Url.Action("AddcomplaintAd", "ComplaintAd")'" class="my-btn">
-                            <h1 style="margin-left: 300px; position: absolute; margin-top: -30px; color: #808080">All Complaints</h1>
+                            <h1 style="margin-left: 300px; position: absolute; margin-top: -30px; color: white;font-size:20px;">All Complaints</h1>
                         </div>
                     </div>
                     <div class="tab-inn">
@@ -132,10 +132,10 @@
                                             <td>@Html.DisplayFor(modelItem => item.Replay)</td>
                                             <td>
                                                 <a href="@Url.Action("ComplaintEdit", new { Id = item.Id })" class="action-link">
-                                                    <i class="fas fa-edit" style="color:blue;"></i>
+                                                    <i class="fas fa-edit" style="color:blue;background:none;font-size:20px;"></i>
                                                 </a>
                                                 <a href="javascript:void(0);" onclick="confirmDelete('@Url.Action("ComplaintDelete", new { Id = item.Id })')">
-                                                    <i class="fas fa-trash-alt" style="color:red;"></i>
+                                                    <i class="fas fa-trash-alt" style="color: red; background: none; font-size: 20px;"></i>
                                                 </a>
                                             </td>
                                         </tr>
