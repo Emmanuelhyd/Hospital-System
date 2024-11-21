@@ -2,45 +2,15 @@
 
 @{
     ViewBag.Title = "Announcement List";
-    //Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    // Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     Layout = "~/Views/Shared/_LayoutTech.cshtml";
 }
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-
 <script>
-    function CreateNew() {
-        window.location.href = 'AddRole';
-    }
-
-    function confirmDelete(deleteUrl) {
-        swal({
-            title: "Are you sure?",
-            text: "You will not be able to recover this record!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel!",
-            closeOnConfirm: false
-        }, function () {
-            $.ajax({
-                url: deleteUrl,
-                type: 'POST',
-                success: function () {
-                    swal("Deleted!", "Your record has been deleted.", "success");
-                    location.reload(); // Automatically refresh the page after successful deletion
-                },
-                error: function () {
-                    swal("Error!", "There was a problem deleting the record.", "error");
-                }
-            });
-        });
-    }
-</script>
-<script>
+    // Redirect to AddRole page with loading spinner
     function CreateNew() {
         // Show loading SweetAlert
         swal({
@@ -53,40 +23,49 @@
             timer: 3000 // Time to show the loading spinner (optional)
         });
 
-        // Redirect to AddMedicineAd page after a 1-second delay
+        // Redirect to AddRole page after a 1-second delay
         setTimeout(function () {
             window.location.href = '@Url.Action("AddRole", "RolesAdmin")'; // Adjust to your controller
         }, 1000);
     }
 
+    // Confirm deletion with SweetAlert
     function confirmDelete(deleteUrl) {
         swal({
             title: "Are you sure?",
             text: "You will not be able to recover this record!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel!",
-            closeOnConfirm: false
-        }, function () {
-            $.ajax({
-                url: deleteUrl,
-                type: 'POST',
-                success: function () {
-                    swal("Deleted!", "Your record has been deleted.", "success");
-                    location.reload();
-                },
-                error: function () {
-                    swal("Error!", "There was a problem deleting the record.", "error");
+            icon: "warning",
+            buttons: {
+                cancel: "No, cancel!",
+                confirm: {
+                    text: "Yes, delete it!",
+                    value: true,
+                    visible: true,
+                    className: "btn-danger",
+                    closeModal: true
                 }
-            });
+            }
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                // Make AJAX request to delete the record
+                $.ajax({
+                    url: deleteUrl,
+                    type: 'POST',
+                    success: function () {
+                        swal("Deleted!", "Your record has been deleted.", "success");
+                        location.reload(); // Reload the page after successful deletion
+                    },
+                    error: function () {
+                        swal("Error!", "There was a problem deleting the record.", "error");
+                    }
+                });
+            } else {
+                swal("Your record is safe!");
+            }
         });
     }
 </script>
-
-
-
 
 @using (Html.BeginForm())
 {
@@ -106,22 +85,20 @@
         </div>
     </div>
 
-
     <div class="sb2-2-3" style="margin-left: 20%; position: absolute; width: 80%; margin-top:135px;">
         <div class="row">
             <div class="col-md-12">
                 <div class="box-inn-sp">
 
                     <div class="inn-titles">
-
-
                         <div>
-                            <h2 style="margin-left: 200px; color: #808080">Roles List</h2>
+                            <h2 style="margin-left: 200px; color: white; font-size:20px;">Roles List</h2>
                             <input type="button" value="Add New" onclick="CreateNew()" class="my-btn" style="position: absolute; margin-top: -42px;">
-                            <input type="search" id="roles" name="roles" placeholder="Search announcements" class="search-box" style="padding: 10px; width: 200px; border: 1px solid #ccc; border-radius: 4px; position: absolute; margin-left: 600px; margin-top: -50px;">
-                            <input type="submit" value="Search" class="my-btn" style="position: absolute; margin-left: 800px; margin-top: -45px; ">
+                            @*<input type="search" id="roles" name="roles" placeholder="Search roles" class="search-box" style="padding: 10px; width: 200px; border: 1px solid #ccc; border-radius: 4px; position: absolute; margin-left: 600px; margin-top: -50px;">
+                            <input type="submit" value="Search" class="my-btn" style="position: absolute; margin-left: 800px; margin-top: -45px;">*@
                         </div>
                     </div>
+
                     <div class="tab-inn">
                         <div class="table-responsive table-desi">
                             <table class="table table-hover">
@@ -142,10 +119,10 @@
                                             <td>@Html.DisplayFor(modelItem => item.Type)</td>
                                             <td style="display: flex; gap: 10px;">
                                                 <a href="@Url.Action("RoleEdit", new { Id = item.Id })" class="action-link">
-                                                    <i class="fas fa-edit" style="color: blue;"></i>
+                                                    <i class="fas fa-edit" style="color: blue; font-size: 20px; background: none;"></i>
                                                 </a>
                                                 <a href="javascript:void(0);" onclick="confirmDelete('@Url.Action("RoleDelete", new { Id = item.Id })')" class="action-link">
-                                                    <i class="fas fa-trash-alt" style="color:red;"></i>
+                                                    <i class="fas fa-trash-alt" style="color: red; font-size: 20px; background: none;"></i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -158,10 +135,7 @@
             </div>
         </div>
     </div>
-
 }
-
-
 
 <style>
     .my-btn {
@@ -175,5 +149,12 @@
     .inn-titles {
         padding: 1px 25px;
         background: #002147;
+    }
+
+    .search-box {
+        padding: 10px;
+        width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
     }
 </style>

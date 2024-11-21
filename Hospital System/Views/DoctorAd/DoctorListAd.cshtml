@@ -96,10 +96,10 @@
                                             <td>@Html.DisplayFor(modelItem => item.Status)</td>
                                             <td>
                                                 <a href="@Url.Action("DAEdit", new { DoctorId = item.DoctorId })" class="action-link">
-                                                    <i class="fas fa-edit" style="color:blue;"></i>
+                                                    <i class="fas fa-edit" style="color:blue;background:none;font-size:20px;"></i>
                                                 </a>
                                                 <a href="javascript:void(0);" onclick="confirmDelete('@Url.Action("DADelete", new { DoctorId = item.DoctorId })')" class="action-link">
-                                                    <i class="fas fa-trash-alt" style="color:red;"></i>
+                                                    <i class="fas fa-trash-alt" style="color: red; background: none; font-size: 20px;"></i>
                                                 </a>
                                             </td>
                                         </tr>

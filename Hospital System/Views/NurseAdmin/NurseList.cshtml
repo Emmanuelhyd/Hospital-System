@@ -9,44 +9,52 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
+    // Confirm delete function using SweetAlert and AJAX
     function confirmDelete(deleteUrl) {
-        swal({
+        Swal.fire({
             title: "Are you sure?",
             text: "You will not be able to recover this record!",
-            icon: "warning",  // Updated to 'icon' instead of 'type'
-            buttons: {
-                cancel: "No, cancel!",
-                confirm: {
-                    text: "Yes, delete it!",
-                    value: true,
-                    visible: true,
-                    className: "btn-danger",
-                    closeModal: true
-                }
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true,
+            focusCancel: true // Focus on the Cancel button
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Perform AJAX request to delete the record
+                $.ajax({
+                    url: deleteUrl, // URL to your delete action
+                    type: 'POST', // or 'DELETE' depending on your controller action
+                    success: function (response) {
+                        // On successful deletion
+                        Swal.fire("Deleted!", "Your record has been deleted.", "success");
+                        location.reload(); // Reload the page to reflect changes
+                    },
+                    error: function (xhr, status, error) {
+                        // In case of an error, show error message
+                        Swal.fire("Error!", "There was a problem deleting the record.", "error");
+                    }
+                });
+            } else {
+                // If the action was cancelled, show a message
+                Swal.fire("Cancelled", "Your record is safe.", "info");
             }
-        })
-            .then((willDelete) => {
-                if (willDelete) {
-                    // Make AJAX request to delete the record
-                    $.ajax({
-                        url: deleteUrl,
-                        type: 'POST',
-                        success: function (result) {
-                            // Reload or update the table as needed
-                            swal("Deleted!", "Your record has been deleted.", "success");
-                            location.reload(); // Reload the page to see changes
-                        },
-                        error: function (err) {
-                            swal("Error!", "There was a problem deleting the record.", "error");
-                        }
-                    });
-                } else {
-                    swal("Your record is safe!");
-                }
-            });
+        });
     }
 </script>
+
+
+
+
+
+
+
+
+
 
 @using (Html.BeginForm())
 {
@@ -66,7 +74,7 @@
         </div>
     </div>
 
-    <div class="sb2-2-3" style="margin-left: 20%; position: absolute; width: 85%; margin-top:135px;">
+    <div class="sb2-2-3" style="margin-left: 20%; position: absolute; width: 100%; margin-top:135px;">
         <div class="row">
             <div class="col-md-12">
                 <div class="box-inn-sp">
