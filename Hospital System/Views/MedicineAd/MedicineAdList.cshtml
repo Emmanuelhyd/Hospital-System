@@ -76,7 +76,7 @@
             <div class="col-md-12">
                 <div class="box-inn-sp">
                     <div class="inn-title">
-                        <h1 style="margin-left: 200px; color: #808080;">Prescription</h1>
+                        <h1 style="margin-left: 200px; color: white; font-size:20px;">Prescription</h1>
                         <input type="button" value="Add New" onclick="CreateNew()" class="my-btn" style="margin-top:-50px;position:absolute;">
                         <input type="search" id="med" name="med" placeholder="Search medicine..." class="search-box" style="padding: 10px; width: 200px; border: 1px solid #ccc; border-radius: 4px; margin-left: 500px; margin-top: -55px;position:absolute;">
                         <input type="submit" value="Search" class="my-btn" style="position: absolute; margin-left: 700px; margin-top: -50px;">
@@ -109,17 +109,50 @@
                                         <td>@Html.DisplayFor(modelItem => item.Problem)</td>
                                         <td>@Html.DisplayFor(modelItem => item.MedicineName)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Description)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Morning)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Afternoon)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Night)</td>
                                         <td>
+                                            @if (item.Morning == "Yes")
+                                            {
+                                                <i class="fas fa-check" style="color: green; background: none;font-size:20px;"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="fas fa-times" style="color: red; background: none; font-size: 20px; "></i>
+                                            }
+                                        </td>
+
+
+                                        <td>
+                                            @if (item.Afternoon == "Yes")
+                                            {
+                                                <i class="fas fa-check" style="color: green; background: none; font-size: 20px; "></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="fas fa-times" style="color: red; background: none; font-size: 20px; "></i>
+                                            }
+                                        </td>
+
+
+                                        <td>
+                                            @if (item.Night == "Yes")
+                                            {
+                                                <i class="fas fa-check" style="color: green; background: none; font-size: 20px; "></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="fas fa-times" style="color: red; background: none; font-size: 20px; "></i>
+                                            }
+                                        </td>
+
+                                        <td style="display:flex;gap:5px;">
                                             <a href="@Url.Action("MedicineEdit", new { PatientId = item.PatientId })" class="action-link">
-                                                <i class="fas fa-edit" style="color:blue;"></i>
+                                                <i class="fas fa-edit" style="color:blue;font-size:20px;background:none;"></i>
                                             </a>
                                             <a href="javascript:void(0);" onclick="confirmDelete('@Url.Action("MedicineDelete", new { PatientId = item.PatientId })')">
-                                                <i class="fas fa-trash-alt" style="color:red;"></i>
+                                                <i class="fas fa-trash-alt" style="color: red; font-size: 20px; background: none;"></i>
                                             </a>
                                         </td>
+
                                     </tr>
                                 }
                             </tbody>

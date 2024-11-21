@@ -29,7 +29,7 @@
     </div>
 
     <div style="padding: 14px 36px; background: #002147; margin-top:145px; margin-left: 25%; width: 70%; color:white;position:absolute;">
-        <h4>Add Prescription</h4>
+        <h4 style="color:white;font-size:20px;">Add Prescription</h4>
     </div>
 
 
@@ -127,29 +127,53 @@
         <div class="form-row">
             <div class="form-group">
                 <label>Morning</label>
-                @Html.DropDownListFor(m => m.MMedicineAd.Morning, new SelectList(new List<SelectListItem>
-                {
-                    new SelectListItem { Value = "Yes", Text = "Yes" },
-                    new SelectListItem { Value = "No", Text = "No" },
-                }, "Value", "Text"), "Select", new { @class = "form-control", @required = "required" })
+                <div>
+                    <label>
+                        @Html.RadioButtonFor(m => m.MMedicineAd.Morning, "Yes", new { @class = "morning-radio" }) Yes
+                        <i class="fa fa-check tick" style="color: green; display: none;"></i>
+                        <i class="fa fa-times cross" style="color: red; display: none;"></i>
+                    </label>
+                    <label>
+                        @Html.RadioButtonFor(m => m.MMedicineAd.Morning, "No", new { @class = "morning-radio" }) No
+                        <i class="fa fa-check tick" style="color: green; display: none;"></i>
+                        <i class="fa fa-times cross" style="color: red; display: none;"></i>
+                    </label>
+                </div>
             </div>
+
             <div class="form-group">
                 <label>Afternoon</label>
-                @Html.DropDownListFor(m => m.MMedicineAd.Afternoon, new SelectList(new List<SelectListItem>
-                {
-                    new SelectListItem { Value = "Yes", Text = "Yes" },
-                    new SelectListItem { Value = "No", Text = "No" },
-                }, "Value", "Text"), "Select", new { @class = "form-control", @required = "required" })
+                <div>
+                    <label>
+                        @Html.RadioButtonFor(m => m.MMedicineAd.Afternoon, "Yes", new { @class = "afternoon-radio" }) Yes
+                        <i class="fa fa-check tick" style="color: green; display: none;"></i>
+                        <i class="fa fa-times cross" style="color: red; display: none;"></i>
+                    </label>
+                    <label>
+                        @Html.RadioButtonFor(m => m.MMedicineAd.Afternoon, "No", new { @class = "afternoon-radio" }) No
+                        <i class="fa fa-check tick" style="color: green; display: none;"></i>
+                        <i class="fa fa-times cross" style="color: red; display: none;"></i>
+                    </label>
+                </div>
             </div>
         </div>
+
+        <!-- Night Section -->
         <div class="form-row">
             <div class="form-group">
                 <label>Night</label>
-                @Html.DropDownListFor(m => m.MMedicineAd.Night, new SelectList(new List<SelectListItem>
-                {
-                    new SelectListItem { Value = "Yes", Text = "Yes" },
-                    new SelectListItem { Value = "No", Text = "No" },
-                }, "Value", "Text"), "Select", new { @class = "form-control", @required = "required" })
+                <div>
+                    <label>
+                        @Html.RadioButtonFor(m => m.MMedicineAd.Night, "Yes", new { @class = "night-radio" }) Yes
+                        <i class="fa fa-check tick" style="color: green; display: none;"></i>
+                        <i class="fa fa-times cross" style="color: red; display: none;"></i>
+                    </label>
+                    <label>
+                        @Html.RadioButtonFor(m => m.MMedicineAd.Night, "No", new { @class = "night-radio" }) No
+                        <i class="fa fa-check tick" style="color: green; display: none;"></i>
+                        <i class="fa fa-times cross" style="color: red; display: none;"></i>
+                    </label>
+                </div>
             </div>
         </div>
 

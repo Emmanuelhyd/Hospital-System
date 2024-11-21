@@ -2,87 +2,75 @@
 
 @{
     ViewBag.Title = "FeedbackListAdmin";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutRec.cshtml";
 }
 
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="~/All css/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="~/All css/css/style.css" rel="stylesheet">
-    <link href="~/All css/css/style-mob.css" rel="stylesheet">
-
-    <link href="~/All css/animate/animate.css" rel="stylesheet" />
-    <link href="~/All css/animate/animate.min.css" rel="stylesheet" />
-
-    <!-- External styles for SweetAlert -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
-</head>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     // Confirm delete function using SweetAlert and AJAX
     function confirmDelete(deleteUrl) {
-        swal({
+        Swal.fire({
             title: "Are you sure?",
             text: "You will not be able to recover this record!",
-            icon: "warning",  // Updated to 'icon' instead of 'type'
-            buttons: {
-                cancel: "No, cancel!",
-                confirm: {
-                    text: "Yes, delete it!",
-                    value: true,
-                    visible: true,
-                    className: "btn-danger",
-                    closeModal: true
-                }
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true,
+            focusCancel: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Perform AJAX request to delete the feedback
+                $.ajax({
+                    url: deleteUrl,
+                    type: 'POST', // or 'DELETE' depending on your controller action
+                    success: function () {
+                        Swal.fire("Deleted!", "Your record has been deleted.", "success");
+                        location.reload(); // Reload the page to reflect changes
+                    },
+                    error: function () {
+                        Swal.fire("Error!", "There was a problem deleting the record.", "error");
+                    }
+                });
+            } else {
+                Swal.fire("Cancelled", "Your record is safe.", "info");
             }
-        })
-            .then((willDelete) => {
-                if (willDelete) {
-                    // Perform AJAX request to delete the feedback
-                    $.ajax({
-                        url: deleteUrl,
-                        type: 'POST',
-                        success: function () {
-                            swal("Deleted!", "Your record has been deleted.", "success");
-                            location.reload(); // Reload the page to reflect changes
-                        },
-                        error: function () {
-                            swal("Error!", "There was a problem deleting the record.", "error");
-                        }
-                    });
-                } else {
-                    swal("Your record is safe!");
-                }
-            });
+        });
     }
 </script>
 
 @using (Html.BeginForm())
 {
-    <div class="sb2-2-3" style="position: absolute; width: 100%; margin-top: 20px">
+    <div class="sb2-2" style="height: 20px; position: absolute; margin-top: 65px;">
+        <div class="sb2-2-2">
+            <ul>
+                <li>
+                    <a href="/ReceptionAdmin/ReceptionFrontPage"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="active-bre">
+                    <a href="#"> Feedback</a>
+                </li>
+                <li class="page-back" style="margin-left:-10px;">
+                    <a href="/ReceptionAdmin/ReceptionFrontPage"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="sb2-2-3" style="margin-left: 20%; position: absolute; width: 80%; margin-top:135px;">
         <div class="row">
             <div class="col-md-12">
                 <div class="box-inn-sp">
-                    <div class="inn-titles">
-                        <li class="page-back">
-                            <a href="/ReceptionAdmin/ReceptionFrontPage"><i class="fa fa-backward" aria-hidden="true" style="margin-top:25px;"></i> Back</a>
-                        </li>
-                        <input type="button" value="Add New" onclick="window.location.href='@Url.Action("AddFeedbackAd", "FeedbackAdmin")'" class="my-btn" style="margin-top:13px;">
-                        <h4 style="margin-left:400px;margin-top:-30px;font-size:20px;color:white;"> Feedback</h4>
+                    <div class="inn-title">
+                        <div>
+                            <h4 style="margin-left: 300px; color: white;font-size:20px;">Patient Feedback</h4>
+                            <input type="button" value="Add New" onclick="window.location.href='@Url.Action("AddFeedbackAd", "FeedbackAdmin")'" class="my-btn" style="margin-left: 10px; margin-top: -28px; position: absolute;">
+                        </div>
                     </div>
+
                     <div class="tab-inn">
                         <div class="table-responsive table-desi">
                             <table class="table table-hover">
@@ -117,11 +105,11 @@
                                             <td>@Html.DisplayFor(modelItem => item.Review)</td>
                                             <td style="display:flex;gap:5px;">
                                                 <a href="@Url.Action("FeedbackEdit", new { Id = item.Id })" title="Edit">
-                                                    <i class="fas fa-edit" style="color: blue; font-size: 10px; padding: 10px;"></i>
+                                                    <i class="fas fa-edit" style="color: blue; font-size: 20px; background:none;"></i>
                                                 </a>
                                                 <a href="javascript:void(0);"
                                                    onclick="confirmDelete('@Url.Action("FeedbackDelete", new { Id = item.Id })')">
-                                                    <i class="fas fa-trash-alt" style="font-size: 10px; padding: 10px; color:red;"></i>
+                                                    <i class="fas fa-trash-alt" style="font-size: 20px; background: none; color: red;"></i>
                                                 </a>
                                             </td>
                                         </tr>

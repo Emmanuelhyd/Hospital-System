@@ -487,10 +487,7 @@
     <Content Include="Views\Vaccination\Vaccine.cshtml" />
     <Content Include="Views\Vaccination\VaccineList.cshtml" />
     <Content Include="Views\Vaccination\VaccinesById.cshtml" />
-    <Content Include="Views\ReceptionAdmin\ReceptionFrontPage.cshtml" />
     <Content Include="Views\Feedback\FeedList.cshtml" />
-    <Content Include="Views\AmbulanceR\AmbList.cshtml" />
-    <Content Include="Views\AmbulanceR\AddAmb.cshtml" />
     <Content Include="scss\bootstrap.scss" />
     <Content Include="scss\bootstrap\scss\bootstrap-grid.scss" />
     <Content Include="scss\bootstrap\scss\bootstrap-reboot.scss" />
@@ -617,9 +614,6 @@
     <Content Include="Views\Specialities\Urology.cshtml" />
     <Content Include="Views\Shared\_Layout_1.cshtml" />
     <Content Include="Views\DepartmentPatient\DepList.cshtml" />
-    <Content Include="Views\AmbulanceR\DriveList.cshtml" />
-    <Content Include="Views\AmbulanceR\AddDrive.cshtml" />
-    <Content Include="Views\Shared\_LayoutRec.cshtml" />
     <Content Include="Views\Shared\_LayoutPatRec.cshtml" />
     <Content Include="Views\Shared\_LayoutBlood.cshtml" />
     <Content Include="Views\Shared\_UserLayoutBlood.cshtml" />
@@ -683,6 +677,12 @@
     <Content Include="Views\UpdateProfile\UpdateList.cshtml" />
     <Content Include="Views\DoctorAd\AddDoctorAd.cshtml" />
     <Content Include="Views\DoctorAd\DoctorListAd.cshtml" />
+    <Content Include="Views\Discharge\Discharge.cshtml" />
+    <Content Include="Views\Discharge\DischargeId.cshtml" />
+    <Content Include="Views\AmbulanceR\AddAmb.cshtml" />
+    <Content Include="Views\AmbulanceR\AddDrive.cshtml" />
+    <Content Include="Views\AmbulanceR\AmbList.cshtml" />
+    <Content Include="Views\AmbulanceR\DriveList.cshtml" />
     <Content Include="Views\AttendanceAdmin\AddAttendance.cshtml" />
     <Content Include="Views\AttendanceAdmin\AttendanceList.cshtml" />
     <Content Include="Views\BillAdmin\AddBill.cshtml" />
@@ -694,6 +694,8 @@
     <Content Include="Views\ConsultantAdmin\ConsultantList.cshtml" />
     <Content Include="Views\DischargeAdmin\AddDischarge.cshtml" />
     <Content Include="Views\DischargeAdmin\DischargeListAd.cshtml" />
+    <Content Include="Views\FeedbackAdmin\AddFeedbackAd.cshtml" />
+    <Content Include="Views\FeedbackAdmin\FeedbackListAdmin.cshtml" />
     <Content Include="Views\InPatientAdmin\AddInpatient.cshtml" />
     <Content Include="Views\InPatientAdmin\InPatientListAd.cshtml" />
     <Content Include="Views\NurseAdmin\AddNurse.cshtml" />
@@ -702,10 +704,8 @@
     <Content Include="Views\OutPatientAdmin\OutPatientList.cshtml" />
     <Content Include="Views\VaccinationAdmin\AddVaccine.cshtml" />
     <Content Include="Views\VaccinationAdmin\VaccineListAdmin.cshtml" />
-    <Content Include="Views\Discharge\Discharge.cshtml" />
-    <Content Include="Views\Discharge\DischargeId.cshtml" />
-    <Content Include="Views\FeedbackAdmin\AddFeedbackAd.cshtml" />
-    <Content Include="Views\FeedbackAdmin\FeedbackListAdmin.cshtml" />
+    <Content Include="Views\ReceptionAdmin\ReceptionFrontPage.cshtml" />
+    <Content Include="Views\Shared\_LayoutRec.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
