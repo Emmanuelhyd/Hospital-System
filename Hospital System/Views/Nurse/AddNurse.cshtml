@@ -143,7 +143,7 @@
             <div class="form-row">
                 <div class="form-group">
                     @Html.LabelFor(m => m.Email)
-                    @Html.TextBoxFor(m => m.Email, new { @required = "required", @placeholder = "Email", @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Email, new { @required = "required", @placeholder = "Email", @class = "form-control", @type = "email" })
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Address)
@@ -163,7 +163,7 @@
         new SelectListItem { Value = "Vascular", Text = "Vascular" },
         new SelectListItem { Value = "Neuro", Text = "Neuro" },
         },
-        "Value", "Text"), "Specialization", new { @class = "form-control" })
+        "Value", "Text"), "Specialization", new { @class = "form-control", @required = "required" })
 
                 </div>
             </div>
@@ -177,7 +177,7 @@
         new SelectListItem { Value = "Afternoon", Text = "Afternoon" },
         new SelectListItem { Value = "Night", Text = "Night" },
         },
-        "Value", "Text"), "ShiftType", new { @class = "form-control" })
+        "Value", "Text"), "ShiftType", new { @class = "form-control", @required = "required" })
                 </div>
 
                 <div class="form-group">
@@ -192,7 +192,7 @@
         new SelectListItem { Value = "MBA", Text = "MBA" },
 
         },
-        "Value", "Text"), "Education", new { @class = "form-control" })
+        "Value", "Text"), "Education", new { @class = "form-control", @required = "required" })
                 </div>
             </div>
             <div class="form-row">
@@ -206,7 +206,7 @@
         new SelectListItem { Value = "Terminated", Text = "Terminated" },
 
         },
-        "Value", "Text"), "EmployeeStatus", new { @class = "form-control" })
+        "Value", "Text"), "EmployeeStatus", new { @class = "form-control", @required = "required" })
                 </div>
             </div>
 

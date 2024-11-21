@@ -12,10 +12,10 @@ namespace Hospital_System.BAL
 
         DischargeDAL dischargeDAL = new DischargeDAL();
 
-        public List<DischargPatient> GetdischargPatients(DateTime? date, int? patientId)
+        public List<DischargPatient> GetdischargPatients( )
         {
 
-            return dischargeDAL.GetdischargPatients(date, patientId);
+            return dischargeDAL.GetdischargPatients( );
 
         }
 

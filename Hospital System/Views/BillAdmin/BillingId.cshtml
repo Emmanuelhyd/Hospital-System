@@ -1,214 +1,291 @@
 ﻿@model Hospital_System.Models.BillAd
 
-
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutRec.cshtml";
 }
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Billing Details</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            / Remove default body margin / padding: 0;
-            / Remove default body padding /
-        }
 
-        .container {
+
+    <style>
+
+
+        .container2 {
             background-color: white;
-            padding: 10px;
-            / Adjusted padding / margin: 0;
-            / Remove margin to prevent empty space / border-radius: 8px;
+            padding: 20px;
+            margin: 0;
+            border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        h1 {
-            text-align: center;
-            color: #ef7d7d;
-            margin: 0;
-            
-                padding: 10px 0;
-            / Add some padding for spacing /
+        .invoice-content {
+            padding: 20px;
         }
 
-        .patient-info {
+        .invoice-item {
             margin-bottom: 20px;
         }
 
-            .patient-info strong {
-                display: inline;
-                margin-right: 10px;
-            }
+        .invoice-logo img {
+            max-width: 200px;
+        }
 
-        table {
+        .invoice-details {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .invoice-info {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .customer-text {
+            font-weight: bold;
+        }
+
+        .invoice-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
-            / Reduced margin for table /
+            margin-top: 20px;
         }
 
-        th, td {
-            padding: 10px;
-            / Adjusted padding / text-align: left;
-            border: 1px solid #ddd;
+            .invoice-table th, .invoice-table td {
+                padding: 10px;
+                border: 1px solid #ddd;
+            }
+
+            .invoice-table th {
+                background-color: #002147;
+                color: white;
+            }
+
+            .invoice-table tbody tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+
+        .invoice-table-two th, .invoice-table-two td {
+            padding: 8px;
         }
 
-        th {
+        .invoice-table-two th {
+            text-align: left;
+        }
+
+        .text-muted {
+            color: #888;
+        }
+
+        .other-info h4 {
+            margin-top: 20px;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .ml-auto {
+            margin-left: auto;
+        }
+
+        /* Style the download button */
+        .download-btn {
+            margin-top: 20px;
             background-color: #ef7d7d;
             color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
         }
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
+            .download-btn:hover {
+                background-color: #e53e3e;
+            }
 
-        media print {
-            #downloadBtn
-
-        {
-            display: none;
-            / Hide button in PDF /
-        }
-
-        body {
-            margin: 0;
-            / Ensure no margins in print / padding: 0;
-            / Ensure no padding in print /
-        }
-
-        .container {
-            page-break-inside: avoid;
-            / Prevent breaks inside the container /
-        }
-
-        table {
-            page-break-inside: auto;
-            / Allow page breaks inside the table /
-        }
-
-        h1 {
-            margin: 0;
-            / Remove margin from print header / padding: 10px 0;
-            / Keep some padding /
-        }
+        .table-responsive {
+            min-height: .01%;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
-<body>
-    <div class="container">
-        <h1>Billing Details</h1>
-        <div class="patient-info">
-            <strong>Patient Name: @Model.PatientName</strong> <br />
-            <strong>Diagnose: @Model.Problem</strong><br />
-            <strong>Bill Date: @Model.BillingDate</strong><br />
-            <strong>Treatment Duration: @Model.TreatmentDuration</strong><br />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<div class="sb2-2" style="margin-top: 57px; height: 130vh;">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="/Reception/Reception"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#"> Invoice</a>
+            </li>
+            <li class="page-back">
+                <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container2" id="invoice">
+
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="invoice-content">
+
+                    <div class="invoice-item">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="invoice-logo">
+                                    <h2> Invoice</h2>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="margin-left: 739px; margin-top: -38px;">
+
+                                @*<strong>Order:</strong> @Model.OrderNumber <br>*@
+                                <h4>Issued:</h4> @Model.BillingDate.ToString()
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Invoice From and To -->
+                    <div class="invoice-item">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="invoice-info">
+                                    <strong class="customer-text">Invoice From</strong>
+                                    <p class="invoice-details">
+                                        Guru Nanak Hospital <br>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="margin-left: 566px; margin-top: -55px;">
+                                <div class="invoice-info invoice-info2">
+                                    <strong class="customer-text">Invoice To</strong>
+                                    <br />
+                                    @Model.PatientName <br>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="invoice-item">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="invoice-info">
+                                    <strong class="customer-text">Payment Method</strong>
+                                    <p class="invoice-details">
+                                        @Model.MethodOfPayment <br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Billing Items -->
+                    <div class="invoice-item invoice-table-wrap">
+                        <div class="row">
+                            <div class="col-md-12" style=" width: 151%; ">
+                                <div class="table-responsive">
+                                    <table class="invoice-table table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Description</th>
+                                                <th class="text-center">Quantity</th>
+                                                <th class="text-center">GST</th>
+                                                <th class="text-right">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Doctor Fee</td>
+                                                <td class="text-center">1</td>
+                                                <td class="text-center">18%</td>
+                                                <td class="text-right">₹@Model.DoctorFee.ToString("N2")</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Treatment Charges</td>
+                                                <td class="text-center">1</td>
+                                                <td class="text-center">18%</td>
+                                                <td class="text-right">₹@Model.TreatmentCharges.ToString("N2")</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Medicine Charges</td>
+                                                <td class="text-center">1</td>
+                                                <td class="text-center">18%</td>
+                                                <td class="text-right">₹@Model.MedicineCharges.ToString("N2")</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Room Fee</td>
+                                                <td class="text-center">1</td>
+                                                <td class="text-center">18%</td>
+                                                <td class="text-right">₹@Model.RoomFee.ToString("N2")</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Others</td>
+                                                <td class="text-center">1</td>
+                                                <td class="text-center">18%</td>
+                                                <td class="text-right">₹@Model.OthersCost.ToString("N2")</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-4 ml-auto" style="margin-left: 624px;">
+                                <div class="table-responsive">
+                                    <table class="invoice-table-two table">
+                                        <tbody>
+                                            <tr>
+                                                <th>Subtotal:</th>
+                                                <td><span>₹@Model.TotalBill.ToString("N2")</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Discount:</th>
+                                                <td><span>-10%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Total Amount:</th>
+                                                <td><span>₹@Model.TotalAmount.ToString("N2")</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button id="downloadBtn" style="margin-top: 20px; background-color: #f44336; color: white; border-color: #f44336;">Download PDF</button>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Billing Item</th>
-                    @*<th>Amount</th>*@
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Doctor Fee</td>
-                    @*<td>@Model.DoctorFee</td>*@
-                    <td>@(Model.DoctorFee != 0 ? Model.DoctorFee.ToString() : "0")</td>
-                </tr>
-                <tr>
-                    <td>Treatment Charges</td>
-                    @*<td>@Model.TreatmentCharges</td>*@
-                    <td>@(Model.TreatmentCharges != 0 ? Model.TreatmentCharges.ToString() : "0")</td>
-                </tr>
-                <tr>
-                    <td>Medicine Charges</td>
-                    @*<td>@Model.MedicineCharges</td>*@
-                    <td>@(Model.MedicineCharges != 0 ? Model.MedicineCharges.ToString() : "0")</td>
-                </tr>
-                <tr>
-                    <td>Room Fee</td>
-                    @*<td>@Model.RoomFee</td>*@
-                    <td>@(Model.RoomFee != 0 ? Model.RoomFee.ToString() : "0")</td>
-                </tr>
-                <tr>
-                    <td>Others</td>
-                    @*<td>@Model.Others</td>*@
-                    <td>@(Model.Others != null ? Model.Others : "0")</td>
-                </tr>
-                <tr>
-                    <td>Others Cost</td>
-                    @*<td>@Model.OthersCost</td>*@
-                    <td>@(Model.OthersCost != 0 ? Model.OthersCost.ToString() : "0")</td>
-                </tr>
-                <tr>
-                    <td>Total Bill</td>
-                    @*<td>@Model.TotalBill</td>*@
-                    <td>@(Model.TotalBill != 0 ? Model.TotalBill.ToString() : "0")</td>
-                </tr>
-                <tr>
-                    <td>GST</td>
-                    @*<td>@Model.GST</td>*@
-                    <td>@(Model.GST != 0 ? Model.GST.ToString() : "0")</td>
-                </tr>
-
-                <tr>
-                    <td>Paid Bill</td>
-                    @*<td>@Model.PaidBill</td>*@
-                    <td>@(Model.PaidBill != 0 ? Model.PaidBill.ToString() : "0")</td>
-                </tr>
-                @*<tr>
-            <td>Balance Amount</td>
-            <td>@Model.BalanceAmount</td>
-            <td>@(Model.BalanceAmount != 0 ? Model.BalanceAmount.ToString() : "0")</td>
-        </tr>*@
-                <tr>
-                    <td>Insurance Claimed</td>
-                    @*<td>@Model.InsuranceClaimed</td>*@
-                    <td>@(Model.InsuranceClaimed != 0 ? Model.InsuranceClaimed.ToString() : "0")</td>
-                </tr>
-                <tr>
-                    <td>Total Amount</td>
-                    @*<td>@Model.TotalAmount</td>*@
-                    <td>@(Model.TotalAmount != 0 ? Model.TotalAmount.ToString() : "0")</td>
-                </tr>
-                <tr>
-                    <td>Status</td>
-                    <td>@Model.Status</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Method of Payment</td>
-                    <td>@Model.MethodOfPayment</td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
-        <button id="downloadBtn" style="margin-top: 20px;">Download PDF</button>
     </div>
 
     <script>
         document.getElementById('downloadBtn').addEventListener('click', function () {
-            const element = document.querySelector('.container');
+            const element = document.body; // Select the entire body for full-page capture
             const options = {
-                margin: 0, // Remove margin for PDF
+                margin: 0,
                 filename: 'billing_details.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 }, // Increase scale for better quality
+                html2canvas: { scale: 2, logging: true, useCORS: true },
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
             };
 
             html2pdf().from(element).set(options).save();
         });
     </script>
-</body>
-</html>
 
+</html>

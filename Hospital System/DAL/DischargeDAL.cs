@@ -25,12 +25,12 @@ namespace Hospital_System.DAL
             con = new SqlConnection(_connectionString);
         }
 
-        public List<DischargPatient> GetdischargPatients(DateTime? date, int? patientId)
+        public List<DischargPatient> GetdischargPatients()
         {
             List<DischargPatient> dischargPatients = new List<DischargPatient>();
             DischargPatient dischargPatients1 = null;
             con.Open();
-            cmd = new SqlCommand("select * from discharge where AdmissionDate is null or  AdmissionDate  like'%" + date + "%' and patientId = 0 or patientId like'%" + patientId + "%'", con);
+            cmd = new SqlCommand("select * from discharge ", con);
 
             reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -127,7 +127,7 @@ namespace Hospital_System.DAL
 
 
             List<DischargPatient> dischargeDos = new List<DischargPatient>();
-           
+            dischargeDos = GetdischargPatients();
             return dischargeDos;
         }
 

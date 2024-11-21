@@ -13,15 +13,11 @@ namespace Hospital_System.Controllers
     {
         DischargeBAL dischargeBAL= new DischargeBAL();
         // GET: Discharge
-        public ActionResult Discharge(string date, int? patientId)
+        public ActionResult Discharge()
         {
-            DateTime? selecteddate = null;
-            if (!string.IsNullOrEmpty(date))
-            {
-                selecteddate = DateTime.Parse(date);
-            }
+           
 
-            var model = dischargeBAL.GetdischargPatients(selecteddate, patientId);
+            var model = dischargeBAL.GetdischargPatients();
             return View(model);
 
         }
@@ -62,7 +58,7 @@ namespace Hospital_System.Controllers
             }
             else
             {
-                return RedirectToAction("DischargeListAd", dischargeDos);
+                return RedirectToAction("Discharge", dischargeDo);
             }
         }
 
