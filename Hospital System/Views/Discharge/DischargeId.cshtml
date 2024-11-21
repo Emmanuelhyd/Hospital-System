@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "DischargeId";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPatRec.cshtml";
 }
 
 <!DOCTYPE html>
@@ -12,12 +12,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Discharge Summary</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #e3e8ea;
-            margin: 0;
-            padding: 20px;
-        }
+
 
         .container {
             max-width: 800px;
@@ -25,9 +20,9 @@
             padding: 30px;
             background-color: #fff;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-          /*  border-radius: 10px;*/
+            /* border-radius: 10px; */
             border: 1px solid #f1f1f1;
-            margin-top:-20px;
+            margin-top: 1px;
         }
 
         h1 {
@@ -111,18 +106,30 @@
     </style>
 </head>
 
-<body>
-    <div class="action-buttons">
-        <button onclick="window.history.back();"> Back</button>
+<div class="sb2-2" style="margin-top:76px; height:140vh;">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="/Reception/Reception"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#"> DischargeDetails</a>
+            </li>
+            <li class="page-back">
+                <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
     </div>
-    <div style="padding: 14px 36px; background: #002147; margin-top: -43px; margin-left: 224px; width: 790px; color: white;">
+
+
+    <div style="padding: 14px 36px; background: #002147; margin-top: 6px; margin-left: 99px; width: 799px; color: white;">
         <h4>Discharge Summary</h4>
 
     </div>
 
     <div class="container">
 
-      
+
 
         <div class="info">
             <strong>Name:</strong> @Model.PatientName
@@ -150,5 +157,4 @@
 
 
     </div>
-</body>
-</html>
+

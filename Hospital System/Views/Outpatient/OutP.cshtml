@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "OutP";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPatRec.cshtml";
 }
 
 <head>
@@ -32,57 +32,71 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
+<div class="sb2-2" style="margin-top: 76px; height: 125vh;">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="/Reception/Reception"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#"> OutPatient</a>
+            </li>
+            <li class="page-back">
+                <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
 
 
 
 
 
+    <div class="row">
+        <div class="col-md-12" ">
+            <div class="box-inn-sp">
+                <div class="inn-title">
+                    @*<li class="page-back">
+                            <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                        </li>*@
+                    <h4>Outpatient List</h4>
 
-<div class="row">
-    <div class="col-md-12" ">
-        <div class="box-inn-sp">
-            <div class="inn-title">
-                <li class="page-back">
-                    <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
-                </li>
-                <h4>Outpatient List</h4>
+                </div>
 
-            </div>
-
-            <div class="tab-inn">
-                <div class="table-responsive table-desi">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Patient Id</th>
-                                <th>@Html.DisplayNameFor(m => m.First().PatientName)</th>
-                                <th>@Html.DisplayNameFor(m => m.First().Problem)</th>
-                                <th>@Html.DisplayNameFor(m => m.First().Description)</th>
-                                <th>@Html.DisplayNameFor(m => m.First().Gender)</th>
-                                <th>@Html.DisplayNameFor(m => m.First().Address)</th>
-                                <th>@Html.DisplayNameFor(m => m.First().PhoneNumber)</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
+                <div class="tab-inn">
+                    <div class="table-responsive table-desi">
+                        <table class="table table-hover">
+                            <thead>
                                 <tr>
-                                    <td>@Html.DisplayFor(m => item.Id)</td>
-                                    <td>@Html.DisplayFor(m => item.PatientName)</td>
-                                    <td>@Html.DisplayFor(m => item.Problem)</td>
-                                    <td>@Html.DisplayFor(m => item.Description)</td>
-                                    <td>@Html.DisplayFor(m => item.Gender)</td>
-                                    <td>@Html.DisplayFor(m => item.Address)</td>
-                                    <td>@Html.DisplayFor(m => item.PhoneNumber)</td>
-                                    <td><a href="@Url.Action("OPID", "Outpatient", new { Id = item.Id })" class="ad-st-view">View</a></td>
+                                    <th>Patient Id</th>
+                                    <th>@Html.DisplayNameFor(m => m.First().PatientName)</th>
+                                    <th>@Html.DisplayNameFor(m => m.First().Problem)</th>
+                                    <th>@Html.DisplayNameFor(m => m.First().Description)</th>
+                                    <th>@Html.DisplayNameFor(m => m.First().Gender)</th>
+                                    <th>@Html.DisplayNameFor(m => m.First().Address)</th>
+                                    <th>@Html.DisplayNameFor(m => m.First().PhoneNumber)</th>
+                                    <th>Action</th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(m => item.Id)</td>
+                                        <td>@Html.DisplayFor(m => item.PatientName)</td>
+                                        <td>@Html.DisplayFor(m => item.Problem)</td>
+                                        <td>@Html.DisplayFor(m => item.Description)</td>
+                                        <td>@Html.DisplayFor(m => item.Gender)</td>
+                                        <td>@Html.DisplayFor(m => item.Address)</td>
+                                        <td>@Html.DisplayFor(m => item.PhoneNumber)</td>
+                                        <td><a href="@Url.Action("OPID", "Outpatient", new { Id = item.Id })" class="ad-st-view">View</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-       </div>
+        </div>
     </div>
-  </div>
-   
+
+</div>

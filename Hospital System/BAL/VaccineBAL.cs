@@ -18,10 +18,10 @@ namespace Hospital_System.BAL
         }
 
 
-        public List<Vaccines> VaccinesList(string searchvalue)
+        public List<Vaccines> VaccinesList()
         {
 
-            return vaccineDAL.VaccinesList(searchvalue);
+            return vaccineDAL.VaccinesList();
 
         }
 

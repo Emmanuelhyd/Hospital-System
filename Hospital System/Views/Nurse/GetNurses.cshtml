@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "GetNurses";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPatRec.cshtml";
 }
 
 <head>
@@ -34,58 +34,72 @@
 
 
 <body>
-   
+
     @using (Html.BeginForm())
     {
+        <div class="sb2-2" style="margin-top: 76px; height: 125vh;">
+            <div class="sb2-2-2">
+                <ul>
+                    <li>
+                        <a href="/Reception/Reception"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                    </li>
+                    <li class="active-bre">
+                        <a href="#"> Nurse List</a>
+                    </li>
+                    <li class="page-back">
+                        <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                    </li>
+                </ul>
+            </div>
 
 
+            <div class="row" ">
+                <div class="col-md-12" ">
+                    <div class="box-inn-sp">
+                        <div class="inn-title">
+                            <h4>Nurse List</h4>
+                            @*<li class="page-back" style="position: absolute; margin-left: 1184px; margin-top: -25px;">
+                                    <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                                </li>*@
+                            <input type="button" value="Add New" style="position: absolute; margin-left: 132px; margin-top: -31px; width: 7%; height: 37px; background-color: #58b392; border-radius: 5px; border-color: #58b392; color: white; " onclick="window.location.href='@Url.Action("AddNurse", "Nurse")'">
 
-        <div class="row" ">
-            <div class="col-md-12" ">
-                <div class="box-inn-sp">
-                    <div class="inn-title">
-                        <h4>Nurse List</h4>
-                        <li class="page-back" style="position: absolute; margin-left: 1184px; margin-top: -25px;">
-                            <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
-                        </li>
-                        <input type="button" value="Add New" style="position: absolute; margin-left: 132px; margin-top: -31px; width: 7%; height: 37px; background-color: dodgerblue; border-radius: 5px; border-color: dodgerblue; color: white;" onclick="window.location.href='@Url.Action("AddNurse", "Nurse")'">
 
+                        </div>
 
+                        <div class="tab-inn">
+                            <div class="table-responsive table-desi">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>NurseID</th>
+                                            <th>Name</th>
+                                            <th>Contact</th>
+                                            <th>Email</th>
+                                            <th>ShiftType</th>
+                                            <th>Employment Status</th>
+                                            <th>Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var nurse in Model)
+                                        {
+                                            <tr>
+                                                <td>@Html.DisplayFor(m => nurse.NurseId)</td>
+                                                <td>@Html.DisplayFor(m => nurse.Name)</td>
+                                                <td>@Html.DisplayFor(m => nurse.Contact)</td>
+                                                <td>@Html.DisplayFor(m => nurse.Email)</td>
+                                                <td>@Html.DisplayFor(m => nurse.ShiftType)</td>
+                                                <td>@Html.DisplayFor(m => nurse.EmployeeStatus)</td>
+                                                <td><a href="@Url.Action("NurseDetails", "Nurse", new { NurseId = nurse.NurseId })" class="ad-st-view">View</a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="tab-inn">
-                        <div class="table-responsive table-desi">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>NurseID</th>
-                                        <th>Name</th>
-                                        <th>Contact</th>
-                                        <th>Email</th>
-                                        <th>ShiftType</th>
-                                        <th>Employment Status</th>
-                                        <th>Details</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var nurse in Model)
-                                    {
-                                        <tr>
-                                            <td>@Html.DisplayFor(m => nurse.NurseId)</td>
-                                            <td>@Html.DisplayFor(m => nurse.Name)</td>
-                                            <td>@Html.DisplayFor(m => nurse.Contact)</td>
-                                            <td>@Html.DisplayFor(m => nurse.Email)</td>
-                                            <td>@Html.DisplayFor(m => nurse.ShiftType)</td>
-                                            <td>@Html.DisplayFor(m => nurse.EmployeeStatus)</td>
-                                            <td><a href="@Url.Action("NurseDetails", "Nurse", new { NurseId = nurse.NurseId })" class="ad-st-view">View</a></td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-                        </div>
-                  </div>
-   
-    </div>
-    }
+                </div>
+            </div>
+        }
 </body>

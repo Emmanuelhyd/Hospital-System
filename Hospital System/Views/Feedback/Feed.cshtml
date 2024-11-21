@@ -1,7 +1,7 @@
 ﻿@model Hospital_System.Models.Feedbk
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPatRec.cshtml";
 }
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -10,125 +10,142 @@
 {
     @TempData["Valid"]
     @TempData["Error"]
+    <div class="sb2-2" style="margin-top: 56px; height: 130vh;">
+        <div class="sb2-2-2">
+            <ul>
+                <li>
+                    <a href="/Reception/Reception"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="active-bre">
+                    <a href="#"> Feedback</a>
+                </li>
+                <li class="page-back">
+                    <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                </li>
+            </ul>
+        </div>
+        <div style="padding: 14px 36px; background: #002147; margin-top: -15px; margin-left: 200px; width: 600px; color: white;">
+            <h4> Feedback</h4>
+        </div>
+        <div class="form-container">
 
-    <div class="form-container">
-        <h1>Add Feedback</h1>
 
-        <!-- ID (Hidden Field) -->
-        @Html.HiddenFor(m => m.Id)
+            <!-- ID (Hidden Field) -->
+            @Html.HiddenFor(m => m.Id)
 
-        <!-- Form Fields (2x2 Grid Layout) -->
-        <div class="form-grid">
-            <!-- Name -->
+            <!-- Form Fields (2x2 Grid Layout) -->
+            <div class="form-grid">
+                <!-- Name -->
+                <div class="input-group">
+                    @Html.LabelFor(m => m.Name)
+                    @Html.TextBoxFor(m => m.Name, new
+                    {
+                        @class = "form-input",
+                        @required = "required",
+                        @placeholder = "Enter your Name",
+                        @pattern = "^[a-zA-Z\\s]+$",
+                        @title = "Name should only contain letters"
+                    })
+                </div>
+
+                <!-- Age -->
+                <div class="input-group">
+                    @Html.LabelFor(m => m.Age)
+                    @Html.TextBoxFor(m => m.Age, new
+                    {
+                        @class = "form-input",
+                        @required = "required",
+                        @placeholder = "Age",
+                        @type = "number",
+                        @min = "18",
+                        @max = "150",
+                        @step = "1",
+                        @title = "Enter a valid age between 18 and 150"
+                    })
+                </div>
+
+                <!-- Email -->
+                <div class="input-group">
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new
+                    {
+                        @class = "form-input",
+                        @required = "required",
+                        @placeholder = "Email",
+                        @type = "email",
+                        @title = "Please enter a valid email address"
+                    })
+                </div>
+
+                <!-- Phone Number -->
+                <div class="input-group">
+                    @Html.LabelFor(m => m.phoneNumber)
+                    @Html.TextBoxFor(m => m.phoneNumber, new
+                    {
+                        @class = "form-input",
+                        @required = "required",
+                        @placeholder = "Phone Number",
+                        @pattern = @"^[6789]\d{9}$",
+                        @title = "Please enter a valid 10-digit phone number starting with 6, 7, 8, or 9."
+                    })
+                </div>
+            </div>
+
+            <!-- Feedback -->
             <div class="input-group">
-                @Html.LabelFor(m => m.Name)
-                @Html.TextBoxFor(m => m.Name, new
-                {
-                    @class = "form-input",
-                    @required = "required",
-                    @placeholder = "Enter your Name",
-                    @pattern = "^[a-zA-Z\\s]+$",
-                    @title = "Name should only contain letters"
-                })
+                @Html.LabelFor(m => m.Feedback)
+                @Html.TextAreaFor(m => m.Feedback, new { @class = "form-input1", @required = "required", @placeholder = "Your Valuable Feedback", @rows = "5" })
             </div>
 
-            <!-- Age -->
-            <div class="input-group">
-                @Html.LabelFor(m => m.Age)
-                @Html.TextBoxFor(m => m.Age, new
-                {
-                    @class = "form-input",
-                    @required = "required",
-                    @placeholder = "Age",
-                    @type = "number",
-                    @min = "18",
-                    @max = "150",
-                    @step = "1",
-                    @title = "Enter a valid age between 18 and 150"
-                })
+            <!-- Ratings (Doctor, Staff, Cleaning, Review) -->
+            <div class="rating-container">
+                @Html.LabelFor(m => m.Doctor)
+                <div class="star-rating" data-input="RatingValue1">
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        <span class="fas fa-star @(int.TryParse(Model.Doctor ?? "0", out int doctorRating) && doctorRating >= i ? "active" : "")" data-value="@i"></span>
+                    }
+                </div>
+                <input type="hidden" id="RatingValue1" name="Doctor" value="@(Model.Doctor ?? "0")" required />
             </div>
 
-            <!-- Email -->
-            <div class="input-group">
-                @Html.LabelFor(m => m.Email)
-                @Html.TextBoxFor(m => m.Email, new
-                {
-                    @class = "form-input",
-                    @required = "required",
-                    @placeholder = "Email",
-                    @type = "email",
-                    @title = "Please enter a valid email address"
-                })
+            <div class="rating-container">
+                @Html.LabelFor(m => m.Staff)
+                <div class="star-rating" data-input="RatingValue2">
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        <span class="fas fa-star @(int.TryParse(Model.Staff ?? "0", out int staffRating) && staffRating >= i ? "active" : "")" data-value="@i"></span>
+                    }
+                </div>
+                <input type="hidden" id="RatingValue2" name="Staff" value="@(Model.Staff ?? "0")" required />
             </div>
 
-            <!-- Phone Number -->
-            <div class="input-group">
-                @Html.LabelFor(m => m.phoneNumber)
-                @Html.TextBoxFor(m => m.phoneNumber, new
-                {
-                    @class = "form-input",
-                    @required = "required",
-                    @placeholder = "Phone Number",
-                    @pattern = @"^[6789]\d{9}$",
-                    @title = "Please enter a valid 10-digit phone number starting with 6, 7, 8, or 9."
-                })
+            <div class="rating-container">
+                @Html.LabelFor(m => m.Cleaning)
+                <div class="star-rating" data-input="RatingValue3">
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        <span class="fas fa-star @(int.TryParse(Model.Cleaning ?? "0", out int cleaningRating) && cleaningRating >= i ? "active" : "")" data-value="@i"></span>
+                    }
+                </div>
+                <input type="hidden" id="RatingValue3" name="Cleaning" value="@(Model.Cleaning ?? "0")" required />
             </div>
-        </div>
 
-        <!-- Feedback -->
-        <div class="input-group">
-            @Html.LabelFor(m => m.Feedback)
-            @Html.TextBoxFor(m => m.Feedback, new { @class = "form-input", @required = "required", @placeholder = "Your Valuable Feedback" })
-        </div>
-
-        <!-- Ratings (Doctor, Staff, Cleaning, Review) -->
-        <div class="rating-container">
-            @Html.LabelFor(m => m.Doctor)
-            <div class="star-rating" data-input="RatingValue1">
-                @for (int i = 1; i <= 5; i++)
-                {
-                    <span class="fas fa-star @(int.TryParse(Model.Doctor ?? "0", out int doctorRating) && doctorRating >= i ? "active" : "")" data-value="@i"></span>
-                }
+            <div class="rating-container">
+                @Html.LabelFor(m => m.Review)
+                <div class="star-rating" data-input="RatingValue4">
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        <span class="fas fa-star @(int.TryParse(Model.Review ?? "0", out int reviewRating) && reviewRating >= i ? "active" : "")" data-value="@i"></span>
+                    }
+                </div>
+                <input type="hidden" id="RatingValue4" name="Review" value="@(Model.Review ?? "0")" required />
             </div>
-            <input type="hidden" id="RatingValue1" name="Doctor" value="@(Model.Doctor ?? "0")" required />
-        </div>
 
-        <div class="rating-container">
-            @Html.LabelFor(m => m.Staff)
-            <div class="star-rating" data-input="RatingValue2">
-                @for (int i = 1; i <= 5; i++)
-                {
-                    <span class="fas fa-star @(int.TryParse(Model.Staff ?? "0", out int staffRating) && staffRating >= i ? "active" : "")" data-value="@i"></span>
-                }
+            <!-- Submit Button -->
+            <div>
+                <input type="submit" value="Submit" class="submit-button">
             </div>
-            <input type="hidden" id="RatingValue2" name="Staff" value="@(Model.Staff ?? "0")" required />
-        </div>
-
-        <div class="rating-container">
-            @Html.LabelFor(m => m.Cleaning)
-            <div class="star-rating" data-input="RatingValue3">
-                @for (int i = 1; i <= 5; i++)
-                {
-                    <span class="fas fa-star @(int.TryParse(Model.Cleaning ?? "0", out int cleaningRating) && cleaningRating >= i ? "active" : "")" data-value="@i"></span>
-                }
-            </div>
-            <input type="hidden" id="RatingValue3" name="Cleaning" value="@(Model.Cleaning ?? "0")" required />
-        </div>
-
-        <div class="rating-container">
-            @Html.LabelFor(m => m.Review)
-            <div class="star-rating" data-input="RatingValue4">
-                @for (int i = 1; i <= 5; i++)
-                {
-                    <span class="fas fa-star @(int.TryParse(Model.Review ?? "0", out int reviewRating) && reviewRating >= i ? "active" : "")" data-value="@i"></span>
-                }
-            </div>
-            <input type="hidden" id="RatingValue4" name="Review" value="@(Model.Review ?? "0")" required />
-        </div>
-
-        <!-- Submit Button -->
-        <div>
-            <input type="submit" value="Submit" class="submit-button">
         </div>
     </div>
 }
@@ -143,26 +160,18 @@
 </div>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        padding: 10px;
-    }
+
 
     .form-container {
         background-color: #ffffff;
         padding: 30px;
-        border-radius: 8px;
+        /*  border-radius: 8px;*/
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         max-width: 600px;
         width: 100%;
         box-sizing: border-box;
         transition: all 0.3s ease-in-out;
+        margin-left: 200px;
     }
 
     h1 {
@@ -204,19 +213,20 @@
         }
 
     .submit-button {
-        background-color: #007bff;
+        background-color: #f44336;
         color: white;
         border: none;
         padding: 15px;
         border-radius: 8px;
         cursor: pointer;
-        width: 100%;
+        width: 25%;
         font-size: 16px;
         transition: all 0.3s ease-in-out;
+        margin-left: 220px;
     }
 
         .submit-button:hover {
-            background-color: #0056b3;
+            background-color: #f44336;
         }
 
     .rating-container {
@@ -287,6 +297,15 @@
 
     .popup-error {
         color: red;
+    }
+
+    .form-input1 {
+        width: 540px; /* Make the input take full width of its container */
+        padding: 10px; /* Add padding inside the textarea */
+        border: 1px solid #ccc; /* Set a border color */
+        border-radius: 4px; /* Round corners */
+        font-size: 16px; /* Set the font size */
+        resize: vertical; /* Allow vertical resizing */
     }
 </style>
 

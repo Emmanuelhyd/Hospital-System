@@ -16,11 +16,11 @@ namespace Hospital_System.Models
         [DataType(DataType.DateTime)]
 
         public DateTime SlotDate { get; set; }
-        public DateTime Slot1 { get; set; }
-        public DateTime Slot2 { get; set; }
-        public DateTime Slot3 { get; set; }
-        public DateTime Slot4 { get; set; }
-        public DateTime Slot5 { get; set; }
+        public TimeSpan Slot1 { get; set; }
+        public TimeSpan Slot2 { get; set; }
+        public TimeSpan Slot3 { get; set; }
+        public TimeSpan Slot4 { get; set; }
+        public TimeSpan Slot5 { get; set; }
 
         public bool IsAvailable { get; set; }
 

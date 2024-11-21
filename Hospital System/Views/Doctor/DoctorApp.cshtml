@@ -60,10 +60,9 @@
             background-color: #f1f1f1;
             padding: 10px;
             border-radius: 4px;
-          /*  display: flex;*/
             justify-content: space-between;
             align-items: center;
-            width: 100%; 
+            width: 100%;
             transition: background-color 0.3s ease;
         }
 
@@ -115,7 +114,7 @@
                     <a href="/Patient/Dashboard"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                 </li>
                 <li class="active-bre">
-                    <a href="#"> Dashboard</a>
+                    <a href="#"> DoctorSlots</a>
                 </li>
                 <li class="page-back">
                     <a href="/Patient/Dashboard"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
@@ -129,56 +128,87 @@
                 <strong style="font-family:Broadway">Dr.@Model.doctors.FullName</strong><br />
                 <strong>@Model.doctors.Email</strong><br />
                 <strong>@Model.doctors.Department</strong><br />
-                @*<strong>@Model.doctors.Education</strong><br />
-                <strong>@Model.doctors.Designation</strong><br />*@
-                @*<strong>@Model.doctors.Status</strong><br />*@
             </div>
         </div>
-
 
         <div style="padding: 14px 36px; background: #002147; margin-top: 25px; margin-left: 0px; width: 100%; color: white;">
             <h4>Available Time Slots</h4>
         </div>
-        <div class="container">
-            @if (Model.DoctorTimeSlots != null && Model.DoctorTimeSlots.Any())
+
+        <div class="calendar">
+            @foreach (var timeSlot in Model.DoctorTimeSlots)
             {
-                <div class="calendar">
-                    @foreach (var timeSlot in Model.DoctorTimeSlots)
+                <!-- Loop over the days of the week (Monday to Friday) -->
+                for (int i = 0; i < 5; i++) // 5 days: Monday to Friday
+                {
+                    var currentDay = (int)DateTime.Now.DayOfWeek; // Get the current day as an integer (Sunday = 0, Monday = 1, etc.)
+                    var dayIndex = (currentDay + i) % 7; // Calculate the day index (Monday = 1, Tuesday = 2, etc.)
+                    var dayName = ((DayOfWeek)dayIndex).ToString(); // Get the name of the day (Monday, Tuesday, etc.)
+
+                    // Calculate the date for each day (e.g., today + i days for the next 5 days)
+                    var slotDate = DateTime.Now.AddDays(i);
+
+                    // Get the slot time for each specific time slot (Slot1, Slot2, etc.)
+                    var slotTime = timeSlot.GetType().GetProperty($"Slot{i + 1}")?.GetValue(timeSlot); // Get Slot1, Slot2, etc.
+
+                    // Check if it's today's date
+                    bool isToday = slotDate.Date == DateTime.Today.Date;
+
+                    // If it's today, check if the slot time is in the future
+                    if (isToday && slotTime != null && timeSlot.IsAvailable && DateTime.Now.TimeOfDay < ((TimeSpan)slotTime))
                     {
-                        <!-- Loop over the days of the week and assign slots -->
-                        for (int i = 0; i < 5; i++) // For Monday to Friday (Slot1 to Slot5)
-                        {
-                            var currentDay = (int)DateTime.Now.DayOfWeek; // Get the current day as an integer
-                            var dayIndex = (currentDay + i) % 7; // Add the index and use modulo 7 to get the correct day
-                            var dayName = ((DayOfWeek)dayIndex).ToString(); // Convert back to DayOfWeek to get the day name
-                            var slotTime = timeSlot.GetType().GetProperty($"Slot{i + 1}")?.GetValue(timeSlot); // Get Slot1, Slot2, etc.
+                        <div class="day">
+                            <span class="day-name">@dayName</span> <!-- Display the day (Monday, Tuesday, etc.) -->
+                            <span class="date">@slotDate.ToString("dd MMM yyyy")</span> <!-- Display the correct date for that day -->
 
-                            if (slotTime != null && timeSlot.IsAvailable)
-                            {
-                                <div class="day">
-                                    <span class="day-name">@dayName</span>
-                                    <span class="date">@DateTime.Now.AddDays(i).ToString("dd MMM yyyy")</span> <!-- Date for current day -->
-                                    <div class="time-slots">
-                                        <div class="slot-container">
-                                            <span class="slot-time">@((DateTime)slotTime)</span>
-
-                                        </div>
-                                    </div>
-                                    <a href="@Url.Action("AddBook", "Appointment", new { timeSlotId = timeSlot.TimeSlotId })" class="btn-book">
-                                        <i class="fas fa-calendar-plus"></i> Book Slot
-                                    </a>
+                            <div class="time-slots">
+                                <div class="slot-container">
+                                    <!-- Display the time for this slot, formatted to 24-hour format (HH:mm) -->
+                                    <span class="slot-time">@((TimeSpan)slotTime)</span>
                                 </div>
-                            }
+                            </div>
+
+                            <!-- Book the appointment link -->
+                            <a href="@Url.Action("AddBook", "Appointment", new { timeSlotId = timeSlot.TimeSlotId })" class="btn-book">
+                                <i class="fas fa-calendar-plus"></i> Book Slot
+                            </a>
+                        </div>
+                    }
+                    else if (!isToday)
+                    {
+                        // For future days, display the slot without comparison
+                        if (slotTime != null && timeSlot.IsAvailable)
+                        {
+                            <div class="day">
+                                <span class="day-name">@dayName</span> <!-- Display the day (Monday, Tuesday, etc.) -->
+                                <span class="date">@slotDate.ToString("dd MMM yyyy")</span> <!-- Display the correct date for that day -->
+
+                                <div class="time-slots">
+                                    <div class="slot-container">
+                                        <!-- Display the time for this slot, formatted to 24-hour format (HH:mm) -->
+                                        <span class="slot-time">@((TimeSpan)slotTime)</span>
+                                    </div>
+                                </div>
+
+                                <!-- Book the appointment link -->
+                                <a href="@Url.Action("AddBook", "Appointment", new { timeSlotId = timeSlot.TimeSlotId })" class="btn-book">
+                                    <i class="fas fa-calendar-plus"></i> Book Slot
+                                </a>
+                            </div>
                         }
                     }
-                </div>
-            }
-            else
-            {
-                <p>No available time slots.</p>
+                    else
+                    {
+                        <!-- Display a message when no slots are available for the time -->
+                        <div class="day">
+                            <span class="day-name">@dayName</span>
+                            <span class="date">@slotDate.ToString("dd MMM yyyy")</span>
+                            <p class="no-time">No available time slots.</p>
+                        </div>
+                    }
+                }
             }
         </div>
     </div>
-   
 </body>
 </html>

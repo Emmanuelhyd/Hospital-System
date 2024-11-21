@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "VaccineList";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPatRec.cshtml";
 }
 
 <head>
@@ -31,60 +31,77 @@
 <body>
     @using (Html.BeginForm())
     {
-       
+        <div class="sb2-2" style="margin-top: 76px; height: 125vh;">
+            <div class="sb2-2-2">
+                <ul>
+                    <li>
+                        <a href="/Reception/Reception"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                    </li>
+                    <li class="active-bre">
+                        <a href="#"> Vaccine List</a>
+                    </li>
+                    <li class="page-back">
+                        <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                    </li>
+                </ul>
+            </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box-inn-sp">
-                    <div class="inn-title">
-                        <li class="page-back">
-                            <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
-                        </li>
-                        <h4>Vaccine List</h4>
-                        <input type="button" value="Add New" style="position: absolute; margin-left: 253px; margin-top: -6px; color: white; background-color: dodgerblue; border-color: dodgerblue; border-radius: 5px; width: 6%; height: 36px;" onclick="window.location.href='@Url.Action("AddVaccine", "Vaccination")'">
 
-                        <div class="search-container">
-                            <input type="search" name="searchvalue" id="searchvalue" placeholder="Search by patient name..." />
-                            <button type="submit">Search</button>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box-inn-sp">
+                        <div class="inn-title">
+                            @*<li class="page-back">
+                                    <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                                </li>*@
+                            <h4>Vaccine List</h4>
+                            <input type="button" value="Add New" style="position: absolute; margin-left: 129px; margin-top: -30px; color: white; background-color: #58b392; border-color: #58b392; border-radius: 5px; width: 7%; height: 36px; " onclick="window.location.href='@Url.Action("AddVaccine", "Vaccination")'">
+
+                            @*<div class="search-container">
+                                    <input type="search" name="searchvalue" id="searchvalue" placeholder="Search by patient name..." />
+                                    <button type="submit">Search</button>
+                                </div>*@
+
                         </div>
 
-                    </div>
-
-                    <div class="tab-inn">
-                        <div class="table-responsive table-desi">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>VaccinationId</th>
-                                        <th>PatientName</th>
-                                        <th>DoctorName</th>
-                                        <th>Age</th>
-                                        <th>VaccineType</th>
-                                        <th>Dosage</th>
-                                        <th>Next Due Date</th>
-                                        <th>Status</th>
-                                        <th>Report</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model)
-                                    {
+                        <div class="tab-inn">
+                            <div class="table-responsive table-desi">
+                                <table class="table table-hover">
+                                    <thead>
                                         <tr>
-                                            <td>@Html.DisplayFor(m => item.VaccineId)</td>
-                                            <td>@Html.DisplayFor(m => item.PatientName)</td>
-                                            <td>@Html.DisplayFor(m => item.DoctorName)</td>
-                                            <td>@Html.DisplayFor(m => item.Age)</td>
-                                            <td>@Html.DisplayFor(m => item.VaccineType)</td>
-                                            <td>@Html.DisplayFor(m => item.Dosage)</td>
-                                            <td>@Html.DisplayFor(m => item.NextDueDate)</td>
-                                            <td>@Html.DisplayFor(m => item.Status)</td>
-                                            <td>
-                                                <a href="@Url.Action("VaccinesById", "Vaccination", new { VaccineId = item.VaccineId })" class="ad-st-view">View</a>
-                                            </td>
+                                            <th> PatientId</th>
+                                            <th>VaccinationId</th>
+                                            <th>PatientName</th>
+                                            <th>DoctorName</th>
+                                            <th>Age</th>
+                                            <th>VaccineType</th>
+                                            <th>Dosage</th>
+                                            <th>Next Due Date</th>
+                                            <th>Status</th>
+                                            <th>Report</th>
                                         </tr>
-                                    }
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@Html.DisplayFor(m => item.PatientId) </td>
+                                                <td>@Html.DisplayFor(m => item.VaccineId)</td>
+                                                <td>@Html.DisplayFor(m => item.PatientName)</td>
+                                                <td>@Html.DisplayFor(m => item.DoctorName)</td>
+                                                <td>@Html.DisplayFor(m => item.Age)</td>
+                                                <td>@Html.DisplayFor(m => item.VaccineType)</td>
+                                                <td>@Html.DisplayFor(m => item.Dosage)</td>
+                                                <td>@Html.DisplayFor(m => item.NextDueDate)</td>
+                                                <td>@Html.DisplayFor(m => item.Status)</td>
+                                                <td>
+                                                    <a href="@Url.Action("VaccinesById", "Vaccination", new { VaccineId = item.VaccineId })" class="ad-st-view">View</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

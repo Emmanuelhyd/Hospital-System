@@ -80,9 +80,9 @@ namespace Hospital_System.Controllers
 
 
 
-        public ActionResult VaccineList(string searchvalue)
+        public ActionResult VaccineList()
         {
-            var list = vaccineBAL.VaccinesList(searchvalue);
+            var list = vaccineBAL.VaccinesList();
             return View(list);
         }
 

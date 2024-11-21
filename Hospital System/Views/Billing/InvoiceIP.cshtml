@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "InvoiceIP";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPatRec.cshtml";
 }
 
 <head>
@@ -29,79 +29,99 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 </head>
 
-<body>
-    @using (Html.BeginForm())
-    {
-        <div class="row" >
-            <div class="col-md-12" >
-                <div class="box-inn-sp" style="width: 148%;">
-                    <div class="inn-title">
-                        <li class="page-back">
-                            <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
-                        </li>
-                        <h4>Billing List</h4>
-                        </div>
-                        <div class="tab-inn">
-                            <div class="table-responsive table-desi">
-                                <table class="table table-hover">
+@using (Html.BeginForm())
+{
+    <div class="sb2-2" style="margin-top: 76px; height: 125vh;">
+        <div class="sb2-2-2">
+            <ul>
+                <li>
+                    <a href="/Reception/Reception"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="active-bre">
+                    <a href="#"> Billing</a>
+                </li>
+                <li class="page-back">
+                    <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                </li>
+            </ul>
+        </div>
 
-                                    <thead>
-                                        <tr>
-                                            <th>PatientId</th>
-                                            <th>PatientName</th>
-                                            <th>Problem</th>
-                                            <th>BillingDate</th>
-                                            <th>DoctorFee</th>
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-inn-sp" style="width: 100%;">
+                    <div class="inn-title">
+                        @*<li class="page-back">
+                                <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                            </li>*@
+                        <h4>Billing List</h4>
+                    </div>
+                    <div class="tab-inn">
+                        <div class="table-responsive table-desi">
+                            <table class="table table-hover">
+
+                                <thead>
+                                    <tr>
+                                        <th>PatientId</th>
+                                        <th>PatientName</th>
+                                        <th>Problem</th>
+                                        <th>BillingDate</th>
+                                        @*<th>DoctorFee</th>
                                             <th>TreatmentDuration</th>
                                             <th>TreatmentCharges</th>
                                             <th>MedicineCharges</th>
                                             <th>RoomFee</th>
                                             <th>Others</th>
-                                            <th>OthersCost</th>
-                                            <th>TotalBill</th>
-                                            <th>GST</th>
-                                            <th>TotalAmount</th>
-                                            <th>PaidBill</th>
+                                            <th>OthersCost</th>*@
+                                        <th>TotalBill</th>
+                                        <th>GST</th>
+                                        <th>TotalAmount</th>
+                                        <th>PaidBill</th>
 
-                                            <th>InsuranceClaimed</th>
-                                            <th>Status</th>
-                                            <th>MethodOfPayment</th>
-                                        </tr>
-                                    </thead>
+                                        @*<th>InsuranceClaimed</th>
+                                            <th>Status</th>*@
+                                        <th>MethodOfPayment</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
 
-                                    <tbody>
-                                        @foreach (var item in Model)
-                                        {
-                                            <tr>
-                                                <td>@Html.DisplayFor(m => item.PatientId)</td>
-                                                <td>@Html.DisplayFor(m => item.PatientName)</td>
-                                                <td>@Html.DisplayFor(m => item.Problem)</td>
-                                                <td>@Html.DisplayFor(m => item.BillingDate)</td>
-                                                <td>@Html.DisplayFor(m => item.DoctorFee)</td>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(m => item.PatientId)</td>
+                                            <td>@Html.DisplayFor(m => item.PatientName)</td>
+                                            <td>@Html.DisplayFor(m => item.Problem)</td>
+                                            <td>@Html.DisplayFor(m => item.BillingDate)</td>
+                                            @*<td>@Html.DisplayFor(m => item.DoctorFee)</td>
                                                 <td>@Html.DisplayFor(m => item.TreatmentDuration)</td>
                                                 <td>@Html.DisplayFor(m => item.TreatmentCharges)</td>
                                                 <td>@Html.DisplayFor(m => item.MedicineCharges)</td>
                                                 <td>@Html.DisplayFor(m => item.RoomFee)</td>
                                                 <td>@Html.DisplayFor(m => item.Others)</td>
-                                                <td>@Html.DisplayFor(m => item.OthersCost)</td>
-                                                <td>@Html.DisplayFor(m => item.TotalBill)</td>
-                                                <td>@Html.DisplayFor(m => item.GST)</td>
-                                                <td>@Html.DisplayFor(m => item.TotalAmount)</td>
+                                                <td>@Html.DisplayFor(m => item.OthersCost)</td>*@
+                                            <td>@Html.DisplayFor(m => item.TotalBill)</td>
+                                            <td>@Html.DisplayFor(m => item.GST)</td>
+                                            <td>@Html.DisplayFor(m => item.TotalAmount)</td>
 
-                                                <td>@Html.DisplayFor(m => item.PaidBill)</td>
-                                                <td>@Html.DisplayFor(m => item.InsuranceClaimed)</td>
-                                                <td>@Html.DisplayFor(m => item.Status)</td>
-                                                <td>@Html.DisplayFor(m => item.MethodOfPayment)</td>
-                                                <td><a href="@Url.Action("BillingId", "Billing", new { PatientId = item.PatientId })" class="ad-st-view">View</a></td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
+                                            <td>@Html.DisplayFor(m => item.PaidBill)</td>
+                                            @*<td>@Html.DisplayFor(m => item.InsuranceClaimed)</td>
+                                                <td>@Html.DisplayFor(m => item.Status)</td>*@
+                                            <td>@Html.DisplayFor(m => item.MethodOfPayment)</td>
+                                            <td><a href="@Url.Action("BillingId", "Billing", new { PatientId = item.PatientId })" class="ad-st-view">View</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-      
+        </div>
+    </div>
 
 }

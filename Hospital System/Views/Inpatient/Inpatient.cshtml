@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Inpatient List";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPatRec.cshtml";
 }
 
 <head>
@@ -29,65 +29,80 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
 
-<div class="row">
-    <div class="col-md-12" ">
-        <div class="box-inn-sp">
-            <div class="inn-title">
-                <li class="page-back">
-                    <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
-                </li>
-                <h4>Inpatient List</h4>
+<div class="sb2-2" style="margin-top: 76px; height: 125vh;">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="/Reception/Reception"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#"> Inpatient</a>
+            </li>
+            <li class="page-back">
+                <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
 
-            </div>
+    <div class="row">
+        <div class="col-md-12" ">
+            <div class="box-inn-sp">
+                <div class="inn-title">
+                    @*<li class="page-back">
+                            <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                        </li>*@
+                    <h4>Inpatient List</h4>
 
-            <div class="tab-inn">
-                <div class="table-responsive table-desi">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">Patient Id</th>
-                                <th scope="col">@Html.DisplayNameFor(m => m.First().PatientName)</th>
-                                <th scope="col">@Html.DisplayNameFor(m => m.First().AdmissionDate)</th>
-                                <th scope="col">@Html.DisplayNameFor(m => m.First().DischargeDate)</th>
-                                <th scope="col">@Html.DisplayNameFor(m => m.First().TypeName)</th>
-                                <th scope="col">@Html.DisplayNameFor(m => m.First().TreatmentDuration)</th>
-                                <th scope="col">Appointment Date</th>
-                                <th scope="col">@Html.DisplayNameFor(m => m.First().Status)</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (!Model.Any())
-                            {
+                </div>
+
+                <div class="tab-inn">
+                    <div class="table-responsive table-desi">
+                        <table class="table table-hover">
+                            <thead>
                                 <tr>
-                                    <td colspan="9" class="empty-state">No patients found.</td>
+                                    <th scope="col">Patient Id</th>
+                                    <th scope="col">@Html.DisplayNameFor(m => m.First().PatientName)</th>
+                                    <th scope="col">@Html.DisplayNameFor(m => m.First().AdmissionDate)</th>
+                                    <th scope="col">@Html.DisplayNameFor(m => m.First().DischargeDate)</th>
+                                    <th scope="col">@Html.DisplayNameFor(m => m.First().TypeName)</th>
+                                    <th scope="col">@Html.DisplayNameFor(m => m.First().TreatmentDuration)</th>
+                                    <th scope="col">Appointment Date</th>
+                                    <th scope="col">@Html.DisplayNameFor(m => m.First().Status)</th>
+                                    <th scope="col">Actions</th>
                                 </tr>
-                            }
-                            else
-                            {
-                                foreach (var item in Model)
+                            </thead>
+                            <tbody>
+                                @if (!Model.Any())
                                 {
                                     <tr>
-                                        <td>@Html.DisplayFor(m => item.Id)</td>
-                                        <td>@Html.DisplayFor(m => item.PatientName)</td>
-                                        <td>@Html.DisplayFor(m => item.AdmissionDate)</td>
-                                        <td>@Html.DisplayFor(m => item.DischargeDate)</td>
-                                        <td>@Html.DisplayFor(m => item.TypeName)</td>
-                                        <td>@Html.DisplayFor(m => item.TreatmentDuration)</td>
-                                        <td>@Html.DisplayFor(m => item.Date)</td>
-                                        <td>@Html.DisplayFor(m => item.Status)</td>
-                                        <td class="action-cell">
-                                            <a href="@Url.Action("GetHospPatient", "Inpatient", new { Id = item.Id })" class="ad-st-view">View</a>
-                                        </td>
+                                        <td colspan="9" class="empty-state">No patients found.</td>
                                     </tr>
                                 }
-                            }
-                        </tbody>
-                    </table>
+                                else
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(m => item.Id)</td>
+                                            <td>@Html.DisplayFor(m => item.PatientName)</td>
+                                            <td>@Html.DisplayFor(m => item.AdmissionDate)</td>
+                                            <td>@Html.DisplayFor(m => item.DischargeDate)</td>
+                                            <td>@Html.DisplayFor(m => item.TypeName)</td>
+                                            <td>@Html.DisplayFor(m => item.TreatmentDuration)</td>
+                                            <td>@Html.DisplayFor(m => item.Date)</td>
+                                            <td>@Html.DisplayFor(m => item.Status)</td>
+                                            <td class="action-cell">
+                                                <a href="@Url.Action("GetHospPatient", "Inpatient", new { Id = item.Id })" class="ad-st-view">View</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
-
 </div>
-

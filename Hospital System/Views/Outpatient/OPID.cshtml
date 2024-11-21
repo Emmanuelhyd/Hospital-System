@@ -1,8 +1,9 @@
 ﻿@model Hospital_System.Models.HospPatient
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPatRec.cshtml";
 }
+
 
 <!DOCTYPE html>
 <html>
@@ -10,67 +11,70 @@
     <meta name="viewport" content="width=device-width" />
     <title>OPID</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f9f9f9;
+        .patient-details-container {
+            margin-left: 198px;
+            padding: 20px;
+            margin-top: 1px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            width: 672px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /*  border-radius: 5px;*/
         }
 
-        div {
-            background-color: #fff;
-            padding: 20px;
-           /* border-radius: 8px;*/
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            max-width: 700px;
-            margin: auto;
-        }
+
+
+            .patient-details-container .field {
+                margin-bottom: 15px; /* Adds space between fields */
+                font-size: 16px;
+            }
+
+                .patient-details-container .field strong {
+                    font-size: 18px;
+                    color: #003366; /* A darker color for the labels */
+                }
+
+            .patient-details-container .field {
+                padding: 10px;
+                background-color: #f9f9f9;
+                border-radius: 3px;
+            }
+
+                .patient-details-container .field:last-child {
+                    margin-bottom: 0;
+                }
+
+
 
         strong {
             color: #333;
         }
-
-      
-
-        /*.field {
-            margin-bottom: 10px;*/ /* Adds space between fields */
-        /*}*/
-
-        /* Back Button Styling */
-        .back-button {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #ff6a00;
-            border-color:#ff6a00;
-            color: white;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 5px;
-            text-decoration: none;
-         /*   margin-bottom: 20px;*/
-            transition: background-color 0.3s ease;
-        }
-
-            .back-button:hover {
-                background-color: #ff6a00; /* Darker blue on hover */
-            }
-
-            .back-button:active {
-                background-color: #ff6a00; /* Even darker blue when clicked */
-            }
     </style>
 </head>
-<body>
+<div class="sb2-2" style="margin-top:76px;">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="/Reception/Reception"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#"> PatientDetails</a>
+            </li>
+            <li class="page-back">
+                <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
 
-   
-        <button onclick="window.history.back();" class="back-button"> Back</button>
-   
-    <div style="padding: 14px 36px; background: #002147; margin-top: -43px; margin-left: 284px; width: 670px; color: white;">
+
+
+    <div style="padding: 14px 36px; background: #002147; margin-top: 27px; margin-left: 199px; width: 670px; color: white; ">
         <h4>Patient Details</h4>
 
     </div>
 
- 
-    <div>
+
+    <div class="patient-details-container">
         <div class="field"><strong>Name:</strong> @Model.PatientName</div>
         <div class="field"><strong>Problem:</strong> @Model.PatientType</div>
         <div class="field"><strong>Gender:</strong> @Model.Gender</div>
@@ -83,5 +87,4 @@
         <div class="field"><strong>Problem:</strong> @Model.Problem</div>
         <div class="field"><strong>Status:</strong> @Model.Status</div>
     </div>
-</body>
-</html>
+</div>

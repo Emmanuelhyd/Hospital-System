@@ -1,64 +1,158 @@
-﻿@{
+﻿@model Hospital_System.Viewmodel.Allview
+
+@{
     ViewBag.Title = "Reception";
     Layout = "~/Views/Shared/_LayoutPatRec.cshtml";
 }
 
-<!DOCTYPE html>
+<style>
+    .link-container {
+        position: absolute;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        text-align: center;
+        padding: 20px;
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 195px;
+        height: 165px;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Reception</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center; /* Center the container */
-        }
+    #tab2 {
+        margin-left: -21px;
+        margin-top: 20px;
+        width: 19%;
+    }
 
-        .container {
-            display: flex;
-            flex-wrap: wrap; /* Allow wrapping */
-            max-width: 800px; /* Set a max width for the container */
-            width: 100%; /* Full width */
-            gap: 10px; /* Space between items */
-        }
+    #tab4 {
+        margin-left: 729px;
+        margin-top: 18px;
+        width: 18%;
+    }
 
-        .link-box {
-            flex: 1 1 calc(25% - 10px); /* Four columns */
-            border: 1px solid #ddd; /* Border for each box */
-            padding: 32px; /* Padding inside the box */
-            text-align: center; /* Center the text */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-            border-radius: 5px; /* Rounded corners */
-            transition: background-color 0.3s; /* Smooth transition for hover */
-            text-decoration: none; /* Remove underline */
-            color: inherit; /* Inherit text color */
-        }
+    #tab7 {
+        margin-left: 237px;
+        margin-top: 20px;
+        width: 18%;
+    }
 
-            .link-box:hover {
-                background: linear-gradient(90deg,pink,skyblue) /* Change background on hover */
-            }
-    </style>
-</head>
-<body style="margin-top:10%">
-    <div class="container">
-        <a class="link-box" href="@Url.Action("Insertprofile", "Patient")">Patient Registration</a>
-        <a class="link-box" href="@Url.Action("PatientsList", "Outpatient")">Appointment & Scheduling</a>
-        <a class="link-box" href="@Url.Action("OutP", "Outpatient")">Outpatient</a>
-        <a class="link-box" href="@Url.Action("Inpatient", "Inpatient")">Inpatient</a>
-        <a class="link-box" href="@Url.Action("InvoiceIP", "Billing")">Billing</a>
-        <a class="link-box" href="@Url.Action("Discharge", "Discharge")">Discharge</a>
-        <a class="link-box" href="@Url.Action("DoctorsList", "Inpatient")">Doctors</a>
-        <a class="link-box" href="@Url.Action("Login", "Email")">Email Integration</a>
-        <a class="link-box" href="@Url.Action("Ambulance", "Ambulance")">Ambulance</a>
-        <a class="link-box" href="@Url.Action("AttendanceDetails", "Attendance")">Attendance</a>
-        <a class="link-box" href="@Url.Action("VaccineList", "Vaccination")">Vaccination</a>
-        <a class="link-box" href="@Url.Action("GetNurses", "Nurse")">Nurse</a>
-        <a class="link-box" href="@Url.Action("Feed", "Feedback")">Feedback</a>
-        <a class="link-box" href="@Url.Action("Dashboard", "Patient")">Security</a>
+    #tab8 {
+        margin-left: 483px;
+        margin-top: 20px;
+        width: 18%;
+    }
+
+    .tag {
+        font-weight: 900;
+        font-size: larger;
+        color: whitesmoke;
+    }
+</style>
+<div class="sb2-2" style="margin-top: 76px; height: 140vh;">
+    <div class="sb2-2-2">
+        <ul>
+            <li><a href="/Reception/Reception"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+            <li class="active-bre"><a href="#"> Reception</a></li>
+            <li class="page-back"><a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a></li>
+        </ul>
     </div>
-</body>
-</html>
+
+    <div class="sb2-2-1" style="height: 35%; background-color: #e3e8ea;">
+
+        <!-- Dynamic Dashboard Link Containers -->
+        <div id="tab2" class="link-container" style=" background-image: url('../../images/portrait-male-doctors-nurse-using-digital-tablet-corridor_107420-71369.png'); background-size: cover; background-position: center;">
+
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); z-index: 0;"></div>
+            <a href="/Inpatient/DoctorsList" class="link" data-chart="Doctors" style="position: relative; z-index: 1;">
+
+
+                <span class="tag">Doctors</span>
+            </a>
+        </div>
+        <div id="tab4" class="link-container" style=" background-image: url('../../images/ambulance-truck.png'); background-size: cover; background-position: center;">
+
+
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); z-index: 0;"></div>
+
+            <!-- Link with text -->
+            <a href="/Ambulance/Ambulance" class="link" data-chart="Ambulances" style="position: relative; z-index: 1;">
+
+                <span class="tag">
+                    Ambulances
+                </span>
+            </a>
+        </div>
+
+        <div id="tab7" class="link-container" style="background-image: url('../../Images/OutP.png'); background-size: cover; background-position: center; ">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); z-index: 0;"></div>
+            <a href="/Outpatient/OutP" class="link" data-chart="Medicines" style="position: relative; z-index: 1;">
+
+                <span class="tag">OutPatient</span>
+
+            </a>
+        </div>
+        <div id="tab8" class="link-container" style="background-image: url('../../Images/inpatient.png'); background-size: cover; background-position: center; ">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); z-index: 0;"></div>
+            <a href="/Inpatient/Inpatient" class="link" data-chart="Drivers" style="position: relative; z-index: 1;">
+
+
+                <span class="tag">Inpatients</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+
+@using (Html.BeginForm())
+{
+
+    <div class="row" style="margin-left: 272px; ">
+        <div class="col-md-12" style=" margin-left: -22px; margin-top: -520px;">
+            <div class="box-inn-sp" style="margin-left: 25px; ">
+                <div class="inn-title">
+                    <h4> Doctor List </h4>
+
+                </div>
+
+                <div class="tab-inn">
+                    <div class="table-responsive table-desi">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Department</th>
+                                    <th>Designation</th>
+                                    <th>Status</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Doctors)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Department)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Designation)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+

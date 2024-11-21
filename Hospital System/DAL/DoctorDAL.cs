@@ -470,11 +470,12 @@ namespace Hospital_System.DAL
                 {
                     TimeSlotId = reader.IsDBNull(reader.GetOrdinal("TimeSlotId")) ? 0 : Convert.ToInt32(reader["TimeSlotId"]),
                     DoctorId = reader.IsDBNull(reader.GetOrdinal("DoctorId")) ? 0 : Convert.ToInt32(reader["DoctorId"]),
-                    Slot1 = reader.IsDBNull(reader.GetOrdinal("Slot1")) ? DateTime.MinValue : Convert.ToDateTime(reader["Slot1"]),
-                    Slot2 = reader.IsDBNull(reader.GetOrdinal("Slot2")) ? DateTime.MinValue : Convert.ToDateTime(reader["Slot2"]),
-                    Slot3 = reader.IsDBNull(reader.GetOrdinal("Slot3")) ? DateTime.MinValue : Convert.ToDateTime(reader["Slot3"]),
-                    Slot4 = reader.IsDBNull(reader.GetOrdinal("Slot4")) ? DateTime.MinValue : Convert.ToDateTime(reader["Slot4"]),
-                    Slot5 = reader.IsDBNull(reader.GetOrdinal("Slot5")) ? DateTime.MinValue : Convert.ToDateTime(reader["Slot5"]),
+                    Slot1 = reader.IsDBNull(reader.GetOrdinal("Slot1")) ? TimeSpan.MinValue : TimeSpan.Parse(reader["Slot1"].ToString()),
+
+                    Slot2 = reader.IsDBNull(reader.GetOrdinal("Slot2")) ? TimeSpan.MinValue : TimeSpan.Parse(reader["Slot2"].ToString()),
+                    Slot3 = reader.IsDBNull(reader.GetOrdinal("Slot3")) ? TimeSpan.MinValue : TimeSpan.Parse(reader["Slot3"].ToString()),
+                    Slot4 = reader.IsDBNull(reader.GetOrdinal("Slot4")) ? TimeSpan.MinValue : TimeSpan.Parse(reader["Slot4"].ToString()),
+                    Slot5 = reader.IsDBNull(reader.GetOrdinal("Slot5")) ? TimeSpan.MinValue : TimeSpan.Parse(reader["Slot5"].ToString()),
                     IsAvailable = reader.IsDBNull(reader.GetOrdinal("IsAvailable")) ? false : Convert.ToBoolean(reader["IsAvailable"])
 
                 };
@@ -486,7 +487,6 @@ namespace Hospital_System.DAL
             return doctorTime;
 
         }
-
     }
 }
 

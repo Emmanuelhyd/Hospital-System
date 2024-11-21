@@ -32,11 +32,11 @@ namespace Hospital_System.DAL
         }
 
 
-        public List<Vaccines> VaccinesList( string searchvalue)
+        public List<Vaccines> VaccinesList( )
         {
             List<Vaccines> vaccines= new List<Vaccines>();
             con.Open();
-            cmd = new SqlCommand("select * from vaccine where VaccineType like'%"+ searchvalue+"%'", con);
+            cmd = new SqlCommand("select * from vaccine ", con);
             reader=cmd.ExecuteReader();
             while(reader.Read())
             {
@@ -126,7 +126,7 @@ namespace Hospital_System.DAL
 
 
             List<Vaccines> vaccines = new List<Vaccines>();
-            vaccines = VaccinesList("searchvalue");
+            vaccines = VaccinesList();
             return vaccines;
         }
 
