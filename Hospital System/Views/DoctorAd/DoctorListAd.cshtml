@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_LayoutTech.cshtml";
 }
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -29,7 +28,6 @@
     }
 </script>
 
-
 <!-- Main container -->
 @using (Html.BeginForm())
 {
@@ -49,21 +47,23 @@
         </div>
     </div>
 
-    <div style="margin-left: 20%; position: absolute; width: 100%; margin-top:135px;">
+    <div style="margin-left: 20%; position: absolute; width: 80%; margin-top:135px;">
         <div class="row">
             <div class="col-md-12">
                 <div class="box-inn-sp">
 
-                    <div class="inn-titles"> <div>
+                    <div class="inn-titles">
+                        <div>
                             <h1 style="margin-left: 200px; color: white; font-size:20px;">Doctor Management</h1>
                             <input type="button" value="Add New" onclick="CreateNew()" class="my-btn" style="position: absolute; margin-top: -43px;">
                             <input type="search" id="doc" name="doc" placeholder="Search Doctor" style="padding: 10px; width: 200px; border: 1px solid #ccc; border-radius: 4px; position: absolute; margin-left: 600px; margin-top: -50px; ">
                             <input type="submit" value="Search" class="my-btn" style="position: absolute; margin-left: 800px; margin-top: -45px; ">
                         </div>
                     </div>
-                    <!-- Doctor table -->
+
+                    <!-- Doctor table with scrollbars -->
                     <div class="tab-inn">
-                        <div class="table-responsive table-desi">
+                        <div class="table-container">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -113,29 +113,10 @@
         </div>
     </div>
 
-
 }
 
 <!-- Scripts for actions -->
 <script>
-    function CreateNew() {
-        // Show SweetAlert with loading animation
-        swal({
-            title: "Loading...",
-            text: "Please wait while we load the page.",
-            imageUrl: "https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/images/loading.gif", // SweetAlert loading spinner
-            imageSize: "50x50", // Set the size of the image
-            showConfirmButton: false, // Hide the confirm button
-            allowOutsideClick: false, // Prevent closing by clicking outside
-            timer: 3000  // Optional: Adjust how long the alert stays (in milliseconds)
-        });
-
-        // Redirect to AddDoctorAd page after 1 second
-        setTimeout(function () {
-            window.location.href = '@Url.Action("AddDoctorAd", "DoctorAd")'; // Adjust with your actual controller name
-        }, 1000); // 1-second delay before redirecting
-    }
-
     function confirmDelete(deleteUrl) {
         swal({
             title: "Are you sure?",
@@ -161,6 +142,7 @@
         });
     }
 </script>
+
 <style>
     .my-btn {
         color: #ffffff;
@@ -169,8 +151,52 @@
         line-height: 10px;
         font-weight: 1000;
     }
+
     .inn-titles {
         padding: 1px 25px;
         background: #002147;
+    }
+
+    .table-container {
+        max-width: 100%;
+        max-height: 500px; /* Adjust the height to your preference */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        overflow-y: auto; /* Enable vertical scrolling */
+        position: relative;
+    }
+
+    table {
+        width: 100%;
+        min-width: 1200px; /* Ensure table exceeds width for horizontal scrolling */
+        border-collapse: collapse;
+        background-color: white;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+        white-space: nowrap; /* Prevent text wrapping */
+    }
+
+    th {
+        background-color: #f2f2f2;
+        position: sticky;
+        top: 0;
+        z-index: 2; /* Keep header on top while scrolling */
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .pagination button {
+        padding: 5px 10px;
+        margin: 0 5px;
+        cursor: pointer;
     }
 </style>

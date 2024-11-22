@@ -1,15 +1,12 @@
 ﻿@model IEnumerable<Hospital_System.Models.DischargeDo>
 
-
 @{
     ViewBag.Title = "DischargeListAd";
     Layout = "~/Views/Shared/_LayoutRec.cshtml";
-
 }
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
@@ -46,12 +43,72 @@
             }
         });
     }
-</script>
 
+    let currentPage = 1;
+    const rowsPerPage = 2;  // Set how many rows per page
+    let rows = [];
+
+    $(document).ready(function () {
+        // Collect all rows into an array for pagination
+        rows = $('table tbody tr');
+
+        // Function to update the display of rows based on the current page
+        function paginate() {
+            const totalRows = rows.length;
+            const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+            // Hide all rows initially
+            rows.hide();
+
+            // Display only the rows for the current page
+            const startRow = (currentPage - 1) * rowsPerPage;
+            const endRow = Math.min(currentPage * rowsPerPage, totalRows);
+            for (let i = startRow; i < endRow; i++) {
+                rows.eq(i).show();
+            }
+
+            // Handle pagination buttons
+            const paginationContainer = $('#pagination');
+            paginationContainer.empty();
+
+            // Previous button
+            if (currentPage > 1) {
+                const prevButton = $('<button class="btn btn-secondary">Previous</button>');
+                prevButton.on('click', function () {
+                    currentPage--;
+                    paginate();
+                });
+                paginationContainer.append(prevButton);
+            }
+
+            // Page number buttons
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = $('<button class="btn btn-secondary">' + i + '</button>');
+                pageButton.on('click', function () {
+                    currentPage = i;
+                    paginate();
+                });
+                paginationContainer.append(pageButton);
+            }
+
+            // Next button
+            if (currentPage < totalPages) {
+                const nextButton = $('<button class="btn btn-secondary">Next</button>');
+                nextButton.on('click', function () {
+                    currentPage++;
+                    paginate();
+                });
+                paginationContainer.append(nextButton);
+            }
+        }
+
+        // Initial pagination
+        paginate();
+    });
+</script>
 
 @using (Html.BeginForm())
 {
-
     <div class="sb2-2" style="height: 20px; position: absolute; margin-top: 65px;">
         <div class="sb2-2-2">
             <ul>
@@ -68,7 +125,7 @@
         </div>
     </div>
 
-    <div class="sb2-2-3" style="margin-left: 20%; position: absolute; width: 90%; margin-top:135px;">
+    <div class="sb2-2-3" style="margin-left: 20%; position: absolute; width: 80%; margin-top:135px;">
         <div class="row">
             <div class="col-md-12">
                 <div class="box-inn-sp">
@@ -79,10 +136,9 @@
                         </div>
                     </div>
 
-
-
                     <div class="tab-inn">
-                        <div class="table-responsive table-desi">
+                        <!-- Full Table Scrollable Container -->
+                        <div class="table-container">
                             <table class="table table-hover">
                                 <tr>
                                     <th>Patient Id</th>
@@ -122,8 +178,6 @@
                                                onclick="confirmDelete('@Url.Action("DischargeDelete", new { PatientId = item.PatientId })')">
                                                 <i class="fas fa-trash-alt" style="font-size: 20px; background: none; color: red;"></i>
                                             </a>
-
-
                                         </td>
                                     </tr>
                                 }
@@ -131,13 +185,13 @@
                         </div>
                     </div>
 
+                    <!-- Pagination controls -->
+                    <div id="pagination" class="pagination"></div>
                 </div>
             </div>
         </div>
     </div>
 }
-
-
 
 <style>
     .my-btn {
@@ -153,4 +207,41 @@
         background: #002147;
         height: 60px;
     }
+
+    /* Full Table Scrollable Container */
+    .table-container {
+        max-width: 100%;
+        max-height: 400px; /* You can adjust this height */
+        overflow: auto; /* Enable both vertical and horizontal scrolling */
+        position: relative;
+    }
+
+    table {
+        width: 100%;
+        min-width: 1200px; /* Ensure table is wide enough for horizontal scroll */
+        border-collapse: collapse;
+        background-color: white;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+        white-space: nowrap; /* Prevent text from wrapping */
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    /* Optional styling for pagination buttons */
+    .pagination button {
+        padding: 5px 10px;
+        margin: 0 2px;
+        cursor: pointer;
+    }
+
+        .pagination button:hover {
+            background-color: #ddd;
+        }
 </style>

@@ -819,8 +819,6 @@
     <Content Include="Views\SheduleAd\SheduleList.cshtml" />
     <Content Include="Views\UpdateProfile\AddProfile.cshtml" />
     <Content Include="Views\UpdateProfile\UpdateList.cshtml" />
-    <Content Include="Views\DoctorAd\AddDoctorAd.cshtml" />
-    <Content Include="Views\DoctorAd\DoctorListAd.cshtml" />
     <Content Include="Views\Discharge\Discharge.cshtml" />
     <Content Include="Views\Discharge\DischargeId.cshtml" />
     <Content Include="Views\AmbulanceR\AddAmb.cshtml" />
@@ -829,21 +827,12 @@
     <Content Include="Views\AmbulanceR\DriveList.cshtml" />
     <Content Include="Views\AttendanceAdmin\AddAttendance.cshtml" />
     <Content Include="Views\AttendanceAdmin\AttendanceList.cshtml" />
-    <Content Include="Views\BillAdmin\AddBill.cshtml" />
-    <Content Include="Views\BillAdmin\BillingId.cshtml" />
-    <Content Include="Views\BillAdmin\BillList.cshtml" />
-    <Content Include="Views\CommonOP\AddCommonOP.cshtml" />
-    <Content Include="Views\CommonOP\CommonList.cshtml" />
     <Content Include="Views\ConsultantAdmin\AddConsultant.cshtml" />
     <Content Include="Views\ConsultantAdmin\ConsultantList.cshtml" />
-    <Content Include="Views\DischargeAdmin\AddDischarge.cshtml" />
-    <Content Include="Views\DischargeAdmin\DischargeListAd.cshtml" />
     <Content Include="Views\FeedbackAdmin\AddFeedbackAd.cshtml" />
     <Content Include="Views\FeedbackAdmin\FeedbackListAdmin.cshtml" />
     <Content Include="Views\InPatientAdmin\AddInpatient.cshtml" />
     <Content Include="Views\InPatientAdmin\InPatientListAd.cshtml" />
-    <Content Include="Views\NurseAdmin\AddNurse.cshtml" />
-    <Content Include="Views\NurseAdmin\NurseList.cshtml" />
     <Content Include="Views\OutPatientAdmin\AddOutPatient.cshtml" />
     <Content Include="Views\OutPatientAdmin\OutPatientList.cshtml" />
     <Content Include="Views\VaccinationAdmin\AddVaccine.cshtml" />
@@ -853,6 +842,17 @@
     <Content Include="Views\Billing\AddBill.cshtml" />
     <Content Include="Views\Discharge\AddDischarge.cshtml" />
     <Content Include="Views\Reception\Signup.cshtml" />
+    <Content Include="Views\BillAdmin\AddBill.cshtml" />
+    <Content Include="Views\BillAdmin\BillingId.cshtml" />
+    <Content Include="Views\BillAdmin\BillList.cshtml" />
+    <Content Include="Views\CommonOP\AddCommonOP.cshtml" />
+    <Content Include="Views\CommonOP\CommonList.cshtml" />
+    <Content Include="Views\DischargeAdmin\AddDischarge.cshtml" />
+    <Content Include="Views\DischargeAdmin\DischargeListAd.cshtml" />
+    <Content Include="Views\DoctorAd\AddDoctorAd.cshtml" />
+    <Content Include="Views\DoctorAd\DoctorListAd.cshtml" />
+    <Content Include="Views\NurseAdmin\AddNurse.cshtml" />
+    <Content Include="Views\NurseAdmin\NurseList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

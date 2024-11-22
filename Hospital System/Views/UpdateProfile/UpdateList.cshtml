@@ -1,1 +1,240 @@
-﻿@model Hospital_System.Dash.DashboardDetails@{    ViewBag.Title = "Update List";    Layout = "~/Views/Shared/_LayoutTech.cshtml";}<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><style>    body {        font-family: Arial, sans-serif;        background-color: #f4f4f4;    }    table {        width: 100%;        border-collapse: collapse;        margin-top: 20px;        background-color: white;        border-radius: 8px;        overflow: hidden;        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);    }    th, td {        border: 1px solid #ddd;        padding: 12px;        text-align: left;    }    th {        background-color: #f2f2f2;        color: #333;    }    tr:nth-child(even) {        background-color: #f9f9f9;    }    tr:hover {        background-color: #f1f1f1;    }    .action-icons {        display: flex;        gap: 10px;    }        .action-icons i {            font-size: 18px;            cursor: pointer;        }    .pagination button {        padding: 5px 10px;        margin: 0 5px;        cursor: pointer;    }</style>@using (Html.BeginForm()){<div class="sb2-2" style="height: 20px; position: absolute; margin-top: 65px;">    <div class="sb2-2-2">        <ul>            <li>                <a href="/Dashboard/DashboardView"><i class="fa fa-home" aria-hidden="true"></i> Home</a>            </li>            <li class="active-bre">                <a href="#"> Update Profiles</a>            </li>            <li class="page-back">                <a href="/Dashboard/DashboardView"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>            </li>        </ul>    </div></div><div class="sb2-2-3" style="margin-left: 20%; position: absolute; width: 140%; margin-top:135px;">    <div class="row">        <div class="col-md-12">            <div class="box-inn-sp">                <div class="inn-title">                    <h1 style="margin-left: 200px; color: white;font-size:20px; ">Update Profile Details</h1>                    <input type="search" id="Updates" name="Updates" placeholder="Search Schedule" class="search-box" style="padding: 10px; width: 200px; border: 1px solid #ccc; border-radius: 4px; position: absolute; margin-left: 600px; margin-top: -50px; ">                    <input type="submit" value="Search" class="my-btn" style="position: absolute; margin-left: 800px; margin-top: -45px; ">                </div>                <div class="tab-inn">                    <div class="table-responsive table-desi">                        <table class="table table-hover">                            <thead>                                <tr>                                    <th>Patient Id</th>                                    <th>User Name</th>                                    <th>First Name</th>                                    <th>Last Name</th>                                    <th>Email</th>                                    <th>Password</th>                                    <th>Blood Group</th>                                    <th>Gender</th>                                    <th>Age</th>                                    <th>Phone No</th>                                    <th>Emergency Contact</th>                                    <th>Address</th>                                    <th>Type</th>                                    <th>Action</th>                                </tr>                            </thead>                            <tbody id="profileTableBody">                                @foreach (var item in Model.updateDOs)                                {                <tr>                    <td>@Html.DisplayFor(modelItem => item.PatientId)</td>                    <td>@Html.DisplayFor(modelItem => item.UserName)</td>                    <td>@Html.DisplayFor(modelItem => item.FirstName)</td>                    <td>@Html.DisplayFor(modelItem => item.LastName)</td>                    <td>@Html.DisplayFor(modelItem => item.Email)</td>                    <td>@Html.DisplayFor(modelItem => item.Password)</td>                    <td>@Html.DisplayFor(modelItem => item.BloodGroup)</td>                    <td>@Html.DisplayFor(modelItem => item.Gender)</td>                    <td>@Html.DisplayFor(modelItem => item.Age)</td>                    <td>@Html.DisplayFor(modelItem => item.PhoneNo)</td>                    <td>@Html.DisplayFor(modelItem => item.EmergencyContact)</td>                    <td>@Html.DisplayFor(modelItem => item.Address)</td>                    <td>@Html.DisplayFor(modelItem => item.Type)</td>                    <td style="display:block;gap:5px;">                        <a href="@Url.Action("ProfileEdit", new { PatientId = item.PatientId })">                            <i class="fas fa-edit" style="color:blue;background:none;font-size:20px;"></i>                        </a>                        <a href="@Url.Action("ProfileDelete", new { PatientId = item.PatientId })">                            <i class="fas fa-trash-alt" style="color: red; background: none; font-size: 20px;"></i>                        </a>                    </td>                </tr>            }                            </tbody>                        </table>                    </div>                </div>                <div id="pagination" class="pagination"></div> <!-- Pagination buttons will be here -->            </div>        </div>    </div></div>}<script>    let currentPage = 1;    const rowsPerPage = 3;  // Number of rows per page    const rows = $('#profileTableBody tr');  // Get all rows in the table body    const totalRows = rows.length;    const totalPages = Math.ceil(totalRows / rowsPerPage);    // Function to display only the rows for the current page    function paginate() {        // Hide all rows        rows.hide();        // Calculate the starting and ending row indices for the current page        const startRow = (currentPage - 1) * rowsPerPage;        const endRow = Math.min(currentPage * rowsPerPage, totalRows);        // Show only the rows for the current page        for (let i = startRow; i < endRow; i++) {            rows.eq(i).show();        }        // Handle pagination buttons        const paginationContainer = $('#pagination');        paginationContainer.empty();        // Previous button        if (currentPage > 1) {            const prevButton = $('<button class="btn btn-secondary">Previous</button>');            prevButton.on('click', function () {                currentPage--;                paginate();            });            paginationContainer.append(prevButton);        }        // Page number buttons        for (let i = 1; i <= totalPages; i++) {            const pageButton = $('<button class="btn btn-secondary">' + i + '</button>');            pageButton.on('click', function () {                currentPage = i;                paginate();            });            paginationContainer.append(pageButton);        }        // Next button        if (currentPage < totalPages) {            const nextButton = $('<button class="btn btn-secondary">Next</button>');            nextButton.on('click', function () {                currentPage++;                paginate();            });            paginationContainer.append(nextButton);        }    }    // Initialize pagination    paginate();</script><style>    .my-btn {        color: #ffffff;        background: #57666d;        padding: 10px;        line-height: 10px;        font-weight: 1000;    }    .inn-titles {        padding: 1px 25px;        background: #002147;        height: 60px;    }    .pagination button {        padding: 5px 10px;        margin: 0 5px;        cursor: pointer;    }</style>
+﻿@model Hospital_System.Dash.DashboardDetails
+
+@{
+    ViewBag.Title = "Update List";
+    Layout = "~/Views/Shared/_LayoutTech.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    .table-container {
+        width: 100%;
+        overflow: auto; /* Enables both horizontal and vertical scrolling */
+        margin-top: 20px;
+    }
+
+    table {
+        width: 100%; /* Ensures the table takes up 100% of its container */
+        min-width: 1200px; /* Set a minimum width to enable horizontal scrolling */
+        border-collapse: collapse;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        table-layout: auto; /* Automatic column width */
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+        white-space: nowrap; /* Prevent text wrapping */
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+        position: sticky;
+        top: 0;
+        z-index: 2; /* Keep header on top while scrolling */
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .action-icons {
+        display: flex;
+        gap: 10px;
+    }
+
+        .action-icons i {
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+    .pagination button {
+        padding: 5px 10px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    <div class="sb2-2" style="height: 20px; position: absolute; margin-top: 65px;">
+        <div class="sb2-2-2">
+            <ul>
+                <li>
+                    <a href="/Dashboard/DashboardView"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="active-bre">
+                    <a href="#"> Update Profiles</a>
+                </li>
+                <li class="page-back">
+                    <a href="/Dashboard/DashboardView"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="sb2-2-3" style="margin-left: 20%; position: absolute; width: 80%; margin-top:135px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-inn-sp">
+                    <div class="inn-title">
+                        <h1 style="margin-left: 200px; color: white;font-size:20px; ">Update Profile Details</h1>
+                        <input type="search" id="Updates" name="Updates" placeholder="Search Schedule" class="search-box" style="padding: 10px; width: 200px; border: 1px solid #ccc; border-radius: 4px; position: absolute; margin-left: 600px; margin-top: -50px; ">
+                        <input type="submit" value="Search" class="my-btn" style="position: absolute; margin-left: 800px; margin-top: -45px; ">
+                    </div>
+
+                    <div class="tab-inn">
+                        <div class="table-container">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Patient Id</th>
+                                        <th>User Name</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>Password</th>
+                                        <th>Blood Group</th>
+                                        <th>Gender</th>
+                                        <th>Age</th>
+                                        <th>Phone No</th>
+                                        <th>Emergency Contact</th>
+                                        <th>Address</th>
+                                        <th>Type</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="profileTableBody">
+                                    @foreach (var item in Model.updateDOs)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.PatientId)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Password)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.BloodGroup)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Age)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.PhoneNo)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.EmergencyContact)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                                            <td style="display:block;gap:5px;">
+                                                <a href="@Url.Action("ProfileEdit", new { PatientId = item.PatientId })">
+                                                    <i class="fas fa-edit" style="color:blue;background:none;font-size:20px;"></i>
+                                                </a>
+                                                @*<a href="@Url.Action("ProfileDelete", new { PatientId = item.PatientId })">
+                                                    <i class="fas fa-trash-alt" style="color: red; background: none; font-size: 20px;"></i>
+                                                </a>*@
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="pagination" class="pagination"></div> <!-- Pagination buttons will be here -->
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    let currentPage = 1;
+    const rowsPerPage = 5;  // Number of rows per page
+    const rows = $('#profileTableBody tr');  // Get all rows in the table body
+    const totalRows = rows.length;
+    const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+    // Function to display only the rows for the current page
+    function paginate() {
+        // Hide all rows
+        rows.hide();
+
+        // Calculate the starting and ending row indices for the current page
+        const startRow = (currentPage - 1) * rowsPerPage;
+        const endRow = Math.min(currentPage * rowsPerPage, totalRows);
+
+        // Show only the rows for the current page
+        for (let i = startRow; i < endRow; i++) {
+            rows.eq(i).show();
+        }
+
+        // Handle pagination buttons
+        const paginationContainer = $('#pagination');
+        paginationContainer.empty();
+
+        // Previous button
+        if (currentPage > 1) {
+            const prevButton = $('<button class="btn btn-secondary">Previous</button>');
+            prevButton.on('click', function () {
+                currentPage--;
+                paginate();
+            });
+            paginationContainer.append(prevButton);
+        }
+
+        // Page number buttons
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = $('<button class="btn btn-secondary">' + i + '</button>');
+            pageButton.on('click', function () {
+                currentPage = i;
+                paginate();
+            });
+            paginationContainer.append(pageButton);
+        }
+
+        // Next button
+        if (currentPage < totalPages) {
+            const nextButton = $('<button class="btn btn-secondary">Next</button>');
+            nextButton.on('click', function () {
+                currentPage++;
+                paginate();
+            });
+            paginationContainer.append(nextButton);
+        }
+    }
+
+    // Initialize pagination
+    paginate();
+</script>
+
+<style>
+    .my-btn {
+        color: #ffffff;
+        background: #57666d;
+        padding: 10px;
+        line-height: 10px;
+        font-weight: 1000;
+    }
+
+    .inn-titles {
+        padding: 1px 25px;
+        background: #002147;
+        height: 60px;
+    }
+
+    .pagination button {
+        padding: 5px 10px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+</style>

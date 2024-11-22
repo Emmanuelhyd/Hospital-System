@@ -8,7 +8,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
@@ -47,15 +46,6 @@
     }
 </script>
 
-
-
-
-
-
-
-
-
-
 @using (Html.BeginForm())
 {
     <div class="sb2-2" style="height: 20px; position: absolute; margin-top: 65px;">
@@ -74,26 +64,22 @@
         </div>
     </div>
 
-    <div class="sb2-2-3" style="margin-left: 20%; position: absolute; width: 100%; margin-top:135px;">
+    <div class="sb2-2-3" style="margin-left: 20%; position: absolute; width: 80%; margin-top:135px;">
         <div class="row">
             <div class="col-md-12">
                 <div class="box-inn-sp">
                     <div class="inn-title">
-
                         <div>
                             <h4 style="margin-left: 300px; color: white;font-size:20px;">Nurse Details</h4>
                             <input type="button" value="Add New" onclick="window.location.href='@Url.Action("AddNurse", "NurseAdmin")'" class="my-btn" style="margin-left: 10px; margin-top: -28px; position: absolute; ">
-
-                            @*<input type="search" id="dep" name="dep" placeholder="Search Department" style="padding: 10px; width: 200px; border: 1px solid #ccc; border-radius: 4px; position: absolute; margin-left: 600px; margin-top: -32px; ">
-                                <input type="submit" value="Search" style="padding: 10px 15px; position: absolute; margin-left: 800px; margin-top: -28px;" class="my-btn">*@
-
                         </div>
                     </div>
 
-
                     <div class="tab-inn">
-                        <div class="table-responsive table-desi">
-                            <table class="table table-hover">
+                        <!-- Horizontal scrolling for the table -->
+                        <div class="table-responsive table-desi" style="overflow-x: auto; max-width: 100%;">
+                            <table class="table table-hover" style="min-width: 900px;">
+                                <!-- Ensure a minimum width for the table -->
                                 <thead>
                                     <tr>
                                         <th>NurseId</th>

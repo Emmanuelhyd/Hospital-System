@@ -3,9 +3,7 @@
 @{
     ViewBag.Title = "ConsultantList";
     Layout = "~/Views/Shared/_LayoutRec.cshtml";
-
 }
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -48,11 +46,8 @@
     }
 </script>
 
-
-
 @using (Html.BeginForm())
 {
-
     <div class="sb2-2" style="height: 20px; position: absolute; margin-top: 65px;">
         <div class="sb2-2-2">
             <ul>
@@ -69,7 +64,7 @@
         </div>
     </div>
 
-    <div class="sb2-2-3" style="margin-left: 20%; position: absolute; width: 91%; margin-top:135px;">
+    <div class="sb2-2-3" style="margin-left: 20%; position: absolute; width: 80%; margin-top:135px;">
         <div class="row">
             <div class="col-md-12">
                 <div class="box-inn-sp">
@@ -80,9 +75,8 @@
                         </div>
                     </div>
 
-
-
                     <div class="tab-inn">
+                        <!-- Table Container with Both Vertical and Horizontal Scrollbars -->
                         <div class="table-responsive table-desi">
                             <table class="table table-hover">
                                 <thead>
@@ -122,7 +116,6 @@
                                                    onclick="confirmDelete('@Url.Action("ConsultantDelete", new { DoctorId = item.DoctorId })')">
                                                     <i class="fas fa-trash-alt" style="font-size: 20px; background: none; color: red;"></i>
                                                 </a>
-
                                             </td>
                                         </tr>
                                     }
@@ -149,5 +142,29 @@
     .inn-titles {
         padding: 1px 25px;
         background: #002147;
+    }
+
+    /* Table container with vertical and horizontal scrolling */
+    .table-responsive {
+        max-height: 400px; /* Set max height for vertical scrolling */
+        overflow-y: auto; /* Enable vertical scrolling */
+        overflow-x: auto; /* Enable horizontal scrolling */
+    }
+
+    table {
+        width: 100%;
+        min-width: 1000px; /* Ensure table is wide enough to require horizontal scroll */
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+        white-space: nowrap; /* Prevent text from wrapping */
+    }
+
+    th {
+        background-color: #f2f2f2;
     }
 </style>
