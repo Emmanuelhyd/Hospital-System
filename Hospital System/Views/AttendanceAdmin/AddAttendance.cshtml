@@ -91,7 +91,7 @@
                     new SelectListItem { Value = "Morning", Text = "Morning" },
                     new SelectListItem { Value = "Afternoon", Text = "Afternoon" },
                     new SelectListItem { Value = "Night", Text = "Night" },
-                }, "Value", "Text"), "Select Shift", new { @class = "form-control", id = "shiftDropdown" })
+                }, "Value", "Text"), "Select Shift", new { @class = "form-control", id = "shiftDropdown", @required = "required" })
             </div>
         </div>
 
@@ -125,7 +125,7 @@
                 {
                     new SelectListItem { Value = "Present", Text = "Present" },
                     new SelectListItem { Value = "Absent", Text = "Absent" },
-                }, "Value", "Text"), "Select Status", new { @class = "form-control" })
+                }, "Value", "Text"), "Select Status", new { @class = "form-control", @required = "required" })
             </div>
         </div>
 

@@ -32,9 +32,9 @@ namespace Hospital_System.BAL
 
 
         //UpdateProfile List
-        public List<UpdateDO> UpdateList()
+        public List<UpdateDO> UpdateList(string Updates)
         {
-            return adminDAL.UpdateList();
+            return adminDAL.UpdateList(Updates);
         }
 
         //add profile
@@ -126,9 +126,9 @@ namespace Hospital_System.BAL
 
         //Patient List
 
-        public List<MPatient> PatientList(string patient)
+        public List<MPatient> PatientList(string Patienss)
         {
-            return adminDAL.PatientList(patient);
+            return adminDAL.PatientList(Patienss);
         }
 
         //Add patient
@@ -311,9 +311,9 @@ namespace Hospital_System.BAL
 
 
         //Ambulance List
-        public List<MAmbulance> AmbulanceListAd(string Driver)
+        public List<MAmbulance> AmbulanceListAd(string Ambulancess)
         {
-            return adminDAL.AmbulanceListAd(Driver);
+            return adminDAL.AmbulanceListAd(Ambulancess);
         }
 
 

@@ -4,73 +4,11 @@
     ViewBag.Title = "Ambulance List";
     Layout = "~/Views/Shared/_LayoutTech.cshtml";
 }
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-    function CreateNew() {
-        window.location.href = '@Url.Action("AddAmbulanceAd", "AmbulanceAd")';
-    }
-
-    // Real-time search function
-    $(document).ready(function () {
-        $("#Driver").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#ambulanceTable tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-            });
-        });
-    });
-
-    function showAmbulance(AmbulanceId) {
-        $.ajax({
-            url: '@Url.Action("Ambulance", "AmbulanceAd")',
-            type: 'GET',
-            data: { Id: AmbulanceId },
-            success: function (data) {
-                $('#AmbulancePopup').html(data);
-                $('#AmbulancePopup').show();
-                $('#overlay').show();
-            },
-            error: function () {
-                alert("Error loading details.");
-            }
-        });
-    }
-
-    function closePopup() {
-        $('#AmbulancePopup').hide();
-        $('#overlay').hide();
-    }
-
-    function confirmDelete(deleteUrl) {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You will not be able to recover this record!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel!",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    url: deleteUrl,
-                    type: 'DELETE',  // Use 'DELETE' method
-                    success: function (response) {
-                        Swal.fire("Deleted!", "Your record has been deleted.", "success");
-                        location.reload();
-                    },
-                    error: function () {
-                        Swal.fire("Error!", "There was a problem deleting the record.", "error");
-                    }
-                });
-            }
-        });
-    }
-</script>
 
 @using (Html.BeginForm())
 {
@@ -81,7 +19,7 @@
                     <a href="/Dashboard/DashboardView"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                 </li>
                 <li class="active-bre">
-                    <a href="#"> Department</a>
+                    <a href="#"> Ambulances</a>
                 </li>
                 <li class="page-back">
                     <a href="/Dashboard/DashboardView"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
@@ -97,9 +35,9 @@
                     <div class="inn-title">
                         <div>
                             <h1 style="margin-left: 200px; color: white;font-size:20px;"> Available Ambulance </h1>
-                            <input type="button" value="Add New" onclick="CreateNew()" class="my-btn" style="position: absolute; margin-top: -42px;">
-                            <input type="search" placeholder="Search..." id="Driver" name="Driver"  class="search-box" style="padding: 10px; width: 200px; border: 1px solid #ccc; border-radius: 4px; position: absolute; margin-left: 600px; margin-top: -50px;"/>
-                       <input type="button" value="Submit" class="my-btn" style="position: absolute; margin-left: 800px; margin-top: -45px; "/>
+                            <input type="button" value="Add New" onclick="window.location.href='@Url.Action("AddAmbulanceAd", "AmbulanceAd")'" class="my-btn" style=" margin-top: -42px; position: absolute; ">
+                            <input type="search" placeholder="Search..." id="Ambulancess" name="Ambulancess" class="search-box" style="padding: 10px; width: 200px; border: 1px solid #ccc; border-radius: 4px; position: absolute; margin-left: 600px; margin-top: -50px; " />
+                            <input type="submit" value="Search" class="my-btn" style="position: absolute; margin-left: 800px; margin-top: -45px; " />
                         </div>
                     </div>
                     <div class="tab-inn">
@@ -116,10 +54,10 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody  >
+                                <tbody>
                                     @foreach (var item in Model.mAmbulances)
                                     {
-                                        <tr>
+                                        <tr data-id="@item.Id">
                                             <td>@Html.DisplayFor(modelItem => item.Id)</td>
                                             <td>@Html.DisplayFor(modelItem => item.Name)</td>
                                             <td>@Html.DisplayFor(modelItem => item.AmbulanceId)</td>
@@ -130,12 +68,9 @@
                                                 <a href="@Url.Action("AmbulanceEdit", new { Id = item.Id })">
                                                     <i class="fas fa-edit" style="color:blue;background:none;font-size:20px;"></i>
                                                 </a>
-                                                <a href="javascript:void(0);" onclick="confirmDelete('@Url.Action("AmbulanceDelete", new { Id = item.Id })')">
+                                                <a href="javascript:void(0);" onclick="confirmDelete('@Url.Action("AmbulanceDelete", new { Id = item.Id })')" title="Delete">
                                                     <i class="fas fa-trash-alt" style="color: red; background: none; font-size: 20px;"></i>
                                                 </a>
-                                                @*<a href="javascript:void(0);" onclick="showAmbulance(@item.Id)">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>*@
                                             </td>
                                         </tr>
                                     }
@@ -151,40 +86,33 @@
     <div id="AmbulancePopup" style="display:none;"></div>
     <div id="overlay" style="display:none;" onclick="closePopup()"></div>
 }
+
 <script>
-    // Real-time search function
-    $(document).ready(function () {
-        $("#Driver").on("keyup", function () {
-            var value = $(this).val().toLowerCase();  // Get search term and convert it to lowercase
-            $("#ambulanceTable tr").filter(function () {
-                // Filter table rows based on the text content of each row
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+    function confirmDelete(deleteUrl) {
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this record!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            closeOnConfirm: false
+        }, function () {
+            $.ajax({
+                url: deleteUrl,
+                type: 'POST',
+                success: function (result) {
+                    swal("Deleted!", "Your record has been deleted.", "success");
+                    location.reload();
+                },
+                error: function (err) {
+                    swal("Error!", "There was a problem deleting the record.", "error");
+                }
             });
         });
-    });
-
-    function showAmbulance(AmbulanceId) {
-        $.ajax({
-            url: '@Url.Action("Ambulance", "AmbulanceAd")',
-            type: 'GET',
-            data: { Id: AmbulanceId },
-            success: function (data) {
-                $('#AmbulancePopup').html(data);
-                $('#AmbulancePopup').show();
-                $('#overlay').show();
-            },
-            error: function () {
-                alert("Error loading details.");
-            }
-        });
-    }
-
-    function closePopup() {
-        $('#AmbulancePopup').hide();
-        $('#overlay').hide();
     }
 </script>
-
 
 <style>
     .my-btn {

@@ -9,63 +9,44 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
-    // Redirect to AddRole page with loading spinner
-    function CreateNew() {
-        // Show loading SweetAlert
-        swal({
-            title: "Loading...",
-            text: "Please wait while we load the page.",
-            imageUrl: "https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/images/loading.gif", // Loading spinner image
-            imageSize: "50x50", // Set size of the image
-            showConfirmButton: false, // Hide confirm button
-            allowOutsideClick: false, // Prevent closing by clicking outside
-            timer: 3000 // Time to show the loading spinner (optional)
-        });
-
-        // Redirect to AddRole page after a 1-second delay
-        setTimeout(function () {
-            window.location.href = '@Url.Action("AddRole", "RolesAdmin")'; // Adjust to your controller
-        }, 1000);
-    }
-
-    // Confirm deletion with SweetAlert
+    // Confirm delete function using SweetAlert and AJAX
     function confirmDelete(deleteUrl) {
-        swal({
+        Swal.fire({
             title: "Are you sure?",
             text: "You will not be able to recover this record!",
             icon: "warning",
-            buttons: {
-                cancel: "No, cancel!",
-                confirm: {
-                    text: "Yes, delete it!",
-                    value: true,
-                    visible: true,
-                    className: "btn-danger",
-                    closeModal: true
-                }
-            }
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                // Make AJAX request to delete the record
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true,
+            focusCancel: true // Focus on the Cancel button
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Perform AJAX request to delete the record
                 $.ajax({
-                    url: deleteUrl,
-                    type: 'POST',
-                    success: function () {
-                        swal("Deleted!", "Your record has been deleted.", "success");
-                        location.reload(); // Reload the page after successful deletion
+                    url: deleteUrl, // URL to your delete action
+                    type: 'POST', // or 'DELETE' depending on your controller action
+                    success: function (response) {
+                        // On successful deletion
+                        Swal.fire("Deleted!", "Your record has been deleted.", "success");
+                        location.reload(); // Reload the page to reflect changes
                     },
-                    error: function () {
-                        swal("Error!", "There was a problem deleting the record.", "error");
+                    error: function (xhr, status, error) {
+                        // In case of an error, show error message
+                        Swal.fire("Error!", "There was a problem deleting the record.", "error");
                     }
                 });
             } else {
-                swal("Your record is safe!");
+                // If the action was cancelled, show a message
+                Swal.fire("Cancelled", "Your record is safe.", "info");
             }
         });
     }
 </script>
+
 
 @using (Html.BeginForm())
 {
@@ -95,7 +76,7 @@
                             <h2 style="margin-left: 200px; color: white; font-size:20px;">Roles List</h2>
                             <input type="button" value="Add New" onclick="CreateNew()" class="my-btn" style="position: absolute; margin-top: -42px;">
                             @*<input type="search" id="roles" name="roles" placeholder="Search roles" class="search-box" style="padding: 10px; width: 200px; border: 1px solid #ccc; border-radius: 4px; position: absolute; margin-left: 600px; margin-top: -50px;">
-                            <input type="submit" value="Search" class="my-btn" style="position: absolute; margin-left: 800px; margin-top: -45px;">*@
+                                <input type="submit" value="Search" class="my-btn" style="position: absolute; margin-left: 800px; margin-top: -45px;">*@
                         </div>
                     </div>
 
@@ -121,8 +102,9 @@
                                                 <a href="@Url.Action("RoleEdit", new { Id = item.Id })" class="action-link">
                                                     <i class="fas fa-edit" style="color: blue; font-size: 20px; background: none;"></i>
                                                 </a>
-                                                <a href="javascript:void(0);" onclick="confirmDelete('@Url.Action("RoleDelete", new { Id = item.Id })')" class="action-link">
-                                                    <i class="fas fa-trash-alt" style="color: red; font-size: 20px; background: none;"></i>
+                                                <a href="javascript:void(0);"
+                                                   onclick="confirmDelete('@Url.Action("RoleDelete", new { Id = item.Id })')">
+                                                    <i class="fas fa-trash-alt" style="font-size: 20px; background: none; color: red;"></i>
                                                 </a>
                                             </td>
                                         </tr>

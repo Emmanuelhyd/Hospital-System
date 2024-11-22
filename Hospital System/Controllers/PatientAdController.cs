@@ -18,11 +18,11 @@ namespace Hospital_System.Controllers
         AdminBAL adminBAL = new AdminBAL();
         // GET: PatientAd
 
-        public ActionResult PatientList(string patient)
+        public ActionResult PatientList(string Patienss)
         {
             MPatient mPatient1 = new MPatient();
             List<MPatient> mPatient = new List<MPatient>();
-            mPatient = adminBAL.PatientList(patient);
+            mPatient = adminBAL.PatientList(Patienss);
 
             var mpatient = new DashboardDetails
             {

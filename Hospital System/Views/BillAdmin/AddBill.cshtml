@@ -124,7 +124,7 @@
                 {
                     new SelectListItem { Value = "paid", Text = "Paid" },
                     new SelectListItem { Value = "notpaid", Text = "Not Paid" },
-                }, "Value", "Text"), "Select Status", new { @class = "form-control" })
+                }, "Value", "Text"), "Select Status", new { @class = "form-control", @required = "required" })
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.MethodOfPayment)
@@ -133,7 +133,7 @@
                     new SelectListItem { Value = "Cash", Text = "Cash" },
                     new SelectListItem { Value = "UPI", Text = "UPI" },
                     new SelectListItem { Value = "Credit Card", Text = "Credit Card" },
-                }, "Value", "Text"), "Select Payment Method", new { @class = "form-control" })
+                }, "Value", "Text"), "Select Payment Method", new { @class = "form-control", @required = "required" })
             </div>
         </div>
         <div style="display: flex; justify-content: center; ">

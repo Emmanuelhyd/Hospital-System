@@ -18,7 +18,7 @@
                 <a href="/Dashboard/DashboardView"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
             <li class="active-bre">
-                <a href="#"> Department</a>
+                <a href="#"> Patients</a>
             </li>
             <li class="page-back">
                 <a href="/Dashboard/DashboardView"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
@@ -33,12 +33,13 @@
             <div class="box-inn-sp">
                 <div class="inn-title">
                     <h1 style="font-size: 30px; margin-left: 300px; color: white; font-size:20px;">Patient Management</h1>
-
+                    @*<input type="search" placeholder="Search..." id="Patienss" name="Patienss" class="search-box" style="padding: 10px; width: 200px; border: 1px solid #ccc; border-radius: 4px; position: absolute; margin-left: 600px; margin-top: -50px; " />
+                    <input type="submit" value="Search" class="my-btn" style="position: absolute; margin-left: 800px; margin-top: -45px; " />*@
                     <!-- Action buttons -->
                     <div>
                         @*<input type="button" value="Add New" onclick="CreateNew()" class="btn-action">*@
                         @*<input type="search" id="patient" name="patient" placeholder="Search Patient" class="input-search">
-                            <input type="submit" value="Search" class="btn-action" formmethod="get">*@
+            <input type="submit" value="Search" class="btn-action" formmethod="get">*@
                     </div>
                 </div>
                 <!-- Patient table -->
@@ -80,3 +81,17 @@
 </div>
 
 <!-- Scripts for actions -->
+<style>
+    .my-btn {
+        color: #ffffff;
+        background: #57666d;
+        padding: 10px;
+        line-height: 10px;
+        font-weight: 1000;
+    }
+
+    .inn-titles {
+        padding: 1px 25px;
+        background: #002147;
+    }
+</style>

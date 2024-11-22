@@ -11,6 +11,7 @@ using System.Data;
 using System.Web.DynamicData;
 using Hospital_System.BAL;
 using System.Collections;
+using System.Security.Cryptography;
 
 namespace Hospital_System.DAL
 {
@@ -132,14 +133,13 @@ namespace Hospital_System.DAL
 
 
         //UpdateProfile List
-        public List<UpdateDO> UpdateList()
+        public List<UpdateDO> UpdateList(string Updates)
         {
             List<UpdateDO> updateDOs = new List<UpdateDO>();
-
             {
 
                 con.Open();
-                cmd = new SqlCommand("select * from profiles", con);
+                cmd = new SqlCommand("select * from profiles where UserName like'%" + Updates + "%'", con);
                 SqlDataReader sdr;
                 sdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
@@ -203,7 +203,7 @@ namespace Hospital_System.DAL
 
 
             List<UpdateDO> updateDOs = new List<UpdateDO>();
-            updateDOs = UpdateList();
+            updateDOs = UpdateList("");
             return updateDOs;
         }
 
@@ -603,14 +603,14 @@ namespace Hospital_System.DAL
 
         //patient list
 
-        public List<MPatient> PatientList(string patient)
+        public List<MPatient> PatientList(string Patienss)
         {
             List<MPatient> mPatients = new List<MPatient>();
 
             {
 
                 con.Open();
-                cmd = new SqlCommand("select * from bookapp where PatientName like'%" + patient + "%'", con);
+                cmd = new SqlCommand("select * from bookapp where PatientName like'%" + Patienss + "%'", con);
                 SqlDataReader sdr;
                 sdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
@@ -1427,14 +1427,14 @@ namespace Hospital_System.DAL
 
         //Ambulance List
 
-        public List<MAmbulance> AmbulanceListAd(string Driver)
+        public List<MAmbulance> AmbulanceListAd(string Ambulancess)
         {
             List<MAmbulance> mAmbulances = new List<MAmbulance>();
 
             {
 
                 con.Open();
-                cmd = new SqlCommand("select * from Amb where Name like'%" + Driver + "%'",con);
+                cmd = new SqlCommand("select * from Amb where Name like'%" + Ambulancess + "%'",con);
                 SqlDataReader sdr;
                 sdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();

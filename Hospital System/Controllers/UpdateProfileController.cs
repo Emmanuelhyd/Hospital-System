@@ -17,12 +17,12 @@ namespace Hospital_System.Controllers
         AdminDAL adminDAL;
         AdminBAL adminBAL = new AdminBAL();
         // GET: UpdateProfile
-        public ActionResult UpdateList()
+        public ActionResult UpdateList(string Updates)
         {
             UpdateDO updateDO = new UpdateDO();
             List<UpdateDO> updateDOs = new List<UpdateDO>();
 
-            updateDOs = adminBAL.UpdateList();
+            updateDOs = adminBAL.UpdateList(Updates);
 
             var update = new DashboardDetails
             {
