@@ -7,7 +7,7 @@
 <!-- CDN Links for Icons and Bootstrap -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMU01kpu1nY20dV62M4a9f1gAwl0Q8e61Kqgl" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 <!-- Custom Styles -->
 <style>
     /* Importing external Google Fonts (correct syntax) */
@@ -125,12 +125,12 @@
         transition: .2s;
     }
 
-    .login__input:active,
-    .login__input:focus,
-    .login__input:hover {
-        outline: none;
-        border-bottom-color: #6A679E;
-    }
+        .login__input:active,
+        .login__input:focus,
+        .login__input:hover {
+            outline: none;
+            border-bottom-color: #6A679E;
+        }
 
     .login__submit {
         background: #fff;
@@ -150,12 +150,12 @@
         transition: .2s;
     }
 
-    .login__submit:active,
-    .login__submit:focus,
-    .login__submit:hover {
-        border-color: #6A679E;
-        outline: none;
-    }
+        .login__submit:active,
+        .login__submit:focus,
+        .login__submit:hover {
+            border-color: #6A679E;
+            outline: none;
+        }
 
     .button__icon {
         font-size: 24px;
@@ -186,9 +186,9 @@
         text-shadow: 0px 0px 8px #7875B5;
     }
 
-    .social-login__icon:hover {
-        transform: scale(1.5);
-    }
+        .social-login__icon:hover {
+            transform: scale(1.5);
+        }
 
     /* New Button Styles for Forgot Password and Sign Up */
     .button-link {
@@ -207,9 +207,19 @@
         transition: background-color 0.2s ease, transform 0.2s ease;
     }
 
-    .button-link:hover {
-        background-color: #5D54A4;
-        transform: scale(1.05);
+        .button-link:hover {
+            background-color: #5D54A4;
+            transform: scale(1.05);
+        }
+
+    .password-icon {
+        position: absolute;
+        right: 77px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: blueviolet;
+        margin-top: -4px;
     }
 </style>
 
@@ -230,6 +240,7 @@
                 <div class="login__field">
                     <i class="login__icon fas fa-lock"></i>
                     @Html.PasswordFor(m => m.Password, new { @class = "login__input", placeholder = "Password" })
+                    <i class="fas fa-eye password-icon" id="togglePassword" onclick="togglePasswordVisibility('Password')"></i><br />
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                 </div>
                 <button class="button login__submit">
@@ -253,3 +264,16 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+
+    function togglePasswordVisibility(id) {
+        const passwordField = document.getElementById(id);
+        const type = passwordField.type === "password" ? "text" : "password";
+        passwordField.type = type;
+
+        // Optionally toggle the icon class
+        const icon = document.getElementById(`toggle${id}`);
+        icon.classList.toggle('fa-eye');
+        icon.classList.toggle('fa-eye-slash');
+    }
+</script>
