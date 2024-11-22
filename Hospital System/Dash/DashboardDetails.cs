@@ -34,17 +34,17 @@ namespace Hospital_System.Dash
 
         public MAppointmentAd MAppointmentAd { get; set; }
 
-        public List<MComplaintAd>mComplaintAds { get; set;}
+        public List<MComplaintAd> mComplaintAds { get; set; }
 
         public MComplaintAd mComplaintAd { get; set; }
 
-       public List<MDoctorAd> mDoctorAds { get; set; }
+        public List<MDoctorAd> mDoctorAds { get; set; }
 
         public MDoctorAd MDoctorAd { get; set; }
 
         public MMedicineAd MMedicineAd { get; set; }
 
-        public List<MMedicineAd> MedicineAds { get;set; }
+        public List<MMedicineAd> MedicineAds { get; set; }
 
         public MPatient mPatient { get; set; }
         public List<MPatient> mPatients { get; set; }
@@ -70,5 +70,10 @@ namespace Hospital_System.Dash
         public List<RoleDO> RoleDOs { get; set; }
 
         //public DateTime TodayDate { get; set; }
+
+        public int TotalPages { get; set; }  // Ensure this is present
+        public int CurrentPage { get; set; }  // Ensure this is present
+        public int TotalCount { get; set; }  // Ensure this is present
+
     }
 }

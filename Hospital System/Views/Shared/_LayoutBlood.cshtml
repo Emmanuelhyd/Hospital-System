@@ -1,112 +1,240 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Blood Bank Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/All css/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="~/All css/css/style.css" rel="stylesheet">
+
+    <link href="~/All css/animate/animate.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #f7f7f7;
-            margin: 0;
-            transition: opacity 0.5s ease;
-            opacity: 0;
+        a {
+            text-decoration: none !important;
         }
 
-        .vertical-span {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 70px;
-            width: 100%; /* Full width */
-            background-color: #007bff; /* Strong blue for impact */
-            color: white;
-            display: flex;
-            align-items: center; /* Vertically center the links */
-            justify-content: space-between; /* Distribute items evenly */
-            font-size: 16px; /* Adjust font size to fit */
-            font-weight: bold;
-            z-index: 500;
-            padding: 0 10px; /* Adjust horizontal padding */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            white-space: nowrap; /* Prevent links from wrapping to the next line */
+        .action-links a {
+            text-decoration: none !important;
         }
 
-            /* Menu links */
-            .vertical-span a {
-                color: white;
-                text-decoration: none;
-                margin: 0 8px; /* Reduced margin for better fit */
-                transition: color 0.3s;
+            .action-links a:hover {
+                text-decoration: none !important;
             }
-
-                .vertical-span a:hover {
-                    color: #f1c40f; /* Bright yellow on hover */
-                }
-
-        main {
-            margin-top: 80px; /* Space for vertical span */
-            padding: 20px;
-        }
-
-        h1, h2, h3 {
-            color: #2c3e50; /* Darker shade for headings */
-            margin-bottom: 20px;
-        }
-
-        .card {
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-        }
-
-            .card:hover {
-                transform: translateY(-5px);
-            }
-
-        .card-title {
-            font-size: 1.6rem;
-            font-weight: bold;
-            color: #2980b9; /* Accent color */
-        }
-
-        .card-text {
-            font-size: 1.1rem;
-            color: #34495e; /* Softer text color */
-        }
     </style>
+
 </head>
-<body>
-    <div class="vertical-span">
-        <a href="@Url.Action("AdminHome", "Admin")">Home</a>
-        <a href="@Url.Action("DonationRequests", "Admin")">Donation Requests</a>
-        <a href="@Url.Action("ApprovedDonations", "Admin")">Approved Donations</a>
-        <a href="@Url.Action("RejectedDonors", "Admin")">Rejected Donors</a>
-        <a href="@Url.Action("LatestDonations", "Admin")">Latest Donations</a>
-        <a href="@Url.Action("FamilyDetails", "Admin")">Family Details</a>
-        <a href="@Url.Action("BloodRequests", "Admin")">Blood Requests</a>
-        <a href="@Url.Action("ApprovedBloodRequests", "Admin")">Approved Blood Requests</a>
-        <a href="@Url.Action("RejectedBloodRequests", "Admin")">Rejected Blood Requests</a>
-        <a href="@Url.Action("DashboardView", "Dashboard")">Logout</a>
+
+<div class="container-fluid sb1">
+    <div class="row">
+        <!--== SEARCH ==-->
+        <div class="col-md-6 col-sm-6 mob-hide">
+            <form class="app-search">
+                <input type="text" placeholder="Search..." class="form-control">
+                <a href="#" style=""><i class="fa fa-search"></i></a>
+            </form>
+        </div>
+
+        <!--== MY ACCOUNT ==-->
+        <div class="col-md-2 col-sm-3 col-xs-6" style="margin-left:500px">
+            <!-- Dropdown Trigger -->
+            <a class="waves-effect dropdown-button top-user-pro" href="#" data-activates="top-menu" style=" margin-left: 220%; position: absolute; margin-top: -26%; width: 100%;">
+                <img src="~/Images/Allu Arjun.jpg" alt="">My Account <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </a>
+
+        </div>
     </div>
+</div>
 
-    <main id="content">
-        @RenderBody()
-    </main>
+<!-- Sidebar Menu -->
+<div class="sb2-13" style="position:absolute;width:20%; height:120vh; margin-top:3%;">
+    <div class="sb2-12" style="height:7vh;">
+        @if (Session["UsernameorEmail"] != null)
+        {
+            <span>
+                Welcome..!
+                @Session["UsernameorEmail"]
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script>
-        window.addEventListener('load', () => {
-            document.body.style.opacity = 1;
+            </span>
+        }
+
+    </div>
+    <ul class="collapsible" data-collapsible="accordion">
+
+        <li>
+            <a href="/Admin/AdminHome" class="menu-active" style="color: white; font-size: 15px; padding: 19px;">
+                <i class="fa fa-tachometer-alt" aria-hidden="true"></i>  <!-- Dashboard Icon -->
+                Dashboard
+            </a>
+        </li>
+
+        <!-- Donation Requests Section -->
+        <li>
+            <a href="javascript:void(0)" class="collapsible-header" style="color: white; font-size: 15px; padding: 19px;">
+                <i class="fa fa-hand-holding-heart" aria-hidden="true"></i> <!-- Donation Icon -->
+                Donation Requests
+            </a>
+            <div class="collapsible-body left-sub-menu" style="padding: 19px; font-size: 16px; max-height: 700px;">
+                <ul>
+                    <li>
+                        <a href="/Admin/DonationRequests">Donation Requests</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Approved Donations Section -->
+        <li>
+            <a href="javascript:void(0)" class="collapsible-header" style="color: white; font-size: 15px; padding: 19px;">
+                <i class="fa fa-check-circle" aria-hidden="true"></i> <!-- Approved Icon -->
+                Approved Donations
+            </a>
+            <div class="collapsible-body left-sub-menu" style="padding: 19px; font-size: 16px; max-height: 700px;">
+                <ul>
+                    <li>
+                        <a href="/Admin/ApprovedDonations">Approved Donations</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Rejected Donors Section -->
+        <li>
+            <a href="javascript:void(0)" class="collapsible-header" style="color: white; font-size: 15px; padding: 19px;">
+                <i class="fa fa-times-circle" aria-hidden="true"></i> <!-- Rejected Icon -->
+                Rejected Donors
+            </a>
+            <div class="collapsible-body left-sub-menu" style="padding: 19px; font-size: 16px; max-height: 700px;">
+                <ul>
+                    <li>
+                        <a href="/Admin/RejectedDonors">Rejected Donors</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Family Details Section -->
+        <li>
+            <a href="javascript:void(0)" class="collapsible-header" style="color: white; font-size: 15px; padding: 19px;">
+                <i class="fa fa-users" aria-hidden="true"></i> <!-- Family Icon -->
+                Family Details
+            </a>
+            <div class="collapsible-body left-sub-menu" style="padding: 19px; font-size: 16px; max-height: 700px;">
+                <ul>
+                    <li><a href="/Admin/FamilyDetails">Family Details</a></li>
+                </ul>
+            </div>
+        </li>
+
+
+        <!-- Latest Donations Section -->
+        <li>
+            <a href="javascript:void(0)" class="collapsible-header" style="color: white; font-size: 15px; padding: 19px;">
+                <i class="fa fa-bell" aria-hidden="true"></i> <!-- Bell Icon -->
+                Latest Donations
+            </a>
+            <div class="collapsible-body left-sub-menu" style="padding: 19px; font-size: 16px; max-height: 700px;">
+                <ul>
+                    <li>
+                        <a href="/Admin/LatestDonations">Latest Donations</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Blood Requests Section -->
+        <li>
+            <a href="javascript:void(0)" class="collapsible-header" style="color: white; font-size: 15px; padding: 19px;">
+                <i class="fa fa-tint" aria-hidden="true"></i> <!-- Blood Drop Icon -->
+                Blood Requests
+            </a>
+            <div class="collapsible-body left-sub-menu" style="padding: 19px; font-size: 16px; max-height: 700px;">
+                <ul>
+                    <li>
+                        <a href="/Admin/BloodRequests">Blood Requests</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Approved Blood Requests Section -->
+        <li>
+            <a href="javascript:void(0)" class="collapsible-header" style="color: white; font-size: 15px; padding: 19px;">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> <!-- Thumbs Up Icon -->
+                Approved Blood Requests
+            </a>
+            <div class="collapsible-body left-sub-menu" style="padding: 19px; font-size: 16px; max-height: 700px;">
+                <ul>
+                    <li>
+                        <a href="/Admin/ApprovedBloodRequests">Approved Blood Requests</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Rejected Blood Requests Section -->
+        <li>
+            <a href="javascript:void(0)" class="collapsible-header" style="color: white; font-size: 15px; padding: 19px;">
+                <i class="fa fa-thumbs-down" aria-hidden="true"></i> <!-- Thumbs Down Icon -->
+                Rejected Blood Requests
+            </a>
+            <div class="collapsible-body left-sub-menu" style="padding: 19px; font-size: 16px; max-height: 700px;">
+                <ul>
+                    <li>
+                        <a href="/Admin/RejectedBloodRequests">Rejected Blood Requests</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Logout Section -->
+        <li>
+            <a href="/Home/index" class="menu-active" style="color: white; font-size: 15px; padding: 19px;">
+                <i class="fa fa-sign-out-alt" aria-hidden="true"></i> <!-- Logout Icon -->
+                Logout
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+<!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<!-- jQuery Script to Toggle Dropdown on Click -->
+<script>
+    $(document).ready(function () {
+        // Initially hide all collapsible bodies when the page is loaded
+        $(".collapsible-body").hide();
+
+        // When a collapsible header is clicked, toggle the visibility of the collapsible body
+        $(".collapsible-header").click(function () {
+            var nextElement = $(this).next(".collapsible-body");
+            nextElement.slideToggle(); // Toggles visibility of the submenu
+            // Close other open collapsible submenus
+            $(".collapsible-body").not(nextElement).slideUp();
         });
+    });
+</script>
 
-        window.onpageshow = function (event) {
-            if (event.persisted) {
-                document.body.style.opacity = 1;
-            }
-        };
-    </script>
-</body>
-</html>
+<div>
+    @RenderBody()
+</div>
+
+

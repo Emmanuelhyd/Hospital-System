@@ -1,6 +1,5 @@
 ﻿@model Hospital_System.Models.UserModel
 
-
 @{
     Layout = null;
 }
@@ -14,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-color: #eef2f3;
+            background: #f2f3f5;
             font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
@@ -24,80 +23,133 @@
         }
 
         .form-container {
-            width: 320px;
-            padding: 20px;
-            background: #ffcccc;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            width: 40%;
+            max-width: 800px;
+            height: auto;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
         h4 {
-            color: #000;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            font-weight: 600;
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 2em;
+            font-weight: 700;
         }
 
         .form-label {
             font-weight: bold;
-            color: #000;
-            margin-bottom: 5px;
+            color: #555;
+            margin-bottom: 8px;
             text-align: left;
             display: block;
         }
 
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
         .form-control {
-            border-radius: 10px;
+            border-radius: 12px;
             border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 15px;
-            width: calc(100% - 22px);
-            transition: border-color 0.3s;
+            padding: 12px;
+            width: 90%;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
             .form-control:focus {
-                border-color: #e57373;
-                box-shadow: 0 0 5px rgba(233, 30, 99, 0.5);
+                border-color: #ff7e5f;
+                box-shadow: 0 0 8px rgba(255, 126, 95, 0.5);
                 outline: none;
             }
 
-        .btn-primary {
-            background-color: #e57373;
+        .btn-small {
+            background-color: #ff7e5f;
             border: none;
-            border-radius: 10px;
-            transition: background-color 0.3s, transform 0.3s;
-            padding: 10px;
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-size: 1em;
             width: 100%;
-            color: #fff;
+            color: white;
             font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
-            .btn-primary:hover {
-                background-color: #d32f2f;
+            .btn-small:hover {
+                background-color: #d96d56;
                 transform: translateY(-2px);
             }
 
-        .alert {
-            margin-bottom: 20px;
-            padding: 10px;
-            border-radius: 5px;
+        .btn-secondary-small {
+            background-color: #6c757d;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-size: 1em;
+            width: 100%;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
+            .btn-secondary-small:hover {
+                background-color: #5a6268;
+                transform: translateY(-2px);
+            }
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
+            margin-top: 20px;
         }
 
-        .alert-danger {
-            background-color: #f8d7da;
-            color: #721c24;
+            .button-container button {
+                width: 48%;
+            }
+
+        /* Add responsiveness */
+        media (max-width: 480px) {
+            .form-container
+
+        {
+            width: 90%;
+            padding: 15px;
+        }
+
+        h4 {
+            font-size: 1.5em;
+        }
+
+        .button-container button {
+            width: 100%;
+        }
+
+        .form-row {
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
         }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <h4>Registration Page</h4>
+        <h4 style="margin-top:-5px;padding-bottom:20px;">Registration Page</h4>
 
         <!-- Success Message -->
         @if (ViewData["SuccessMessage"] != null)
@@ -117,51 +169,62 @@
 
         @using (Html.BeginForm("RegisterForm", "User"))
         {
-            <div class="mb-3">
-                @Html.LabelFor(m => m.FirstName, new { @class = "form-label" })
-                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name", required = "required", aria_required = "true" })
+            <!-- First name and Last name in one row -->
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FirstName, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name", required = "required", aria_required = "true" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LastName, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last Name", required = "required", aria_required = "true" })
+                </div>
             </div>
 
-            <div class="mb-3">
-                @Html.LabelFor(m => m.LastName, new { @class = "form-label" })
-                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last Name", required = "required", aria_required = "true" })
+            <!-- Email and Phone Number in one row -->
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EmailId, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.EmailId, new
+                      {
+                          @class = "form-control",
+                          placeholder = "Enter Email",
+                          type = "email",
+                          required = "required",
+                          pattern = "^[a-zA-Z0-9._%+-]+@gmail\\.[a-zA-Z]{2,}$",
+                          title = "Please enter a valid Gmail address ending with @gmail. (e.g., example@gmail.com, user123@gmail.in)"
+                      })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PhoneNumber, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Enter Phone Number", required = "required", pattern = @"\d{10}", maxlength = "10", title = "Phone number must be exactly 10 digits" })
+                </div>
             </div>
 
-            <div class="mb-3">
-                @Html.LabelFor(m => m.EmailId, new { @class = "form-label" })
-                @Html.TextBoxFor(m => m.EmailId, new
-                  {
-                      @class = "form-control",
-                      placeholder = "Enter Email",
-                      type = "email",
-                      required = "required",
-                      pattern = "^[a-zA-Z0-9._%+-]+@gmail\\.[a-zA-Z]{2,}$",
-                      title = "Please enter a valid Gmail address ending with @gmail. (e.g., example@gmail.com, user123@gmail.in)"
-                  })
+            <!-- Password and Date of Birth in one row -->
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "form-label" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", required = "required", aria_required = "true" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DateOfBirth, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", id = "datepicker", placeholder = "Select Date", required = "required", aria_required = "true" })
+                </div>
             </div>
 
-            <div class="mb-3">
-                @Html.LabelFor(m => m.Password, new { @class = "form-label" })
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", required = "required", aria_required = "true" })
+            <!-- Address in one row -->
+            <div class="form-row">
+                <div class="form-group" style="width: 100%;">
+                    @Html.LabelFor(m => m.Address, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Address", required = "required", aria_required = "true" })
+                </div>
             </div>
 
-            <div class="mb-3">
-                @Html.LabelFor(m => m.PhoneNumber, new { @class = "form-label" })
-                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Enter Phone Number", required = "required", pattern = @"\d{10}", maxlength = "10", title = "Phone number must be exactly 10 digits" })
-            </div>
-
-            <div class="mb-3">
-                @Html.LabelFor(m => m.DateOfBirth, new { @class = "form-label" })
-                @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", id = "datepicker", placeholder = "Select Date", required = "required", aria_required = "true" })
-            </div>
-
-            <div class="mb-3">
-                @Html.LabelFor(m => m.Address, new { @class = "form-label" })
-                @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Address", required = "required", aria_required = "true" })
-            </div>
-
-            <div>
-                <input type="submit" value="Submit" class="btn btn-primary" />
+            <!-- Buttons container -->
+            <div class="button-container">
+                <button type="button" class="btn-secondary-small" onclick="window.history.back()">Back</button>
+                <button type="submit" class="btn-small">Submit</button>
             </div>
         }
     </div>

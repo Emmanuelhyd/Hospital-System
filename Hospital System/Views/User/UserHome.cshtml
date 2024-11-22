@@ -3,8 +3,8 @@
 
 @{
     ViewData["Title"] = "Available Blood Groups";
-    Layout = "~/Views/Shared/_UserLayoutBlood.cshtml"; 
-    }
+    Layout = "~/Views/Shared/_UserLayoutBlood.cshtml";
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,29 +14,20 @@
     <title>@ViewData["Title"] - Blood Bank Management System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="~/All css/css/bootstrap.css" rel="stylesheet">
+    <link href="~/All css/css/style.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #f7f7f7;
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            max-width: 88%;
             padding: 20px;
-        }
-
-        .container-fluid {
-            max-width: 1000px;
-            margin: auto;
-            position: relative;
-        }
-
-        .chart-container {
-            max-width: 300px;
-            margin: auto;
-        }
-
-        .page-title {
-            font-size: 28px;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
-            margin: 20px 0;
+            margin-left: 11%;
+            margin-top: -58%;
         }
 
         .blood-group-card {
@@ -62,14 +53,17 @@
         }
 
         .donation-box {
-            padding: 10px;
+            padding: 7px;
             margin: 20px auto;
             text-align: center;
-            background-color: blue;
+            color: #fff;
+            background: #e74715;
+            background: -webkit-linear-gradient(to top, #d83d0c, #FF5722);
+            background: linear-gradient(to top, #d83d0c, #FF5722);
             border-radius: 5px;
             color: white;
             transition: background-color 0.3s;
-            width: 15%;
+            width: 12%;
         }
 
             .donation-box:hover {
@@ -82,7 +76,7 @@
     </style>
 </head>
 <body>
-    <div class="container-fluid">       
+    <div class="container">
         <h1 class="page-title">@ViewData["Title"]</h1>
 
         <div class="row mb-4">
@@ -123,7 +117,7 @@
             </div>
         </div>
 
-        <div  class="row mt-3 justify-content-center">
+        <div class="row mt-3 justify-content-center" style=" width: 94%; margin-left: 11%;">
             @foreach (var user in Model)
             {
                 <div class="col-6 col-md-3 mb-3 d-flex justify-content-center">

@@ -852,6 +852,7 @@
     <Content Include="Views\Shared\_LayoutRec.cshtml" />
     <Content Include="Views\Billing\AddBill.cshtml" />
     <Content Include="Views\Discharge\AddDischarge.cshtml" />
+    <Content Include="Views\Reception\Signup.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

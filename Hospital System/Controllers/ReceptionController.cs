@@ -27,7 +27,39 @@ namespace Hospital_System.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public ActionResult Signup()
+        {
+            return View(new Patients());
 
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Signup(Patients patients)
+        {
+            if (!ModelState.IsValid)
+            {
+                string res = patientBAL.Insertprofile(patients);
+                if (res == "1")
+                {
+                    Session["FirstName"] = patients.FirstName;
+                    Session["LastName"] = patients.LastName;
+
+                    Session["PhoneNo"] = patients.PhoneNo;
+
+
+                    TempData["result"] = "Registered";
+                    return RedirectToAction("Login");
+                }
+            }
+
+
+
+            TempData["result"] = "Enter All the details";
+
+
+            return View(patients);
+        }
 
     }
 }

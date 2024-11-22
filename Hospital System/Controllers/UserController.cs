@@ -13,7 +13,7 @@ namespace Hospital_System.Controllers
 {
     public class UserController : Controller
     {
-        SqlConnection con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-DQHFGU1\\ANANDSAGAR");
+        SqlConnection con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-OUCP9Q2");
         SqlCommand cmd = null;
         SqlDataReader reader = null;
         // GET: User
@@ -26,7 +26,7 @@ namespace Hospital_System.Controllers
             var bloodGroups = new List<string> { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" };
             var users = new List<UserModel>();
 
-            var connectionString = "Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-DQHFGU1\\ANANDSAGAR";
+            var connectionString = "Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-OUCP9Q2";
             using (var con = new SqlConnection(connectionString))
             {
                 con.Open();
@@ -46,8 +46,8 @@ namespace Hospital_System.Controllers
 
                     var result = cmd.ExecuteScalar();
                     var quantity = result != DBNull.Value
-                        ? (Convert.ToDecimal(result)).ToString("F2") + "L" 
-                        : "0.00L"; 
+                        ? (Convert.ToDecimal(result)).ToString("F2") + "L"
+                        : "0.00L";
                     users.Add(new UserModel
                     {
                         BloodGroup = bloodGroup,
@@ -61,48 +61,53 @@ namespace Hospital_System.Controllers
         // For User LogIn.....
         public ActionResult UserLogIn(BloodLogin blood)
         {
-          
-            con.Open();
-            cmd = new SqlCommand("select Id,FirstName,LastName,EmailId,Password from userinfo where EmailId ='" + blood.EmailId + "' and Password='" + blood.Password + "'", con);
-            reader = cmd.ExecuteReader();
-            if(reader.Read())
+            if (string.IsNullOrEmpty(blood.EmailId) || string.IsNullOrEmpty(blood.Password))
             {
+                TempData["ErrorMessage"] = "Email and Password are required!";
+                return View();
+            }
 
-                if (!reader.IsDBNull(reader.GetOrdinal("Id")))
+            con.Open();
+            cmd = new SqlCommand("select Id, FirstName, LastName, EmailId, Password from userinfo where EmailId = @EmailId", con);
+            cmd.Parameters.AddWithValue("@EmailId", blood.EmailId);
+            reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                string storedEmail = reader.GetString(reader.GetOrdinal("EmailId"));
+                string storedPassword = reader.GetString(reader.GetOrdinal("Password"));
+
+                if (blood.EmailId == storedEmail && blood.Password == storedPassword)
                 {
-
                     decimal bloodId = reader.GetInt32(reader.GetOrdinal("Id"));
                     blood.Id = Convert.ToInt32(bloodId);
+                    string firstName = reader.GetString(reader.GetOrdinal("FirstName"));
+                    string lastName = reader.GetString(reader.GetOrdinal("LastName"));
+
+                    Session["Id"] = blood.Id;
+                    Session["EmailId"] = blood.EmailId;
+                    Session["FirstName"] = firstName;
+                    Session["LastName"] = lastName;
+
+                    return RedirectToAction("UserHome");
                 }
-                string Email = reader.GetString(reader.GetOrdinal("EmailId"));
-                string Pass = reader.GetString(reader.GetOrdinal("Password"));
-
-                string FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
-                string LastName = reader.GetString(reader.GetOrdinal("LastName"));
-                if(blood.EmailId ==Email  && blood.Password== Pass)
+                else
                 {
-
-                   
-                        Session["Id"] = blood.Id;
-                        Session["EmailId"] = blood.EmailId;
-                        blood.FirstName = FirstName;
-                        Session["FirstName"] = blood.FirstName;
-                        blood.LastName = LastName;
-                        Session["LastName"] = blood.LastName;
-                        return RedirectToAction("UserHome");
-                    
+                    if (blood.Password != storedPassword)
+                    {
+                        TempData["ErrorMessage"] = "Invalid Password";
+                    }
                 }
             }
             else
             {
-                TempData["Error"] = "Invalid UserName or Password";
+                TempData["ErrorMessage"] = "User not found! Please register.";
             }
+
             return View();
-
-
-
         }
-        private string connectionString = "Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-DQHFGU1\\ANANDSAGAR";
+
+        private string connectionString = "Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-OUCP9Q2";
 
         [HttpGet]
         public ActionResult ForgotPassword()
@@ -155,29 +160,43 @@ namespace Hospital_System.Controllers
                     }
                 }
             }
-            return View(); 
+            return View();
         }
         // For User Registration.....
         public ActionResult RegisterForm(UserModel user)
         {
+            con.Open();
+            var EmailId = "";
+            cmd = new SqlCommand("select * from userinfo where Emailid='" + user.EmailId + "' ", con);
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                EmailId = reader.GetString(reader.GetOrdinal("EmailId"));
+            }
+            reader.Close();
             if (user.EmailId != null)
             {
-                con.Open();
-                cmd = new SqlCommand("insert into userinfo values ('" + user.FirstName + "','" + user.LastName + "','" + user.EmailId + "','" + user.Password + "','" + user.DateOfBirth + "','" + user.PhoneNumber + "','" + user.Address + "')", con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                //ViewData["SuccessMessage"] = "Registration Successfull";
-                return RedirectToAction("UserLogin");
+                if (EmailId != user.EmailId)
+                {
+                    cmd = new SqlCommand("insert into userinfo values ('" + user.FirstName + "','" + user.LastName + "','" + user.EmailId + "','" + user.Password + "','" + user.DateOfBirth + "','" + user.PhoneNumber + "','" + user.Address + "')", con);
+                    cmd.ExecuteNonQuery();
+                    return RedirectToAction("UserLogin");
+                }
+                else
+                {
+                    ViewData["ErrorMessage"] = "EmailId Already Used";
+                }
             }
+            con.Close();
             return View();
         }
         public BloodLogin GetLogin(int Id)
         {
             BloodLogin blood = new BloodLogin();
             con.Open();
-            cmd = new SqlCommand("select * from userinfo where Id= " + Id+"", con);
+            cmd = new SqlCommand("select * from userinfo where Id= " + Id + "", con);
             reader = cmd.ExecuteReader();
-            if(reader.Read())
+            if (reader.Read())
             {
                 blood.Id = Convert.ToInt32(reader["Id"]);
                 blood.FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
@@ -208,7 +227,7 @@ namespace Hospital_System.Controllers
             {
                 user.IsApproved = "pending";
                 con.Open();
-                cmd = new SqlCommand("Insert into DonorInfo values("+user.Id+",'" + user.FirstName + "','" + user.LastName + "','" + user.EmailId + "','" + user.DateOfBirth + "','" + user.PhoneNumber + "','" + user.Gender + "','" + user.BloodGroup + "','" + user.Quantity + "','" + user.Decease + "','" + user.StreetAddress + "','" + user.City + "','" + user.State + "','" + user.ZipCode + "','" + user.Country + "','"+user.IsApproved+"')", con);
+                cmd = new SqlCommand("Insert into DonorInfo values(" + user.Id + ",'" + user.FirstName + "','" + user.LastName + "','" + user.EmailId + "','" + user.DateOfBirth + "','" + user.PhoneNumber + "','" + user.Gender + "','" + user.BloodGroup + "','" + user.Quantity + "','" + user.Decease + "','" + user.StreetAddress + "','" + user.City + "','" + user.State + "','" + user.ZipCode + "','" + user.Country + "','" + user.IsApproved + "')", con);
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
@@ -235,7 +254,7 @@ namespace Hospital_System.Controllers
                 }
                 reader.Close();
 
-               
+
                 if (id != user.EmailId)
                 {
 
@@ -270,28 +289,25 @@ namespace Hospital_System.Controllers
                 decimal quantityInLiters = quantityInML / 1000;
                 user.Quantity = quantityInLiters.ToString("F3") + " L";
             }
-
             int loggedInUserId = Convert.ToInt32(Session["Id"]);
-
             BloodLogin blood = GetLogin(loggedInUserId);
             user.Id = blood.Id;
-
             if (user.EmailId != null)
             {
                 user.IsApproved = "pending";
                 con.Open();
-                cmd = new SqlCommand("Insert Into PatientInfo Values ('" + user.Id + "','" + user.FirstName + "','" + user.LastName + "','" + user.EmailId + "','" + user.PhoneNumber + "','" + user.Gender + "','" + user.BloodGroup + "','" + user.Quantity + "','" + user.Decease + "','" + user.StreetAddress + "','" + user.City + "','" + user.State + "','" + user.ZipCode + "','" + user.Country + "','"+user.IsApproved+"')", con);
+                cmd = new SqlCommand("Insert Into PatientInfo Values ('" + user.Id + "','" + user.FirstName + "','" + user.LastName + "','" + user.EmailId + "','" + user.PhoneNumber + "','" + user.Gender + "','" + user.BloodGroup + "','" + user.Quantity + "','" + user.Decease + "','" + user.StreetAddress + "','" + user.City + "','" + user.State + "','" + user.ZipCode + "','" + user.Country + "','" + user.IsApproved + "')", con);
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
             return View(user);
         }
 
-        public ActionResult DonationHistory(UserModel user) 
+        public ActionResult DonationHistory(UserModel user)
         {
             con.Open();
             List<UserModel> users = new List<UserModel>();
-            cmd = new SqlCommand("Select * from DonorInfo where EmailId='" + Session["EmailId"] +"'", con);
+            cmd = new SqlCommand("Select * from DonorInfo where ReferenceId='" + Session["Id"] + "' ", con);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -322,7 +338,7 @@ namespace Hospital_System.Controllers
         {
             con.Open();
             List<UserModel> users = new List<UserModel>();
-            cmd = new SqlCommand("Select * from DonorInfo where EmailId='" + Session["EmailId"] + "'", con);
+            cmd = new SqlCommand("Select * from PatientInfo where ReferenceId='" + Session["Id"] + "' ", con);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {

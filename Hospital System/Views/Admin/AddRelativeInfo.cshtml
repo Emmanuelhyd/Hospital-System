@@ -1,10 +1,10 @@
 ﻿@model Hospital_System.Models.AdminModel
 
 
-    @{
-        
-        Layout = "~/Views/Shared/_LayoutBlood.cshtml";
-    }
+@{
+
+    Layout = "~/Views/Shared/_LayoutBlood.cshtml";
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +17,8 @@
             font-family: 'Arial', sans-serif;
             background: #f7f7f7;
             padding: 20px;
-            margin-top: 10px;
+            margin-top: -10px;
+            margin-left: -20px;
         }
 
         .form-container {
@@ -25,10 +26,36 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 30px;
-            margin: auto;
-            max-width: 900px;
-            position: relative; /* For absolute positioning of the back button */
+            margin-top: 10%;
+            margin-left: 25%;
+            max-width: 65%;
+            position: relative;
         }
+
+            .form-container label {
+                color: black;
+                font-size: 16px;
+            }
+
+            .form-container input::placeholder {
+                color: black;
+                font-size: 12px;
+            }
+
+            .form-container select {
+                color: black;
+                font-size: 12px;
+                padding: 8px 12px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                background-color: #fff;
+            }
+
+                .form-container select option {
+                    color: black;
+                    font-size: 12px;
+                    background-color: #fff;
+                }
 
         h2 {
             color: #343a40;
@@ -44,6 +71,7 @@
         .btn-primary {
             background-color: #007bff;
             border: none;
+            line-height: 25px;
         }
 
             .btn-primary:hover {
@@ -51,34 +79,39 @@
             }
 
         .btn-submit {
-            width: 33%;
+            width: 11%;
+            margin-left: 400px;
         }
 
         .back-button {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: blue; /* Blue background for the back button */
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            color: #fff;
+            background: #e74715;
+            background: -webkit-linear-gradient(to top, #d83d0c, #FF5722);
+            background: linear-gradient(to top, #d83d0c, #FF5722);
+            padding: 4px 34px;
+            line-height: 25px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            font-size: 10px;
+            border: none !important;
+            outline: none !important;
+            margin-top: 20px;
         }
 
             .back-button:hover {
-                background-color: darkblue; /* Darker blue on hover */
+                background-color: darkblue;
             }
     </style>
 </head>
 <body>
 
     <div class="form-container">
-        <button class="back-button" onclick="window.history.back()">Back</button>
 
         @using (Html.BeginForm("AddRelativeInfo", "Admin", FormMethod.Post))
         {
-            <h2>Edit Relative Information</h2>
+            <div class="text-center" style="padding: 17px 40px; background: #002147; border-radius:5px; margin-top: -80px; margin-left: -30px; width: 100%; color: white; position: absolute;">
+                <h4> Edit Relative Info</h4>
+            </div>
 
             <div class="mb-3 row">
 
@@ -157,8 +190,10 @@
             </div>
 
             <div class="text-center">
+                <button class="back-button" onclick="window.history.back()">Back</button>
                 <button type="submit" class="btn btn-primary btn-submit">Submit</button>
             </div>
+
         }
     </div>
 
