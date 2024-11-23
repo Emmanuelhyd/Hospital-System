@@ -23,7 +23,7 @@
         }
 
         .form-container {
-            width: 40%;
+            width:40%;
             max-width: 800px;
             height: auto;
             padding: 25px;
@@ -67,11 +67,11 @@
             transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-            .form-control:focus {
-                border-color: #ff7e5f;
-                box-shadow: 0 0 8px rgba(255, 126, 95, 0.5);
-                outline: none;
-            }
+        .form-control:focus {
+            border-color: #ff7e5f;
+            box-shadow: 0 0 8px rgba(255, 126, 95, 0.5);
+            outline: none;
+        }
 
         .btn-small {
             background-color: #ff7e5f;
@@ -86,10 +86,10 @@
             transition: background-color 0.3s, transform 0.3s;
         }
 
-            .btn-small:hover {
-                background-color: #d96d56;
-                transform: translateY(-2px);
-            }
+        .btn-small:hover {
+            background-color: #d96d56;
+            transform: translateY(-2px);
+        }
 
         .btn-secondary-small {
             background-color: #6c757d;
@@ -104,10 +104,10 @@
             transition: background-color 0.3s, transform 0.3s;
         }
 
-            .btn-secondary-small:hover {
-                background-color: #5a6268;
-                transform: translateY(-2px);
-            }
+        .btn-secondary-small:hover {
+            background-color: #5a6268;
+            transform: translateY(-2px);
+        }
 
         .button-container {
             display: flex;
@@ -116,34 +116,32 @@
             margin-top: 20px;
         }
 
-            .button-container button {
-                width: 48%;
-            }
+        .button-container button {
+            width: 48%;
+        }
 
         /* Add responsiveness */
         media (max-width: 480px) {
-            .form-container
+            .form-container {
+                width: 90%;
+                padding: 15px;
+            }
 
-        {
-            width: 90%;
-            padding: 15px;
-        }
+            h4 {
+                font-size: 1.5em;
+            }
 
-        h4 {
-            font-size: 1.5em;
-        }
+            .button-container button {
+                width: 100%;
+            }
 
-        .button-container button {
-            width: 100%;
-        }
+            .form-row {
+                flex-direction: column;
+            }
 
-        .form-row {
-            flex-direction: column;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
+            .form-group {
+                margin-bottom: 15px;
+            }
         }
     </style>
 </head>

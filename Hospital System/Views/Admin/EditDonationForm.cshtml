@@ -19,7 +19,7 @@
             background: #f7f7f7;
             padding: 20px;
             margin-top: -15px;
-            margin-left: -20px;
+            margin-left:-20px;
         }
 
         .form-container {
@@ -27,12 +27,12 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 30px;
-            margin-top: 10%;
+            margin-top:10%;
             margin-left: 25%;
             max-width: 65%;
             position: relative;
         }
-
+         
         h2 {
             color: #343a40;
             margin-bottom: 20px;
@@ -68,7 +68,6 @@
             outline: none !important;
             margin-top: 20px;
         }
-
             .back-button:hover {
                 background-color: darkblue;
             }
@@ -87,7 +86,7 @@
 </head>
 <body>
     <div class="form-container">
-
+       
         @using (Html.BeginForm("EditDonationForm", "Admin", FormMethod.Post, new { id = "editDonationForm" }))
         {
             <div class="text-center" style="padding: 17px 40px; background: #002147; border-radius:5px; margin-top: -80px; margin-left: -30px; width: 100%; color: white; position: absolute;">
@@ -240,11 +239,11 @@
             </div>
 
             <!-- Submit Button -->
-            <div class="text-center">
-                <button class="back-button" onclick="window.history.back()">Back</button>
+    <div class="text-center">
+        <button class="back-button" onclick="window.history.back()">Back</button>
 
-                <button type="submit" class="btn btn-primary btn-submit">Submit</button>
-            </div>
+        <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+    </div>
         }
     </div>
 

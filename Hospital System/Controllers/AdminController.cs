@@ -11,7 +11,7 @@ namespace Hospital_System.Controllers
 {
     public class AdminController : Controller
     {
-        SqlConnection con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-OUCP9Q2");
+        SqlConnection con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Blood;Data Source=DESKTOP-DQHFGU1\\ANANDSAGAR;");
         SqlCommand cmd = null;
         SqlDataReader reader = null;
 
@@ -69,7 +69,7 @@ namespace Hospital_System.Controllers
         //Approve or Reject Donor
         public ActionResult LEdit(String EmailId)
         {
-
+            
             con.Open();
             AdminModel admin = new AdminModel();
             cmd = new SqlCommand("Select * from DonorInfo where EmailId ='" + EmailId + "' ", con);
@@ -109,11 +109,11 @@ namespace Hospital_System.Controllers
             {
                 string res = "";
                 con.Open();
-                cmd = new SqlCommand("update  DonorInfo set FirstName ='" + admin.FirstName + "', LastName ='" + admin.LastName + "',DateOfBirth ='" + admin.DateOfBirth + "',PhoneNumber='" + admin.PhoneNumber + "',Gender='" + admin.Gender + "',BloodGroup='" + admin.BloodGroup + "',Quantity='" + admin.Quantity + "',Decease='" + admin.Decease + "',StreetAddress='" + admin.StreetAddress + "',City ='" + admin.City + "',State='" + admin.State + "',ZipCode='" + admin.ZipCode + "',Country ='" + admin.Country + "', IsApproved ='" + admin.IsApproved + "' where EmailId='" + admin.EmailId + "'", con);
+                cmd = new SqlCommand("update  DonorInfo set FirstName ='" + admin.FirstName + "', LastName ='" + admin.LastName + "',DateOfBirth ='" + admin.DateOfBirth + "',PhoneNumber='" + admin.PhoneNumber + "',Gender='" + admin.Gender + "',BloodGroup='" + admin.BloodGroup + "',Quantity='" + admin.Quantity + "',Decease='" + admin.Decease + "',StreetAddress='" + admin.StreetAddress + "',City ='" + admin.City + "',State='" + admin.State + "',ZipCode='" + admin.ZipCode + "',Country ='" + admin.Country + "', IsApproved ='"+admin.IsApproved+"' where EmailId='" + admin.EmailId + "'", con);
                 res = cmd.ExecuteNonQuery().ToString();
                 con.Close();
 
-                if (res == "1")
+                if(res=="1")
                 {
                     return RedirectToAction("DonationRequests", "Admin");
                 }
@@ -189,7 +189,7 @@ namespace Hospital_System.Controllers
             cmd.ExecuteNonQuery();
             con.Close();
             return RedirectToAction("ApprovedDonations");
-        }
+        }       
         // For Donor Family.....
         [HttpGet]
         public ActionResult FamilyDetails(AdminModel admin)
@@ -221,9 +221,9 @@ namespace Hospital_System.Controllers
         }
         //Edit Family Details
         public ActionResult REdit(string EmailId)
-        {
+        {            
             con.Open();
-
+            
             cmd = new SqlCommand("Select * from DetailsOfFamilyRelatives where EmailId ='" + EmailId + "' ", con);
             reader = cmd.ExecuteReader();
             if (reader.Read())
@@ -270,7 +270,7 @@ namespace Hospital_System.Controllers
                 }
                 else
                 {
-                    cmd = new SqlCommand("update DetailsOfFamilyRelatives set ReferenceId=" + admin.ReferenceId + ",Name ='" + admin.Name + "',PhoneNumber ='" + admin.PhoneNumber + "',Gender='" + admin.Gender + "',RelationWithDonor='" + admin.RelationWithDonor + "',StreetAddress='" + admin.StreetAddress + "',City='" + admin.City + "',State='" + admin.State + "' ,ZipCode ='" + admin.ZipCode + "',Country ='" + admin.Country + "' where EmailId='" + admin.EmailId + "'  ", con);
+                    cmd = new SqlCommand("update DetailsOfFamilyRelatives set ReferenceId="+ admin.ReferenceId +",Name ='" + admin.Name + "',PhoneNumber ='" + admin.PhoneNumber + "',Gender='" + admin.Gender + "',RelationWithDonor='" + admin.RelationWithDonor + "',StreetAddress='" + admin.StreetAddress + "',City='" + admin.City + "',State='" + admin.State + "' ,ZipCode ='" + admin.ZipCode + "',Country ='" + admin.Country + "' where EmailId='" + admin.EmailId + "'  ", con);
                 }
                 cmd.ExecuteNonQuery();
                 con.Close();
@@ -352,7 +352,7 @@ namespace Hospital_System.Controllers
                 return HttpNotFound();
             }
         }
-        public ActionResult EditBloodRequestForm(AdminModel admin)
+        public ActionResult EditBloodRequestForm(AdminModel admin) 
         {
             if (admin.EmailId != null)
 
@@ -398,7 +398,7 @@ namespace Hospital_System.Controllers
             reader.Close();
             con.Close();
             return View(admins);
-        }
+        }       
         public ActionResult ApprovedBloodRequests(AdminModel admin)
         {
             con.Open();
@@ -446,7 +446,7 @@ namespace Hospital_System.Controllers
             int totalDonors = 0;
             decimal totalBloodUnitsInLiters = 0m;
 
-            using (var con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-OUCP9Q2"))
+            using (var con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Blood;Data Source=DESKTOP-DQHFGU1\\ANANDSAGAR;"))
             {
                 con.Open();
 
@@ -466,13 +466,13 @@ namespace Hospital_System.Controllers
                     cmd.Parameters.AddWithValue("@BloodGroup", bloodGroup);
                     var result = cmd.ExecuteScalar();
                     decimal totalQuantityInLiters = result != DBNull.Value ? Convert.ToDecimal(result) : 0m;
-                    string quantityFormatted = totalQuantityInLiters.ToString("0.0") + "L";
+                    string quantityFormatted = totalQuantityInLiters.ToString("0.0") + "L"; 
                     admins.Add(new AdminModel
                     {
                         BloodGroup = bloodGroup,
                         Quantity = quantityFormatted
                     });
-                    totalBloodUnitsInLiters += totalQuantityInLiters;
+                    totalBloodUnitsInLiters += totalQuantityInLiters; 
                 }
                 using (var donorCmd = new SqlCommand("SELECT COUNT(DISTINCT Id) FROM DonorInfo", con))
                 {
@@ -515,7 +515,7 @@ namespace Hospital_System.Controllers
             con.Close();
             return View(admins);
         }
-        public ActionResult TotalDonors(AdminModel admin)
+        public ActionResult TotalDonors(AdminModel admin) 
         {
             con.Open();
             List<AdminModel> admins = new List<AdminModel>();
@@ -545,13 +545,13 @@ namespace Hospital_System.Controllers
             con.Close();
             return View(admins);
         }
-        public ActionResult LatestDonorInfo(AdminModel admin)
+        public ActionResult LatestDonorInfo(AdminModel admin) 
         {
             con.Open();
             List<AdminModel> admins = new List<AdminModel>();
-            cmd = new SqlCommand("select*from DonorInfo where Id='" + admin.Id + "'", con);
+            cmd = new SqlCommand("select*from DonorInfo where Id='"+ admin.Id+ "'",con);
             reader = cmd.ExecuteReader();
-            while (reader.Read())
+            while (reader.Read()) 
             {
                 admin = new AdminModel();
                 admin.Id = reader.GetInt32(reader.GetOrdinal("Id"));
@@ -579,7 +579,7 @@ namespace Hospital_System.Controllers
         {
             var admins = new List<AdminModel>();
 
-            using (var con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-OUCP9Q2"))
+            using (var con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Blood;Data Source=DESKTOP-DQHFGU1\\ANANDSAGAR;"))
             {
                 con.Open();
                 using (var cmd = new SqlCommand("SELECT * FROM DonorInfo where IsApproved='Completed'", con))

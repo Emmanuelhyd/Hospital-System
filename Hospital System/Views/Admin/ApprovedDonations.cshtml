@@ -72,13 +72,22 @@
             margin-left: 50px;
         }
 
-        .table-responsive table td {
-            color: black !important;
+        .pagination {
+            justify-content: center;
+            margin-top: 20px;
         }
 
-            .table-responsive table td:nth-child(5) {
-                color: black !important;
+            .pagination button {
+                margin: 0 5px;
+                padding: 5px 10px;
+                border-radius: 5px;
             }
+
+                .pagination button:hover {
+                    background-color: darkslategray;
+                    color: white;
+                    cursor: pointer;
+                }
     </style>
 </head>
 <body>
@@ -123,7 +132,7 @@
                         </div>
 
                         <div class="table-responsive table-desi">
-                            <table class="table table-hover" id="donationTable">
+                            <table class="table table-hover" id="donationsTable">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -176,6 +185,10 @@
                                 </tbody>
                             </table>
                         </div>
+
+                        <div id="pagination" class="pagination">
+                            <!-- Pagination buttons will be inserted here -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -183,112 +196,136 @@
     }
 
     <script>
-        // Function to filter table rows based on search input
-        function searchTable(event) {
+        let currentPage = 1;
+        const rowsPerPage =1;  // You can adjust this to show more/less rows per page
+        let filteredRows = [];
+
+        function searchTable() {
             const input = document.getElementById('searchInput');
             const filter = input.value.toLowerCase();
-            const table = document.getElementById('donationTable'); // Corrected to match the table id
+            const table = document.getElementById('donationsTable');
             const rows = table.getElementsByTagName('tr');
-            let noMatchFound = true;  // Flag to track if no match is found
+            const noResultsMessage = document.getElementById('noResultsMessage');
+            let noMatchFound = true;
 
             // Show error message if search input is empty
-            const errorMessage = document.getElementById('errorMessage');
             if (filter === '') {
-                errorMessage.style.display = 'block'; // Show error message
                 removeHighlights(); // Remove any existing highlights if the input is empty
-                return; // Exit if input is empty
-            } else {
-                errorMessage.style.display = 'none'; // Hide error message
+                filteredRows = Array.from(rows).slice(1); // Keep all rows visible if no search term
+                paginate();
+                noResultsMessage.style.display = 'none';
+                return;
             }
 
-            // Loop through all table rows (skipping the header)
-            for (let i = 1; i < rows.length; i++) {
-                const row = rows[i];
+            // Filter rows based on search input
+            filteredRows = Array.from(rows).slice(1).filter(row => {
                 const cells = row.getElementsByTagName('td');
-                let rowContainsFilter = false;
+                return Array.from(cells).some(cell => {
+                    return cell.textContent.toLowerCase().includes(filter);
+                });
+            });
 
-                // Loop through each cell in the row to check if it matches the filter
-                for (let j = 0; j < cells.length; j++) {
-                    const cell = cells[j];
-                    const cellText = cell.textContent.toLowerCase();
-
-                    // If the cell contains the filter text, mark the row and highlight
-                    if (cellText.includes(filter)) {
-                        rowContainsFilter = true;
-
-                        // Highlight matching text
-                        const regex = new RegExp(filter, 'gi');
-                        const originalText = cell.textContent;
-                        const highlightedText = originalText.replace(regex, '<span class="highlight">$&</span>');
-
-                        // Only modify the cell's content if it contains matched text
-                        if (originalText !== highlightedText) {
-                            cell.innerHTML = highlightedText;
-                        }
-                    }
-                }
-
-                // Show or hide the row based on whether it matches the filter
-                row.style.display = rowContainsFilter ? '' : 'none';
-
-                // If a row matches, set noMatchFound to false
-                if (rowContainsFilter) {
-                    noMatchFound = false;
-                }
-            }
-
-            // If no rows match, show the error message
-            const noResultsMessage = document.getElementById('noResultsMessage');
-            if (noMatchFound) {
-                noResultsMessage.style.display = 'block';  // Show message
+            if (filteredRows.length === 0) {
+                noResultsMessage.style.display = 'block';
             } else {
-                noResultsMessage.style.display = 'none';  // Hide message
+                noResultsMessage.style.display = 'none';
             }
+
+            // Highlight matching text
+            highlightSearchResults(filter);
+            paginate();
         }
 
-        // Function to remove highlights (restore original text content)
-        function removeHighlights() {
-            const table = document.getElementById('donationTable');
+        // Function to highlight search terms
+        function highlightSearchResults(searchTerm) {
+            const table = document.getElementById('donationsTable');
             const rows = table.getElementsByTagName('tr');
 
-            // Loop through all table rows (skipping the header)
-            for (let i = 1; i < rows.length; i++) {
-                const row = rows[i];
+            Array.from(rows).forEach(row => {
                 const cells = row.getElementsByTagName('td');
+                Array.from(cells).forEach(cell => {
+                    const originalText = cell.textContent;
+                    const regex = new RegExp(searchTerm, 'gi');
+                    const highlightedText = originalText.replace(regex, match => `<span class="highlight">${match}</span>`);
+                    cell.innerHTML = highlightedText;
+                });
+            });
+        }
 
-                // Loop through each cell and remove any <span> tags with highlights
-                for (let j = 0; j < cells.length; j++) {
-                    const cell = cells[j];
-                    const originalText = cell.textContent; // Get the original text without highlights
-                    cell.innerHTML = originalText; // Replace with the unmodified text
-                }
+        // Function to remove highlights from the table
+        function removeHighlights() {
+            const table = document.getElementById('donationsTable');
+            const rows = table.getElementsByTagName('tr');
+            Array.from(rows).forEach(row => {
+                const cells = row.getElementsByTagName('td');
+                Array.from(cells).forEach(cell => {
+                    const originalText = cell.textContent;
+                    cell.innerHTML = originalText;
+                });
+            });
+        }
+
+        // Pagination function
+        function paginate() {
+            const table = document.getElementById('donationsTable');
+            const rows = filteredRows.length ? filteredRows : Array.from(table.getElementsByTagName('tr')).slice(1); // Filtered rows or all rows
+            const totalRows = rows.length;
+            const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+            // Hide all rows first
+            rows.forEach(row => row.style.display = 'none');
+
+            // Display only rows for current page
+            const startRow = (currentPage - 1) * rowsPerPage;
+            const endRow = Math.min(currentPage * rowsPerPage, totalRows);
+
+            for (let i = startRow; i < endRow; i++) {
+                rows[i].style.display = '';
+            }
+
+            // Create pagination buttons
+            const paginationContainer = document.getElementById('pagination');
+            paginationContainer.innerHTML = ''; // Clear existing pagination buttons
+
+            // Previous button
+            if (currentPage > 1) {
+                const prevButton = document.createElement('button');
+                prevButton.className = 'btn btn-secondary';
+                prevButton.innerHTML = 'Previous';
+                prevButton.onclick = () => {
+                    currentPage--;
+                    paginate();
+                };
+                paginationContainer.appendChild(prevButton);
+            }
+
+            // Page number buttons
+            for (let page = 1; page <= totalPages; page++) {
+                const pageButton = document.createElement('button');
+                pageButton.className = 'btn btn-secondary';
+                pageButton.innerHTML = page;
+                pageButton.onclick = () => {
+                    currentPage = page;
+                    paginate();
+                };
+                paginationContainer.appendChild(pageButton);
+            }
+
+            // Next button
+            if (currentPage < totalPages) {
+                const nextButton = document.createElement('button');
+                nextButton.className = 'btn btn-secondary';
+                nextButton.innerHTML = 'Next';
+                nextButton.onclick = () => {
+                    currentPage++;
+                    paginate();
+                };
+                paginationContainer.appendChild(nextButton);
             }
         }
 
-        // Add an event listener to trigger search on 'Enter' key press
-        document.getElementById('searchInput').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                searchTable(e); // Trigger the search when 'Enter' is pressed
-            }
-        });
-
-        // Add event listener to hide the error message when the input box is focused (clicked)
-        document.getElementById('searchInput').addEventListener('focus', function () {
-            const errorMessage = document.getElementById('errorMessage');
-            errorMessage.style.display = 'none'; // Hide the error message when input is focused
-        });
-
-        // Add event listener to show the error message only if input is empty when clicking the search button
-        document.getElementById('searchButton').addEventListener('click', function () {
-            const input = document.getElementById('searchInput');
-            const filter = input.value.trim();
-            const errorMessage = document.getElementById('errorMessage');
-
-            // Show error message if input is empty when the search button is clicked
-            if (filter === '') {
-                errorMessage.style.display = 'block';
-            }
-        });
+        // Initialize pagination on page load
+        window.onload = paginate;
     </script>
 </body>
 </html>

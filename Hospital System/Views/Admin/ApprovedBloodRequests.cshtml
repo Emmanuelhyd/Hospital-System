@@ -3,7 +3,6 @@
 @{
     Layout = "~/Views/Shared/_LayoutBlood.cshtml";
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,29 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Approved Blood Requests</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
-
     <style>
-        .btn-remove {
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-            .btn-remove .btn-icon {
-                margin-right: 4px;
-            }
-
-        .btn-remove {
-            color: #007bff;
-            font-size: 16px;
-            padding: 5px 10px;
-        }
-
-            .btn-remove:hover {
-                color: #0056b3;
-                text-decoration: none;
-            }
-
         .search-box {
             margin-bottom: 20px;
             display: flex;
@@ -59,7 +36,7 @@
             color: red;
             font-weight: bold;
             margin-top: 10px;
-            display: none;
+            display: none; /* Hidden by default */
         }
 
         .search-btn {
@@ -83,10 +60,27 @@
             .table-responsive table td:nth-child(5) {
                 color: black !important;
             }
+
+        /* Pagination styles */
+        .pagination {
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+            .pagination button {
+                margin: 0 5px; /* Add gap between page numbers */
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+
+                .pagination button:hover {
+                    background-color: darkslategray;
+                    color: white;
+                    cursor: pointer;
+                }
     </style>
 </head>
 <body>
-
     @using (Html.BeginForm("Admin", "ApprovedBloodRequests"))
     {
         <div class="sb2-2" style="margin-top:63px; height: 92%;">
@@ -114,89 +108,90 @@
 
                     <div class="tab-inn">
                         <div class="search-box">
-                            <input type="text" id="searchInput" class="form-control" placeholder="Search by ID, name, email, or phone..." />
-                            <button type="button" id="searchButton" class="btn btn-primary search-btn">Search</button>
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search by ID, name, email, or phone..." onkeyup="searchTable()" />
+                            <button type="button" class="btn btn-primary search-btn" id="searchButton" onclick="searchTable()">Search</button>
                         </div>
                         <div id="emptySearchMessage" class="error-message">
                             Please enter a search term before searching.
                         </div>
+
+                        <!-- Error Message Display -->
                         <div id="noResultsMessage" class="error-message">
                             No results found for your search. Please try again with different criteria.
                         </div>
 
-                        <!-- Message when model is empty -->
-                        @if (!Model.Any())
-                        {
-                            <div class="alert alert-warning">No blood requests available.</div>
-                        }
-                        else
-                        {
-                            <div class="table-responsive table-desi">
-                                <table class="table table-hover" id="donationTable">
-                                    <thead>
+                        <div class="table-responsive table-desi">
+                            <table class="table table-hover" id="donationsTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>ReferenceId</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email Id</th>
+                                        <th>Phone Number</th>
+                                        <th>Gender</th>
+                                        <th>Blood Group</th>
+                                        <th>Quantity</th>
+                                        <th>Decease</th>
+                                        <th>City</th>
+                                        <th>State</th>
+                                        <th>Country</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var admin in Model)
+                                    {
                                         <tr>
-                                            <th>ID</th>
-                                            <th>ReferenceId</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Email Id</th>
-                                            <th>Phone Number</th>
-                                            <th>Gender</th>
-                                            <th>Blood Group</th>
-                                            <th>Quantity</th>
-                                            <th>Decease</th>
-                                            <th>City</th>
-                                            <th>State</th>
-                                            <th>Country</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
+                                            <td>@Html.DisplayFor(m => admin.Id)</td>
+                                            <td>@Html.DisplayFor(m => admin.ReferenceId)</td>
+                                            <td>@Html.DisplayFor(m => admin.FirstName)</td>
+                                            <td>@Html.DisplayFor(m => admin.LastName)</td>
+                                            <td>@Html.DisplayFor(m => admin.EmailId)</td>
+                                            <td>@Html.DisplayFor(m => admin.PhoneNumber)</td>
+                                            <td>@Html.DisplayFor(m => admin.Gender)</td>
+                                            <td>@Html.DisplayFor(m => admin.BloodGroup)</td>
+                                            <td>@Html.DisplayFor(m => admin.Quantity)</td>
+                                            <td>@Html.DisplayFor(m => admin.Decease)</td>
+                                            <td>@Html.DisplayFor(m => admin.City)</td>
+                                            <td>@Html.DisplayFor(m => admin.State)</td>
+                                            <td>@Html.DisplayFor(m => admin.Country)</td>
+                                            <td>@Html.DisplayFor(m => admin.IsApproved)</td>
+                                            <td class="action-links">
+                                                <a href="@Url.Action("DRemove", "Admin", new { EmailId = admin.EmailId })"
+                                                   class="btn-remove"
+                                                   onclick="return confirm('Are you sure you want to remove this request?');">
+                                                    <i class="fas fa-trash-alt" style="color: red; background: none; font-size: 20px;"></i>
+                                                </a>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var admin in Model)
-                                        {
-                                            <tr>
-                                                <td>@Html.DisplayFor(m => admin.Id)</td>
-                                                <td>@Html.DisplayFor(m => admin.ReferenceId)</td>
-                                                <td>@Html.DisplayFor(m => admin.FirstName)</td>
-                                                <td>@Html.DisplayFor(m => admin.LastName)</td>
-                                                <td>@Html.DisplayFor(m => admin.EmailId)</td>
-                                                <td>@Html.DisplayFor(m => admin.PhoneNumber)</td>
-                                                <td>@Html.DisplayFor(m => admin.Gender)</td>
-                                                <td>@Html.DisplayFor(m => admin.BloodGroup)</td>
-                                                <td>@Html.DisplayFor(m => admin.Quantity)</td>
-                                                <td>@Html.DisplayFor(m => admin.Decease)</td>
-                                                <td>@Html.DisplayFor(m => admin.City)</td>
-                                                <td>@Html.DisplayFor(m => admin.State)</td>
-                                                <td>@Html.DisplayFor(m => admin.Country)</td>
-                                                <td>@Html.DisplayFor(m => admin.IsApproved)</td>
-                                                <td class="action-links">
-                                                    <a href="@Url.Action("DRemove", "Admin", new { EmailId = admin.EmailId })"
-                                                       class="btn-remove"
-                                                       onclick="return confirm('Are you sure you want to remove this request?');">
-                                                        <i class="fas fa-trash-alt" style="color: red; background: none; font-size: 20px;"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
-                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Pagination controls -->
+                        <div id="pagination" class="pagination">
+                            <!-- Pagination buttons will be inserted here -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     }
-
     <script>
-        // Function to filter table rows based on search input
-        function searchTable(event) {
+        let currentPage = 1;
+        const rowsPerPage =1;  // Changed to 2 rows per page
+
+        function searchTable() {
             const input = document.getElementById('searchInput');
             const filter = input.value.toLowerCase();
-            const table = document.getElementById('donationTable');
+            const table = document.getElementById('donationsTable');
             const rows = table.getElementsByTagName('tr');
-            let noMatchFound = true;  // Flag to track if no match is found
+            const noResultsMessage = document.getElementById('noResultsMessage');
+            let noMatchFound = true;
 
             // Show error message if search input is empty
             const errorMessage = document.getElementById('emptySearchMessage');
@@ -219,7 +214,6 @@
                     const cell = cells[j];
                     const cellText = cell.textContent.toLowerCase();
 
-                    // If the cell contains the filter text, mark the row and highlight
                     if (cellText.includes(filter)) {
                         rowContainsFilter = true;
 
@@ -228,7 +222,6 @@
                         const originalText = cell.textContent;
                         const highlightedText = originalText.replace(regex, '<span class="highlight">$&</span>');
 
-                        // Only modify the cell's content if it contains matched text
                         if (originalText !== highlightedText) {
                             cell.innerHTML = highlightedText;
                         }
@@ -245,52 +238,96 @@
             }
 
             // If no rows match, show the error message
-            const noResultsMessage = document.getElementById('noResultsMessage');
             if (noMatchFound) {
                 noResultsMessage.style.display = 'block';  // Show message
             } else {
                 noResultsMessage.style.display = 'none';  // Hide message
             }
+
+            // Paginate the results
+            paginate();
         }
 
-        // Function to remove highlights from table cells
+        // Function to remove highlights
         function removeHighlights() {
-            const table = document.getElementById('donationTable');
+            const table = document.getElementById('donationsTable');
             const rows = table.getElementsByTagName('tr');
+
             for (let i = 1; i < rows.length; i++) {
-                const cells = rows[i].getElementsByTagName('td');
+                const row = rows[i];
+                const cells = row.getElementsByTagName('td');
+
                 for (let j = 0; j < cells.length; j++) {
-                    cells[j].innerHTML = cells[j].textContent; // Reset cell content
+                    const cell = cells[j];
+                    const originalText = cell.textContent;
+                    cell.innerHTML = originalText;
                 }
             }
         }
 
-        // Attach the search function to the search input field
-        document.getElementById('searchInput').addEventListener('input', searchTable);
+        // Function to handle pagination
+        function paginate() {
+            const table = document.getElementById('donationsTable');
+            const rows = table.getElementsByTagName('tr');
+            const totalRows = rows.length - 1; // Exclude the header row
+            const totalPages = Math.ceil(totalRows / rowsPerPage);
 
-        // Show error when clicking the search button with an empty input
-        document.getElementById('searchButton').addEventListener('click', function () {
-            const input = document.getElementById('searchInput');
-            const filter = input.value.trim();
-            const errorMessage = document.getElementById('emptySearchMessage');
-            if (!filter) {
-                errorMessage.style.display = 'block'; // Show error if empty
+            // Hide all rows first
+            for (let i = 1; i <= totalRows; i++) {
+                rows[i].style.display = 'none';
             }
-        });
 
-        // Hide error message when the user starts typing in the search input
-        document.getElementById('searchInput').addEventListener('focus', function () {
-            const errorMessage = document.getElementById('emptySearchMessage');
-            errorMessage.style.display = 'none';
-        });
+            // Display only the rows for the current page
+            const startRow = (currentPage - 1) * rowsPerPage + 1;
+            const endRow = Math.min(currentPage * rowsPerPage, totalRows);
 
-        // Hide error message when the input is cleared
-        document.getElementById('searchInput').addEventListener('input', function () {
-            const errorMessage = document.getElementById('emptySearchMessage');
-            if (!this.value) {
-                errorMessage.style.display = 'none';
+            for (let i = startRow; i <= endRow; i++) {
+                rows[i].style.display = '';
             }
-        });
+
+            // Create pagination buttons
+            const paginationContainer = document.getElementById('pagination');
+            paginationContainer.innerHTML = ''; // Clear existing pagination buttons
+
+            // Previous button
+            if (currentPage > 1) {
+                const prevButton = document.createElement('button');
+                prevButton.className = 'btn btn-secondary';
+                prevButton.innerHTML = 'Previous';
+                prevButton.onclick = function () {
+                    currentPage--;
+                    paginate();
+                };
+                paginationContainer.appendChild(prevButton);
+            }
+
+            // Page number buttons
+            for (let page = 1; page <= totalPages; page++) {
+                const pageButton = document.createElement('button');
+                pageButton.className = 'btn btn-secondary';
+                pageButton.innerHTML = page;
+                pageButton.onclick = function () {
+                    currentPage = page;
+                    paginate();
+                };
+                paginationContainer.appendChild(pageButton);
+            }
+
+            // Next button
+            if (currentPage < totalPages) {
+                const nextButton = document.createElement('button');
+                nextButton.className = 'btn btn-secondary';
+                nextButton.innerHTML = 'Next';
+                nextButton.onclick = function () {
+                    currentPage++;
+                    paginate();
+                };
+                paginationContainer.appendChild(nextButton);
+            }
+        }
+
+        // Initialize pagination on page load
+        window.onload = paginate;
     </script>
 </body>
 </html>
