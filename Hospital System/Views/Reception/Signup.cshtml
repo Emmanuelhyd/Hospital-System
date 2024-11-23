@@ -1,0 +1,198 @@
+﻿
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Shared/_LayoutPatRec.cshtml";
+}
+
+<h2>Signup</h2>
+
+@model Hospital_System.Models.Patients
+
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Shared/_LayoutPatRec.cshtml";
+}
+
+<style>
+    /* Full-page background image */
+    /*html, body {
+        height: 100%;*/ /* Ensures the background covers the full height of the page */
+        /*margin: 0;*/ /* Removes any default margin */
+        /*padding: 0;*/ /* Removes any padding */
+    /*}*/
+
+    body {
+        background-image: url('/Images/portrait-male-doctors-nurse-using-digital-tablet-corridor_107420-71369.png'); /* Correct path to your image */
+        background-size: cover; /* Ensures the image covers the entire viewport */
+        background-position: center center; /* Centers the image */
+        background-repeat: no-repeat; /* Prevents the image from repeating */
+        background-attachment: fixed; /* Keeps the background fixed when scrolling */
+        margin: -1%;
+        padding: 0;
+        
+    }
+
+        /* Optional: Add a semi-transparent overlay to darken the background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 90%;
+            width: 100%;
+            margin-top: -40px;
+            /* height: 120vh;*/
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
+            z-index: -1; /* Place the overlay behind all content */
+        }
+
+    /* Form container styling */
+    .form-container {
+        width: 36%;
+      /*  margin: 50px auto;*/
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: rgba(255, 255, 255, 0.9);
+        /* border-radius: 8px;*/
+        position: absolute;
+        /* z-index: 1; */
+        margin-left: 436px;
+        margin-top: -10px;
+
+    }
+
+    /* Form elements styling */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        height: 42px;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, .6);
+        }
+
+    .btn {
+        background-color: #e74715;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        border-color: #e74715;
+    }
+
+        .btn:hover {
+            background-color: #c03f12;
+        }
+
+    .text-danger {
+        color: #dc3545;
+    }
+</style>
+
+<body>
+    @using (Html.BeginForm("Insertprofile", "Patient"))
+    {
+        <div style="padding: 14px 36px; background: #002147; margin-top: 21px; margin-left: 436px; width: 454px; color: white;  ">
+            <h4>Register here!</h4>
+        </div>
+
+        @Html.AntiForgeryToken()
+
+        <!-- Display result or error messages -->
+        <div class="result" style="display: @(TempData["result"] != null ? "block" : "none")">
+            @TempData["result"]
+        </div>
+        <div class="error" style="display: @(TempData["error"] != null ? "block" : "none")">
+            @TempData["error"]
+        </div>
+
+        <div class="form-container">
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName, new
+                {
+                    @class = "form-control",
+                    @placeholder = "Enter Your Name",
+                    @required = "required",
+                    @pattern = "^[A-Za-z\\s]+$",
+                    @title = "Please enter a valid name (letters and spaces only)"
+                })
+                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.FirstName, new
+                {
+                    @class = "form-control",
+                    @placeholder = "Enter Your FirstName",
+                    @required = "required",
+                    @pattern = "^[A-Za-z\\s]+$",
+                    @title = "Please enter a valid name (letters and spaces only)"
+                })
+                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.LastName)
+                @Html.TextBoxFor(m => m.LastName, new
+                {
+                    @class = "form-control",
+                    @placeholder = "Enter Your LastName",
+                    @required = "required",
+                    @pattern = "^[A-Za-z\\s]+$",
+                    @title = "Please enter a valid name (letters and spaces only)"
+                })
+                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email", @class = "form-control", @type = "email", @required = "required" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password, new
+                {
+                    @placeholder = "Password",
+                    @class = "form-control",
+                    @required = "required",
+                    @pattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}",
+                    @title = "Password must be at least 8 characters long, include an uppercase letter, a number, and a special character."
+                })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.PhoneNo)
+                @Html.TextBoxFor(m => m.PhoneNo, new { @placeholder = "Phone Number", @class = "form-control", @pattern = @"^[6789]\d{9}$", @title = "Phone number must be 10 digits and start with 6, 7, 8, or 9.", @required = "required" })
+                @Html.ValidationMessageFor(m => m.PhoneNo, "", new { @class = "text-danger" })
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-row">
+                <input type="submit" value="Register" class="btn" />
+            </div>
+        </div>
+    }
+</body>
