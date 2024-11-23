@@ -14,7 +14,7 @@ namespace Hospital_System.Controllers
 {
     public class UserController : Controller
     {
-        SqlConnection con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Blood;Data Source=DESKTOP-DQHFGU1\\ANANDSAGAR");
+        SqlConnection con = new SqlConnection("Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-OUCP9Q2");
         SqlCommand cmd = null;
         SqlDataReader reader = null;
         // GET: User
@@ -27,7 +27,7 @@ namespace Hospital_System.Controllers
             var bloodGroups = new List<string> { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" };
             var users = new List<UserModel>();
 
-            var connectionString = "Uid=sa;Password=123;Initial Catalog=Blood;Data Source=DESKTOP-DQHFGU1\\ANANDSAGAR;";
+            var connectionString = "Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-OUCP9Q2;";
             using (var con = new SqlConnection(connectionString))
             {
                 con.Open();
@@ -108,7 +108,7 @@ namespace Hospital_System.Controllers
             return View();
         }
 
-        private string connectionString = "Uid=sa;Password=123;Initial Catalog=Blood;Data Source=DESKTOP-DQHFGU1\\ANANDSAGAR;";
+            private string connectionString = "Uid=sa;Password=123;Initial Catalog=Hospital;Data Source=DESKTOP-OUCP9Q2;";
 
         [HttpGet]
         public ActionResult ForgotPassword()
