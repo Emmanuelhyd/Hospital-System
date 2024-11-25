@@ -52,10 +52,10 @@
             <div class="box-inn-sp">
                 <div class="inn-title">
                     @*<li class="page-back">
-                            <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
-                        </li>*@
+            <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+        </li>*@
                     <h4>Attendance List</h4>
-
+                    <input type="button" value="Add New" style="position: absolute; margin-left: 189px; margin-top: -29px; color: white; background-color: #58b392; border-color: #58b392; border-radius: 5px; width: 7%; height: 36px; " onclick="window.location.href='@Url.Action("AddAttend", "Attendance")'">
                 </div>
 
                 <div class="tab-inn">
@@ -73,6 +73,7 @@
                                     <th> LoginTime</th>
                                     <th> LogoutTime</th>
                                     <th> Status</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -89,6 +90,14 @@
                                         <td>@Html.DisplayFor(m => item.LoginTime)</td>
                                         <td>@Html.DisplayFor(m => item.LogoutTime)</td>
                                         <td>@Html.DisplayFor(m => item.Status)</td>
+                                        <td style="display:flex;gap:5px;">
+                                            <a href="@Url.Action("AttendanceE", new { Id = item.Id })" title="Edit">
+                                                <i class="fas fa-edit" style="color: blue; font-size: 20px; background:none;"></i>
+                                            </a>
+                                            <a href="@Url.Action("AttendId", "Attendance", new { Id = item.Id })"><i class="fas fa-eye"></i></a>
+                                        
+                                        </td>
+
                                     </tr>
                                 }
                             </tbody>

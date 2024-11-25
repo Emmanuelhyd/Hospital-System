@@ -16,5 +16,25 @@ namespace Hospital_System.BAL
         {
             return ambulancedal.GetAmbulanceDetails();
         }
+
+        public List<AmbulanceDetails> AddAmbulance(AmbulanceDetails ambulanceDo)
+        {
+            List<AmbulanceDetails> ambulanceDos = new List<AmbulanceDetails>();
+            ambulanceDos = ambulancedal.AddAmbulance(ambulanceDo);
+            return ambulanceDos;
+        }
+
+        //Ambulance edit
+        public AmbulanceDetails AmbE(int Id)
+        {
+            AmbulanceDetails ambulanceDo = ambulancedal.AmbE(Id);
+
+            return ambulanceDo;
+        }
+
+        public AmbulanceDetails AmbulanceId(int Id)
+        {
+            return ambulancedal.AmbulanceId(Id);
+        }
     }
 }

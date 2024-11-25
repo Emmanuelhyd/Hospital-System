@@ -1,7 +1,7 @@
-﻿@model Hospital_System.Models.Vaccines
+﻿@model Hospital_System.Models.Doctor
 
 @{
-    ViewBag.Title = "VaccinesById";
+    ViewBag.Title = "DoctorDetails";
     Layout = null;
 }
 
@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Vaccination Details</title>
+    <title>Doctor Details</title>
     <style>
         /* Container styling */
         .container {
@@ -80,53 +80,40 @@
 </head>
 
 <body style="background-color: #e3e8ea;">
-    <div id="VaccinationDetailsContent">
+    <div id="DoctorDetailsContent">
 
         <!-- Header Section -->
         <div class="header">
-            <h4>Vaccination Details</h4>
+            <h4>Doctor Details</h4>
         </div>
 
-        <!-- Vaccination Details Container -->
+        <!-- Doctor Details Container -->
         <div class="container">
 
             <div class="field">
-                <strong>Vaccination ID:</strong> @Model.VaccineId
+                <strong>Name:</strong> <span>@Model.FullName</span>
             </div>
             <div class="field">
-                <strong>Patient Name:</strong> @Model.PatientName
+                <strong>Email:</strong> <span>@Model.Email</span>
             </div>
             <div class="field">
-                <strong>Age:</strong> @Model.Age
+                <strong>Department:</strong> <span>@Model.Department</span>
             </div>
             <div class="field">
-                <strong>Doctor Name:</strong> @Model.DoctorName
+                <strong>Education:</strong> <span>@Model.Education</span>
             </div>
             <div class="field">
-                <strong>Vaccination Type:</strong> @Model.VaccineType
+                <strong>Designation:</strong> <span>@Model.Designation</span>
             </div>
             <div class="field">
-                <strong>Date of Vaccination:</strong> @Model.DateOfVaccination
+                <strong>Status:</strong> <span>@Model.Status</span>
             </div>
             <div class="field">
-                <strong>Dosage:</strong> @Model.Dosage
-            </div>
-            <div class="field">
-                <strong>Follow-Up Date:</strong> @Model.FollowupDate
-            </div>
-            <div class="field">
-                <strong>Next Due Date:</strong> @Model.NextDueDate
-            </div>
-            <div class="field">
-                <strong>Reaction:</strong> @Model.ReactionType
-            </div>
-            <div class="field">
-                <strong>Status:</strong> @Model.Status
+                <strong>Phone:</strong> <span>@Model.PhoneNo</span>
             </div>
 
         </div>
 
-      
 
     </div>
 
@@ -136,13 +123,13 @@
 
     <script>
         function downloadPDF() {
-            const element = document.getElementById("VaccinationDetailsContent");
+            const element = document.getElementById("DoctorDetailsContent");
 
-            // Convert the vaccination details content to a PDF using html2pdf.js
+            // Convert the doctor details content to a PDF using html2pdf.js
             html2pdf()
                 .from(element)
                 .set({
-                    filename: 'Vaccination_Details.pdf',  // Name of the downloaded file
+                    filename: 'Doctor_Details.pdf',  // Name of the downloaded file
                     html2canvas: { scale: 4 },  // Increase the scale for better quality
                     jsPDF: {
                         unit: "mm",  // Units for the PDF (millimeters)

@@ -1,7 +1,7 @@
-﻿@model Hospital_System.Models.Vaccines
+﻿@model Hospital_System.Models.AmbulanceDetails
 
 @{
-    ViewBag.Title = "VaccinesById";
+    ViewBag.Title = "AmbulanceDetails";
     Layout = null;
 }
 
@@ -9,7 +9,8 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Vaccination Details</title>
+    <title>Ambulance Details</title>
+
     <style>
         /* Container styling */
         .container {
@@ -80,69 +81,49 @@
 </head>
 
 <body style="background-color: #e3e8ea;">
-    <div id="VaccinationDetailsContent">
+    <div id="AmbulanceDetailsContent">
 
         <!-- Header Section -->
         <div class="header">
-            <h4>Vaccination Details</h4>
+            <h4>Ambulance Details</h4>
         </div>
 
-        <!-- Vaccination Details Container -->
+        <!-- Ambulance Details Container -->
         <div class="container">
-
             <div class="field">
-                <strong>Vaccination ID:</strong> @Model.VaccineId
+                <strong>Id:</strong> <span>@Model.Id</span>
             </div>
             <div class="field">
-                <strong>Patient Name:</strong> @Model.PatientName
+                <strong>Name:</strong> <span>@Model.Name</span>
             </div>
             <div class="field">
-                <strong>Age:</strong> @Model.Age
+                <strong>Ambulance Id:</strong> <span>@Model.AmbulanceId</span>
             </div>
             <div class="field">
-                <strong>Doctor Name:</strong> @Model.DoctorName
+                <strong>Ambulance Status:</strong> <span>@Model.AmbulanceStatus</span>
             </div>
             <div class="field">
-                <strong>Vaccination Type:</strong> @Model.VaccineType
+                <strong>Driver Name:</strong> <span>@Model.DriverName</span>
             </div>
             <div class="field">
-                <strong>Date of Vaccination:</strong> @Model.DateOfVaccination
+                <strong>Driver Id:</strong> <span>@Model.DriverId</span>
             </div>
-            <div class="field">
-                <strong>Dosage:</strong> @Model.Dosage
-            </div>
-            <div class="field">
-                <strong>Follow-Up Date:</strong> @Model.FollowupDate
-            </div>
-            <div class="field">
-                <strong>Next Due Date:</strong> @Model.NextDueDate
-            </div>
-            <div class="field">
-                <strong>Reaction:</strong> @Model.ReactionType
-            </div>
-            <div class="field">
-                <strong>Status:</strong> @Model.Status
-            </div>
-
         </div>
-
-      
 
     </div>
 
     <!-- Button to trigger PDF download -->
     <button id="downloadBtn" onclick="downloadPDF()">Download PDF</button>
 
-
     <script>
         function downloadPDF() {
-            const element = document.getElementById("VaccinationDetailsContent");
+            const element = document.getElementById("AmbulanceDetailsContent");
 
-            // Convert the vaccination details content to a PDF using html2pdf.js
+            // Convert the ambulance details content to a PDF using html2pdf.js
             html2pdf()
                 .from(element)
                 .set({
-                    filename: 'Vaccination_Details.pdf',  // Name of the downloaded file
+                    filename: 'Ambulance_Details.pdf',  // Name of the downloaded file
                     html2canvas: { scale: 4 },  // Increase the scale for better quality
                     jsPDF: {
                         unit: "mm",  // Units for the PDF (millimeters)

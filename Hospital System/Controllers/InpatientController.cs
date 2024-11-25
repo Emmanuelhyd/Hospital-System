@@ -1,4 +1,5 @@
 ﻿using Hospital_System.BAL;
+using Hospital_System.DAL;
 using Hospital_System.Models;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,21 @@ namespace Hospital_System.Controllers
         {
             var model = inpatientBal.GetDoctors();
             return View(model);
+        }
+
+        public ActionResult DoctorId(int DoctorId)
+        {
+            Doctor doctor = inpatientBal.GetDoctorsId(DoctorId);
+
+            if (doctor == null)
+            {
+                return HttpNotFound("ID not found");
+            }
+
+            return View(doctor);
+
+
+
         }
     }
 }

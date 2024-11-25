@@ -2,159 +2,129 @@
 
 @{
     ViewBag.Title = "DischargeId";
-    Layout = "~/Views/Shared/_LayoutPatRec.cshtml";
+    Layout = null;
 }
 
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Discharge Summary</title>
     <style>
-
-
+        /* Patient Details Container */
         .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 30px;
-            background-color: #fff;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            /* border-radius: 10px; */
-            border: 1px solid #f1f1f1;
-            margin-top: 1px;
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 28px;
-            color: #333;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .info {
-            margin-bottom: 25px;
+            margin-left: 198px;
             padding: 20px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            background-color: #fafafa;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            line-height: 1.8;
+            margin-top: 1px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            width: 672px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
         }
 
-            .info strong {
-                color: #5a5a5a;
+            .container .field {
+                margin-bottom: 15px; /* Adds space between fields */
                 font-size: 16px;
-                display: inline-block;
-                margin-bottom: 10px;
             }
 
-            .info p {
-                color: #333;
-                margin-bottom: 15px;
-                font-size: 15px;
-            }
-
-            .info hr {
-                border: 0;
-                border-top: 1px solid #ddd;
-                margin: 10px 0;
-            }
-
-            .info .label {
-                font-weight: bold;
-                color: #007BFF;
-            }
-
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #777;
-        }
-
-            .footer a {
-                color: #007BFF;
-                text-decoration: none;
-            }
-
-                .footer a:hover {
-                    text-decoration: underline;
+                .container .field strong {
+                    font-size: 18px;
+                    color: #003366; /* A darker color for the labels */
                 }
 
-        .action-buttons {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-            .action-buttons button {
-                padding: 12px 18px;
-                background-color: #007BFF;
-                color: #fff;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                font-size: 16px;
-                transition: background-color 0.3s;
-                margin-left: -989px;
+            .container .field {
+                padding: 10px;
+                background-color: #f9f9f9;
+                border-radius: 3px;
             }
 
-                .action-buttons button:hover {
-                    background-color: #0056b3;
+                .container .field:last-child {
+                    margin-bottom: 0;
                 }
+
+        /* Button styling for PDF download */
+        #downloadBtn {
+            background-color: #002147;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            width: 12%;
+            text-align: center;
+            margin-left: 440px;
+        }
+
+            #downloadBtn:hover {
+                background-color: #002147;
+            }
+
+        /* Header Styling */
+        .header {
+            padding: 14px 36px;
+            background: #002147;
+            margin-top: 27px;
+            margin-left: 199px;
+            width: 641px;
+            color: white;
+        }
     </style>
+
+    <!-- Include html2pdf.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
 </head>
 
-<div class="sb2-2" style="margin-top:58px; height:140vh;">
-    <div class="sb2-2-2">
-        <ul>
-            <li>
-                <a href="/Reception/Reception"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
-            </li>
-            <li class="active-bre">
-                <a href="#"> DischargeDetails</a>
-            </li>
-            <li class="page-back">
-                <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
-            </li>
-        </ul>
-    </div>
-
-
-    <div style="padding: 14px 36px; background: #002147; margin-top: 6px; margin-left: 99px; width: 799px; color: white;">
-        <h4>Discharge Summary</h4>
-
-    </div>
-
-    <div class="container">
-
-
-
-        <div class="info">
-            <strong>Name:</strong> @Model.PatientName
-            <hr />
-            <strong>Reason for Discharge:</strong> @Model.Reason
-            <hr />
-            <strong>Diagnosis/Findings:</strong> @Model.Findings
-            <hr />
-            <strong>Lab Reports:</strong> @Model.Labreports
-            <hr />
-            <strong>Admission Date:</strong> @Model.AdmissionDate
-            <hr />
-            <strong>Procedure and Treatment:</strong> @Model.ProcedureandTreatment
-            <hr />
-            <strong>Treatment Duration:</strong> @Model.TreatmentDuration
-            <hr />
-            <strong>Discharge Date:</strong> @Model.DischargeDate
-            <hr />
-            <strong>Further Instructions:</strong> @Model.FurtherInstruction
-            <hr />
-            <strong>Follow-up Details:</strong> @Model.Followup
+<body style="background-color: #e3e8ea;">
+    <div id="DischargeSummaryContent">
+        <!-- Discharge Summary Header -->
+        <div class="header">
+            <h4>Discharge Summary</h4>
         </div>
 
+        <!-- Discharge Details Container -->
+        <div class="container">
 
+            <div class="field"><strong>Name:</strong> @Model.PatientName</div>
+            <div class="field"><strong>Reason for Discharge:</strong> @Model.Reason</div>
+            <div class="field"><strong>Diagnosis/Findings:</strong> @Model.Findings</div>
+            <div class="field"><strong>Lab Reports:</strong> @Model.Labreports</div>
+            <div class="field"><strong>Admission Date:</strong> @Model.AdmissionDate</div>
+            <div class="field"><strong>Procedure and Treatment:</strong> @Model.ProcedureandTreatment</div>
+            <div class="field"><strong>Treatment Duration:</strong> @Model.TreatmentDuration</div>
+            <div class="field"><strong>Discharge Date:</strong> @Model.DischargeDate</div>
+            <div class="field"><strong>Further Instructions:</strong> @Model.FurtherInstruction</div>
+            <div class="field"><strong>Follow-up Details:</strong> @Model.Followup</div>
 
+        </div>
 
-    </div>
+    </div> 
 
+    <button id="downloadBtn" onclick="downloadPDF()">Download PDF</button>
+
+    <script>
+        function downloadPDF() {
+            const element = document.getElementById("DischargeSummaryContent");
+
+            // Convert the discharge summary content to a PDF using html2pdf.js
+            html2pdf()
+                .from(element)
+                .set({
+                    filename: 'Discharge_Summary.pdf',  // Name of the downloaded file
+                    html2canvas: { scale: 4 },  // Increase the scale for better quality
+                    jsPDF: {
+                        unit: "mm",  // Units for the PDF (millimeters)
+                        format: "a4",  // Paper size (A4)
+                        orientation: "landscape",  // Portrait orientation
+                        margins: { top: 15, bottom: 15, left: 15, right: 15 }  // Add margins to avoid clipping
+                    }
+                })
+                .save();  // Save the PDF
+        }
+    </script>
+
+</body>
+</html>

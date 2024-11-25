@@ -15,5 +15,25 @@ namespace Hospital_System.BAL
         {
             return attendDAL.AttendanceDetails();
         }
+
+        public List<Attend> AddAttend(Attend attendanceDo)
+        {
+            List<Attend> attendanceDos = new List<Attend>();
+            attendanceDos = attendDAL.AddAttend(attendanceDo);
+            return attendanceDos;
+        }
+
+        //Attendance edit
+        public Attend AttendanceE(int Id)
+        {
+            Attend attendanceDos = attendDAL.AttendanceE(Id);
+
+            return attendanceDos;
+        }
+
+        public Attend AttendId(int Id)
+        {
+            return attendDAL.AttendId(Id);
+        }
     }
 }

@@ -38,5 +38,10 @@ namespace Hospital_System.BAL
         {
             return inpatientsDAL.GetDoctors();
         }
+
+        public Doctor GetDoctorsId(int DoctorId)
+        {
+            return inpatientsDAL.GetDoctorsId(DoctorId);
+        }
     }
 }

@@ -1,10 +1,5 @@
 ﻿
-@{
-    ViewBag.Title = "Signup";
-    Layout = "~/Views/Shared/_LayoutPatRec.cshtml";
-}
 
-<h2>Signup</h2>
 
 @model Hospital_System.Models.Patients
 
@@ -17,48 +12,24 @@
     /* Full-page background image */
     /*html, body {
         height: 100%;*/ /* Ensures the background covers the full height of the page */
-        /*margin: 0;*/ /* Removes any default margin */
-        /*padding: 0;*/ /* Removes any padding */
+    /*margin: 0;*/ /* Removes any default margin */
+    /*padding: 0;*/ /* Removes any padding */
     /*}*/
 
-    body {
-        background-image: url('/Images/portrait-male-doctors-nurse-using-digital-tablet-corridor_107420-71369.png'); /* Correct path to your image */
-        background-size: cover; /* Ensures the image covers the entire viewport */
-        background-position: center center; /* Centers the image */
-        background-repeat: no-repeat; /* Prevents the image from repeating */
-        background-attachment: fixed; /* Keeps the background fixed when scrolling */
-        margin: -1%;
-        padding: 0;
-        
-    }
 
-        /* Optional: Add a semi-transparent overlay to darken the background */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 90%;
-            width: 100%;
-            margin-top: -40px;
-            /* height: 120vh;*/
-            background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
-            z-index: -1; /* Place the overlay behind all content */
-        }
 
     /* Form container styling */
     .form-container {
         width: 36%;
-      /*  margin: 50px auto;*/
+        /* margin: 50px auto; */
         padding: 20px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         background-color: rgba(255, 255, 255, 0.9);
-        /* border-radius: 8px;*/
+        /* border-radius: 8px; */
         position: absolute;
         /* z-index: 1; */
-        margin-left: 436px;
-        margin-top: -10px;
-
+        margin-left: 232px;
+        margin-top: 1px;
     }
 
     /* Form elements styling */
@@ -107,12 +78,27 @@
     }
 </style>
 
-<body>
+<div class="sb2-2" style="margin-top: 58px; height: 140vh;">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="/Reception/Reception"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+                <a href="#"> Register</a>
+            </li>
+            <li class="page-back">
+                <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+        </ul>
+    </div>
+    <div style="padding: 14px 36px; background: #002147; margin-top: 21px; margin-left: 232px; width: 485px; color: white;  ">
+        <h4>Register here!</h4>
+    </div>
+
     @using (Html.BeginForm("Insertprofile", "Patient"))
     {
-        <div style="padding: 14px 36px; background: #002147; margin-top: 21px; margin-left: 436px; width: 454px; color: white;  ">
-            <h4>Register here!</h4>
-        </div>
+
 
         @Html.AntiForgeryToken()
 
@@ -194,5 +180,5 @@
                 <input type="submit" value="Register" class="btn" />
             </div>
         </div>
+        
     }
-</body>

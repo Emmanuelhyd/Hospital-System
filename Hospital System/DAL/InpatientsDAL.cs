@@ -1,4 +1,5 @@
-﻿using Hospital_System.Models;
+﻿using AdminPages.Models;
+using Hospital_System.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -135,10 +136,38 @@ namespace Hospital_System.DAL
             return doctors;
         }
 
+
+        public Doctor GetDoctorsId(int DoctorId)
+        {
+            Doctor doctor1 = null;
+            string res = "";
+            con.Open();
+            cmd = new SqlCommand("select * from doctors where DoctorId=" + DoctorId + "", con);
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                doctor1 = new Doctor
+                {
+
+                    DoctorId = reader.IsDBNull(reader.GetOrdinal("DoctorId")) ? 0 : Convert.ToInt32(reader.GetValue(reader.GetOrdinal("DoctorId"))),
+                    FullName = reader.GetString(reader.GetOrdinal("FullName")),
+                    Email = reader.GetString(reader.GetOrdinal("Email")),
+                    Department = reader.GetString(reader.GetOrdinal("Department")),
+                    Education = reader.GetString(reader.GetOrdinal("Education")),
+                    Designation = reader.GetString(reader.GetOrdinal("Designation")),
+                    Status = reader.GetString(reader.GetOrdinal("Status")),
+                    PhoneNo = reader.IsDBNull(reader.GetOrdinal("PhoneNo")) ? string.Empty : reader["PhoneNo"].ToString(),
+                };
+            }
+
+
+            reader.Close();
+            con.Close();
+            return doctor1;
+        }
+
+
     }
-
-
-
 
 
 

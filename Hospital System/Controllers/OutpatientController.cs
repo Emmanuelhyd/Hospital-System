@@ -1,6 +1,7 @@
 ﻿using Hospital_System.BAL;
 using Hospital_System.DAL;
 using Hospital_System.Models;
+using Hospital_System.Viewmodel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -97,5 +98,6 @@ namespace Hospital_System.Controllers
         }
 
 
+     
     }
 }

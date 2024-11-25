@@ -1,0 +1,248 @@
+﻿
+@model Hospital_System.Models.Attend
+
+@{
+    ViewBag.Title = "Add Attendance";
+    Layout = "~/Views/Shared/_LayoutPatRec.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+
+@using (Html.BeginForm("AddAttend", "Attendance", FormMethod.Post))
+{
+    <div class="sb2-2" style="height: 126%; position: absolute; margin-top: 58px;">
+        <div class="sb2-2-2" style="margin-left:30px;">
+            <ul>
+                <li>
+                    <a href="/Reception/Reception"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="active-bre">
+                    <a href="#">Attendance</a>
+                </li>
+                <li class="page-back">
+                    <a href="/Reception/Reception"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="padding: 14px 36px; background: #002147; margin-top:145px; margin-left: 25%; width: 70%; color:white;position:absolute;">
+        <h4 style="color:white;font-size:20px;">Add New Attendance</h4>
+    </div>
+
+
+
+
+    <div class="form-container">
+        <div class="form-row">
+            <div class="form-group">
+                <!-- Id Field -->
+                @Html.LabelFor(m => m.Id)
+                @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <!-- Name Field -->
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name, new { @required = "required", @placeholder = "Name", @class = "form-control" })
+            </div>
+        </div>
+
+        <!-- Row 2: Department and Job Title -->
+        <div class="form-row">
+            <div class="form-group">
+                <!-- Department Field -->
+                @Html.LabelFor(m => m.Department)
+                @Html.TextBoxFor(m => m.Department, new { @required = "required", @placeholder = "Department", @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <!-- Job Title Field -->
+                @Html.LabelFor(m => m.JobTitle)
+                @Html.TextBoxFor(m => m.JobTitle, new { @required = "required", @placeholder = "Job Title", @class = "form-control" })
+            </div>
+        </div>
+
+        <!-- Row 3: Contact and Shift -->
+        <div class="form-row">
+            <div class="form-group">
+                <!-- Contact Field -->
+                @Html.LabelFor(m => m.Contact)
+                @Html.TextBoxFor(m => m.Contact, new
+           {
+               @required = "required",
+               @placeholder = "Phone Number",
+               @type = "tel",
+               @maxlength = "10",
+               @pattern = "^[6789][0-9]{9}$",  // Pattern to ensure it starts with 6, 7, 8, or 9 and is exactly 10 digits
+               @title = "Phone number must start with 6, 7, 8, or 9 and must be 10 digits long.",
+
+               @class = "form-control"
+           })
+            </div>
+
+            <div class="form-group">
+                <!-- Shift Dropdown -->
+                @Html.LabelFor(m => m.Shift)
+                @Html.DropDownListFor(m => m.Shift, new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem { Value = "Morning", Text = "Morning" },
+                    new SelectListItem { Value = "Afternoon", Text = "Afternoon" },
+                    new SelectListItem { Value = "Night", Text = "Night" },
+                }, "Value", "Text"), "Select Shift", new { @class = "form-control", id = "shiftDropdown", @required = "required" })
+            </div>
+        </div>
+
+        <!-- Row 4: Time, Login Time, and Logout Time -->
+        <div class="form-row">
+            <div class="form-group">
+                <!-- Time Field -->
+                @Html.LabelFor(m => m.Time)
+                @Html.TextBoxFor(m => m.Time, new { @required = "required", @type = "text", @id = "timeField", @readonly = "readonly", @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <!-- Login Time Field -->
+                @Html.LabelFor(m => m.LoginTime)
+                @Html.TextBoxFor(m => m.LoginTime, new { @required = "required", @type = "time", @class = "form-control" })
+            </div>
+        </div>
+
+        <!-- Row 5: Logout Time and Status -->
+        <div class="form-row">
+            <div class="form-group">
+                <!-- Logout Time Field -->
+                @Html.LabelFor(m => m.LogoutTime)
+                @Html.TextBoxFor(m => m.LogoutTime, new { @required = "required", @type = "time", @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <!-- Status Dropdown -->
+                @Html.LabelFor(m => m.Status)
+                @Html.DropDownListFor(m => m.Status, new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem { Value = "Present", Text = "Present" },
+                    new SelectListItem { Value = "Absent", Text = "Absent" },
+                }, "Value", "Text"), "Select Status", new { @class = "form-control", @required = "required" })
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div style="display: flex; justify-content: center; ">
+            <input type="submit" class="btn-submit" value="Submit" style="border-color: #e74715">
+
+        </div>
+    </div>
+}
+
+<script>
+    // JavaScript to dynamically set Time field based on Shift selection
+    document.getElementById("shiftDropdown").addEventListener("change", function () {
+        var shift = this.value;
+        var timeField = document.getElementById("timeField");
+
+        if (shift === "Morning") {
+            timeField.value = "9:00 AM - 5:00 PM";
+        } else if (shift === "Afternoon") {
+            timeField.value = "3:00 PM - 11:00 PM";
+        } else if (shift === "Night") {
+            timeField.value = "10:00 PM - 6:00 AM";
+        } else {
+            timeField.value = ""; // Clear if no shift selected
+        }
+    });
+
+    // Trigger change event on page load in case a default shift is already selected
+    window.onload = function () {
+        var shift = document.getElementById("shiftDropdown").value;
+        document.getElementById("shiftDropdown").dispatchEvent(new Event("change"));
+    };
+</script>
+
+
+<style>
+    .form-container {
+        position: absolute;
+        width: 70%;
+        margin-top: 200px;
+        background-color: #ffffff;
+        margin-left: 25%;
+    }
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .form-group {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 20px;
+        margin-left: 30px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        width: 95%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 42px;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, .6);
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .validation-summary {
+        margin-bottom: 15px;
+        color: #dc3545;
+    }
+
+    .btn {
+        color: white;
+        background-color: dodgerblue;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30%;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+</style>

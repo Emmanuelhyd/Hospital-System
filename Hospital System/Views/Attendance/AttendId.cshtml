@@ -1,7 +1,7 @@
-﻿@model Hospital_System.Models.Vaccines
+﻿@model Hospital_System.Models.Attend
 
 @{
-    ViewBag.Title = "VaccinesById";
+    ViewBag.Title = "AttendDetails";
     Layout = null;
 }
 
@@ -9,12 +9,13 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Vaccination Details</title>
+    <title>Attend Details</title>
+
     <style>
         /* Container styling */
         .container {
             margin-left: 198px;
-            padding: 20px;
+        padding: 20px;
             margin-top: 1px;
             background-color: #fff;
             border: 1px solid #ddd;
@@ -25,53 +26,53 @@
 
             /* Field styling */
             .container .field {
-                margin-bottom: 15px;
-                font-size: 16px;
-            }
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
 
                 .container .field strong {
-                    font-size: 18px;
-                    color: #003366;
+            font-size: 18px;
+        color: #003366;
                 }
 
             .container .field {
-                padding: 10px;
-                background-color: #f9f9f9;
+        padding: 10px;
+            background-color: #f9f9f9;
                 border-radius: 3px;
-            }
+        }
 
                 .container .field:last-child {
-                    margin-bottom: 0;
-                }
+            margin-bottom: 0;
+        }
 
         /* Header styling */
         .header {
-            padding: 14px 36px;
-            background: #002147;
+        padding: 14px 36px;
+        background: #002147;
             margin-top: 27px;
             margin-left: 199px;
-            width: 641px;
-            color: white;
+        width: 641px;
+        color: white;
         }
 
         /* Button styling for PDF download */
-        #downloadBtn {
-            background-color: #002147;
+#downloadBtn {
+        background-color: #002147;
             color: white;
-            font-size: 16px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-            display: block;
-            width: 12%;
-            text-align: center;
-            margin-left: 440px;
-        }
+        font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+        border-radius: 5px;
+    cursor: pointer;
+        margin-top: 20px;
+    display: block;
+    width: 12%;
+        text-align: center;
+        margin-left: 440px;
+    }
 
-            #downloadBtn:hover {
-                background-color: #002147;
+#downloadBtn:hover {
+    background-color: #002147;
             }
     </style>
 
@@ -80,53 +81,46 @@
 </head>
 
 <body style="background-color: #e3e8ea;">
-    <div id="VaccinationDetailsContent">
+    <div id="AttendDetailsContent">
 
         <!-- Header Section -->
         <div class="header">
-            <h4>Vaccination Details</h4>
+            <h4>Attend Details</h4>
         </div>
 
-        <!-- Vaccination Details Container -->
+        <!-- Attend Details Container -->
         <div class="container">
-
             <div class="field">
-                <strong>Vaccination ID:</strong> @Model.VaccineId
+                <strong>Id:</strong> <span>@Model.Id</span>
             </div>
             <div class="field">
-                <strong>Patient Name:</strong> @Model.PatientName
+                <strong>Name:</strong> <span>@Model.Name</span>
             </div>
             <div class="field">
-                <strong>Age:</strong> @Model.Age
+                <strong>Department:</strong> <span>@Model.Department</span>
             </div>
             <div class="field">
-                <strong>Doctor Name:</strong> @Model.DoctorName
+                <strong>Job Title:</strong> <span>@Model.JobTitle</span>
             </div>
             <div class="field">
-                <strong>Vaccination Type:</strong> @Model.VaccineType
+                <strong>Contact:</strong> <span>@Model.Contact</span>
             </div>
             <div class="field">
-                <strong>Date of Vaccination:</strong> @Model.DateOfVaccination
+                <strong>Shift:</strong> <span>@Model.Shift</span>
             </div>
             <div class="field">
-                <strong>Dosage:</strong> @Model.Dosage
+                <strong>Time:</strong> <span>@Model.Time</span>
             </div>
             <div class="field">
-                <strong>Follow-Up Date:</strong> @Model.FollowupDate
+                <strong>Login Time:</strong> <span>@Model.LoginTime</span>
             </div>
             <div class="field">
-                <strong>Next Due Date:</strong> @Model.NextDueDate
+                <strong>Logout Time:</strong> <span>@Model.LogoutTime</span>
             </div>
             <div class="field">
-                <strong>Reaction:</strong> @Model.ReactionType
+                <strong>Status:</strong> <span>@Model.Status</span>
             </div>
-            <div class="field">
-                <strong>Status:</strong> @Model.Status
-            </div>
-
         </div>
-
-      
 
     </div>
 
@@ -136,18 +130,18 @@
 
     <script>
         function downloadPDF() {
-            const element = document.getElementById("VaccinationDetailsContent");
+            const element = document.getElementById("AttendDetailsContent");
 
-            // Convert the vaccination details content to a PDF using html2pdf.js
+            // Convert the attend details content to a PDF using html2pdf.js
             html2pdf()
                 .from(element)
                 .set({
-                    filename: 'Vaccination_Details.pdf',  // Name of the downloaded file
+                    filename: 'Attend_Details.pdf',  // Name of the downloaded file
                     html2canvas: { scale: 4 },  // Increase the scale for better quality
                     jsPDF: {
                         unit: "mm",  // Units for the PDF (millimeters)
                         format: "a4",  // Paper size (A4)
-                        orientation: "landscape",  // Portrait orientation
+                        orientation: "Landscape",  // Portrait orientation
                         margins: { top: 15, bottom: 15, left: 15, right: 15 }  // Add margins to avoid clipping
                     }
                 })
